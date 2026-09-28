@@ -3,1136 +3,722 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#07111f">
+<meta name="version" content="1.3.0">
+<meta name="build" content="13">
 
-<title>Amirreza Gholami | Personal Website</title>
-
-<meta name="description" content="وب‌سایت شخصی امیررضا غلامی؛ تکنولوژی، هوش مصنوعی، وب و علایق شخصی">
-<meta name="author" content="Amirreza Gholami">
-<meta name="robots" content="index, follow">
-<meta name="version" content="1.2.0">
-
-<link rel="canonical" href="https://amirrezagholami86.github.io/">
-
-<meta property="og:title" content="Amirreza Gholami">
-<meta property="og:description" content="وب‌سایت شخصی امیررضا غلامی">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://amirrezagholami86.github.io/">
-<meta property="og:image" content="profile.jpg">
-
-<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+<title>امیررضا غلامی | Personal Website</title>
 
 <style>
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    font-family:Tahoma,Arial,sans-serif;
-    background:#07111f;
-    color:#f5f7fb;
-    line-height:1.8;
-    overflow-x:hidden;
-    transition:.4s;
-}
-
-body.light{
-    background:#f4f7fb;
-    color:#172033;
-}
-
 :root{
-    --accent:#00d9ff;
-    --accent2:#6c5ce7;
-    --card:rgba(255,255,255,.07);
-    --border:rgba(255,255,255,.12);
-    --text:#f5f7fb;
-    --muted:#aeb9ca;
+  --bg:#07111f;
+  --bg2:#0b1728;
+  --card:rgba(15,29,48,.78);
+  --text:#f4f8ff;
+  --muted:#9db0c7;
+  --accent:#00d9ff;
+  --accent2:#087fff;
+  --border:rgba(255,255,255,.09);
+  --shadow:0 20px 60px rgba(0,0,0,.28);
 }
 
 body.light{
-    --card:rgba(255,255,255,.82);
-    --border:rgba(0,0,0,.08);
-    --text:#172033;
-    --muted:#596579;
+  --bg:#eef5fb;
+  --bg2:#dfeaf4;
+  --card:rgba(255,255,255,.78);
+  --text:#102033;
+  --muted:#607087;
+  --border:rgba(16,32,51,.1);
+  --shadow:0 20px 50px rgba(28,55,80,.14);
 }
 
-body.green{
-    --accent:#00e676;
-    --accent2:#00a86b;
+body.green{--accent:#22e58a;--accent2:#10a968}
+body.orange{--accent:#ff9d32;--accent2:#ff5e1a}
+body.pink{--accent:#ff5ebc;--accent2:#9b5cff}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:Tahoma,Arial,sans-serif;
+  background:
+    radial-gradient(circle at 20% 10%,rgba(0,217,255,.09),transparent 28%),
+    radial-gradient(circle at 85% 20%,rgba(120,70,255,.08),transparent 30%),
+    var(--bg);
+  color:var(--text);
+  line-height:1.8;
+  overflow-x:hidden;
+  transition:.3s;
 }
 
-body.orange{
-    --accent:#ff9800;
-    --accent2:#ff5722;
+a{color:inherit;text-decoration:none}
+button,input{font:inherit}
+
+#particles{
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  z-index:-2;
+  pointer-events:none;
 }
 
-body.pink{
-    --accent:#ff4da6;
-    --accent2:#9c27b0;
-}
-
-a{
-    color:inherit;
-    text-decoration:none;
-}
-
-button{
-    font-family:inherit;
-}
-
-canvas#particles{
-    position:fixed;
-    inset:0;
-    z-index:-5;
-    pointer-events:none;
-}
-
-.bg-orb{
-    position:fixed;
-    width:350px;
-    height:350px;
-    border-radius:50%;
-    filter:blur(80px);
-    opacity:.18;
-    z-index:-4;
-    pointer-events:none;
-}
-
-.orb1{
-    background:var(--accent);
-    top:-120px;
-    right:-100px;
-}
-
-.orb2{
-    background:var(--accent2);
-    bottom:-120px;
-    left:-100px;
+.mouse-glow{
+  position:fixed;
+  width:260px;
+  height:260px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(0,217,255,.12),transparent 70%);
+  transform:translate(-50%,-50%);
+  pointer-events:none;
+  z-index:-1;
 }
 
 .container{
-    width:min(1100px,92%);
-    margin:auto;
+  width:min(1120px,92%);
+  margin:auto;
 }
 
 nav{
-    position:fixed;
-    top:15px;
-    left:50%;
-    transform:translateX(-50%);
-    width:min(1100px,94%);
-    padding:10px 15px;
-    border:1px solid var(--border);
-    background:rgba(5,12,25,.72);
-    backdrop-filter:blur(18px);
-    border-radius:22px;
-    z-index:1000;
-    box-shadow:0 15px 50px rgba(0,0,0,.25);
+  position:fixed;
+  top:12px;
+  left:50%;
+  transform:translateX(-50%);
+  width:min(1120px,94%);
+  z-index:1000;
+  padding:10px 14px;
+  border:1px solid var(--border);
+  background:rgba(7,17,31,.78);
+  backdrop-filter:blur(18px);
+  border-radius:20px;
+  box-shadow:var(--shadow);
 }
 
-body.light nav{
-    background:rgba(255,255,255,.82);
-}
+body.light nav{background:rgba(255,255,255,.8)}
 
 .nav-inner{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:15px;
+  display:flex;
+  align-items:center;
+  gap:12px;
 }
 
 .logo{
-    font-weight:bold;
-    color:var(--accent);
-    white-space:nowrap;
+  font-weight:900;
+  color:var(--accent);
+  white-space:nowrap;
 }
 
 .nav-links{
-    display:flex;
-    gap:5px;
-    flex-wrap:wrap;
-    justify-content:center;
+  display:flex;
+  gap:5px;
+  flex:1;
+  justify-content:center;
+  overflow:auto;
+  scrollbar-width:none;
 }
 
+.nav-links::-webkit-scrollbar{display:none}
+
 .nav-links a{
-    padding:6px 8px;
-    border-radius:10px;
-    font-size:11px;
-    color:var(--muted);
-    transition:.25s;
+  padding:7px 10px;
+  border-radius:10px;
+  color:var(--muted);
+  font-size:12px;
+  white-space:nowrap;
+  transition:.25s;
 }
 
 .nav-links a:hover,
 .nav-links a.active{
-    color:var(--text);
-    background:rgba(255,255,255,.08);
+  color:var(--text);
+  background:rgba(255,255,255,.07);
 }
 
 .nav-actions{
-    display:flex;
-    gap:7px;
+  display:flex;
+  gap:7px;
 }
 
-.icon-btn,
-.menu-btn{
-    border:1px solid var(--border);
-    background:var(--card);
-    color:var(--text);
-    width:38px;
-    height:38px;
-    border-radius:12px;
-    cursor:pointer;
-    transition:.25s;
+.icon-btn{
+  width:38px;
+  height:38px;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.04);
+  color:var(--text);
+  border-radius:11px;
+  cursor:pointer;
+  position:relative;
 }
 
-.icon-btn:hover,
-.menu-btn:hover{
-    transform:translateY(-2px);
-    border-color:var(--accent);
+.notification-dot{
+  position:absolute;
+  width:8px;
+  height:8px;
+  background:#ff405f;
+  border-radius:50%;
+  top:6px;
+  right:6px;
 }
 
-.menu-btn{
-    display:none;
+.mobile-btn{display:none}
+
+section{
+  padding:95px 0 20px;
+  scroll-margin-top:90px;
 }
 
 .hero{
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:120px 0 70px;
-}
-
-.profile-wrap{
-    position:relative;
-    width:155px;
-    height:155px;
-    margin:0 auto 25px;
-}
-
-.profile-ring{
-    position:absolute;
-    inset:-7px;
-    border-radius:50%;
-    background:conic-gradient(
-        var(--accent),
-        var(--accent2),
-        transparent,
-        var(--accent)
-    );
-    animation:spin 5s linear infinite;
-}
-
-.profile{
-    position:relative;
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    border-radius:50%;
-    border:5px solid #07111f;
-    z-index:2;
-}
-
-@keyframes spin{
-    to{
-        transform:rotate(360deg);
-    }
-}
-
-.hero h1{
-    font-size:clamp(35px,7vw,70px);
-    margin-bottom:8px;
-    letter-spacing:-2px;
-}
-
-.gradient{
-    background:linear-gradient(
-        90deg,
-        var(--accent),
-        var(--accent2)
-    );
-    -webkit-background-clip:text;
-    color:transparent;
-}
-
-.hero p{
-    color:var(--muted);
-}
-
-.typing{
-    min-height:35px;
-    color:var(--accent);
-    font-weight:bold;
-    margin:8px 0 20px;
-}
-
-.version-pill{
-    display:inline-flex;
-    align-items:center;
-    gap:7px;
-    padding:7px 14px;
-    border-radius:999px;
-    border:1px solid var(--border);
-    background:var(--card);
-    color:var(--accent);
-    font-size:12px;
-    margin-bottom:18px;
-    box-shadow:0 0 25px rgba(0,217,255,.08);
-}
-
-.version-dot{
-    width:7px;
-    height:7px;
-    background:#00e676;
-    border-radius:50%;
-    box-shadow:0 0 10px #00e676;
-}
-
-.hero-buttons{
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:10px;
-    margin-top:25px;
-}
-
-.btn{
-    padding:11px 18px;
-    border-radius:13px;
-    border:1px solid var(--border);
-    background:var(--card);
-    color:var(--text);
-    cursor:pointer;
-    transition:.25s;
-}
-
-.btn:hover{
-    transform:translateY(-3px);
-    border-color:var(--accent);
-}
-
-.btn.primary{
-    background:linear-gradient(
-        135deg,
-        var(--accent),
-        var(--accent2)
-    );
-    color:#06101d;
-    font-weight:bold;
-    border:none;
-}
-
-section{
-    padding:80px 0;
-}
-
-.section-title{
-    text-align:center;
-    margin-bottom:35px;
-}
-
-.section-title h2{
-    font-size:30px;
-}
-
-.section-title p{
-    color:var(--muted);
-    font-size:14px;
-}
-
-.grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
-}
-
-.card{
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:22px;
-    padding:23px;
-    backdrop-filter:blur(15px);
-    transition:.3s;
-}
-
-.card:hover{
-    transform:translateY(-6px);
-    border-color:var(--accent);
-    box-shadow:0 15px 45px rgba(0,0,0,.18);
-}
-
-.card h3{
-    margin-bottom:8px;
-}
-
-.card p{
-    color:var(--muted);
-    font-size:14px;
-}
-
-.about-main{
-    display:grid;
-    grid-template-columns:1.2fr .8fr;
-    gap:20px;
-}
-
-.info-list{
-    display:grid;
-    gap:12px;
-}
-
-.info-item{
-    padding:14px;
-    border:1px solid var(--border);
-    border-radius:15px;
-    background:rgba(255,255,255,.025);
-}
-
-.info-item span{
-    display:block;
-    color:var(--muted);
-    font-size:12px;
-}
-
-.id-card{
-    position:relative;
-    overflow:hidden;
-}
-
-.id-card::after{
-    content:"";
-    position:absolute;
-    width:180px;
-    height:180px;
-    border-radius:50%;
-    background:var(--accent);
-    filter:blur(80px);
-    opacity:.12;
-    left:-80px;
-    bottom:-80px;
-}
-
-.id-top{
-    display:flex;
-    gap:15px;
-    align-items:center;
-}
-
-.id-photo{
-    width:75px;
-    height:75px;
-    border-radius:20px;
-    object-fit:cover;
-    border:2px solid var(--accent);
-}
-
-.tags{
-    display:flex;
-    gap:7px;
-    flex-wrap:wrap;
-    margin-top:12px;
-}
-
-.tag{
-    padding:5px 9px;
-    border-radius:999px;
-    background:rgba(255,255,255,.07);
-    color:var(--accent);
-    font-size:11px;
-}
-
-.stats{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:15px;
-}
-
-.stat{
-    text-align:center;
-}
-
-.stat strong{
-    display:block;
-    font-size:30px;
-    color:var(--accent);
-}
-
-.stat span{
-    color:var(--muted);
-    font-size:12px;
-}
-
-.dashboard{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:15px;
-}
-
-.dash-card{
-    text-align:center;
-    padding:20px;
-    border:1px solid var(--border);
-    border-radius:20px;
-    background:var(--card);
-}
-
-.dash-icon{
-    font-size:25px;
-}
-
-.dash-value{
-    font-size:20px;
-    font-weight:bold;
-    margin-top:5px;
-}
-
-.dash-label{
-    color:var(--muted);
-    font-size:11px;
-}
-
-.online{
-    color:#00e676;
-}
-
-.quote{
-    margin-top:20px;
-    text-align:center;
-    padding:25px;
-    border:1px solid var(--border);
-    border-radius:20px;
-    background:var(--card);
-    color:var(--muted);
-}
-
-.progress{
-    margin:15px 0;
-}
-
-.progress-head{
-    display:flex;
-    justify-content:space-between;
-    font-size:13px;
-}
-
-.bar{
-    height:10px;
-    background:rgba(255,255,255,.08);
-    border-radius:20px;
-    overflow:hidden;
-    margin-top:7px;
-}
-
-.bar span{
-    display:block;
-    height:100%;
-    width:0;
-    background:linear-gradient(
-        90deg,
-        var(--accent),
-        var(--accent2)
-    );
-    border-radius:20px;
-    transition:1.3s;
-}
-
-/* AI CORNER */
-
-.ai-hero{
-    position:relative;
-    overflow:hidden;
-    padding:35px;
-    border-radius:28px;
-    border:1px solid var(--border);
-    background:
-        linear-gradient(
-            135deg,
-            rgba(0,217,255,.12),
-            rgba(108,92,231,.12)
-        ),
-        var(--card);
-}
-
-.ai-hero::before{
-    content:"AI";
-    position:absolute;
-    left:25px;
-    bottom:-45px;
-    font-size:170px;
-    font-weight:bold;
-    color:var(--accent);
-    opacity:.035;
-}
-
-.ai-icon{
-    font-size:55px;
-    margin-bottom:10px;
-}
-
-.ai-title{
-    font-size:28px;
-    margin-bottom:7px;
-}
-
-.ai-subtitle{
-    color:var(--muted);
-    max-width:700px;
-}
-
-.ai-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
-    margin-top:20px;
-}
-
-.ai-card{
-    padding:24px;
-    border-radius:22px;
-    border:1px solid var(--border);
-    background:var(--card);
-    transition:.3s;
-}
-
-.ai-card:hover{
-    transform:translateY(-6px);
-    border-color:var(--accent);
-}
-
-.ai-card-icon{
-    font-size:35px;
-    margin-bottom:10px;
-}
-
-.ai-card p{
-    color:var(--muted);
-    font-size:13px;
-}
-
-.ai-expand{
-    margin-top:15px;
-    color:var(--accent);
-    font-size:12px;
-    cursor:pointer;
-}
-
-/* GOALS */
-
-.goal-list{
-    display:grid;
-    gap:15px;
-}
-
-.goal{
-    padding:20px;
-    border-radius:20px;
-    border:1px solid var(--border);
-    background:var(--card);
-}
-
-.goal-top{
-    display:flex;
-    justify-content:space-between;
-    gap:10px;
-    margin-bottom:8px;
-}
-
-.goal-percent{
-    color:var(--accent);
-    font-weight:bold;
-}
-
-.goal-bar{
-    height:9px;
-    background:rgba(255,255,255,.08);
-    border-radius:20px;
-    overflow:hidden;
-}
-
-.goal-bar span{
-    display:block;
-    height:100%;
-    border-radius:20px;
-    background:linear-gradient(
-        90deg,
-        var(--accent),
-        var(--accent2)
-    );
-}
-
-.level-card{
-    text-align:center;
-    position:relative;
-    overflow:hidden;
-}
-
-.level-number{
-    font-size:65px;
-    font-weight:bold;
-    color:var(--accent);
-    line-height:1;
-}
-
-.xp{
-    margin:15px 0;
-    color:var(--muted);
-}
-
-.xp-bar{
-    height:12px;
-    background:rgba(255,255,255,.08);
-    border-radius:20px;
-    overflow:hidden;
-}
-
-.xp-bar span{
-    display:block;
-    width:72%;
-    height:100%;
-    background:linear-gradient(
-        90deg,
-        var(--accent),
-        var(--accent2)
-    );
-}
-
-/* BADGES */
-
-.badges{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:15px;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  padding-top:120px;
+}
+
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:35px;
+  align-items:center;
 }
 
 .badge{
-    text-align:center;
-    padding:20px 12px;
-    border-radius:20px;
-    background:var(--card);
-    border:1px solid var(--border);
-    transition:.3s;
+  display:inline-flex;
+  padding:7px 13px;
+  border:1px solid rgba(0,217,255,.22);
+  background:rgba(0,217,255,.08);
+  color:var(--accent);
+  border-radius:999px;
+  font-size:12px;
+  margin-bottom:18px;
 }
 
-.badge:hover{
-    transform:translateY(-5px);
-    border-color:var(--accent);
+.hero h1{
+  font-size:clamp(38px,7vw,76px);
+  line-height:1.1;
+  margin-bottom:18px;
 }
 
-.badge-icon{
-    font-size:35px;
-    margin-bottom:7px;
+.gradient{
+  background:linear-gradient(90deg,var(--accent),#fff,var(--accent2));
+  -webkit-background-clip:text;
+  color:transparent;
 }
 
-.badge.locked{
-    opacity:.35;
-    filter:grayscale(1);
+.typing{
+  min-height:40px;
+  color:var(--muted);
+  font-size:20px;
 }
 
-.badge small{
-    display:block;
-    color:var(--muted);
-    font-size:10px;
+.hero-desc{
+  color:var(--muted);
+  max-width:650px;
+  margin:15px 0 25px;
 }
 
-/* TIMELINE */
+.buttons{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.btn{
+  padding:11px 18px;
+  border-radius:13px;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.05);
+  color:var(--text);
+  cursor:pointer;
+  transition:.25s;
+}
+
+.btn:hover{
+  transform:translateY(-3px);
+  border-color:var(--accent);
+}
+
+.btn.primary{
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:#00101b;
+  font-weight:900;
+}
+
+.hero-card,.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:25px;
+  padding:25px;
+  box-shadow:var(--shadow);
+  backdrop-filter:blur(15px);
+}
+
+.hero-profile{
+  text-align:center;
+  position:relative;
+}
+
+.profile-img{
+  width:190px;
+  height:190px;
+  object-fit:cover;
+  border-radius:50%;
+  border:4px solid var(--accent);
+  box-shadow:0 0 45px rgba(0,217,255,.2);
+}
+
+.online{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  margin:15px auto 0;
+  padding:5px 11px;
+  border-radius:999px;
+  background:rgba(34,229,138,.1);
+  color:#22e58a;
+  font-size:12px;
+}
+
+.online span{
+  width:8px;
+  height:8px;
+  background:#22e58a;
+  border-radius:50%;
+  box-shadow:0 0 10px #22e58a;
+}
+
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  justify-content:center;
+  margin-top:15px;
+}
+
+.tag{
+  padding:5px 10px;
+  border-radius:999px;
+  background:rgba(255,255,255,.06);
+  border:1px solid var(--border);
+  color:var(--muted);
+  font-size:11px;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:35px;
+}
+
+.section-title h2{
+  font-size:32px;
+  margin-bottom:6px;
+}
+
+.section-title p{color:var(--muted)}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.grid2{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:18px;
+}
+
+.card h3{
+  margin-bottom:8px;
+  color:var(--text);
+}
+
+.card p{
+  color:var(--muted);
+  font-size:14px;
+}
+
+.info-row{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  padding:13px 0;
+  border-bottom:1px solid var(--border);
+}
+
+.info-row:last-child{border-bottom:0}
+
+.info-row span:first-child{color:var(--muted)}
+
+.progress{
+  height:10px;
+  background:rgba(255,255,255,.08);
+  border-radius:20px;
+  overflow:hidden;
+  margin-top:8px;
+}
+
+.progress-bar{
+  height:100%;
+  width:0;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  border-radius:20px;
+  transition:1.3s ease;
+}
+
+.stat-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+}
+
+.stat{
+  text-align:center;
+  padding:18px 10px;
+  border:1px solid var(--border);
+  border-radius:17px;
+  background:rgba(255,255,255,.03);
+}
+
+.stat strong{
+  display:block;
+  font-size:26px;
+  color:var(--accent);
+}
+
+.stat small{color:var(--muted)}
+
+.overall{
+  margin-top:22px;
+}
+
+.overall-head{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:7px;
+}
+
+.ai-card{
+  cursor:pointer;
+  transition:.25s;
+}
+
+.ai-card:hover{
+  transform:translateY(-7px);
+  border-color:var(--accent);
+}
+
+.ai-icon{
+  font-size:38px;
+  margin-bottom:8px;
+}
+
+.achievement{
+  position:relative;
+  overflow:hidden;
+}
+
+.achievement.locked{
+  opacity:.48;
+  filter:grayscale(.7);
+}
+
+.achievement.unlocked{
+  border-color:rgba(34,229,138,.4);
+}
+
+.achievement .state{
+  display:inline-block;
+  margin-top:12px;
+  font-size:11px;
+  padding:4px 9px;
+  border-radius:999px;
+  background:rgba(34,229,138,.1);
+  color:#22e58a;
+}
+
+.achievement.locked .state{
+  background:rgba(255,255,255,.06);
+  color:var(--muted);
+}
+
+.goal{
+  margin-bottom:18px;
+}
+
+.goal-top{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:5px;
+}
+
+.status{
+  font-size:11px;
+  padding:3px 8px;
+  border-radius:999px;
+}
+
+.status.doing{
+  color:#ffc14d;
+  background:rgba(255,193,77,.1);
+}
+
+.status.done{
+  color:#22e58a;
+  background:rgba(34,229,138,.1);
+}
+
+.status.future{
+  color:#aebbd0;
+  background:rgba(255,255,255,.06);
+}
 
 .timeline{
-    position:relative;
-    max-width:800px;
-    margin:auto;
-}
-
-.timeline::before{
-    content:"";
-    position:absolute;
-    right:18px;
-    top:0;
-    bottom:0;
-    width:2px;
-    background:linear-gradient(
-        var(--accent),
-        transparent
-    );
+  position:relative;
 }
 
 .timeline-item{
-    position:relative;
-    padding:0 55px 30px 0;
+  position:relative;
+  padding:0 28px 25px 0;
+  border-right:2px solid rgba(0,217,255,.2);
 }
 
-.timeline-dot{
-    position:absolute;
-    right:10px;
-    top:5px;
-    width:17px;
-    height:17px;
-    border-radius:50%;
-    background:var(--accent);
-    box-shadow:0 0 20px var(--accent);
+.timeline-item::before{
+  content:"";
+  position:absolute;
+  right:-7px;
+  top:5px;
+  width:12px;
+  height:12px;
+  background:var(--accent);
+  border-radius:50%;
+  box-shadow:0 0 15px rgba(0,217,255,.5);
 }
 
-.timeline-item h3{
-    margin-bottom:4px;
+.timeline-item small{color:var(--accent)}
+
+.search-box{
+  display:flex;
+  gap:8px;
+  margin-bottom:20px;
 }
 
-.timeline-item p{
-    color:var(--muted);
-    font-size:13px;
+.search-box input{
+  flex:1;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.04);
+  color:var(--text);
+  border-radius:13px;
+  padding:12px 15px;
+  outline:none;
 }
 
-/* GALLERY */
+.search-box input:focus{border-color:var(--accent)}
+
+.search-results{
+  display:none;
+  margin-bottom:25px;
+}
+
+.search-results.show{display:block}
+
+.search-result{
+  display:block;
+  padding:11px 14px;
+  border-bottom:1px solid var(--border);
+  color:var(--muted);
+}
+
+.search-result:hover{color:var(--accent)}
 
 .gallery{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:15px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
 }
 
 .gallery-item{
-    height:190px;
-    border-radius:20px;
-    overflow:hidden;
-    border:1px solid var(--border);
-    cursor:pointer;
-    position:relative;
-    background:linear-gradient(
-        135deg,
-        var(--accent),
-        var(--accent2)
-    );
+  height:210px;
+  border-radius:20px;
+  overflow:hidden;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.04);
+  cursor:pointer;
 }
 
 .gallery-item img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:.4s;
 }
 
-.gallery-label{
-    position:absolute;
-    bottom:0;
-    right:0;
-    left:0;
-    padding:15px;
-    background:linear-gradient(
-        transparent,
-        rgba(0,0,0,.8)
-    );
-    color:#fff;
-}
+.gallery-item:hover img{transform:scale(1.06)}
 
-/* CONTACT */
-
-.contact-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:15px;
+.emoji-gallery{
+  display:flex;
+  height:100%;
+  align-items:center;
+  justify-content:center;
+  font-size:70px;
 }
 
 .contact{
-    text-align:center;
-    padding:20px;
-    border-radius:20px;
-    border:1px solid var(--border);
-    background:var(--card);
-    transition:.25s;
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:10px;
 }
 
-.contact:hover{
-    transform:translateY(-5px);
-    border-color:var(--accent);
+.contact a{
+  padding:15px 8px;
+  text-align:center;
+  border:1px solid var(--border);
+  border-radius:16px;
+  color:var(--muted);
+  transition:.25s;
 }
 
-.contact-icon{
-    font-size:28px;
+.contact a:hover{
+  color:var(--accent);
+  border-color:var(--accent);
+  transform:translateY(-4px);
 }
-
-.contact small{
-    display:block;
-    color:var(--muted);
-    margin-top:4px;
-    word-break:break-word;
-}
-
-/* THEMES */
-
-.theme-panel{
-    display:flex;
-    justify-content:center;
-    gap:10px;
-    flex-wrap:wrap;
-    margin-top:20px;
-}
-
-.theme-color{
-    width:34px;
-    height:34px;
-    border-radius:50%;
-    border:2px solid var(--border);
-    cursor:pointer;
-}
-
-.theme-color.cyan{
-    background:#00d9ff;
-}
-
-.theme-color.green{
-    background:#00e676;
-}
-
-.theme-color.orange{
-    background:#ff9800;
-}
-
-.theme-color.pink{
-    background:#ff4da6;
-}
-
-/* FOOTER */
 
 footer{
-    padding:45px 0 30px;
-    border-top:1px solid var(--border);
-    text-align:center;
-    color:var(--muted);
+  text-align:center;
+  padding:50px 20px;
+  color:var(--muted);
 }
 
-.footer-version{
-    display:inline-block;
-    margin-top:10px;
-    padding:5px 12px;
-    border-radius:999px;
-    border:1px solid var(--border);
-    color:var(--accent);
-    font-size:11px;
+.version{
+  color:var(--accent);
+  font-size:12px;
+  margin-top:8px;
 }
-
-/* TOAST */
-
-.toast{
-    position:fixed;
-    bottom:25px;
-    right:25px;
-    max-width:330px;
-    padding:14px 18px;
-    border-radius:15px;
-    background:#101b2d;
-    border:1px solid var(--border);
-    color:#fff;
-    z-index:3000;
-    transform:translateY(100px);
-    opacity:0;
-    transition:.35s;
-}
-
-.toast.show{
-    transform:translateY(0);
-    opacity:1;
-}
-
-/* MODAL */
 
 .modal{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.75);
-    backdrop-filter:blur(10px);
-    display:none;
-    align-items:center;
-    justify-content:center;
-    z-index:2500;
-    padding:20px;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.7);
+  backdrop-filter:blur(8px);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:2000;
+  padding:20px;
 }
 
-.modal.show{
-    display:flex;
-}
+.modal.show{display:flex}
 
-.modal-content{
-    max-width:700px;
-    width:100%;
-    background:#0c1627;
-    border:1px solid var(--border);
-    border-radius:22px;
-    padding:20px;
-    position:relative;
-}
-
-.modal-content img{
-    width:100%;
-    max-height:70vh;
-    object-fit:contain;
-    border-radius:15px;
+.modal-box{
+  width:min(550px,100%);
+  background:var(--bg2);
+  border:1px solid var(--border);
+  border-radius:25px;
+  padding:25px;
+  box-shadow:var(--shadow);
+  position:relative;
 }
 
 .close{
-    position:absolute;
-    top:10px;
-    left:10px;
-    width:35px;
-    height:35px;
-    border-radius:50%;
-    border:1px solid var(--border);
-    background:#111c2d;
-    color:#fff;
-    cursor:pointer;
+  position:absolute;
+  left:15px;
+  top:15px;
+  border:0;
+  background:rgba(255,255,255,.07);
+  color:var(--text);
+  width:35px;
+  height:35px;
+  border-radius:10px;
+  cursor:pointer;
 }
 
-/* REVEAL */
+.toast{
+  position:fixed;
+  bottom:25px;
+  left:50%;
+  transform:translate(-50%,20px);
+  background:var(--bg2);
+  border:1px solid var(--accent);
+  color:var(--text);
+  padding:12px 18px;
+  border-radius:13px;
+  opacity:0;
+  pointer-events:none;
+  transition:.3s;
+  z-index:3000;
+}
+
+.toast.show{
+  opacity:1;
+  transform:translate(-50%,0);
+}
+
+#notificationPanel{
+  position:fixed;
+  top:72px;
+  left:50%;
+  transform:translateX(-50%);
+  width:min(400px,92%);
+  background:var(--bg2);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:18px;
+  box-shadow:var(--shadow);
+  display:none;
+  z-index:1500;
+}
+
+#notificationPanel.show{display:block}
+
+.notice{
+  padding:12px 0;
+  border-bottom:1px solid var(--border);
+}
+
+.notice:last-child{border-bottom:0}
+
+.notice b{display:block}
+.notice small{color:var(--muted)}
 
 .reveal{
-    opacity:0;
-    transform:translateY(30px);
-    transition:1s;
+  opacity:0;
+  transform:translateY(25px);
+  transition:.7s ease;
 }
 
-.reveal.show{
-    opacity:1;
-    transform:none;
+.reveal.visible{
+  opacity:1;
+  transform:none;
 }
 
-.mouse-glow{
-    position:fixed;
-    width:220px;
-    height:220px;
-    border-radius:50%;
-    background:var(--accent);
-    filter:blur(100px);
-    opacity:.04;
-    pointer-events:none;
-    z-index:-2;
-    transform:translate(-50%,-50%);
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr}
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .stat-grid{grid-template-columns:repeat(2,1fr)}
+  .contact{grid-template-columns:repeat(3,1fr)}
+  .nav-links{display:none}
+  .mobile-btn{display:block}
+  nav.mobile-open .nav-links{
+    display:flex;
+    position:absolute;
+    top:60px;
+    right:0;
+    left:0;
+    background:var(--bg2);
+    padding:10px;
+    border-radius:15px;
+    flex-wrap:wrap;
+  }
 }
 
-/* MOBILE */
-
-@media(max-width:850px){
-
-    nav{
-        top:8px;
-    }
-
-    .nav-links{
-        display:none;
-        position:absolute;
-        top:60px;
-        right:0;
-        left:0;
-        padding:15px;
-        background:rgba(5,12,25,.96);
-        border:1px solid var(--border);
-        border-radius:18px;
-        flex-direction:column;
-        max-height:75vh;
-        overflow:auto;
-    }
-
-    body.light .nav-links{
-        background:rgba(255,255,255,.96);
-    }
-
-    .nav-links.open{
-        display:flex;
-    }
-
-    .menu-btn{
-        display:block;
-    }
-
-    .grid,
-    .about-main{
-        grid-template-columns:1fr;
-    }
-
-    .dashboard{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .stats{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .badges{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .contact-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .gallery{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .ai-grid{
-        grid-template-columns:1fr;
-    }
-}
-
-@media(max-width:520px){
-
-    .container{
-        width:94%;
-    }
-
-    .hero{
-        padding-top:110px;
-    }
-
-    .hero h1{
-        font-size:38px;
-    }
-
-    section{
-        padding:60px 0;
-    }
-
-    .profile-wrap{
-        width:135px;
-        height:135px;
-    }
-
-    .gallery{
-        grid-template-columns:1fr;
-    }
-
-    .contact-grid{
-        grid-template-columns:1fr;
-    }
-
-    .dashboard{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .ai-hero{
-        padding:25px 20px;
-    }
-
-    .ai-title{
-        font-size:24px;
-    }
-
-    .version-pill{
-        font-size:10px;
-    }
-}
-
-@media(prefers-reduced-motion:reduce){
-
-    *,
-    *::before,
-    *::after{
-        animation:none!important;
-        scroll-behavior:auto!important;
-        transition:none!important;
-    }
+@media(max-width:600px){
+  section{padding-top:80px}
+  .hero{padding-top:115px}
+  .grid,.grid2,.gallery{grid-template-columns:1fr}
+  .contact{grid-template-columns:repeat(2,1fr)}
+  .hero h1{font-size:42px}
+  .profile-img{width:155px;height:155px}
+  .stat-grid{grid-template-columns:repeat(2,1fr)}
+  .nav-actions .icon-btn:nth-child(2){display:none}
 }
 </style>
 </head>
@@ -1140,2186 +726,1121 @@ footer{
 <body>
 
 <canvas id="particles"></canvas>
-
-<div class="bg-orb orb1"></div>
-<div class="bg-orb orb2"></div>
-
 <div class="mouse-glow" id="mouseGlow"></div>
 
-<nav>
-<div class="nav-inner">
+<nav id="navbar">
+  <div class="nav-inner">
+    <div class="logo">AG • 1.3</div>
 
-<div class="logo">AG • 1.2.0</div>
+    <div class="nav-links" id="navLinks">
+      <a href="#home">خانه</a>
+      <a href="#about">درباره من</a>
+      <a href="#profile">پروفایل</a>
+      <a href="#dashboard">داشبورد</a>
+      <a href="#ai">AI</a>
+      <a href="#growth">رشد</a>
+      <a href="#interests">علایق</a>
+      <a href="#skills">مهارت‌ها</a>
+      <a href="#projects">پروژه‌ها</a>
+      <a href="#achievements">دستاوردها</a>
+      <a href="#goals">اهداف</a>
+      <a href="#gallery">گالری</a>
+      <a href="#contact">ارتباط</a>
+    </div>
 
-<div class="nav-links" id="navLinks">
-
-<a href="#home">🏠 خانه</a>
-<a href="#about">👋 درباره من</a>
-<a href="#profile">🪪 پروفایل</a>
-<a href="#dashboard">🧭 داشبورد</a>
-<a href="#ai">🤖 AI</a>
-<a href="#growth">📈 رشد</a>
-<a href="#interests">❤️ علایق</a>
-<a href="#skills">🚀 مهارت‌ها</a>
-<a href="#projects">🛠️ پروژه‌ها</a>
-<a href="#achievements">🏆 دستاوردها</a>
-<a href="#badges">🏅 Badgeها</a>
-<a href="#activities">📰 فعالیت‌ها</a>
-<a href="#ideas">💡 ایده‌ها</a>
-<a href="#gallery">🖼️ گالری</a>
-<a href="#timeline">🕒 مسیر</a>
-<a href="#goals">🎯 اهداف</a>
-<a href="#contact">📞 ارتباط</a>
-
-</div>
-
-<div class="nav-actions">
-
-<button class="icon-btn" id="themeBtn">🌙</button>
-
-<button class="menu-btn" id="menuBtn">☰</button>
-
-</div>
-
-</div>
+    <div class="nav-actions">
+      <button class="icon-btn" id="notifyBtn">🔔<span class="notification-dot"></span></button>
+      <button class="icon-btn" id="themeBtn">🌙</button>
+      <button class="icon-btn mobile-btn" id="menuBtn">☰</button>
+    </div>
+  </div>
 </nav>
+
+<div id="notificationPanel">
+  <h3>🔔 مرکز اعلان‌ها</h3>
+
+  <div class="notice">
+    <b>🚀 نسخه جدید سایت</b>
+    <small>سایت به Version 1.3.0 • Build 13 بروزرسانی شد.</small>
+  </div>
+
+  <div class="notice">
+    <b>🤖 AI Corner v2</b>
+    <small>بخش هوش مصنوعی تعاملی‌تر شده است.</small>
+  </div>
+
+  <div class="notice">
+    <b>🏆 Achievement</b>
+    <small>سیستم دستاوردهای جدید فعال شد.</small>
+  </div>
+
+  <div class="notice">
+    <b>📱 Mobile</b>
+    <small>نمایش سایت برای موبایل بهبود پیدا کرد.</small>
+  </div>
+</div>
 
 <main>
 
-<!-- HERO -->
-
 <section class="hero" id="home">
+  <div class="container hero-grid">
 
-<div class="container">
+    <div class="reveal">
+      <span class="badge">Version 1.3.0 • Build 13 🚀</span>
 
-<div class="version-pill">
-<span class="version-dot"></span>
-Version 1.2.0 • Build 12
-</div>
+      <h1>
+        سلام، من<br>
+        <span class="gradient">امیررضا غلامی</span> هستم
+      </h1>
 
-<div class="profile-wrap">
+      <div class="typing" id="typing"></div>
 
-<div class="profile-ring"></div>
+      <p class="hero-desc">
+        به دنیای تکنولوژی، هوش مصنوعی، وب و یادگیری علاقه دارم
+        و همیشه دنبال تجربه‌های جدید و ساختن چیزهای تازه هستم.
+      </p>
 
-<img
-src="profile.jpg"
-class="profile"
-alt="Amirreza Gholami"
->
+      <div class="buttons">
+        <a class="btn primary" href="#about">👋 درباره من</a>
+        <a class="btn" href="#contact">📬 ارتباط</a>
+        <a class="btn" href="https://github.com/amirrezagholami86" target="_blank">💻 GitHub</a>
+        <button class="btn" onclick="document.getElementById('search').focus()">🔎 جستجو</button>
+      </div>
+    </div>
 
-</div>
+    <div class="hero-card hero-profile reveal">
+      <img src="profile.jpg" class="profile-img" alt="Amirreza Gholami">
 
-<h1>
-امیررضا
-<span class="gradient">غلامی</span>
-</h1>
+      <h2 style="margin-top:15px">امیررضا غلامی</h2>
 
-<div class="typing" id="typing"></div>
+      <div class="online">
+        <span></span>
+        Available / Online
+      </div>
 
-<p>
-به دنیای شخصی من خوش آمدید؛
-جایی برای تکنولوژی، هوش مصنوعی، وب و علایق من.
-</p>
+      <div class="tags">
+        <span class="tag">Technology</span>
+        <span class="tag">AI</span>
+        <span class="tag">Web</span>
+        <span class="tag">Football</span>
+        <span class="tag">Learning</span>
+        <span class="tag">v1.3.0</span>
+      </div>
 
-<div class="hero-buttons">
+      <div class="info-row" style="margin-top:18px">
+        <span>سطح فعلی</span>
+        <b>Level 07</b>
+      </div>
 
-<a class="btn primary" href="#about">
-بیشتر درباره من
-</a>
+      <div class="info-row">
+        <span>XP</span>
+        <b>720 / 1000</b>
+      </div>
+    </div>
 
-<a class="btn" href="#contact">
-ارتباط با من
-</a>
-
-<a
-class="btn"
-href="https://github.com/amirrezagholami86"
-target="_blank"
->
-GitHub
-</a>
-
-</div>
-
-</div>
-
+  </div>
 </section>
 
-<!-- ABOUT -->
+<section id="searchSection">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2>🔎 جستجوی سایت</h2>
+      <p>هر بخشی را که می‌خواهی سریع پیدا کن.</p>
+    </div>
 
-<section id="about" class="reveal">
+    <div class="search-box reveal">
+      <input id="search" type="search" placeholder="مثلاً: هوش مصنوعی، فوتبال، پروژه‌ها، اهداف...">
+      <button class="btn primary" id="searchBtn">جستجو</button>
+    </div>
 
-<div class="container">
-
-<div class="section-title">
-
-<h2>👋 من کی هستم؟</h2>
-
-<p>یک معرفی کوتاه از من</p>
-
-</div>
-
-<div class="about-main">
-
-<div class="card">
-
-<h3>
-سلام! من امیررضا هستم 👋
-</h3>
-
-<br>
-
-<p>
-علاقه‌مند به تکنولوژی، دنیای دیجیتال،
-هوش مصنوعی و وب.
-همیشه سعی می‌کنم چیزهای جدید یاد بگیرم،
-تجربه کنم و قدم‌به‌قدم پیشرفت کنم.
-</p>
-
-<br>
-
-<p>
-این سایت فضای شخصی منه برای معرفی خودم،
-علایقم، پروژه‌ها، مسیر رشد و راه‌های ارتباطی.
-</p>
-
-</div>
-
-<div class="card">
-
-<div class="info-list">
-
-<div class="info-item">
-<strong>💻 حوزه علاقه</strong>
-<span>تکنولوژی و دنیای دیجیتال</span>
-</div>
-
-<div class="info-item">
-<strong>🤖 زمینه مورد علاقه</strong>
-<span>هوش مصنوعی</span>
-</div>
-
-<div class="info-item">
-<strong>📚 رویکرد</strong>
-<span>یادگیری و تجربه</span>
-</div>
-
-<div class="info-item">
-<strong>🌐 فعالیت</strong>
-<span>دنیای وب و اینترنت</span>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
+    <div id="searchResults" class="search-results card"></div>
+  </div>
 </section>
 
-<!-- PROFILE -->
+<section id="about">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2>👨‍💻 درباره من</h2>
+      <p>چند خط درباره مسیر و علاقه‌مندی‌های من</p>
+    </div>
 
-<section id="profile" class="reveal">
+    <div class="grid">
+      <div class="card reveal">
+        <h3>💻 حوزه علاقه</h3>
+        <p>تکنولوژی و دنیای دیجیتال</p>
+      </div>
 
-<div class="container">
+      <div class="card reveal">
+        <h3>🤖 زمینه مورد علاقه</h3>
+        <p>هوش مصنوعی و فناوری‌های آینده</p>
+      </div>
 
-<div class="section-title">
+      <div class="card reveal">
+        <h3>📚 رویکرد</h3>
+        <p>یادگیری، تجربه و ساختن پروژه‌های جدید</p>
+      </div>
 
-<h2>🪪 پروفایل دیجیتال</h2>
+      <div class="card reveal">
+        <h3>🌐 فعالیت</h3>
+        <p>دنیای وب و اینترنت</p>
+      </div>
 
-<p>Digital Identity Card</p>
+      <div class="card reveal">
+        <h3>⚽ علاقه شخصی</h3>
+        <p>فوتبال و دنبال کردن دنیای فوتبال</p>
+      </div>
 
-</div>
-
-<div class="card id-card">
-
-<div class="id-top">
-
-<img
-src="profile.jpg"
-class="id-photo"
-alt="Profile"
->
-
-<div>
-
-<h2>Amirreza Gholami</h2>
-
-<p style="color:var(--muted)">
-Personal Digital Profile
-</p>
-
-</div>
-
-</div>
-
-<div class="tags">
-
-<span class="tag">💻 Technology</span>
-<span class="tag">🤖 AI</span>
-<span class="tag">🌐 Web</span>
-<span class="tag">⚽ Football</span>
-<span class="tag">📚 Learning</span>
-<span class="tag">v1.2.0</span>
-
-</div>
-
-<br>
-
-<p class="privacy">
-
-📧 amirrezaamirreza275@gmail.com
-<br>
-📱 +98 922 842 0736
-
-</p>
-
-<br>
-
-<button
-class="btn primary"
-onclick="downloadVCard()"
->
-💾 ذخیره اطلاعات تماس
-</button>
-
-</div>
-
-</div>
-
+      <div class="card reveal">
+        <h3>🚀 نگاه به آینده</h3>
+        <p>یادگیری مداوم و حرکت به سمت تکنولوژی‌های جدید</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- DASHBOARD -->
+<section id="profile">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2>🪪 پروفایل حرفه‌ای</h2>
+      <p>Digital ID Card</p>
+    </div>
 
-<section id="dashboard" class="reveal">
+    <div class="grid2">
+      <div class="card reveal">
+        <h3>امیررضا غلامی</h3>
 
-<div class="container">
+        <div class="info-row">
+          <span>وضعیت</span>
+          <b style="color:#22e58a">● Available</b>
+        </div>
 
-<div class="section-title">
+        <div class="info-row">
+          <span>زمینه</span>
+          <b>Technology & AI</b>
+        </div>
 
-<h2>🧭 داشبورد</h2>
+        <div class="info-row">
+          <span>وب</span>
+          <b>Personal Website</b>
+        </div>
 
-<p>
-وضعیت فعلی وب‌سایت
-</p>
+        <div class="info-row">
+          <span>نسخه</span>
+          <b style="color:var(--accent)">1.3.0</b>
+        </div>
+      </div>
 
-</div>
+      <div class="card reveal">
+        <h3>📇 اطلاعات تماس</h3>
 
-<div class="dashboard">
+        <div class="info-row">
+          <span>ایمیل</span>
+          <span>amirrezaamirreza275@gmail.com</span>
+        </div>
 
-<div class="dash-card">
+        <div class="info-row">
+          <span>واتساپ</span>
+          <span>@amirrezagholami.ir</span>
+        </div>
 
-<div class="dash-icon">👁️</div>
-
-<div
-class="dash-value"
-id="visits"
->
-0
-</div>
-
-<div class="dash-label">
-بازدید این مرورگر
-</div>
-
-</div>
-
-<div class="dash-card">
-
-<div class="dash-icon">⏱️</div>
-
-<div
-class="dash-value"
-id="sessionTime"
->
-0:00
-</div>
-
-<div class="dash-label">
-مدت حضور
-</div>
-
-</div>
-
-<div class="dash-card">
-
-<div class="dash-icon">🟢</div>
-
-<div class="dash-value online">
-فعال
-</div>
-
-<div class="dash-label">
-وضعیت سایت
-</div>
-
-</div>
-
-<div class="dash-card">
-
-<div class="dash-icon">🚀</div>
-
-<div class="dash-value">
-1.2.0
-</div>
-
-<div class="dash-label">
-نسخه سایت
-</div>
-
-</div>
-
-</div>
-
-<div
-class="quote"
-id="quote"
->
-✨ هر روز یک قدم کوچک، در طول زمان یک مسیر بزرگ می‌سازد.
-</div>
-
-<br>
-
-<div style="text-align:center">
-
-<button
-class="btn"
-onclick="randomQuote()"
->
-🎲 جمله تصادفی
-</button>
-
-<button
-class="btn"
-onclick="shareSite()"
->
-📤 اشتراک‌گذاری
-</button>
-
-</div>
-
-</div>
-
+        <button class="btn primary" style="margin-top:15px" onclick="saveContact()">
+          📥 ذخیره اطلاعات تماس
+        </button>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- AI CORNER -->
+<section id="dashboard">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2>📊 داشبورد پیشرفته</h2>
+      <p>وضعیت لحظه‌ای سایت و پروفایل</p>
+    </div>
 
-<section id="ai" class="reveal">
+    <div class="card reveal">
+      <div class="stat-grid">
+        <div class="stat">
+          <strong id="visits">0</strong>
+          <small>بازدید</small>
+        </div>
 
-<div class="container">
+        <div class="stat">
+          <strong id="sessionTime">0s</strong>
+          <small>زمان حضور</small>
+        </div>
 
-<div class="section-title">
+        <div class="stat">
+          <strong>1.3.0</strong>
+          <small>نسخه</small>
+        </div>
 
-<h2>🤖 AI Corner</h2>
+        <div class="stat">
+          <strong style="color:#22e58a">Online</strong>
+          <small>وضعیت</small>
+        </div>
+      </div>
 
-<p>
-گوشه هوش مصنوعی وب‌سایت
-</p>
+      <div class="overall">
+        <div class="overall-head">
+          <b>📈 پیشرفت کلی</b>
+          <b id="overallText">0%</b>
+        </div>
 
-</div>
-
-<div class="ai-hero">
-
-<div class="ai-icon">
-🤖
-</div>
-
-<div class="ai-title">
-دنیای هوش مصنوعی
-</div>
-
-<p class="ai-subtitle">
-
-هوش مصنوعی یکی از موضوعاتی است که
-من به آن علاقه دارم؛ از ابزارهای هوشمند
-گرفته تا آینده فناوری و تأثیر آن روی زندگی.
-
-</p>
-
-<br>
-
-<span class="tag">
-AI EXPLORER
-</span>
-
-</div>
-
-<div class="ai-grid">
-
-<div class="ai-card">
-
-<div class="ai-card-icon">
-🧠
-</div>
-
-<h3>
-یادگیری ماشین
-</h3>
-
-<p>
-سیستم‌هایی که با استفاده از داده‌ها
-الگوها را یاد می‌گیرند و برای مسائل مختلف
-پیش‌بینی یا تصمیم‌گیری می‌کنند.
-</p>
-
-<div
-class="ai-expand"
-onclick="showToast('🧠 یادگیری و کنجکاوی؛ شروع مسیر AI است')"
->
-نمایش پیام →
-</div>
-
-</div>
-
-<div class="ai-card">
-
-<div class="ai-card-icon">
-💬
-</div>
-
-<h3>
-دستیارهای هوشمند
-</h3>
-
-<p>
-ابزارهایی که می‌توانند در نوشتن،
-یادگیری، تحقیق، ایده‌پردازی و بسیاری
-از کارهای روزمره کمک کنند.
-</p>
-
-<div
-class="ai-expand"
-onclick="showToast('💬 AI می‌تواند یک ابزار برای یادگیری و ساختن باشد')"
->
-نمایش پیام →
-</div>
-
-</div>
-
-<div class="ai-card">
-
-<div class="ai-card-icon">
-🚀
-</div>
-
-<h3>
-آینده AI
-</h3>
-
-<p>
-هوش مصنوعی در حال تغییر بسیاری از
-زمینه‌های فناوری است و یادگیری آن
-می‌تواند مسیرهای تازه‌ای ایجاد کند.
-</p>
-
-<div
-class="ai-expand"
-onclick="showToast('🚀 آینده هنوز پر از چیزهای ناشناخته است')"
->
-نمایش پیام →
-</div>
-
-</div>
-
-</div>
-
-</div>
-
+        <div class="progress">
+          <div class="progress-bar" data-width="76"></div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- GROWTH -->
+<section id="ai">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2>🤖 AI Corner v2</h2>
+      <p>گوشه‌ای برای علاقه به هوش مصنوعی</p>
+    </div>
 
-<section id="growth" class="reveal">
+    <div class="grid">
+      <div class="card ai-card reveal" onclick="openAI('machine')">
+        <div class="ai-icon">🧠</div>
+        <h3>Machine Learning</h3>
+        <p>یادگیری ماشین یکی از پایه‌های مهم دنیای AI است.</p>
+        <br>
+        <span style="color:var(--accent)">بیشتر بدان ←</span>
+      </div>
 
-<div class="container">
+      <div class="card ai-card reveal" onclick="openAI('assistant')">
+        <div class="ai-icon">🤖</div>
+        <h3>AI Assistants</h3>
+        <p>دستیارهای هوشمند در حال تغییر شیوه کار و یادگیری هستند.</p>
+        <br>
+        <span style="color:var(--accent)">بیشتر بدان ←</span>
+      </div>
 
-<div class="section-title">
-
-<h2>📈 مسیر رشد</h2>
-
-<p>
-یک نمای سرگرمی‌محور از علایق و تمرکز فعلی
-</p>
-
-</div>
-
-<div class="card">
-
-<div class="progress">
-
-<div class="progress-head">
-<span>🌐 Web</span>
-<b>70%</b>
-</div>
-
-<div class="bar">
-<span data-width="70"></span>
-</div>
-
-</div>
-
-<div class="progress">
-
-<div class="progress-head">
-<span>🤖 AI</span>
-<b>65%</b>
-</div>
-
-<div class="bar">
-<span data-width="65"></span>
-</div>
-
-</div>
-
-<div class="progress">
-
-<div class="progress-head">
-<span>💻 Technology</span>
-<b>75%</b>
-</div>
-
-<div class="bar">
-<span data-width="75"></span>
-</div>
-
-</div>
-
-<div class="progress">
-
-<div class="progress-head">
-<span>📚 Learning</span>
-<b>85%</b>
-</div>
-
-<div class="bar">
-<span data-width="85"></span>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
+      <div class="card ai-card reveal" onclick="openAI('future')">
+        <div class="ai-icon">🚀</div>
+        <h3>Future AI</h3>
+        <p>آینده هوش مصنوعی می‌تواند تجربه‌های دیجیتال را متحول کند.</p>
+        <br>
+        <span style="color:var(--accent)">بیشتر بدان ←</span>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- INTERESTS -->
+<section id="growth">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2>📈 رشد و پیشرفت</h2>
+      <p>نمایش تقریبی مسیر یادگیری</p>
+    </div>
 
-<section id="interests" class="reveal">
+    <div class="card reveal">
+      <div class="goal">
+        <div class="goal-top"><b>💻 Web</b><span>70%</span></div>
+        <div class="progress"><div class="progress-bar" data-width="70"></div></div>
+      </div>
 
-<div class="container">
+      <div class="goal">
+        <div class="goal-top"><b>🤖 AI</b><span>65%</span></div>
+        <div class="progress"><div class="progress-bar" data-width="65"></div></div>
+      </div>
 
-<div class="section-title">
+      <div class="goal">
+        <div class="goal-top"><b>⚙️ Technology</b><span>75%</span></div>
+        <div class="progress"><div class="progress-bar" data-width="75"></div></div>
+      </div>
 
-<h2>❤️ علایق</h2>
-
-<p>
-چیزهایی که دوست دارم دنبال کنم
-</p>
-
-</div>
-
-<div class="grid">
-
-<div class="card">
-
-<h3>💻 تکنولوژی</h3>
-
-<p>
-دنبال کردن فناوری‌های جدید
-و دنیای دیجیتال.
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>🤖 هوش مصنوعی</h3>
-
-<p>
-کنجکاوی درباره ابزارها و
-پیشرفت‌های هوش مصنوعی.
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>⚽ فوتبال</h3>
-
-<p>
-فوتبال یکی از علاقه‌های مهم من است.
-</p>
-
-</div>
-
-</div>
-
-</div>
-
+      <div class="goal">
+        <div class="goal-top"><b>📚 Learning</b><span>85%</span></div>
+        <div class="progress"><div class="progress-bar" data-width="85"></div></div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- SKILLS -->
+<section id="interests">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2>❤️ علایق</h2>
+      <p>چیزهایی که برای من جذاب هستند</p>
+    </div>
 
-<section id="skills" class="reveal">
-
-<div class="container">
-
-<div class="section-title">
-
-<h2>🚀 مهارت‌ها و زمینه‌ها</h2>
-
-<p>
-چیزهایی که در مسیر یادگیری دنبال می‌کنم
-</p>
-
-</div>
-
-<div class="grid">
-
-<div class="card">
-
-<h3>🌐 Web</h3>
-
-<p>
-HTML، CSS و ساخت صفحات وب.
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>🤖 AI</h3>
-
-<p>
-آشنایی و تجربه با ابزارهای
-هوش مصنوعی.
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>💡 Digital</h3>
-
-<p>
-علاقه به فناوری و ابزارهای دیجیتال.
-</p>
-
-</div>
-
-</div>
-
-</div>
-
+    <div class="grid">
+      <div class="card reveal"><h3>⚽ فوتبال</h3><p>دنبال کردن فوتبال و اتفاقات دنیای آن</p></div>
+      <div class="card reveal"><h3>🤖 هوش مصنوعی</h3><p>بررسی فناوری‌های جدید AI</p></div>
+      <div class="card reveal"><h3>💻 تکنولوژی</h3><p>آشنایی با فناوری‌ها و ابزارهای جدید</p></div>
+    </div>
+  </div>
 </section>
 
-<!-- PROJECTS -->
+<section id="skills">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2>🛠️ مهارت‌ها</h2>
+      <p>سطح فعلی مهارت‌ها</p>
+    </div>
 
-<section id="projects" class="reveal">
-
-<div class="container">
-
-<div class="section-title">
-
-<h2>🛠️ پروژه‌ها و فعالیت‌ها</h2>
-
-<p>
-نمونه‌ای از کارها و علایق من
-</p>
-
-</div>
-
-<div class="grid">
-
-<div class="card">
-
-<h3>🌐 Web Site Personal</h3>
-
-<p>
-طراحی و توسعه وب‌سایت شخصی
-برای معرفی، ارتباط و نمایش علایق.
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>💻 Technology World</h3>
-
-<p>
-یادگیری، تجربه و دنبال کردن
-فناوری‌های جدید و دنیای دیجیتال.
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>🤖 AI</h3>
-
-<p>
-علاقه‌مندی و آشنایی با ابزارها
-و پیشرفت‌های هوش مصنوعی.
-</p>
-
-</div>
-
-</div>
-
-</div>
-
+    <div class="grid">
+      <div class="card reveal"><h3>🌐 Web</h3><p>طراحی و ساخت سایت‌های شخصی و وب</p></div>
+      <div class="card reveal"><h3>💡 Technology</h3><p>علاقه و پیگیری دنیای فناوری</p></div>
+      <div class="card reveal"><h3>🧠 AI</h3><p>آشنایی و یادگیری مفاهیم هوش مصنوعی</p></div>
+    </div>
+  </div>
 </section>
 
-<!-- ACHIEVEMENTS -->
+<section id="projects">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2>🚀 پروژه‌ها</h2>
+      <p>پروژه‌هایی که در مسیر یادگیری ساخته شده‌اند</p>
+    </div>
 
-<section id="achievements" class="reveal">
+    <div class="grid">
+      <div class="card reveal">
+        <h3>🌐 Personal Website</h3>
+        <p>وب‌سایت شخصی امیررضا غلامی با امکانات تعاملی.</p>
+      </div>
 
-<div class="container">
+      <div class="card reveal">
+        <h3>🤖 AI Exploration</h3>
+        <p>بررسی و یادگیری ابزارها و کاربردهای هوش مصنوعی.</p>
+      </div>
 
-<div class="section-title">
-
-<h2>🏆 دستاوردها</h2>
-
-<p>
-قدم‌هایی که در مسیر برداشته شده‌اند
-</p>
-
-</div>
-
-<div class="stats">
-
-<div class="card stat">
-
-<strong>01</strong>
-
-<span>
-وب‌سایت شخصی
-</span>
-
-</div>
-
-<div class="card stat">
-
-<strong>07</strong>
-
-<span>
-سطح فعلی
-</span>
-
-</div>
-
-<div class="card stat">
-
-<strong>720</strong>
-
-<span>
-XP
-</span>
-
-</div>
-
-<div class="card stat">
-
-<strong>∞</strong>
-
-<span>
-یادگیری
-</span>
-
-</div>
-
-</div>
-
-</div>
-
+      <div class="card reveal">
+        <h3>💻 Technology World</h3>
+        <p>پیگیری فناوری‌ها و ایده‌های جدید دیجیتال.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- BADGES -->
+<section id="achievements">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2>🏆 Achievement Center</h2>
+      <p>دستاوردهای مسیر</p>
+    </div>
 
-<section id="badges" class="reveal">
+    <div class="grid">
+      <div class="card achievement unlocked reveal">
+        <div style="font-size:42px">🌐</div>
+        <h3>Web Starter</h3>
+        <p>ساخت اولین وب‌سایت شخصی</p>
+        <span class="state">✓ Unlocked</span>
+      </div>
 
-<div class="container">
+      <div class="card achievement unlocked reveal">
+        <div style="font-size:42px">🤖</div>
+        <h3>AI Explorer</h3>
+        <p>شروع مسیر آشنایی با هوش مصنوعی</p>
+        <span class="state">✓ Unlocked</span>
+      </div>
 
-<div class="section-title">
+      <div class="card achievement unlocked reveal">
+        <div style="font-size:42px">📚</div>
+        <h3>Life Learner</h3>
+        <p>ادامه دادن مسیر یادگیری</p>
+        <span class="state">✓ Unlocked</span>
+      </div>
 
-<h2>🏅 Badgeها</h2>
+      <div class="card achievement locked reveal">
+        <div style="font-size:42px">🚀</div>
+        <h3>Next Level</h3>
+        <p>با رسیدن به 1000 XP باز می‌شود.</p>
+        <span class="state">🔒 Locked</span>
+      </div>
 
-<p>
-نشان‌های دیجیتال سایت
-</p>
+      <div class="card achievement locked reveal">
+        <div style="font-size:42px">🏅</div>
+        <h3>Project Master</h3>
+        <p>با ساخت پروژه‌های بیشتر فعال می‌شود.</p>
+        <span class="state">🔒 Locked</span>
+      </div>
 
-</div>
-
-<div class="badges">
-
-<div class="badge">
-
-<div class="badge-icon">🌐</div>
-
-<strong>
-Web Starter
-</strong>
-
-<small>
-فعال
-</small>
-
-</div>
-
-<div class="badge">
-
-<div class="badge-icon">🤖</div>
-
-<strong>
-AI Explorer
-</strong>
-
-<small>
-فعال
-</small>
-
-</div>
-
-<div class="badge">
-
-<div class="badge-icon">📚</div>
-
-<strong>
-Life Learner
-</strong>
-
-<small>
-فعال
-</small>
-
-</div>
-
-<div class="badge">
-
-<div class="badge-icon">🚀</div>
-
-<strong>
-Next Level
-</strong>
-
-<small>
-در مسیر
-</small>
-
-</div>
-
-</div>
-
-</div>
-
+      <div class="card achievement locked reveal">
+        <div style="font-size:42px">🧠</div>
+        <h3>AI Builder</h3>
+        <p>با ساخت یک پروژه واقعی AI فعال می‌شود.</p>
+        <span class="state">🔒 Locked</span>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- ACTIVITIES -->
+<section id="goals">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2>🎯 اهداف</h2>
+      <p>مسیر فعلی و آینده</p>
+    </div>
 
-<section id="activities" class="reveal">
+    <div class="card reveal">
+      <div class="goal">
+        <div class="goal-top">
+          <b>📚 یادگیری</b>
+          <span class="status doing">در حال انجام</span>
+        </div>
+        <div class="progress"><div class="progress-bar" data-width="85"></div></div>
+      </div>
 
-<div class="container">
+      <div class="goal">
+        <div class="goal-top">
+          <b>🚀 پروژه‌ها</b>
+          <span class="status doing">در حال انجام</span>
+        </div>
+        <div class="progress"><div class="progress-bar" data-width="70"></div></div>
+      </div>
 
-<div class="section-title">
+      <div class="goal">
+        <div class="goal-top">
+          <b>🤖 AI</b>
+          <span class="status doing">در حال انجام</span>
+        </div>
+        <div class="progress"><div class="progress-bar" data-width="65"></div></div>
+      </div>
 
-<h2>📰 فعالیت‌ها</h2>
+      <div class="goal">
+        <div class="goal-top">
+          <b>🏆 Level 07 → Level 08</b>
+          <span class="status future">آینده</span>
+        </div>
+        <div class="progress"><div class="progress-bar" data-width="72"></div></div>
+      </div>
 
-<p>
-موضوعات مورد توجه
-</p>
-
-</div>
-
-<div class="timeline">
-
-<div class="timeline-item">
-
-<div class="timeline-dot"></div>
-
-<h3>
-🌐 ساخت وب‌سایت شخصی
-</h3>
-
-<p>
-توسعه و ارتقای این وب‌سایت
-به عنوان هویت دیجیتال شخصی.
-</p>
-
-</div>
-
-<div class="timeline-item">
-
-<div class="timeline-dot"></div>
-
-<h3>
-🤖 دنبال کردن AI
-</h3>
-
-<p>
-آشنایی با ابزارها و قابلیت‌های
-جدید هوش مصنوعی.
-</p>
-
-</div>
-
-<div class="timeline-item">
-
-<div class="timeline-dot"></div>
-
-<h3>
-📚 یادگیری مستمر
-</h3>
-
-<p>
-تلاش برای یادگیری موضوعات جدید
-و کسب تجربه.
-</p>
-
-</div>
-
-</div>
-
-</div>
-
+      <div class="goal">
+        <div class="goal-top">
+          <b>💯 رسیدن به 1000 XP</b>
+          <span class="status future">آینده</span>
+        </div>
+        <div class="progress"><div class="progress-bar" data-width="72"></div></div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- IDEAS -->
+<section id="timeline">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2>🛣️ مسیر من</h2>
+      <p>Timeline</p>
+    </div>
 
-<section id="ideas" class="reveal">
+    <div class="card timeline reveal">
+      <div class="timeline-item">
+        <small>مرحله 01</small>
+        <h3>🌱 شروع یادگیری</h3>
+        <p>شروع آشنایی جدی‌تر با دنیای تکنولوژی.</p>
+      </div>
 
-<div class="container">
+      <div class="timeline-item">
+        <small>مرحله 02</small>
+        <h3>🌐 ساخت وب‌سایت</h3>
+        <p>ساخت و توسعه وب‌سایت شخصی.</p>
+      </div>
 
-<div class="section-title">
+      <div class="timeline-item">
+        <small>مرحله 03</small>
+        <h3>🤖 ورود به دنیای AI</h3>
+        <p>پیگیری و تجربه ابزارهای هوش مصنوعی.</p>
+      </div>
 
-<h2>💡 ایده‌ها</h2>
-
-<p>
-ایده‌هایی برای آینده سایت
-</p>
-
-</div>
-
-<div class="grid">
-
-<div class="card">
-
-<h3>
-🎨 طراحی بیشتر
-</h3>
-
-<p>
-اضافه کردن امکانات بصری
-و تعاملات جدید.
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>
-📊 داشبورد پیشرفته
-</h3>
-
-<p>
-نمایش اطلاعات و آمار بیشتر
-در نسخه‌های آینده.
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>
-🧠 امکانات هوشمند
-</h3>
-
-<p>
-استفاده بیشتر از قابلیت‌های AI
-در آینده.
-</p>
-
-</div>
-
-</div>
-
-</div>
-
+      <div class="timeline-item">
+        <small>مرحله 04</small>
+        <h3>🚀 ادامه مسیر</h3>
+        <p>ساخت پروژه‌های بیشتر و یادگیری مداوم.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- GALLERY -->
+<section id="gallery">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2>🖼️ گالری</h2>
+      <p>چند تصویر و کارت از پروفایل</p>
+    </div>
 
-<section id="gallery" class="reveal">
+    <div class="gallery">
+      <div class="gallery-item reveal" onclick="openImage()">
+        <img src="profile.jpg" alt="Profile">
+      </div>
 
-<div class="container">
+      <div class="gallery-item reveal">
+        <div class="emoji-gallery">🤖</div>
+      </div>
 
-<div class="section-title">
-
-<h2>🖼️ گالری</h2>
-
-<p>
-تصاویر و موضوعات مورد علاقه
-</p>
-
-</div>
-
-<div class="gallery">
-
-<div
-class="gallery-item"
-onclick="openModal('profile.jpg')"
->
-
-<img
-src="profile.jpg"
-alt="Amirreza"
->
-
-<div class="gallery-label">
-👤 پروفایل
-</div>
-
-</div>
-
-<div
-class="gallery-item"
-onclick="showToast('🤖 بخش هوش مصنوعی در حال توسعه است')"
->
-
-<div style="
-height:100%;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:70px;
-">
-🤖
-</div>
-
-<div class="gallery-label">
-هوش مصنوعی
-</div>
-
-</div>
-
-<div
-class="gallery-item"
-onclick="showToast('⚽ فوتبال همیشه یکی از علایق اصلی من است')"
->
-
-<div style="
-height:100%;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:70px;
-">
-⚽
-</div>
-
-<div class="gallery-label">
-فوتبال
-</div>
-
-</div>
-
-</div>
-
-</div>
-
+      <div class="gallery-item reveal">
+        <div class="emoji-gallery">⚽</div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- TIMELINE -->
+<section id="goals2">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2>🏅 وضعیت فعلی</h2>
+      <p>پروفایل پیشرفت</p>
+    </div>
 
-<section id="timeline" class="reveal">
+    <div class="stat-grid">
+      <div class="stat card reveal">
+        <strong>07</strong>
+        <small>Level</small>
+      </div>
 
-<div class="container">
+      <div class="stat card reveal">
+        <strong>720</strong>
+        <small>XP</small>
+      </div>
 
-<div class="section-title">
+      <div class="stat card reveal">
+        <strong>∞</strong>
+        <small>Learning</small>
+      </div>
 
-<h2>🕒 مسیر من</h2>
-
-<p>
-یک مسیر ساده و ادامه‌دار
-</p>
-
-</div>
-
-<div class="timeline">
-
-<div class="timeline-item">
-
-<div class="timeline-dot"></div>
-
-<h3>
-شروع
-</h3>
-
-<p>
-شروع علاقه‌مندی جدی‌تر به
-تکنولوژی و دنیای دیجیتال.
-</p>
-
-</div>
-
-<div class="timeline-item">
-
-<div class="timeline-dot"></div>
-
-<h3>
-یادگیری
-</h3>
-
-<p>
-تجربه کردن ابزارها، وب و
-فناوری‌های مختلف.
-</p>
-
-</div>
-
-<div class="timeline-item">
-
-<div class="timeline-dot"></div>
-
-<h3>
-امروز
-</h3>
-
-<p>
-ساخت و توسعه هویت دیجیتال شخصی.
-</p>
-
-</div>
-
-<div class="timeline-item">
-
-<div class="timeline-dot"></div>
-
-<h3>
-آینده 🚀
-</h3>
-
-<p>
-یادگیری بیشتر، تجربه بیشتر
-و ساخت پروژه‌های بهتر.
-</p>
-
-</div>
-
-</div>
-
-</div>
-
+      <div class="stat card reveal">
+        <strong>13</strong>
+        <small>Build</small>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- GOALS -->
+<section id="contact">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2>📬 ارتباط با من</h2>
+      <p>راه‌های ارتباطی</p>
+    </div>
 
-<section id="goals" class="reveal">
-
-<div class="container">
-
-<div class="section-title">
-
-<h2>🎯 اهداف</h2>
-
-<p>
-نگاه من به آینده
-</p>
-
-</div>
-
-<div class="goal-list">
-
-<div class="goal">
-
-<div class="goal-top">
-
-<strong>
-📚 یادگیری بیشتر
-</strong>
-
-<span class="goal-percent">
-85%
-</span>
-
-</div>
-
-<div class="goal-bar">
-<span style="width:85%"></span>
-</div>
-
-</div>
-
-<div class="goal">
-
-<div class="goal-top">
-
-<strong>
-💻 ساخت پروژه
-</strong>
-
-<span class="goal-percent">
-70%
-</span>
-
-</div>
-
-<div class="goal-bar">
-<span style="width:70%"></span>
-</div>
-
-</div>
-
-<div class="goal">
-
-<div class="goal-top">
-
-<strong>
-🤖 شناخت AI
-</strong>
-
-<span class="goal-percent">
-65%
-</span>
-
-</div>
-
-<div class="goal-bar">
-<span style="width:65%"></span>
-</div>
-
-</div>
-
-</div>
-
-<br>
-
-<div class="card level-card">
-
-<div class="level-number">
-07
-</div>
-
-<h3>
-LEVEL
-</h3>
-
-<div class="xp">
-720 / 1000 XP
-</div>
-
-<div class="xp-bar">
-<span></span>
-</div>
-
-<br>
-
-<small style="color:var(--muted)">
-سیستم Level صرفاً سرگرمی و نمایشی است.
-</small>
-
-</div>
-
-</div>
-
+    <div class="contact">
+      <a href="https://t.me/Amirrezagholami_ir" target="_blank">✈️<br>Telegram</a>
+      <a href="https://wa.me/989228420736" target="_blank">💬<br>WhatsApp</a>
+      <a href="https://www.instagram.com/amirrezagholami.ir" target="_blank">📷<br>Instagram</a>
+      <a href="mailto:amirrezaamirreza275@gmail.com">📧<br>Email</a>
+      <a href="https://github.com/amirrezagholami86" target="_blank">💻<br>GitHub</a>
+    </div>
+  </div>
 </section>
 
-<!-- CONTACT -->
-
-<section id="contact" class="reveal">
-
-<div class="container">
-
-<div class="section-title">
-
-<h2>
-📞 ارتباط با من
-</h2>
-
-<p>
-راه‌های ارتباطی
-</p>
-
-</div>
-
-<div class="contact-grid">
-
-<a
-class="contact"
-href="https://t.me/Amirrezagholami_ir"
-target="_blank"
->
-
-<div class="contact-icon">
-✈️
-</div>
-
-<strong>
-Telegram
-</strong>
-
-<small>
-@Amirrezagholami_ir
-</small>
-
-</a>
-
-<a
-class="contact"
-href="https://wa.me/989228420736"
-target="_blank"
->
-
-<div class="contact-icon">
-💬
-</div>
-
-<strong>
-WhatsApp
-</strong>
-
-<small>
-@amirrezagholami.ir
-</small>
-
-</a>
-
-<a
-class="contact"
-href="https://www.instagram.com/amirrezagholami.ir"
-target="_blank"
->
-
-<div class="contact-icon">
-📸
-</div>
-
-<strong>
-Instagram
-</strong>
-
-<small>
-amirrezagholami.ir
-</small>
-
-</a>
-
-<a
-class="contact"
-href="mailto:amirrezaamirreza275@gmail.com"
->
-
-<div class="contact-icon">
-📧
-</div>
-
-<strong>
-Email
-</strong>
-
-<small>
-amirrezaamirreza275@gmail.com
-</small>
-
-</a>
-
-</div>
-
-<div style="
-text-align:center;
-margin-top:25px;
-">
-
-<a
-class="btn primary"
-href="https://github.com/amirrezagholami86"
-target="_blank"
->
-💻 GitHub
-</a>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- THEMES -->
-
-<section class="reveal">
-
-<div class="container">
-
-<div class="section-title">
-
-<h2>
-🎨 ظاهر سایت
-</h2>
-
-<p>
-رنگ مورد علاقه‌ات را انتخاب کن
-</p>
-
-</div>
-
-<div class="theme-panel">
-
-<button
-class="theme-color cyan"
-onclick="setAccent('cyan')"
-></button>
-
-<button
-class="theme-color green"
-onclick="setAccent('green')"
-></button>
-
-<button
-class="theme-color orange"
-onclick="setAccent('orange')"
-></button>
-
-<button
-class="theme-color pink"
-onclick="setAccent('pink')"
-></button>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- PRIVACY -->
-
-<section class="reveal">
-
-<div class="container">
-
-<div class="section-title">
-
-<h2>
-🔐 حریم خصوصی
-</h2>
-
-</div>
-
-<div class="card privacy">
-
-<p>
-
-این سایت برای برخی امکانات مانند
-شمارش بازدید این مرورگر،
-آخرین بازدید و تنظیمات ظاهری
-از <b>localStorage</b> مرورگر استفاده می‌کند.
-
-اطلاعات این بخش روی همین مرورگر ذخیره می‌شود.
-
-</p>
-
-<br>
-
-<div style="text-align:center">
-
-<button
-class="btn"
-onclick="resetData()"
->
-🗑️ پاک کردن اطلاعات محلی
-</button>
-
-</div>
-
-</div>
-
-</div>
-
+<section id="privacy">
+  <div class="container">
+    <div class="card reveal">
+      <h3>🔐 حریم خصوصی</h3>
+      <p>
+        اطلاعاتی مثل تعداد بازدید و وضعیت ظاهری سایت فقط در
+        LocalStorage مرورگر ذخیره می‌شوند و به سرور ارسال نمی‌شوند.
+      </p>
+
+      <button class="btn" style="margin-top:15px" onclick="resetData()">
+        ♻️ پاک کردن داده‌های محلی
+      </button>
+    </div>
+  </div>
 </section>
 
 </main>
 
 <footer>
-
-<div>
-© 2026 Amirreza Gholami
-</div>
-
-<div>
-ساخته شده با ❤️ و علاقه به تکنولوژی
-</div>
-
-<div class="footer-version">
-Version 1.2.0 • Build 12
-</div>
-
+  <div>© 2026 Amirreza Gholami</div>
+  <div>ساخته شده با ❤️ و علاقه به تکنولوژی</div>
+  <div class="version">Version 1.3.0 • Build 13</div>
 </footer>
 
-<div
-class="toast"
-id="toast"
-></div>
-
-<div
-class="modal"
-id="modal"
-onclick="closeModal()"
->
-
-<div
-class="modal-content"
-onclick="event.stopPropagation()"
->
-
-<button
-class="close"
-onclick="closeModal()"
->
-×
-</button>
-
-<img
-id="modalImg"
-src=""
-alt=""
->
-
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <button class="close" onclick="closeModal()">×</button>
+    <div id="modalContent"></div>
+  </div>
 </div>
 
-</div>
+<div class="toast" id="toast"></div>
 
 <script>
+const VERSION="1.3.0";
+const BUILD="13";
 
-const VERSION = "1.2.0";
-const BUILD = "12";
+/* =========================
+   Typing
+========================= */
 
-/* TYPING */
-
-const typingTexts = [
-
-"علاقه‌مند به تکنولوژی 💻",
-"علاقه‌مند به هوش مصنوعی 🤖",
-"عاشق فوتبال ⚽",
-"همیشه در حال یادگیری 📚"
-
+const typingTexts=[
+  "علاقه‌مند به تکنولوژی 💻",
+  "علاقه‌مند به هوش مصنوعی 🤖",
+  "عاشق فوتبال ⚽",
+  "همیشه در حال یادگیری 📚"
 ];
 
-let typingIndex = 0;
-let charIndex = 0;
-let deleting = false;
+let textIndex=0;
+let charIndex=0;
+let deleting=false;
 
-function typing(){
+function typeEffect(){
+  const el=document.getElementById("typing");
+  const text=typingTexts[textIndex];
 
-    const el =
-    document.getElementById("typing");
-
-    const text =
-    typingTexts[typingIndex];
-
-    if(!deleting){
-
-        el.textContent =
-        text.substring(0,charIndex++);
-
-        if(charIndex > text.length){
-
-            deleting = true;
-
-            setTimeout(typing,1200);
-
-            return;
-        }
-
-    }else{
-
-        el.textContent =
-        text.substring(0,charIndex--);
-
-        if(charIndex < 0){
-
-            deleting = false;
-
-            typingIndex =
-            (typingIndex+1) %
-            typingTexts.length;
-
-            charIndex = 0;
-        }
+  if(!deleting){
+    el.textContent=text.substring(0,charIndex++);
+    if(charIndex>text.length){
+      deleting=true;
+      setTimeout(typeEffect,1400);
+      return;
     }
+  }else{
+    el.textContent=text.substring(0,charIndex--);
+    if(charIndex<0){
+      deleting=false;
+      textIndex=(textIndex+1)%typingTexts.length;
+      charIndex=0;
+    }
+  }
 
-    setTimeout(
-        typing,
-        deleting ? 45 : 75
-    );
+  setTimeout(typeEffect,deleting?45:75);
 }
 
-typing();
+typeEffect();
 
-/* THEME */
+/* =========================
+   Theme
+========================= */
 
-const themeBtn =
-document.getElementById("themeBtn");
+const themeBtn=document.getElementById("themeBtn");
 
-function updateThemeIcon(){
-
-    themeBtn.textContent =
-    document.body.classList.contains("light")
-    ? "☀️"
-    : "🌙";
+function applyTheme(){
+  const theme=localStorage.getItem("theme")||"dark";
+  document.body.classList.remove("light");
+  if(theme==="light") document.body.classList.add("light");
+  themeBtn.textContent=theme==="light"?"☀️":"🌙";
 }
 
-if(
-    localStorage.getItem("theme")
-    === "light"
-){
-
-    document.body.classList.add("light");
-}
-
-updateThemeIcon();
-
-themeBtn.onclick = ()=>{
-
-    document.body.classList.toggle("light");
-
-    localStorage.setItem(
-        "theme",
-        document.body.classList.contains("light")
-        ? "light"
-        : "dark"
-    );
-
-    updateThemeIcon();
+themeBtn.onclick=()=>{
+  const next=document.body.classList.contains("light")?"dark":"light";
+  localStorage.setItem("theme",next);
+  applyTheme();
 };
 
-/* ACCENT */
+applyTheme();
 
-function setAccent(color){
+/* =========================
+   Accent
+========================= */
 
-    document.body.classList.remove(
-        "green",
-        "orange",
-        "pink"
-    );
+const accent=localStorage.getItem("accent");
+if(accent) document.body.classList.add(accent);
 
-    if(color !== "cyan"){
+/* =========================
+   Mobile menu
+========================= */
 
-        document.body.classList.add(color);
+const navbar=document.getElementById("navbar");
 
-    }
-
-    localStorage.setItem(
-        "accent",
-        color
-    );
-}
-
-const savedAccent =
-localStorage.getItem("accent");
-
-if(savedAccent){
-
-    setAccent(savedAccent);
-
-}
-
-/* MOBILE MENU */
-
-const menuBtn =
-document.getElementById("menuBtn");
-
-const navLinks =
-document.getElementById("navLinks");
-
-menuBtn.onclick = ()=>{
-
-    navLinks.classList.toggle("open");
-
+document.getElementById("menuBtn").onclick=()=>{
+  navbar.classList.toggle("mobile-open");
 };
 
-document
-.querySelectorAll(".nav-links a")
-.forEach(a=>{
-
-    a.addEventListener(
-        "click",
-        ()=>{
-            navLinks.classList.remove("open");
-        }
-    );
-
+document.querySelectorAll(".nav-links a").forEach(a=>{
+  a.addEventListener("click",()=>{
+    navbar.classList.remove("mobile-open");
+  });
 });
 
-/* VISITS */
+/* =========================
+   Notifications
+========================= */
 
-let visits =
-Number(
-    localStorage.getItem("siteVisits")
-    || 0
-) + 1;
+const notificationPanel=document.getElementById("notificationPanel");
 
-localStorage.setItem(
-    "siteVisits",
-    visits
-);
+document.getElementById("notifyBtn").onclick=()=>{
+  notificationPanel.classList.toggle("show");
+};
 
-document.getElementById(
-    "visits"
-).textContent = visits;
+document.addEventListener("click",e=>{
+  if(!notificationPanel.contains(e.target) &&
+     !document.getElementById("notifyBtn").contains(e.target)){
+    notificationPanel.classList.remove("show");
+  }
+});
 
-/* SESSION TIMER */
+/* =========================
+   Visits
+========================= */
 
-let startTime = Date.now();
+let visits=Number(localStorage.getItem("siteVisits")||0);
+visits++;
+localStorage.setItem("siteVisits",visits);
+
+document.getElementById("visits").textContent=visits;
+
+/* =========================
+   Session timer
+========================= */
+
+let seconds=0;
 
 setInterval(()=>{
+  seconds++;
 
-    const seconds =
-    Math.floor(
-        (Date.now()-startTime)/1000
-    );
+  let value=seconds+"s";
 
-    const min =
-    Math.floor(seconds/60);
+  if(seconds>=60){
+    const m=Math.floor(seconds/60);
+    const s=seconds%60;
+    value=m+"m "+s+"s";
+  }
 
-    const sec =
-    String(seconds%60)
-    .padStart(2,"0");
-
-    document.getElementById(
-        "sessionTime"
-    ).textContent =
-    `${min}:${sec}`;
-
+  document.getElementById("sessionTime").textContent=value;
 },1000);
 
-/* QUOTES */
+/* =========================
+   Progress bars
+========================= */
 
-const quotes = [
+function animateProgress(){
+  document.querySelectorAll(".progress-bar").forEach(bar=>{
+    const rect=bar.getBoundingClientRect();
 
-"✨ هر روز یک قدم کوچک، در طول زمان یک مسیر بزرگ می‌سازد.",
+    if(rect.top<window.innerHeight && rect.bottom>0){
+      bar.style.width=bar.dataset.width+"%";
 
-"🚀 آینده را با یادگیری امروز می‌سازیم.",
-
-"💡 کنجکاوی، شروع خیلی از چیزهای بزرگ است.",
-
-"📚 هیچ یادگیری‌ای بی‌فایده نیست.",
-
-"🔥 ادامه دادن، خودش یک مهارت است.",
-
-"🤖 تکنولوژی وقتی جذاب‌تر می‌شود که آن را یاد بگیریم."
-
-];
-
-function randomQuote(){
-
-    const q =
-    quotes[
-        Math.floor(
-            Math.random()*quotes.length
-        )
-    ];
-
-    document.getElementById(
-        "quote"
-    ).textContent = q;
-
-}
-
-/* TOAST */
-
-function showToast(message){
-
-    const toast =
-    document.getElementById("toast");
-
-    toast.textContent =
-    message;
-
-    toast.classList.add("show");
-
-    clearTimeout(
-        window.toastTimer
-    );
-
-    window.toastTimer =
-    setTimeout(()=>{
-
-        toast.classList.remove(
-            "show"
-        );
-
-    },2500);
-
-}
-
-/* VCARD */
-
-function downloadVCard(){
-
-    const vcard =
-`BEGIN:VCARD
-VERSION:3.0
-FN:Amirreza Gholami
-TEL:+989228420736
-EMAIL:amirrezaamirreza275@gmail.com
-URL:https://amirrezagholami86.github.io/
-END:VCARD`;
-
-    const blob =
-    new Blob(
-        [vcard],
-        {type:"text/vcard"}
-    );
-
-    const url =
-    URL.createObjectURL(blob);
-
-    const a =
-    document.createElement("a");
-
-    a.href = url;
-
-    a.download =
-    "Amirreza-Gholami.vcf";
-
-    a.click();
-
-    URL.revokeObjectURL(url);
-
-    showToast(
-        "🪪 فایل تماس آماده شد"
-    );
-
-}
-
-/* SHARE */
-
-async function shareSite(){
-
-    const data = {
-
-        title:
-        "Amirreza Gholami",
-
-        text:
-        "وب‌سایت شخصی امیررضا غلامی",
-
-        url:
-        "https://amirrezagholami86.github.io/"
-
-    };
-
-    if(navigator.share){
-
-        try{
-
-            await navigator.share(
-                data
-            );
-
-        }catch(e){}
-
-    }else{
-
-        navigator.clipboard.writeText(
-            data.url
-        );
-
-        showToast(
-            "🔗 لینک سایت کپی شد"
-        );
-
+      if(bar.dataset.width==="76"){
+        document.getElementById("overallText").textContent="76%";
+      }
     }
-
+  });
 }
 
-/* MODAL */
+window.addEventListener("scroll",animateProgress);
+setTimeout(animateProgress,500);
 
-function openModal(src){
+/* =========================
+   Reveal
+========================= */
 
-    document.getElementById(
-        "modalImg"
-    ).src = src;
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("visible");
+    }
+  });
+},{threshold:.08});
 
-    document.getElementById(
-        "modal"
-    ).classList.add("show");
+document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
 
+/* =========================
+   AI Modal
+========================= */
+
+function openAI(type){
+  let title="";
+  let icon="";
+  let text="";
+
+  if(type==="machine"){
+    title="Machine Learning";
+    icon="🧠";
+    text="یادگیری ماشین شاخه‌ای از هوش مصنوعی است که در آن سیستم‌ها با استفاده از داده‌ها الگوها را یاد می‌گیرند و برای پیش‌بینی یا تصمیم‌گیری استفاده می‌شوند.";
+  }
+
+  if(type==="assistant"){
+    title="AI Assistants";
+    icon="🤖";
+    text="دستیارهای هوشمند می‌توانند در جستجو، یادگیری، تولید محتوا، برنامه‌نویسی و بسیاری از کارهای روزمره کمک کنند.";
+  }
+
+  if(type==="future"){
+    title="Future AI";
+    icon="🚀";
+    text="هوش مصنوعی یکی از فناوری‌هایی است که می‌تواند در سال‌های آینده شیوه کار، آموزش، ارتباط و استفاده از خدمات دیجیتال را تغییر دهد.";
+  }
+
+  showModal(`
+    <div style="font-size:50px">${icon}</div>
+    <h2>${title}</h2>
+    <p style="color:var(--muted);margin-top:12px">${text}</p>
+  `);
+}
+
+/* =========================
+   Image Modal
+========================= */
+
+function openImage(){
+  showModal(`
+    <img src="profile.jpg"
+         style="width:100%;max-height:65vh;object-fit:contain;border-radius:18px"
+         alt="Profile">
+    <h3 style="margin-top:15px">امیررضا غلامی</h3>
+  `);
+}
+
+/* =========================
+   Modal
+========================= */
+
+function showModal(content){
+  document.getElementById("modalContent").innerHTML=content;
+  document.getElementById("modal").classList.add("show");
 }
 
 function closeModal(){
-
-    document.getElementById(
-        "modal"
-    ).classList.remove("show");
-
+  document.getElementById("modal").classList.remove("show");
 }
 
-/* REVEAL + BARS */
-
-const observer =
-new IntersectionObserver(
-entries=>{
-
-    entries.forEach(entry=>{
-
-        if(entry.isIntersecting){
-
-            entry.target.classList.add(
-                "show"
-            );
-
-            entry.target
-            .querySelectorAll(
-                ".bar span"
-            )
-            .forEach(bar=>{
-
-                const width =
-                bar.dataset.width;
-
-                if(width){
-
-                    bar.style.width =
-                    width + "%";
-
-                }
-
-            });
-
-        }
-
-    });
-
-},
-{
-    threshold:.12
-}
-);
-
-document
-.querySelectorAll(".reveal")
-.forEach(el=>{
-
-    observer.observe(el);
-
+document.getElementById("modal").addEventListener("click",e=>{
+  if(e.target.id==="modal") closeModal();
 });
 
-/* MOUSE GLOW */
+/* =========================
+   Toast
+========================= */
 
-const glow =
-document.getElementById(
-    "mouseGlow"
-);
+let toastTimer;
 
-document.addEventListener(
-    "mousemove",
-    e=>{
+function toast(message){
+  const el=document.getElementById("toast");
+  el.textContent=message;
+  el.classList.add("show");
 
-        glow.style.left =
-        e.clientX + "px";
+  clearTimeout(toastTimer);
 
-        glow.style.top =
-        e.clientY + "px";
+  toastTimer=setTimeout(()=>{
+    el.classList.remove("show");
+  },2500);
+}
 
+/* =========================
+   Save Contact
+========================= */
+
+function saveContact(){
+
+  const vcard=
+`BEGIN:VCARD
+VERSION:3.0
+FN:Amirreza Gholami
+N:Gholami;Amirreza;;;
+TEL;TYPE=CELL:+989228420736
+EMAIL:amirrezaamirreza275@gmail.com
+URL:https://amirrezagholami86.github.io
+END:VCARD`;
+
+  const blob=new Blob([vcard],{type:"text/vcard"});
+  const url=URL.createObjectURL(blob);
+
+  const a=document.createElement("a");
+  a.href=url;
+  a.download="Amirreza-Gholami.vcf";
+  a.click();
+
+  URL.revokeObjectURL(url);
+
+  toast("📇 اطلاعات تماس آماده شد");
+}
+
+/* =========================
+   Search
+========================= */
+
+const searchData=[
+  ["خانه","#home"],
+  ["درباره من","#about"],
+  ["پروفایل","#profile"],
+  ["داشبورد","#dashboard"],
+  ["هوش مصنوعی","#ai"],
+  ["AI","#ai"],
+  ["رشد","#growth"],
+  ["علایق","#interests"],
+  ["مهارت","#skills"],
+  ["پروژه","#projects"],
+  ["دستاورد","#achievements"],
+  ["Achievement","#achievements"],
+  ["هدف","#goals"],
+  ["گالری","#gallery"],
+  ["مسیر","#timeline"],
+  ["ارتباط","#contact"],
+  ["حریم خصوصی","#privacy"],
+  ["فوتبال","#interests"],
+  ["تکنولوژی","#skills"],
+  ["وب","#projects"]
+];
+
+function runSearch(){
+
+  const query=document.getElementById("search").value.trim().toLowerCase();
+  const results=document.getElementById("searchResults");
+
+  if(!query){
+    results.classList.remove("show");
+    results.innerHTML="";
+    return;
+  }
+
+  const matches=searchData.filter(item=>item[0].toLowerCase().includes(query));
+
+  if(!matches.length){
+    results.innerHTML="<p>نتیجه‌ای پیدا نشد 😕</p>";
+    results.classList.add("show");
+    return;
+  }
+
+  results.innerHTML=matches.map(item=>
+    `<a class="search-result" href="${item[1]}">🔎 ${item[0]}</a>`
+  ).join("");
+
+  results.classList.add("show");
+}
+
+document.getElementById("searchBtn").onclick=runSearch;
+
+document.getElementById("search").addEventListener("keydown",e=>{
+  if(e.key==="Enter") runSearch();
+});
+
+/* =========================
+   Active Navigation
+========================= */
+
+const sections=document.querySelectorAll("main section[id]");
+const navAnchors=document.querySelectorAll(".nav-links a");
+
+window.addEventListener("scroll",()=>{
+  let current="";
+
+  sections.forEach(section=>{
+    const top=section.offsetTop-140;
+
+    if(window.scrollY>=top){
+      current=section.id;
     }
-);
+  });
 
-/* PARTICLES */
+  navAnchors.forEach(a=>{
+    a.classList.remove("active");
 
-const canvas =
-document.getElementById(
-    "particles"
-);
+    if(a.getAttribute("href")==="#"+current){
+      a.classList.add("active");
+    }
+  });
+});
 
-const ctx =
-canvas.getContext("2d");
+/* =========================
+   Mouse Glow
+========================= */
 
-let particles = [];
+const glow=document.getElementById("mouseGlow");
+
+window.addEventListener("mousemove",e=>{
+  glow.style.left=e.clientX+"px";
+  glow.style.top=e.clientY+"px";
+});
+
+/* =========================
+   Particles
+========================= */
+
+const canvas=document.getElementById("particles");
+const ctx=canvas.getContext("2d");
+
+let particles=[];
+let particleCount=70;
 
 function resizeCanvas(){
-
-    canvas.width =
-    innerWidth;
-
-    canvas.height =
-    innerHeight;
-
+  canvas.width=window.innerWidth;
+  canvas.height=window.innerHeight;
 }
 
 resizeCanvas();
+window.addEventListener("resize",resizeCanvas);
 
-window.addEventListener(
-    "resize",
-    resizeCanvas
-);
+function createParticles(){
 
-for(let i=0;i<45;i++){
+  particles=[];
+
+  for(let i=0;i<particleCount;i++){
 
     particles.push({
-
-        x:
-        Math.random()*innerWidth,
-
-        y:
-        Math.random()*innerHeight,
-
-        r:
-        Math.random()*1.8+.4,
-
-        dx:
-        (Math.random()-.5)*.35,
-
-        dy:
-        (Math.random()-.5)*.35
-
+      x:Math.random()*canvas.width,
+      y:Math.random()*canvas.height,
+      r:Math.random()*1.8+.4,
+      dx:(Math.random()-.5)*.35,
+      dy:(Math.random()-.5)*.35
     });
-
+  }
 }
 
-function animateParticles(){
+createParticles();
 
-    ctx.clearRect(
-        0,
-        0,
-        canvas.width,
-        canvas.height
-    );
+function drawParticles(){
 
-    ctx.fillStyle =
-    getComputedStyle(
-        document.documentElement
-    )
-    .getPropertyValue(
-        "--accent"
-    );
+  ctx.clearRect(0,0,canvas.width,canvas.height);
 
-    particles.forEach(p=>{
+  particles.forEach(p=>{
 
-        p.x += p.dx;
-        p.y += p.dy;
+    p.x+=p.dx;
+    p.y+=p.dy;
 
-        if(
-            p.x < 0 ||
-            p.x > canvas.width
-        ){
+    if(p.x<0)p.x=canvas.width;
+    if(p.x>canvas.width)p.x=0;
+    if(p.y<0)p.y=canvas.height;
+    if(p.y>canvas.height)p.y=0;
 
-            p.dx *= -1;
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle="rgba(0,217,255,.5)";
+    ctx.fill();
+  });
 
-        }
-
-        if(
-            p.y < 0 ||
-            p.y > canvas.height
-        ){
-
-            p.dy *= -1;
-
-        }
-
-        ctx.globalAlpha = .45;
-
-        ctx.beginPath();
-
-        ctx.arc(
-            p.x,
-            p.y,
-            p.r,
-            0,
-            Math.PI*2
-        );
-
-        ctx.fill();
-
-    });
-
-    requestAnimationFrame(
-        animateParticles
-    );
-
+  requestAnimationFrame(drawParticles);
 }
 
-animateParticles();
+drawParticles();
 
-/* ACTIVE NAVIGATION */
+/* =========================
+   Reset Local Data
+========================= */
 
-window.addEventListener(
-    "scroll",
-    ()=>{
+function resetData(){
 
-        const sections =
-        document.querySelectorAll(
-            "section[id]"
-        );
+  if(confirm("داده‌های محلی سایت پاک شوند؟")){
 
-        let current = "";
+    localStorage.removeItem("siteVisits");
+    localStorage.removeItem("theme");
+    localStorage.removeItem("accent");
 
-        sections.forEach(section=>{
-
-            const top =
-            section.offsetTop - 150;
-
-            if(
-                scrollY >= top
-            ){
-
-                current =
-                section.id;
-
-            }
-
-        });
-
-        document
-        .querySelectorAll(
-            ".nav-links a"
-        )
-        .forEach(link=>{
-
-            link.classList.remove(
-                "active"
-            );
-
-            if(
-                link.getAttribute("href")
-                === "#" + current
-            ){
-
-                link.classList.add(
-                    "active"
-                );
-
-            }
-
-        });
-
-    }
-);
-
-/* WELCOME */
-
-if(
-    !localStorage.getItem(
-        "welcomeShown"
-    )
-){
+    toast("♻️ داده‌های محلی پاک شد");
 
     setTimeout(()=>{
-
-        showToast(
-            `🚀 به نسخه ${VERSION} خوش آمدی!`
-        );
-
-        localStorage.setItem(
-            "welcomeShown",
-            "yes"
-        );
-
-    },1200);
-
+      location.reload();
+    },900);
+  }
 }
 
+/* =========================
+   Keyboard shortcuts
+========================= */
+
+document.addEventListener("keydown",e=>{
+
+  if(e.key==="/" && document.activeElement.tagName!=="INPUT"){
+    e.preventDefault();
+    document.getElementById("search").focus();
+  }
+
+  if(e.key==="Escape"){
+    closeModal();
+    notificationPanel.classList.remove("show");
+  }
+});
+
+console.log(
+  "Amirreza Gholami Website",
+  "Version "+VERSION,
+  "Build "+BUILD
+);
 </script>
 
 </body>
