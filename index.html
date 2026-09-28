@@ -150,6 +150,44 @@
             font-size: 14px;
         }
 
+        /* Projects */
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .project {
+            padding: 22px 16px;
+            border-radius: 20px;
+            background: rgba(255,255,255,.055);
+            border: 1px solid rgba(255,255,255,.10);
+            transition: .3s;
+        }
+
+        .project:hover {
+            transform: translateY(-6px);
+            background: rgba(255,255,255,.09);
+        }
+
+        .project-icon {
+            font-size: 34px;
+            margin-bottom: 12px;
+        }
+
+        .project h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .project p {
+            color: #94a3b8;
+            font-size: 13px;
+            line-height: 1.9;
+        }
+
         .links {
             display: flex;
             justify-content: center;
@@ -196,7 +234,8 @@
             font-size: 20px;
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 700px) {
+
             h1 {
                 font-size: 30px;
             }
@@ -211,6 +250,10 @@
             }
 
             .skills {
+                grid-template-columns: 1fr;
+            }
+
+            .projects {
                 grid-template-columns: 1fr;
             }
 
@@ -242,6 +285,7 @@
     </div>
 
     <div class="card">
+
         <h2>👋 درباره من</h2>
 
         <p>
@@ -250,49 +294,118 @@
             و همیشه دوست دارم چیزهای جدید یاد بگیرم،
             تجربه کنم و برای آینده قدم بردارم.
         </p>
+
     </div>
 
     <div class="card">
+
         <h2>❤️ علایق من</h2>
 
         <div class="tags">
+
             <span class="tag">⚽ فوتبال</span>
             <span class="tag">🏋️ ورزش</span>
             <span class="tag">💻 تکنولوژی</span>
             <span class="tag">🤖 هوش مصنوعی</span>
             <span class="tag">🌐 اینترنت</span>
+
         </div>
+
     </div>
 
     <div class="card">
+
         <h2>🚀 مهارت‌ها و زمینه‌های مورد علاقه</h2>
 
         <div class="skills">
 
             <div class="skill">
                 <div class="skill-title">💻 تکنولوژی</div>
-                <div class="skill-text">علاقه‌مند به دنیای فناوری و کامپیوتر</div>
+                <div class="skill-text">
+                    علاقه‌مند به دنیای فناوری و کامپیوتر
+                </div>
             </div>
 
             <div class="skill">
                 <div class="skill-title">🤖 هوش مصنوعی</div>
-                <div class="skill-text">دنبال کردن پیشرفت‌های هوش مصنوعی</div>
+                <div class="skill-text">
+                    دنبال کردن پیشرفت‌های هوش مصنوعی
+                </div>
             </div>
 
             <div class="skill">
                 <div class="skill-title">🌐 اینترنت</div>
-                <div class="skill-text">علاقه‌مند به وب و دنیای آنلاین</div>
+                <div class="skill-text">
+                    علاقه‌مند به وب و دنیای آنلاین
+                </div>
             </div>
 
             <div class="skill">
                 <div class="skill-title">⚽ فوتبال</div>
-                <div class="skill-text">علاقه‌مند به فوتبال و ورزش</div>
+                <div class="skill-text">
+                    علاقه‌مند به فوتبال و ورزش
+                </div>
             </div>
 
         </div>
+
     </div>
 
+    <!-- Projects -->
+
     <div class="card">
+
+        <h2>🛠️ پروژه‌ها و فعالیت‌های من</h2>
+
+        <div class="projects">
+
+            <div class="project">
+
+                <div class="project-icon">🌐</div>
+
+                <h3>وب‌سایت شخصی</h3>
+
+                <p>
+                    طراحی و توسعه وب‌سایت شخصی
+                    برای معرفی، ارتباط و نمایش علایق.
+                </p>
+
+            </div>
+
+            <div class="project">
+
+                <div class="project-icon">💻</div>
+
+                <h3>دنیای تکنولوژی</h3>
+
+                <p>
+                    یادگیری، تجربه و دنبال کردن
+                    فناوری‌های جدید و دنیای دیجیتال.
+                </p>
+
+            </div>
+
+            <div class="project">
+
+                <div class="project-icon">🤖</div>
+
+                <h3>هوش مصنوعی</h3>
+
+                <p>
+                    علاقه‌مندی و آشنایی با
+                    ابزارها و پیشرفت‌های هوش مصنوعی.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Contact -->
+
+    <div class="card">
+
         <h2>📞 راه‌های ارتباطی</h2>
 
         <div class="links">
@@ -324,12 +437,17 @@
             </a>
 
         </div>
+
     </div>
 
     <footer>
+
         ساخته شده با ❤️ توسط امیررضا غلامی
+
         <br>
+
         © 2026 — تمامی حقوق محفوظ است.
+
     </footer>
 
 </div>
@@ -337,4 +455,4 @@
 <a href="#top" class="top" aria-label="بازگشت به بالا">↑</a>
 
 </body>
-                </html>
+    </html>
