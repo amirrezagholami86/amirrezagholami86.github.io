@@ -1,28 +1,40 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
+
 <head>
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>امیررضا غلامی | وب‌سایت شخصی</title>
 
-<meta name="description" content="وب‌سایت شخصی امیررضا غلامی؛ معرفی، علایق، مهارت‌ها، پروژه‌ها و راه‌های ارتباطی.">
+<meta name="description"
+content="وب‌سایت شخصی امیررضا غلامی؛ معرفی، علایق، مهارت‌ها، پروژه‌ها و راه‌های ارتباطی.">
+
 <meta name="author" content="امیررضا غلامی">
 <meta name="robots" content="index, follow">
 
-<link rel="canonical" href="https://amirrezagholami86.github.io/">
+<link rel="canonical"
+href="https://amirrezagholami86.github.io/">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="امیررضا غلامی | وب‌سایت شخصی">
-<meta property="og:description" content="وب‌سایت شخصی امیررضا غلامی؛ معرفی، علایق، مهارت‌ها و پروژه‌ها.">
-<meta property="og:url" content="https://amirrezagholami86.github.io/">
-<meta property="og:image" content="https://amirrezagholami86.github.io/profile.jpg">
+<meta property="og:title"
+content="امیررضا غلامی | وب‌سایت شخصی">
+<meta property="og:description"
+content="وب‌سایت شخصی امیررضا غلامی؛ معرفی، علایق، مهارت‌ها و پروژه‌ها.">
+<meta property="og:url"
+content="https://amirrezagholami86.github.io/">
+<meta property="og:image"
+content="https://amirrezagholami86.github.io/profile.jpg">
 <meta property="og:locale" content="fa_IR">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="امیررضا غلامی | وب‌سایت شخصی">
-<meta name="twitter:description" content="وب‌سایت شخصی امیررضا غلامی">
-<meta name="twitter:image" content="https://amirrezagholami86.github.io/profile.jpg">
+<meta name="twitter:title"
+content="امیررضا غلامی | وب‌سایت شخصی">
+<meta name="twitter:description"
+content="وب‌سایت شخصی امیررضا غلامی">
+<meta name="twitter:image"
+content="https://amirrezagholami86.github.io/profile.jpg">
 
 <script type="application/ld+json">
 {
@@ -70,7 +82,8 @@ body.light{
   color:#172033;
 }
 
-/* NAV */
+
+/* NAVIGATION */
 
 nav{
   position:fixed;
@@ -99,10 +112,13 @@ body.light nav{
 nav a{
   color:inherit;
   text-decoration:none;
+
   padding:9px 13px;
   border-radius:12px;
+
   font-size:14px;
   white-space:nowrap;
+
   transition:.3s;
 }
 
@@ -111,7 +127,8 @@ nav a:hover{
   transform:translateY(-2px);
 }
 
-/* THEME */
+
+/* THEME BUTTON */
 
 #themeToggle{
   position:fixed;
@@ -131,6 +148,7 @@ nav a:hover{
   color:white;
 
   font-size:20px;
+
   backdrop-filter:blur(10px);
 
   transition:.3s;
@@ -145,14 +163,17 @@ body.light #themeToggle{
   color:#111827;
 }
 
+
 /* MAIN */
 
 main{
   width:min(1000px,92%);
   margin:auto;
+
   padding-top:105px;
   padding-bottom:60px;
 }
+
 
 /* HERO */
 
@@ -166,6 +187,7 @@ main{
   height:150px;
 
   border-radius:50%;
+
   object-fit:cover;
 
   border:4px solid transparent;
@@ -192,13 +214,17 @@ main{
   font-size:clamp(28px,5vw,45px);
 }
 
+
 /* TYPING */
 
 .typing{
   margin-top:14px;
+
   min-height:30px;
+
   font-size:18px;
   font-weight:bold;
+
   opacity:.9;
 }
 
@@ -207,21 +233,26 @@ main{
   animation:blink .8s infinite;
 }
 
+
 /* CHIPS */
 
 .chips{
   display:flex;
   justify-content:center;
   flex-wrap:wrap;
+
   gap:9px;
+
   margin-top:20px;
 }
 
 .chip{
   padding:8px 13px;
+
   border-radius:999px;
 
   background:rgba(255,255,255,.08);
+
   border:1px solid rgba(255,255,255,.1);
 
   transition:.3s;
@@ -237,10 +268,12 @@ body.light .chip{
   border-color:rgba(0,0,0,.08);
 }
 
+
 /* SECTIONS */
 
 section{
   margin-top:25px;
+
   padding:25px;
 
   border-radius:22px;
@@ -263,7 +296,6 @@ section.visible{
 }
 
 section:hover{
-  transform:translateY(-3px);
   border-color:rgba(0,229,255,.25);
 }
 
@@ -282,20 +314,74 @@ section p{
   opacity:.88;
 }
 
-/* HIGHLIGHTS */
+
+/* PROFILE CARD */
+
+.profile-card{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+
+  gap:12px;
+
+  margin-top:20px;
+}
+
+.info-box{
+  display:flex;
+  align-items:center;
+  gap:12px;
+
+  padding:16px;
+
+  border-radius:16px;
+
+  background:rgba(255,255,255,.06);
+
+  border:1px solid rgba(255,255,255,.05);
+
+  transition:.3s;
+}
+
+.info-box:hover{
+  transform:translateY(-4px);
+  background:rgba(255,255,255,.1);
+}
+
+.info-icon{
+  font-size:24px;
+}
+
+.info-text strong{
+  display:block;
+  margin-bottom:5px;
+}
+
+.info-text span{
+  font-size:13px;
+  opacity:.7;
+}
+
+
+/* ABOUT HIGHLIGHTS */
 
 .highlights{
   display:grid;
   grid-template-columns:repeat(3,1fr);
+
   gap:12px;
+
   margin-top:20px;
 }
 
 .highlight{
   padding:18px;
+
   text-align:center;
+
   border-radius:17px;
+
   background:rgba(255,255,255,.06);
+
   transition:.3s;
 }
 
@@ -308,20 +394,27 @@ section p{
   margin-bottom:7px;
 }
 
+
 /* STATS */
 
 .stats{
   display:grid;
   grid-template-columns:repeat(3,1fr);
+
   gap:14px;
+
   margin-top:20px;
 }
 
 .stat{
   text-align:center;
+
   padding:22px 10px;
+
   border-radius:18px;
+
   background:rgba(255,255,255,.06);
+
   transition:.3s;
 }
 
@@ -331,8 +424,10 @@ section p{
 
 .stat-number{
   display:block;
+
   font-size:30px;
   font-weight:bold;
+
   margin-bottom:8px;
 }
 
@@ -340,38 +435,49 @@ section p{
   opacity:.75;
 }
 
-/* TAGS */
+
+/* INTERESTS */
 
 .tags{
   display:flex;
   flex-wrap:wrap;
+
   gap:10px;
 }
 
 .tag{
   padding:10px 14px;
+
   border-radius:14px;
+
   background:rgba(255,255,255,.08);
+
   transition:.3s;
 }
 
 .tag:hover{
   transform:translateY(-4px) scale(1.03);
+
   background:rgba(255,255,255,.14);
 }
+
 
 /* SKILLS */
 
 .skills{
   display:grid;
   grid-template-columns:repeat(2,1fr);
+
   gap:12px;
 }
 
 .skill{
   padding:16px;
+
   border-radius:15px;
+
   background:rgba(255,255,255,.06);
+
   transition:.3s;
 }
 
@@ -379,51 +485,96 @@ section p{
   transform:translateY(-4px);
 }
 
+
 /* PROJECTS */
 
 .projects{
   display:grid;
   grid-template-columns:repeat(3,1fr);
+
   gap:14px;
 }
 
 .project{
   padding:20px;
+
   border-radius:17px;
+
   background:rgba(255,255,255,.06);
+
   transition:.35s;
 }
 
 .project:hover{
   transform:translateY(-6px);
-  box-shadow:0 10px 30px rgba(0,0,0,.2);
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.2);
 }
 
 .project h3{
   margin-bottom:10px;
 }
 
+
+/* GOALS */
+
+.goal-list{
+  display:grid;
+  gap:12px;
+  margin-top:15px;
+}
+
+.goal{
+  padding:17px;
+
+  border-radius:16px;
+
+  background:rgba(255,255,255,.06);
+
+  border-right:4px solid rgba(0,229,255,.7);
+
+  transition:.3s;
+}
+
+.goal:hover{
+  transform:translateX(-5px);
+}
+
+.goal h3{
+  margin-bottom:7px;
+}
+
+
 /* TIMELINE */
 
 .timeline{
   position:relative;
+
   margin-top:25px;
+
   padding-right:25px;
 }
 
 .timeline::before{
   content:"";
+
   position:absolute;
+
   right:8px;
   top:0;
   bottom:0;
+
   width:2px;
+
   background:rgba(255,255,255,.2);
 }
 
 .timeline-item{
   position:relative;
+
   margin-bottom:25px;
+
   padding:18px;
 
   border-radius:16px;
@@ -439,7 +590,9 @@ section p{
 
 .timeline-item::before{
   content:"";
+
   position:absolute;
+
   right:-23px;
   top:22px;
 
@@ -450,20 +603,74 @@ section p{
 
   background:#00e5ff;
 
-  box-shadow:0 0 15px rgba(0,229,255,.8);
+  box-shadow:
+    0 0 15px rgba(0,229,255,.8);
 }
 
 .timeline-year{
   font-size:13px;
   opacity:.65;
+
   margin-bottom:7px;
 }
+
+
+/* GITHUB FEATURE */
+
+.github-feature{
+  margin-top:20px;
+
+  padding:24px;
+
+  border-radius:20px;
+
+  text-align:center;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(0,229,255,.08),
+      rgba(124,58,237,.12)
+    );
+
+  border:1px solid rgba(255,255,255,.1);
+}
+
+.github-feature h3{
+  margin-bottom:10px;
+}
+
+.github-feature p{
+  margin-bottom:18px;
+}
+
+.github-button{
+  display:inline-block;
+
+  padding:12px 22px;
+
+  border-radius:14px;
+
+  text-decoration:none;
+
+  color:white;
+
+  background:#24292f;
+
+  transition:.3s;
+}
+
+.github-button:hover{
+  transform:translateY(-4px) scale(1.03);
+}
+
 
 /* CONTACT */
 
 .contact{
   display:flex;
   flex-wrap:wrap;
+
   gap:12px;
 }
 
@@ -471,6 +678,7 @@ section p{
   display:inline-block;
 
   text-decoration:none;
+
   color:inherit;
 
   padding:12px 17px;
@@ -486,22 +694,29 @@ section p{
 
 .btn:hover{
   transform:translateY(-4px);
+
   background:rgba(255,255,255,.15);
 }
+
 
 /* FOOTER */
 
 footer{
   text-align:center;
+
   margin-top:45px;
+
   opacity:.6;
+
   font-size:13px;
 }
 
-/* TOP */
+
+/* TOP BUTTON */
 
 #topBtn{
   position:fixed;
+
   bottom:20px;
   left:20px;
 
@@ -509,11 +724,13 @@ footer{
   height:45px;
 
   border:none;
+
   border-radius:50%;
 
   cursor:pointer;
 
   background:rgba(255,255,255,.12);
+
   color:white;
 
   font-size:20px;
@@ -530,44 +747,59 @@ body.light #topBtn{
   background:rgba(0,0,0,.08);
 }
 
+
 /* ANIMATIONS */
 
 @keyframes pageEnter{
+
   from{
     opacity:0;
     transform:translateY(15px);
   }
+
   to{
     opacity:1;
     transform:translateY(0);
   }
+
 }
 
 @keyframes profileAppear{
+
   from{
     opacity:0;
     transform:scale(.7);
   }
+
   to{
     opacity:1;
     transform:scale(1);
   }
+
 }
 
 @keyframes profileGlow{
+
   from{
-    box-shadow:0 0 15px rgba(0,229,255,.2);
+    box-shadow:
+      0 0 15px rgba(0,229,255,.2);
   }
+
   to{
-    box-shadow:0 0 35px rgba(124,58,237,.5);
+    box-shadow:
+      0 0 35px rgba(124,58,237,.5);
   }
+
 }
 
 @keyframes blink{
+
   50%{
     opacity:0;
   }
+
 }
+
 
 /* MOBILE */
 
@@ -575,7 +807,9 @@ body.light #topBtn{
 
   nav{
     justify-content:flex-start;
+
     overflow-x:auto;
+
     padding-right:60px;
   }
 
@@ -585,6 +819,7 @@ body.light #topBtn{
 
   main{
     width:94%;
+
     padding-top:95px;
   }
 
@@ -592,16 +827,17 @@ body.light #topBtn{
     padding:20px;
   }
 
-  .highlights,
-  .skills,
-  .projects,
-  .stats{
-    grid-template-columns:1fr;
-  }
-
   .profile{
     width:125px;
     height:125px;
+  }
+
+  .highlights,
+  .skills,
+  .projects,
+  .stats,
+  .profile-card{
+    grid-template-columns:1fr;
   }
 
   .contact{
@@ -615,26 +851,46 @@ body.light #topBtn{
   .timeline{
     padding-right:20px;
   }
+
 }
 
 </style>
 </head>
 
+
 <body id="top">
 
+
 <nav>
+
   <a href="#top">🏠 خانه</a>
+
   <a href="#about">👋 درباره من</a>
+
   <a href="#interests">❤️ علایق</a>
+
   <a href="#skills">🚀 مهارت‌ها</a>
+
   <a href="#projects">🛠️ پروژه‌ها</a>
+
   <a href="#timeline">🕒 مسیر من</a>
+
+  <a href="#goals">🎯 اهداف</a>
+
   <a href="#contact">📞 ارتباط</a>
+
 </nav>
 
-<button id="themeToggle" aria-label="تغییر حالت نمایش">🌙</button>
+
+<button
+  id="themeToggle"
+  aria-label="تغییر حالت نمایش">
+  🌙
+</button>
+
 
 <main>
+
 
 <header class="hero">
 
@@ -648,18 +904,29 @@ body.light #topBtn{
   <h1>امیررضا غلامی</h1>
 
   <div class="typing">
+
     <span id="typingText"></span>
+
     <span class="cursor">|</span>
+
   </div>
 
   <div class="chips">
+
     <span class="chip">💻 تکنولوژی</span>
+
     <span class="chip">🤖 هوش مصنوعی</span>
+
     <span class="chip">⚽ فوتبال</span>
+
     <span class="chip">📚 یادگیری</span>
+
   </div>
 
 </header>
+
+
+<!-- ABOUT -->
 
 <section id="about">
 
@@ -671,6 +938,59 @@ body.light #topBtn{
     این وب‌سایت فضای شخصی من برای معرفی خودم،
     علایق، مهارت‌ها و پروژه‌هایی است که روی آن‌ها کار می‌کنم.
   </p>
+
+
+  <div class="profile-card">
+
+    <div class="info-box">
+
+      <div class="info-icon">💻</div>
+
+      <div class="info-text">
+        <strong>حوزه علاقه</strong>
+        <span>تکنولوژی و دنیای دیجیتال</span>
+      </div>
+
+    </div>
+
+
+    <div class="info-box">
+
+      <div class="info-icon">🤖</div>
+
+      <div class="info-text">
+        <strong>زمینه مورد علاقه</strong>
+        <span>هوش مصنوعی</span>
+      </div>
+
+    </div>
+
+
+    <div class="info-box">
+
+      <div class="info-icon">📚</div>
+
+      <div class="info-text">
+        <strong>رویکرد</strong>
+        <span>یادگیری و تجربه</span>
+      </div>
+
+    </div>
+
+
+    <div class="info-box">
+
+      <div class="info-icon">🌐</div>
+
+      <div class="info-text">
+        <strong>فعالیت</strong>
+        <span>دنیای وب و اینترنت</span>
+      </div>
+
+    </div>
+
+  </div>
+
 
   <div class="highlights">
 
@@ -693,6 +1013,9 @@ body.light #topBtn{
 
 </section>
 
+
+<!-- STATS -->
+
 <section>
 
   <h2>📊 درباره سایت</h2>
@@ -700,23 +1023,43 @@ body.light #topBtn{
   <div class="stats">
 
     <div class="stat">
+
       <span class="stat-number">3</span>
-      <span class="stat-label">پروژه</span>
+
+      <span class="stat-label">
+        پروژه
+      </span>
+
     </div>
 
+
     <div class="stat">
+
       <span class="stat-number">4</span>
-      <span class="stat-label">مهارت</span>
+
+      <span class="stat-label">
+        مهارت
+      </span>
+
     </div>
 
+
     <div class="stat">
+
       <span class="stat-number">8+</span>
-      <span class="stat-label">علاقه</span>
+
+      <span class="stat-label">
+        علاقه
+      </span>
+
     </div>
 
   </div>
 
 </section>
+
+
+<!-- INTERESTS -->
 
 <section id="interests">
 
@@ -725,17 +1068,27 @@ body.light #topBtn{
   <div class="tags">
 
     <span class="tag">⚽ فوتبال</span>
+
     <span class="tag">🇦🇷 آرژانتین</span>
+
     <span class="tag">🐐 مسی</span>
+
     <span class="tag">🏆 مارادونا</span>
+
     <span class="tag">🤖 هوش مصنوعی</span>
+
     <span class="tag">💻 تکنولوژی</span>
+
     <span class="tag">🌐 اینترنت</span>
+
     <span class="tag">📱 دنیای دیجیتال</span>
 
   </div>
 
 </section>
+
+
+<!-- SKILLS -->
 
 <section id="skills">
 
@@ -763,6 +1116,9 @@ body.light #topBtn{
 
 </section>
 
+
+<!-- PROJECTS -->
+
 <section id="projects">
 
   <h2>🛠️ پروژه‌ها و فعالیت‌ها</h2>
@@ -770,32 +1126,65 @@ body.light #topBtn{
   <div class="projects">
 
     <article class="project">
+
       <h3>🌐 Web Site Personal</h3>
+
       <p>
         طراحی و توسعه وب‌سایت شخصی برای معرفی،
         ارتباط و نمایش علایق.
       </p>
+
     </article>
 
+
     <article class="project">
+
       <h3>💻 Technology World</h3>
+
       <p>
         یادگیری، تجربه و دنبال کردن فناوری‌های جدید
         و دنیای دیجیتال.
       </p>
+
     </article>
 
+
     <article class="project">
+
       <h3>🤖 AI</h3>
+
       <p>
         علاقه‌مندی و آشنایی با ابزارها و پیشرفت‌های
         هوش مصنوعی.
       </p>
+
     </article>
 
   </div>
 
+
+  <div class="github-feature">
+
+    <h3>🐙 پروژه‌های بیشتر</h3>
+
+    <p>
+      می‌توانی پروژه‌ها و فعالیت‌های من را در GitHub ببینی.
+    </p>
+
+    <a
+      class="github-button"
+      href="https://github.com/amirrezagholami86"
+      target="_blank"
+      rel="noopener noreferrer">
+      مشاهده GitHub 🚀
+    </a>
+
+  </div>
+
 </section>
+
+
+<!-- TIMELINE -->
 
 <section id="timeline">
 
@@ -804,33 +1193,108 @@ body.light #topBtn{
   <div class="timeline">
 
     <div class="timeline-item">
-      <div class="timeline-year">شروع مسیر</div>
+
+      <div class="timeline-year">
+        شروع مسیر
+      </div>
+
       <h3>📚 یادگیری و کشف علایق</h3>
+
       <p>
         آشنایی بیشتر با تکنولوژی، اینترنت و دنیای دیجیتال.
       </p>
+
     </div>
 
+
     <div class="timeline-item">
-      <div class="timeline-year">مرحله بعد</div>
+
+      <div class="timeline-year">
+        مرحله بعد
+      </div>
+
       <h3>🤖 ورود به دنیای هوش مصنوعی</h3>
+
       <p>
         تجربه ابزارهای مختلف و دنبال کردن پیشرفت‌های
         هوش مصنوعی.
       </p>
+
     </div>
 
+
     <div class="timeline-item">
-      <div class="timeline-year">امروز</div>
+
+      <div class="timeline-year">
+        امروز
+      </div>
+
       <h3>🚀 ساخت و پیشرفت</h3>
+
       <p>
         ساخت وب‌سایت شخصی و ادامه مسیر یادگیری و پیشرفت.
       </p>
+
     </div>
 
   </div>
 
 </section>
+
+
+<!-- GOALS -->
+
+<section id="goals">
+
+  <h2>🎯 اهداف آینده</h2>
+
+  <p>
+    هدف من این است که در مسیر یادگیری و تجربه،
+    مهارت‌های بیشتری در زمینه تکنولوژی و دنیای دیجیتال
+    به دست بیاورم و پروژه‌های جدید و کاربردی بسازم.
+  </p>
+
+
+  <div class="goal-list">
+
+    <div class="goal">
+
+      <h3>💻 توسعه مهارت‌های فنی</h3>
+
+      <p>
+        یادگیری ابزارها و مهارت‌های جدید در حوزه فناوری.
+      </p>
+
+    </div>
+
+
+    <div class="goal">
+
+      <h3>🤖 یادگیری بیشتر درباره AI</h3>
+
+      <p>
+        دنبال کردن پیشرفت‌های هوش مصنوعی و تجربه ابزارهای جدید.
+      </p>
+
+    </div>
+
+
+    <div class="goal">
+
+      <h3>🚀 ساخت پروژه‌های بیشتر</h3>
+
+      <p>
+        تبدیل ایده‌ها به پروژه‌های واقعی و قابل استفاده.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- CONTACT -->
 
 <section id="contact">
 
@@ -846,6 +1310,7 @@ body.light #topBtn{
       💚 WhatsApp
     </a>
 
+
     <a
       class="btn"
       href="https://t.me/Amirrezagholami_ir"
@@ -854,11 +1319,13 @@ body.light #topBtn{
       ✈️ Telegram
     </a>
 
+
     <a
       class="btn"
       href="mailto:amirrezaamirreza275@gmail.com">
       📧 Email
     </a>
+
 
     <a
       class="btn"
@@ -867,6 +1334,7 @@ body.light #topBtn{
       rel="noopener noreferrer">
       📸 Instagram
     </a>
+
 
     <a
       class="btn"
@@ -880,11 +1348,15 @@ body.light #topBtn{
 
 </section>
 
+
 <footer>
+
   © 2026 امیررضا غلامی — ساخته شده با ❤️ و 💻
+
 </footer>
 
 </main>
+
 
 <button
   id="topBtn"
@@ -892,6 +1364,7 @@ body.light #topBtn{
   aria-label="بازگشت به بالا">
   ↑
 </button>
+
 
 <script>
 
@@ -904,8 +1377,11 @@ const savedTheme =
   localStorage.getItem("theme");
 
 if(savedTheme === "light"){
+
   document.body.classList.add("light");
+
   themeToggle.textContent="☀️";
+
 }
 
 themeToggle.addEventListener("click",()=>{
@@ -932,30 +1408,36 @@ const typingText =
   document.getElementById("typingText");
 
 const words = [
+
   "علاقه‌مند به تکنولوژی 💻",
+
   "علاقه‌مند به هوش مصنوعی 🤖",
+
   "عاشق فوتبال ⚽",
+
   "همیشه در حال یادگیری 📚"
+
 ];
 
-let wordIndex = 0;
-let charIndex = 0;
-let deleting = false;
+let wordIndex=0;
+let charIndex=0;
+let deleting=false;
 
 function typeEffect(){
 
-  const word = words[wordIndex];
+  const word =
+    words[wordIndex];
 
   if(!deleting){
 
     typingText.textContent =
-      word.substring(0,charIndex + 1);
+      word.substring(0,charIndex+1);
 
     charIndex++;
 
     if(charIndex === word.length){
 
-      deleting = true;
+      deleting=true;
 
       setTimeout(typeEffect,1800);
 
@@ -965,23 +1447,26 @@ function typeEffect(){
   }else{
 
     typingText.textContent =
-      word.substring(0,charIndex - 1);
+      word.substring(0,charIndex-1);
 
     charIndex--;
 
     if(charIndex === 0){
 
-      deleting = false;
+      deleting=false;
 
       wordIndex =
-        (wordIndex + 1) % words.length;
+        (wordIndex+1)%words.length;
+
     }
+
   }
 
   setTimeout(
     typeEffect,
     deleting ? 45 : 85
   );
+
 }
 
 typeEffect();
@@ -994,9 +1479,10 @@ const sections =
 
 const observer =
   new IntersectionObserver(
-    entries => {
 
-      entries.forEach(entry => {
+    entries=>{
+
+      entries.forEach(entry=>{
 
         if(entry.isIntersecting){
 
@@ -1007,9 +1493,11 @@ const observer =
       });
 
     },
+
     {
-      threshold:0.12
+      threshold:.12
     }
+
   );
 
 sections.forEach(section=>{
@@ -1019,4 +1507,4 @@ sections.forEach(section=>{
 </script>
 
 </body>
-  </html>
+    </html>
