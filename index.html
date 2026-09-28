@@ -29,6 +29,15 @@
             color: white;
             min-height: 100vh;
             overflow-x: hidden;
+            transition: background .4s ease, color .4s ease;
+        }
+
+        body.light {
+            background:
+                radial-gradient(circle at 15% 10%, rgba(59,130,246,.12), transparent 30%),
+                radial-gradient(circle at 85% 80%, rgba(139,92,246,.10), transparent 30%),
+                linear-gradient(135deg, #f8fafc, #e2e8f0, #eef2ff);
+            color: #0f172a;
         }
 
         .container {
@@ -37,6 +46,34 @@
             margin: auto;
             padding: 55px 15px 30px;
             text-align: center;
+        }
+
+        .theme-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 48px;
+            height: 48px;
+            border: none;
+            border-radius: 50%;
+            background: rgba(255,255,255,.10);
+            border: 1px solid rgba(255,255,255,.15);
+            color: white;
+            font-size: 22px;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            transition: .3s;
+            z-index: 1000;
+        }
+
+        .theme-button:hover {
+            transform: scale(1.1) rotate(10deg);
+        }
+
+        body.light .theme-button {
+            background: rgba(15,23,42,.08);
+            color: #0f172a;
+            border-color: rgba(15,23,42,.12);
         }
 
         .profile-wrapper {
@@ -74,6 +111,10 @@
             margin-bottom: 25px;
         }
 
+        body.light .subtitle {
+            color: #475569;
+        }
+
         .mini-info {
             display: flex;
             justify-content: center;
@@ -90,6 +131,12 @@
             color: #e2e8f0;
         }
 
+        body.light .info {
+            background: rgba(255,255,255,.65);
+            border-color: rgba(15,23,42,.10);
+            color: #334155;
+        }
+
         .card {
             background: rgba(255,255,255,.06);
             border: 1px solid rgba(255,255,255,.12);
@@ -98,6 +145,13 @@
             margin-bottom: 22px;
             backdrop-filter: blur(15px);
             box-shadow: 0 20px 50px rgba(0,0,0,.2);
+            transition: .4s;
+        }
+
+        body.light .card {
+            background: rgba(255,255,255,.65);
+            border-color: rgba(15,23,42,.10);
+            box-shadow: 0 20px 50px rgba(15,23,42,.10);
         }
 
         .card h2 {
@@ -109,6 +163,10 @@
             color: #e2e8f0;
             line-height: 2.1;
             font-size: 16px;
+        }
+
+        body.light .card p {
+            color: #334155;
         }
 
         .tags {
@@ -126,6 +184,12 @@
             border: 1px solid rgba(255,255,255,.12);
         }
 
+        body.light .tag {
+            background: rgba(255,255,255,.75);
+            border-color: rgba(15,23,42,.10);
+            color: #1e293b;
+        }
+
         .skills {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -140,6 +204,11 @@
             border: 1px solid rgba(255,255,255,.10);
         }
 
+        body.light .skill {
+            background: rgba(255,255,255,.60);
+            border-color: rgba(15,23,42,.08);
+        }
+
         .skill-title {
             font-weight: bold;
             margin-bottom: 8px;
@@ -150,7 +219,9 @@
             font-size: 14px;
         }
 
-        /* Projects */
+        body.light .skill-text {
+            color: #64748b;
+        }
 
         .projects {
             display: grid;
@@ -167,9 +238,13 @@
             transition: .3s;
         }
 
+        body.light .project {
+            background: rgba(255,255,255,.60);
+            border-color: rgba(15,23,42,.08);
+        }
+
         .project:hover {
             transform: translateY(-6px);
-            background: rgba(255,255,255,.09);
         }
 
         .project-icon {
@@ -186,6 +261,10 @@
             color: #94a3b8;
             font-size: 13px;
             line-height: 1.9;
+        }
+
+        body.light .project p {
+            color: #64748b;
         }
 
         .links {
@@ -216,6 +295,10 @@
             color: #94a3b8;
             font-size: 14px;
             line-height: 2;
+        }
+
+        body.light footer {
+            color: #64748b;
         }
 
         .top {
@@ -260,11 +343,20 @@
             .button {
                 width: 100%;
             }
+
+            .theme-button {
+                top: 15px;
+                left: 15px;
+            }
         }
     </style>
 </head>
 
 <body id="top">
+
+<button class="theme-button" id="themeButton" aria-label="تغییر حالت نمایش">
+    🌙
+</button>
 
 <div class="container">
 
@@ -302,13 +394,11 @@
         <h2>❤️ علایق من</h2>
 
         <div class="tags">
-
             <span class="tag">⚽ فوتبال</span>
             <span class="tag">🏋️ ورزش</span>
             <span class="tag">💻 تکنولوژی</span>
             <span class="tag">🤖 هوش مصنوعی</span>
             <span class="tag">🌐 اینترنت</span>
-
         </div>
 
     </div>
@@ -351,8 +441,6 @@
 
     </div>
 
-    <!-- Projects -->
-
     <div class="card">
 
         <h2>🛠️ پروژه‌ها و فعالیت‌های من</h2>
@@ -360,49 +448,35 @@
         <div class="projects">
 
             <div class="project">
-
                 <div class="project-icon">🌐</div>
-
                 <h3>وب‌سایت شخصی</h3>
-
                 <p>
                     طراحی و توسعه وب‌سایت شخصی
                     برای معرفی، ارتباط و نمایش علایق.
                 </p>
-
             </div>
 
             <div class="project">
-
                 <div class="project-icon">💻</div>
-
                 <h3>دنیای تکنولوژی</h3>
-
                 <p>
                     یادگیری، تجربه و دنبال کردن
                     فناوری‌های جدید و دنیای دیجیتال.
                 </p>
-
             </div>
 
             <div class="project">
-
                 <div class="project-icon">🤖</div>
-
                 <h3>هوش مصنوعی</h3>
-
                 <p>
                     علاقه‌مندی و آشنایی با
                     ابزارها و پیشرفت‌های هوش مصنوعی.
                 </p>
-
             </div>
 
         </div>
 
     </div>
-
-    <!-- Contact -->
 
     <div class="card">
 
@@ -441,18 +515,45 @@
     </div>
 
     <footer>
-
         ساخته شده با ❤️ توسط امیررضا غلامی
-
         <br>
-
         © 2026 — تمامی حقوق محفوظ است.
-
     </footer>
 
 </div>
 
 <a href="#top" class="top" aria-label="بازگشت به بالا">↑</a>
 
+<script>
+
+    const themeButton = document.getElementById("themeButton");
+
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme === "light") {
+        document.body.classList.add("light");
+        themeButton.textContent = "☀️";
+    }
+
+    themeButton.addEventListener("click", function () {
+
+        document.body.classList.toggle("light");
+
+        if (document.body.classList.contains("light")) {
+
+            themeButton.textContent = "☀️";
+            localStorage.setItem("theme", "light");
+
+        } else {
+
+            themeButton.textContent = "🌙";
+            localStorage.setItem("theme", "dark");
+
+        }
+
+    });
+
+</script>
+
 </body>
-    </html>
+</html>
