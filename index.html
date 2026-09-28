@@ -13,16 +13,16 @@
 <meta name="twitter:description" content="تکنولوژی، هوش مصنوعی، وب و علایق شخصی.">
 <meta name="twitter:image" content="https://amirrezagholami86.github.io/profile.jpg"><script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script><script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"Person",
-  "name":"امیررضا غلامی",
-  "url":"https://amirrezagholami86.github.io/",
-  "image":"https://amirrezagholami86.github.io/profile.jpg",
-  "sameAs":[
-    "https://github.com/amirrezagholami86",
-    "https://www.instagram.com/amirrezagholami.ir",
-    "https://t.me/Amirrezagholami_ir"
-  ]
+ "@context":"https://schema.org",
+ "@type":"Person",
+ "name":"امیررضا غلامی",
+ "url":"https://amirrezagholami86.github.io/",
+ "image":"https://amirrezagholami86.github.io/profile.jpg",
+ "sameAs":[
+  "https://github.com/amirrezagholami86",
+  "https://www.instagram.com/amirrezagholami.ir",
+  "https://t.me/Amirrezagholami_ir"
+ ]
 }
 </script><style>
 
@@ -34,12 +34,12 @@
 
 html{
  scroll-behavior:smooth;
- scroll-padding-top:90px;
+ scroll-padding-top:95px;
 }
 
 body{
  font-family:Tahoma,Arial,sans-serif;
- background:#080b14;
+ background:#070a12;
  color:#fff;
  line-height:1.8;
  overflow-x:hidden;
@@ -49,6 +49,10 @@ body{
 body.light{
  background:#f4f7fb;
  color:#151923;
+}
+
+body.light .muted{
+ color:#56627a!important;
 }
 
 a{
@@ -63,7 +67,9 @@ button,input{
 section{
  width:min(1100px,92%);
  margin:auto;
- padding:75px 0;
+ padding:72px 0;
+ position:relative;
+ z-index:2;
 }
 
 .section-title{
@@ -76,14 +82,60 @@ section{
  color:#00d9ff;
 }
 
+.muted{
+ color:#aab6ce;
+}
+
+/* BACKGROUND */
+
+.bg-orb{
+ position:fixed;
+ width:430px;
+ height:430px;
+ border-radius:50%;
+ filter:blur(80px);
+ opacity:.18;
+ pointer-events:none;
+ z-index:0;
+ animation:orbMove 12s ease-in-out infinite alternate;
+}
+
+.orb-one{
+ background:#00d9ff;
+ top:-150px;
+ right:-100px;
+}
+
+.orb-two{
+ background:#7357ff;
+ bottom:-160px;
+ left:-120px;
+ animation-delay:-5s;
+}
+
+@keyframes orbMove{
+ from{transform:translate(0,0) scale(1)}
+ to{transform:translate(70px,40px) scale(1.15)}
+}
+
+#particles{
+ position:fixed;
+ inset:0;
+ pointer-events:none;
+ z-index:1;
+ opacity:.38;
+}
+
+/* PROGRESS */
+
 #progressBar{
  position:fixed;
  top:0;
  right:0;
  height:4px;
  width:0;
- background:linear-gradient(90deg,#00d9ff,#8a5cff,#ff3cac);
- z-index:99999;
+ background:linear-gradient(90deg,#00d9ff,#7357ff,#ff3cac);
+ z-index:100000;
 }
 
 /* NAV */
@@ -96,11 +148,11 @@ section{
  width:min(1100px,94%);
  z-index:9999;
  display:flex;
- gap:8px;
+ gap:7px;
  padding:9px;
- background:rgba(10,14,28,.72);
+ background:rgba(10,14,28,.75);
  border:1px solid rgba(255,255,255,.1);
- backdrop-filter:blur(15px);
+ backdrop-filter:blur(16px);
  border-radius:18px;
  overflow-x:auto;
  scrollbar-width:none;
@@ -119,14 +171,14 @@ section{
  transition:.25s;
 }
 
-.navbar a:hover{
- background:rgba(0,217,255,.15);
+.navbar a:hover,
+.navbar a.active{
+ background:rgba(0,217,255,.14);
  color:#00d9ff;
- transform:translateY(-2px);
 }
 
 body.light .navbar{
- background:rgba(255,255,255,.84);
+ background:rgba(255,255,255,.86);
  border-color:rgba(0,0,0,.08);
 }
 
@@ -134,30 +186,41 @@ body.light .navbar a{
  color:#333;
 }
 
-/* THEME */
+body.light .navbar a.active{
+ color:#008bb0;
+ background:rgba(0,180,220,.1);
+}
 
-#themeToggle{
+/* CONTROLS */
+
+.control-panel{
  position:fixed;
- top:85px;
  left:18px;
+ top:85px;
  z-index:9998;
- width:45px;
- height:45px;
+ display:flex;
+ flex-direction:column;
+ gap:8px;
+}
+
+.control-btn{
+ width:44px;
+ height:44px;
  border:none;
- border-radius:50%;
+ border-radius:14px;
  cursor:pointer;
  background:rgba(255,255,255,.1);
  color:#fff;
- font-size:20px;
+ font-size:19px;
  backdrop-filter:blur(10px);
  transition:.3s;
 }
 
-#themeToggle:hover{
- transform:rotate(20deg) scale(1.08);
+.control-btn:hover{
+ transform:scale(1.08);
 }
 
-body.light #themeToggle{
+body.light .control-btn{
  background:#fff;
  color:#111;
  box-shadow:0 5px 20px rgba(0,0,0,.1);
@@ -171,25 +234,10 @@ body.light #themeToggle{
  align-items:center;
  justify-content:center;
  text-align:center;
- position:relative;
-}
-
-.hero::before{
- content:"";
- position:absolute;
- width:500px;
- height:500px;
- background:radial-gradient(circle,rgba(0,217,255,.17),transparent 65%);
- top:10%;
- left:50%;
- transform:translateX(-50%);
- pointer-events:none;
 }
 
 .hero-content{
- position:relative;
- z-index:2;
- animation:pageEntry 1s ease;
+ animation:pageEntry .9s ease;
 }
 
 .profile-img{
@@ -223,13 +271,31 @@ body.light #themeToggle{
  font-size:18px;
 }
 
-.hero-buttons{
+.hero-buttons,
+.chips{
  display:flex;
  justify-content:center;
  flex-wrap:wrap;
- gap:12px;
+ gap:11px;
+}
+
+.hero-buttons{
  margin-top:25px;
 }
+
+.chips{
+ margin-top:22px;
+}
+
+.chip{
+ padding:6px 13px;
+ border-radius:20px;
+ background:rgba(255,255,255,.06);
+ color:#c9d4ee;
+ border:1px solid rgba(255,255,255,.08);
+}
+
+/* BUTTONS */
 
 .btn{
  display:inline-block;
@@ -251,22 +317,6 @@ body.light #themeToggle{
 .btn:hover{
  transform:translateY(-4px);
  box-shadow:0 10px 25px rgba(0,0,0,.25);
-}
-
-.chips{
- display:flex;
- justify-content:center;
- flex-wrap:wrap;
- gap:10px;
- margin-top:22px;
-}
-
-.chip{
- padding:6px 13px;
- border-radius:20px;
- background:rgba(255,255,255,.06);
- color:#c9d4ee;
- border:1px solid rgba(255,255,255,.08);
 }
 
 /* CARDS */
@@ -303,7 +353,7 @@ body.light .card{
  gap:18px;
 }
 
-/* PROFILE */
+/* ABOUT */
 
 .profile-card{
  display:grid;
@@ -364,7 +414,7 @@ body.light .card{
 
 .stats{
  display:grid;
- grid-template-columns:repeat(3,1fr);
+ grid-template-columns:repeat(4,1fr);
  gap:15px;
  margin-top:25px;
 }
@@ -430,11 +480,6 @@ body.light .card{
  line-height:2;
 }
 
-.quote-author{
- margin-top:15px;
- color:#7d8aa7;
-}
-
 /* SKILLS */
 
 .skill{
@@ -490,7 +535,6 @@ body.light .card{
 
 .tag:hover{
  transform:translateY(-3px);
- background:rgba(0,217,255,.16);
 }
 
 .github-feature{
@@ -531,8 +575,39 @@ body.light .card{
  margin-bottom:10px;
 }
 
-.achievement h3{
- margin-bottom:8px;
+/* TOOLS */
+
+.tool-card{
+ text-align:center;
+ cursor:default;
+}
+
+.tool-icon{
+ width:75px;
+ height:75px;
+ margin:0 auto 15px;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ border-radius:22px;
+ background:rgba(0,217,255,.08);
+ font-size:38px;
+ transition:.3s;
+}
+
+.tool-card:hover .tool-icon{
+ transform:rotate(-5deg) scale(1.08);
+ box-shadow:0 0 25px rgba(0,217,255,.15);
+}
+
+.tool-label{
+ display:inline-block;
+ margin-top:12px;
+ padding:5px 11px;
+ border-radius:12px;
+ font-size:12px;
+ background:rgba(255,255,255,.06);
+ color:#aab6ce;
 }
 
 /* PROGRESS */
@@ -574,11 +649,6 @@ body.light .progress-circle::before{
  color:#00d9ff;
 }
 
-.progress-list{
- margin-top:20px;
- text-align:right;
-}
-
 .progress-line{
  margin:14px 0;
 }
@@ -606,13 +676,26 @@ body.light .progress-circle::before{
 /* GALLERY */
 
 .gallery-card{
- height:180px;
+ min-height:220px;
  display:flex;
  flex-direction:column;
  justify-content:center;
  align-items:center;
  text-align:center;
- background:linear-gradient(135deg,rgba(0,217,255,.12),rgba(115,87,255,.12));
+ overflow:hidden;
+ cursor:pointer;
+}
+
+.gallery-card img{
+ width:100%;
+ height:150px;
+ object-fit:cover;
+ border-radius:15px;
+ transition:.4s;
+}
+
+.gallery-card:hover img{
+ transform:scale(1.05);
 }
 
 .gallery-icon{
@@ -670,7 +753,7 @@ body.light .progress-circle::before{
  display:flex;
  gap:10px;
  max-width:750px;
- margin:0 auto;
+ margin:auto;
 }
 
 .search-box input{
@@ -774,13 +857,7 @@ body.light .search-box input{
  justify-content:center;
 }
 
-.qr-box p{
- color:#111;
- font-size:12px;
- margin-top:8px;
-}
-
-/* FLOATING */
+/* QUICK MENU */
 
 .quick-menu{
  position:fixed;
@@ -799,11 +876,6 @@ body.light .search-box input{
  color:#fff;
  font-size:23px;
  box-shadow:0 8px 25px rgba(0,0,0,.3);
- transition:.3s;
-}
-
-.quick-toggle:hover{
- transform:scale(1.08) rotate(10deg);
 }
 
 .quick-links{
@@ -834,12 +906,6 @@ body.light .search-box input{
  border-radius:15px;
  background:#141a2b;
  border:1px solid rgba(255,255,255,.1);
- transition:.25s;
-}
-
-.quick-link:hover{
- transform:translateX(-4px);
- border-color:#00d9ff;
 }
 
 body.light .quick-link{
@@ -863,6 +929,7 @@ body.light .quick-link{
  opacity:0;
  pointer-events:none;
  transition:.3s;
+ z-index:9996;
 }
 
 #backTop.show{
@@ -873,6 +940,61 @@ body.light .quick-link{
 body.light #backTop{
  background:#fff;
  color:#111;
+}
+
+/* MODAL */
+
+.modal{
+ position:fixed;
+ inset:0;
+ background:rgba(0,0,0,.82);
+ backdrop-filter:blur(8px);
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ z-index:100001;
+ opacity:0;
+ visibility:hidden;
+ transition:.3s;
+ padding:20px;
+}
+
+.modal.show{
+ opacity:1;
+ visibility:visible;
+}
+
+.modal-content{
+ max-width:850px;
+ width:100%;
+ position:relative;
+ transform:scale(.9);
+ transition:.3s;
+}
+
+.modal.show .modal-content{
+ transform:scale(1);
+}
+
+.modal-content img{
+ width:100%;
+ max-height:80vh;
+ object-fit:contain;
+ border-radius:20px;
+}
+
+.close-modal{
+ position:absolute;
+ top:-45px;
+ left:0;
+ width:40px;
+ height:40px;
+ border:none;
+ border-radius:50%;
+ background:#fff;
+ color:#111;
+ cursor:pointer;
+ font-size:22px;
 }
 
 /* TOAST */
@@ -890,7 +1012,7 @@ body.light #backTop{
  opacity:0;
  pointer-events:none;
  transition:.35s;
- z-index:100000;
+ z-index:100002;
 }
 
 #toast.show{
@@ -903,12 +1025,12 @@ body.light #backTop{
 #welcome{
  position:fixed;
  inset:0;
- z-index:100000;
+ z-index:100003;
  display:flex;
  align-items:center;
  justify-content:center;
  background:#080b14;
- transition:.7s;
+ transition:.6s;
 }
 
 #welcome.hide{
@@ -919,25 +1041,30 @@ body.light #backTop{
 
 .welcome-box{
  text-align:center;
- padding:35px;
+ animation:welcomeIn .7s ease;
 }
 
-/* PARTICLES */
+.welcome-icon{
+ font-size:55px;
+}
 
-#particles{
- position:fixed;
- inset:0;
- pointer-events:none;
- z-index:0;
- opacity:.45;
+@keyframes welcomeIn{
+ from{
+  opacity:0;
+  transform:scale(.8) translateY(20px);
+ }
+ to{
+  opacity:1;
+  transform:scale(1) translateY(0);
+ }
 }
 
 /* REVEAL */
 
 .reveal{
  opacity:0;
- transform:translateY(30px);
- transition:.8s ease;
+ transform:translateY(25px);
+ transition:.75s ease;
 }
 
 .reveal.active{
@@ -950,6 +1077,8 @@ footer{
  padding:40px 20px;
  color:#7885a1;
  border-top:1px solid rgba(255,255,255,.06);
+ position:relative;
+ z-index:2;
 }
 
 @keyframes profileGlow{
@@ -961,6 +1090,8 @@ footer{
  from{opacity:0;transform:translateY(20px)}
  to{opacity:1;transform:translateY(0)}
 }
+
+/* MOBILE */
 
 @media(max-width:800px){
 
@@ -984,6 +1115,10 @@ footer{
   margin:auto;
  }
 
+ .stats{
+  grid-template-columns:1fr 1fr;
+ }
+
 }
 
 @media(max-width:600px){
@@ -1003,8 +1138,8 @@ footer{
 
  .grid,
  .contact-grid,
- .stats,
- .info-boxes{
+ .info-boxes,
+ .stats{
   grid-template-columns:1fr;
  }
 
@@ -1012,8 +1147,14 @@ footer{
   top:7px;
  }
 
- #themeToggle{
-  top:72px;
+ .control-panel{
+  top:68px;
+  left:10px;
+ }
+
+ .control-btn{
+  width:40px;
+  height:40px;
  }
 
  .search-box{
@@ -1052,43 +1193,60 @@ footer{
   text-align:center;
  }
 
+ .close-modal{
+  top:10px;
+  left:10px;
+ }
+
 }
 
-</style></head><body><div id="progressBar"></div><div id="welcome">
+</style></head><body><div class="bg-orb orb-one"></div>
+<div class="bg-orb orb-two"></div><div id="progressBar"></div><div id="welcome">
  <div class="welcome-box">
-  <div style="font-size:55px">👋</div>
+  <div class="welcome-icon">👋</div>
   <h2>خوش اومدی!</h2>
-  <p>به وب‌سایت شخصی امیررضا غلامی خوش آمدید 🚀</p>
+  <p class="muted">به وب‌سایت شخصی امیررضا غلامی 🚀</p>
  </div>
-</div><nav class="navbar">
- <a href="#top">🏠 خانه</a>
- <a href="#about">👋 درباره من</a>
- <a href="#dashboard">🧭 داشبورد</a>
- <a href="#interests">❤️ علایق</a>
- <a href="#skills">🚀 مهارت‌ها</a>
- <a href="#projects">🛠️ پروژه‌ها</a>
- <a href="#achievements">🏆 دستاوردها</a>
- <a href="#gallery">🖼️ گالری</a>
- <a href="#timeline">🕒 مسیر من</a>
- <a href="#goals">🎯 اهداف</a>
- <a href="#contact">📞 ارتباط</a>
-</nav><button id="themeToggle">🌙</button>
+</div><nav class="navbar"><a href="#top" class="nav-link">🏠 خانه</a>
+<a href="#about" class="nav-link">👋 درباره من</a>
+<a href="#dashboard" class="nav-link">🧭 داشبورد</a>
+<a href="#interests" class="nav-link">❤️ علایق</a>
+<a href="#skills" class="nav-link">🚀 مهارت‌ها</a>
+<a href="#projects" class="nav-link">🛠️ پروژه‌ها</a>
+<a href="#achievements" class="nav-link">🏆 دستاوردها</a>
+<a href="#tools" class="nav-link">🧰 ابزارها</a>
+<a href="#gallery" class="nav-link">🖼️ گالری</a>
+<a href="#timeline" class="nav-link">🕒 مسیر من</a>
+<a href="#goals" class="nav-link">🎯 اهداف</a>
+<a href="#contact" class="nav-link">📞 ارتباط</a>
 
-<canvas id="particles"></canvas>
+</nav><div class="control-panel"><button class="control-btn"
+id="themeToggle"
+title="تغییر حالت">
+🌙
+</button>
+
+<button class="control-btn"
+id="soundToggle"
+title="صدای رابط کاربری">
+🔇
+</button>
+
+</div><canvas id="particles"></canvas>
 
 <main id="top"><section class="hero"> <div class="hero-content"><img src="profile.jpg"
 alt="امیررضا غلامی"
 class="profile-img">
 
-  <h1>امیررضا <span>غلامی</span></h1>  <div class="typing">
+  <h1>
+   امیررضا <span>غلامی</span>
+  </h1>  <div class="typing">
    <span id="typingText"></span>
-  </div>  <div class="hero-buttons">
-   <a href="#about" class="btn primary">
+  </div>  <div class="hero-buttons">   <a href="#about" class="btn primary">
     بیشتر درباره من 👋
    </a>   <a href="#contact" class="btn">
     ارتباط با من 📞
-   </a>
-  </div>  <div class="chips">
+   </a>  </div>  <div class="chips">
    <div class="chip">💻 تکنولوژی</div>
    <div class="chip">🤖 هوش مصنوعی</div>
    <div class="chip">⚽ فوتبال</div>
@@ -1147,6 +1305,9 @@ class="profile-img">
   </div>  <div class="stat">
    <div class="stat-number" data-target="8">0</div>
    علاقه
+  </div>  <div class="stat">
+   <div class="stat-number" data-target="2026">0</div>
+   سال
   </div> </div></section><section id="dashboard" class="reveal"> <h2 class="section-title">
   🧭 <span>داشبورد</span> شخصی
  </h2> <div class="dashboard-main">  <div class="card live-box">   <div style="font-size:45px">🕐</div>   <div id="liveTime" class="live-time">
@@ -1155,7 +1316,7 @@ class="profile-img">
     در حال دریافت تاریخ...
    </div>   <div class="status">
     🟢 سایت فعال
-   </div>  </div>  <div class="card quote-box">   <div style="font-size:38px">💡</div>   <div id="quoteText" class="quote"></div>   <div class="quote-author">
+   </div>  </div>  <div class="card quote-box">   <div style="font-size:38px">💡</div>   <div id="quoteText" class="quote"></div>   <div class="muted">
     — یک جمله برای ادامه مسیر 🚀
    </div><button class="btn"
 id="newQuote"
@@ -1165,7 +1326,8 @@ style="margin-top:18px;width:max-content">
 
   </div> </div> <div class="card"
       style="margin-top:18px;text-align:center">  <div style="font-size:38px">🎲</div>  <h3>یک چیز تصادفی درباره من</h3>  <div id="randomResult"
-       style="margin:18px 0;color:#b8c7e5">
+       class="muted"
+       style="margin:18px 0">
    روی دکمه بزن تا یکی از علایقم رو ببینی!
   </div><button class="btn primary"
 id="randomFact">
@@ -1177,15 +1339,15 @@ id="randomFact">
  </h2> <div class="grid">  <div class="card">
    <div class="project-icon">💻</div>
    <h3>تکنولوژی</h3>
-   <p>دنبال کردن فناوری‌های جدید و دنیای دیجیتال.</p>
+   <p class="muted">دنبال کردن فناوری‌های جدید و دنیای دیجیتال.</p>
   </div>  <div class="card">
    <div class="project-icon">🤖</div>
    <h3>هوش مصنوعی</h3>
-   <p>علاقه‌مند به ابزارها و پیشرفت‌های هوش مصنوعی.</p>
+   <p class="muted">علاقه‌مند به ابزارها و پیشرفت‌های هوش مصنوعی.</p>
   </div>  <div class="card">
    <div class="project-icon">⚽</div>
    <h3>فوتبال</h3>
-   <p>یکی از علاقه‌های اصلی من فوتبال و دنیای ورزشه.</p>
+   <p class="muted">یکی از علاقه‌های اصلی من فوتبال و دنیای ورزشه.</p>
   </div> </div></section><section id="skills" class="reveal"> <h2 class="section-title">
   🚀 <span>مهارت‌ها</span>
  </h2> <div class="card">  <div class="skill">
@@ -1225,9 +1387,8 @@ id="randomFact">
  </h2> <div class="grid">  <div class="card project-card">
    <div class="project-icon">🌐</div>
    <h3>Web Site Personal</h3>
-   <p>
-    طراحی و توسعه وب‌سایت شخصی برای معرفی، ارتباط و نمایش علایق.
-   </p>   <div class="tags">
+   <p>طراحی و توسعه وب‌سایت شخصی برای معرفی، ارتباط و نمایش علایق.</p>
+   <div class="tags">
     <span class="tag">HTML</span>
     <span class="tag">CSS</span>
     <span class="tag">JavaScript</span>
@@ -1235,26 +1396,22 @@ id="randomFact">
   </div>  <div class="card project-card">
    <div class="project-icon">💻</div>
    <h3>Technology World</h3>
-   <p>
-    یادگیری، تجربه و دنبال کردن فناوری‌های جدید و دنیای دیجیتال.
-   </p>   <div class="tags">
+   <p>یادگیری، تجربه و دنبال کردن فناوری‌های جدید و دنیای دیجیتال.</p>
+   <div class="tags">
     <span class="tag">Technology</span>
     <span class="tag">Digital</span>
    </div>
   </div>  <div class="card project-card">
    <div class="project-icon">🤖</div>
    <h3>AI</h3>
-   <p>
-    علاقه‌مندی و آشنایی با ابزارها و پیشرفت‌های هوش مصنوعی.
-   </p>   <div class="tags">
+   <p>علاقه‌مندی و آشنایی با ابزارها و پیشرفت‌های هوش مصنوعی.</p>
+   <div class="tags">
     <span class="tag">AI</span>
     <span class="tag">Tools</span>
    </div>
   </div> </div> <div class="card github-feature">  <div class="github-card">   <div class="github-logo">🐙</div>   <div>
     <h3>پروفایل GitHub من</h3>
-    <p style="color:#9ca9c9">
-     پروژه‌ها، تجربه‌ها و مسیر یادگیری من.
-    </p>
+    <p class="muted">پروژه‌ها، تجربه‌ها و مسیر یادگیری من.</p>
    </div>  </div><a class="btn primary"
 href="https://github.com/amirrezagholami86"
 target="_blank">
@@ -1266,85 +1423,89 @@ target="_blank">
  </h2> <div class="grid">  <div class="card achievement">
    <div class="achievement-icon">🌐</div>
    <h3>ساخت سایت شخصی</h3>
-   <p>
-    ساخت و توسعه یک وب‌سایت شخصی با امکانات تعاملی.
-   </p>
+   <p class="muted">ساخت و توسعه یک وب‌سایت شخصی با امکانات تعاملی.</p>
   </div>  <div class="card achievement">
    <div class="achievement-icon">🤖</div>
    <h3>آشنایی با AI</h3>
-   <p>
-    تجربه و شناخت بیشتر ابزارهای هوش مصنوعی.
-   </p>
+   <p class="muted">تجربه و شناخت بیشتر ابزارهای هوش مصنوعی.</p>
   </div>  <div class="card achievement">
    <div class="achievement-icon">📚</div>
    <h3>یادگیری مداوم</h3>
-   <p>
-    ادامه دادن مسیر یادگیری و تجربه کردن چیزهای جدید.
-   </p>
+   <p class="muted">ادامه دادن مسیر یادگیری و تجربه کردن چیزهای جدید.</p>
+  </div> </div></section><section id="tools" class="reveal"> <h2 class="section-title">
+  🧰 <span>ابزارهای مورد علاقه</span>
+ </h2> <div class="grid">  <div class="card tool-card">
+   <div class="tool-icon">🐙</div>
+   <h3>GitHub</h3>
+   <p class="muted">مدیریت و نمایش پروژه‌ها</p>
+   <span class="tool-label">Code & Projects</span>
+  </div>  <div class="card tool-card">
+   <div class="tool-icon">🤖</div>
+   <h3>AI Tools</h3>
+   <p class="muted">تجربه ابزارهای هوش مصنوعی</p>
+   <span class="tool-label">Artificial Intelligence</span>
+  </div>  <div class="card tool-card">
+   <div class="tool-icon">🌐</div>
+   <h3>Web</h3>
+   <p class="muted">ساخت و طراحی صفحات وب</p>
+   <span class="tool-label">Web Development</span>
   </div> </div></section><section id="progress" class="reveal"> <h2 class="section-title">
   📈 <span>مسیر پیشرفت</span>
  </h2> <div class="grid-2">  <div class="card progress-card">   <div class="progress-circle">
     <div class="progress-number">72%</div>
-   </div>   <h3>مسیر کلی یادگیری</h3>   <p style="color:#9ca9c9">
+   </div>   <h3>مسیر کلی یادگیری</h3>   <p class="muted">
     یک نمایش ساده از مسیر فعلی یادگیری و تجربه.
-   </p>  </div>  <div class="card">   <h3>مراحل فعلی 🚀</h3>   <div class="progress-list"><div class="progress-line">
- <div class="progress-line-top">
-  <span>وب و طراحی</span>
-  <span>80%</span>
- </div>
-
- <div class="progress-track">
-  <div class="progress-value" style="width:80%"></div>
- </div>
-</div>
-
-<div class="progress-line">
- <div class="progress-line-top">
-  <span>JavaScript</span>
-  <span>55%</span>
- </div>
-
- <div class="progress-track">
-  <div class="progress-value" style="width:55%"></div>
- </div>
-</div>
-
-<div class="progress-line">
- <div class="progress-line-top">
-  <span>هوش مصنوعی</span>
-  <span>65%</span>
- </div>
-
- <div class="progress-track">
-  <div class="progress-value" style="width:65%"></div>
- </div>
-</div>
-
-<div class="progress-line">
- <div class="progress-line-top">
-  <span>تجربه پروژه</span>
-  <span>70%</span>
- </div>
-
- <div class="progress-track">
-  <div class="progress-value" style="width:70%"></div>
- </div>
-</div>
-
+   </p>  </div>  <div class="card">   <h3>مراحل فعلی 🚀</h3>   <div class="progress-line">
+    <div class="progress-line-top">
+     <span>وب و طراحی</span>
+     <span>80%</span>
+    </div>
+    <div class="progress-track">
+     <div class="progress-value" style="width:80%"></div>
+    </div>
+   </div>   <div class="progress-line">
+    <div class="progress-line-top">
+     <span>JavaScript</span>
+     <span>55%</span>
+    </div>
+    <div class="progress-track">
+     <div class="progress-value" style="width:55%"></div>
+    </div>
+   </div>   <div class="progress-line">
+    <div class="progress-line-top">
+     <span>هوش مصنوعی</span>
+     <span>65%</span>
+    </div>
+    <div class="progress-track">
+     <div class="progress-value" style="width:65%"></div>
+    </div>
+   </div>   <div class="progress-line">
+    <div class="progress-line-top">
+     <span>تجربه پروژه</span>
+     <span>70%</span>
+    </div>
+    <div class="progress-track">
+     <div class="progress-value" style="width:70%"></div>
+    </div>
    </div>  </div> </div></section><section id="gallery" class="reveal"> <h2 class="section-title">
   🖼️ <span>گالری</span>
- </h2> <div class="grid">  <div class="card gallery-card">
-   <div class="gallery-icon">💻</div>
-   <h3>تکنولوژی</h3>
-   <p>علاقه به دنیای دیجیتال</p>
-  </div>  <div class="card gallery-card">
+ </h2> <div class="grid">  <div class="card gallery-card"
+       data-image="profile.jpg"
+       data-title="امیررضا غلامی"><img src="profile.jpg"
+alt="امیررضا غلامی">
+
+   <h3 style="margin-top:12px">
+    پروفایل
+   </h3>   <p class="muted">
+    برای نمایش بزرگ کلیک کن
+   </p>  </div>  <div class="card gallery-card">
    <div class="gallery-icon">🤖</div>
    <h3>هوش مصنوعی</h3>
-   <p>آینده دنیای فناوری</p>
+   <p class="muted">آینده دنیای فناوری</p>
   </div>  <div class="card gallery-card">
    <div class="gallery-icon">⚽</div>
    <h3>فوتبال</h3>
-   <p>یکی از علاقه‌های من</p>
+   <p class="muted">یکی از علاقه‌های من</p>
   </div> </div></section><section id="search" class="reveal"> <h2 class="section-title">
   🔍 <span>جست‌وجو</span> در سایت
  </h2> <div class="search-box"><input id="siteSearch"
@@ -1356,34 +1517,37 @@ placeholder="مثلاً: هوش مصنوعی، پروژه، اهداف...">
   </button> </div></section><section id="timeline" class="reveal"> <h2 class="section-title">
   🕒 <span>مسیر من</span>
  </h2> <div class="timeline">  <div class="timeline-item">
-   <div class="timeline-dot"></div>   <div class="card">
+   <div class="timeline-dot"></div>
+   <div class="card">
     <h3>شروع مسیر 📚</h3>
-    <p>یادگیری و کشف علایق مختلف.</p>
+    <p class="muted">یادگیری و کشف علایق مختلف.</p>
    </div>
   </div>  <div class="timeline-item">
-   <div class="timeline-dot"></div>   <div class="card">
+   <div class="timeline-dot"></div>
+   <div class="card">
     <h3>مرحله بعد 🤖</h3>
-    <p>ورود بیشتر به دنیای هوش مصنوعی.</p>
+    <p class="muted">ورود بیشتر به دنیای هوش مصنوعی.</p>
    </div>
   </div>  <div class="timeline-item">
-   <div class="timeline-dot"></div>   <div class="card">
+   <div class="timeline-dot"></div>
+   <div class="card">
     <h3>امروز 🚀</h3>
-    <p>ساخت، تجربه و پیشرفت.</p>
+    <p class="muted">ساخت، تجربه و پیشرفت.</p>
    </div>
   </div> </div></section><section id="goals" class="reveal"> <h2 class="section-title">
   🎯 <span>اهداف</span>
  </h2> <div class="grid">  <div class="card goal">
    <div class="goal-icon">💻</div>
    <h3>توسعه مهارت‌های فنی</h3>
-   <p>یادگیری بیشتر و ساخت پروژه‌های بهتر.</p>
+   <p class="muted">یادگیری بیشتر و ساخت پروژه‌های بهتر.</p>
   </div>  <div class="card goal">
    <div class="goal-icon">🤖</div>
    <h3>یادگیری AI</h3>
-   <p>آشنایی بیشتر با هوش مصنوعی و ابزارهای آن.</p>
+   <p class="muted">آشنایی بیشتر با هوش مصنوعی و ابزارهای آن.</p>
   </div>  <div class="card goal">
    <div class="goal-icon">🚀</div>
    <h3>ساخت پروژه‌های بیشتر</h3>
-   <p>تبدیل ایده‌ها به پروژه‌های واقعی.</p>
+   <p class="muted">تبدیل ایده‌ها به پروژه‌های واقعی.</p>
   </div> </div></section><section id="contact" class="reveal"> <h2 class="section-title">
   📞 <span>ارتباط</span> با من
  </h2> <div class="contact-grid"><a class="contact-item"
@@ -1460,7 +1624,7 @@ style="margin-top:12px">
 📋 کپی آیدی تلگرام
 </button>
 
-  </div>  <div class="card">   <h3>📤 اشتراک‌گذاری سایت</h3>   <p style="margin:15px 0;color:#9ca9c9">
+  </div>  <div class="card">   <h3>📤 اشتراک‌گذاری سایت</h3>   <p class="muted" style="margin:15px 0">
     سایت شخصی امیررضا غلامی رو با دیگران به اشتراک بذار.
    </p><button class="btn primary"
 id="shareBtn">
@@ -1469,23 +1633,16 @@ id="shareBtn">
 
   </div> </div></section><section id="qrcode-section" class="reveal"> <h2 class="section-title">
   🔳 <span>QR Code</span> سایت
- </h2> <div class="card qr-section">  <div>   <h2>سایت من همیشه یک اسکن با تو فاصله داره 🚀</h2>   <p style="margin-top:15px;color:#9ca9c9">
+ </h2> <div class="card qr-section">  <div>   <h2>سایت من همیشه یک اسکن با تو فاصله داره 🚀</h2>   <p class="muted" style="margin-top:15px">
     این QR Code رو می‌تونی با گوشی اسکن کنی
     و مستقیماً وارد سایت شخصی من بشی.
-   </p><button class="btn"
-onclick="showToast('🔳 QR Code مربوط به سایت شخصی منه')"
-style="margin-top:20px">
-🔳 QR Code آماده است
-</button>
-
-  </div>  <div class="qr-box">   <div id="qrcode"></div>   <p>
+   </p>  </div>  <div class="qr-box">   <div id="qrcode"></div>   <p style="color:#111;font-size:12px;margin-top:8px">
     amirrezagholami86.github.io
    </p>  </div> </div></section></main><footer>
  © 2026 امیررضا غلامی — ساخته شده با ❤️ و 🚀
 </footer><button id="backTop">↑</button>
 
-<div class="quick-menu" id="quickMenu"> <div class="quick-links"><a class="quick-link"
-href="#contact">📞</a>
+<div class="quick-menu" id="quickMenu"> <div class="quick-links"><a class="quick-link" href="#contact">📞</a>
 
 <a class="quick-link"
 href="https://github.com/amirrezagholami86"
@@ -1494,43 +1651,130 @@ target="_blank">🐙</a>
 <a class="quick-link"
 href="#qrcode-section">🔳</a>
 
-<a class="quick-link"
-href="#top">🏠</a>
+<a class="quick-link" href="#top">🏠</a>
 
  </div><button class="quick-toggle"
 id="quickToggle">
 ⚡
 </button>
 
-</div><div id="toast"></div><script>
+</div><div class="modal" id="imageModal"> <div class="modal-content"><button class="close-modal"
+id="closeModal">
+×
+</button>
+
+<img id="modalImage"
+src=""
+alt="تصویر گالری">
+
+ </div></div><div id="toast"></div><script>
 
 /* THEME */
 
-const themeToggle =
-document.getElementById("themeToggle");
-
-const savedTheme =
-localStorage.getItem("theme");
+const themeToggle=document.getElementById("themeToggle");
+const savedTheme=localStorage.getItem("theme");
 
 if(savedTheme==="light"){
  document.body.classList.add("light");
  themeToggle.textContent="☀️";
 }
 
+/* SOUND */
+
+let soundEnabled=
+ localStorage.getItem("soundEnabled")==="true";
+
+const soundToggle=
+ document.getElementById("soundToggle");
+
+function updateSoundIcon(){
+ soundToggle.textContent=
+  soundEnabled ? "🔊" : "🔇";
+}
+
+updateSoundIcon();
+
+let audioContext=null;
+
+function uiSound(){
+
+ if(!soundEnabled)return;
+
+ try{
+
+  if(!audioContext){
+   audioContext=
+    new (window.AudioContext||
+    window.webkitAudioContext)();
+  }
+
+  const osc=
+   audioContext.createOscillator();
+
+  const gain=
+   audioContext.createGain();
+
+  osc.frequency.value=600;
+  osc.type="sine";
+
+  gain.gain.setValueAtTime(
+   .035,
+   audioContext.currentTime
+  );
+
+  gain.gain.exponentialRampToValueAtTime(
+   .001,
+   audioContext.currentTime+.08
+  );
+
+  osc.connect(gain);
+  gain.connect(audioContext.destination);
+
+  osc.start();
+  osc.stop(audioContext.currentTime+.08);
+
+ }catch(e){}
+
+}
+
+soundToggle.addEventListener("click",()=>{
+
+ soundEnabled=!soundEnabled;
+
+ localStorage.setItem(
+  "soundEnabled",
+  soundEnabled
+ );
+
+ updateSoundIcon();
+
+ if(soundEnabled)uiSound();
+
+ showToast(
+  soundEnabled
+  ? "🔊 صدای رابط فعال شد"
+  : "🔇 صدای رابط خاموش شد"
+ );
+
+});
+
+
 themeToggle.addEventListener("click",()=>{
 
  document.body.classList.toggle("light");
 
- const light =
- document.body.classList.contains("light");
+ const light=
+  document.body.classList.contains("light");
 
  localStorage.setItem(
   "theme",
   light ? "light" : "dark"
  );
 
- themeToggle.textContent =
+ themeToggle.textContent=
   light ? "☀️" : "🌙";
+
+ uiSound();
 
  showToast(
   light
@@ -1543,25 +1787,30 @@ themeToggle.addEventListener("click",()=>{
 
 /* WELCOME */
 
-const welcome =
-document.getElementById("welcome");
+const welcome=document.getElementById("welcome");
 
 if(localStorage.getItem("welcomeSeen")){
  welcome.classList.add("hide");
 }else{
 
  setTimeout(()=>{
+
   welcome.classList.add("hide");
-  localStorage.setItem("welcomeSeen","1");
- },1800);
+
+  localStorage.setItem(
+   "welcomeSeen",
+   "1"
+  );
+
+ },1300);
 
 }
 
 
 /* TYPING */
 
-const typingText =
-document.getElementById("typingText");
+const typingText=
+ document.getElementById("typingText");
 
 const phrases=[
  "علاقه‌مند به تکنولوژی 💻",
@@ -1589,7 +1838,7 @@ function typeEffect(){
 
    deleting=true;
 
-   setTimeout(typeEffect,1300);
+   setTimeout(typeEffect,1200);
 
    return;
   }
@@ -1607,6 +1856,7 @@ function typeEffect(){
 
    phraseIndex=
     (phraseIndex+1)%phrases.length;
+
   }
 
  }
@@ -1624,155 +1874,188 @@ typeEffect();
 /* REVEAL */
 
 const observer=
-new IntersectionObserver(
- entries=>{
+ new IntersectionObserver(
+  entries=>{
 
-  entries.forEach(entry=>{
+   entries.forEach(entry=>{
 
-   if(entry.isIntersecting){
+    if(entry.isIntersecting){
 
-    entry.target.classList.add("active");
+     entry.target.classList.add("active");
 
-   }
+    }
 
-  });
+   });
 
- },
- {threshold:.12}
-);
+  },
+  {threshold:.1}
+ );
 
 document
-.querySelectorAll(".reveal")
-.forEach(el=>observer.observe(el));
+ .querySelectorAll(".reveal")
+ .forEach(el=>observer.observe(el));
 
 
 /* COUNTERS */
 
 const counterObserver=
-new IntersectionObserver(
- entries=>{
+ new IntersectionObserver(
+  entries=>{
 
-  entries.forEach(entry=>{
+   entries.forEach(entry=>{
 
-   if(!entry.isIntersecting)return;
+    if(!entry.isIntersecting)return;
 
-   const counter=entry.target;
-   const target=
-    Number(counter.dataset.target);
+    const counter=entry.target;
+    const target=
+     Number(counter.dataset.target);
 
-   let current=0;
+    let current=0;
+    const duration=900;
+    const step=
+     Math.max(1,target/30);
 
-   const timer=setInterval(()=>{
+    const timer=setInterval(()=>{
 
-    current++;
+     current+=step;
 
-    counter.textContent=current;
+     if(current>=target){
 
-    if(current>=target){
+      current=target;
+      clearInterval(timer);
 
-     clearInterval(timer);
+     }
 
-    }
+     counter.textContent=
+      Math.floor(current);
 
-   },100);
+    },duration/30);
 
-   counterObserver.unobserve(counter);
+    counterObserver.unobserve(counter);
 
-  });
+   });
 
- },
- {threshold:.6}
-);
+  },
+  {threshold:.5}
+ );
 
 document
-.querySelectorAll(".stat-number")
-.forEach(el=>{
- counterObserver.observe(el);
-});
+ .querySelectorAll(".stat-number")
+ .forEach(el=>counterObserver.observe(el));
 
 
 /* SKILLS */
 
 const skillObserver=
-new IntersectionObserver(
- entries=>{
+ new IntersectionObserver(
+  entries=>{
 
-  entries.forEach(entry=>{
+   entries.forEach(entry=>{
 
-   if(entry.isIntersecting){
+    if(entry.isIntersecting){
 
-    document
-    .querySelectorAll(".skill-fill")
-    .forEach(bar=>{
-     bar.style.width=
-      bar.dataset.width;
-    });
+     document
+      .querySelectorAll(".skill-fill")
+      .forEach(bar=>{
+       bar.style.width=
+        bar.dataset.width;
+      });
 
-    skillObserver.disconnect();
+     skillObserver.disconnect();
 
-   }
+    }
 
-  });
+   });
 
- },
- {threshold:.3}
-);
+  },
+  {threshold:.3}
+ );
 
 document
-.querySelectorAll(".skill-fill")
-.forEach(el=>{
- skillObserver.observe(el);
-});
+ .querySelectorAll(".skill-fill")
+ .forEach(el=>skillObserver.observe(el));
 
 
-/* SCROLL */
+/* SCROLL + ACTIVE NAV */
 
-window.addEventListener("scroll",()=>{
+const sections=
+ document.querySelectorAll("section[id]");
+
+const navLinks=
+ document.querySelectorAll(".nav-link");
+
+function updateScroll(){
 
  const scrollTop=window.scrollY;
 
  const height=
- document.documentElement.scrollHeight-
- document.documentElement.clientHeight;
+  document.documentElement.scrollHeight-
+  document.documentElement.clientHeight;
 
  const progress=
- height>0
- ? scrollTop/height*100
- : 0;
+  height>0
+  ? scrollTop/height*100
+  : 0;
 
- document
- .getElementById("progressBar")
- .style.width=
- progress+"%";
+ document.getElementById("progressBar")
+  .style.width=progress+"%";
 
  const backTop=
- document.getElementById("backTop");
+  document.getElementById("backTop");
 
- if(scrollTop>500){
-
+ if(scrollTop>500)
   backTop.classList.add("show");
-
- }else{
-
+ else
   backTop.classList.remove("show");
 
- }
+ let current="top";
 
-});
+ sections.forEach(section=>{
+
+  const top=
+   section.offsetTop-150;
+
+  if(scrollTop>=top){
+   current=section.id;
+  }
+
+ });
+
+ navLinks.forEach(link=>{
+
+  link.classList.remove("active");
+
+  if(link.getAttribute("href")==="#"+current){
+   link.classList.add("active");
+  }
+
+ });
+
+}
+
+window.addEventListener(
+ "scroll",
+ updateScroll,
+ {passive:true}
+);
+
+updateScroll();
 
 
 /* BACK TOP */
 
 document
-.getElementById("backTop")
-.addEventListener("click",()=>{
+ .getElementById("backTop")
+ .addEventListener("click",()=>{
 
- window.scrollTo({
-  top:0,
-  behavior:"smooth"
+  window.scrollTo({
+   top:0,
+   behavior:"smooth"
+  });
+
+  uiSound();
+
  });
-
-});
 
 
 /* TOAST */
@@ -1782,10 +2065,9 @@ let toastTimer;
 function showToast(message){
 
  const toast=
- document.getElementById("toast");
+  document.getElementById("toast");
 
  toast.textContent=message;
-
  toast.classList.add("show");
 
  clearTimeout(toastTimer);
@@ -1799,49 +2081,51 @@ function showToast(message){
 }
 
 
-/* DATE TIME */
+/* DATE */
 
 function updateDateTime(){
 
  const now=new Date();
 
  const time=
- new Intl.DateTimeFormat("fa-IR",{
-  hour:"2-digit",
-  minute:"2-digit",
-  second:"2-digit"
- }).format(now);
+  new Intl.DateTimeFormat(
+   "fa-IR",
+   {
+    hour:"2-digit",
+    minute:"2-digit",
+    second:"2-digit"
+   }
+  ).format(now);
 
  let date;
 
  try{
 
   date=
-  new Intl.DateTimeFormat(
-   "fa-IR-u-ca-persian",
-   {dateStyle:"full"}
-  ).format(now);
+   new Intl.DateTimeFormat(
+    "fa-IR-u-ca-persian",
+    {dateStyle:"full"}
+   ).format(now);
 
  }catch(e){
 
   date=
-  new Intl.DateTimeFormat(
-   "fa-IR",
-   {dateStyle:"full"}
-  ).format(now);
+   new Intl.DateTimeFormat(
+    "fa-IR",
+    {dateStyle:"full"}
+   ).format(now);
 
  }
 
  document.getElementById("liveTime")
- .textContent=time;
+  .textContent=time;
 
  document.getElementById("liveDate")
- .textContent=date;
+  .textContent=date;
 
 }
 
 updateDateTime();
-
 setInterval(updateDateTime,1000);
 
 
@@ -1864,29 +2148,31 @@ const quotes=[
 ];
 
 let quoteIndex=
-Math.floor(Math.random()*quotes.length);
+ Math.floor(Math.random()*quotes.length);
 
 function showQuote(){
 
  document.getElementById("quoteText")
- .textContent=quotes[quoteIndex];
+  .textContent=quotes[quoteIndex];
 
 }
 
 showQuote();
 
 document
-.getElementById("newQuote")
-.addEventListener("click",()=>{
+ .getElementById("newQuote")
+ .addEventListener("click",()=>{
 
- quoteIndex=
- (quoteIndex+1)%quotes.length;
+  quoteIndex=
+   (quoteIndex+1)%quotes.length;
 
- showQuote();
+  showQuote();
 
- showToast("💡 جمله جدید نمایش داده شد");
+  uiSound();
 
-});
+  showToast("💡 جمله جدید نمایش داده شد");
+
+ });
 
 
 /* RANDOM FACT */
@@ -1908,18 +2194,22 @@ const facts=[
 ];
 
 document
-.getElementById("randomFact")
-.addEventListener("click",()=>{
+ .getElementById("randomFact")
+ .addEventListener("click",()=>{
 
- const random=
- facts[Math.floor(Math.random()*facts.length)];
+  const random=
+   facts[
+    Math.floor(Math.random()*facts.length)
+   ];
 
- document.getElementById("randomResult")
- .textContent=random;
+  document.getElementById("randomResult")
+   .textContent=random;
 
- showToast("🎲 یک مورد تصادفی انتخاب شد");
+  uiSound();
 
-});
+  showToast("🎲 یک مورد تصادفی انتخاب شد");
+
+ });
 
 
 /* COPY */
@@ -1929,17 +2219,21 @@ function copyText(text,message){
  if(navigator.clipboard){
 
   navigator.clipboard
-  .writeText(text)
-  .then(()=>{
-   showToast(message);
-  })
-  .catch(()=>{
-   showToast("❌ کپی انجام نشد");
-  });
+   .writeText(text)
+   .then(()=>{
+
+    uiSound();
+    showToast(message);
+
+   })
+   .catch(()=>{
+    showToast("❌ کپی انجام نشد");
+   });
 
  }else{
 
-  const area=document.createElement("textarea");
+  const area=
+   document.createElement("textarea");
 
   area.value=text;
 
@@ -1961,45 +2255,51 @@ function copyText(text,message){
 /* SHARE */
 
 document
-.getElementById("shareBtn")
-.addEventListener("click",async()=>{
+ .getElementById("shareBtn")
+ .addEventListener("click",async()=>{
 
- const shareData={
+  const data={
 
-  title:"امیررضا غلامی | وب‌سایت شخصی",
+   title:"امیررضا غلامی | وب‌سایت شخصی",
 
-  text:"وب‌سایت شخصی امیررضا غلامی 🚀",
+   text:"وب‌سایت شخصی امیررضا غلامی 🚀",
 
-  url:"https://amirrezagholami86.github.io/"
+   url:"https://amirrezagholami86.github.io/"
 
- };
+  };
 
- if(navigator.share){
+  if(navigator.share){
 
-  try{
+   try{
 
-   await navigator.share(shareData);
+    await navigator.share(data);
 
-   showToast("📤 سایت به اشتراک گذاشته شد");
+    uiSound();
 
-  }catch(e){
+    showToast(
+     "📤 سایت به اشتراک گذاشته شد"
+    );
 
-   if(e.name!=="AbortError"){
-    showToast("❌ اشتراک‌گذاری انجام نشد");
+   }catch(e){
+
+    if(e.name!=="AbortError"){
+     showToast(
+      "❌ اشتراک‌گذاری انجام نشد"
+     );
+    }
+
    }
+
+  }else{
+
+   copyText(
+    data.url,
+    "🔗 لینک سایت کپی شد"
+   );
 
   }
 
- }else{
-
-  copyText(
-   shareData.url,
-   "🔗 لینک سایت کپی شد"
-  );
-
- }
-
-});
+ });
 
 
 /* SEARCH */
@@ -2056,6 +2356,12 @@ const searchMap=[
  },
 
  {
+  words:["ابزار","tools","github","ai tools"],
+  target:"tools",
+  name:"ابزارها"
+ },
+
+ {
   words:["گالری","عکس","تصویر"],
   target:"gallery",
   name:"گالری"
@@ -2088,7 +2394,7 @@ const searchMap=[
  },
 
  {
-  words:["qr","کد","qr code"],
+  words:["qr","کد"],
   target:"qrcode-section",
   name:"QR Code"
  }
@@ -2098,10 +2404,10 @@ const searchMap=[
 function performSearch(){
 
  const input=
- document.getElementById("siteSearch");
+  document.getElementById("siteSearch");
 
  const value=
- input.value.trim().toLowerCase();
+  input.value.trim().toLowerCase();
 
  if(!value){
 
@@ -2126,7 +2432,6 @@ function performSearch(){
   ){
 
    result=item;
-
    break;
 
   }
@@ -2136,10 +2441,12 @@ function performSearch(){
  if(result){
 
   document
-  .getElementById(result.target)
-  .scrollIntoView({
-   behavior:"smooth"
-  });
+   .getElementById(result.target)
+   .scrollIntoView({
+    behavior:"smooth"
+   });
+
+  uiSound();
 
   showToast(
    "✅ رفتیم به بخش «"+
@@ -2158,42 +2465,108 @@ function performSearch(){
 }
 
 document
-.getElementById("searchBtn")
-.addEventListener("click",performSearch);
+ .getElementById("searchBtn")
+ .addEventListener(
+  "click",
+  performSearch
+ );
 
 document
-.getElementById("siteSearch")
-.addEventListener("keydown",event=>{
+ .getElementById("siteSearch")
+ .addEventListener(
+  "keydown",
+  event=>{
 
- if(event.key==="Enter"){
-  performSearch();
- }
+   if(event.key==="Enter"){
+    performSearch();
+   }
 
-});
+  }
+ );
 
 
 /* QUICK MENU */
 
 const quickMenu=
-document.getElementById("quickMenu");
+ document.getElementById("quickMenu");
 
 document
-.getElementById("quickToggle")
-.addEventListener("click",()=>{
+ .getElementById("quickToggle")
+ .addEventListener("click",()=>{
 
- quickMenu.classList.toggle("open");
+  quickMenu.classList.toggle("open");
+
+  uiSound();
+
+ });
+
+document
+ .querySelectorAll(".quick-link")
+ .forEach(link=>{
+
+  link.addEventListener("click",()=>{
+
+   quickMenu.classList.remove("open");
+
+  });
+
+ });
+
+
+/* GALLERY MODAL */
+
+const modal=
+ document.getElementById("imageModal");
+
+const modalImage=
+ document.getElementById("modalImage");
+
+document
+ .querySelectorAll(".gallery-card[data-image]")
+ .forEach(card=>{
+
+  card.addEventListener("click",()=>{
+
+   modalImage.src=
+    card.dataset.image;
+
+   modalImage.alt=
+    card.dataset.title || "تصویر";
+
+   modal.classList.add("show");
+
+   uiSound();
+
+  });
+
+ });
+
+function closeModal(){
+
+ modal.classList.remove("show");
+
+}
+
+document
+ .getElementById("closeModal")
+ .addEventListener(
+  "click",
+  closeModal
+ );
+
+modal.addEventListener("click",event=>{
+
+ if(event.target===modal){
+  closeModal();
+ }
 
 });
 
-document
-.querySelectorAll(".quick-link")
-.forEach(link=>{
+document.addEventListener("keydown",event=>{
 
- link.addEventListener("click",()=>{
-
-  quickMenu.classList.remove("open");
-
- });
+ if(event.key==="Escape"){
+  closeModal();
+ }
 
 });
 
@@ -2203,19 +2576,21 @@ document
 window.addEventListener("load",()=>{
 
  const qrElement=
- document.getElementById("qrcode");
+  document.getElementById("qrcode");
 
  if(typeof QRCode!=="undefined"){
 
   new QRCode(
    qrElement,
    {
-    text:"https://amirrezagholami86.github.io/",
+    text:
+     "https://amirrezagholami86.github.io/",
     width:170,
     height:170,
     colorDark:"#111111",
     colorLight:"#ffffff",
-    correctLevel:QRCode.CorrectLevel.H
+    correctLevel:
+     QRCode.CorrectLevel.H
    }
   );
 
@@ -2227,9 +2602,10 @@ window.addEventListener("load",()=>{
 /* PARTICLES */
 
 const canvas=
-document.getElementById("particles");
+ document.getElementById("particles");
 
-const ctx=canvas.getContext("2d");
+const ctx=
+ canvas.getContext("2d");
 
 let particles=[];
 
@@ -2247,7 +2623,7 @@ window.addEventListener(
  resizeCanvas
 );
 
-for(let i=0;i<55;i++){
+for(let i=0;i<45;i++){
 
  particles.push({
 
@@ -2257,9 +2633,9 @@ for(let i=0;i<55;i++){
 
   r:Math.random()*2+.5,
 
-  dx:(Math.random()-.5)*.35,
+  dx:(Math.random()-.5)*.3,
 
-  dy:(Math.random()-.5)*.35
+  dy:(Math.random()-.5)*.3
 
  });
 
@@ -2305,8 +2681,8 @@ function animateParticles(){
 
   ctx.fillStyle=
    document.body.classList.contains("light")
-   ? "rgba(0,120,255,.18)"
-   : "rgba(0,217,255,.25)";
+   ? "rgba(0,120,255,.16)"
+   : "rgba(0,217,255,.22)";
 
   ctx.fill();
 
