@@ -5,8 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>امیررضا غلامی | وب‌سایت شخصی</title>
-
-<meta name="description" content="وب‌سایت شخصی امیررضا غلامی؛ علاقه‌مند به تکنولوژی، هوش مصنوعی، وب و فوتبال.">
+<meta name="description" content="وب‌سایت شخصی امیررضا غلامی؛ تکنولوژی، هوش مصنوعی، وب و فوتبال.">
 <meta name="author" content="امیررضا غلامی">
 <meta name="robots" content="index, follow">
 
@@ -14,7 +13,7 @@
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="امیررضا غلامی | وب‌سایت شخصی">
-<meta property="og:description" content="تکنولوژی، هوش مصنوعی، وب و علایق شخصی امیررضا غلامی">
+<meta property="og:description" content="تکنولوژی، هوش مصنوعی، وب و علایق شخصی">
 <meta property="og:url" content="https://amirrezagholami86.github.io/">
 <meta property="og:image" content="profile.jpg">
 <meta property="og:locale" content="fa_IR">
@@ -43,16 +42,19 @@
 
 <style>
 :root{
-  --bg:#07111f;
-  --bg2:#0c1728;
-  --card:rgba(15,29,49,.78);
-  --text:#f4f7fb;
-  --muted:#aebbd0;
+  --bg:#06101d;
+  --bg2:#0b1728;
+  --card:rgba(14,28,48,.68);
+  --card2:rgba(255,255,255,.045);
+  --text:#f5f8ff;
+  --muted:#aab8cd;
   --primary:#00d9ff;
   --secondary:#8b5cf6;
-  --accent:#22c55e;
+  --success:#22c55e;
+  --warning:#f59e0b;
+  --danger:#ef4444;
   --border:rgba(255,255,255,.09);
-  --shadow:0 20px 60px rgba(0,0,0,.35);
+  --shadow:0 20px 60px rgba(0,0,0,.30);
 }
 
 *{
@@ -67,24 +69,25 @@ html{
 
 body{
   font-family:Tahoma,Arial,sans-serif;
-  background:
-    radial-gradient(circle at 15% 10%,rgba(0,217,255,.10),transparent 28%),
-    radial-gradient(circle at 85% 20%,rgba(139,92,246,.12),transparent 30%),
-    linear-gradient(135deg,var(--bg),var(--bg2));
   color:var(--text);
+  background:
+    radial-gradient(circle at 15% 8%,rgba(0,217,255,.12),transparent 28%),
+    radial-gradient(circle at 88% 25%,rgba(139,92,246,.13),transparent 30%),
+    linear-gradient(135deg,var(--bg),var(--bg2));
   line-height:1.9;
   overflow-x:hidden;
-  transition:.35s;
+  transition:.3s;
 }
 
 body.light{
-  --bg:#eef5ff;
-  --bg2:#ffffff;
-  --card:rgba(255,255,255,.82);
+  --bg:#edf5ff;
+  --bg2:#fff;
+  --card:rgba(255,255,255,.72);
+  --card2:rgba(20,40,70,.045);
   --text:#172033;
   --muted:#596579;
   --border:rgba(20,40,70,.10);
-  --shadow:0 18px 50px rgba(30,60,100,.13);
+  --shadow:0 18px 55px rgba(30,60,100,.12);
 }
 
 body.theme-green{
@@ -107,62 +110,63 @@ a{
   text-decoration:none;
 }
 
-button{
+button,input{
   font-family:inherit;
+}
+
+button{
+  cursor:pointer;
 }
 
 #particles{
   position:fixed;
   inset:0;
-  z-index:-3;
+  z-index:-4;
   pointer-events:none;
-  opacity:.5;
+  opacity:.35;
 }
 
 .bg-orb{
   position:fixed;
-  width:280px;
-  height:280px;
+  width:300px;
+  height:300px;
   border-radius:50%;
-  filter:blur(70px);
-  opacity:.13;
-  z-index:-2;
+  filter:blur(85px);
+  opacity:.11;
+  z-index:-3;
   pointer-events:none;
 }
 
 .orb1{
   background:var(--primary);
-  top:8%;
-  left:-100px;
+  left:-130px;
+  top:5%;
 }
 
 .orb2{
   background:var(--secondary);
-  right:-100px;
+  right:-130px;
   top:45%;
 }
 
 .mouse-glow{
   position:fixed;
-  width:330px;
-  height:330px;
+  width:360px;
+  height:360px;
   border-radius:50%;
   pointer-events:none;
-  z-index:-1;
+  z-index:-2;
   background:radial-gradient(circle,var(--primary),transparent 65%);
-  opacity:.07;
+  opacity:.065;
   transform:translate(-50%,-50%);
-  transition:opacity .2s;
 }
 
 .navbar{
   position:fixed;
-  top:0;
-  left:0;
-  right:0;
+  inset:0 0 auto;
   z-index:1000;
-  backdrop-filter:blur(18px);
-  background:rgba(5,12,24,.72);
+  background:rgba(5,12,24,.68);
+  backdrop-filter:blur(20px);
   border-bottom:1px solid var(--border);
 }
 
@@ -176,22 +180,21 @@ body.light .navbar{
   padding:10px 16px;
   display:flex;
   align-items:center;
-  gap:10px;
+  gap:12px;
 }
 
 .logo{
   font-weight:bold;
   color:var(--primary);
   white-space:nowrap;
-  font-size:15px;
 }
 
 .nav-links{
   display:flex;
-  gap:5px;
+  gap:4px;
+  flex:1;
   overflow-x:auto;
   scrollbar-width:none;
-  flex:1;
 }
 
 .nav-links::-webkit-scrollbar{
@@ -199,11 +202,11 @@ body.light .navbar{
 }
 
 .nav-links a{
+  white-space:nowrap;
   padding:7px 10px;
   border-radius:12px;
-  white-space:nowrap;
-  font-size:13px;
   color:var(--muted);
+  font-size:13px;
   transition:.25s;
 }
 
@@ -219,15 +222,14 @@ body.light .navbar{
   background:var(--card);
   color:var(--text);
   border-radius:12px;
-  padding:8px 12px;
-  cursor:pointer;
+  padding:7px 11px;
   font-size:20px;
 }
 
 .controls{
   position:fixed;
-  left:16px;
-  top:78px;
+  left:15px;
+  top:75px;
   z-index:900;
   display:flex;
   flex-direction:column;
@@ -241,14 +243,12 @@ body.light .navbar{
   border-radius:14px;
   background:var(--card);
   color:var(--text);
-  cursor:pointer;
-  backdrop-filter:blur(12px);
+  backdrop-filter:blur(14px);
   box-shadow:var(--shadow);
-  transition:.25s;
 }
 
 .control-btn:hover{
-  transform:translateY(-3px) scale(1.04);
+  transform:translateY(-3px);
 }
 
 .container{
@@ -258,23 +258,26 @@ body.light .navbar{
 
 section{
   padding:85px 0 25px;
-  scroll-margin-top:65px;
+  scroll-margin-top:70px;
 }
 
 .hero{
   min-height:100vh;
   display:flex;
   align-items:center;
-  justify-content:center;
   text-align:center;
   padding-top:110px;
 }
 
+.hero-inner{
+  width:100%;
+}
+
 .profile-wrap{
+  width:170px;
+  height:170px;
+  margin:0 auto 23px;
   position:relative;
-  width:165px;
-  height:165px;
-  margin:0 auto 22px;
 }
 
 .profile-wrap::before{
@@ -282,22 +285,17 @@ section{
   position:absolute;
   inset:-7px;
   border-radius:50%;
-  background:conic-gradient(
-    var(--primary),
-    var(--secondary),
-    var(--primary)
-  );
-  animation:spin 5s linear infinite;
+  background:conic-gradient(var(--primary),var(--secondary),var(--primary));
+  animation:spin 6s linear infinite;
 }
 
 .profile{
-  position:relative;
   width:100%;
   height:100%;
-  border-radius:50%;
   object-fit:cover;
+  border-radius:50%;
   border:6px solid var(--bg);
-  display:block;
+  position:relative;
   z-index:2;
 }
 
@@ -311,24 +309,24 @@ section{
   gap:8px;
   padding:6px 13px;
   border:1px solid var(--border);
-  background:var(--card);
   border-radius:999px;
+  background:var(--card);
   color:var(--muted);
   font-size:13px;
-  margin-bottom:18px;
 }
 
 .status-dot{
   width:9px;
   height:9px;
-  background:#22c55e;
   border-radius:50%;
-  box-shadow:0 0 12px #22c55e;
+  background:var(--success);
+  box-shadow:0 0 12px var(--success);
 }
 
 h1{
-  font-size:clamp(32px,7vw,58px);
-  margin-bottom:5px;
+  font-size:clamp(32px,7vw,60px);
+  line-height:1.35;
+  margin:15px 0 5px;
 }
 
 .gradient-text{
@@ -338,13 +336,18 @@ h1{
 }
 
 .typing{
-  color:var(--muted);
-  min-height:32px;
+  min-height:35px;
   font-size:18px;
+  color:var(--muted);
 }
 
-.hero-buttons,
-.quick-actions{
+.hero-description{
+  max-width:680px;
+  margin:8px auto 0;
+  color:var(--muted);
+}
+
+.hero-actions{
   display:flex;
   flex-wrap:wrap;
   justify-content:center;
@@ -353,34 +356,35 @@ h1{
 }
 
 .btn{
-  border:1px solid var(--border);
-  padding:10px 17px;
-  border-radius:14px;
-  background:var(--card);
-  color:var(--text);
-  cursor:pointer;
-  transition:.25s;
   display:inline-flex;
   align-items:center;
+  justify-content:center;
   gap:7px;
+  border:1px solid var(--border);
+  background:var(--card);
+  color:var(--text);
+  border-radius:14px;
+  padding:10px 17px;
+  transition:.25s;
+  backdrop-filter:blur(12px);
 }
 
 .btn:hover{
   transform:translateY(-3px);
   border-color:var(--primary);
-  box-shadow:0 10px 30px rgba(0,0,0,.18);
+  box-shadow:0 12px 35px rgba(0,0,0,.18);
 }
 
 .btn.primary{
-  background:linear-gradient(135deg,var(--primary),var(--secondary));
-  color:white;
+  color:#fff;
   border:0;
+  background:linear-gradient(135deg,var(--primary),var(--secondary));
 }
 
 .section-title{
   text-align:center;
   font-size:30px;
-  margin-bottom:10px;
+  margin-bottom:8px;
 }
 
 .section-subtitle{
@@ -389,29 +393,34 @@ h1{
   margin-bottom:30px;
 }
 
+.glass{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:24px;
+  padding:25px;
+  backdrop-filter:blur(18px);
+  box-shadow:var(--shadow);
+}
+
 .card-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:17px;
+  gap:16px;
 }
 
 .card{
   background:var(--card);
   border:1px solid var(--border);
   border-radius:22px;
-  padding:24px;
-  backdrop-filter:blur(14px);
+  padding:23px;
+  backdrop-filter:blur(16px);
   box-shadow:var(--shadow);
   transition:.3s;
 }
 
 .card:hover{
-  transform:translateY(-7px);
+  transform:translateY(-6px);
   border-color:rgba(255,255,255,.18);
-}
-
-.card h3{
-  margin-bottom:8px;
 }
 
 .muted{
@@ -422,36 +431,20 @@ h1{
   display:grid;
   grid-template-columns:repeat(4,1fr);
   gap:12px;
+  margin-top:20px;
 }
 
 .info-box{
-  padding:18px;
-  border:1px solid var(--border);
-  background:var(--card);
-  border-radius:18px;
   text-align:center;
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:17px;
+  background:var(--card2);
 }
 
 .info-icon{
-  font-size:26px;
   display:block;
-  margin-bottom:5px;
-}
-
-.dashboard-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:14px;
-}
-
-.dashboard-card{
-  text-align:center;
-}
-
-.big-number{
-  font-size:28px;
-  font-weight:bold;
-  color:var(--primary);
+  font-size:26px;
 }
 
 .digital-id{
@@ -467,11 +460,6 @@ h1{
   object-fit:cover;
   border-radius:25px;
   border:3px solid var(--primary);
-  box-shadow:0 0 35px rgba(0,217,255,.16);
-}
-
-.id-details h3{
-  font-size:27px;
 }
 
 .id-tags{
@@ -483,52 +471,184 @@ h1{
 
 .tag{
   padding:5px 11px;
-  border-radius:999px;
-  background:rgba(255,255,255,.07);
   border:1px solid var(--border);
+  border-radius:999px;
+  background:var(--card2);
   font-size:13px;
 }
 
-.badges{
+.quick-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:15px;
+}
+
+.dashboard-grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:15px;
+  gap:14px;
 }
 
-.badge{
+.dashboard-card{
   text-align:center;
-  padding:24px 12px;
 }
 
-.badge-icon{
-  font-size:38px;
+.big-number{
+  font-size:28px;
+  color:var(--primary);
+  font-weight:bold;
+}
+
+.level-box{
+  display:grid;
+  grid-template-columns:150px 1fr;
+  align-items:center;
+  gap:25px;
+}
+
+.level-circle{
+  width:140px;
+  height:140px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  margin:auto;
+  background:
+    radial-gradient(circle,var(--bg) 58%,transparent 59%),
+    conic-gradient(var(--primary) 0 72%,rgba(255,255,255,.08) 72%);
+  border:2px solid var(--border);
+}
+
+.level-number{
+  font-size:35px;
+  font-weight:bold;
+  color:var(--primary);
+}
+
+.xp-bar{
+  height:12px;
+  border-radius:30px;
+  background:rgba(255,255,255,.08);
+  overflow:hidden;
+  margin:10px 0;
+}
+
+.xp-bar span{
   display:block;
-  margin-bottom:8px;
+  width:72%;
+  height:100%;
+  border-radius:30px;
+  background:linear-gradient(90deg,var(--primary),var(--secondary));
 }
 
-.badge small{
+.growth-chart{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-around;
+  height:270px;
+  padding:25px 10px 10px;
+  border:1px solid var(--border);
+  border-radius:20px;
+  background:var(--card2);
+}
+
+.bar-wrap{
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-end;
+  gap:8px;
+  width:18%;
+}
+
+.growth-bar{
+  width:55%;
+  min-height:15px;
+  height:0;
+  border-radius:12px 12px 4px 4px;
+  background:linear-gradient(to top,var(--primary),var(--secondary));
+  transition:1.3s cubic-bezier(.2,.7,.2,1);
+}
+
+.bar-value{
+  font-size:12px;
   color:var(--muted);
 }
 
-.theme-buttons{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:10px;
-  margin-top:20px;
+.bar-label{
+  font-size:13px;
+  color:var(--text);
 }
 
-.theme-btn{
+.activity-list{
+  display:grid;
+  gap:12px;
+}
+
+.activity{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  padding:15px;
   border:1px solid var(--border);
-  background:var(--card);
-  color:var(--text);
-  padding:9px 15px;
-  border-radius:12px;
-  cursor:pointer;
+  border-radius:17px;
+  background:var(--card2);
+}
+
+.activity-icon{
+  width:45px;
+  height:45px;
+  display:grid;
+  place-items:center;
+  border-radius:14px;
+  background:rgba(255,255,255,.07);
+  font-size:23px;
+  flex:none;
+}
+
+.activity-date{
+  color:var(--muted);
+  font-size:12px;
+}
+
+.idea-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+}
+
+.idea{
+  position:relative;
+  overflow:hidden;
+}
+
+.idea::after{
+  content:"";
+  position:absolute;
+  width:100px;
+  height:100px;
+  border-radius:50%;
+  background:var(--primary);
+  filter:blur(50px);
+  opacity:.1;
+  left:-30px;
+  bottom:-30px;
+}
+
+.privacy{
+  display:flex;
+  gap:15px;
+  align-items:flex-start;
+}
+
+.privacy-icon{
+  font-size:35px;
 }
 
 .progress-row{
-  margin:17px 0;
+  margin:18px 0;
 }
 
 .progress-head{
@@ -546,18 +666,33 @@ h1{
 
 .progress span{
   display:block;
-  height:100%;
   width:0;
-  background:linear-gradient(90deg,var(--primary),var(--secondary));
+  height:100%;
   border-radius:20px;
+  background:linear-gradient(90deg,var(--primary),var(--secondary));
   transition:1.2s;
+}
+
+.badges{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+}
+
+.badge{
+  text-align:center;
+}
+
+.badge-icon{
+  display:block;
+  font-size:40px;
 }
 
 .stats{
   display:grid;
   grid-template-columns:repeat(4,1fr);
   gap:14px;
-  margin-top:20px;
+  margin-top:18px;
 }
 
 .stat{
@@ -566,22 +701,22 @@ h1{
 
 .stat-number{
   font-size:32px;
-  font-weight:bold;
   color:var(--primary);
+  font-weight:bold;
 }
 
 .timeline{
-  position:relative;
   max-width:800px;
   margin:auto;
+  position:relative;
 }
 
 .timeline::before{
   content:"";
   position:absolute;
+  right:20px;
   top:0;
   bottom:0;
-  right:20px;
   width:2px;
   background:linear-gradient(var(--primary),var(--secondary));
 }
@@ -594,35 +729,34 @@ h1{
 .timeline-dot{
   position:absolute;
   right:12px;
-  top:5px;
+  top:6px;
   width:18px;
   height:18px;
   border-radius:50%;
   background:var(--primary);
-  box-shadow:0 0 15px var(--primary);
+  box-shadow:0 0 16px var(--primary);
 }
 
 .timeline-content{
-  padding:18px;
   border:1px solid var(--border);
   background:var(--card);
   border-radius:18px;
+  padding:18px;
 }
 
 .gallery{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:16px;
+  gap:15px;
 }
 
 .gallery-item{
   min-height:190px;
-  border-radius:20px;
   overflow:hidden;
+  border-radius:20px;
   border:1px solid var(--border);
   background:var(--card);
   cursor:pointer;
-  position:relative;
 }
 
 .gallery-item img{
@@ -637,8 +771,7 @@ h1{
 }
 
 .visual-card{
-  height:100%;
-  min-height:190px;
+  height:190px;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -649,7 +782,6 @@ h1{
 .visual-card span{
   font-size:15px;
   color:var(--muted);
-  margin-top:8px;
 }
 
 .contact-grid{
@@ -671,7 +803,7 @@ h1{
 .copy-row input{
   flex:1;
   min-width:0;
-  background:rgba(255,255,255,.06);
+  background:var(--card2);
   border:1px solid var(--border);
   border-radius:10px;
   color:var(--text);
@@ -685,17 +817,21 @@ h1{
   color:var(--text);
   border-radius:10px;
   padding:7px 10px;
-  cursor:pointer;
 }
 
-.tools{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:15px;
+.theme-buttons{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:10px;
 }
 
-.tool{
-  text-align:center;
+.theme-btn{
+  border:1px solid var(--border);
+  background:var(--card);
+  color:var(--text);
+  border-radius:12px;
+  padding:9px 15px;
 }
 
 .qr-wrap{
@@ -705,10 +841,10 @@ h1{
 #qrcode{
   width:210px;
   height:210px;
-  margin:20px auto;
   padding:10px;
-  background:white;
+  background:#fff;
   border-radius:15px;
+  margin:20px auto;
 }
 
 .search-box{
@@ -728,10 +864,21 @@ h1{
   outline:none;
 }
 
+.reset-area{
+  display:flex;
+  justify-content:center;
+  margin-top:18px;
+}
+
+.btn.danger{
+  border-color:rgba(239,68,68,.35);
+  color:#fca5a5;
+}
+
 .floating-menu{
   position:fixed;
-  right:17px;
-  bottom:20px;
+  right:16px;
+  bottom:18px;
   z-index:950;
   display:flex;
   flex-direction:column;
@@ -745,43 +892,38 @@ h1{
   border:1px solid var(--border);
   background:var(--card);
   color:var(--text);
-  cursor:pointer;
   box-shadow:var(--shadow);
-  transition:.25s;
-}
-
-.float-btn:hover{
-  transform:scale(1.1);
+  backdrop-filter:blur(12px);
 }
 
 #toast{
   position:fixed;
-  bottom:25px;
   left:50%;
+  bottom:25px;
+  z-index:3000;
   transform:translate(-50%,120px);
+  opacity:0;
   background:#111827;
-  color:white;
+  color:#fff;
+  border:1px solid rgba(255,255,255,.1);
   padding:11px 17px;
   border-radius:12px;
-  z-index:2000;
-  opacity:0;
-  transition:.35s;
-  border:1px solid rgba(255,255,255,.1);
+  transition:.3s;
 }
 
 #toast.show{
-  transform:translate(-50%,0);
   opacity:1;
+  transform:translate(-50%,0);
 }
 
 .modal{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.86);
+  z-index:4000;
+  background:rgba(0,0,0,.88);
   display:none;
   align-items:center;
   justify-content:center;
-  z-index:3000;
   padding:20px;
 }
 
@@ -797,13 +939,23 @@ h1{
 
 .modal-close{
   position:absolute;
-  top:20px;
+  top:18px;
   right:25px;
   background:none;
   border:0;
   color:white;
-  font-size:35px;
-  cursor:pointer;
+  font-size:36px;
+}
+
+.reveal{
+  opacity:0;
+  transform:translateY(24px);
+  transition:.65s;
+}
+
+.reveal.visible{
+  opacity:1;
+  transform:none;
 }
 
 footer{
@@ -812,21 +964,10 @@ footer{
   color:var(--muted);
 }
 
-.reveal{
-  opacity:0;
-  transform:translateY(25px);
-  transition:.7s;
-}
-
-.reveal.visible{
-  opacity:1;
-  transform:none;
-}
-
 @media(max-width:850px){
   .card-grid,
   .gallery,
-  .tools{
+  .idea-grid{
     grid-template-columns:repeat(2,1fr);
   }
 
@@ -839,6 +980,11 @@ footer{
 
   .contact-grid{
     grid-template-columns:1fr 1fr;
+  }
+
+  .level-box{
+    grid-template-columns:1fr;
+    text-align:center;
   }
 
   .digital-id{
@@ -852,10 +998,6 @@ footer{
 }
 
 @media(max-width:700px){
-  .navbar{
-    height:auto;
-  }
-
   .nav-inner{
     justify-content:space-between;
   }
@@ -866,16 +1008,15 @@ footer{
 
   .nav-links{
     position:absolute;
-    top:100%;
-    right:12px;
-    left:12px;
     display:none;
+    top:100%;
+    right:10px;
+    left:10px;
     flex-direction:column;
     background:var(--card);
     border:1px solid var(--border);
     border-radius:18px;
-    padding:10px;
-    box-shadow:var(--shadow);
+    padding:9px;
     max-height:70vh;
     overflow-y:auto;
   }
@@ -889,8 +1030,8 @@ footer{
   }
 
   .controls{
-    left:10px;
     top:70px;
+    left:9px;
   }
 
   .hero{
@@ -898,13 +1039,13 @@ footer{
   }
 
   .profile-wrap{
-    width:135px;
-    height:135px;
+    width:140px;
+    height:140px;
   }
 
   .card-grid,
   .gallery,
-  .tools,
+  .idea-grid,
   .contact-grid{
     grid-template-columns:1fr;
   }
@@ -916,17 +1057,16 @@ footer{
     grid-template-columns:1fr 1fr;
   }
 
+  .growth-chart{
+    height:230px;
+  }
+
+  .bar-wrap{
+    width:20%;
+  }
+
   .search-box{
     flex-direction:column;
-  }
-
-  .floating-menu{
-    right:10px;
-    bottom:10px;
-  }
-
-  section{
-    padding-top:70px;
   }
 }
 
@@ -956,38 +1096,43 @@ footer{
 <div class="mouse-glow" id="mouseGlow"></div>
 
 <nav class="navbar">
-  <div class="nav-inner">
-    <div class="logo">Amirreza</div>
+<div class="nav-inner">
 
-    <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+  <div class="logo">Amirreza</div>
 
-    <div class="nav-links" id="navLinks">
-      <a href="#top">🏠 خانه</a>
-      <a href="#about">👋 درباره من</a>
-      <a href="#digital-id">🪪 پروفایل</a>
-      <a href="#dashboard">🧭 داشبورد</a>
-      <a href="#interests">❤️ علایق</a>
-      <a href="#skills">🚀 مهارت‌ها</a>
-      <a href="#projects">🛠️ پروژه‌ها</a>
-      <a href="#achievements">🏆 دستاوردها</a>
-      <a href="#badges">🏅 Badgeها</a>
-      <a href="#gallery">🖼️ گالری</a>
-      <a href="#timeline">🕒 مسیر من</a>
-      <a href="#goals">🎯 اهداف</a>
-      <a href="#contact">📞 ارتباط</a>
-    </div>
+  <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+
+  <div class="nav-links" id="navLinks">
+    <a href="#top">🏠 خانه</a>
+    <a href="#about">👋 درباره من</a>
+    <a href="#digital-id">🪪 پروفایل</a>
+    <a href="#dashboard">🧭 داشبورد</a>
+    <a href="#growth">📈 رشد</a>
+    <a href="#interests">❤️ علایق</a>
+    <a href="#skills">🚀 مهارت‌ها</a>
+    <a href="#projects">🛠️ پروژه‌ها</a>
+    <a href="#achievements">🏆 دستاوردها</a>
+    <a href="#badges">🏅 Badgeها</a>
+    <a href="#activities">📰 فعالیت‌ها</a>
+    <a href="#ideas">💡 ایده‌ها</a>
+    <a href="#gallery">🖼️ گالری</a>
+    <a href="#timeline">🕒 مسیر</a>
+    <a href="#goals">🎯 اهداف</a>
+    <a href="#contact">📞 ارتباط</a>
   </div>
+
+</div>
 </nav>
 
 <div class="controls">
-  <button class="control-btn" id="themeBtn" title="حالت روشن/تیره">🌙</button>
-  <button class="control-btn" id="soundBtn" title="صدای رابط">🔇</button>
+  <button class="control-btn" id="themeBtn">🌙</button>
+  <button class="control-btn" id="soundBtn">🔇</button>
 </div>
 
 <main id="top">
 
 <section class="hero">
-<div class="container">
+<div class="container hero-inner">
 
   <div class="profile-wrap">
     <img src="profile.jpg" class="profile" alt="امیررضا غلامی">
@@ -995,7 +1140,7 @@ footer{
 
   <div class="status">
     <span class="status-dot"></span>
-    وب‌سایت فعال است
+    پروفایل دیجیتال فعال است
   </div>
 
   <h1>
@@ -1004,14 +1149,37 @@ footer{
 
   <div class="typing" id="typing"></div>
 
-  <p class="muted">
-    علاقه‌مند به تکنولوژی، دنیای وب، هوش مصنوعی و فوتبال ⚽
+  <p class="hero-description">
+    در مسیر یادگیری، تجربه و ساختن؛ با علاقه به تکنولوژی،
+    هوش مصنوعی، وب و فوتبال.
   </p>
 
-  <div class="hero-buttons">
+  <div class="hero-actions">
     <a class="btn primary" href="#digital-id">🪪 پروفایل من</a>
-    <a class="btn" href="#contact">📞 ارتباط با من</a>
-    <a class="btn" href="https://github.com/amirrezagholami86" target="_blank">🐙 GitHub</a>
+    <a class="btn" href="#projects">🚀 پروژه‌ها</a>
+    <a class="btn" href="#contact">📞 ارتباط</a>
+  </div>
+
+  <div class="stats">
+    <div class="card stat">
+      <div class="stat-number" data-count="3">0</div>
+      <p class="muted">پروژه</p>
+    </div>
+
+    <div class="card stat">
+      <div class="stat-number" data-count="4">0</div>
+      <p class="muted">حوزه علاقه</p>
+    </div>
+
+    <div class="card stat">
+      <div class="stat-number" data-count="8">0</div>
+      <p class="muted">بخش سایت</p>
+    </div>
+
+    <div class="card stat">
+      <div class="stat-number" data-count="2026">0</div>
+      <p class="muted">سال</p>
+    </div>
   </div>
 
 </div>
@@ -1020,125 +1188,215 @@ footer{
 <section id="about">
 <div class="container reveal">
 
-  <h2 class="section-title">👋 درباره من</h2>
-  <p class="section-subtitle">چند کلمه درباره مسیر و علایق من</p>
+<h2 class="section-title">👋 درباره من</h2>
+<p class="section-subtitle">من کی هستم؟</p>
 
-  <div class="card">
-    <p>
-      من به یادگیری و تجربه در دنیای تکنولوژی علاقه دارم و همیشه دوست دارم
-      چیزهای جدید را امتحان کنم. ساختن پروژه‌های شخصی، آشنایی با هوش مصنوعی،
-      دنیای وب و دنبال کردن فناوری‌های جدید از علاقه‌مندی‌های اصلی من هستند.
-    </p>
+<div class="glass">
 
-    <div class="profile-info" style="margin-top:20px">
-      <div class="info-box">
-        <span class="info-icon">🎯</span>
-        <b>هدفمند</b>
-        <p class="muted">حرکت قدم‌به‌قدم</p>
-      </div>
+<p>
+من به کشف دنیای تکنولوژی و یادگیری چیزهای جدید علاقه دارم.
+برای من، یادگیری فقط حفظ کردن اطلاعات نیست؛
+تجربه کردن، ساختن و تبدیل یک ایده به چیزی واقعی هم بخشی از مسیر است.
+</p>
 
-      <div class="info-box">
-        <span class="info-icon">📚</span>
-        <b>یادگیری</b>
-        <p class="muted">همیشه در حال یادگیری</p>
-      </div>
+<div class="profile-info">
 
-      <div class="info-box">
-        <span class="info-icon">🚀</span>
-        <b>پیشرفت</b>
-        <p class="muted">تجربه و ساختن</p>
-      </div>
+<div class="info-box">
+<span class="info-icon">🎯</span>
+<b>هدفمند</b>
+<p class="muted">حرکت قدم‌به‌قدم</p>
+</div>
 
-      <div class="info-box">
-        <span class="info-icon">💡</span>
-        <b>کنجکاوی</b>
-        <p class="muted">کشف چیزهای جدید</p>
-      </div>
-    </div>
-  </div>
+<div class="info-box">
+<span class="info-icon">📚</span>
+<b>یادگیرنده</b>
+<p class="muted">کشف موضوعات جدید</p>
+</div>
 
+<div class="info-box">
+<span class="info-icon">💡</span>
+<b>کنجکاو</b>
+<p class="muted">ایده و تجربه</p>
+</div>
+
+<div class="info-box">
+<span class="info-icon">🚀</span>
+<b>سازنده</b>
+<p class="muted">تبدیل ایده به پروژه</p>
+</div>
+
+</div>
+
+</div>
 </div>
 </section>
 
 <section id="digital-id">
 <div class="container reveal">
 
-  <h2 class="section-title">🪪 کارت هویتی دیجیتال</h2>
-  <p class="section-subtitle">پروفایل سریع و اطلاعات اصلی</p>
+<h2 class="section-title">🪪 کارت هویتی دیجیتال</h2>
+<p class="section-subtitle">اطلاعات اصلی پروفایل</p>
 
-  <div class="card digital-id">
+<div class="card digital-id">
 
-    <img src="profile.jpg" class="digital-id-image" alt="امیررضا غلامی">
+<img src="profile.jpg" class="digital-id-image" alt="امیررضا غلامی">
 
-    <div class="id-details">
-      <h3>امیررضا غلامی</h3>
+<div>
 
-      <p class="muted">
-        علاقه‌مند به تکنولوژی، وب، هوش مصنوعی و فوتبال
-      </p>
+<h2>امیررضا غلامی</h2>
 
-      <div class="id-tags">
-        <span class="tag">💻 Technology</span>
-        <span class="tag">🤖 AI</span>
-        <span class="tag">🌐 Web</span>
-        <span class="tag">⚽ Football</span>
-      </div>
+<p class="muted">
+Technology • AI • Web • Football
+</p>
 
-      <div class="quick-actions">
-        <a class="btn primary" href="#contact">📞 ارتباط</a>
-        <button class="btn" id="saveContactBtn">📇 ذخیره اطلاعات من</button>
-      </div>
-    </div>
+<div class="id-tags">
+<span class="tag">💻 Technology</span>
+<span class="tag">🤖 AI Explorer</span>
+<span class="tag">🌐 Web Explorer</span>
+<span class="tag">⚽ Football Fan</span>
+</div>
 
-  </div>
+<div class="quick-actions">
+<a class="btn primary" href="#contact">📞 ارتباط</a>
+<button class="btn" id="saveContactBtn">📇 ذخیره مخاطب</button>
+</div>
 
+</div>
+
+</div>
 </div>
 </section>
 
 <section id="dashboard">
 <div class="container reveal">
 
-  <h2 class="section-title">🧭 داشبورد شخصی</h2>
-  <p class="section-subtitle">اطلاعات این مرورگر و وضعیت فعلی سایت</p>
+<h2 class="section-title">🧭 داشبورد شخصی</h2>
 
-  <div class="dashboard-grid">
+<div class="dashboard-grid">
 
-    <div class="card dashboard-card">
-      <div>👀</div>
-      <div class="big-number" id="visitCount">0</div>
-      <p class="muted">بازدید این مرورگر</p>
-    </div>
+<div class="card dashboard-card">
+<div>👀</div>
+<div class="big-number" id="visitCount">0</div>
+<p class="muted">بازدید این مرورگر</p>
+</div>
 
-    <div class="card dashboard-card">
-      <div>🕒</div>
-      <div class="big-number" id="lastVisit">—</div>
-      <p class="muted">آخرین بازدید</p>
-    </div>
+<div class="card dashboard-card">
+<div>🕒</div>
+<div class="big-number" id="lastVisit">—</div>
+<p class="muted">آخرین بازدید</p>
+</div>
 
-    <div class="card dashboard-card">
-      <div>⏱️</div>
-      <div class="big-number" id="sessionTime">0:00</div>
-      <p class="muted">مدت حضور</p>
-    </div>
+<div class="card dashboard-card">
+<div>⏱️</div>
+<div class="big-number" id="sessionTime">0:00</div>
+<p class="muted">مدت حضور</p>
+</div>
 
-    <div class="card dashboard-card">
-      <div>📄</div>
-      <div class="big-number" id="sectionVisits">0</div>
-      <p class="muted">بخش‌های دیده‌شده</p>
-    </div>
+<div class="card dashboard-card">
+<div>📄</div>
+<div class="big-number" id="sectionVisits">0</div>
+<p class="muted">بخش‌های دیده‌شده</p>
+</div>
 
-  </div>
+</div>
 
-  <div class="card" style="margin-top:17px;text-align:center">
-    <h3>💬 جمله امروز</h3>
-    <p class="muted" id="quote">
-      قدم‌های کوچک هم می‌توانند مسیرهای بزرگ بسازند.
-    </p>
+<div class="card" style="margin-top:17px;text-align:center">
 
-    <button class="btn primary" id="factBtn" style="margin-top:12px">
-      🎲 یک جمله تصادفی
-    </button>
-  </div>
+<h3>💬 جمله امروز</h3>
+
+<p class="muted" id="quote">
+قدم‌های کوچک هم می‌توانند مسیرهای بزرگ بسازند.
+</p>
+
+<button class="btn primary" id="factBtn" style="margin-top:12px">
+🎲 جمله تصادفی
+</button>
+
+</div>
+
+</div>
+</section>
+
+<section id="growth">
+<div class="container reveal">
+
+<h2 class="section-title">📈 نمودار رشد شخصی</h2>
+<p class="section-subtitle">
+نمایش سرگرمی و غیررسمی از میزان تمرکز این پروفایل روی حوزه‌های مختلف
+</p>
+
+<div class="card">
+
+<div class="growth-chart" id="growthChart">
+
+<div class="bar-wrap">
+<div class="growth-bar" data-height="70%"></div>
+<div class="bar-value">70%</div>
+<div class="bar-label">Web</div>
+</div>
+
+<div class="bar-wrap">
+<div class="growth-bar" data-height="65%"></div>
+<div class="bar-value">65%</div>
+<div class="bar-label">AI</div>
+</div>
+
+<div class="bar-wrap">
+<div class="growth-bar" data-height="75%"></div>
+<div class="bar-value">75%</div>
+<div class="bar-label">Tech</div>
+</div>
+
+<div class="bar-wrap">
+<div class="growth-bar" data-height="85%"></div>
+<div class="bar-value">85%</div>
+<div class="bar-label">Learning</div>
+</div>
+
+</div>
+
+</div>
+</div>
+</section>
+
+<section id="level">
+<div class="container reveal">
+
+<h2 class="section-title">🏆 Level پروفایل</h2>
+
+<div class="glass level-box">
+
+<div class="level-circle">
+<div>
+<div class="level-number">07</div>
+<div class="muted">LEVEL</div>
+</div>
+</div>
+
+<div>
+
+<h2>🚀 Explorer Level</h2>
+
+<p class="muted">
+این سیستم صرفاً یک بخش سرگرم‌کننده از پروفایل است و نشان‌دهنده مدرک یا رتبه رسمی نیست.
+</p>
+
+<div class="xp-bar">
+<span></span>
+</div>
+
+<div style="display:flex;justify-content:space-between">
+<span>720 XP</span>
+<span class="muted">1000 XP</span>
+</div>
+
+<p class="muted" style="margin-top:8px">
+280 XP تا Level بعدی
+</p>
+
+</div>
+
+</div>
 
 </div>
 </section>
@@ -1146,26 +1404,26 @@ footer{
 <section id="interests">
 <div class="container reveal">
 
-  <h2 class="section-title">❤️ علایق</h2>
+<h2 class="section-title">❤️ علایق</h2>
 
-  <div class="card-grid">
+<div class="card-grid">
 
-    <div class="card">
-      <h3>💻 تکنولوژی</h3>
-      <p class="muted">دنبال کردن فناوری‌های جدید و دنیای دیجیتال.</p>
-    </div>
+<div class="card">
+<h3>💻 تکنولوژی</h3>
+<p class="muted">دنبال کردن فناوری‌های جدید و دنیای دیجیتال.</p>
+</div>
 
-    <div class="card">
-      <h3>🤖 هوش مصنوعی</h3>
-      <p class="muted">کنجکاوی درباره AI و ابزارهای هوشمند.</p>
-    </div>
+<div class="card">
+<h3>🤖 هوش مصنوعی</h3>
+<p class="muted">کنجکاوی درباره ابزارها و پیشرفت‌های AI.</p>
+</div>
 
-    <div class="card">
-      <h3>⚽ فوتبال</h3>
-      <p class="muted">یکی از علاقه‌مندی‌های اصلی من در دنیای ورزش.</p>
-    </div>
+<div class="card">
+<h3>⚽ فوتبال</h3>
+<p class="muted">یکی از علاقه‌مندی‌های اصلی من در ورزش.</p>
+</div>
 
-  </div>
+</div>
 
 </div>
 </section>
@@ -1173,86 +1431,86 @@ footer{
 <section id="skills">
 <div class="container reveal">
 
-  <h2 class="section-title">🚀 مهارت‌ها</h2>
+<h2 class="section-title">🚀 مهارت‌ها</h2>
 
-  <div class="card">
+<div class="card">
 
-    <div class="progress-row">
-      <div class="progress-head">
-        <span>🌐 Web</span>
-        <span>70%</span>
-      </div>
-      <div class="progress"><span data-width="70%"></span></div>
-    </div>
+<div class="progress-row">
+<div class="progress-head">
+<span>🌐 Web</span>
+<span>70%</span>
+</div>
+<div class="progress"><span data-width="70%"></span></div>
+</div>
 
-    <div class="progress-row">
-      <div class="progress-head">
-        <span>🤖 AI</span>
-        <span>65%</span>
-      </div>
-      <div class="progress"><span data-width="65%"></span></div>
-    </div>
+<div class="progress-row">
+<div class="progress-head">
+<span>🤖 AI</span>
+<span>65%</span>
+</div>
+<div class="progress"><span data-width="65%"></span></div>
+</div>
 
-    <div class="progress-row">
-      <div class="progress-head">
-        <span>💡 Technology</span>
-        <span>75%</span>
-      </div>
-      <div class="progress"><span data-width="75%"></span></div>
-    </div>
+<div class="progress-row">
+<div class="progress-head">
+<span>💡 Technology</span>
+<span>75%</span>
+</div>
+<div class="progress"><span data-width="75%"></span></div>
+</div>
 
-    <div class="progress-row">
-      <div class="progress-head">
-        <span>📚 Learning</span>
-        <span>85%</span>
-      </div>
-      <div class="progress"><span data-width="85%"></span></div>
-    </div>
+<div class="progress-row">
+<div class="progress-head">
+<span>📚 Learning</span>
+<span>85%</span>
+</div>
+<div class="progress"><span data-width="85%"></span></div>
+</div>
 
-  </div>
-
+</div>
 </div>
 </section>
 
 <section id="projects">
 <div class="container reveal">
 
-  <h2 class="section-title">🛠️ پروژه‌ها و فعالیت‌ها</h2>
+<h2 class="section-title">🛠️ پروژه‌ها و فعالیت‌ها</h2>
 
-  <div class="card-grid">
+<div class="card-grid">
 
-    <div class="card">
-      <h3>🌐 وب‌سایت شخصی</h3>
-      <p class="muted">
-        طراحی و توسعه وب‌سایت شخصی برای معرفی، ارتباط و نمایش علایق.
-      </p>
-    </div>
+<div class="card">
+<h3>🌐 وب‌سایت شخصی</h3>
+<p class="muted">
+طراحی و توسعه وب‌سایت شخصی برای معرفی، ارتباط و نمایش علایق.
+</p>
+</div>
 
-    <div class="card">
-      <h3>💻 Technology World</h3>
-      <p class="muted">
-        یادگیری، تجربه و دنبال کردن فناوری‌های جدید و دنیای دیجیتال.
-      </p>
-    </div>
+<div class="card">
+<h3>💻 Technology World</h3>
+<p class="muted">
+یادگیری، تجربه و دنبال کردن فناوری‌های جدید و دنیای دیجیتال.
+</p>
+</div>
 
-    <div class="card">
-      <h3>🤖 AI</h3>
-      <p class="muted">
-        علاقه‌مندی و آشنایی با ابزارها و پیشرفت‌های هوش مصنوعی.
-      </p>
-    </div>
+<div class="card">
+<h3>🤖 AI</h3>
+<p class="muted">
+علاقه‌مندی و آشنایی با ابزارها و پیشرفت‌های هوش مصنوعی.
+</p>
+</div>
 
-  </div>
+</div>
 
-  <div class="card" style="margin-top:17px;text-align:center">
-    <h3>🐙 GitHub</h3>
-    <p class="muted">پروژه‌ها و فعالیت‌های کدنویسی من</p>
-    <a class="btn primary" style="margin-top:12px"
-       href="https://github.com/amirrezagholami86"
-       target="_blank">
-      مشاهده GitHub 🚀
-    </a>
-  </div>
+<div class="card" style="margin-top:17px;text-align:center">
+<h3>🐙 GitHub</h3>
+<p class="muted">پروژه‌ها و فعالیت‌های کدنویسی</p>
+<a class="btn primary"
+style="margin-top:12px"
+href="https://github.com/amirrezagholami86"
+target="_blank">
+مشاهده GitHub 🚀
+</a>
+</div>
 
 </div>
 </section>
@@ -1260,26 +1518,26 @@ footer{
 <section id="achievements">
 <div class="container reveal">
 
-  <h2 class="section-title">🏆 دستاوردها</h2>
+<h2 class="section-title">🏆 دستاوردها</h2>
 
-  <div class="card-grid">
+<div class="card-grid">
 
-    <div class="card">
-      <h3>🌐 ساخت وب‌سایت شخصی</h3>
-      <p class="muted">ساخت و توسعه یک سایت شخصی با HTML، CSS و JavaScript.</p>
-    </div>
+<div class="card">
+<h3>🌐 ساخت وب‌سایت شخصی</h3>
+<p class="muted">ساخت و توسعه سایت شخصی با HTML، CSS و JavaScript.</p>
+</div>
 
-    <div class="card">
-      <h3>🤖 ورود به دنیای AI</h3>
-      <p class="muted">آشنایی و تجربه با ابزارهای هوش مصنوعی.</p>
-    </div>
+<div class="card">
+<h3>🤖 ورود به دنیای AI</h3>
+<p class="muted">آشنایی و تجربه با ابزارهای هوش مصنوعی.</p>
+</div>
 
-    <div class="card">
-      <h3>🚀 ادامه مسیر</h3>
-      <p class="muted">تلاش برای یادگیری و ساخت پروژه‌های بیشتر.</p>
-    </div>
+<div class="card">
+<h3>🚀 ادامه مسیر</h3>
+<p class="muted">تلاش برای یادگیری و ساخت پروژه‌های بیشتر.</p>
+</div>
 
-  </div>
+</div>
 
 </div>
 </section>
@@ -1287,112 +1545,108 @@ footer{
 <section id="badges">
 <div class="container reveal">
 
-  <h2 class="section-title">🏅 Badgeهای من</h2>
-  <p class="section-subtitle">نشان‌های افتخاری این پروفایل دیجیتال</p>
+<h2 class="section-title">🏅 Badgeهای من</h2>
 
-  <div class="badges">
+<div class="badges">
 
-    <div class="card badge">
-      <span class="badge-icon">💻</span>
-      <h3>Web Explorer</h3>
-      <small>علاقه‌مند به دنیای وب</small>
-    </div>
+<div class="card badge">
+<span class="badge-icon">💻</span>
+<h3>Web Explorer</h3>
+<p class="muted">علاقه‌مند به وب</p>
+</div>
 
-    <div class="card badge">
-      <span class="badge-icon">🤖</span>
-      <h3>AI Explorer</h3>
-      <small>کنجکاو در دنیای AI</small>
-    </div>
+<div class="card badge">
+<span class="badge-icon">🤖</span>
+<h3>AI Explorer</h3>
+<p class="muted">کنجکاو در AI</p>
+</div>
 
-    <div class="card badge">
-      <span class="badge-icon">⚽</span>
-      <h3>Football Fan</h3>
-      <small>عاشق فوتبال</small>
-    </div>
+<div class="card badge">
+<span class="badge-icon">⚽</span>
+<h3>Football Fan</h3>
+<p class="muted">عاشق فوتبال</p>
+</div>
 
-    <div class="card badge">
-      <span class="badge-icon">📚</span>
-      <h3>Lifelong Learner</h3>
-      <small>همیشه در حال یادگیری</small>
-    </div>
+<div class="card badge">
+<span class="badge-icon">📚</span>
+<h3>Lifelong Learner</h3>
+<p class="muted">همیشه در حال یادگیری</p>
+</div>
 
-  </div>
+</div>
 
 </div>
 </section>
 
-<section id="tools">
+<section id="activities">
 <div class="container reveal">
 
-  <h2 class="section-title">🧰 ابزارهای مورد علاقه</h2>
+<h2 class="section-title">📰 آخرین فعالیت‌ها</h2>
 
-  <div class="tools">
+<div class="activity-list">
 
-    <div class="card tool">
-      <div style="font-size:40px">🐙</div>
-      <h3>GitHub</h3>
-      <p class="muted">کدنویسی و پروژه‌ها</p>
-    </div>
+<div class="activity">
+<div class="activity-icon">🌐</div>
+<div>
+<h3>ساخت وب‌سایت شخصی</h3>
+<p class="muted">توسعه و شخصی‌سازی پروفایل دیجیتال</p>
+<div class="activity-date">2026</div>
+</div>
+</div>
 
-    <div class="card tool">
-      <div style="font-size:40px">🤖</div>
-      <h3>AI Tools</h3>
-      <p class="muted">ابزارهای هوش مصنوعی</p>
-    </div>
+<div class="activity">
+<div class="activity-icon">🤖</div>
+<div>
+<h3>تجربه ابزارهای AI</h3>
+<p class="muted">آشنایی بیشتر با دنیای هوش مصنوعی</p>
+<div class="activity-date">2026</div>
+</div>
+</div>
 
-    <div class="card tool">
-      <div style="font-size:40px">🌐</div>
-      <h3>Web</h3>
-      <p class="muted">دنیای وب و اینترنت</p>
-    </div>
+<div class="activity">
+<div class="activity-icon">📚</div>
+<div>
+<h3>ادامه یادگیری</h3>
+<p class="muted">تجربه موضوعات جدید و ساخت پروژه</p>
+<div class="activity-date">در حال ادامه</div>
+</div>
+</div>
 
-  </div>
+</div>
 
 </div>
 </section>
 
-<section id="themes">
+<section id="ideas">
 <div class="container reveal">
 
-  <h2 class="section-title">🎨 شخصی‌سازی ظاهر</h2>
-  <p class="section-subtitle">رنگ مورد علاقه‌ات را برای سایت انتخاب کن</p>
+<h2 class="section-title">💡 ایده‌های من</h2>
+<p class="section-subtitle">ایده‌هایی برای پروژه‌های آینده</p>
 
-  <div class="theme-buttons">
-    <button class="theme-btn" data-theme="default">🌌 آبی/بنفش</button>
-    <button class="theme-btn" data-theme="green">🌿 سبز</button>
-    <button class="theme-btn" data-theme="orange">🔥 نارنجی</button>
-    <button class="theme-btn" data-theme="pink">🌸 صورتی</button>
-  </div>
+<div class="idea-grid">
+
+<div class="card idea">
+<h3>🤖 AI Project</h3>
+<p class="muted">
+ساخت یک پروژه شخصی با استفاده از قابلیت‌های هوش مصنوعی.
+</p>
+</div>
+
+<div class="card idea">
+<h3>🌐 Web Project</h3>
+<p class="muted">
+ساخت یک وب‌سایت تعاملی و کاربردی دیگر.
+</p>
+</div>
+
+<div class="card idea">
+<h3>📱 Digital Profile</h3>
+<p class="muted">
+توسعه بیشتر پروفایل شخصی و امکانات دیجیتال.
+</p>
+</div>
 
 </div>
-</section>
-
-<section id="gallery">
-<div class="container reveal">
-
-  <h2 class="section-title">🖼️ گالری</h2>
-
-  <div class="gallery">
-
-    <div class="gallery-item" id="profileGallery">
-      <img src="profile.jpg" alt="امیررضا غلامی">
-    </div>
-
-    <div class="gallery-item">
-      <div class="visual-card">
-        🤖
-        <span>AI World</span>
-      </div>
-    </div>
-
-    <div class="gallery-item">
-      <div class="visual-card">
-        ⚽
-        <span>Football</span>
-      </div>
-    </div>
-
-  </div>
 
 </div>
 </section>
@@ -1400,62 +1654,125 @@ footer{
 <section id="timeline">
 <div class="container reveal">
 
-  <h2 class="section-title">🕒 مسیر من</h2>
+<h2 class="section-title">🕒 مسیر من</h2>
 
-  <div class="timeline">
+<div class="timeline">
 
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-content">
-        <h3>📚 شروع مسیر</h3>
-        <p class="muted">یادگیری و کشف علایق مختلف.</p>
-      </div>
-    </div>
+<div class="timeline-item">
+<div class="timeline-dot"></div>
+<div class="timeline-content">
+<h3>📚 شروع مسیر</h3>
+<p class="muted">یادگیری و کشف علایق مختلف.</p>
+</div>
+</div>
 
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-content">
-        <h3>🤖 مرحله بعد</h3>
-        <p class="muted">ورود بیشتر به دنیای تکنولوژی و هوش مصنوعی.</p>
-      </div>
-    </div>
+<div class="timeline-item">
+<div class="timeline-dot"></div>
+<div class="timeline-content">
+<h3>🤖 مرحله بعد</h3>
+<p class="muted">ورود بیشتر به تکنولوژی و هوش مصنوعی.</p>
+</div>
+</div>
 
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-content">
-        <h3>🚀 امروز</h3>
-        <p class="muted">ساخت، تجربه و پیشرفت.</p>
-      </div>
-    </div>
+<div class="timeline-item">
+<div class="timeline-dot"></div>
+<div class="timeline-content">
+<h3>🚀 امروز</h3>
+<p class="muted">ساخت، تجربه و پیشرفت.</p>
+</div>
+</div>
 
-  </div>
-
+</div>
 </div>
 </section>
 
 <section id="goals">
 <div class="container reveal">
 
-  <h2 class="section-title">🎯 اهداف</h2>
+<h2 class="section-title">🎯 اهداف</h2>
 
-  <div class="card-grid">
+<div class="card-grid">
 
-    <div class="card">
-      <h3>💻 توسعه مهارت‌های فنی</h3>
-      <p class="muted">یادگیری و تجربه بیشتر در حوزه تکنولوژی.</p>
-    </div>
+<div class="card">
+<h3>💻 توسعه مهارت‌های فنی</h3>
+<p class="muted">یادگیری و تجربه بیشتر در تکنولوژی.</p>
+</div>
 
-    <div class="card">
-      <h3>🤖 یادگیری بیشتر AI</h3>
-      <p class="muted">شناخت ابزارها و کاربردهای هوش مصنوعی.</p>
-    </div>
+<div class="card">
+<h3>🤖 یادگیری بیشتر AI</h3>
+<p class="muted">شناخت ابزارها و کاربردهای هوش مصنوعی.</p>
+</div>
 
-    <div class="card">
-      <h3>🚀 ساخت پروژه‌های بیشتر</h3>
-      <p class="muted">تبدیل ایده‌ها به پروژه‌های واقعی.</p>
-    </div>
+<div class="card">
+<h3>🚀 ساخت پروژه‌های بیشتر</h3>
+<p class="muted">تبدیل ایده‌ها به پروژه‌های واقعی.</p>
+</div>
 
-  </div>
+</div>
+
+</div>
+</section>
+
+<section id="privacy">
+<div class="container reveal">
+
+<h2 class="section-title">🔐 حریم خصوصی</h2>
+
+<div class="glass privacy">
+
+<div class="privacy-icon">🛡️</div>
+
+<div>
+
+<h3>آمار داشبورد کجا ذخیره می‌شود؟</h3>
+
+<p class="muted">
+اطلاعاتی مثل تعداد بازدید، آخرین بازدید، تم انتخابی و تنظیمات سایت
+در حافظه محلی مرورگر همین دستگاه ذخیره می‌شوند.
+این اطلاعات یک آمار جهانی از بازدیدکنندگان سایت نیست.
+</p>
+
+<div class="reset-area">
+
+<button class="btn danger" id="resetBtn">
+🧹 پاک کردن آمار و تنظیمات محلی
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+</section>
+
+<section id="gallery">
+<div class="container reveal">
+
+<h2 class="section-title">🖼️ گالری</h2>
+
+<div class="gallery">
+
+<div class="gallery-item" id="profileGallery">
+<img src="profile.jpg" alt="امیررضا غلامی">
+</div>
+
+<div class="gallery-item">
+<div class="visual-card">
+🤖
+<span>AI World</span>
+</div>
+</div>
+
+<div class="gallery-item">
+<div class="visual-card">
+⚽
+<span>Football</span>
+</div>
+</div>
+
+</div>
 
 </div>
 </section>
@@ -1463,59 +1780,77 @@ footer{
 <section id="contact">
 <div class="container reveal">
 
-  <h2 class="section-title">📞 ارتباط با من</h2>
+<h2 class="section-title">📞 ارتباط با من</h2>
 
-  <div class="contact-grid">
+<div class="contact-grid">
 
-    <div class="card contact-card">
-      <div style="font-size:35px">📧</div>
-      <h3>Email</h3>
-      <div class="copy-row">
-        <input value="amirrezaamirreza275@gmail.com" readonly>
-        <button onclick="copyText('amirrezaamirreza275@gmail.com')">کپی</button>
-      </div>
-    </div>
+<div class="card contact-card">
+<div style="font-size:35px">📧</div>
+<h3>Email</h3>
+<div class="copy-row">
+<input value="amirrezaamirreza275@gmail.com" readonly>
+<button onclick="copyText('amirrezaamirreza275@gmail.com')">کپی</button>
+</div>
+</div>
 
-    <div class="card contact-card">
-      <div style="font-size:35px">✈️</div>
-      <h3>Telegram</h3>
-      <div class="copy-row">
-        <input value="@Amirrezagholami_ir" readonly>
-        <button onclick="copyText('@Amirrezagholami_ir')">کپی</button>
-      </div>
-    </div>
+<div class="card contact-card">
+<div style="font-size:35px">✈️</div>
+<h3>Telegram</h3>
+<div class="copy-row">
+<input value="@Amirrezagholami_ir" readonly>
+<button onclick="copyText('@Amirrezagholami_ir')">کپی</button>
+</div>
+</div>
 
-    <div class="card contact-card">
-      <div style="font-size:35px">📱</div>
-      <h3>WhatsApp</h3>
-      <a class="btn primary" style="margin-top:12px"
-         href="https://wa.me/989228420736"
-         target="_blank">
-        💚 پیام در واتساپ
-      </a>
-    </div>
+<div class="card contact-card">
+<div style="font-size:35px">📱</div>
+<h3>WhatsApp</h3>
+<a class="btn primary"
+style="margin-top:12px"
+href="https://wa.me/989228420736"
+target="_blank">
+💚 پیام در واتساپ
+</a>
+</div>
 
-  </div>
+</div>
 
-  <div class="hero-buttons">
+<div class="hero-actions">
 
-    <a class="btn" href="https://www.instagram.com/amirrezagholami.ir" target="_blank">
-      📸 Instagram
-    </a>
+<a class="btn" href="https://www.instagram.com/amirrezagholami.ir" target="_blank">
+📸 Instagram
+</a>
 
-    <a class="btn" href="https://t.me/Amirrezagholami_ir" target="_blank">
-      ✈️ Telegram
-    </a>
+<a class="btn" href="https://t.me/Amirrezagholami_ir" target="_blank">
+✈️ Telegram
+</a>
 
-    <a class="btn" href="https://github.com/amirrezagholami86" target="_blank">
-      🐙 GitHub
-    </a>
+<a class="btn" href="https://github.com/amirrezagholami86" target="_blank">
+🐙 GitHub
+</a>
 
-    <button class="btn primary" id="shareBtn">
-      📤 اشتراک‌گذاری سایت
-    </button>
+<button class="btn primary" id="shareBtn">
+📤 اشتراک‌گذاری
+</button>
 
-  </div>
+</div>
+
+</div>
+</section>
+
+<section id="themes">
+<div class="container reveal">
+
+<h2 class="section-title">🎨 شخصی‌سازی</h2>
+
+<div class="theme-buttons">
+
+<button class="theme-btn" data-theme="default">🌌 آبی/بنفش</button>
+<button class="theme-btn" data-theme="green">🌿 سبز</button>
+<button class="theme-btn" data-theme="orange">🔥 نارنجی</button>
+<button class="theme-btn" data-theme="pink">🌸 صورتی</button>
+
+</div>
 
 </div>
 </section>
@@ -1523,21 +1858,22 @@ footer{
 <section id="qrcode-section">
 <div class="container reveal">
 
-  <div class="card qr-wrap">
+<div class="glass qr-wrap">
 
-    <h2>🔳 QR Code سایت</h2>
+<h2>🔳 QR Code سایت</h2>
 
-    <p class="muted">
-      با اسکن این کد می‌توانی مستقیم وارد سایت من شوی.
-    </p>
+<p class="muted">
+با اسکن این کد مستقیماً وارد سایت می‌شوی.
+</p>
 
-    <div id="qrcode"></div>
+<div id="qrcode"></div>
 
-    <button class="btn primary" onclick="copyText('https://amirrezagholami86.github.io/')">
-      🔗 کپی آدرس سایت
-    </button>
+<button class="btn primary"
+onclick="copyText('https://amirrezagholami86.github.io/')">
+🔗 کپی آدرس سایت
+</button>
 
-  </div>
+</div>
 
 </div>
 </section>
@@ -1545,12 +1881,18 @@ footer{
 <section id="search">
 <div class="container reveal">
 
-  <h2 class="section-title">🔎 جستجو در سایت</h2>
+<h2 class="section-title">🔎 جستجو در سایت</h2>
 
-  <div class="search-box">
-    <input id="searchInput" placeholder="مثلاً: فوتبال، AI، تماس، پروژه...">
-    <button class="btn primary" id="searchBtn">جستجو</button>
-  </div>
+<div class="search-box">
+
+<input id="searchInput"
+placeholder="مثلاً: فوتبال، AI، پروژه، تماس...">
+
+<button class="btn primary" id="searchBtn">
+جستجو
+</button>
+
+</div>
 
 </div>
 </section>
@@ -1558,21 +1900,21 @@ footer{
 </main>
 
 <footer>
-  <p>ساخته شده با ❤️ و ☕ توسط امیررضا غلامی</p>
-  <p style="margin-top:6px">© 2026 Amirreza Gholami</p>
+<p>ساخته شده با ❤️ و ☕ توسط امیررضا غلامی</p>
+<p style="margin-top:6px">© 2026 Amirreza Gholami</p>
 </footer>
 
 <div class="floating-menu">
-  <button class="float-btn" onclick="location.href='#contact'">📞</button>
-  <button class="float-btn" onclick="location.href='#qrcode-section'">🔳</button>
-  <button class="float-btn" onclick="location.href='#top'">⬆️</button>
+<button class="float-btn" onclick="location.href='#contact'">📞</button>
+<button class="float-btn" onclick="location.href='#qrcode-section'">🔳</button>
+<button class="float-btn" onclick="location.href='#top'">⬆️</button>
 </div>
 
 <div id="toast"></div>
 
 <div class="modal" id="imageModal">
-  <button class="modal-close" id="modalClose">×</button>
-  <img src="profile.jpg" alt="تصویر پروفایل">
+<button class="modal-close" id="modalClose">×</button>
+<img src="profile.jpg" alt="تصویر پروفایل">
 </div>
 
 <script>
@@ -1584,11 +1926,16 @@ const body=document.body;
 const themeBtn=document.getElementById("themeBtn");
 
 function applySavedTheme(){
-  const mode=localStorage.getItem("siteMode") || "dark";
-  const accent=localStorage.getItem("accentTheme") || "default";
+  const mode=localStorage.getItem("siteMode")||"dark";
+  const accent=localStorage.getItem("accentTheme")||"default";
 
   body.classList.toggle("light",mode==="light");
-  body.classList.remove("theme-green","theme-orange","theme-pink");
+
+  body.classList.remove(
+    "theme-green",
+    "theme-orange",
+    "theme-pink"
+  );
 
   if(accent!=="default"){
     body.classList.add("theme-"+accent);
@@ -1597,21 +1944,29 @@ function applySavedTheme(){
   themeBtn.textContent=mode==="light"?"☀️":"🌙";
 }
 
+applySavedTheme();
+
 themeBtn.addEventListener("click",()=>{
-  const isLight=!body.classList.contains("light");
-  localStorage.setItem("siteMode",isLight?"light":"dark");
+  const light=!body.classList.contains("light");
+
+  localStorage.setItem(
+    "siteMode",
+    light?"light":"dark"
+  );
+
   applySavedTheme();
   playClick();
 });
 
-applySavedTheme();
-
 document.querySelectorAll(".theme-btn").forEach(btn=>{
   btn.addEventListener("click",()=>{
-    const theme=btn.dataset.theme;
-    localStorage.setItem("accentTheme",theme);
+    localStorage.setItem(
+      "accentTheme",
+      btn.dataset.theme
+    );
+
     applySavedTheme();
-    showToast("🎨 تم سایت تغییر کرد");
+    showToast("🎨 تم تغییر کرد");
     playClick();
   });
 });
@@ -1626,7 +1981,11 @@ const navLinks=document.getElementById("navLinks");
 
 mobileMenuBtn.addEventListener("click",()=>{
   navLinks.classList.toggle("open");
-  mobileMenuBtn.textContent=navLinks.classList.contains("open")?"✕":"☰";
+
+  mobileMenuBtn.textContent=
+    navLinks.classList.contains("open")
+    ?"✕"
+    :"☰";
 });
 
 document.querySelectorAll(".nav-links a").forEach(link=>{
@@ -1653,26 +2012,43 @@ let charIndex=0;
 let deleting=false;
 
 function typingEffect(){
+
   const el=document.getElementById("typing");
   const text=phrases[phraseIndex];
 
   if(!deleting){
+
     el.textContent=text.substring(0,charIndex++);
+
     if(charIndex>text.length){
+
       deleting=true;
-      setTimeout(typingEffect,1300);
+
+      setTimeout(
+        typingEffect,
+        1300
+      );
+
       return;
     }
+
   }else{
+
     el.textContent=text.substring(0,charIndex--);
+
     if(charIndex<0){
+
       deleting=false;
       charIndex=0;
-      phraseIndex=(phraseIndex+1)%phrases.length;
+      phraseIndex=
+        (phraseIndex+1)%phrases.length;
     }
   }
 
-  setTimeout(typingEffect,deleting?45:75);
+  setTimeout(
+    typingEffect,
+    deleting?45:75
+  );
 }
 
 typingEffect();
@@ -1685,8 +2061,11 @@ typingEffect();
 let toastTimer;
 
 function showToast(message){
+
   const toast=document.getElementById("toast");
+
   toast.textContent=message;
+
   toast.classList.add("show");
 
   clearTimeout(toastTimer);
@@ -1702,10 +2081,13 @@ function showToast(message){
 ========================= */
 
 function copyText(text){
+
   navigator.clipboard.writeText(text)
-    .then(()=>showToast("✅ کپی شد"))
+    .then(()=>{
+      showToast("✅ کپی شد");
+    })
     .catch(()=>{
-      showToast("⚠️ کپی خودکار انجام نشد");
+      showToast("⚠️ کپی انجام نشد");
     });
 }
 
@@ -1714,7 +2096,9 @@ function copyText(text){
    Share
 ========================= */
 
-document.getElementById("shareBtn").addEventListener("click",async()=>{
+document.getElementById("shareBtn")
+.addEventListener("click",async()=>{
+
   const data={
     title:"وب‌سایت امیررضا غلامی",
     text:"وب‌سایت شخصی امیررضا غلامی",
@@ -1722,21 +2106,27 @@ document.getElementById("shareBtn").addEventListener("click",async()=>{
   };
 
   if(navigator.share){
+
     try{
       await navigator.share(data);
     }catch(e){}
+
   }else{
+
     copyText(data.url);
+
     showToast("🔗 لینک سایت کپی شد");
   }
 });
 
 
 /* =========================
-   Save VCard
+   VCard
 ========================= */
 
-document.getElementById("saveContactBtn").addEventListener("click",()=>{
+document.getElementById("saveContactBtn")
+.addEventListener("click",()=>{
+
   const vcard=[
     "BEGIN:VCARD",
     "VERSION:3.0",
@@ -1751,12 +2141,18 @@ document.getElementById("saveContactBtn").addEventListener("click",()=>{
     "END:VCARD"
   ].join("\n");
 
-  const blob=new Blob([vcard],{type:"text/vcard;charset=utf-8"});
+  const blob=new Blob(
+    [vcard],
+    {type:"text/vcard;charset=utf-8"}
+  );
+
   const url=URL.createObjectURL(blob);
 
   const a=document.createElement("a");
+
   a.href=url;
   a.download="Amirreza-Gholami.vcf";
+
   document.body.appendChild(a);
   a.click();
   a.remove();
@@ -1771,34 +2167,60 @@ document.getElementById("saveContactBtn").addEventListener("click",()=>{
    Dashboard
 ========================= */
 
-let visits=parseInt(localStorage.getItem("siteVisits") || "0");
+let visits=parseInt(
+  localStorage.getItem("siteVisits")||"0"
+);
+
+const previousVisit=
+  localStorage.getItem("lastVisit");
+
 visits++;
 
-const previousVisit=localStorage.getItem("lastVisit");
+localStorage.setItem(
+  "siteVisits",
+  visits
+);
 
-localStorage.setItem("siteVisits",visits);
-localStorage.setItem("lastVisit",new Date().toISOString());
+localStorage.setItem(
+  "lastVisit",
+  new Date().toISOString()
+);
 
-document.getElementById("visitCount").textContent=visits;
+document.getElementById("visitCount")
+.textContent=visits;
 
 if(previousVisit){
+
   const date=new Date(previousVisit);
 
-  document.getElementById("lastVisit").textContent=
+  document.getElementById("lastVisit")
+    .textContent=
     date.toLocaleDateString("fa-IR");
+
 }else{
-  document.getElementById("lastVisit").textContent="اولین بازدید";
+
+  document.getElementById("lastVisit")
+    .textContent="اولین بازدید";
 }
 
 const sessionStart=Date.now();
 
 setInterval(()=>{
-  const seconds=Math.floor((Date.now()-sessionStart)/1000);
-  const min=Math.floor(seconds/60);
-  const sec=String(seconds%60).padStart(2,"0");
 
-  document.getElementById("sessionTime").textContent=
-    min+":"+sec;
+  const seconds=
+    Math.floor(
+      (Date.now()-sessionStart)/1000
+    );
+
+  const min=Math.floor(seconds/60);
+
+  const sec=String(
+    seconds%60
+  ).padStart(2,"0");
+
+  document.getElementById("sessionTime")
+    .textContent=min+":"+sec;
+
 },1000);
 
 
@@ -1808,51 +2230,77 @@ setInterval(()=>{
 
 const seenSections=new Set();
 
-const sectionObserver=new IntersectionObserver(entries=>{
+const sectionObserver=
+new IntersectionObserver(entries=>{
+
   entries.forEach(entry=>{
-    if(entry.isIntersecting && entry.intersectionRatio>.2){
+
+    if(
+      entry.isIntersecting &&
+      entry.intersectionRatio>.2
+    ){
+
       const id=entry.target.id;
 
-      if(id && !seenSections.has(id)){
+      if(
+        id &&
+        !seenSections.has(id)
+      ){
+
         seenSections.add(id);
 
         let total=parseInt(
-          localStorage.getItem("sectionVisits") || "0"
+          localStorage.getItem("sectionVisits")||"0"
         );
 
         total++;
 
-        localStorage.setItem("sectionVisits",total);
-        document.getElementById("sectionVisits").textContent=total;
+        localStorage.setItem(
+          "sectionVisits",
+          total
+        );
+
+        document.getElementById(
+          "sectionVisits"
+        ).textContent=total;
       }
     }
   });
-},{
-  threshold:.2
-});
 
-document.querySelectorAll("main section").forEach(section=>{
+},{threshold:.2});
+
+document.querySelectorAll(
+  "main section"
+).forEach(section=>{
   sectionObserver.observe(section);
 });
 
 
 /* =========================
-   Quotes
+   Random Quotes
 ========================= */
 
 const quotes=[
   "قدم‌های کوچک هم می‌توانند مسیرهای بزرگ بسازند. 🚀",
   "یادگیری هیچ‌وقت متوقف نمی‌شود. 📚",
-  "هر پروژه، یک تجربه جدید است. 💻",
-  "ایده‌ها وقتی ساخته شوند، ارزش پیدا می‌کنند. 💡",
+  "هر پروژه یک تجربه جدید است. 💻",
+  "ایده‌ها وقتی ساخته شوند ارزش پیدا می‌کنند. 💡",
   "امروز را برای ساختن فردا استفاده کن. 🔥",
-  "کنجکاوی، شروع خیلی از موفقیت‌هاست. 🤖"
+  "کنجکاوی شروع خیلی از مسیرهای جدید است. 🤖"
 ];
 
-document.getElementById("factBtn").addEventListener("click",()=>{
-  const random=quotes[Math.floor(Math.random()*quotes.length)];
+document.getElementById("factBtn")
+.addEventListener("click",()=>{
 
-  document.getElementById("quote").textContent=random;
+  const random=
+    quotes[
+      Math.floor(
+        Math.random()*quotes.length
+      )
+    ];
+
+  document.getElementById("quote")
+    .textContent=random;
 
   showToast("✨ جمله جدید");
   playClick();
@@ -1860,37 +2308,82 @@ document.getElementById("factBtn").addEventListener("click",()=>{
 
 
 /* =========================
-   Progress Animation
+   Progress
 ========================= */
 
-const progressObserver=new IntersectionObserver(entries=>{
+const progressObserver=
+new IntersectionObserver(entries=>{
+
   entries.forEach(entry=>{
+
     if(entry.isIntersecting){
-      entry.target.querySelectorAll(".progress span").forEach(bar=>{
-        bar.style.width=bar.dataset.width;
-      });
+
+      entry.target
+        .querySelectorAll(".progress span")
+        .forEach(bar=>{
+          bar.style.width=
+            bar.dataset.width;
+        });
     }
+
   });
+
 },{threshold:.25});
 
-document.querySelectorAll("#skills .card").forEach(card=>{
+document.querySelectorAll(
+  "#skills .card"
+).forEach(card=>{
   progressObserver.observe(card);
 });
 
 
 /* =========================
-   Scroll Reveal
+   Growth Chart
 ========================= */
 
-const revealObserver=new IntersectionObserver(entries=>{
+const growthObserver=
+new IntersectionObserver(entries=>{
+
   entries.forEach(entry=>{
+
+    if(entry.isIntersecting){
+
+      entry.target
+        .querySelectorAll(".growth-bar")
+        .forEach(bar=>{
+          bar.style.height=
+            bar.dataset.height;
+        });
+    }
+
+  });
+
+},{threshold:.25});
+
+growthObserver.observe(
+  document.getElementById("growthChart")
+);
+
+
+/* =========================
+   Reveal
+========================= */
+
+const revealObserver=
+new IntersectionObserver(entries=>{
+
+  entries.forEach(entry=>{
+
     if(entry.isIntersecting){
       entry.target.classList.add("visible");
     }
+
   });
+
 },{threshold:.08});
 
-document.querySelectorAll(".reveal").forEach(el=>{
+document.querySelectorAll(".reveal")
+.forEach(el=>{
   revealObserver.observe(el);
 });
 
@@ -1899,29 +2392,43 @@ document.querySelectorAll(".reveal").forEach(el=>{
    Active Navigation
 ========================= */
 
-const navItems=document.querySelectorAll(".nav-links a");
-const sections=[...document.querySelectorAll("main section")];
+const navItems=
+document.querySelectorAll(".nav-links a");
+
+const sections=[
+  ...document.querySelectorAll(
+    "main section"
+  )
+];
 
 window.addEventListener("scroll",()=>{
+
   let current="top";
 
   sections.forEach(section=>{
-    const top=section.offsetTop-120;
 
-    if(window.scrollY>=top){
+    if(
+      window.scrollY>=
+      section.offsetTop-120
+    ){
       current=section.id;
     }
+
   });
 
   navItems.forEach(item=>{
+
     item.classList.remove("active");
 
-    const href=item.getAttribute("href");
-
-    if(href==="#"+current){
+    if(
+      item.getAttribute("href")
+      ==="#"+current
+    ){
       item.classList.add("active");
     }
+
   });
+
 },{passive:true});
 
 
@@ -1930,80 +2437,142 @@ window.addEventListener("scroll",()=>{
 ========================= */
 
 const searchMap={
+
   "فوتبال":"#interests",
   "football":"#interests",
+
   "ai":"#interests",
   "هوش":"#interests",
   "هوش مصنوعی":"#interests",
+
   "تکنولوژی":"#interests",
   "technology":"#interests",
+
   "مهارت":"#skills",
   "skills":"#skills",
+
   "پروژه":"#projects",
   "github":"#projects",
+
   "دستاورد":"#achievements",
+
   "badge":"#badges",
+
+  "فعالیت":"#activities",
+
+  "ایده":"#ideas",
+
+  "رشد":"#growth",
+
+  "level":"#level",
+
   "پروفایل":"#digital-id",
+
   "تماس":"#contact",
   "ارتباط":"#contact",
-  "telegram":"#contact",
-  "instagram":"#contact",
-  "whatsapp":"#contact",
+
   "qr":"#qrcode-section",
+
   "مسیر":"#timeline",
-  "هدف":"#goals"
+
+  "هدف":"#goals",
+
+  "حریم":"#privacy"
 };
 
 function doSearch(){
-  const input=document.getElementById("searchInput");
-  const query=input.value.trim().toLowerCase();
+
+  const query=
+    document.getElementById(
+      "searchInput"
+    ).value
+    .trim()
+    .toLowerCase();
 
   if(!query){
-    showToast("🔎 چیزی برای جستجو وارد کن");
+
+    showToast(
+      "🔎 چیزی برای جستجو وارد کن"
+    );
+
     return;
   }
 
   for(const key in searchMap){
-    if(query.includes(key)){
-      document.querySelector(searchMap[key])
-        .scrollIntoView({behavior:"smooth"});
 
-      showToast("✅ بخش موردنظر پیدا شد");
+    if(query.includes(key)){
+
+      document.querySelector(
+        searchMap[key]
+      ).scrollIntoView({
+        behavior:"smooth"
+      });
+
+      showToast(
+        "✅ بخش پیدا شد"
+      );
+
       return;
     }
   }
 
-  showToast("❌ موردی پیدا نشد");
+  showToast(
+    "❌ موردی پیدا نشد"
+  );
 }
 
-document.getElementById("searchBtn").addEventListener("click",doSearch);
+document.getElementById("searchBtn")
+.addEventListener(
+  "click",
+  doSearch
+);
 
-document.getElementById("searchInput").addEventListener("keydown",e=>{
-  if(e.key==="Enter"){
-    doSearch();
+document.getElementById("searchInput")
+.addEventListener(
+  "keydown",
+  e=>{
+    if(e.key==="Enter"){
+      doSearch();
+    }
   }
-});
+);
 
 
 /* =========================
-   Gallery Modal
+   Gallery
 ========================= */
 
-const modal=document.getElementById("imageModal");
+const modal=
+  document.getElementById(
+    "imageModal"
+  );
 
-document.getElementById("profileGallery").addEventListener("click",()=>{
-  modal.classList.add("show");
-});
+document.getElementById(
+  "profileGallery"
+).addEventListener(
+  "click",
+  ()=>{
+    modal.classList.add("show");
+  }
+);
 
-document.getElementById("modalClose").addEventListener("click",()=>{
-  modal.classList.remove("show");
-});
-
-modal.addEventListener("click",e=>{
-  if(e.target===modal){
+document.getElementById(
+  "modalClose"
+).addEventListener(
+  "click",
+  ()=>{
     modal.classList.remove("show");
   }
-});
+);
+
+modal.addEventListener(
+  "click",
+  e=>{
+    if(e.target===modal){
+      modal.classList.remove("show");
+    }
+  }
+);
 
 
 /* =========================
@@ -2011,11 +2580,17 @@ modal.addEventListener("click",e=>{
 ========================= */
 
 if(window.QRCode){
-  new QRCode(document.getElementById("qrcode"),{
-    text:"https://amirrezagholami86.github.io/",
-    width:190,
-    height:190
-  });
+
+  new QRCode(
+    document.getElementById("qrcode"),
+    {
+      text:
+        "https://amirrezagholami86.github.io/",
+      width:190,
+      height:190
+    }
+  );
+
 }
 
 
@@ -2023,15 +2598,33 @@ if(window.QRCode){
    Mouse Glow
 ========================= */
 
-const mouseGlow=document.getElementById("mouseGlow");
+const mouseGlow=
+  document.getElementById(
+    "mouseGlow"
+  );
 
-if(window.matchMedia("(pointer:fine)").matches){
-  window.addEventListener("pointermove",e=>{
-    mouseGlow.style.left=e.clientX+"px";
-    mouseGlow.style.top=e.clientY+"px";
-  },{passive:true});
+if(
+  window.matchMedia(
+    "(pointer:fine)"
+  ).matches
+){
+
+  window.addEventListener(
+    "pointermove",
+    e=>{
+      mouseGlow.style.left=
+        e.clientX+"px";
+
+      mouseGlow.style.top=
+        e.clientY+"px";
+    },
+    {passive:true}
+  );
+
 }else{
+
   mouseGlow.style.display="none";
+
 }
 
 
@@ -2039,27 +2632,44 @@ if(window.matchMedia("(pointer:fine)").matches){
    Sound
 ========================= */
 
-let soundEnabled=localStorage.getItem("siteSound")==="on";
-const soundBtn=document.getElementById("soundBtn");
+let soundEnabled=
+  localStorage.getItem(
+    "siteSound"
+  )==="on";
+
+const soundBtn=
+  document.getElementById(
+    "soundBtn"
+  );
 
 function updateSoundButton(){
-  soundBtn.textContent=soundEnabled?"🔊":"🔇";
+
+  soundBtn.textContent=
+    soundEnabled?"🔊":"🔇";
 }
 
 updateSoundButton();
 
 function playClick(){
+
   if(!soundEnabled) return;
 
   try{
+
     const AudioContext=
-      window.AudioContext || window.webkitAudioContext;
+      window.AudioContext ||
+      window.webkitAudioContext;
 
     if(!AudioContext) return;
 
-    const ctx=new AudioContext();
-    const osc=ctx.createOscillator();
-    const gain=ctx.createGain();
+    const ctx=
+      new AudioContext();
+
+    const osc=
+      ctx.createOscillator();
+
+    const gain=
+      ctx.createGain();
 
     osc.frequency.value=520;
     gain.gain.value=.035;
@@ -2077,94 +2687,298 @@ function playClick(){
   }catch(e){}
 }
 
-soundBtn.addEventListener("click",()=>{
-  soundEnabled=!soundEnabled;
+soundBtn.addEventListener(
+  "click",
+  ()=>{
+    soundEnabled=!soundEnabled;
 
-  localStorage.setItem(
-    "siteSound",
-    soundEnabled?"on":"off"
-  );
+    localStorage.setItem(
+      "siteSound",
+      soundEnabled?"on":"off"
+    );
 
-  updateSoundButton();
+    updateSoundButton();
 
-  if(soundEnabled) playClick();
-});
+    if(soundEnabled){
+      playClick();
+    }
+  }
+);
+
+
+/* =========================
+   Reset Local Data
+========================= */
+
+document.getElementById(
+  "resetBtn"
+).addEventListener(
+  "click",
+  ()=>{
+
+    const ok=
+      confirm(
+        "آمار و تنظیمات محلی سایت پاک شوند؟"
+      );
+
+    if(!ok) return;
+
+    const keys=[
+      "siteVisits",
+      "lastVisit",
+      "sectionVisits",
+      "siteMode",
+      "accentTheme",
+      "siteSound",
+      "welcomeShown"
+    ];
+
+    keys.forEach(key=>{
+      localStorage.removeItem(key);
+    });
+
+    showToast(
+      "🧹 اطلاعات محلی پاک شد؛ صفحه در حال تازه‌سازی است"
+    );
+
+    setTimeout(()=>{
+      location.reload();
+    },900);
+
+  }
+);
 
 
 /* =========================
    Particles
 ========================= */
 
-const canvas=document.getElementById("particles");
-const ctx=canvas.getContext("2d");
+const canvas=
+  document.getElementById(
+    "particles"
+  );
+
+const ctx=
+  canvas.getContext("2d");
 
 let particles=[];
-let animationFrame;
 
 function resizeCanvas(){
-  canvas.width=window.innerWidth;
-  canvas.height=window.innerHeight;
+
+  canvas.width=
+    window.innerWidth;
+
+  canvas.height=
+    window.innerHeight;
 }
 
 function createParticles(){
+
   particles=[];
 
-  const amount=window.innerWidth<700?20:40;
+  const amount=
+    window.innerWidth<700
+    ?18
+    :35;
 
-  for(let i=0;i<amount;i++){
+  for(
+    let i=0;
+    i<amount;
+    i++
+  ){
+
     particles.push({
-      x:Math.random()*canvas.width,
-      y:Math.random()*canvas.height,
-      r:Math.random()*1.6+.4,
-      dx:(Math.random()-.5)*.25,
-      dy:(Math.random()-.5)*.25
+
+      x:
+        Math.random()*
+        canvas.width,
+
+      y:
+        Math.random()*
+        canvas.height,
+
+      r:
+        Math.random()*1.5+.4,
+
+      dx:
+        (Math.random()-.5)*.22,
+
+      dy:
+        (Math.random()-.5)*.22
+
     });
   }
 }
 
 function animateParticles(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  ctx.clearRect(
+    0,
+    0,
+    canvas.width,
+    canvas.height
+  );
 
   particles.forEach(p=>{
+
     p.x+=p.dx;
     p.y+=p.dy;
 
-    if(p.x<0 || p.x>canvas.width) p.dx*=-1;
-    if(p.y<0 || p.y>canvas.height) p.dy*=-1;
+    if(
+      p.x<0 ||
+      p.x>canvas.width
+    ){
+      p.dx*=-1;
+    }
+
+    if(
+      p.y<0 ||
+      p.y>canvas.height
+    ){
+      p.dy*=-1;
+    }
 
     ctx.beginPath();
-    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-    ctx.fillStyle="rgba(120,200,255,.55)";
+
+    ctx.arc(
+      p.x,
+      p.y,
+      p.r,
+      0,
+      Math.PI*2
+    );
+
+    ctx.fillStyle=
+      "rgba(120,200,255,.45)";
+
     ctx.fill();
+
   });
 
-  animationFrame=requestAnimationFrame(animateParticles);
+  requestAnimationFrame(
+    animateParticles
+  );
 }
 
-if(!window.matchMedia("(prefers-reduced-motion:reduce)").matches){
+if(
+  !window.matchMedia(
+    "(prefers-reduced-motion:reduce)"
+  ).matches
+){
+
   resizeCanvas();
   createParticles();
   animateParticles();
 
-  window.addEventListener("resize",()=>{
-    resizeCanvas();
-    createParticles();
-  });
+  window.addEventListener(
+    "resize",
+    ()=>{
+      resizeCanvas();
+      createParticles();
+    }
+  );
 }
 
 
 /* =========================
-   First Visit
+   Counters
 ========================= */
 
-if(!localStorage.getItem("welcomeShown")){
-  setTimeout(()=>{
-    showToast("👋 خوش اومدی به سایت من!");
-  },1000);
+const counters=
+  document.querySelectorAll(
+    ".stat-number"
+  );
 
-  localStorage.setItem("welcomeShown","yes");
+const counterObserver=
+  new IntersectionObserver(
+    entries=>{
+
+      entries.forEach(entry=>{
+
+        if(
+          entry.isIntersecting &&
+          !entry.target.dataset.done
+        ){
+
+          entry.target.dataset.done="1";
+
+          const target=
+            Number(
+              entry.target.dataset.count
+            );
+
+          const duration=
+            target>1000
+            ?700
+            :900;
+
+          const start=
+            performance.now();
+
+          function update(now){
+
+            const progress=
+              Math.min(
+                (now-start)/
+                duration,
+                1
+              );
+
+            const value=
+              Math.floor(
+                progress*target
+              );
+
+            entry.target.textContent=
+              value.toLocaleString(
+                "fa-IR"
+              );
+
+            if(progress<1){
+              requestAnimationFrame(
+                update
+              );
+            }
+          }
+
+          requestAnimationFrame(
+            update
+          );
+        }
+
+      });
+
+    },
+    {threshold:.4}
+  );
+
+counters.forEach(counter=>{
+  counterObserver.observe(counter);
+});
+
+
+/* =========================
+   Welcome
+========================= */
+
+if(
+  !localStorage.getItem(
+    "welcomeShown"
+  )
+){
+
+  setTimeout(()=>{
+    showToast(
+      "👋 خوش اومدی به پروفایل دیجیتال من!"
+    );
+  },900);
+
+  localStorage.setItem(
+    "welcomeShown",
+    "yes"
+  );
 }
 </script>
 
 </body>
- </html>
+  </html>
