@@ -1,49 +1,37 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-
 <head>
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>امیررضا غلامی | وب‌سایت شخصی</title>
 
-<meta name="description"
-content="وب‌سایت شخصی امیررضا غلامی؛ معرفی، علایق، مهارت‌ها، پروژه‌ها و راه‌های ارتباطی.">
-
+<meta name="description" content="وب‌سایت شخصی امیررضا غلامی؛ علاقه‌مند به تکنولوژی، هوش مصنوعی، وب و فوتبال.">
 <meta name="author" content="امیررضا غلامی">
 <meta name="robots" content="index, follow">
 
-<link rel="canonical"
-href="https://amirrezagholami86.github.io/">
+<link rel="canonical" href="https://amirrezagholami86.github.io/">
 
 <meta property="og:type" content="website">
-<meta property="og:title"
-content="امیررضا غلامی | وب‌سایت شخصی">
-<meta property="og:description"
-content="وب‌سایت شخصی امیررضا غلامی؛ معرفی، علایق، مهارت‌ها و پروژه‌ها.">
-<meta property="og:url"
-content="https://amirrezagholami86.github.io/">
-<meta property="og:image"
-content="https://amirrezagholami86.github.io/profile.jpg">
+<meta property="og:title" content="امیررضا غلامی | وب‌سایت شخصی">
+<meta property="og:description" content="وب‌سایت شخصی امیررضا غلامی؛ تکنولوژی، هوش مصنوعی، وب و علایق شخصی.">
+<meta property="og:url" content="https://amirrezagholami86.github.io/">
+<meta property="og:image" content="https://amirrezagholami86.github.io/profile.jpg">
 <meta property="og:locale" content="fa_IR">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title"
-content="امیررضا غلامی | وب‌سایت شخصی">
-<meta name="twitter:description"
-content="وب‌سایت شخصی امیررضا غلامی">
-<meta name="twitter:image"
-content="https://amirrezagholami86.github.io/profile.jpg">
+<meta name="twitter:title" content="امیررضا غلامی | وب‌سایت شخصی">
+<meta name="twitter:description" content="وب‌سایت شخصی امیررضا غلامی">
+<meta name="twitter:image" content="https://amirrezagholami86.github.io/profile.jpg">
 
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"Person",
-  "name":"امیررضا غلامی",
-  "url":"https://amirrezagholami86.github.io/",
-  "image":"https://amirrezagholami86.github.io/profile.jpg",
-  "sameAs":[
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "امیررضا غلامی",
+  "url": "https://amirrezagholami86.github.io/",
+  "image": "https://amirrezagholami86.github.io/profile.jpg",
+  "sameAs": [
     "https://github.com/amirrezagholami86",
     "https://www.instagram.com/amirrezagholami.ir",
     "https://t.me/Amirrezagholami_ir"
@@ -52,7 +40,6 @@ content="https://amirrezagholami86.github.io/profile.jpg">
 </script>
 
 <style>
-
 *{
   box-sizing:border-box;
   margin:0;
@@ -66,142 +53,212 @@ html{
 
 body{
   font-family:Tahoma,Arial,sans-serif;
-  background:
-    radial-gradient(circle at top right,#1d3557,transparent 35%),
-    linear-gradient(135deg,#050816,#101827);
+  background:#080b14;
   color:#fff;
-  min-height:100vh;
+  line-height:1.8;
+  overflow-x:hidden;
   transition:.4s;
-  animation:pageEnter .8s ease;
 }
 
 body.light{
-  background:
-    radial-gradient(circle at top right,#dbeafe,transparent 35%),
-    linear-gradient(135deg,#f8fafc,#e2e8f0);
-  color:#172033;
+  background:#f4f7fb;
+  color:#111827;
 }
 
+a{
+  color:inherit;
+  text-decoration:none;
+}
 
-/* NAVIGATION */
+canvas{
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  z-index:-2;
+  pointer-events:none;
+  opacity:.45;
+}
 
-nav{
+/* Scroll Progress */
+#progressBar{
   position:fixed;
   top:0;
   right:0;
-  left:0;
-  z-index:1000;
+  height:4px;
+  width:0%;
+  background:linear-gradient(90deg,#00e5ff,#7c4dff,#ff4081);
+  z-index:99999;
+  box-shadow:0 0 12px rgba(0,229,255,.7);
+}
 
+/* Welcome */
+#welcome{
+  position:fixed;
+  inset:0;
+  background:rgba(4,7,15,.97);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+  transition:.6s;
+  padding:20px;
+}
+
+body.light #welcome{
+  background:rgba(244,247,251,.97);
+}
+
+.welcome-box{
+  width:min(520px,100%);
+  text-align:center;
+  padding:45px 28px;
+  border-radius:28px;
+  background:linear-gradient(145deg,rgba(18,25,45,.96),rgba(10,14,27,.96));
+  border:1px solid rgba(0,229,255,.25);
+  box-shadow:0 20px 70px rgba(0,0,0,.45);
+  animation:welcomeIn .8s ease;
+}
+
+body.light .welcome-box{
+  background:#fff;
+  color:#111827;
+  box-shadow:0 20px 60px rgba(0,0,0,.12);
+}
+
+.welcome-icon{
+  font-size:55px;
+  margin-bottom:15px;
+}
+
+.welcome-box h2{
+  font-size:30px;
+  margin-bottom:10px;
+}
+
+.welcome-box p{
+  opacity:.8;
+  margin-bottom:25px;
+}
+
+.welcome-btn{
+  border:0;
+  padding:13px 28px;
+  border-radius:14px;
+  background:linear-gradient(135deg,#00c6ff,#7c4dff);
+  color:#fff;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.welcome-btn:hover{
+  transform:translateY(-3px) scale(1.03);
+  box-shadow:0 10px 30px rgba(0,198,255,.3);
+}
+
+#welcome.hide{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+}
+
+@keyframes welcomeIn{
+  from{opacity:0;transform:translateY(25px) scale(.95)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+
+/* Theme */
+.theme-toggle{
+  position:fixed;
+  top:18px;
+  left:18px;
+  width:48px;
+  height:48px;
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:50%;
+  background:rgba(20,25,40,.8);
+  color:#fff;
+  cursor:pointer;
+  z-index:1000;
+  font-size:21px;
+  backdrop-filter:blur(10px);
+  transition:.3s;
+}
+
+.theme-toggle:hover{
+  transform:rotate(15deg) scale(1.08);
+}
+
+body.light .theme-toggle{
+  background:#fff;
+  color:#111;
+  border-color:#ddd;
+}
+
+/* Navigation */
+nav{
+  position:sticky;
+  top:0;
+  z-index:900;
   display:flex;
   justify-content:center;
   gap:8px;
-
-  padding:12px;
-
-  background:rgba(5,8,22,.75);
-  backdrop-filter:blur(14px);
-
+  padding:12px 10px;
+  background:rgba(8,11,20,.72);
+  backdrop-filter:blur(15px);
   border-bottom:1px solid rgba(255,255,255,.08);
+  overflow-x:auto;
+  white-space:nowrap;
 }
 
 body.light nav{
   background:rgba(255,255,255,.78);
-  border-bottom:1px solid rgba(0,0,0,.08);
+  border-color:rgba(0,0,0,.08);
 }
 
 nav a{
-  color:inherit;
-  text-decoration:none;
-
-  padding:9px 13px;
+  padding:8px 13px;
   border-radius:12px;
-
-  font-size:14px;
-  white-space:nowrap;
-
+  font-size:13px;
+  opacity:.8;
   transition:.3s;
 }
 
 nav a:hover{
-  background:rgba(255,255,255,.12);
+  background:rgba(0,229,255,.12);
+  color:#00e5ff;
+  opacity:1;
   transform:translateY(-2px);
 }
 
-
-/* THEME BUTTON */
-
-#themeToggle{
-  position:fixed;
-  top:12px;
-  left:15px;
-  z-index:1100;
-
-  width:42px;
-  height:42px;
-
-  border:none;
-  border-radius:50%;
-
-  cursor:pointer;
-
-  background:rgba(255,255,255,.12);
-  color:white;
-
-  font-size:20px;
-
-  backdrop-filter:blur(10px);
-
-  transition:.3s;
-}
-
-#themeToggle:hover{
-  transform:rotate(20deg) scale(1.08);
-}
-
-body.light #themeToggle{
-  background:rgba(0,0,0,.08);
-  color:#111827;
-}
-
-
-/* MAIN */
-
-main{
-  width:min(1000px,92%);
+/* Main */
+.container{
+  width:min(1050px,92%);
   margin:auto;
-
-  padding-top:105px;
-  padding-bottom:60px;
 }
-
-
-/* HERO */
 
 .hero{
+  min-height:90vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
   text-align:center;
-  padding:35px 15px 45px;
+  position:relative;
 }
 
 .profile{
-  width:150px;
-  height:150px;
-
+  width:170px;
+  height:170px;
   border-radius:50%;
-
   object-fit:cover;
-
-  border:4px solid transparent;
-
-  background:
-    linear-gradient(#111827,#111827) padding-box,
-    linear-gradient(135deg,#00e5ff,#7c3aed,#ff2d95) border-box;
-
-  animation:
-    profileAppear 1s ease,
-    profileGlow 3s infinite alternate;
-
-  box-shadow:0 0 30px rgba(0,229,255,.25);
-
+  border:4px solid #00e5ff;
+  box-shadow:
+    0 0 20px rgba(0,229,255,.5),
+    0 0 55px rgba(124,77,255,.25);
+  animation:profileGlow 3s infinite alternate;
   transition:.4s;
 }
 
@@ -209,1302 +266,1103 @@ main{
   transform:scale(1.06) rotate(2deg);
 }
 
-.hero h1{
-  margin-top:22px;
-  font-size:clamp(28px,5vw,45px);
+@keyframes profileGlow{
+  from{box-shadow:0 0 15px rgba(0,229,255,.35)}
+  to{box-shadow:0 0 35px rgba(124,77,255,.65)}
 }
 
+.hero h1{
+  font-size:42px;
+  margin-top:25px;
+}
 
-/* TYPING */
+.hero h1 span{
+  color:#00e5ff;
+}
 
 .typing{
-  margin-top:14px;
-
-  min-height:30px;
-
+  min-height:35px;
+  margin-top:8px;
+  color:#b8c7ff;
   font-size:18px;
-  font-weight:bold;
-
-  opacity:.9;
 }
 
-.cursor{
-  display:inline-block;
-  animation:blink .8s infinite;
+body.light .typing{
+  color:#4b5563;
 }
-
-
-/* CHIPS */
 
 .chips{
   display:flex;
-  justify-content:center;
   flex-wrap:wrap;
-
+  justify-content:center;
   gap:9px;
-
   margin-top:20px;
 }
 
 .chip{
-  padding:8px 13px;
-
-  border-radius:999px;
-
-  background:rgba(255,255,255,.08);
-
+  padding:7px 13px;
+  border-radius:20px;
+  background:rgba(255,255,255,.06);
   border:1px solid rgba(255,255,255,.1);
-
   transition:.3s;
 }
 
 .chip:hover{
   transform:translateY(-3px);
-  background:rgba(255,255,255,.15);
+  border-color:#00e5ff;
 }
 
 body.light .chip{
-  background:rgba(0,0,0,.05);
-  border-color:rgba(0,0,0,.08);
+  background:#fff;
+  border-color:#ddd;
 }
 
-
-/* SECTIONS */
-
+/* Sections */
 section{
-  margin-top:25px;
+  padding:85px 0;
+}
 
-  padding:25px;
+.section-title{
+  text-align:center;
+  font-size:30px;
+  margin-bottom:40px;
+}
 
-  border-radius:22px;
+.section-title span{
+  color:#00e5ff;
+}
 
-  background:rgba(255,255,255,.055);
-
+.card{
+  background:rgba(17,23,39,.72);
   border:1px solid rgba(255,255,255,.08);
-
-  backdrop-filter:blur(12px);
-
+  border-radius:22px;
+  padding:28px;
   transition:.35s;
-
-  opacity:0;
-  transform:translateY(35px);
+  backdrop-filter:blur(12px);
 }
 
-section.visible{
-  opacity:1;
-  transform:translateY(0);
+body.light .card{
+  background:#fff;
+  border-color:#e5e7eb;
+  box-shadow:0 10px 30px rgba(0,0,0,.05);
 }
 
-section:hover{
-  border-color:rgba(0,229,255,.25);
+.card:hover{
+  transform:translateY(-7px);
+  border-color:rgba(0,229,255,.4);
+  box-shadow:0 15px 40px rgba(0,0,0,.2);
 }
 
-body.light section{
-  background:rgba(255,255,255,.65);
-  border-color:rgba(0,0,0,.08);
-}
-
-section h2{
-  margin-bottom:17px;
-  font-size:23px;
-}
-
-section p{
-  line-height:2;
-  opacity:.88;
-}
-
-
-/* PROFILE CARD */
-
-.profile-card{
+/* About */
+.profile-grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
-
-  gap:12px;
-
-  margin-top:20px;
+  gap:15px;
+  margin-top:25px;
 }
 
 .info-box{
-  display:flex;
-  align-items:center;
-  gap:12px;
-
-  padding:16px;
-
+  padding:18px;
   border-radius:16px;
-
-  background:rgba(255,255,255,.06);
-
-  border:1px solid rgba(255,255,255,.05);
-
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.07);
   transition:.3s;
+}
+
+body.light .info-box{
+  background:#f8fafc;
+  border-color:#e5e7eb;
 }
 
 .info-box:hover{
   transform:translateY(-4px);
-  background:rgba(255,255,255,.1);
 }
-
-.info-icon{
-  font-size:24px;
-}
-
-.info-text strong{
-  display:block;
-  margin-bottom:5px;
-}
-
-.info-text span{
-  font-size:13px;
-  opacity:.7;
-}
-
-
-/* ABOUT HIGHLIGHTS */
 
 .highlights{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-
-  gap:12px;
-
-  margin-top:20px;
+  gap:15px;
+  margin-top:25px;
 }
 
 .highlight{
-  padding:18px;
-
   text-align:center;
-
-  border-radius:17px;
-
-  background:rgba(255,255,255,.06);
-
+  padding:25px 15px;
+  border-radius:18px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.07);
   transition:.3s;
 }
 
+body.light .highlight{
+  background:#fff;
+  border-color:#e5e7eb;
+}
+
 .highlight:hover{
-  transform:translateY(-5px);
+  transform:translateY(-6px) scale(1.02);
 }
 
-.highlight strong{
-  display:block;
-  margin-bottom:7px;
-}
-
-
-/* STATS */
-
+/* Stats */
 .stats{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-
-  gap:14px;
-
+  gap:18px;
   margin-top:20px;
 }
 
 .stat{
   text-align:center;
-
-  padding:22px 10px;
-
-  border-radius:18px;
-
-  background:rgba(255,255,255,.06);
-
-  transition:.3s;
-}
-
-.stat:hover{
-  transform:translateY(-6px) scale(1.02);
+  padding:30px 15px;
+  border-radius:22px;
+  background:linear-gradient(145deg,rgba(0,229,255,.08),rgba(124,77,255,.08));
+  border:1px solid rgba(0,229,255,.15);
 }
 
 .stat-number{
-  display:block;
-
-  font-size:30px;
+  font-size:42px;
   font-weight:bold;
-
-  margin-bottom:8px;
+  color:#00e5ff;
 }
 
 .stat-label{
-  opacity:.75;
+  opacity:.8;
 }
 
-
-/* INTERESTS */
-
+/* Interests */
 .tags{
   display:flex;
   flex-wrap:wrap;
-
-  gap:10px;
+  gap:12px;
+  justify-content:center;
 }
 
 .tag{
-  padding:10px 14px;
-
-  border-radius:14px;
-
-  background:rgba(255,255,255,.08);
-
+  padding:12px 17px;
+  border-radius:15px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.08);
   transition:.3s;
 }
 
 .tag:hover{
   transform:translateY(-4px) scale(1.03);
-
-  background:rgba(255,255,255,.14);
+  border-color:#00e5ff;
 }
 
-
-/* SKILLS */
-
+/* Skills */
 .skills{
   display:grid;
   grid-template-columns:repeat(2,1fr);
-
-  gap:12px;
+  gap:18px;
 }
 
 .skill{
-  padding:16px;
-
-  border-radius:15px;
-
-  background:rgba(255,255,255,.06);
-
-  transition:.3s;
-}
-
-.skill:hover{
-  transform:translateY(-4px);
-}
-
-
-/* PROJECTS */
-
-.projects{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-
-  gap:14px;
-}
-
-.project{
   padding:20px;
-
-  border-radius:17px;
-
-  background:rgba(255,255,255,.06);
-
-  transition:.35s;
 }
 
-.project:hover{
-  transform:translateY(-6px);
-
-  box-shadow:
-    0 10px 30px rgba(0,0,0,.2);
-}
-
-.project h3{
+.skill-top{
+  display:flex;
+  justify-content:space-between;
   margin-bottom:10px;
 }
 
-
-/* GOALS */
-
-.goal-list{
-  display:grid;
-  gap:12px;
-  margin-top:15px;
+.skill-bar{
+  height:9px;
+  border-radius:20px;
+  background:rgba(255,255,255,.08);
+  overflow:hidden;
 }
 
-.goal{
-  padding:17px;
+.skill-fill{
+  height:100%;
+  border-radius:20px;
+  background:linear-gradient(90deg,#00e5ff,#7c4dff);
+  animation:skillLoad 1.5s ease;
+}
 
-  border-radius:16px;
+@keyframes skillLoad{
+  from{width:0}
+}
 
-  background:rgba(255,255,255,.06);
+/* Projects */
+.projects{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
 
-  border-right:4px solid rgba(0,229,255,.7);
+.project-icon{
+  font-size:35px;
+  margin-bottom:12px;
+}
 
+.github-feature{
+  margin-top:20px;
+  text-align:center;
+}
+
+.github-btn{
+  display:inline-block;
+  margin-top:15px;
+  padding:12px 25px;
+  border-radius:14px;
+  background:#111827;
+  border:1px solid #374151;
   transition:.3s;
 }
 
-.goal:hover{
-  transform:translateX(-5px);
+.github-btn:hover{
+  transform:translateY(-4px);
+  box-shadow:0 10px 25px rgba(0,0,0,.25);
 }
 
-.goal h3{
-  margin-bottom:7px;
-}
-
-
-/* TIMELINE */
-
+/* Timeline */
 .timeline{
   position:relative;
-
-  margin-top:25px;
-
-  padding-right:25px;
+  max-width:750px;
+  margin:auto;
 }
 
 .timeline::before{
   content:"";
-
   position:absolute;
-
-  right:8px;
+  right:18px;
   top:0;
   bottom:0;
-
   width:2px;
-
-  background:rgba(255,255,255,.2);
+  background:linear-gradient(#00e5ff,#7c4dff);
 }
 
 .timeline-item{
   position:relative;
-
-  margin-bottom:25px;
-
-  padding:18px;
-
-  border-radius:16px;
-
-  background:rgba(255,255,255,.06);
-
-  transition:.3s;
+  padding:0 55px 35px 0;
 }
 
-.timeline-item:hover{
-  transform:translateX(-5px);
-}
-
-.timeline-item::before{
-  content:"";
-
+.timeline-dot{
   position:absolute;
-
-  right:-23px;
-  top:22px;
-
-  width:12px;
-  height:12px;
-
+  right:9px;
+  top:4px;
+  width:20px;
+  height:20px;
   border-radius:50%;
-
   background:#00e5ff;
-
-  box-shadow:
-    0 0 15px rgba(0,229,255,.8);
+  box-shadow:0 0 15px #00e5ff;
 }
 
-.timeline-year{
-  font-size:13px;
-  opacity:.65;
-
-  margin-bottom:7px;
+/* Goals */
+.goals{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
 }
 
-
-/* GITHUB FEATURE */
-
-.github-feature{
-  margin-top:20px;
-
-  padding:24px;
-
-  border-radius:20px;
-
+.goal{
   text-align:center;
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(0,229,255,.08),
-      rgba(124,58,237,.12)
-    );
-
-  border:1px solid rgba(255,255,255,.1);
 }
 
-.github-feature h3{
-  margin-bottom:10px;
+/* Contact */
+.contact-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
 }
 
-.github-feature p{
-  margin-bottom:18px;
-}
-
-.github-button{
-  display:inline-block;
-
-  padding:12px 22px;
-
-  border-radius:14px;
-
-  text-decoration:none;
-
-  color:white;
-
-  background:#24292f;
-
-  transition:.3s;
-}
-
-.github-button:hover{
-  transform:translateY(-4px) scale(1.03);
-}
-
-
-/* CONTACT */
-
-.contact{
+.contact-btn{
   display:flex;
-  flex-wrap:wrap;
-
-  gap:12px;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  min-height:60px;
+  padding:14px 18px;
+  border-radius:17px;
+  background:linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.03));
+  border:1px solid rgba(255,255,255,.1);
+  transition:.35s;
+  font-weight:bold;
+  position:relative;
+  overflow:hidden;
 }
 
-.btn{
-  display:inline-block;
-
-  text-decoration:none;
-
-  color:inherit;
-
-  padding:12px 17px;
-
-  border-radius:14px;
-
-  background:rgba(255,255,255,.08);
-
-  border:1px solid rgba(255,255,255,.08);
-
-  transition:.3s;
+.contact-btn::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.1),transparent);
+  transform:translateX(-100%);
+  transition:.5s;
 }
 
-.btn:hover{
-  transform:translateY(-4px);
-
-  background:rgba(255,255,255,.15);
+.contact-btn:hover::before{
+  transform:translateX(100%);
 }
 
+.contact-btn:hover{
+  transform:translateY(-5px);
+  border-color:#00e5ff;
+  box-shadow:0 10px 30px rgba(0,229,255,.15);
+}
 
-/* FOOTER */
+body.light .contact-btn{
+  background:#fff;
+  border-color:#e5e7eb;
+}
 
+/* Footer */
 footer{
   text-align:center;
-
-  margin-top:45px;
-
-  opacity:.6;
-
-  font-size:13px;
+  padding:35px 15px;
+  opacity:.65;
 }
 
-
-/* TOP BUTTON */
-
-#topBtn{
+/* Back top */
+#backTop{
   position:fixed;
-
   bottom:20px;
   left:20px;
-
   width:45px;
   height:45px;
-
-  border:none;
-
+  border:0;
   border-radius:50%;
-
+  background:#00e5ff;
+  color:#061018;
   cursor:pointer;
-
-  background:rgba(255,255,255,.12);
-
-  color:white;
-
   font-size:20px;
-
+  z-index:800;
+  opacity:0;
+  visibility:hidden;
   transition:.3s;
 }
 
-#topBtn:hover{
+#backTop.show{
+  opacity:1;
+  visibility:visible;
+}
+
+#backTop:hover{
   transform:translateY(-4px);
 }
 
-body.light #topBtn{
+/* Toast */
+#toast{
+  position:fixed;
+  bottom:25px;
+  right:25px;
+  padding:13px 18px;
+  border-radius:14px;
+  background:#151b2d;
+  color:#fff;
+  border:1px solid rgba(0,229,255,.25);
+  box-shadow:0 10px 35px rgba(0,0,0,.3);
+  transform:translateY(100px);
+  opacity:0;
+  transition:.4s;
+  z-index:9998;
+  pointer-events:none;
+}
+
+body.light #toast{
+  background:#fff;
   color:#111827;
-  background:rgba(0,0,0,.08);
+  border-color:#ddd;
 }
 
-
-/* ANIMATIONS */
-
-@keyframes pageEnter{
-
-  from{
-    opacity:0;
-    transform:translateY(15px);
-  }
-
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-
+#toast.show{
+  transform:translateY(0);
+  opacity:1;
 }
 
-@keyframes profileAppear{
-
-  from{
-    opacity:0;
-    transform:scale(.7);
-  }
-
-  to{
-    opacity:1;
-    transform:scale(1);
-  }
-
+/* Reveal */
+.reveal{
+  opacity:0;
+  transform:translateY(35px);
+  transition:opacity .8s ease,transform .8s ease;
 }
 
-@keyframes profileGlow{
-
-  from{
-    box-shadow:
-      0 0 15px rgba(0,229,255,.2);
-  }
-
-  to{
-    box-shadow:
-      0 0 35px rgba(124,58,237,.5);
-  }
-
+.reveal.visible{
+  opacity:1;
+  transform:translateY(0);
 }
 
-@keyframes blink{
-
-  50%{
-    opacity:0;
-  }
-
-}
-
-
-/* MOBILE */
-
-@media(max-width:700px){
-
-  nav{
-    justify-content:flex-start;
-
-    overflow-x:auto;
-
-    padding-right:60px;
-  }
-
-  nav a{
-    font-size:13px;
-  }
-
-  main{
-    width:94%;
-
-    padding-top:95px;
-  }
-
-  section{
-    padding:20px;
-  }
-
-  .profile{
-    width:125px;
-    height:125px;
+/* Mobile */
+@media(max-width:800px){
+  .hero h1{
+    font-size:32px;
   }
 
   .highlights,
-  .skills,
   .projects,
-  .stats,
-  .profile-card{
+  .goals{
     grid-template-columns:1fr;
   }
 
-  .contact{
-    flex-direction:column;
+  .skills,
+  .contact-grid,
+  .profile-grid,
+  .stats{
+    grid-template-columns:1fr 1fr;
   }
 
-  .btn{
-    text-align:center;
+  nav{
+    justify-content:flex-start;
   }
-
-  .timeline{
-    padding-right:20px;
-  }
-
 }
 
+@media(max-width:550px){
+  section{
+    padding:65px 0;
+  }
+
+  .profile{
+    width:140px;
+    height:140px;
+  }
+
+  .hero h1{
+    font-size:28px;
+  }
+
+  .typing{
+    font-size:15px;
+  }
+
+  .skills,
+  .contact-grid,
+  .profile-grid,
+  .stats{
+    grid-template-columns:1fr;
+  }
+
+  .section-title{
+    font-size:26px;
+  }
+
+  .welcome-box{
+    padding:35px 20px;
+  }
+
+  .welcome-box h2{
+    font-size:25px;
+  }
+
+  #toast{
+    right:15px;
+    left:15px;
+    bottom:15px;
+    text-align:center;
+  }
+}
 </style>
 </head>
 
+<body>
 
-<body id="top">
+<div id="progressBar"></div>
 
+<canvas id="particles"></canvas>
 
-<nav>
+<!-- Welcome -->
+<div id="welcome">
+  <div class="welcome-box">
+    <div class="welcome-icon">👋</div>
+    <h2>خوش اومدی!</h2>
+    <p>
+      به وب‌سایت شخصی امیررضا غلامی خوش اومدی 🌟
+      <br>
+      اینجا می‌تونی با علایق، مهارت‌ها و مسیر من بیشتر آشنا بشی.
+    </p>
+    <button class="welcome-btn" onclick="closeWelcome()">
+      ورود به سایت 🚀
+    </button>
+  </div>
+</div>
 
-  <a href="#top">🏠 خانه</a>
-
-  <a href="#about">👋 درباره من</a>
-
-  <a href="#interests">❤️ علایق</a>
-
-  <a href="#skills">🚀 مهارت‌ها</a>
-
-  <a href="#projects">🛠️ پروژه‌ها</a>
-
-  <a href="#timeline">🕒 مسیر من</a>
-
-  <a href="#goals">🎯 اهداف</a>
-
-  <a href="#contact">📞 ارتباط</a>
-
-</nav>
-
-
-<button
-  id="themeToggle"
-  aria-label="تغییر حالت نمایش">
+<button class="theme-toggle" onclick="toggleTheme()" aria-label="تغییر حالت">
   🌙
 </button>
 
+<nav>
+  <a href="#top">🏠 خانه</a>
+  <a href="#about">👋 درباره من</a>
+  <a href="#interests">❤️ علایق</a>
+  <a href="#skills">🚀 مهارت‌ها</a>
+  <a href="#projects">🛠️ پروژه‌ها</a>
+  <a href="#timeline">🕒 مسیر من</a>
+  <a href="#goals">🎯 اهداف</a>
+  <a href="#contact">📞 ارتباط</a>
+</nav>
 
-<main>
+<main id="top">
 
+<section class="hero container">
+  <img src="profile.jpg" alt="امیررضا غلامی" class="profile">
 
-<header class="hero">
+  <h1>
+    سلام، من <span>امیررضا غلامی</span> هستم 👋
+  </h1>
 
-  <img
-    class="profile"
-    src="profile.jpg"
-    alt="تصویر پروفایل امیررضا غلامی"
-    loading="eager"
-  >
-
-  <h1>امیررضا غلامی</h1>
-
-  <div class="typing">
-
-    <span id="typingText"></span>
-
-    <span class="cursor">|</span>
-
-  </div>
+  <div class="typing" id="typing"></div>
 
   <div class="chips">
-
-    <span class="chip">💻 تکنولوژی</span>
-
-    <span class="chip">🤖 هوش مصنوعی</span>
-
-    <span class="chip">⚽ فوتبال</span>
-
-    <span class="chip">📚 یادگیری</span>
-
+    <div class="chip">💻 تکنولوژی</div>
+    <div class="chip">🤖 هوش مصنوعی</div>
+    <div class="chip">🌐 وب</div>
+    <div class="chip">⚽ فوتبال</div>
   </div>
+</section>
 
-</header>
+<section id="about" class="container reveal">
+  <h2 class="section-title">👋 <span>درباره من</span></h2>
 
+  <div class="card">
+    <p>
+      من امیررضا هستم؛ علاقه‌مند به تکنولوژی، دنیای دیجیتال،
+      هوش مصنوعی و وب. همیشه سعی می‌کنم چیزهای جدید یاد بگیرم،
+      تجربه کنم و قدم‌به‌قدم پیشرفت کنم. 🚀
+    </p>
 
-<!-- ABOUT -->
-
-<section id="about">
-
-  <h2>👋 درباره من</h2>
-
-  <p>
-    من امیررضا غلامی هستم و به تکنولوژی، دنیای دیجیتال،
-    هوش مصنوعی و یادگیری مهارت‌های جدید علاقه دارم.
-    این وب‌سایت فضای شخصی من برای معرفی خودم،
-    علایق، مهارت‌ها و پروژه‌هایی است که روی آن‌ها کار می‌کنم.
-  </p>
-
-
-  <div class="profile-card">
-
-    <div class="info-box">
-
-      <div class="info-icon">💻</div>
-
-      <div class="info-text">
-        <strong>حوزه علاقه</strong>
-        <span>تکنولوژی و دنیای دیجیتال</span>
-      </div>
-
+    <div class="profile-grid">
+      <div class="info-box">💻 <strong>حوزه علاقه</strong><br>تکنولوژی و دنیای دیجیتال</div>
+      <div class="info-box">🤖 <strong>زمینه مورد علاقه</strong><br>هوش مصنوعی</div>
+      <div class="info-box">📚 <strong>رویکرد</strong><br>یادگیری و تجربه</div>
+      <div class="info-box">🌐 <strong>فعالیت</strong><br>دنیای وب و اینترنت</div>
     </div>
-
-
-    <div class="info-box">
-
-      <div class="info-icon">🤖</div>
-
-      <div class="info-text">
-        <strong>زمینه مورد علاقه</strong>
-        <span>هوش مصنوعی</span>
-      </div>
-
-    </div>
-
-
-    <div class="info-box">
-
-      <div class="info-icon">📚</div>
-
-      <div class="info-text">
-        <strong>رویکرد</strong>
-        <span>یادگیری و تجربه</span>
-      </div>
-
-    </div>
-
-
-    <div class="info-box">
-
-      <div class="info-icon">🌐</div>
-
-      <div class="info-text">
-        <strong>فعالیت</strong>
-        <span>دنیای وب و اینترنت</span>
-      </div>
-
-    </div>
-
   </div>
-
 
   <div class="highlights">
-
     <div class="highlight">
-      <strong>🎯 هدفمند</strong>
-      <span>حرکت قدم‌به‌قدم به سمت اهداف</span>
+      <div style="font-size:35px">🎯</div>
+      <h3>هدفمند</h3>
+      <p>برای پیشرفت قدم‌به‌قدم تلاش می‌کنم.</p>
     </div>
 
     <div class="highlight">
-      <strong>📚 یادگیری</strong>
-      <span>همیشه در حال یادگیری چیزهای جدید</span>
+      <div style="font-size:35px">📚</div>
+      <h3>یادگیری</h3>
+      <p>همیشه دنبال یادگیری چیزهای تازه هستم.</p>
     </div>
 
     <div class="highlight">
-      <strong>🚀 پیشرفت</strong>
-      <span>تلاش برای بهتر شدن در هر مرحله</span>
+      <div style="font-size:35px">🚀</div>
+      <h3>پیشرفت</h3>
+      <p>تجربه کردن را بخشی از مسیر رشد می‌دانم.</p>
     </div>
-
   </div>
-
 </section>
 
-
-<!-- STATS -->
-
-<section>
-
-  <h2>📊 درباره سایت</h2>
+<section class="container reveal">
+  <h2 class="section-title">📊 <span>چند عدد کوچک</span></h2>
 
   <div class="stats">
-
     <div class="stat">
-
-      <span class="stat-number">3</span>
-
-      <span class="stat-label">
-        پروژه
-      </span>
-
+      <div class="stat-number" data-target="3">0</div>
+      <div class="stat-label">پروژه</div>
     </div>
 
-
     <div class="stat">
-
-      <span class="stat-number">4</span>
-
-      <span class="stat-label">
-        مهارت
-      </span>
-
+      <div class="stat-number" data-target="4">0</div>
+      <div class="stat-label">مهارت</div>
     </div>
 
-
     <div class="stat">
-
-      <span class="stat-number">8+</span>
-
-      <span class="stat-label">
-        علاقه
-      </span>
-
+      <div class="stat-number" data-target="8" data-plus="true">0</div>
+      <div class="stat-label">علاقه</div>
     </div>
-
   </div>
-
 </section>
 
-
-<!-- INTERESTS -->
-
-<section id="interests">
-
-  <h2>❤️ علایق من</h2>
+<section id="interests" class="container reveal">
+  <h2 class="section-title">❤️ <span>علایق من</span></h2>
 
   <div class="tags">
-
-    <span class="tag">⚽ فوتبال</span>
-
-    <span class="tag">🇦🇷 آرژانتین</span>
-
-    <span class="tag">🐐 مسی</span>
-
-    <span class="tag">🏆 مارادونا</span>
-
-    <span class="tag">🤖 هوش مصنوعی</span>
-
-    <span class="tag">💻 تکنولوژی</span>
-
-    <span class="tag">🌐 اینترنت</span>
-
-    <span class="tag">📱 دنیای دیجیتال</span>
-
+    <div class="tag">🤖 هوش مصنوعی</div>
+    <div class="tag">💻 تکنولوژی</div>
+    <div class="tag">🌐 طراحی وب</div>
+    <div class="tag">⚽ فوتبال</div>
+    <div class="tag">🇦🇷 آرژانتین</div>
+    <div class="tag">🎮 دنیای دیجیتال</div>
+    <div class="tag">📱 اینترنت</div>
+    <div class="tag">🚀 یادگیری</div>
   </div>
-
 </section>
 
-
-<!-- SKILLS -->
-
-<section id="skills">
-
-  <h2>🚀 مهارت‌ها و توانمندی‌ها</h2>
+<section id="skills" class="container reveal">
+  <h2 class="section-title">🚀 <span>مهارت‌ها</span></h2>
 
   <div class="skills">
-
-    <div class="skill">
-      💻 آشنایی با فناوری و ابزارهای دیجیتال
+    <div class="card skill">
+      <div class="skill-top">
+        <strong>HTML</strong>
+        <span>85%</span>
+      </div>
+      <div class="skill-bar">
+        <div class="skill-fill" style="width:85%"></div>
+      </div>
     </div>
 
-    <div class="skill">
-      🌐 طراحی و مدیریت وب‌سایت شخصی
+    <div class="card skill">
+      <div class="skill-top">
+        <strong>CSS</strong>
+        <span>75%</span>
+      </div>
+      <div class="skill-bar">
+        <div class="skill-fill" style="width:75%"></div>
+      </div>
     </div>
 
-    <div class="skill">
-      🤖 آشنایی و تجربه با ابزارهای هوش مصنوعی
+    <div class="card skill">
+      <div class="skill-top">
+        <strong>JavaScript</strong>
+        <span>55%</span>
+      </div>
+      <div class="skill-bar">
+        <div class="skill-fill" style="width:55%"></div>
+      </div>
     </div>
 
-    <div class="skill">
-      📱 فعالیت و تولید محتوا در فضای دیجیتال
+    <div class="card skill">
+      <div class="skill-top">
+        <strong>GitHub</strong>
+        <span>70%</span>
+      </div>
+      <div class="skill-bar">
+        <div class="skill-fill" style="width:70%"></div>
+      </div>
     </div>
-
   </div>
-
 </section>
 
-
-<!-- PROJECTS -->
-
-<section id="projects">
-
-  <h2>🛠️ پروژه‌ها و فعالیت‌ها</h2>
+<section id="projects" class="container reveal">
+  <h2 class="section-title">🛠️ <span>پروژه‌ها و فعالیت‌ها</span></h2>
 
   <div class="projects">
 
-    <article class="project">
-
-      <h3>🌐 Web Site Personal</h3>
-
+    <div class="card">
+      <div class="project-icon">🌐</div>
+      <h3>Web Site Personal</h3>
       <p>
         طراحی و توسعه وب‌سایت شخصی برای معرفی،
         ارتباط و نمایش علایق.
       </p>
+    </div>
 
-    </article>
-
-
-    <article class="project">
-
-      <h3>💻 Technology World</h3>
-
+    <div class="card">
+      <div class="project-icon">💻</div>
+      <h3>Technology World</h3>
       <p>
         یادگیری، تجربه و دنبال کردن فناوری‌های جدید
         و دنیای دیجیتال.
       </p>
+    </div>
 
-    </article>
-
-
-    <article class="project">
-
-      <h3>🤖 AI</h3>
-
+    <div class="card">
+      <div class="project-icon">🤖</div>
+      <h3>AI</h3>
       <p>
         علاقه‌مندی و آشنایی با ابزارها و پیشرفت‌های
         هوش مصنوعی.
       </p>
-
-    </article>
+    </div>
 
   </div>
 
-
-  <div class="github-feature">
-
-    <h3>🐙 پروژه‌های بیشتر</h3>
-
+  <div class="card github-feature">
+    <h3>🐙 GitHub</h3>
     <p>
-      می‌توانی پروژه‌ها و فعالیت‌های من را در GitHub ببینی.
+      پروژه‌ها و فعالیت‌های کدنویسی من را در GitHub ببین.
     </p>
-
     <a
-      class="github-button"
+      class="github-btn"
       href="https://github.com/amirrezagholami86"
       target="_blank"
-      rel="noopener noreferrer">
+      rel="noopener noreferrer"
+    >
       مشاهده GitHub 🚀
     </a>
-
   </div>
-
 </section>
 
-
-<!-- TIMELINE -->
-
-<section id="timeline">
-
-  <h2>🕒 مسیر من</h2>
+<section id="timeline" class="container reveal">
+  <h2 class="section-title">🕒 <span>مسیر من</span></h2>
 
   <div class="timeline">
 
     <div class="timeline-item">
-
-      <div class="timeline-year">
-        شروع مسیر
+      <div class="timeline-dot"></div>
+      <div class="card">
+        <h3>شروع مسیر 📚</h3>
+        <p>یادگیری و کشف علایق مختلف در دنیای تکنولوژی.</p>
       </div>
-
-      <h3>📚 یادگیری و کشف علایق</h3>
-
-      <p>
-        آشنایی بیشتر با تکنولوژی، اینترنت و دنیای دیجیتال.
-      </p>
-
     </div>
 
-
     <div class="timeline-item">
-
-      <div class="timeline-year">
-        مرحله بعد
+      <div class="timeline-dot"></div>
+      <div class="card">
+        <h3>مرحله بعد 🤖</h3>
+        <p>ورود بیشتر به دنیای هوش مصنوعی و فناوری‌های جدید.</p>
       </div>
-
-      <h3>🤖 ورود به دنیای هوش مصنوعی</h3>
-
-      <p>
-        تجربه ابزارهای مختلف و دنبال کردن پیشرفت‌های
-        هوش مصنوعی.
-      </p>
-
     </div>
 
-
     <div class="timeline-item">
-
-      <div class="timeline-year">
-        امروز
+      <div class="timeline-dot"></div>
+      <div class="card">
+        <h3>امروز 🚀</h3>
+        <p>ساخت پروژه، تجربه کردن و تلاش برای پیشرفت بیشتر.</p>
       </div>
-
-      <h3>🚀 ساخت و پیشرفت</h3>
-
-      <p>
-        ساخت وب‌سایت شخصی و ادامه مسیر یادگیری و پیشرفت.
-      </p>
-
     </div>
 
   </div>
-
 </section>
 
+<section id="goals" class="container reveal">
+  <h2 class="section-title">🎯 <span>اهداف</span></h2>
 
-<!-- GOALS -->
+  <div class="goals">
 
-<section id="goals">
-
-  <h2>🎯 اهداف آینده</h2>
-
-  <p>
-    هدف من این است که در مسیر یادگیری و تجربه،
-    مهارت‌های بیشتری در زمینه تکنولوژی و دنیای دیجیتال
-    به دست بیاورم و پروژه‌های جدید و کاربردی بسازم.
-  </p>
-
-
-  <div class="goal-list">
-
-    <div class="goal">
-
-      <h3>💻 توسعه مهارت‌های فنی</h3>
-
-      <p>
-        یادگیری ابزارها و مهارت‌های جدید در حوزه فناوری.
-      </p>
-
+    <div class="card goal">
+      <div style="font-size:40px">💻</div>
+      <h3>توسعه مهارت‌های فنی</h3>
+      <p>یادگیری و بهتر شدن در زمینه برنامه‌نویسی و وب.</p>
     </div>
 
-
-    <div class="goal">
-
-      <h3>🤖 یادگیری بیشتر درباره AI</h3>
-
-      <p>
-        دنبال کردن پیشرفت‌های هوش مصنوعی و تجربه ابزارهای جدید.
-      </p>
-
+    <div class="card goal">
+      <div style="font-size:40px">🤖</div>
+      <h3>یادگیری بیشتر AI</h3>
+      <p>آشنایی عمیق‌تر با ابزارها و کاربردهای هوش مصنوعی.</p>
     </div>
 
-
-    <div class="goal">
-
-      <h3>🚀 ساخت پروژه‌های بیشتر</h3>
-
-      <p>
-        تبدیل ایده‌ها به پروژه‌های واقعی و قابل استفاده.
-      </p>
-
+    <div class="card goal">
+      <div style="font-size:40px">🚀</div>
+      <h3>ساخت پروژه‌های بیشتر</h3>
+      <p>تبدیل ایده‌ها به پروژه‌های واقعی و قابل استفاده.</p>
     </div>
 
   </div>
-
 </section>
 
+<section id="contact" class="container reveal">
+  <h2 class="section-title">📞 <span>ارتباط با من</span></h2>
 
-<!-- CONTACT -->
-
-<section id="contact">
-
-  <h2>📞 ارتباط با من</h2>
-
-  <div class="contact">
+  <div class="contact-grid">
 
     <a
-      class="btn"
-      href="https://wa.me/989228420736"
-      target="_blank"
-      rel="noopener noreferrer">
-      💚 WhatsApp
-    </a>
-
-
-    <a
-      class="btn"
+      class="contact-btn"
       href="https://t.me/Amirrezagholami_ir"
       target="_blank"
-      rel="noopener noreferrer">
+      rel="noopener noreferrer"
+    >
       ✈️ Telegram
     </a>
 
-
     <a
-      class="btn"
-      href="mailto:amirrezaamirreza275@gmail.com">
+      class="contact-btn"
+      href="mailto:amirrezaamirreza275@gmail.com"
+    >
       📧 Email
     </a>
 
-
     <a
-      class="btn"
+      class="contact-btn"
       href="https://www.instagram.com/amirrezagholami.ir"
       target="_blank"
-      rel="noopener noreferrer">
+      rel="noopener noreferrer"
+    >
       📸 Instagram
     </a>
 
-
     <a
-      class="btn"
+      class="contact-btn"
       href="https://github.com/amirrezagholami86"
       target="_blank"
-      rel="noopener noreferrer">
+      rel="noopener noreferrer"
+    >
       🐙 GitHub
     </a>
 
+    <a
+      class="contact-btn"
+      href="https://wa.me/989228420736"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      💚 WhatsApp
+    </a>
+
+    <a
+      class="contact-btn"
+      href="mailto:amirrezaamirreza275@gmail.com?subject=پیام از وب‌سایت شخصی"
+    >
+      💬 ارسال پیام
+    </a>
+
   </div>
-
 </section>
-
-
-<footer>
-
-  © 2026 امیررضا غلامی — ساخته شده با ❤️ و 💻
-
-</footer>
 
 </main>
 
+<footer>
+  © 2026 امیررضا غلامی — ساخته شده با ❤️ و 💻
+</footer>
 
-<button
-  id="topBtn"
-  onclick="window.scrollTo({top:0,behavior:'smooth'})"
-  aria-label="بازگشت به بالا">
+<button id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
   ↑
 </button>
 
+<div id="toast"></div>
 
 <script>
+/* Theme */
+const themeButton = document.querySelector(".theme-toggle");
 
-/* THEME */
-
-const themeToggle =
-  document.getElementById("themeToggle");
-
-const savedTheme =
-  localStorage.getItem("theme");
-
-if(savedTheme === "light"){
-
-  document.body.classList.add("light");
-
-  themeToggle.textContent="☀️";
-
+function updateThemeIcon(){
+  themeButton.textContent =
+    document.body.classList.contains("light") ? "☀️" : "🌙";
 }
 
-themeToggle.addEventListener("click",()=>{
-
+function toggleTheme(){
   document.body.classList.toggle("light");
 
-  const isLight =
-    document.body.classList.contains("light");
+  const mode = document.body.classList.contains("light")
+    ? "light"
+    : "dark";
 
-  localStorage.setItem(
-    "theme",
-    isLight ? "light" : "dark"
+  localStorage.setItem("theme", mode);
+  updateThemeIcon();
+
+  showToast(
+    mode === "light"
+      ? "☀️ حالت روشن فعال شد"
+      : "🌙 حالت تاریک فعال شد"
   );
-
-  themeToggle.textContent =
-    isLight ? "☀️" : "🌙";
-
-});
-
-
-/* TYPING */
-
-const typingText =
-  document.getElementById("typingText");
-
-const words = [
-
-  "علاقه‌مند به تکنولوژی 💻",
-
-  "علاقه‌مند به هوش مصنوعی 🤖",
-
-  "عاشق فوتبال ⚽",
-
-  "همیشه در حال یادگیری 📚"
-
-];
-
-let wordIndex=0;
-let charIndex=0;
-let deleting=false;
-
-function typeEffect(){
-
-  const word =
-    words[wordIndex];
-
-  if(!deleting){
-
-    typingText.textContent =
-      word.substring(0,charIndex+1);
-
-    charIndex++;
-
-    if(charIndex === word.length){
-
-      deleting=true;
-
-      setTimeout(typeEffect,1800);
-
-      return;
-    }
-
-  }else{
-
-    typingText.textContent =
-      word.substring(0,charIndex-1);
-
-    charIndex--;
-
-    if(charIndex === 0){
-
-      deleting=false;
-
-      wordIndex =
-        (wordIndex+1)%words.length;
-
-    }
-
-  }
-
-  setTimeout(
-    typeEffect,
-    deleting ? 45 : 85
-  );
-
 }
 
-typeEffect();
+const savedTheme = localStorage.getItem("theme");
+
+if(savedTheme === "light"){
+  document.body.classList.add("light");
+}
+
+updateThemeIcon();
 
 
-/* SCROLL REVEAL */
+/* Welcome */
+function closeWelcome(){
+  const welcome = document.getElementById("welcome");
+  welcome.classList.add("hide");
+  localStorage.setItem("welcomeSeen","yes");
 
-const sections =
-  document.querySelectorAll("section");
+  showToast("🚀 خوش اومدی! سایت آماده‌ست");
+}
 
-const observer =
-  new IntersectionObserver(
+if(localStorage.getItem("welcomeSeen") === "yes"){
+  document.getElementById("welcome").classList.add("hide");
+}
 
-    entries=>{
 
-      entries.forEach(entry=>{
+/* Typing */
+const phrases = [
+  "علاقه‌مند به تکنولوژی 💻",
+  "علاقه‌مند به هوش مصنوعی 🤖",
+  "عاشق فوتبال ⚽",
+  "همیشه در حال یادگیری 📚"
+];
 
-        if(entry.isIntersecting){
+const typingElement = document.getElementById("typing");
 
-          entry.target.classList.add("visible");
+let phraseIndex = 0;
+let charIndex = 0;
+let deleting = false;
 
-        }
+function typingEffect(){
+  const current = phrases[phraseIndex];
 
-      });
+  if(!deleting){
+    typingElement.textContent = current.slice(0,charIndex++);
+    
+    if(charIndex > current.length){
+      deleting = true;
+      setTimeout(typingEffect,1400);
+      return;
+    }
+  }else{
+    typingElement.textContent = current.slice(0,charIndex--);
 
-    },
+    if(charIndex < 0){
+      deleting = false;
+      phraseIndex = (phraseIndex + 1) % phrases.length;
+      charIndex = 0;
+    }
+  }
 
-    {
-      threshold:.12
+  setTimeout(typingEffect,deleting ? 45 : 75);
+}
+
+typingEffect();
+
+
+/* Scroll reveal */
+const revealElements = document.querySelectorAll(".reveal");
+
+const revealObserver = new IntersectionObserver(
+  entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add("visible");
+      }
+    });
+  },
+  {threshold:.12}
+);
+
+revealElements.forEach(el => revealObserver.observe(el));
+
+
+/* Animated counters */
+const counters = document.querySelectorAll(".stat-number");
+let countersStarted = false;
+
+function startCounters(){
+  if(countersStarted) return;
+  countersStarted = true;
+
+  counters.forEach(counter => {
+    const target = Number(counter.dataset.target);
+    const plus = counter.dataset.plus === "true";
+
+    let current = 0;
+    const duration = 1200;
+    const start = performance.now();
+
+    function animate(time){
+      const progress = Math.min((time-start)/duration,1);
+      const eased = 1 - Math.pow(1-progress,3);
+
+      current = Math.floor(target * eased);
+
+      counter.textContent = current + (plus && current >= target ? "+" : "");
+
+      if(progress < 1){
+        requestAnimationFrame(animate);
+      }else{
+        counter.textContent = target + (plus ? "+" : "");
+      }
     }
 
-  );
+    requestAnimationFrame(animate);
+  });
+}
 
-sections.forEach(section=>{
-  observer.observe(section);
+const statsSection = document.querySelector(".stats");
+
+const statsObserver = new IntersectionObserver(entries => {
+  if(entries[0].isIntersecting){
+    startCounters();
+  }
+},{threshold:.4});
+
+statsObserver.observe(statsSection);
+
+
+/* Scroll progress + back top */
+const progressBar = document.getElementById("progressBar");
+const backTop = document.getElementById("backTop");
+
+window.addEventListener("scroll", () => {
+
+  const scrollTop = window.scrollY;
+  const docHeight =
+    document.documentElement.scrollHeight - window.innerHeight;
+
+  const progress =
+    docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+
+  progressBar.style.width = progress + "%";
+
+  if(scrollTop > 500){
+    backTop.classList.add("show");
+  }else{
+    backTop.classList.remove("show");
+  }
 });
 
+
+/* Toast */
+let toastTimer;
+
+function showToast(message){
+  const toast = document.getElementById("toast");
+
+  toast.textContent = message;
+  toast.classList.add("show");
+
+  clearTimeout(toastTimer);
+
+  toastTimer = setTimeout(() => {
+    toast.classList.remove("show");
+  },2500);
+}
+
+
+/* Lightweight particles */
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+
+let particles = [];
+let particleCount = window.innerWidth < 600 ? 35 : 65;
+
+function resizeCanvas(){
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+
+function createParticles(){
+  particles = [];
+
+  for(let i=0;i<particleCount;i++){
+    particles.push({
+      x:Math.random()*canvas.width,
+      y:Math.random()*canvas.height,
+      r:Math.random()*1.8+.5,
+      dx:(Math.random()-.5)*.35,
+      dy:(Math.random()-.5)*.35
+    });
+  }
+}
+
+function drawParticles(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  const isLight = document.body.classList.contains("light");
+
+  ctx.fillStyle = isLight
+    ? "rgba(70,90,130,.28)"
+    : "rgba(0,229,255,.45)";
+
+  particles.forEach(p => {
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fill();
+
+    p.x += p.dx;
+    p.y += p.dy;
+
+    if(p.x < 0 || p.x > canvas.width) p.dx *= -1;
+    if(p.y < 0 || p.y > canvas.height) p.dy *= -1;
+  });
+
+  requestAnimationFrame(drawParticles);
+}
+
+resizeCanvas();
+createParticles();
+drawParticles();
+
+window.addEventListener("resize",() => {
+  resizeCanvas();
+  particleCount = window.innerWidth < 600 ? 35 : 65;
+  createParticles();
+});
 </script>
 
 </body>
-    </html>
+  </html>
