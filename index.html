@@ -4,208 +4,967 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#07111f">
-<meta name="version" content="1.4.0">
-<meta name="build" content="14">
+<meta name="version" content="2.0.0">
+<meta name="build" content="20">
+
 <title>امیررضا غلامی | Personal Website</title>
 
 <style>
 :root{
---bg:#07111f;--bg2:#0b1728;--card:rgba(15,29,48,.78);
---text:#f4f8ff;--muted:#9db0c7;--accent:#00d9ff;--accent2:#087fff;
---border:rgba(255,255,255,.09);--shadow:0 20px 60px rgba(0,0,0,.28)
+  --bg:#050b14;
+  --bg2:#0a1422;
+  --card:rgba(13,27,45,.78);
+  --card2:rgba(255,255,255,.045);
+  --text:#f5f8ff;
+  --muted:#98abc1;
+  --accent:#00d9ff;
+  --accent2:#087fff;
+  --success:#25e58b;
+  --warning:#ffbd4a;
+  --danger:#ff5574;
+  --border:rgba(255,255,255,.09);
+  --shadow:0 22px 70px rgba(0,0,0,.35);
+  --radius:24px;
 }
-body.light{--bg:#eef5fb;--bg2:#dfeaf4;--card:rgba(255,255,255,.82);
---text:#102033;--muted:#607087;--border:rgba(16,32,51,.1);--shadow:0 20px 50px rgba(28,55,80,.14)}
-body.green{--accent:#22e58a;--accent2:#10a968}
-body.orange{--accent:#ff9d32;--accent2:#ff5e1a}
-body.pink{--accent:#ff5ebc;--accent2:#9b5cff}
 
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{
-font-family:Tahoma,Arial,sans-serif;background:
-radial-gradient(circle at 20% 10%,rgba(0,217,255,.09),transparent 28%),
-radial-gradient(circle at 85% 20%,rgba(120,70,255,.08),transparent 30%),var(--bg);
-color:var(--text);line-height:1.8;overflow-x:hidden;transition:.3s
+body.light{
+  --bg:#edf5fb;
+  --bg2:#dce8f3;
+  --card:rgba(255,255,255,.84);
+  --card2:rgba(0,0,0,.035);
+  --text:#102033;
+  --muted:#62748a;
+  --border:rgba(16,32,51,.1);
+  --shadow:0 20px 55px rgba(20,45,70,.13);
 }
-a{text-decoration:none;color:inherit}button,input{font:inherit}
-#particles{position:fixed;inset:0;width:100%;height:100%;z-index:-2;pointer-events:none}
-.mouse-glow{position:fixed;width:260px;height:260px;border-radius:50%;
-background:radial-gradient(circle,rgba(0,217,255,.12),transparent 70%);
-transform:translate(-50%,-50%);pointer-events:none;z-index:-1}
-.container{width:min(1120px,92%);margin:auto}
+
+body.green{
+  --accent:#24e58b;
+  --accent2:#0eae69;
+}
+
+body.orange{
+  --accent:#ff9d32;
+  --accent2:#ff5b18;
+}
+
+body.pink{
+  --accent:#ff5fbd;
+  --accent2:#965bff;
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Tahoma,Arial,sans-serif;
+  background:
+    radial-gradient(circle at 10% 5%,rgba(0,217,255,.09),transparent 28%),
+    radial-gradient(circle at 90% 20%,rgba(100,80,255,.09),transparent 30%),
+    var(--bg);
+  color:var(--text);
+  line-height:1.8;
+  overflow-x:hidden;
+  transition:.3s;
+}
+
+body.no-motion *{
+  animation:none!important;
+  transition:none!important;
+  scroll-behavior:auto!important;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+button,input{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+.container{
+  width:min(1150px,92%);
+  margin:auto;
+}
+
+#particles{
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  z-index:-3;
+  pointer-events:none;
+}
+
+.mouse-glow{
+  position:fixed;
+  width:280px;
+  height:280px;
+  border-radius:50%;
+  transform:translate(-50%,-50%);
+  pointer-events:none;
+  z-index:-2;
+  background:radial-gradient(circle,rgba(0,217,255,.11),transparent 70%);
+}
 
 nav{
-position:fixed;top:12px;left:50%;transform:translateX(-50%);
-width:min(1120px,94%);z-index:1000;padding:10px 14px;
-border:1px solid var(--border);background:rgba(7,17,31,.78);
-backdrop-filter:blur(18px);border-radius:20px;box-shadow:var(--shadow)
+  position:fixed;
+  top:12px;
+  left:50%;
+  transform:translateX(-50%);
+  width:min(1150px,94%);
+  z-index:1000;
+  border:1px solid var(--border);
+  background:rgba(5,11,20,.78);
+  backdrop-filter:blur(20px);
+  border-radius:20px;
+  box-shadow:var(--shadow);
 }
-body.light nav{background:rgba(255,255,255,.82)}
-.nav-inner{display:flex;align-items:center;gap:12px}
-.logo{font-weight:900;color:var(--accent);white-space:nowrap}
-.nav-links{display:flex;gap:5px;flex:1;justify-content:center;overflow:auto;scrollbar-width:none}
-.nav-links::-webkit-scrollbar{display:none}
-.nav-links a{padding:7px 10px;border-radius:10px;color:var(--muted);font-size:12px;white-space:nowrap}
-.nav-links a:hover,.nav-links a.active{color:var(--text);background:rgba(255,255,255,.07)}
-.nav-actions{display:flex;gap:7px}
-.icon-btn{width:38px;height:38px;border:1px solid var(--border);background:rgba(255,255,255,.04);
-color:var(--text);border-radius:11px;cursor:pointer;position:relative}
-.notification-dot{position:absolute;width:8px;height:8px;background:#ff405f;border-radius:50%;top:6px;right:6px}
-.mobile-btn{display:none}
 
-section{padding:95px 0 20px;scroll-margin-top:90px}
-.hero{min-height:100vh;display:flex;align-items:center;padding-top:120px}
-.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:35px;align-items:center}
-.badge{display:inline-flex;padding:7px 13px;border:1px solid rgba(0,217,255,.22);
-background:rgba(0,217,255,.08);color:var(--accent);border-radius:999px;font-size:12px;margin-bottom:18px}
-.hero h1{font-size:clamp(38px,7vw,76px);line-height:1.1;margin-bottom:18px}
-.gradient{background:linear-gradient(90deg,var(--accent),#fff,var(--accent2));
--webkit-background-clip:text;color:transparent}
-.typing{min-height:40px;color:var(--muted);font-size:20px}
-.hero-desc{color:var(--muted);max-width:650px;margin:15px 0 25px}
-.buttons{display:flex;flex-wrap:wrap;gap:10px}
-.btn{padding:11px 18px;border-radius:13px;border:1px solid var(--border);
-background:rgba(255,255,255,.05);color:var(--text);cursor:pointer;transition:.25s}
-.btn:hover{transform:translateY(-3px);border-color:var(--accent)}
-.btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#00101b;font-weight:900}
-
-.hero-card,.card{background:var(--card);border:1px solid var(--border);border-radius:25px;
-padding:25px;box-shadow:var(--shadow);backdrop-filter:blur(15px)}
-.hero-profile{text-align:center;position:relative}
-.profile-img{width:190px;height:190px;object-fit:cover;border-radius:50%;
-border:4px solid var(--accent);box-shadow:0 0 45px rgba(0,217,255,.2)}
-.online{display:inline-flex;align-items:center;gap:7px;margin:15px auto 0;padding:5px 11px;
-border-radius:999px;background:rgba(34,229,138,.1);color:#22e58a;font-size:12px}
-.online span{width:8px;height:8px;background:#22e58a;border-radius:50%;box-shadow:0 0 10px #22e58a}
-.tags{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-top:15px}
-.tag{padding:5px 10px;border-radius:999px;background:rgba(255,255,255,.06);
-border:1px solid var(--border);color:var(--muted);font-size:11px}
-
-.section-title{text-align:center;margin-bottom:35px}
-.section-title h2{font-size:32px;margin-bottom:6px}.section-title p{color:var(--muted)}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-.card h3{margin-bottom:8px}.card p{color:var(--muted);font-size:14px}
-.info-row{display:flex;justify-content:space-between;gap:15px;padding:13px 0;border-bottom:1px solid var(--border)}
-.info-row:last-child{border-bottom:0}.info-row span:first-child{color:var(--muted)}
-
-.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.stat{text-align:center;padding:18px 10px;border:1px solid var(--border);border-radius:17px;background:rgba(255,255,255,.03)}
-.stat strong{display:block;font-size:26px;color:var(--accent)}.stat small{color:var(--muted)}
-
-.progress{height:10px;background:rgba(255,255,255,.08);border-radius:20px;overflow:hidden;margin-top:8px}
-.progress-bar{height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));
-border-radius:20px;transition:1.3s ease}
-.overall{margin-top:22px}.overall-head{display:flex;justify-content:space-between;margin-bottom:7px}
-
-.ai-card{cursor:pointer;transition:.25s}.ai-card:hover{transform:translateY(-7px);border-color:var(--accent)}
-.ai-icon{font-size:38px;margin-bottom:8px}
-
-.achievement{position:relative;overflow:hidden}.achievement.locked{opacity:.48;filter:grayscale(.7)}
-.achievement.unlocked{border-color:rgba(34,229,138,.4)}
-.achievement .state{display:inline-block;margin-top:12px;font-size:11px;padding:4px 9px;
-border-radius:999px;background:rgba(34,229,138,.1);color:#22e58a}
-.achievement.locked .state{background:rgba(255,255,255,.06);color:var(--muted)}
-
-.goal{margin-bottom:18px}.goal-top{display:flex;justify-content:space-between;margin-bottom:5px}
-.status{font-size:11px;padding:3px 8px;border-radius:999px}
-.status.doing{color:#ffc14d;background:rgba(255,193,77,.1)}
-.status.done{color:#22e58a;background:rgba(34,229,138,.1)}
-.status.future{color:#aebbd0;background:rgba(255,255,255,.06)}
-
-.timeline-item{position:relative;padding:0 28px 25px 0;border-right:2px solid rgba(0,217,255,.2)}
-.timeline-item::before{content:"";position:absolute;right:-7px;top:5px;width:12px;height:12px;
-background:var(--accent);border-radius:50%;box-shadow:0 0 15px rgba(0,217,255,.5)}
-.timeline-item small{color:var(--accent)}
-
-.search-box{display:flex;gap:8px;margin-bottom:20px}
-.search-box input{flex:1;border:1px solid var(--border);background:rgba(255,255,255,.04);
-color:var(--text);border-radius:13px;padding:12px 15px;outline:none}
-.search-box input:focus{border-color:var(--accent)}
-.search-results{display:none;margin-bottom:25px}.search-results.show{display:block}
-.search-result{display:block;padding:11px 14px;border-bottom:1px solid var(--border);color:var(--muted)}
-.search-result:hover{color:var(--accent)}
-
-.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
-.gallery-item{height:210px;border-radius:20px;overflow:hidden;border:1px solid var(--border);
-background:rgba(255,255,255,.04);cursor:pointer}
-.gallery-item img{width:100%;height:100%;object-fit:cover;transition:.4s}
-.gallery-item:hover img{transform:scale(1.06)}
-.emoji-gallery{display:flex;height:100%;align-items:center;justify-content:center;font-size:70px}
-
-.contact{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
-.contact a{padding:15px 8px;text-align:center;border:1px solid var(--border);
-border-radius:16px;color:var(--muted);transition:.25s}
-.contact a:hover{color:var(--accent);border-color:var(--accent);transform:translateY(-4px)}
-
-.command{
-display:grid;grid-template-columns:repeat(4,1fr);gap:12px
+body.light nav{
+  background:rgba(255,255,255,.82);
 }
+
+.nav-inner{
+  min-height:62px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:7px 10px;
+}
+
+.logo{
+  color:var(--accent);
+  font-weight:900;
+  white-space:nowrap;
+}
+
+.nav-links{
+  display:flex;
+  justify-content:center;
+  gap:3px;
+  flex:1;
+  overflow:auto;
+  scrollbar-width:none;
+}
+
+.nav-links::-webkit-scrollbar{
+  display:none;
+}
+
+.nav-links a{
+  padding:7px 9px;
+  border-radius:10px;
+  font-size:11px;
+  color:var(--muted);
+  white-space:nowrap;
+}
+
+.nav-links a:hover,
+.nav-links a.active{
+  color:var(--text);
+  background:rgba(255,255,255,.07);
+}
+
+.nav-actions{
+  display:flex;
+  gap:6px;
+}
+
+.icon-btn{
+  width:38px;
+  height:38px;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.045);
+  color:var(--text);
+  border-radius:11px;
+  position:relative;
+}
+
+.notification-dot{
+  position:absolute;
+  top:5px;
+  right:5px;
+  width:8px;
+  height:8px;
+  background:var(--danger);
+  border-radius:50%;
+}
+
+.mobile-btn{
+  display:none;
+}
+
+section{
+  padding:100px 0 20px;
+  scroll-margin-top:90px;
+}
+
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  padding-top:125px;
+}
+
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:35px;
+  align-items:center;
+}
+
+.version-pill{
+  display:inline-flex;
+  padding:7px 14px;
+  border-radius:999px;
+  color:var(--accent);
+  background:rgba(0,217,255,.08);
+  border:1px solid rgba(0,217,255,.22);
+  font-size:12px;
+  margin-bottom:18px;
+}
+
+.hero h1{
+  font-size:clamp(40px,7vw,78px);
+  line-height:1.08;
+}
+
+.gradient{
+  background:linear-gradient(90deg,var(--accent),#fff,var(--accent2));
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.typing{
+  color:var(--muted);
+  font-size:20px;
+  min-height:42px;
+  margin-top:15px;
+}
+
+.hero-description{
+  max-width:650px;
+  color:var(--muted);
+  margin:10px 0 25px;
+}
+
+.buttons{
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+}
+
+.btn{
+  padding:10px 17px;
+  border-radius:13px;
+  border:1px solid var(--border);
+  color:var(--text);
+  background:rgba(255,255,255,.045);
+  transition:.25s;
+}
+
+.btn:hover{
+  transform:translateY(-3px);
+  border-color:var(--accent);
+}
+
+.btn.primary{
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:#00121c;
+  font-weight:900;
+}
+
+.hero-card,
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:24px;
+  box-shadow:var(--shadow);
+  backdrop-filter:blur(16px);
+}
+
+.profile-card{
+  text-align:center;
+}
+
+.profile-img{
+  width:185px;
+  height:185px;
+  border-radius:50%;
+  object-fit:cover;
+  border:4px solid var(--accent);
+  box-shadow:0 0 50px rgba(0,217,255,.18);
+}
+
+.online{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  margin:14px auto 0;
+  padding:5px 11px;
+  border-radius:999px;
+  background:rgba(37,229,139,.1);
+  color:var(--success);
+  font-size:12px;
+}
+
+.online span{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:var(--success);
+  box-shadow:0 0 12px var(--success);
+}
+
+.tags{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:7px;
+  margin-top:15px;
+}
+
+.tag{
+  padding:4px 9px;
+  border:1px solid var(--border);
+  border-radius:999px;
+  background:var(--card2);
+  color:var(--muted);
+  font-size:11px;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:32px;
+}
+
+.section-title h2{
+  font-size:32px;
+}
+
+.section-title p{
+  color:var(--muted);
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:17px;
+}
+
+.grid2{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:17px;
+}
+
+.card h3{
+  margin-bottom:7px;
+}
+
+.card p{
+  color:var(--muted);
+  font-size:14px;
+}
+
+.info-row{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  padding:12px 0;
+  border-bottom:1px solid var(--border);
+}
+
+.info-row:last-child{
+  border-bottom:0;
+}
+
+.info-row span:first-child{
+  color:var(--muted);
+}
+
+.command-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+}
+
 .command-card{
-padding:20px;border:1px solid var(--border);border-radius:18px;
-background:rgba(255,255,255,.035);cursor:pointer;transition:.25s
+  padding:20px;
+  border:1px solid var(--border);
+  border-radius:18px;
+  background:var(--card2);
+  transition:.25s;
 }
-.command-card:hover{transform:translateY(-5px);border-color:var(--accent)}
-.command-card b{display:block;margin-top:6px}.command-card small{color:var(--muted)}
+
+.command-card:hover{
+  transform:translateY(-5px);
+  border-color:var(--accent);
+}
+
+.command-icon{
+  font-size:32px;
+}
+
+.command-card b{
+  display:block;
+  margin-top:5px;
+}
+
+.command-card small{
+  color:var(--muted);
+}
+
+.stat-grid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:10px;
+}
+
+.stat{
+  text-align:center;
+  padding:17px 8px;
+  border:1px solid var(--border);
+  border-radius:17px;
+  background:var(--card2);
+}
+
+.stat strong{
+  display:block;
+  font-size:25px;
+  color:var(--accent);
+}
+
+.stat small{
+  color:var(--muted);
+}
+
+.progress{
+  height:10px;
+  border-radius:20px;
+  background:rgba(255,255,255,.08);
+  overflow:hidden;
+}
+
+.progress-bar{
+  height:100%;
+  width:0;
+  border-radius:20px;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  transition:1.2s ease;
+}
+
+.progress-wrap{
+  margin-top:20px;
+}
+
+.progress-head{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:7px;
+}
+
+.xp-bar{
+  height:14px;
+  margin-top:10px;
+}
 
 .mission{
-display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  gap:17px;
 }
+
 .mission-icon{
-width:65px;height:65px;border-radius:18px;display:flex;align-items:center;justify-content:center;
-font-size:32px;background:rgba(0,217,255,.08);border:1px solid var(--border)
+  width:65px;
+  height:65px;
+  border-radius:18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(0,217,255,.08);
+  border:1px solid var(--border);
+  font-size:32px;
 }
-.mission.done{border-color:#22e58a}
-.mission-xp{color:var(--accent);font-weight:bold;white-space:nowrap}
+
+.mission.done{
+  border-color:rgba(37,229,139,.45);
+}
+
+.mission-xp{
+  color:var(--accent);
+  font-weight:bold;
+}
+
+.ai-card{
+  cursor:pointer;
+  transition:.25s;
+}
+
+.ai-card:hover{
+  transform:translateY(-7px);
+  border-color:var(--accent);
+}
+
+.ai-icon{
+  font-size:42px;
+}
+
+.badge-card{
+  text-align:center;
+  transition:.25s;
+}
+
+.badge-card:hover{
+  transform:translateY(-5px);
+}
+
+.badge-icon{
+  font-size:50px;
+}
+
+.locked{
+  opacity:.45;
+  filter:grayscale(.7);
+}
+
+.state{
+  display:inline-block;
+  margin-top:12px;
+  padding:4px 9px;
+  border-radius:999px;
+  font-size:11px;
+  background:rgba(37,229,139,.1);
+  color:var(--success);
+}
+
+.locked .state{
+  background:rgba(255,255,255,.06);
+  color:var(--muted);
+}
+
+.goal{
+  margin-bottom:20px;
+}
+
+.goal:last-child{
+  margin-bottom:0;
+}
+
+.goal-top{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:6px;
+}
+
+.status{
+  font-size:11px;
+  padding:3px 8px;
+  border-radius:999px;
+}
+
+.status.doing{
+  color:var(--warning);
+  background:rgba(255,189,74,.1);
+}
+
+.status.future{
+  color:var(--muted);
+  background:rgba(255,255,255,.06);
+}
+
+.timeline-item{
+  position:relative;
+  padding:0 28px 27px 0;
+  border-right:2px solid rgba(0,217,255,.2);
+}
+
+.timeline-item:last-child{
+  padding-bottom:0;
+}
+
+.timeline-item::before{
+  content:"";
+  position:absolute;
+  right:-7px;
+  top:5px;
+  width:12px;
+  height:12px;
+  border-radius:50%;
+  background:var(--accent);
+  box-shadow:0 0 15px rgba(0,217,255,.5);
+}
+
+.timeline-item small{
+  color:var(--accent);
+}
+
+.search-box{
+  display:flex;
+  gap:8px;
+}
+
+.search-box input{
+  flex:1;
+  padding:12px 15px;
+  border-radius:13px;
+  border:1px solid var(--border);
+  outline:none;
+  color:var(--text);
+  background:var(--card2);
+}
+
+.search-box input:focus{
+  border-color:var(--accent);
+}
+
+.search-results{
+  margin-top:12px;
+  display:none;
+}
+
+.search-results.show{
+  display:block;
+}
+
+.search-result{
+  display:block;
+  padding:11px;
+  border-bottom:1px solid var(--border);
+  color:var(--muted);
+}
+
+.search-result:hover{
+  color:var(--accent);
+}
+
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+}
+
+.gallery-item{
+  height:220px;
+  overflow:hidden;
+  border-radius:20px;
+  border:1px solid var(--border);
+  background:var(--card2);
+  cursor:pointer;
+}
+
+.gallery-item img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:.4s;
+}
+
+.gallery-item:hover img{
+  transform:scale(1.06);
+}
+
+.emoji-gallery{
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:75px;
+}
+
+.contact{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:10px;
+}
+
+.contact a{
+  padding:16px 8px;
+  text-align:center;
+  color:var(--muted);
+  border:1px solid var(--border);
+  border-radius:16px;
+  transition:.25s;
+}
+
+.contact a:hover{
+  color:var(--accent);
+  border-color:var(--accent);
+  transform:translateY(-4px);
+}
 
 .activity{
-display:flex;gap:12px;padding:13px 0;border-bottom:1px solid var(--border)
+  display:flex;
+  gap:12px;
+  padding:12px 0;
+  border-bottom:1px solid var(--border);
 }
-.activity:last-child{border-bottom:0}
-.activity-icon{font-size:23px}
-.activity small{color:var(--muted);display:block}
 
-.modal{position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);
-display:none;align-items:center;justify-content:center;z-index:2000;padding:20px}
-.modal.show{display:flex}.modal-box{width:min(550px,100%);background:var(--bg2);
-border:1px solid var(--border);border-radius:25px;padding:25px;box-shadow:var(--shadow);position:relative}
-.close{position:absolute;left:15px;top:15px;border:0;background:rgba(255,255,255,.07);
-color:var(--text);width:35px;height:35px;border-radius:10px;cursor:pointer}
+.activity:last-child{
+  border-bottom:0;
+}
 
-.toast{position:fixed;bottom:25px;left:50%;transform:translate(-50%,20px);
-background:var(--bg2);border:1px solid var(--accent);color:var(--text);padding:12px 18px;
-border-radius:13px;opacity:0;pointer-events:none;transition:.3s;z-index:3000}
-.toast.show{opacity:1;transform:translate(-50%,0)}
+.activity-icon{
+  font-size:23px;
+}
+
+.activity small{
+  color:var(--muted);
+  display:block;
+}
+
+.settings-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
+}
+
+.theme-options{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+.theme-dot{
+  width:42px;
+  height:42px;
+  border-radius:13px;
+  border:2px solid transparent;
+}
+
+.theme-dot.active{
+  border-color:white;
+  box-shadow:0 0 0 2px var(--accent);
+}
+
+.theme-cyan{background:#00d9ff}
+.theme-green{background:#24e58b}
+.theme-orange{background:#ff9d32}
+.theme-pink{background:#ff5fbd}
+
+.modal{
+  position:fixed;
+  inset:0;
+  z-index:3000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:rgba(0,0,0,.72);
+  backdrop-filter:blur(9px);
+}
+
+.modal.show{
+  display:flex;
+}
+
+.modal-box{
+  width:min(560px,100%);
+  max-height:85vh;
+  overflow:auto;
+  position:relative;
+  padding:26px;
+  border:1px solid var(--border);
+  border-radius:25px;
+  background:var(--bg2);
+  box-shadow:var(--shadow);
+}
+
+.close{
+  position:absolute;
+  top:12px;
+  left:12px;
+  width:35px;
+  height:35px;
+  border:0;
+  border-radius:10px;
+  background:rgba(255,255,255,.07);
+  color:var(--text);
+}
+
+.toast{
+  position:fixed;
+  z-index:4000;
+  bottom:25px;
+  left:50%;
+  transform:translate(-50%,20px);
+  padding:12px 18px;
+  border:1px solid var(--accent);
+  border-radius:13px;
+  background:var(--bg2);
+  color:var(--text);
+  opacity:0;
+  pointer-events:none;
+  transition:.3s;
+}
+
+.toast.show{
+  opacity:1;
+  transform:translate(-50%,0);
+}
 
 #notificationPanel{
-position:fixed;top:72px;left:50%;transform:translateX(-50%);width:min(400px,92%);
-background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:18px;
-box-shadow:var(--shadow);display:none;z-index:1500
+  position:fixed;
+  z-index:2500;
+  top:78px;
+  left:50%;
+  transform:translateX(-50%);
+  width:min(410px,92%);
+  display:none;
+  padding:18px;
+  border:1px solid var(--border);
+  border-radius:20px;
+  background:var(--bg2);
+  box-shadow:var(--shadow);
 }
-#notificationPanel.show{display:block}
-.notice{padding:12px 0;border-bottom:1px solid var(--border)}
-.notice:last-child{border-bottom:0}.notice b{display:block}.notice small{color:var(--muted)}
 
-.reveal{opacity:0;transform:translateY(25px);transition:.7s ease}
-.reveal.visible{opacity:1;transform:none}
-
-footer{text-align:center;padding:50px 20px;color:var(--muted)}
-.version{color:var(--accent);font-size:12px;margin-top:8px}
-
-@media(max-width:900px){
-.hero-grid{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}
-.stat-grid,.command{grid-template-columns:repeat(2,1fr)}
-.contact{grid-template-columns:repeat(3,1fr)}
-.nav-links{display:none}.mobile-btn{display:block}
-nav.mobile-open .nav-links{display:flex;position:absolute;top:60px;right:0;left:0;
-background:var(--bg2);padding:10px;border-radius:15px;flex-wrap:wrap}
+#notificationPanel.show{
+  display:block;
 }
-@media(max-width:600px){
-section{padding-top:80px}.hero{padding-top:115px}
-.grid,.grid2,.gallery{grid-template-columns:1fr}.contact{grid-template-columns:repeat(2,1fr)}
-.hero h1{font-size:42px}.profile-img{width:155px;height:155px}
-.mission{grid-template-columns:auto 1fr}.mission-xp{grid-column:2}
+
+.notice{
+  padding:12px 0;
+  border-bottom:1px solid var(--border);
+}
+
+.notice:last-child{
+  border-bottom:0;
+}
+
+.notice small{
+  color:var(--muted);
+}
+
+.reveal{
+  opacity:0;
+  transform:translateY(24px);
+  transition:.7s ease;
+}
+
+.reveal.visible{
+  opacity:1;
+  transform:none;
+}
+
+footer{
+  text-align:center;
+  padding:55px 20px;
+  color:var(--muted);
+}
+
+.version{
+  color:var(--accent);
+  font-size:12px;
+  margin-top:7px;
+}
+
+@media(max-width:950px){
+
+  .hero-grid{
+    grid-template-columns:1fr;
+  }
+
+  .grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .command-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .stat-grid{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .contact{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .nav-links{
+    display:none;
+  }
+
+  .mobile-btn{
+    display:block;
+  }
+
+  nav.mobile-open .nav-links{
+    position:absolute;
+    display:flex;
+    flex-wrap:wrap;
+    top:65px;
+    right:0;
+    left:0;
+    padding:12px;
+    border:1px solid var(--border);
+    border-radius:17px;
+    background:var(--bg2);
+  }
+}
+
+@media(max-width:620px){
+
+  section{
+    padding-top:82px;
+  }
+
+  .hero{
+    padding-top:120px;
+  }
+
+  .grid,
+  .grid2,
+  .settings-grid{
+    grid-template-columns:1fr;
+  }
+
+  .command-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .stat-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .contact{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .gallery{
+    grid-template-columns:1fr;
+  }
+
+  .hero h1{
+    font-size:43px;
+  }
+
+  .profile-img{
+    width:155px;
+    height:155px;
+  }
+
+  .mission{
+    grid-template-columns:auto 1fr;
+  }
+
+  .mission-xp{
+    grid-column:2;
+  }
 }
 </style>
 </head>
@@ -216,68 +975,109 @@ section{padding-top:80px}.hero{padding-top:115px}
 <div class="mouse-glow" id="mouseGlow"></div>
 
 <nav id="navbar">
-<div class="nav-inner">
-<div class="logo">AG • 1.4</div>
+  <div class="nav-inner">
 
-<div class="nav-links">
-<a href="#home">خانه</a>
-<a href="#about">درباره من</a>
-<a href="#profile">پروفایل</a>
-<a href="#command">مرکز کنترل</a>
-<a href="#dashboard">داشبورد</a>
-<a href="#ai">AI</a>
-<a href="#growth">رشد</a>
-<a href="#projects">پروژه‌ها</a>
-<a href="#achievements">دستاوردها</a>
-<a href="#goals">اهداف</a>
-<a href="#activity">فعالیت</a>
-<a href="#contact">ارتباط</a>
-</div>
+    <div class="logo">AG • 2.0</div>
 
-<div class="nav-actions">
-<button class="icon-btn" id="notifyBtn">🔔<span class="notification-dot"></span></button>
-<button class="icon-btn" id="themeBtn">🌙</button>
-<button class="icon-btn mobile-btn" id="menuBtn">☰</button>
-</div>
-</div>
+    <div class="nav-links">
+      <a href="#home">خانه</a>
+      <a href="#about">درباره</a>
+      <a href="#profile">پروفایل</a>
+      <a href="#command">مرکز کنترل</a>
+      <a href="#dashboard">داشبورد</a>
+      <a href="#ai">AI</a>
+      <a href="#projects">پروژه‌ها</a>
+      <a href="#achievements">دستاوردها</a>
+      <a href="#goals">اهداف</a>
+      <a href="#activity">فعالیت</a>
+      <a href="#gallery">گالری</a>
+      <a href="#contact">ارتباط</a>
+    </div>
+
+    <div class="nav-actions">
+      <button class="icon-btn" id="notifyBtn">
+        🔔
+        <span class="notification-dot"></span>
+      </button>
+
+      <button class="icon-btn" id="themeBtn">🌙</button>
+
+      <button class="icon-btn mobile-btn" id="menuBtn">☰</button>
+    </div>
+
+  </div>
 </nav>
 
 <div id="notificationPanel">
-<h3>🔔 مرکز اعلان‌ها</h3>
-<div class="notice"><b>🚀 نسخه جدید</b><small>Version 1.4.0 • Build 14 فعال شد.</small></div>
-<div class="notice"><b>🎮 XP System</b><small>سیستم امتیازدهی جدید فعال است.</small></div>
-<div class="notice"><b>🎯 Daily Mission</b><small>مأموریت روزانه آماده است.</small></div>
-<div class="notice"><b>📊 Command Center</b><small>مرکز کنترل جدید اضافه شد.</small></div>
+  <h3>🔔 مرکز اعلان‌ها</h3>
+
+  <div class="notice">
+    <b>🚀 Version 2.0</b>
+    <small>نسخه بزرگ سایت با امکانات جدید فعال شد.</small>
+  </div>
+
+  <div class="notice">
+    <b>🎮 XP System</b>
+    <small>سیستم Level و XP فعال است.</small>
+  </div>
+
+  <div class="notice">
+    <b>🎯 Mission</b>
+    <small>مأموریت روزانه آماده است.</small>
+  </div>
+
+  <div class="notice">
+    <b>🏆 Achievement</b>
+    <small>دستاوردهای جدید در دسترس هستند.</small>
+  </div>
 </div>
 
 <main>
 
+<!-- HERO -->
 <section class="hero" id="home">
 <div class="container hero-grid">
 
 <div class="reveal">
-<span class="badge">Version 1.4.0 • Build 14 🚀</span>
-<h1>سلام، من<br><span class="gradient">امیررضا غلامی</span> هستم</h1>
+
+<span class="version-pill">
+Version 2.0.0 • Build 20 🚀
+</span>
+
+<h1>
+سلام، من<br>
+<span class="gradient">امیررضا غلامی</span>
+هستم
+</h1>
+
 <div class="typing" id="typing"></div>
 
-<p class="hero-desc">
-به دنیای تکنولوژی، هوش مصنوعی، وب و یادگیری علاقه دارم
-و همیشه دنبال تجربه‌های جدید و ساختن چیزهای تازه هستم.
+<p class="hero-description">
+علاقه‌مند به تکنولوژی، هوش مصنوعی، وب، فوتبال و یادگیری.
+این سایت مرکز شخصی من برای نمایش مسیر، پروژه‌ها و پیشرفت منه.
 </p>
 
 <div class="buttons">
-<a class="btn primary" href="#command">⚡ مرکز کنترل</a>
-<a class="btn" href="#about">👋 درباره من</a>
+<a class="btn primary" href="#command">⚡ Command Center</a>
+<a class="btn" href="#profile">👤 پروفایل</a>
 <a class="btn" href="#contact">📬 ارتباط</a>
 <a class="btn" href="https://github.com/amirrezagholami86" target="_blank">💻 GitHub</a>
 </div>
+
 </div>
 
-<div class="hero-card hero-profile reveal">
-<img src="profile.jpg" class="profile-img" alt="Amirreza Gholami">
-<h2 style="margin-top:15px">امیررضا غلامی</h2>
+<div class="hero-card profile-card reveal">
 
-<div class="online"><span></span>Available / Online</div>
+<img src="profile.jpg" class="profile-img" alt="Amirreza Gholami">
+
+<h2 style="margin-top:14px">
+امیررضا غلامی
+</h2>
+
+<div class="online">
+<span></span>
+Available / Online
+</div>
 
 <div class="tags">
 <span class="tag">Technology</span>
@@ -285,142 +1085,239 @@ section{padding-top:80px}.hero{padding-top:115px}
 <span class="tag">Web</span>
 <span class="tag">Football</span>
 <span class="tag">Learning</span>
-<span class="tag">v1.4.0</span>
+<span class="tag">v2.0.0</span>
 </div>
 
-<div class="info-row" style="margin-top:18px"><span>Level</span><b id="heroLevel">07</b></div>
-<div class="info-row"><span>XP</span><b id="heroXP">720</b></div>
+<div class="info-row" style="margin-top:16px">
+<span>Level</span>
+<b id="heroLevel">08</b>
+</div>
+
+<div class="info-row">
+<span>XP</span>
+<b id="heroXP">820</b>
+</div>
+
 </div>
 
 </div>
 </section>
 
+<!-- ABOUT -->
+<section id="about">
+<div class="container">
+
+<div class="section-title reveal">
+<h2>👨‍💻 درباره من</h2>
+<p>معرفی کوتاه</p>
+</div>
+
+<div class="grid">
+
+<div class="card reveal">
+<h3>💻 تکنولوژی</h3>
+<p>علاقه‌مند به دنیای تکنولوژی و ابزارهای دیجیتال.</p>
+</div>
+
+<div class="card reveal">
+<h3>🤖 هوش مصنوعی</h3>
+<p>پیگیری و یادگیری فناوری‌های مرتبط با AI.</p>
+</div>
+
+<div class="card reveal">
+<h3>🌐 وب</h3>
+<p>علاقه‌مند به طراحی و ساخت پروژه‌های وب.</p>
+</div>
+
+<div class="card reveal">
+<h3>⚽ فوتبال</h3>
+<p>یکی از علاقه‌های اصلی من فوتبال است.</p>
+</div>
+
+<div class="card reveal">
+<h3>📚 یادگیری</h3>
+<p>یادگیری مداوم و تجربه کردن چیزهای جدید.</p>
+</div>
+
+<div class="card reveal">
+<h3>🚀 آینده</h3>
+<p>ساخت پروژه‌های بیشتر و پیشرفت مرحله‌به‌مرحله.</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- PROFILE -->
+<section id="profile">
+<div class="container">
+
+<div class="section-title reveal">
+<h2>🪪 Smart Profile</h2>
+<p>پروفایل حرفه‌ای</p>
+</div>
+
+<div class="grid2">
+
+<div class="card reveal">
+
+<h3>👤 امیررضا غلامی</h3>
+
+<div class="info-row">
+<span>وضعیت</span>
+<b style="color:var(--success)">● Available</b>
+</div>
+
+<div class="info-row">
+<span>حوزه</span>
+<b>Technology & AI</b>
+</div>
+
+<div class="info-row">
+<span>Level</span>
+<b id="profileLevel">08</b>
+</div>
+
+<div class="info-row">
+<span>XP</span>
+<b id="profileXP">820</b>
+</div>
+
+<div class="info-row">
+<span>Version</span>
+<b style="color:var(--accent)">2.0.0</b>
+</div>
+
+</div>
+
+<div class="card reveal">
+
+<h3>📇 اطلاعات تماس</h3>
+
+<div class="info-row">
+<span>Email</span>
+<span>amirrezaamirreza275@gmail.com</span>
+</div>
+
+<div class="info-row">
+<span>WhatsApp</span>
+<span>@amirrezagholami.ir</span>
+</div>
+
+<button class="btn primary" style="margin-top:15px" onclick="saveContact()">
+📥 ذخیره اطلاعات تماس
+</button>
+
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- COMMAND CENTER -->
 <section id="command">
 <div class="container">
+
 <div class="section-title reveal">
 <h2>🧭 Command Center</h2>
 <p>مرکز کنترل سایت</p>
 </div>
 
 <div class="card reveal">
-<div class="command">
 
-<div class="command-card" onclick="goTo('#dashboard')">
-<div style="font-size:30px">📊</div>
+<div class="command-grid">
+
+<div class="command-card" onclick="go('#dashboard')">
+<div class="command-icon">📊</div>
 <b>داشبورد</b>
 <small>آمار و وضعیت</small>
 </div>
 
-<div class="command-card" onclick="goTo('#ai')">
-<div style="font-size:30px">🤖</div>
-<b>AI Corner</b>
+<div class="command-card" onclick="go('#ai')">
+<div class="command-icon">🤖</div>
+<b>AI Center</b>
 <small>هوش مصنوعی</small>
 </div>
 
-<div class="command-card" onclick="goTo('#achievements')">
-<div style="font-size:30px">🏆</div>
+<div class="command-card" onclick="go('#projects')">
+<div class="command-icon">🚀</div>
+<b>Projects</b>
+<small>پروژه‌ها</small>
+</div>
+
+<div class="command-card" onclick="go('#achievements')">
+<div class="command-icon">🏆</div>
 <b>Achievements</b>
-<small><span id="achievementCount">3</span> باز شده</small>
+<small>دستاوردها</small>
 </div>
 
-<div class="command-card" onclick="goTo('#goals')">
-<div style="font-size:30px">🎯</div>
-<b>اهداف</b>
-<small>مسیر پیشرفت</small>
+<div class="command-card" onclick="go('#goals')">
+<div class="command-icon">🎯</div>
+<b>Goals</b>
+<small>اهداف</small>
 </div>
 
-<div class="command-card" onclick="goTo('#projects')">
-<div style="font-size:30px">🚀</div>
-<b>پروژه‌ها</b>
-<small>پروژه‌های فعلی</small>
-</div>
-
-<div class="command-card" onclick="goTo('#activity')">
-<div style="font-size:30px">📝</div>
-<b>Activity Log</b>
+<div class="command-card" onclick="go('#activity')">
+<div class="command-icon">📝</div>
+<b>Activity</b>
 <small>فعالیت‌ها</small>
 </div>
 
-<div class="command-card" onclick="goTo('#contact')">
-<div style="font-size:30px">📬</div>
-<b>ارتباط</b>
-<small>راه‌های تماس</small>
+<div class="command-card" onclick="go('#gallery')">
+<div class="command-icon">🖼️</div>
+<b>Gallery</b>
+<small>گالری</small>
 </div>
 
-<div class="command-card" onclick="document.getElementById('search').focus();goTo('#searchSection')">
-<div style="font-size:30px">🔎</div>
-<b>جستجو</b>
-<small>پیدا کردن بخش‌ها</small>
+<div class="command-card" onclick="go('#settings')">
+<div class="command-icon">⚙️</div>
+<b>Settings</b>
+<small>تنظیمات</small>
 </div>
 
 </div>
+
 </div>
 </div>
 </section>
 
+<!-- SEARCH -->
 <section id="searchSection">
 <div class="container">
+
 <div class="section-title reveal">
-<h2>🔎 جستجوی سایت</h2>
-<p>بخش موردنظر خودت را پیدا کن</p>
-</div>
-
-<div class="search-box reveal">
-<input id="search" type="search" placeholder="مثلاً هوش مصنوعی، فوتبال، پروژه...">
-<button class="btn primary" id="searchBtn">جستجو</button>
-</div>
-
-<div id="searchResults" class="search-results card"></div>
-</div>
-</section>
-
-<section id="about">
-<div class="container">
-<div class="section-title reveal"><h2>👨‍💻 درباره من</h2><p>چند خط درباره من</p></div>
-
-<div class="grid">
-<div class="card reveal"><h3>💻 حوزه علاقه</h3><p>تکنولوژی و دنیای دیجیتال</p></div>
-<div class="card reveal"><h3>🤖 زمینه مورد علاقه</h3><p>هوش مصنوعی و فناوری‌های آینده</p></div>
-<div class="card reveal"><h3>📚 رویکرد</h3><p>یادگیری، تجربه و ساختن</p></div>
-<div class="card reveal"><h3>🌐 فعالیت</h3><p>وب و اینترنت</p></div>
-<div class="card reveal"><h3>⚽ علاقه شخصی</h3><p>فوتبال</p></div>
-<div class="card reveal"><h3>🚀 نگاه به آینده</h3><p>یادگیری مداوم</p></div>
-</div>
-</div>
-</section>
-
-<section id="profile">
-<div class="container">
-<div class="section-title reveal"><h2>🪪 پروفایل حرفه‌ای</h2><p>Smart Profile</p></div>
-
-<div class="grid2">
-<div class="card reveal">
-<h3>امیررضا غلامی</h3>
-<div class="info-row"><span>وضعیت</span><b style="color:#22e58a">● Available</b></div>
-<div class="info-row"><span>زمینه</span><b>Technology & AI</b></div>
-<div class="info-row"><span>Level</span><b>07</b></div>
-<div class="info-row"><span>Version</span><b style="color:var(--accent)">1.4.0</b></div>
+<h2>🔎 جستجوی داخلی</h2>
+<p>هر چیزی داخل سایت می‌خوای پیدا کن</p>
 </div>
 
 <div class="card reveal">
-<h3>📇 اطلاعات تماس</h3>
-<div class="info-row"><span>ایمیل</span><span>amirrezaamirreza275@gmail.com</span></div>
-<div class="info-row"><span>واتساپ</span><span>@amirrezagholami.ir</span></div>
-<button class="btn primary" style="margin-top:15px" onclick="saveContact()">📥 ذخیره اطلاعات تماس</button>
+
+<div class="search-box">
+<input id="searchInput" placeholder="مثلاً AI، فوتبال، پروژه، پروفایل...">
+<button class="btn primary" onclick="searchSite()">جستجو</button>
 </div>
+
+<div id="searchResults" class="search-results"></div>
+
 </div>
 </div>
 </section>
 
+<!-- DASHBOARD -->
 <section id="dashboard">
 <div class="container">
-<div class="section-title reveal"><h2>📊 داشبورد</h2><p>آمار و وضعیت سایت</p></div>
+
+<div class="section-title reveal">
+<h2>📊 Dashboard</h2>
+<p>داشبورد شخصی</p>
+</div>
 
 <div class="card reveal">
+
 <div class="stat-grid">
 
 <div class="stat">
-<strong id="visits">0</strong>
+<strong id="visitCount">0</strong>
 <small>بازدید</small>
 </div>
 
@@ -430,437 +1327,1134 @@ section{padding-top:80px}.hero{padding-top:115px}
 </div>
 
 <div class="stat">
-<strong id="xpStat">720</strong>
+<strong id="dashXP">820</strong>
 <small>XP</small>
 </div>
 
 <div class="stat">
-<strong id="levelStat">07</strong>
+<strong id="dashLevel">08</strong>
 <small>Level</small>
 </div>
 
+<div class="stat">
+<strong id="achievementNumber">3</strong>
+<small>Achievement</small>
 </div>
 
-<div class="overall">
-<div class="overall-head"><b>📈 پیشرفت کلی</b><b id="overallText">76%</b></div>
-<div class="progress"><div class="progress-bar" data-width="76"></div></div>
 </div>
+
+<div class="progress-wrap">
+
+<div class="progress-head">
+<b>🎮 XP Progress</b>
+<span id="xpPercent">82%</span>
+</div>
+
+<div class="progress xp-bar">
+<div id="xpProgress" class="progress-bar"></div>
+</div>
+
+</div>
+
+<div class="progress-wrap">
+
+<div class="progress-head">
+<b>📈 پیشرفت کلی</b>
+<span>81%</span>
+</div>
+
+<div class="progress">
+<div class="progress-bar" data-width="81"></div>
+</div>
+
+</div>
+
 </div>
 </div>
 </section>
 
+<!-- DAILY MISSION -->
 <section id="mission">
 <div class="container">
-<div class="section-title reveal"><h2>🎯 Daily Mission</h2><p>مأموریت امروز</p></div>
+
+<div class="section-title reveal">
+<h2>🎯 Daily Mission</h2>
+<p>مأموریت روزانه</p>
+</div>
 
 <div class="card mission reveal" id="missionCard">
-<div class="mission-icon">🤖</div>
-<div>
-<h3 id="missionTitle">بازدید از بخش هوش مصنوعی</h3>
-<p id="missionDescription">وارد AI Corner شو و درباره یکی از موضوعات بیشتر بدان.</p>
+
+<div class="mission-icon">
+🤖
 </div>
-<div class="mission-xp">+25 XP</div>
+
+<div>
+<h3>بازدید از AI Center</h3>
+<p>
+بخش هوش مصنوعی را باز کن و یکی از کارت‌ها را مشاهده کن.
+</p>
+</div>
+
+<div class="mission-xp">
++25 XP
+</div>
+
 </div>
 
 <div style="text-align:center;margin-top:15px">
-<button class="btn primary" id="missionBtn">✅ انجام مأموریت</button>
+
+<button id="missionButton" class="btn primary">
+✅ انجام مأموریت
+</button>
+
 </div>
+
 </div>
 </section>
 
+<!-- AI -->
 <section id="ai">
 <div class="container">
-<div class="section-title reveal"><h2>🤖 AI Corner v2</h2><p>گوشه هوش مصنوعی</p></div>
+
+<div class="section-title reveal">
+<h2>🤖 AI Center</h2>
+<p>مرکز هوش مصنوعی</p>
+</div>
 
 <div class="grid">
-<div class="card ai-card reveal" onclick="openAI('machine')">
-<div class="ai-icon">🧠</div><h3>Machine Learning</h3>
-<p>یادگیری ماشین یکی از پایه‌های مهم AI است.</p><br><span style="color:var(--accent)">بیشتر بدان ←</span>
+
+<div class="card ai-card reveal" onclick="openAI('ml')">
+<div class="ai-icon">🧠</div>
+<h3>Machine Learning</h3>
+<p>یادگیری ماشین و کاربردهای آن.</p>
+<br>
+<span style="color:var(--accent)">بیشتر بدان ←</span>
 </div>
 
 <div class="card ai-card reveal" onclick="openAI('assistant')">
-<div class="ai-icon">🤖</div><h3>AI Assistants</h3>
-<p>دستیارهای هوشمند برای کار و یادگیری.</p><br><span style="color:var(--accent)">بیشتر بدان ←</span>
+<div class="ai-icon">🤖</div>
+<h3>AI Assistants</h3>
+<p>دستیارهای هوشمند و کاربردهایشان.</p>
+<br>
+<span style="color:var(--accent)">بیشتر بدان ←</span>
 </div>
 
 <div class="card ai-card reveal" onclick="openAI('future')">
-<div class="ai-icon">🚀</div><h3>Future AI</h3>
-<p>نگاهی به آینده فناوری هوش مصنوعی.</p><br><span style="color:var(--accent)">بیشتر بدان ←</span>
+<div class="ai-icon">🚀</div>
+<h3>Future AI</h3>
+<p>آینده هوش مصنوعی و فناوری.</p>
+<br>
+<span style="color:var(--accent)">بیشتر بدان ←</span>
 </div>
+
 </div>
 </div>
 </section>
 
+<!-- GROWTH -->
 <section id="growth">
 <div class="container">
-<div class="section-title reveal"><h2>📈 رشد</h2><p>مسیر یادگیری</p></div>
+
+<div class="section-title reveal">
+<h2>📈 Growth Center</h2>
+<p>رشد و یادگیری</p>
+</div>
 
 <div class="card reveal">
-<div class="goal"><div class="goal-top"><b>💻 Web</b><span>70%</span></div><div class="progress"><div class="progress-bar" data-width="70"></div></div></div>
-<div class="goal"><div class="goal-top"><b>🤖 AI</b><span>65%</span></div><div class="progress"><div class="progress-bar" data-width="65"></div></div></div>
-<div class="goal"><div class="goal-top"><b>⚙️ Technology</b><span>75%</span></div><div class="progress"><div class="progress-bar" data-width="75"></div></div></div>
-<div class="goal"><div class="goal-top"><b>📚 Learning</b><span>85%</span></div><div class="progress"><div class="progress-bar" data-width="85"></div></div></div>
+
+<div class="goal">
+<div class="goal-top">
+<b>💻 Web</b>
+<span>70%</span>
+</div>
+<div class="progress">
+<div class="progress-bar" data-width="70"></div>
+</div>
+</div>
+
+<div class="goal">
+<div class="goal-top">
+<b>🤖 AI</b>
+<span>65%</span>
+</div>
+<div class="progress">
+<div class="progress-bar" data-width="65"></div>
+</div>
+</div>
+
+<div class="goal">
+<div class="goal-top">
+<b>⚙️ Technology</b>
+<span>75%</span>
+</div>
+<div class="progress">
+<div class="progress-bar" data-width="75"></div>
+</div>
+</div>
+
+<div class="goal">
+<div class="goal-top">
+<b>📚 Learning</b>
+<span>85%</span>
+</div>
+<div class="progress">
+<div class="progress-bar" data-width="85"></div>
+</div>
+</div>
+
 </div>
 </div>
 </section>
 
+<!-- PROJECTS -->
 <section id="projects">
 <div class="container">
-<div class="section-title reveal"><h2>🚀 پروژه‌ها</h2><p>پروژه‌های فعلی</p></div>
+
+<div class="section-title reveal">
+<h2>🚀 Projects</h2>
+<p>پروژه‌ها</p>
+</div>
+
 <div class="grid">
-<div class="card reveal"><h3>🌐 Personal Website</h3><p>وب‌سایت شخصی امیررضا غلامی.</p></div>
-<div class="card reveal"><h3>🤖 AI Exploration</h3><p>یادگیری و تجربه ابزارهای AI.</p></div>
-<div class="card reveal"><h3>💻 Technology World</h3><p>پیگیری فناوری‌های جدید.</p></div>
+
+<div class="card reveal">
+<h3>🌐 Personal Website</h3>
+<p>وب‌سایت شخصی امیررضا غلامی.</p>
+</div>
+
+<div class="card reveal">
+<h3>🤖 AI Exploration</h3>
+<p>تجربه و یادگیری ابزارهای هوش مصنوعی.</p>
+</div>
+
+<div class="card reveal">
+<h3>💻 Technology</h3>
+<p>پیگیری فناوری‌ها و ابزارهای جدید.</p>
+</div>
+
 </div>
 </div>
 </section>
 
+<!-- ACHIEVEMENTS -->
 <section id="achievements">
 <div class="container">
-<div class="section-title reveal"><h2>🏆 Achievement Center</h2><p>دستاوردهای مسیر</p></div>
+
+<div class="section-title reveal">
+<h2>🏆 Achievement Center</h2>
+<p>دستاوردها و Badgeها</p>
+</div>
 
 <div class="grid">
-<div class="card achievement unlocked reveal"><div style="font-size:42px">🌐</div><h3>Web Starter</h3><p>ساخت وب‌سایت شخصی</p><span class="state">✓ Unlocked</span></div>
-<div class="card achievement unlocked reveal"><div style="font-size:42px">🤖</div><h3>AI Explorer</h3><p>شروع مسیر AI</p><span class="state">✓ Unlocked</span></div>
-<div class="card achievement unlocked reveal"><div style="font-size:42px">📚</div><h3>Life Learner</h3><p>ادامه مسیر یادگیری</p><span class="state">✓ Unlocked</span></div>
 
-<div class="card achievement locked reveal"><div style="font-size:42px">🚀</div><h3>Next Level</h3><p>رسیدن به 1000 XP</p><span class="state">🔒 Locked</span></div>
-<div class="card achievement locked reveal"><div style="font-size:42px">🏅</div><h3>Project Master</h3><p>ساخت پروژه‌های بیشتر</p><span class="state">🔒 Locked</span></div>
-<div class="card achievement locked reveal"><div style="font-size:42px">🧠</div><h3>AI Builder</h3><p>ساخت یک پروژه واقعی AI</p><span class="state">🔒 Locked</span></div>
+<div class="card badge-card reveal">
+<div class="badge-icon">🌐</div>
+<h3>Web Starter</h3>
+<p>ساخت وب‌سایت شخصی</p>
+<span class="state">✓ Unlocked</span>
 </div>
 
-<div class="card reveal" style="margin-top:18px">
-<b>🏆 پیشرفت Achievementهای قفل‌شده</b>
-<div class="progress"><div class="progress-bar" data-width="50"></div></div>
-<p style="margin-top:8px">3 از 6 Achievement فعال شده‌اند.</p>
+<div class="card badge-card reveal">
+<div class="badge-icon">🤖</div>
+<h3>AI Explorer</h3>
+<p>ورود به دنیای AI</p>
+<span class="state">✓ Unlocked</span>
 </div>
+
+<div class="card badge-card reveal">
+<div class="badge-icon">📚</div>
+<h3>Life Learner</h3>
+<p>ادامه یادگیری</p>
+<span class="state">✓ Unlocked</span>
+</div>
+
+<div class="card badge-card locked reveal">
+<div class="badge-icon">🚀</div>
+<h3>Next Level</h3>
+<p>رسیدن به 1000 XP</p>
+<span class="state">🔒 Locked</span>
+</div>
+
+<div class="card badge-card locked reveal">
+<div class="badge-icon">🏅</div>
+<h3>Project Master</h3>
+<p>ساخت پروژه‌های بیشتر</p>
+<span class="state">🔒 Locked</span>
+</div>
+
+<div class="card badge-card locked reveal">
+<div class="badge-icon">🧠</div>
+<h3>AI Builder</h3>
+<p>ساخت پروژه AI</p>
+<span class="state">🔒 Locked</span>
+</div>
+
+</div>
+
 </div>
 </section>
 
+<!-- GOALS -->
 <section id="goals">
 <div class="container">
-<div class="section-title reveal"><h2>🎯 اهداف</h2><p>مسیر فعلی و آینده</p></div>
+
+<div class="section-title reveal">
+<h2>🎯 Goals Center</h2>
+<p>اهداف و مسیر پیشرفت</p>
+</div>
 
 <div class="card reveal">
-<div class="goal"><div class="goal-top"><b>📚 یادگیری</b><span class="status doing">در حال انجام</span></div><div class="progress"><div class="progress-bar" data-width="85"></div></div></div>
-<div class="goal"><div class="goal-top"><b>🚀 پروژه‌ها</b><span class="status doing">در حال انجام</span></div><div class="progress"><div class="progress-bar" data-width="70"></div></div></div>
-<div class="goal"><div class="goal-top"><b>🤖 AI</b><span class="status doing">در حال انجام</span></div><div class="progress"><div class="progress-bar" data-width="65"></div></div></div>
-<div class="goal"><div class="goal-top"><b>🏆 Level 08</b><span class="status future">آینده</span></div><div class="progress"><div class="progress-bar" data-width="72"></div></div></div>
-<div class="goal"><div class="goal-top"><b>💯 1000 XP</b><span class="status future">آینده</span></div><div class="progress"><div class="progress-bar" data-width="72"></div></div></div>
+
+<div class="goal">
+<div class="goal-top">
+<b>📚 یادگیری</b>
+<span class="status doing">در حال انجام</span>
+</div>
+<div class="progress">
+<div class="progress-bar" data-width="85"></div>
+</div>
+</div>
+
+<div class="goal">
+<div class="goal-top">
+<b>🚀 پروژه‌ها</b>
+<span class="status doing">در حال انجام</span>
+</div>
+<div class="progress">
+<div class="progress-bar" data-width="70"></div>
+</div>
+</div>
+
+<div class="goal">
+<div class="goal-top">
+<b>🤖 AI</b>
+<span class="status doing">در حال انجام</span>
+</div>
+<div class="progress">
+<div class="progress-bar" data-width="65"></div>
+</div>
+</div>
+
+<div class="goal">
+<div class="goal-top">
+<b>🏆 Level 10</b>
+<span class="status future">آینده</span>
+</div>
+<div class="progress">
+<div class="progress-bar" data-width="80"></div>
+</div>
+</div>
+
+<div class="goal">
+<div class="goal-top">
+<b>💯 1000 XP</b>
+<span class="status future">آینده</span>
+</div>
+<div class="progress">
+<div class="progress-bar" data-width="82"></div>
+</div>
+</div>
+
 </div>
 </div>
 </section>
 
-<section id="activity">
-<div class="container">
-<div class="section-title reveal"><h2>📝 Activity Log</h2><p>فعالیت‌های ثبت‌شده در این مرورگر</p></div>
-
-<div class="card reveal" id="activityLog">
-<p style="color:var(--muted)">هنوز فعالیتی ثبت نشده.</p>
-</div>
-</div>
-</section>
-
+<!-- TIMELINE -->
 <section id="timeline">
 <div class="container">
-<div class="section-title reveal"><h2>🛣️ مسیر من</h2><p>Timeline</p></div>
+
+<div class="section-title reveal">
+<h2>🛣️ Timeline</h2>
+<p>مسیر من</p>
+</div>
 
 <div class="card reveal">
-<div class="timeline-item"><small>مرحله 01</small><h3>🌱 شروع یادگیری</h3><p>شروع آشنایی جدی‌تر با تکنولوژی.</p></div>
-<div class="timeline-item"><small>مرحله 02</small><h3>🌐 ساخت وب‌سایت</h3><p>ساخت وب‌سایت شخصی.</p></div>
-<div class="timeline-item"><small>مرحله 03</small><h3>🤖 ورود به دنیای AI</h3><p>آشنایی با ابزارهای هوش مصنوعی.</p></div>
-<div class="timeline-item"><small>مرحله 04</small><h3>🚀 ادامه مسیر</h3><p>ساخت پروژه و یادگیری مداوم.</p></div>
+
+<div class="timeline-item">
+<small>مرحله 01</small>
+<h3>🌱 شروع</h3>
+<p>شروع جدی‌تر مسیر تکنولوژی.</p>
+</div>
+
+<div class="timeline-item">
+<small>مرحله 02</small>
+<h3>🌐 ساخت سایت</h3>
+<p>ساخت وب‌سایت شخصی.</p>
+</div>
+
+<div class="timeline-item">
+<small>مرحله 03</small>
+<h3>🤖 AI</h3>
+<p>ورود به دنیای هوش مصنوعی.</p>
+</div>
+
+<div class="timeline-item">
+<small>مرحله 04</small>
+<h3>🚀 Version 2.0</h3>
+<p>رسیدن سایت به نسخه بزرگ دوم.</p>
+</div>
+
 </div>
 </div>
 </section>
 
+<!-- ACTIVITY -->
+<section id="activity">
+<div class="container">
+
+<div class="section-title reveal">
+<h2>📝 Activity Center</h2>
+<p>تاریخچه فعالیت‌های این مرورگر</p>
+</div>
+
+<div class="card reveal" id="activityLog">
+<p>هنوز فعالیتی ثبت نشده.</p>
+</div>
+
+</div>
+</section>
+
+<!-- GALLERY -->
 <section id="gallery">
 <div class="container">
-<div class="section-title reveal"><h2>🖼️ گالری</h2><p>پروفایل</p></div>
+
+<div class="section-title reveal">
+<h2>🖼️ Gallery</h2>
+<p>گالری شخصی</p>
+</div>
+
 <div class="gallery">
-<div class="gallery-item reveal" onclick="openImage()"><img src="profile.jpg" alt="Profile"></div>
-<div class="gallery-item reveal"><div class="emoji-gallery">🤖</div></div>
-<div class="gallery-item reveal"><div class="emoji-gallery">⚽</div></div>
+
+<div class="gallery-item reveal" onclick="openImage()">
+<img src="profile.jpg" alt="Amirreza">
+</div>
+
+<div class="gallery-item reveal">
+<div class="emoji-gallery">🤖</div>
+</div>
+
+<div class="gallery-item reveal">
+<div class="emoji-gallery">⚽</div>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- SETTINGS -->
+<section id="settings">
+<div class="container">
+
+<div class="section-title reveal">
+<h2>⚙️ Settings</h2>
+<p>شخصی‌سازی سایت</p>
+</div>
+
+<div class="settings-grid">
+
+<div class="card reveal">
+
+<h3>🎨 رنگ سایت</h3>
+<p style="margin-bottom:15px">رنگ مورد علاقه‌ات را انتخاب کن.</p>
+
+<div class="theme-options">
+
+<button class="theme-dot theme-cyan" onclick="setTheme('cyan')"></button>
+<button class="theme-dot theme-green" onclick="setTheme('green')"></button>
+<button class="theme-dot theme-orange" onclick="setTheme('orange')"></button>
+<button class="theme-dot theme-pink" onclick="setTheme('pink')"></button>
+
+</div>
+
+</div>
+
+<div class="card reveal">
+
+<h3>♿ حرکت و انیمیشن</h3>
+<p style="margin-bottom:15px">
+می‌توانی انیمیشن‌های سایت را خاموش کنی.
+</p>
+
+<button class="btn" onclick="toggleMotion()">
+🎬 تغییر حالت انیمیشن
+</button>
+
+</div>
+
+<div class="card reveal">
+
+<h3>🔐 Privacy Center</h3>
+<p style="margin-bottom:15px">
+XP، بازدید و فعالیت‌ها فقط در مرورگر ذخیره می‌شوند.
+</p>
+
+<button class="btn" onclick="resetData()">
+♻️ Reset Local Data
+</button>
+
+</div>
+
+<div class="card reveal">
+
+<h3>ℹ️ درباره نسخه</h3>
+
+<div class="info-row">
+<span>Version</span>
+<b>2.0.0</b>
+</div>
+
+<div class="info-row">
+<span>Build</span>
+<b>20</b>
+</div>
+
+<div class="info-row">
+<span>Status</span>
+<b style="color:var(--success)">Stable</b>
+</div>
+
+</div>
+
 </div>
 </div>
 </section>
 
+<!-- CONTACT -->
 <section id="contact">
 <div class="container">
-<div class="section-title reveal"><h2>📬 ارتباط با من</h2><p>راه‌های ارتباطی</p></div>
+
+<div class="section-title reveal">
+<h2>📬 Contact</h2>
+<p>راه‌های ارتباطی</p>
+</div>
 
 <div class="contact">
-<a href="https://t.me/Amirrezagholami_ir" target="_blank">✈️<br>Telegram</a>
-<a href="https://wa.me/989228420736" target="_blank">💬<br>WhatsApp</a>
-<a href="https://www.instagram.com/amirrezagholami.ir" target="_blank">📷<br>Instagram</a>
-<a href="mailto:amirrezaamirreza275@gmail.com">📧<br>Email</a>
-<a href="https://github.com/amirrezagholami86" target="_blank">💻<br>GitHub</a>
-</div>
-</div>
-</section>
 
-<section id="privacy">
-<div class="container">
-<div class="card reveal">
-<h3>🔐 حریم خصوصی</h3>
-<p>آمار، XP و فعالیت‌ها فقط در LocalStorage همین مرورگر ذخیره می‌شوند.</p>
-<button class="btn" style="margin-top:15px" onclick="resetData()">♻️ پاک کردن داده‌های محلی</button>
+<a href="https://t.me/Amirrezagholami_ir" target="_blank">
+✈️<br>Telegram
+</a>
+
+<a href="https://wa.me/989228420736" target="_blank">
+💬<br>WhatsApp
+</a>
+
+<a href="https://www.instagram.com/amirrezagholami.ir" target="_blank">
+📷<br>Instagram
+</a>
+
+<a href="mailto:amirrezaamirreza275@gmail.com">
+📧<br>Email
+</a>
+
+<a href="https://github.com/amirrezagholami86" target="_blank">
+💻<br>GitHub
+</a>
+
 </div>
+
 </div>
 </section>
 
 </main>
 
 <footer>
+
 <div>© 2026 Amirreza Gholami</div>
-<div>ساخته شده با ❤️ و علاقه به تکنولوژی</div>
-<div class="version">Version 1.4.0 • Build 14</div>
+
+<div>
+ساخته شده با ❤️ و علاقه به تکنولوژی
+</div>
+
+<div class="version">
+Version 2.0.0 • Build 20
+</div>
+
 </footer>
 
+<!-- MODAL -->
 <div class="modal" id="modal">
+
 <div class="modal-box">
+
 <button class="close" onclick="closeModal()">×</button>
+
 <div id="modalContent"></div>
+
 </div>
+
 </div>
 
 <div class="toast" id="toast"></div>
 
 <script>
-const VERSION="1.4.0";
-const BUILD="14";
 
-/* Typing */
+const VERSION="2.0.0";
+const BUILD="20";
+
+/* =========================
+   TYPING
+========================= */
+
 const typingTexts=[
 "علاقه‌مند به تکنولوژی 💻",
 "علاقه‌مند به هوش مصنوعی 🤖",
 "عاشق فوتبال ⚽",
-"همیشه در حال یادگیری 📚"
+"همیشه در حال یادگیری 📚",
+"در مسیر ساختن آینده 🚀"
 ];
 
-let textIndex=0,charIndex=0,deleting=false;
+let typeIndex=0;
+let charIndex=0;
+let deleting=false;
 
-function typeEffect(){
+function typing(){
+
 const el=document.getElementById("typing");
-const text=typingTexts[textIndex];
+const text=typingTexts[typeIndex];
 
 if(!deleting){
-el.textContent=text.substring(0,charIndex++);
-if(charIndex>text.length){
-deleting=true;
-setTimeout(typeEffect,1400);
-return;
-}
-}else{
-el.textContent=text.substring(0,charIndex--);
-if(charIndex<0){
-deleting=false;
-textIndex=(textIndex+1)%typingTexts.length;
-charIndex=0;
-}
-}
-setTimeout(typeEffect,deleting?45:75);
-}
-typeEffect();
 
-/* Theme */
-const themeBtn=document.getElementById("themeBtn");
+el.textContent=text.substring(0,charIndex++);
+
+if(charIndex>text.length){
+
+deleting=true;
+
+setTimeout(typing,1300);
+
+return;
+
+}
+
+}else{
+
+el.textContent=text.substring(0,charIndex--);
+
+if(charIndex<0){
+
+deleting=false;
+charIndex=0;
+typeIndex=(typeIndex+1)%typingTexts.length;
+
+}
+
+}
+
+setTimeout(typing,deleting?45:75);
+
+}
+
+typing();
+
+
+/* =========================
+   THEME
+========================= */
 
 function applyTheme(){
+
 const theme=localStorage.getItem("theme")||"dark";
-document.body.classList.toggle("light",theme==="light");
-themeBtn.textContent=theme==="light"?"☀️":"🌙";
+
+document.body.classList.remove("light");
+
+if(theme==="light"){
+document.body.classList.add("light");
 }
-themeBtn.onclick=()=>{
-localStorage.setItem("theme",
-document.body.classList.contains("light")?"dark":"light");
-applyTheme();
-};
+
+document.getElementById("themeBtn").textContent=
+theme==="light"?"☀️":"🌙";
+
+}
+
+document.getElementById("themeBtn").onclick=()=>{
+
+const current=localStorage.getItem("theme")||"dark";
+
+localStorage.setItem(
+"theme",
+current==="light"?"dark":"light"
+);
+
 applyTheme();
 
-/* Mobile */
+};
+
+applyTheme();
+
+
+/* =========================
+   COLOR
+========================= */
+
+function setTheme(color){
+
+document.body.classList.remove(
+"green",
+"orange",
+"pink"
+);
+
+if(color!=="cyan"){
+document.body.classList.add(color);
+}
+
+localStorage.setItem("accent",color);
+
+toast("🎨 تم تغییر کرد");
+
+}
+
+const savedAccent=localStorage.getItem("accent");
+
+if(savedAccent){
+setTheme(savedAccent);
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
 document.getElementById("menuBtn").onclick=()=>{
-document.getElementById("navbar").classList.toggle("mobile-open");
+
+document.getElementById("navbar")
+.classList.toggle("mobile-open");
+
 };
 
-document.querySelectorAll(".nav-links a").forEach(a=>{
-a.onclick=()=>document.getElementById("navbar").classList.remove("mobile-open");
+document.querySelectorAll(".nav-links a")
+.forEach(link=>{
+
+link.onclick=()=>{
+document.getElementById("navbar")
+.classList.remove("mobile-open");
+};
+
 });
 
-/* Notifications */
-const panel=document.getElementById("notificationPanel");
+
+/* =========================
+   NOTIFICATION
+========================= */
+
+const notificationPanel=
+document.getElementById("notificationPanel");
 
 document.getElementById("notifyBtn").onclick=()=>{
-panel.classList.toggle("show");
+
+notificationPanel.classList.toggle("show");
+
 };
 
 document.addEventListener("click",e=>{
-if(!panel.contains(e.target)&&!document.getElementById("notifyBtn").contains(e.target)){
-panel.classList.remove("show");
+
+if(
+!notificationPanel.contains(e.target)&&
+!document.getElementById("notifyBtn").contains(e.target)
+){
+
+notificationPanel.classList.remove("show");
+
 }
+
 });
 
-/* Visits */
-let visits=Number(localStorage.getItem("siteVisits")||0)+1;
-localStorage.setItem("siteVisits",visits);
-document.getElementById("visits").textContent=visits;
 
-/* XP */
-let xp=Number(localStorage.getItem("siteXP")||720);
+/* =========================
+   VISITS
+========================= */
+
+let visits=
+Number(localStorage.getItem("siteVisits")||0)+1;
+
+localStorage.setItem("siteVisits",visits);
+
+document.getElementById("visitCount")
+.textContent=visits;
+
+
+/* =========================
+   XP SYSTEM
+========================= */
+
+let xp=
+Number(localStorage.getItem("siteXP")||820);
+
+function levelFromXP(){
+
+return Math.max(1,Math.floor(xp/100));
+
+}
 
 function updateXP(){
-let level=Math.floor(xp/100)+1;
 
-document.getElementById("xpStat").textContent=xp;
+const level=levelFromXP();
+
+const percent=Math.min(
+100,
+Math.round((xp/1000)*100)
+);
+
 document.getElementById("heroXP").textContent=xp;
-document.getElementById("levelStat").textContent=String(level).padStart(2,"0");
-document.getElementById("heroLevel").textContent=String(level).padStart(2,"0");
+document.getElementById("profileXP").textContent=xp;
+document.getElementById("dashXP").textContent=xp;
+
+document.getElementById("heroLevel")
+.textContent=String(level).padStart(2,"0");
+
+document.getElementById("profileLevel")
+.textContent=String(level).padStart(2,"0");
+
+document.getElementById("dashLevel")
+.textContent=String(level).padStart(2,"0");
+
+document.getElementById("xpPercent")
+.textContent=percent+"%";
+
+document.getElementById("xpProgress")
+.style.width=percent+"%";
 
 localStorage.setItem("siteXP",xp);
+
 }
 
 function addXP(amount,reason){
+
+const oldLevel=levelFromXP();
+
 xp=Math.min(1000,xp+amount);
+
 updateXP();
-addActivity("⚡","+"+amount+" XP — "+reason);
+
+const newLevel=levelFromXP();
+
+addActivity(
+"⚡",
+"+"+amount+" XP — "+reason
+);
+
 toast("🎉 +"+amount+" XP");
+
+if(newLevel>oldLevel){
+
+setTimeout(()=>{
+
+toast("🚀 LEVEL UP! Level "+newLevel);
+
+addActivity(
+"🏆",
+"Level Up → "+newLevel
+);
+
+},700);
+
+}
+
 }
 
 updateXP();
 
-/* Daily mission */
-const today=new Date().toDateString();
-const missionDone=localStorage.getItem("missionDate")===today;
 
-function updateMission(){
-const card=document.getElementById("missionCard");
-const btn=document.getElementById("missionBtn");
+/* =========================
+   SESSION
+========================= */
 
-if(localStorage.getItem("missionDate")===today){
-card.classList.add("done");
-btn.textContent="✓ مأموریت انجام شد";
-btn.disabled=true;
-btn.style.opacity=".6";
-}
-}
-
-document.getElementById("missionBtn").onclick=()=>{
-if(localStorage.getItem("missionDate")===today)return;
-
-localStorage.setItem("missionDate",today);
-addXP(25,"Daily Mission");
-updateMission();
-toast("🏆 مأموریت امروز کامل شد!");
-};
-
-updateMission();
-
-/* Session */
 let seconds=0;
 
 setInterval(()=>{
+
 seconds++;
-let value=seconds+"s";
+
+let output=seconds+"s";
 
 if(seconds>=60){
-value=Math.floor(seconds/60)+"m "+seconds%60+"s";
+
+output=
+Math.floor(seconds/60)+"m "+
+(seconds%60)+"s";
+
 }
 
-document.getElementById("sessionTime").textContent=value;
+document.getElementById("sessionTime")
+.textContent=output;
+
 },1000);
 
-/* Progress */
-function animateProgress(){
-document.querySelectorAll(".progress-bar").forEach(bar=>{
-const r=bar.getBoundingClientRect();
 
-if(r.top<innerHeight&&r.bottom>0){
-bar.style.width=bar.dataset.width+"%";
+/* =========================
+   DAILY MISSION
+========================= */
+
+const today=
+new Date().toDateString();
+
+const missionButton=
+document.getElementById("missionButton");
+
+function checkMission(){
+
+if(
+localStorage.getItem("missionDate")===today
+){
+
+document.getElementById("missionCard")
+.classList.add("done");
+
+missionButton.textContent=
+"✓ مأموریت انجام شد";
+
+missionButton.disabled=true;
+
+missionButton.style.opacity=".6";
+
 }
-});
+
 }
 
-window.addEventListener("scroll",animateProgress);
-setTimeout(animateProgress,400);
+missionButton.onclick=()=>{
 
-/* Reveal */
-const observer=new IntersectionObserver(entries=>{
+if(
+localStorage.getItem("missionDate")===today
+)return;
+
+localStorage.setItem("missionDate",today);
+
+addXP(
+25,
+"Daily Mission"
+);
+
+document.getElementById("missionCard")
+.classList.add("done");
+
+missionButton.textContent=
+"✓ مأموریت انجام شد";
+
+missionButton.disabled=true;
+
+toast("🏆 مأموریت کامل شد!");
+
+};
+
+checkMission();
+
+
+/* =========================
+   REVEAL
+========================= */
+
+const revealObserver=
+new IntersectionObserver(entries=>{
+
 entries.forEach(entry=>{
+
 if(entry.isIntersecting){
+
 entry.target.classList.add("visible");
+
 }
+
 });
+
 },{threshold:.08});
 
-document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+document.querySelectorAll(".reveal")
+.forEach(el=>revealObserver.observe(el));
 
-/* Modal */
-function showModal(content){
-document.getElementById("modalContent").innerHTML=content;
-document.getElementById("modal").classList.add("show");
+
+/* =========================
+   PROGRESS
+========================= */
+
+function animateProgress(){
+
+document.querySelectorAll(".progress-bar")
+.forEach(bar=>{
+
+const rect=
+bar.getBoundingClientRect();
+
+if(
+rect.top<innerHeight &&
+rect.bottom>0
+){
+
+bar.style.width=
+bar.dataset.width+"%";
+
+}
+
+});
+
+}
+
+window.addEventListener(
+"scroll",
+animateProgress
+);
+
+setTimeout(
+animateProgress,
+500
+);
+
+
+/* =========================
+   MODAL
+========================= */
+
+function openModal(html){
+
+document.getElementById("modalContent")
+.innerHTML=html;
+
+document.getElementById("modal")
+.classList.add("show");
+
 }
 
 function closeModal(){
-document.getElementById("modal").classList.remove("show");
+
+document.getElementById("modal")
+.classList.remove("show");
+
 }
 
-document.getElementById("modal").onclick=e=>{
-if(e.target.id==="modal")closeModal();
+document.getElementById("modal")
+.onclick=e=>{
+
+if(e.target.id==="modal"){
+closeModal();
+}
+
 };
+
+
+/* =========================
+   AI
+========================= */
 
 function openAI(type){
 
 const data={
-machine:[
-"🧠","Machine Learning",
-"یادگیری ماشین به سیستم‌ها کمک می‌کند از داده‌ها الگو یاد بگیرند و برای پیش‌بینی یا تصمیم‌گیری استفاده شوند."
+
+ml:[
+"🧠",
+"Machine Learning",
+"یادگیری ماشین به سیستم‌ها اجازه می‌دهد از داده‌ها الگو یاد بگیرند و برای پیش‌بینی یا تصمیم‌گیری استفاده شوند."
 ],
+
 assistant:[
-"🤖","AI Assistants",
-"دستیارهای هوشمند می‌توانند در یادگیری، جستجو، تولید محتوا، برنامه‌نویسی و کارهای روزمره کمک کنند."
+"🤖",
+"AI Assistants",
+"دستیارهای هوشمند می‌توانند در یادگیری، تحقیق، تولید محتوا، برنامه‌نویسی و بسیاری از کارهای روزمره کمک کنند."
 ],
+
 future:[
-"🚀","Future AI",
-"هوش مصنوعی می‌تواند در سال‌های آینده بخش‌های مختلف زندگی دیجیتال را تغییر دهد."
+"🚀",
+"Future AI",
+"هوش مصنوعی یکی از مهم‌ترین فناوری‌های در حال توسعه است و می‌تواند شکل بسیاری از ابزارهای دیجیتال آینده را تغییر دهد."
 ]
+
 };
 
-const d=data[type];
+const item=data[type];
 
-showModal(`
-<div style="font-size:50px">${d[0]}</div>
-<h2>${d[1]}</h2>
-<p style="color:var(--muted);margin-top:12px">${d[2]}</p>
+openModal(`
+<div style="font-size:50px">
+${item[0]}
+</div>
+
+<h2>${item[1]}</h2>
+
+<p style="margin-top:12px">
+${item[2]}
+</p>
 `);
+
+addActivity(
+"🤖",
+"مشاهده AI: "+item[1]
+);
+
 }
+
+
+/* =========================
+   IMAGE
+========================= */
 
 function openImage(){
-showModal(`
-<img src="profile.jpg" style="width:100%;max-height:65vh;object-fit:contain;border-radius:18px">
-<h3 style="margin-top:15px">امیررضا غلامی</h3>
+
+openModal(`
+
+<img
+src="profile.jpg"
+style="
+width:100%;
+max-height:65vh;
+object-fit:contain;
+border-radius:18px
+">
+
+<h3 style="margin-top:15px">
+امیررضا غلامی
+</h3>
+
 `);
+
 }
 
-/* Toast */
+
+/* =========================
+   TOAST
+========================= */
+
 let toastTimer;
 
 function toast(message){
-const el=document.getElementById("toast");
+
+const el=
+document.getElementById("toast");
+
 el.textContent=message;
+
 el.classList.add("show");
+
 clearTimeout(toastTimer);
-toastTimer=setTimeout(()=>el.classList.remove("show"),2500);
+
+toastTimer=setTimeout(()=>{
+
+el.classList.remove("show");
+
+},2500);
+
 }
 
-/* Navigation */
-function goTo(id){
-document.querySelector(id)?.scrollIntoView({behavior:"smooth"});
+
+/* =========================
+   NAVIGATION
+========================= */
+
+function go(id){
+
+document.querySelector(id)
+?.scrollIntoView({
+behavior:"smooth"
+});
+
 }
 
-/* Contact */
+
+/* =========================
+   CONTACT VCARD
+========================= */
+
 function saveContact(){
 
-const vcard=`BEGIN:VCARD
+const vcard=
+`BEGIN:VCARD
 VERSION:3.0
 FN:Amirreza Gholami
 N:Gholami;Amirreza;;;
@@ -869,186 +2463,385 @@ EMAIL:amirrezaamirreza275@gmail.com
 URL:https://amirrezagholami86.github.io
 END:VCARD`;
 
-const blob=new Blob([vcard],{type:"text/vcard"});
-const url=URL.createObjectURL(blob);
-const a=document.createElement("a");
+const blob=
+new Blob(
+[vcard],
+{type:"text/vcard"}
+);
+
+const url=
+URL.createObjectURL(blob);
+
+const a=
+document.createElement("a");
 
 a.href=url;
 a.download="Amirreza-Gholami.vcf";
+
 a.click();
 
 URL.revokeObjectURL(url);
+
 toast("📇 اطلاعات تماس آماده شد");
+
 }
 
-/* Search */
+
+/* =========================
+   SEARCH
+========================= */
+
 const searchData=[
-["خانه","#home"],["درباره من","#about"],["پروفایل","#profile"],
-["مرکز کنترل","#command"],["داشبورد","#dashboard"],["هوش مصنوعی","#ai"],
-["AI","#ai"],["رشد","#growth"],["پروژه","#projects"],
-["دستاورد","#achievements"],["Achievement","#achievements"],
-["اهداف","#goals"],["فعالیت","#activity"],["گالری","#gallery"],
-["مسیر","#timeline"],["ارتباط","#contact"],["فوتبال","#about"],
-["تکنولوژی","#skills"],["وب","#projects"]
+
+["خانه","#home"],
+["درباره","#about"],
+["پروفایل","#profile"],
+["مرکز کنترل","#command"],
+["داشبورد","#dashboard"],
+["هوش مصنوعی","#ai"],
+["AI","#ai"],
+["رشد","#growth"],
+["پروژه","#projects"],
+["پروژه‌ها","#projects"],
+["دستاورد","#achievements"],
+["Achievement","#achievements"],
+["اهداف","#goals"],
+["فعالیت","#activity"],
+["گالری","#gallery"],
+["مسیر","#timeline"],
+["تنظیمات","#settings"],
+["ارتباط","#contact"],
+["فوتبال","#about"],
+["تکنولوژی","#about"],
+["وب","#projects"]
+
 ];
 
-function runSearch(){
+function searchSite(){
 
-const q=document.getElementById("search").value.trim().toLowerCase();
-const result=document.getElementById("searchResults");
+const q=
+document.getElementById("searchInput")
+.value
+.trim()
+.toLowerCase();
+
+const results=
+document.getElementById("searchResults");
 
 if(!q){
-result.classList.remove("show");
+
+results.classList.remove("show");
+
 return;
+
 }
 
-const matches=searchData.filter(x=>x[0].toLowerCase().includes(q));
+const matches=
+searchData.filter(item=>
+item[0].toLowerCase().includes(q)
+);
 
 if(!matches.length){
-result.innerHTML="<p>نتیجه‌ای پیدا نشد 😕</p>";
-result.classList.add("show");
+
+results.innerHTML=
+"<p>نتیجه‌ای پیدا نشد 😕</p>";
+
+results.classList.add("show");
+
 return;
+
 }
 
-result.innerHTML=matches.map(x=>
-`<a class="search-result" href="${x[1]}">🔎 ${x[0]}</a>`
-).join("");
+results.innerHTML=
+matches.map(item=>`
 
-result.classList.add("show");
+<a
+class="search-result"
+href="${item[1]}"
+onclick="closeSearch()"
+>
+🔎 ${item[0]}
+</a>
 
-addActivity("🔎","جستجو برای «"+q+"»");
+`).join("");
+
+results.classList.add("show");
+
+addActivity(
+"🔎",
+"جستجو: "+q
+);
+
 }
 
-document.getElementById("searchBtn").onclick=runSearch;
+function closeSearch(){
 
-document.getElementById("search").onkeydown=e=>{
-if(e.key==="Enter")runSearch();
-};
+document.getElementById("searchResults")
+.classList.remove("show");
 
-/* Activity Log */
+}
+
+
+/* =========================
+   ACTIVITY LOG
+========================= */
+
 function getActivities(){
-return JSON.parse(localStorage.getItem("activityLog")||"[]");
+
+return JSON.parse(
+localStorage.getItem("activityLog")||"[]"
+);
+
 }
 
 function addActivity(icon,text){
 
-const list=getActivities();
+const list=
+getActivities();
 
 list.unshift({
-icon,
-text,
-time:new Date().toLocaleTimeString("fa-IR",{hour:"2-digit",minute:"2-digit"})
+
+icon:icon,
+text:text,
+time:new Date()
+.toLocaleTimeString("fa-IR",{
+hour:"2-digit",
+minute:"2-digit"
+})
+
 });
 
-localStorage.setItem("activityLog",JSON.stringify(list.slice(0,12)));
+localStorage.setItem(
+"activityLog",
+JSON.stringify(list.slice(0,15))
+);
+
 renderActivities();
+
 }
 
 function renderActivities(){
 
-const box=document.getElementById("activityLog");
-const list=getActivities();
+const box=
+document.getElementById("activityLog");
+
+const list=
+getActivities();
 
 if(!list.length){
-box.innerHTML="<p style='color:var(--muted)'>هنوز فعالیتی ثبت نشده.</p>";
+
+box.innerHTML=
+"<p>هنوز فعالیتی ثبت نشده.</p>";
+
 return;
+
 }
 
-box.innerHTML=list.map(a=>`
+box.innerHTML=
+list.map(item=>`
+
 <div class="activity">
-<div class="activity-icon">${a.icon}</div>
+
+<div class="activity-icon">
+${item.icon}
+</div>
+
 <div>
-<b>${a.text}</b>
-<small>${a.time}</small>
+
+<b>${item.text}</b>
+
+<small>
+${item.time}
+</small>
+
 </div>
+
 </div>
+
 `).join("");
+
 }
 
 renderActivities();
 
-/* Track sections */
-const tracked=new Set();
 
-document.querySelectorAll("section[id]").forEach(section=>{
+/* =========================
+   TRACK AI / SECTIONS
+========================= */
 
-const obs=new IntersectionObserver(entries=>{
+const tracked=
+new Set();
+
+document.querySelectorAll("section[id]")
+.forEach(section=>{
+
+const obs=
+new IntersectionObserver(entries=>{
+
 entries.forEach(entry=>{
 
-if(entry.isIntersecting&&!tracked.has(section.id)){
+if(
+entry.isIntersecting &&
+!tracked.has(section.id)
+){
 
 tracked.add(section.id);
 
 const names={
-ai:"ورود به AI Corner",
+
+about:"مشاهده درباره من",
+profile:"مشاهده پروفایل",
+dashboard:"مشاهده داشبورد",
+ai:"ورود به AI Center",
+growth:"مشاهده Growth",
 projects:"مشاهده پروژه‌ها",
 achievements:"مشاهده Achievementها",
 goals:"مشاهده اهداف",
-profile:"مشاهده پروفایل",
-contact:"مشاهده بخش ارتباط"
+gallery:"مشاهده گالری",
+contact:"مشاهده ارتباط"
+
 };
 
 if(names[section.id]){
-addActivity("👀",names[section.id]);
+
+addActivity(
+"👀",
+names[section.id]
+);
+
 }
 
 }
+
 });
-},{threshold:.35});
+
+},{
+threshold:.35
+});
 
 obs.observe(section);
+
 });
 
-/* Active nav */
-const sections=document.querySelectorAll("main section[id]");
-const navAnchors=document.querySelectorAll(".nav-links a");
+
+/* =========================
+   ACTIVE NAV
+========================= */
+
+const sections=
+document.querySelectorAll(
+"main section[id]"
+);
+
+const navLinks=
+document.querySelectorAll(
+".nav-links a"
+);
 
 window.addEventListener("scroll",()=>{
+
 let current="";
 
 sections.forEach(section=>{
-if(scrollY>=section.offsetTop-150)current=section.id;
+
+if(
+scrollY>=section.offsetTop-160
+){
+
+current=section.id;
+
+}
+
 });
 
-navAnchors.forEach(a=>{
-a.classList.toggle("active",a.getAttribute("href")==="#"+current);
-});
-});
+navLinks.forEach(link=>{
 
-/* Mouse glow */
-const glow=document.getElementById("mouseGlow");
+link.classList.toggle(
+"active",
+link.getAttribute("href")===
+"#"+current
+);
 
-window.addEventListener("mousemove",e=>{
-glow.style.left=e.clientX+"px";
-glow.style.top=e.clientY+"px";
 });
 
-/* Particles */
-const canvas=document.getElementById("particles");
-const ctx=canvas.getContext("2d");
+});
+
+
+/* =========================
+   MOUSE GLOW
+========================= */
+
+const glow=
+document.getElementById("mouseGlow");
+
+window.addEventListener(
+"mousemove",
+e=>{
+
+glow.style.left=
+e.clientX+"px";
+
+glow.style.top=
+e.clientY+"px";
+
+});
+
+
+/* =========================
+   PARTICLES
+========================= */
+
+const canvas=
+document.getElementById("particles");
+
+const ctx=
+canvas.getContext("2d");
+
 let particles=[];
 
 function resizeCanvas(){
-canvas.width=innerWidth;
-canvas.height=innerHeight;
+
+canvas.width=
+innerWidth;
+
+canvas.height=
+innerHeight;
+
 }
 
 resizeCanvas();
-addEventListener("resize",resizeCanvas);
 
-for(let i=0;i<70;i++){
+window.addEventListener(
+"resize",
+resizeCanvas
+);
+
+for(let i=0;i<75;i++){
+
 particles.push({
+
 x:Math.random()*innerWidth,
+
 y:Math.random()*innerHeight,
-r:Math.random()*1.8+.4,
+
+r:Math.random()*1.7+.4,
+
 dx:(Math.random()-.5)*.35,
+
 dy:(Math.random()-.5)*.35
+
 });
+
 }
 
 function drawParticles(){
 
-ctx.clearRect(0,0,canvas.width,canvas.height);
+ctx.clearRect(
+0,
+0,
+canvas.width,
+canvas.height
+);
 
 particles.forEach(p=>{
 
@@ -1057,24 +2850,83 @@ p.y+=p.dy;
 
 if(p.x<0)p.x=canvas.width;
 if(p.x>canvas.width)p.x=0;
+
 if(p.y<0)p.y=canvas.height;
 if(p.y>canvas.height)p.y=0;
 
 ctx.beginPath();
-ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-ctx.fillStyle="rgba(0,217,255,.5)";
+
+ctx.arc(
+p.x,
+p.y,
+p.r,
+0,
+Math.PI*2
+);
+
+ctx.fillStyle=
+"rgba(0,217,255,.5)";
+
 ctx.fill();
+
 });
 
-requestAnimationFrame(drawParticles);
+requestAnimationFrame(
+drawParticles
+);
+
 }
 
 drawParticles();
 
-/* Reset */
+
+/* =========================
+   MOTION
+========================= */
+
+function toggleMotion(){
+
+document.body.classList.toggle("no-motion");
+
+const disabled=
+document.body.classList.contains("no-motion");
+
+localStorage.setItem(
+"motionDisabled",
+disabled?"1":"0"
+);
+
+toast(
+disabled?
+"🎬 انیمیشن‌ها خاموش شدند":
+"✨ انیمیشن‌ها فعال شدند"
+);
+
+}
+
+if(
+localStorage.getItem("motionDisabled")==="1"
+){
+
+document.body.classList.add(
+"no-motion"
+);
+
+}
+
+
+/* =========================
+   RESET
+========================= */
+
 function resetData(){
 
-if(confirm("تمام داده‌های محلی سایت پاک شوند؟")){
+const confirmReset=
+confirm(
+"تمام اطلاعات محلی سایت پاک شوند؟"
+);
+
+if(!confirmReset)return;
 
 [
 "siteVisits",
@@ -1082,34 +2934,71 @@ if(confirm("تمام داده‌های محلی سایت پاک شوند؟")){
 "activityLog",
 "missionDate",
 "theme",
-"accent"
-].forEach(k=>localStorage.removeItem(k));
+"accent",
+"motionDisabled"
+]
+.forEach(key=>
+localStorage.removeItem(key)
+);
 
 toast("♻️ داده‌ها پاک شدند");
 
-setTimeout(()=>location.reload(),800);
-}
+setTimeout(
+()=>location.reload(),
+900
+);
+
 }
 
-/* Keyboard */
-document.addEventListener("keydown",e=>{
 
-if(e.key==="/"&&document.activeElement.tagName!=="INPUT"){
+/* =========================
+   KEYBOARD SHORTCUTS
+========================= */
+
+document.addEventListener(
+"keydown",
+e=>{
+
+if(
+e.key==="/" &&
+document.activeElement.tagName!=="INPUT"
+){
+
 e.preventDefault();
-document.getElementById("search").focus();
+
+document.getElementById(
+"searchInput"
+).focus();
+
 }
 
 if(e.key==="Escape"){
+
 closeModal();
-panel.classList.remove("show");
+
+notificationPanel
+.classList.remove("show");
+
 }
+
 });
+
+
+/* =========================
+   STARTUP
+========================= */
+
+addActivity(
+"🚀",
+"ورود به Version 2.0.0"
+);
 
 console.log(
 "Amirreza Gholami Website",
 "Version "+VERSION,
 "Build "+BUILD
 );
+
 </script>
 
 </body>
