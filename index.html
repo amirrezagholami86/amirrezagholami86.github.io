@@ -1,1152 +1,886 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>امیررضا غلامی | وب‌سایت شخصی</title>
-
-    <meta name="description" content="وب‌سایت شخصی امیررضا غلامی؛ علاقه‌مند به فوتبال، ورزش، تکنولوژی و هوش مصنوعی.">
-    <meta name="author" content="امیررضا غلامی">
-
-    <style>
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 90px;
-        }
-
-        body {
-            font-family: Tahoma, Arial, sans-serif;
-            background:
-                radial-gradient(circle at 15% 10%, rgba(59,130,246,.22), transparent 30%),
-                radial-gradient(circle at 85% 80%, rgba(139,92,246,.20), transparent 30%),
-                linear-gradient(135deg, #020617, #0f172a, #111827);
-            color: white;
-            min-height: 100vh;
-            overflow-x: hidden;
-            transition: background .4s ease, color .4s ease;
-        }
-
-        body.light {
-            background:
-                radial-gradient(circle at 15% 10%, rgba(59,130,246,.12), transparent 30%),
-                radial-gradient(circle at 85% 80%, rgba(139,92,246,.10), transparent 30%),
-                linear-gradient(135deg, #f8fafc, #e2e8f0, #eef2ff);
-            color: #0f172a;
-        }
-
-        .container {
-            animation: pageEnter 1s ease both;
-        }
-
-        @keyframes pageEnter {
-            from {
-                opacity: 0;
-                transform: translateY(25px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* ===== Navigation ===== */
-
-        .navbar {
-            position: fixed;
-            top: 0;
-            right: 0;
-            left: 0;
-            z-index: 999;
-
-            background: rgba(2, 6, 23, .72);
-            border-bottom: 1px solid rgba(255,255,255,.10);
-            backdrop-filter: blur(15px);
-        }
-
-        body.light .navbar {
-            background: rgba(255,255,255,.78);
-            border-bottom-color: rgba(15,23,42,.10);
-        }
-
-        .nav-container {
-            width: 92%;
-            max-width: 1100px;
-            margin: auto;
-
-            min-height: 65px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .nav-link {
-            color: #e2e8f0;
-            text-decoration: none;
-            padding: 10px 14px;
-            border-radius: 12px;
-            font-size: 14px;
-            transition: .3s;
-            white-space: nowrap;
-        }
-
-        .nav-link:hover {
-            background: rgba(255,255,255,.10);
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        body.light .nav-link {
-            color: #334155;
-        }
 
-        body.light .nav-link:hover {
-            background: rgba(15,23,42,.07);
-            color: #0f172a;
-        }
-
-        /* ===== Theme Button ===== */
+  <meta charset="UTF-8">
 
-        .theme-button {
-            position: fixed;
-            top: 82px;
-            left: 20px;
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
-            width: 48px;
-            height: 48px;
+  <title>امیررضا غلامی | وب‌سایت شخصی</title>
 
-            border: none;
-            border-radius: 50%;
+  <meta name="description"
+        content="وب‌سایت شخصی امیررضا غلامی؛ معرفی، علایق، مهارت‌ها، پروژه‌ها و راه‌های ارتباطی.">
 
-            background: rgba(255,255,255,.10);
-            border: 1px solid rgba(255,255,255,.15);
+  <meta name="author"
+        content="امیررضا غلامی">
 
-            color: white;
-            font-size: 22px;
-            cursor: pointer;
+  <meta name="robots"
+        content="index, follow">
 
-            backdrop-filter: blur(10px);
-            transition: .3s;
+  <link rel="canonical"
+        href="https://amirrezagholami86.github.io/">
 
-            z-index: 1000;
-        }
+  <!-- Open Graph -->
+  <meta property="og:type"
+        content="website">
 
-        .theme-button:hover {
-            transform: scale(1.1) rotate(10deg);
-        }
+  <meta property="og:title"
+        content="امیررضا غلامی | وب‌سایت شخصی">
 
-        body.light .theme-button {
-            background: rgba(15,23,42,.08);
-            color: #0f172a;
-            border-color: rgba(15,23,42,.12);
-        }
+  <meta property="og:description"
+        content="وب‌سایت شخصی امیررضا غلامی؛ معرفی، علایق، مهارت‌ها و پروژه‌ها.">
 
-        /* ===== Main ===== */
+  <meta property="og:url"
+        content="https://amirrezagholami86.github.io/">
 
-        .container {
-            width: 90%;
-            max-width: 900px;
-            margin: auto;
-            padding: 110px 15px 30px;
-            text-align: center;
-        }
+  <meta property="og:image"
+        content="https://amirrezagholami86.github.io/profile.jpg">
 
-        /* ===== Profile ===== */
+  <meta property="og:locale"
+        content="fa_IR">
 
-        .profile-wrapper {
-            display: inline-block;
-            position: relative;
-            margin-bottom: 22px;
-        }
+  <!-- Twitter / Social Preview -->
+  <meta name="twitter:card"
+        content="summary_large_image">
+
+  <meta name="twitter:title"
+        content="امیررضا غلامی | وب‌سایت شخصی">
 
-        .profile-wrapper::before {
-            content: "";
-            position: absolute;
-            inset: -8px;
-            border-radius: 50%;
+  <meta name="twitter:description"
+        content="وب‌سایت شخصی امیررضا غلامی">
 
-            background: linear-gradient(
-                135deg,
-                #38bdf8,
-                #8b5cf6,
-                #38bdf8
-            );
+  <meta name="twitter:image"
+        content="https://amirrezagholami86.github.io/profile.jpg">
 
-            background-size: 200% 200%;
 
-            z-index: -1;
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "امیررضا غلامی",
+    "url": "https://amirrezagholami86.github.io/",
+    "image": "https://amirrezagholami86.github.io/profile.jpg",
+    "sameAs": [
+      "https://github.com/amirrezagholami86",
+      "https://www.instagram.com/amirrezagholami.ir",
+      "https://t.me/Amirrezagholami_ir"
+    ]
+  }
+  </script>
 
-            animation: profileGlow 4s ease infinite;
-        }
 
-        @keyframes profileGlow {
+  <style>
 
-            0% {
-                background-position: 0% 50%;
-                transform: rotate(0deg);
-            }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-            50% {
-                background-position: 100% 50%;
-                transform: rotate(180deg);
-            }
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
 
-            100% {
-                background-position: 0% 50%;
-                transform: rotate(360deg);
-            }
+    body {
+      font-family: Tahoma, Arial, sans-serif;
+      background:
+        radial-gradient(circle at top right, #1d3557, transparent 35%),
+        linear-gradient(135deg, #050816, #101827);
+      color: #ffffff;
+      min-height: 100vh;
+      transition: background 0.4s, color 0.4s;
+      animation: pageEnter 0.8s ease;
+    }
 
-        }
+    body.light {
+      background:
+        radial-gradient(circle at top right, #dbeafe, transparent 35%),
+        linear-gradient(135deg, #f8fafc, #e2e8f0);
+      color: #172033;
+    }
 
-        .profile {
-            width: 155px;
-            height: 155px;
-            border-radius: 50%;
-            object-fit: cover;
 
-            border: 5px solid #0f172a;
+    /* Navigation */
 
-            display: block;
+    nav {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: 1000;
 
-            transition: .4s;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
 
-            animation: profileAppear 1.2s ease both;
-        }
+      padding: 12px;
 
-        .profile:hover {
-            transform: scale(1.06);
-        }
+      background: rgba(5, 8, 22, 0.75);
+      backdrop-filter: blur(14px);
 
-        @keyframes profileAppear {
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
 
-            from {
-                opacity: 0;
-                transform: scale(.7);
-            }
+    body.light nav {
+      background: rgba(255,255,255,0.78);
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
 
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
+    nav a {
+      color: inherit;
+      text-decoration: none;
+      padding: 9px 13px;
+      border-radius: 12px;
+      font-size: 14px;
+      white-space: nowrap;
+      transition: 0.3s;
+    }
 
-        }
+    nav a:hover {
+      background: rgba(255,255,255,0.12);
+      transform: translateY(-2px);
+    }
 
-        h1 {
-            font-size: 40px;
-            margin-bottom: 12px;
 
-            animation: textAppear 1s ease .2s both;
-        }
+    /* Theme Button */
 
-        .subtitle {
-            color: #cbd5e1;
-            font-size: 18px;
-            margin-bottom: 25px;
+    #themeToggle {
+      position: fixed;
+      top: 12px;
+      left: 15px;
+      z-index: 1100;
 
-            animation: textAppear 1s ease .35s both;
-        }
+      width: 42px;
+      height: 42px;
 
-        body.light .subtitle {
-            color: #475569;
-        }
+      border: none;
+      border-radius: 50%;
 
-        @keyframes textAppear {
+      cursor: pointer;
 
-            from {
-                opacity: 0;
-                transform: translateY(15px);
-            }
+      background: rgba(255,255,255,0.12);
+      color: white;
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+      font-size: 20px;
 
-        }
+      backdrop-filter: blur(10px);
 
-        /* ===== Mini Info ===== */
+      transition: 0.3s;
+    }
 
-        .mini-info {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 30px;
-        }
+    #themeToggle:hover {
+      transform: rotate(20deg) scale(1.08);
+    }
 
-        .info {
-            padding: 10px 17px;
-            border-radius: 30px;
+    body.light #themeToggle {
+      background: rgba(0,0,0,0.08);
+      color: #111827;
+    }
 
-            background: rgba(255,255,255,.07);
-            border: 1px solid rgba(255,255,255,.12);
 
-            color: #e2e8f0;
+    /* Main */
 
-            transition: .3s;
-        }
+    main {
+      width: min(1000px, 92%);
+      margin: auto;
+      padding-top: 105px;
+      padding-bottom: 60px;
+    }
 
-        .info:hover {
-            transform: translateY(-4px);
-        }
 
-        body.light .info {
-            background: rgba(255,255,255,.65);
-            border-color: rgba(15,23,42,.10);
-            color: #334155;
-        }
+    /* Hero */
 
-        /* ===== Cards ===== */
+    .hero {
+      text-align: center;
+      padding: 35px 15px 45px;
+    }
 
-        .card {
-            background: rgba(255,255,255,.06);
+    .profile {
+      width: 150px;
+      height: 150px;
 
-            border: 1px solid rgba(255,255,255,.12);
+      border-radius: 50%;
 
-            border-radius: 24px;
+      object-fit: cover;
 
-            padding: 30px;
-            margin-bottom: 22px;
+      border: 4px solid transparent;
 
-            backdrop-filter: blur(15px);
+      background:
+        linear-gradient(#111827, #111827) padding-box,
+        linear-gradient(135deg, #00e5ff, #7c3aed, #ff2d95) border-box;
 
-            box-shadow: 0 20px 50px rgba(0,0,0,.2);
+      animation:
+        profileAppear 1s ease,
+        profileGlow 3s infinite alternate;
 
-            transition:
-                transform .35s ease,
-                box-shadow .35s ease,
-                border-color .35s ease;
-        }
+      box-shadow:
+        0 0 30px rgba(0,229,255,0.25);
 
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 25px 60px rgba(0,0,0,.28);
-            border-color: rgba(96,165,250,.30);
-        }
+      transition: 0.4s;
+    }
 
-        body.light .card {
-            background: rgba(255,255,255,.65);
-            border-color: rgba(15,23,42,.10);
-            box-shadow: 0 20px 50px rgba(15,23,42,.10);
-        }
+    .profile:hover {
+      transform: scale(1.06) rotate(2deg);
+    }
 
-        body.light .card:hover {
-            box-shadow: 0 25px 60px rgba(15,23,42,.15);
-            border-color: rgba(37,99,235,.25);
-        }
+    .hero h1 {
+      margin-top: 22px;
+      font-size: clamp(28px, 5vw, 45px);
+    }
 
-        .card h2 {
-            font-size: 25px;
-            margin-bottom: 17px;
-        }
+    .hero p {
+      margin-top: 12px;
+      opacity: 0.8;
+      font-size: 16px;
+    }
 
-        .card p {
-            color: #e2e8f0;
-            line-height: 2.1;
-            font-size: 16px;
-        }
 
-        body.light .card p {
-            color: #334155;
-        }
+    /* Chips */
 
-        /* ===== About ===== */
+    .chips {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 20px;
+    }
 
-        .about-highlight {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-            margin-top: 22px;
-        }
+    .chip {
+      padding: 8px 13px;
+      border-radius: 999px;
 
-        .about-item {
-            padding: 16px 10px;
-            border-radius: 18px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.1);
 
-            background: rgba(255,255,255,.05);
-            border: 1px solid rgba(255,255,255,.09);
+      transition: 0.3s;
+    }
 
-            transition: .3s;
-        }
+    .chip:hover {
+      transform: translateY(-3px);
+      background: rgba(255,255,255,0.15);
+    }
 
-        .about-item:hover {
-            transform: translateY(-4px);
-        }
+    body.light .chip {
+      background: rgba(0,0,0,0.05);
+      border-color: rgba(0,0,0,0.08);
+    }
 
-        body.light .about-item {
-            background: rgba(255,255,255,.65);
-            border-color: rgba(15,23,42,.08);
-        }
 
-        .about-icon {
-            font-size: 26px;
-            margin-bottom: 7px;
-        }
+    /* Sections */
 
-        .about-title {
-            font-weight: bold;
-            font-size: 14px;
-        }
+    section {
+      margin-top: 25px;
+      padding: 25px;
 
-        /* ===== Tags ===== */
+      border-radius: 22px;
 
-        .tags {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 20px;
-        }
+      background: rgba(255,255,255,0.055);
 
-        .tag {
-            padding: 12px 18px;
-            border-radius: 30px;
+      border: 1px solid rgba(255,255,255,0.08);
 
-            background: rgba(255,255,255,.08);
-            border: 1px solid rgba(255,255,255,.12);
+      backdrop-filter: blur(12px);
 
-            transition: .3s;
-        }
+      transition: 0.35s;
+    }
 
-        .tag:hover {
-            transform: translateY(-4px) scale(1.03);
-        }
+    section:hover {
+      transform: translateY(-3px);
+      border-color: rgba(0,229,255,0.25);
+    }
 
-        body.light .tag {
-            background: rgba(255,255,255,.75);
-            border-color: rgba(15,23,42,.10);
-            color: #1e293b;
-        }
+    body.light section {
+      background: rgba(255,255,255,0.65);
+      border-color: rgba(0,0,0,0.08);
+    }
 
-        /* ===== Skills ===== */
+    section h2 {
+      margin-bottom: 17px;
+      font-size: 23px;
+    }
 
-        .skills {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin-top: 20px;
-        }
+    section p {
+      line-height: 2;
+      opacity: 0.88;
+    }
 
-        .skill {
-            padding: 18px;
 
-            border-radius: 18px;
+    /* About Highlights */
 
-            background: rgba(255,255,255,.06);
-            border: 1px solid rgba(255,255,255,.10);
+    .highlights {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 20px;
+    }
 
-            transition: .35s;
-        }
+    .highlight {
+      padding: 18px;
+      text-align: center;
 
-        .skill:hover {
-            transform: translateY(-6px);
-            border-color: rgba(96,165,250,.30);
-        }
+      border-radius: 17px;
 
-        body.light .skill {
-            background: rgba(255,255,255,.60);
-            border-color: rgba(15,23,42,.08);
-        }
+      background: rgba(255,255,255,0.06);
 
-        .skill-title {
-            font-weight: bold;
-            margin-bottom: 8px;
-        }
+      transition: 0.3s;
+    }
 
-        .skill-text {
-            color: #94a3b8;
-            font-size: 14px;
-        }
+    .highlight:hover {
+      transform: translateY(-5px);
+    }
 
-        body.light .skill-text {
-            color: #64748b;
-        }
+    .highlight strong {
+      display: block;
+      margin-bottom: 7px;
+    }
 
-        /* ===== Projects ===== */
 
-        .projects {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            margin-top: 20px;
-        }
+    /* Interests */
 
-        .project {
-            padding: 22px 16px;
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
 
-            border-radius: 20px;
+    .tag {
+      padding: 10px 14px;
+      border-radius: 14px;
 
-            background: rgba(255,255,255,.055);
-            border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,0.08);
 
-            transition: .35s;
-        }
+      transition: 0.3s;
+    }
 
-        .project:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 15px 35px rgba(0,0,0,.18);
-        }
+    .tag:hover {
+      transform: translateY(-4px) scale(1.03);
+      background: rgba(255,255,255,0.14);
+    }
 
-        body.light .project {
-            background: rgba(255,255,255,.60);
-            border-color: rgba(15,23,42,.08);
-        }
 
-        .project-icon {
-            font-size: 34px;
-            margin-bottom: 12px;
+    /* Skills */
 
-            transition: .3s;
-        }
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
 
-        .project:hover .project-icon {
-            transform: scale(1.15) rotate(5deg);
-        }
+    .skill {
+      padding: 16px;
+      border-radius: 15px;
 
-        .project h3 {
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
+      background: rgba(255,255,255,0.06);
 
-        .project p {
-            color: #94a3b8;
-            font-size: 13px;
-            line-height: 1.9;
-        }
+      transition: 0.3s;
+    }
 
-        body.light .project p {
-            color: #64748b;
-        }
+    .skill:hover {
+      transform: translateY(-4px);
+    }
 
-        /* ===== Contact ===== */
 
-        .links {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 14px;
-            margin-top: 20px;
-        }
+    /* Projects */
 
-        .button {
-            display: inline-block;
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
 
-            text-decoration: none;
-            color: white;
+    .project {
+      padding: 20px;
+      border-radius: 17px;
 
-            background: linear-gradient(
-                135deg,
-                #2563eb,
-                #7c3aed
-            );
+      background: rgba(255,255,255,0.06);
 
-            padding: 14px 24px;
+      transition: 0.35s;
+    }
 
-            border-radius: 15px;
+    .project:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
 
-            font-weight: bold;
+    .project h3 {
+      margin-bottom: 10px;
+    }
 
-            transition: .35s;
 
-            box-shadow: 0 8px 20px rgba(37,99,235,.18);
-        }
+    /* Contact */
 
-        .button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 14px 30px rgba(37,99,235,.30);
-        }
+    .contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
 
-        /* ===== Footer ===== */
+    .btn {
+      display: inline-block;
 
-        footer {
-            margin-top: 40px;
+      text-decoration: none;
 
-            color: #94a3b8;
+      color: inherit;
 
-            font-size: 14px;
-            line-height: 2;
+      padding: 12px 17px;
 
-            animation: textAppear 1s ease 1s both;
-        }
+      border-radius: 14px;
 
-        body.light footer {
-            color: #64748b;
-        }
+      background: rgba(255,255,255,0.08);
 
-        /* ===== Back To Top ===== */
+      border: 1px solid rgba(255,255,255,0.08);
 
-        .top {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
+      transition: 0.3s;
+    }
 
-            width: 45px;
-            height: 45px;
+    .btn:hover {
+      transform: translateY(-4px);
+      background: rgba(255,255,255,0.15);
+    }
 
-            border-radius: 50%;
 
-            background: #2563eb;
-            color: white;
+    /* Footer */
 
-            text-decoration: none;
+    footer {
+      text-align: center;
+      margin-top: 45px;
+      opacity: 0.6;
+      font-size: 13px;
+    }
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
 
-            font-size: 20px;
+    /* Back To Top */
 
-            box-shadow: 0 8px 25px rgba(37,99,235,.35);
+    #topBtn {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
 
-            transition: .3s;
-        }
+      width: 45px;
+      height: 45px;
 
-        .top:hover {
-            transform: translateY(-5px);
-        }
+      border: none;
+      border-radius: 50%;
 
-        /* ===== Mobile ===== */
+      cursor: pointer;
 
-        @media (max-width: 700px) {
+      background: rgba(255,255,255,0.12);
+      color: white;
 
-            .nav-container {
-                overflow-x: auto;
-                justify-content: flex-start;
-                padding: 8px 0;
+      font-size: 20px;
 
-                scrollbar-width: none;
-            }
+      transition: 0.3s;
+    }
 
-            .nav-container::-webkit-scrollbar {
-                display: none;
-            }
+    #topBtn:hover {
+      transform: translateY(-4px);
+    }
 
-            .nav-link {
-                font-size: 12px;
-                padding: 9px 11px;
-            }
+    body.light #topBtn {
+      color: #111827;
+      background: rgba(0,0,0,0.08);
+    }
 
-            .theme-button {
-                top: 115px;
-                left: 15px;
 
-                width: 44px;
-                height: 44px;
-            }
+    /* Animations */
 
-            .container {
-                padding-top: 155px;
-            }
+    @keyframes pageEnter {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
 
-            h1 {
-                font-size: 30px;
-            }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-            .profile {
-                width: 135px;
-                height: 135px;
-            }
+    @keyframes profileAppear {
+      from {
+        opacity: 0;
+        transform: scale(0.7);
+      }
 
-            .card {
-                padding: 24px 18px;
-            }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
 
-            .about-highlight {
-                grid-template-columns: 1fr;
-            }
+    @keyframes profileGlow {
+      from {
+        box-shadow: 0 0 15px rgba(0,229,255,0.2);
+      }
 
-            .skills {
-                grid-template-columns: 1fr;
-            }
+      to {
+        box-shadow: 0 0 35px rgba(124,58,237,0.5);
+      }
+    }
 
-            .projects {
-                grid-template-columns: 1fr;
-            }
 
-            .button {
-                width: 100%;
-            }
-        }
+    /* Mobile */
 
-    </style>
+    @media (max-width: 700px) {
+
+      nav {
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-right: 60px;
+      }
+
+      nav a {
+        font-size: 13px;
+      }
+
+      main {
+        width: 94%;
+        padding-top: 95px;
+      }
+
+      section {
+        padding: 20px;
+      }
+
+      .highlights,
+      .skills,
+      .projects {
+        grid-template-columns: 1fr;
+      }
+
+      .profile {
+        width: 125px;
+        height: 125px;
+      }
+
+      .contact {
+        flex-direction: column;
+      }
+
+      .btn {
+        text-align: center;
+      }
+    }
+
+  </style>
+
 </head>
+
 
 <body id="top">
 
-    <!-- Navigation -->
 
-    <nav class="navbar">
+  <!-- Navigation -->
 
-        <div class="nav-container">
+  <nav>
 
-            <a href="#top" class="nav-link">
-                🏠 خانه
-            </a>
+    <a href="#top">🏠 خانه</a>
 
-            <a href="#about" class="nav-link">
-                👋 درباره من
-            </a>
+    <a href="#about">👋 درباره من</a>
 
-            <a href="#interests" class="nav-link">
-                ❤️ علایق
-            </a>
+    <a href="#interests">❤️ علایق</a>
 
-            <a href="#skills" class="nav-link">
-                🚀 مهارت‌ها
-            </a>
+    <a href="#skills">🚀 مهارت‌ها</a>
 
-            <a href="#projects" class="nav-link">
-                🛠️ پروژه‌ها
-            </a>
+    <a href="#projects">🛠️ پروژه‌ها</a>
 
-            <a href="#contact" class="nav-link">
-                📞 ارتباط
-            </a>
+    <a href="#contact">📞 ارتباط</a>
 
+  </nav>
+
+
+  <!-- Theme -->
+
+  <button id="themeToggle"
+          aria-label="تغییر حالت نمایش">
+    🌙
+  </button>
+
+
+  <main>
+
+
+    <!-- Hero -->
+
+    <header class="hero">
+
+      <img
+        class="profile"
+        src="profile.jpg"
+        alt="تصویر پروفایل امیررضا غلامی"
+        loading="eager"
+      >
+
+      <h1>امیررضا غلامی</h1>
+
+      <p>
+        به دنیای من خوش آمدید؛ جایی برای معرفی من، علایقم و فعالیت‌هایم 🚀
+      </p>
+
+      <div class="chips">
+
+        <span class="chip">💻 تکنولوژی</span>
+
+        <span class="chip">🤖 هوش مصنوعی</span>
+
+        <span class="chip">⚽ فوتبال</span>
+
+        <span class="chip">📚 یادگیری</span>
+
+      </div>
+
+    </header>
+
+
+    <!-- About -->
+
+    <section id="about">
+
+      <h2>👋 درباره من</h2>
+
+      <p>
+        من امیررضا غلامی هستم و به تکنولوژی، دنیای دیجیتال،
+        هوش مصنوعی و یادگیری مهارت‌های جدید علاقه دارم.
+        این وب‌سایت فضای شخصی من برای معرفی خودم،
+        علایق، مهارت‌ها و پروژه‌هایی است که روی آن‌ها کار می‌کنم.
+      </p>
+
+
+      <div class="highlights">
+
+        <div class="highlight">
+          <strong>🎯 هدفمند</strong>
+          <span>حرکت قدم‌به‌قدم به سمت اهداف</span>
         </div>
 
-    </nav>
-
-
-    <!-- Theme Button -->
-
-    <button
-        class="theme-button"
-        id="themeButton"
-        aria-label="تغییر حالت نمایش">
-
-        🌙
-
-    </button>
-
-
-    <div class="container">
-
-
-        <!-- Profile -->
-
-        <div class="profile-wrapper">
-
-            <img
-                src="profile.jpg"
-                alt="امیررضا غلامی"
-                class="profile">
-
+        <div class="highlight">
+          <strong>📚 یادگیری</strong>
+          <span>همیشه در حال یادگیری چیزهای جدید</span>
         </div>
 
-
-        <h1>
-            امیررضا غلامی
-        </h1>
-
-
-        <p class="subtitle">
-            👋 خوش آمدید به وب‌سایت شخصی من
-        </p>
-
-
-        <div class="mini-info">
-
-            <span class="info">
-                🇮🇷 ایران
-            </span>
-
-            <span class="info">
-                ⚽ فوتبال
-            </span>
-
-            <span class="info">
-                💻 تکنولوژی
-            </span>
-
+        <div class="highlight">
+          <strong>🚀 پیشرفت</strong>
+          <span>تلاش برای بهتر شدن در هر مرحله</span>
         </div>
 
+      </div>
 
-        <!-- About -->
-
-        <div class="card" id="about">
-
-            <h2>
-                👋 درباره من
-            </h2>
-
-            <p>
-                سلام! من امیررضا غلامی هستم.
-                به فوتبال، ورزش، تکنولوژی و دنیای فناوری علاقه دارم
-                و همیشه دوست دارم چیزهای جدید یاد بگیرم،
-                تجربه کنم و برای آینده قدم بردارم.
-            </p>
+    </section>
 
 
-            <div class="about-highlight">
+    <!-- Interests -->
 
-                <div class="about-item">
+    <section id="interests">
 
-                    <div class="about-icon">
-                        🎯
-                    </div>
+      <h2>❤️ علایق من</h2>
 
-                    <div class="about-title">
-                        هدفمند
-                    </div>
+      <div class="tags">
 
-                </div>
+        <span class="tag">⚽ فوتبال</span>
+
+        <span class="tag">🇦🇷 آرژانتین</span>
+
+        <span class="tag">🐐 مسی</span>
+
+        <span class="tag">🏆 مارادونا</span>
+
+        <span class="tag">🤖 هوش مصنوعی</span>
+
+        <span class="tag">💻 تکنولوژی</span>
+
+        <span class="tag">🌐 اینترنت</span>
+
+        <span class="tag">📱 دنیای دیجیتال</span>
+
+      </div>
+
+    </section>
 
 
-                <div class="about-item">
+    <!-- Skills -->
 
-                    <div class="about-icon">
-                        📚
-                    </div>
+    <section id="skills">
 
-                    <div class="about-title">
-                        یادگیری
-                    </div>
+      <h2>🚀 مهارت‌ها و توانمندی‌ها</h2>
 
-                </div>
+      <div class="skills">
 
-
-                <div class="about-item">
-
-                    <div class="about-icon">
-                        🚀
-                    </div>
-
-                    <div class="about-title">
-                        پیشرفت
-                    </div>
-
-                </div>
-
-            </div>
-
+        <div class="skill">
+          💻 آشنایی با فناوری و ابزارهای دیجیتال
         </div>
 
-
-        <!-- Interests -->
-
-        <div class="card" id="interests">
-
-            <h2>
-                ❤️ علایق من
-            </h2>
-
-            <div class="tags">
-
-                <span class="tag">
-                    ⚽ فوتبال
-                </span>
-
-                <span class="tag">
-                    🏋️ ورزش
-                </span>
-
-                <span class="tag">
-                    💻 تکنولوژی
-                </span>
-
-                <span class="tag">
-                    🤖 هوش مصنوعی
-                </span>
-
-                <span class="tag">
-                    🌐 اینترنت
-                </span>
-
-            </div>
-
+        <div class="skill">
+          🌐 طراحی و مدیریت وب‌سایت شخصی
         </div>
 
-
-        <!-- Skills -->
-
-        <div class="card" id="skills">
-
-            <h2>
-                🚀 مهارت‌ها و زمینه‌های مورد علاقه
-            </h2>
-
-            <div class="skills">
-
-
-                <div class="skill">
-
-                    <div class="skill-title">
-                        💻 تکنولوژی
-                    </div>
-
-                    <div class="skill-text">
-                        علاقه‌مند به دنیای فناوری و کامپیوتر
-                    </div>
-
-                </div>
-
-
-                <div class="skill">
-
-                    <div class="skill-title">
-                        🤖 هوش مصنوعی
-                    </div>
-
-                    <div class="skill-text">
-                        دنبال کردن پیشرفت‌های هوش مصنوعی
-                    </div>
-
-                </div>
-
-
-                <div class="skill">
-
-                    <div class="skill-title">
-                        🌐 اینترنت
-                    </div>
-
-                    <div class="skill-text">
-                        علاقه‌مند به وب و دنیای آنلاین
-                    </div>
-
-                </div>
-
-
-                <div class="skill">
-
-                    <div class="skill-title">
-                        ⚽ فوتبال
-                    </div>
-
-                    <div class="skill-text">
-                        علاقه‌مند به فوتبال و ورزش
-                    </div>
-
-                </div>
-
-
-            </div>
-
+        <div class="skill">
+          🤖 آشنایی و تجربه با ابزارهای هوش مصنوعی
         </div>
 
-
-        <!-- Projects -->
-
-        <div class="card" id="projects">
-
-            <h2>
-                🛠️ پروژه‌ها و فعالیت‌های من
-            </h2>
-
-            <div class="projects">
-
-
-                <div class="project">
-
-                    <div class="project-icon">
-                        🌐
-                    </div>
-
-                    <h3>
-                        وب‌سایت شخصی
-                    </h3>
-
-                    <p>
-                        طراحی و توسعه وب‌سایت شخصی
-                        برای معرفی، ارتباط و نمایش علایق.
-                    </p>
-
-                </div>
-
-
-                <div class="project">
-
-                    <div class="project-icon">
-                        💻
-                    </div>
-
-                    <h3>
-                        دنیای تکنولوژی
-                    </h3>
-
-                    <p>
-                        یادگیری، تجربه و دنبال کردن
-                        فناوری‌های جدید و دنیای دیجیتال.
-                    </p>
-
-                </div>
-
-
-                <div class="project">
-
-                    <div class="project-icon">
-                        🤖
-                    </div>
-
-                    <h3>
-                        هوش مصنوعی
-                    </h3>
-
-                    <p>
-                        علاقه‌مندی و آشنایی با
-                        ابزارها و پیشرفت‌های هوش مصنوعی.
-                    </p>
-
-                </div>
-
-
-            </div>
-
+        <div class="skill">
+          📱 فعالیت و تولید محتوا در فضای دیجیتال
         </div>
 
+      </div>
 
-        <!-- Contact -->
+    </section>
 
-        <div class="card" id="contact">
 
-            <h2>
-                📞 راه‌های ارتباطی
-            </h2>
+    <!-- Projects -->
 
-            <div class="links">
+    <section id="projects">
 
+      <h2>🛠️ پروژه‌ها و فعالیت‌ها</h2>
 
-                <a
-                    class="button"
-                    href="https://wa.me/989228420736"
-                    target="_blank"
-                    rel="noopener noreferrer">
+      <div class="projects">
 
-                    💚 WhatsApp
+        <article class="project">
 
-                </a>
+          <h3>🌐 Web Site Personal</h3>
 
+          <p>
+            طراحی و توسعه وب‌سایت شخصی برای معرفی،
+            ارتباط و نمایش علایق.
+          </p>
 
-                <a
-                    class="button"
-                    href="https://t.me/Amirrezagholami_ir"
-                    target="_blank"
-                    rel="noopener noreferrer">
+        </article>
 
-                    💬 Telegram
 
-                </a>
+        <article class="project">
 
+          <h3>💻 Technology World</h3>
 
-                <a
-                    class="button"
-                    href="mailto:amirrezaamirreza275@gmail.com">
+          <p>
+            یادگیری، تجربه و دنبال کردن فناوری‌های جدید
+            و دنیای دیجیتال.
+          </p>
 
-                    📧 Email
+        </article>
 
-                </a>
 
+        <article class="project">
 
-                <a
-                    class="button"
-                    href="https://www.instagram.com/amirrezagholami.ir"
-                    target="_blank"
-                    rel="noopener noreferrer">
+          <h3>🤖 AI</h3>
 
-                    📷 Instagram
+          <p>
+            علاقه‌مندی و آشنایی با ابزارها و پیشرفت‌های
+            هوش مصنوعی.
+          </p>
 
-                </a>
+        </article>
 
+      </div>
 
-                <a
-                    class="button"
-                    href="https://github.com/amirrezagholami86"
-                    target="_blank"
-                    rel="noopener noreferrer">
+    </section>
 
-                    💻 GitHub
 
-                </a>
+    <!-- Contact -->
 
+    <section id="contact">
 
-            </div>
+      <h2>📞 ارتباط با من</h2>
 
-        </div>
+      <div class="contact">
 
+        <a
+          class="btn"
+          href="https://wa.me/989228420736"
+          target="_blank"
+          rel="noopener noreferrer">
+          💚 WhatsApp
+        </a>
 
-        <!-- Footer -->
 
-        <footer>
+        <a
+          class="btn"
+          href="https://t.me/Amirrezagholami_ir"
+          target="_blank"
+          rel="noopener noreferrer">
+          ✈️ Telegram
+        </a>
 
-            ساخته شده با ❤️ توسط امیررضا غلامی
 
-            <br>
+        <a
+          class="btn"
+          href="mailto:amirrezaamirreza275@gmail.com">
+          📧 Email
+        </a>
 
-            © 2026 — تمامی حقوق محفوظ است.
 
-        </footer>
+        <a
+          class="btn"
+          href="https://www.instagram.com/amirrezagholami.ir"
+          target="_blank"
+          rel="noopener noreferrer">
+          📸 Instagram
+        </a>
 
 
-    </div>
+        <a
+          class="btn"
+          href="https://github.com/amirrezagholami86"
+          target="_blank"
+          rel="noopener noreferrer">
+          🐙 GitHub
+        </a>
 
+      </div>
 
-    <!-- Back To Top -->
+    </section>
 
-    <a
-        href="#top"
-        class="top"
-        aria-label="بازگشت به بالا">
 
-        ↑
+    <footer>
 
-    </a>
+      © 2026 امیررضا غلامی — ساخته شده با ❤️ و 💻
 
+    </footer>
 
-    <!-- Theme Script -->
+  </main>
 
-    <script>
 
-        const themeButton =
-            document.getElementById("themeButton");
+  <!-- Back To Top -->
 
-        const savedTheme =
-            localStorage.getItem("theme");
+  <button id="topBtn"
+          onclick="window.scrollTo({top:0,behavior:'smooth'})"
+          aria-label="بازگشت به بالا">
+    ↑
+  </button>
 
 
-        if (savedTheme === "light") {
+  <script>
 
-            document.body.classList.add("light");
+    const themeToggle =
+      document.getElementById("themeToggle");
 
-            themeButton.textContent = "☀️";
+    const savedTheme =
+      localStorage.getItem("theme");
 
-        }
+    if (savedTheme === "light") {
+      document.body.classList.add("light");
+      themeToggle.textContent = "☀️";
+    }
 
 
-        themeButton.addEventListener("click", function () {
+    themeToggle.addEventListener("click", () => {
 
-            document.body.classList.toggle("light");
+      document.body.classList.toggle("light");
 
+      const isLight =
+        document.body.classList.contains("light");
 
-            if (document.body.classList.contains("light")) {
+      localStorage.setItem(
+        "theme",
+        isLight ? "light" : "dark"
+      );
 
-                themeButton.textContent = "☀️";
+      themeToggle.textContent =
+        isLight ? "☀️" : "🌙";
 
-                localStorage.setItem("theme", "light");
+    });
 
-            }
-
-            else {
-
-                themeButton.textContent = "🌙";
-
-                localStorage.setItem("theme", "dark");
-
-            }
-
-        });
-
-    </script>
+  </script>
 
 
 </body>
