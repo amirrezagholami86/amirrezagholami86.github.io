@@ -5,13 +5,13 @@
 <meta name="author" content="امیررضا غلامی">
 <meta name="robots" content="index, follow"><link rel="canonical" href="https://amirrezagholami86.github.io/"><meta property="og:type" content="website">
 <meta property="og:title" content="امیررضا غلامی | وب‌سایت شخصی">
-<meta property="og:description" content="وب‌سایت شخصی امیررضا غلامی؛ تکنولوژی، هوش مصنوعی، وب و علایق شخصی.">
+<meta property="og:description" content="تکنولوژی، هوش مصنوعی، وب و علایق شخصی.">
 <meta property="og:url" content="https://amirrezagholami86.github.io/">
 <meta property="og:image" content="https://amirrezagholami86.github.io/profile.jpg">
 <meta property="og:locale" content="fa_IR"><meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="امیررضا غلامی | وب‌سایت شخصی">
 <meta name="twitter:description" content="تکنولوژی، هوش مصنوعی، وب و علایق شخصی.">
-<meta name="twitter:image" content="https://amirrezagholami86.github.io/profile.jpg"><script type="application/ld+json">
+<meta name="twitter:image" content="https://amirrezagholami86.github.io/profile.jpg"><script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script><script type="application/ld+json">
 {
   "@context":"https://schema.org",
   "@type":"Person",
@@ -25,1864 +25,2296 @@
   ]
 }
 </script><style>
+
 *{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
+ box-sizing:border-box;
+ margin:0;
+ padding:0;
 }
 
 html{
-  scroll-behavior:smooth;
-  scroll-padding-top:90px;
+ scroll-behavior:smooth;
+ scroll-padding-top:90px;
 }
 
 body{
-  font-family:Tahoma,Arial,sans-serif;
-  background:#080b14;
-  color:#fff;
-  line-height:1.8;
-  overflow-x:hidden;
-  transition:.4s;
+ font-family:Tahoma,Arial,sans-serif;
+ background:#080b14;
+ color:#fff;
+ line-height:1.8;
+ overflow-x:hidden;
+ transition:.4s;
 }
 
 body.light{
-  background:#f4f7fb;
-  color:#151923;
+ background:#f4f7fb;
+ color:#151923;
 }
 
 a{
-  color:inherit;
-  text-decoration:none;
+ color:inherit;
+ text-decoration:none;
 }
 
 button,input{
-  font-family:inherit;
+ font-family:inherit;
 }
 
 section{
-  width:min(1100px,92%);
-  margin:0 auto;
-  padding:75px 0;
+ width:min(1100px,92%);
+ margin:auto;
+ padding:75px 0;
 }
 
 .section-title{
-  text-align:center;
-  font-size:30px;
-  margin-bottom:35px;
+ text-align:center;
+ font-size:30px;
+ margin-bottom:35px;
 }
 
 .section-title span{
-  color:#00d9ff;
-}
-
-body.light .section-title span{
-  color:#007bff;
+ color:#00d9ff;
 }
 
 #progressBar{
-  position:fixed;
-  top:0;
-  right:0;
-  height:4px;
-  width:0;
-  background:linear-gradient(90deg,#00d9ff,#8a5cff,#ff3cac);
-  z-index:99999;
+ position:fixed;
+ top:0;
+ right:0;
+ height:4px;
+ width:0;
+ background:linear-gradient(90deg,#00d9ff,#8a5cff,#ff3cac);
+ z-index:99999;
 }
 
 /* NAV */
+
 .navbar{
-  position:fixed;
-  top:12px;
-  left:50%;
-  transform:translateX(-50%);
-  width:min(1100px,94%);
-  z-index:9999;
-  display:flex;
-  gap:8px;
-  padding:9px;
-  background:rgba(10,14,28,.72);
-  border:1px solid rgba(255,255,255,.1);
-  backdrop-filter:blur(15px);
-  border-radius:18px;
-  overflow-x:auto;
-  scrollbar-width:none;
+ position:fixed;
+ top:12px;
+ left:50%;
+ transform:translateX(-50%);
+ width:min(1100px,94%);
+ z-index:9999;
+ display:flex;
+ gap:8px;
+ padding:9px;
+ background:rgba(10,14,28,.72);
+ border:1px solid rgba(255,255,255,.1);
+ backdrop-filter:blur(15px);
+ border-radius:18px;
+ overflow-x:auto;
+ scrollbar-width:none;
 }
 
 .navbar::-webkit-scrollbar{
-  display:none;
+ display:none;
 }
 
 .navbar a{
-  white-space:nowrap;
-  padding:8px 12px;
-  border-radius:12px;
-  font-size:13px;
-  color:#dbe5ff;
-  transition:.25s;
+ white-space:nowrap;
+ padding:8px 12px;
+ border-radius:12px;
+ font-size:13px;
+ color:#dbe5ff;
+ transition:.25s;
 }
 
 .navbar a:hover{
-  background:rgba(0,217,255,.15);
-  color:#00d9ff;
-  transform:translateY(-2px);
+ background:rgba(0,217,255,.15);
+ color:#00d9ff;
+ transform:translateY(-2px);
 }
 
 body.light .navbar{
-  background:rgba(255,255,255,.82);
-  border-color:rgba(0,0,0,.08);
+ background:rgba(255,255,255,.84);
+ border-color:rgba(0,0,0,.08);
 }
 
 body.light .navbar a{
-  color:#333;
+ color:#333;
 }
 
 /* THEME */
+
 #themeToggle{
-  position:fixed;
-  top:85px;
-  left:18px;
-  z-index:9998;
-  width:45px;
-  height:45px;
-  border:none;
-  border-radius:50%;
-  cursor:pointer;
-  background:rgba(255,255,255,.1);
-  color:#fff;
-  font-size:20px;
-  backdrop-filter:blur(10px);
-  transition:.3s;
+ position:fixed;
+ top:85px;
+ left:18px;
+ z-index:9998;
+ width:45px;
+ height:45px;
+ border:none;
+ border-radius:50%;
+ cursor:pointer;
+ background:rgba(255,255,255,.1);
+ color:#fff;
+ font-size:20px;
+ backdrop-filter:blur(10px);
+ transition:.3s;
 }
 
 #themeToggle:hover{
-  transform:rotate(20deg) scale(1.08);
+ transform:rotate(20deg) scale(1.08);
 }
 
 body.light #themeToggle{
-  background:#fff;
-  color:#111;
-  box-shadow:0 5px 20px rgba(0,0,0,.1);
+ background:#fff;
+ color:#111;
+ box-shadow:0 5px 20px rgba(0,0,0,.1);
 }
 
 /* HERO */
+
 .hero{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  position:relative;
-  overflow:hidden;
+ min-height:100vh;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ text-align:center;
+ position:relative;
 }
 
 .hero::before{
-  content:"";
-  position:absolute;
-  width:500px;
-  height:500px;
-  background:radial-gradient(circle,rgba(0,217,255,.17),transparent 65%);
-  top:10%;
-  left:50%;
-  transform:translateX(-50%);
-  pointer-events:none;
+ content:"";
+ position:absolute;
+ width:500px;
+ height:500px;
+ background:radial-gradient(circle,rgba(0,217,255,.17),transparent 65%);
+ top:10%;
+ left:50%;
+ transform:translateX(-50%);
+ pointer-events:none;
 }
 
 .hero-content{
-  position:relative;
-  z-index:2;
-  animation:pageEntry 1s ease;
+ position:relative;
+ z-index:2;
+ animation:pageEntry 1s ease;
 }
 
 .profile-img{
-  width:175px;
-  height:175px;
-  object-fit:cover;
-  border-radius:50%;
-  border:4px solid #00d9ff;
-  padding:5px;
-  box-shadow:0 0 30px rgba(0,217,255,.4);
-  animation:profileGlow 3s infinite alternate;
-  transition:.35s;
+ width:175px;
+ height:175px;
+ object-fit:cover;
+ border-radius:50%;
+ border:4px solid #00d9ff;
+ padding:5px;
+ box-shadow:0 0 30px rgba(0,217,255,.4);
+ animation:profileGlow 3s infinite alternate;
+ transition:.35s;
 }
 
 .profile-img:hover{
-  transform:scale(1.05) rotate(2deg);
+ transform:scale(1.05) rotate(2deg);
 }
 
 .hero h1{
-  font-size:45px;
-  margin:20px 0 8px;
+ font-size:45px;
+ margin:20px 0 8px;
 }
 
 .hero h1 span{
-  color:#00d9ff;
+ color:#00d9ff;
 }
 
 .typing{
-  min-height:35px;
-  color:#9ca9c9;
-  font-size:18px;
+ min-height:35px;
+ color:#9ca9c9;
+ font-size:18px;
 }
 
 .hero-buttons{
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  gap:12px;
-  margin-top:25px;
+ display:flex;
+ justify-content:center;
+ flex-wrap:wrap;
+ gap:12px;
+ margin-top:25px;
 }
 
 .btn{
-  display:inline-block;
-  padding:11px 20px;
-  border-radius:13px;
-  border:1px solid rgba(255,255,255,.14);
-  background:rgba(255,255,255,.07);
-  transition:.3s;
+ display:inline-block;
+ padding:11px 20px;
+ border-radius:13px;
+ border:1px solid rgba(255,255,255,.14);
+ background:rgba(255,255,255,.07);
+ color:inherit;
+ cursor:pointer;
+ transition:.3s;
 }
 
 .btn.primary{
-  background:linear-gradient(135deg,#00b8ff,#7357ff);
-  border:none;
+ background:linear-gradient(135deg,#00b8ff,#7357ff);
+ border:none;
+ color:#fff;
 }
 
 .btn:hover{
-  transform:translateY(-4px);
-  box-shadow:0 10px 25px rgba(0,0,0,.25);
+ transform:translateY(-4px);
+ box-shadow:0 10px 25px rgba(0,0,0,.25);
 }
 
 .chips{
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  gap:10px;
-  margin-top:22px;
+ display:flex;
+ justify-content:center;
+ flex-wrap:wrap;
+ gap:10px;
+ margin-top:22px;
 }
 
 .chip{
-  padding:6px 13px;
-  border-radius:20px;
-  background:rgba(255,255,255,.06);
-  color:#c9d4ee;
-  border:1px solid rgba(255,255,255,.08);
+ padding:6px 13px;
+ border-radius:20px;
+ background:rgba(255,255,255,.06);
+ color:#c9d4ee;
+ border:1px solid rgba(255,255,255,.08);
 }
 
 /* CARDS */
+
 .card{
-  background:rgba(255,255,255,.045);
-  border:1px solid rgba(255,255,255,.09);
-  border-radius:22px;
-  padding:25px;
-  transition:.3s;
+ background:rgba(255,255,255,.045);
+ border:1px solid rgba(255,255,255,.09);
+ border-radius:22px;
+ padding:25px;
+ transition:.3s;
 }
 
 .card:hover{
-  transform:translateY(-6px);
-  border-color:rgba(0,217,255,.35);
-  box-shadow:0 15px 40px rgba(0,0,0,.18);
+ transform:translateY(-6px);
+ border-color:rgba(0,217,255,.35);
+ box-shadow:0 15px 40px rgba(0,0,0,.18);
 }
 
 body.light .card{
-  background:#fff;
-  border-color:#e4e9f1;
-  box-shadow:0 10px 30px rgba(20,40,80,.06);
+ background:#fff;
+ border-color:#e4e9f1;
+ box-shadow:0 10px 30px rgba(20,40,80,.06);
 }
 
 .grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:18px;
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:18px;
 }
 
 .grid-2{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:18px;
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:18px;
 }
 
-/* ABOUT */
+/* PROFILE */
+
 .profile-card{
-  display:grid;
-  grid-template-columns:240px 1fr;
-  gap:30px;
-  align-items:center;
+ display:grid;
+ grid-template-columns:240px 1fr;
+ gap:30px;
+ align-items:center;
 }
 
 .profile-card img{
-  width:220px;
-  height:220px;
-  object-fit:cover;
-  border-radius:25px;
+ width:220px;
+ height:220px;
+ object-fit:cover;
+ border-radius:25px;
+}
+
+.profile-status{
+ display:inline-flex;
+ align-items:center;
+ gap:8px;
+ margin:10px 0 15px;
+ padding:6px 12px;
+ border-radius:20px;
+ background:rgba(50,220,120,.1);
+ color:#55e994;
+ font-size:13px;
+}
+
+.status-dot{
+ width:9px;
+ height:9px;
+ border-radius:50%;
+ background:#42e87d;
+ box-shadow:0 0 10px #42e87d;
 }
 
 .info-boxes{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:12px;
-  margin-top:20px;
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:12px;
+ margin-top:20px;
 }
 
 .info-box{
-  padding:15px;
-  border-radius:15px;
-  background:rgba(0,217,255,.06);
-  border:1px solid rgba(0,217,255,.12);
+ padding:15px;
+ border-radius:15px;
+ background:rgba(0,217,255,.06);
+ border:1px solid rgba(0,217,255,.12);
 }
 
-.highlights{
-  margin-top:20px;
-}
-
-.highlight{
-  text-align:center;
-}
-
-.highlight-icon{
-  font-size:32px;
-  margin-bottom:7px;
+.quick-profile-actions{
+ display:flex;
+ gap:9px;
+ flex-wrap:wrap;
+ margin-top:18px;
 }
 
 /* STATS */
+
 .stats{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:15px;
-  margin-top:25px;
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:15px;
+ margin-top:25px;
 }
 
 .stat{
-  text-align:center;
-  padding:20px;
-  border-radius:18px;
-  background:rgba(255,255,255,.05);
+ text-align:center;
+ padding:20px;
+ border-radius:18px;
+ background:rgba(255,255,255,.05);
 }
 
 .stat-number{
-  font-size:35px;
-  font-weight:bold;
-  color:#00d9ff;
-}
-
-/* SKILLS */
-.skill{
-  margin-bottom:22px;
-}
-
-.skill-top{
-  display:flex;
-  justify-content:space-between;
-  margin-bottom:8px;
-}
-
-.skill-bar{
-  height:10px;
-  border-radius:20px;
-  background:rgba(255,255,255,.08);
-  overflow:hidden;
-}
-
-.skill-fill{
-  height:100%;
-  width:0;
-  border-radius:20px;
-  background:linear-gradient(90deg,#00d9ff,#7357ff);
-  transition:width 1.4s ease;
-}
-
-/* PROJECT */
-.project-icon{
-  font-size:40px;
-  margin-bottom:12px;
-}
-
-.project-card h3{
-  margin-bottom:8px;
-}
-
-.project-card p{
-  color:#aeb9d2;
-}
-
-.github-feature{
-  margin-top:20px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:20px;
-  flex-wrap:wrap;
-}
-
-/* TAGS */
-.tags{
-  display:flex;
-  flex-wrap:wrap;
-  gap:9px;
-  margin-top:15px;
-}
-
-.tag{
-  padding:6px 11px;
-  border-radius:12px;
-  background:rgba(0,217,255,.08);
-  color:#8feaff;
-  transition:.25s;
-}
-
-.tag:hover{
-  transform:translateY(-3px);
-  background:rgba(0,217,255,.16);
-}
-
-/* TIMELINE */
-.timeline{
-  position:relative;
-  max-width:800px;
-  margin:auto;
-}
-
-.timeline::before{
-  content:"";
-  position:absolute;
-  right:18px;
-  top:0;
-  bottom:0;
-  width:2px;
-  background:linear-gradient(#00d9ff,#7357ff);
-}
-
-.timeline-item{
-  position:relative;
-  padding:0 55px 30px 0;
-}
-
-.timeline-dot{
-  position:absolute;
-  right:8px;
-  top:7px;
-  width:22px;
-  height:22px;
-  border-radius:50%;
-  background:#00d9ff;
-  box-shadow:0 0 15px #00d9ff;
+ font-size:35px;
+ font-weight:bold;
+ color:#00d9ff;
 }
 
 /* DASHBOARD */
-.dashboard{
-  position:relative;
-}
 
 .dashboard-main{
-  display:grid;
-  grid-template-columns:1.4fr 1fr;
-  gap:18px;
+ display:grid;
+ grid-template-columns:1.4fr 1fr;
+ gap:18px;
 }
 
 .live-box{
-  text-align:center;
-  padding:30px;
+ text-align:center;
+ padding:30px;
 }
 
 .live-time{
-  font-size:42px;
-  font-weight:bold;
-  color:#00d9ff;
-  direction:ltr;
+ font-size:42px;
+ font-weight:bold;
+ color:#00d9ff;
+ direction:ltr;
 }
 
 .live-date{
-  margin-top:8px;
-  color:#aeb9d2;
+ margin-top:8px;
+ color:#aeb9d2;
 }
 
 .status{
-  display:inline-flex;
-  align-items:center;
-  gap:7px;
-  margin-top:18px;
-  padding:7px 13px;
-  border-radius:20px;
-  background:rgba(50,220,120,.1);
-  color:#55e994;
+ display:inline-flex;
+ align-items:center;
+ gap:7px;
+ margin-top:18px;
+ padding:7px 13px;
+ border-radius:20px;
+ background:rgba(50,220,120,.1);
+ color:#55e994;
 }
 
 .quote-box{
-  min-height:100%;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
+ min-height:100%;
+ display:flex;
+ flex-direction:column;
+ justify-content:center;
 }
 
 .quote{
-  font-size:20px;
-  line-height:2;
+ font-size:20px;
+ line-height:2;
 }
 
 .quote-author{
-  margin-top:15px;
-  color:#7d8aa7;
+ margin-top:15px;
+ color:#7d8aa7;
 }
 
-.random-result{
-  margin-top:18px;
-  min-height:55px;
-  color:#b8c7e5;
+/* SKILLS */
+
+.skill{
+ margin-bottom:22px;
 }
 
-/* SEARCH */
-.search-box{
-  display:flex;
-  gap:10px;
-  max-width:750px;
-  margin:0 auto 25px;
+.skill-top{
+ display:flex;
+ justify-content:space-between;
+ margin-bottom:8px;
 }
 
-.search-box input{
-  flex:1;
-  min-width:0;
-  padding:14px 17px;
-  border-radius:14px;
-  border:1px solid rgba(255,255,255,.12);
-  background:rgba(255,255,255,.06);
-  color:#fff;
-  outline:none;
-  font-size:15px;
+.skill-bar{
+ height:10px;
+ border-radius:20px;
+ background:rgba(255,255,255,.08);
+ overflow:hidden;
 }
 
-body.light .search-box input{
-  background:#fff;
-  color:#111;
-  border-color:#ddd;
+.skill-fill{
+ height:100%;
+ width:0;
+ border-radius:20px;
+ background:linear-gradient(90deg,#00d9ff,#7357ff);
+ transition:width 1.4s ease;
 }
 
-.search-box input:focus{
-  border-color:#00d9ff;
+/* PROJECTS */
+
+.project-icon{
+ font-size:40px;
+ margin-bottom:12px;
 }
 
-.search-box button{
-  border:none;
-  border-radius:14px;
-  padding:0 20px;
-  cursor:pointer;
-  background:linear-gradient(135deg,#00b8ff,#7357ff);
-  color:#fff;
-  font-size:15px;
+.project-card p{
+ color:#aeb9d2;
+}
+
+.tags{
+ display:flex;
+ flex-wrap:wrap;
+ gap:9px;
+ margin-top:15px;
+}
+
+.tag{
+ padding:6px 11px;
+ border-radius:12px;
+ background:rgba(0,217,255,.08);
+ color:#8feaff;
+ transition:.25s;
+}
+
+.tag:hover{
+ transform:translateY(-3px);
+ background:rgba(0,217,255,.16);
+}
+
+.github-feature{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:20px;
+ flex-wrap:wrap;
+ margin-top:20px;
+}
+
+.github-card{
+ display:grid;
+ grid-template-columns:80px 1fr;
+ gap:20px;
+ align-items:center;
+}
+
+.github-logo{
+ width:70px;
+ height:70px;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ font-size:42px;
+ border-radius:20px;
+ background:rgba(255,255,255,.07);
+}
+
+/* ACHIEVEMENTS */
+
+.achievement{
+ text-align:center;
+}
+
+.achievement-icon{
+ font-size:45px;
+ margin-bottom:10px;
+}
+
+.achievement h3{
+ margin-bottom:8px;
+}
+
+/* PROGRESS */
+
+.progress-card{
+ text-align:center;
+}
+
+.progress-circle{
+ width:145px;
+ height:145px;
+ margin:0 auto 20px;
+ border-radius:50%;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ background:conic-gradient(#00d9ff 0 72%,rgba(255,255,255,.08) 72% 100%);
+ position:relative;
+}
+
+.progress-circle::before{
+ content:"";
+ position:absolute;
+ width:112px;
+ height:112px;
+ border-radius:50%;
+ background:#101522;
+}
+
+body.light .progress-circle::before{
+ background:#fff;
+}
+
+.progress-number{
+ position:relative;
+ z-index:2;
+ font-size:27px;
+ font-weight:bold;
+ color:#00d9ff;
+}
+
+.progress-list{
+ margin-top:20px;
+ text-align:right;
+}
+
+.progress-line{
+ margin:14px 0;
+}
+
+.progress-line-top{
+ display:flex;
+ justify-content:space-between;
+ margin-bottom:6px;
+ font-size:13px;
+}
+
+.progress-track{
+ height:8px;
+ background:rgba(255,255,255,.08);
+ border-radius:20px;
+ overflow:hidden;
+}
+
+.progress-value{
+ height:100%;
+ border-radius:20px;
+ background:linear-gradient(90deg,#00d9ff,#7357ff);
 }
 
 /* GALLERY */
+
 .gallery-card{
-  height:180px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  background:linear-gradient(135deg,rgba(0,217,255,.12),rgba(115,87,255,.12));
+ height:180px;
+ display:flex;
+ flex-direction:column;
+ justify-content:center;
+ align-items:center;
+ text-align:center;
+ background:linear-gradient(135deg,rgba(0,217,255,.12),rgba(115,87,255,.12));
 }
 
 .gallery-icon{
-  font-size:55px;
-  margin-bottom:10px;
+ font-size:55px;
+ margin-bottom:10px;
+}
+
+/* TIMELINE */
+
+.timeline{
+ position:relative;
+ max-width:800px;
+ margin:auto;
+}
+
+.timeline::before{
+ content:"";
+ position:absolute;
+ right:18px;
+ top:0;
+ bottom:0;
+ width:2px;
+ background:linear-gradient(#00d9ff,#7357ff);
+}
+
+.timeline-item{
+ position:relative;
+ padding:0 55px 30px 0;
+}
+
+.timeline-dot{
+ position:absolute;
+ right:8px;
+ top:7px;
+ width:22px;
+ height:22px;
+ border-radius:50%;
+ background:#00d9ff;
+ box-shadow:0 0 15px #00d9ff;
 }
 
 /* GOALS */
+
 .goal{
-  text-align:center;
+ text-align:center;
 }
 
 .goal-icon{
-  font-size:35px;
+ font-size:35px;
+}
+
+/* SEARCH */
+
+.search-box{
+ display:flex;
+ gap:10px;
+ max-width:750px;
+ margin:0 auto;
+}
+
+.search-box input{
+ flex:1;
+ min-width:0;
+ padding:14px 17px;
+ border-radius:14px;
+ border:1px solid rgba(255,255,255,.12);
+ background:rgba(255,255,255,.06);
+ color:#fff;
+ outline:none;
+}
+
+body.light .search-box input{
+ background:#fff;
+ color:#111;
+ border-color:#ddd;
+}
+
+.search-box button{
+ border:none;
+ border-radius:14px;
+ padding:0 20px;
+ cursor:pointer;
+ background:linear-gradient(135deg,#00b8ff,#7357ff);
+ color:#fff;
 }
 
 /* CONTACT */
+
 .contact-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:14px;
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:14px;
 }
 
 .contact-item{
-  text-align:center;
-  padding:18px;
-  border-radius:17px;
-  background:rgba(255,255,255,.045);
-  border:1px solid rgba(255,255,255,.08);
-  transition:.3s;
+ text-align:center;
+ padding:18px;
+ border-radius:17px;
+ background:rgba(255,255,255,.045);
+ border:1px solid rgba(255,255,255,.08);
+ transition:.3s;
 }
 
 .contact-item:hover{
-  transform:translateY(-5px);
-  border-color:#00d9ff;
+ transform:translateY(-5px);
+ border-color:#00d9ff;
 }
 
 .contact-icon{
-  font-size:30px;
-  display:block;
-  margin-bottom:5px;
+ font-size:30px;
+ display:block;
+ margin-bottom:5px;
 }
 
 .social-row{
-  display:flex;
-  justify-content:center;
-  gap:12px;
-  flex-wrap:wrap;
-  margin-top:25px;
+ display:flex;
+ justify-content:center;
+ gap:12px;
+ flex-wrap:wrap;
+ margin-top:25px;
 }
 
 .social{
-  width:48px;
-  height:48px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:15px;
-  background:rgba(255,255,255,.07);
-  font-size:21px;
-  transition:.3s;
+ width:48px;
+ height:48px;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ border-radius:15px;
+ background:rgba(255,255,255,.07);
+ font-size:21px;
+ transition:.3s;
 }
 
 .social:hover{
-  transform:translateY(-5px) scale(1.05);
+ transform:translateY(-5px) scale(1.05);
 }
 
-/* FLOATING QUICK MENU */
+/* QR */
+
+.qr-section{
+ display:grid;
+ grid-template-columns:1fr 250px;
+ gap:25px;
+ align-items:center;
+}
+
+.qr-box{
+ background:#fff;
+ padding:18px;
+ border-radius:20px;
+ width:210px;
+ margin:auto;
+ text-align:center;
+}
+
+#qrcode{
+ display:flex;
+ justify-content:center;
+}
+
+.qr-box p{
+ color:#111;
+ font-size:12px;
+ margin-top:8px;
+}
+
+/* FLOATING */
+
 .quick-menu{
-  position:fixed;
-  bottom:22px;
-  right:22px;
-  z-index:9997;
+ position:fixed;
+ bottom:22px;
+ right:22px;
+ z-index:9997;
 }
 
 .quick-toggle{
-  width:55px;
-  height:55px;
-  border:none;
-  border-radius:50%;
-  cursor:pointer;
-  background:linear-gradient(135deg,#00b8ff,#7357ff);
-  color:#fff;
-  font-size:23px;
-  box-shadow:0 8px 25px rgba(0,0,0,.3);
-  transition:.3s;
+ width:55px;
+ height:55px;
+ border:none;
+ border-radius:50%;
+ cursor:pointer;
+ background:linear-gradient(135deg,#00b8ff,#7357ff);
+ color:#fff;
+ font-size:23px;
+ box-shadow:0 8px 25px rgba(0,0,0,.3);
+ transition:.3s;
 }
 
 .quick-toggle:hover{
-  transform:scale(1.08) rotate(10deg);
+ transform:scale(1.08) rotate(10deg);
 }
 
 .quick-links{
-  position:absolute;
-  right:0;
-  bottom:65px;
-  display:flex;
-  flex-direction:column;
-  gap:9px;
-  opacity:0;
-  visibility:hidden;
-  transform:translateY(10px);
-  transition:.3s;
+ position:absolute;
+ right:0;
+ bottom:65px;
+ display:flex;
+ flex-direction:column;
+ gap:9px;
+ opacity:0;
+ visibility:hidden;
+ transform:translateY(10px);
+ transition:.3s;
 }
 
 .quick-menu.open .quick-links{
-  opacity:1;
-  visibility:visible;
-  transform:translateY(0);
+ opacity:1;
+ visibility:visible;
+ transform:translateY(0);
 }
 
 .quick-link{
-  width:48px;
-  height:48px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:15px;
-  background:#141a2b;
-  border:1px solid rgba(255,255,255,.1);
-  transition:.25s;
+ width:48px;
+ height:48px;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ border-radius:15px;
+ background:#141a2b;
+ border:1px solid rgba(255,255,255,.1);
+ transition:.25s;
 }
 
 .quick-link:hover{
-  transform:translateX(-4px);
-  border-color:#00d9ff;
+ transform:translateX(-4px);
+ border-color:#00d9ff;
 }
 
 body.light .quick-link{
-  background:#fff;
-  color:#111;
+ background:#fff;
+ color:#111;
 }
 
 /* BACK TOP */
+
 #backTop{
-  position:fixed;
-  bottom:25px;
-  left:22px;
-  width:45px;
-  height:45px;
-  border:none;
-  border-radius:14px;
-  cursor:pointer;
-  background:rgba(255,255,255,.1);
-  color:#fff;
-  opacity:0;
-  pointer-events:none;
-  transition:.3s;
+ position:fixed;
+ bottom:25px;
+ left:22px;
+ width:45px;
+ height:45px;
+ border:none;
+ border-radius:14px;
+ cursor:pointer;
+ background:rgba(255,255,255,.1);
+ color:#fff;
+ opacity:0;
+ pointer-events:none;
+ transition:.3s;
 }
 
 #backTop.show{
-  opacity:1;
-  pointer-events:auto;
+ opacity:1;
+ pointer-events:auto;
 }
 
 body.light #backTop{
-  background:#fff;
-  color:#111;
-  box-shadow:0 5px 20px rgba(0,0,0,.1);
+ background:#fff;
+ color:#111;
 }
 
 /* TOAST */
+
 #toast{
-  position:fixed;
-  left:50%;
-  bottom:25px;
-  transform:translate(-50%,20px);
-  padding:12px 20px;
-  border-radius:13px;
-  background:#171d31;
-  border:1px solid rgba(255,255,255,.1);
-  color:#fff;
-  opacity:0;
-  pointer-events:none;
-  transition:.35s;
-  z-index:100000;
+ position:fixed;
+ left:50%;
+ bottom:25px;
+ transform:translate(-50%,20px);
+ padding:12px 20px;
+ border-radius:13px;
+ background:#171d31;
+ border:1px solid rgba(255,255,255,.1);
+ color:#fff;
+ opacity:0;
+ pointer-events:none;
+ transition:.35s;
+ z-index:100000;
 }
 
 #toast.show{
-  opacity:1;
-  transform:translate(-50%,0);
+ opacity:1;
+ transform:translate(-50%,0);
 }
 
 /* WELCOME */
+
 #welcome{
-  position:fixed;
-  inset:0;
-  z-index:100000;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:#080b14;
-  transition:.7s;
+ position:fixed;
+ inset:0;
+ z-index:100000;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ background:#080b14;
+ transition:.7s;
 }
 
 #welcome.hide{
-  opacity:0;
-  visibility:hidden;
-  pointer-events:none;
+ opacity:0;
+ visibility:hidden;
+ pointer-events:none;
 }
 
 .welcome-box{
-  text-align:center;
-  padding:35px;
-}
-
-.welcome-box h2{
-  font-size:32px;
-  margin-bottom:10px;
-}
-
-.welcome-box p{
-  color:#9ca9c9;
+ text-align:center;
+ padding:35px;
 }
 
 /* PARTICLES */
-#particles{
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:0;
-  opacity:.45;
-}
 
-footer{
-  text-align:center;
-  padding:40px 20px;
-  color:#7885a1;
-  border-top:1px solid rgba(255,255,255,.06);
+#particles{
+ position:fixed;
+ inset:0;
+ pointer-events:none;
+ z-index:0;
+ opacity:.45;
 }
 
 /* REVEAL */
+
 .reveal{
-  opacity:0;
-  transform:translateY(30px);
-  transition:.8s ease;
+ opacity:0;
+ transform:translateY(30px);
+ transition:.8s ease;
 }
 
 .reveal.active{
-  opacity:1;
-  transform:translateY(0);
+ opacity:1;
+ transform:translateY(0);
 }
 
-/* ANIMATIONS */
+footer{
+ text-align:center;
+ padding:40px 20px;
+ color:#7885a1;
+ border-top:1px solid rgba(255,255,255,.06);
+}
+
 @keyframes profileGlow{
-  from{box-shadow:0 0 20px rgba(0,217,255,.25)}
-  to{box-shadow:0 0 45px rgba(115,87,255,.5)}
+ from{box-shadow:0 0 20px rgba(0,217,255,.25)}
+ to{box-shadow:0 0 45px rgba(115,87,255,.5)}
 }
 
 @keyframes pageEntry{
-  from{opacity:0;transform:translateY(20px)}
-  to{opacity:1;transform:translateY(0)}
+ from{opacity:0;transform:translateY(20px)}
+ to{opacity:1;transform:translateY(0)}
 }
 
-/* LIGHT MODE */
-body.light .typing,
-body.light .project-card p,
-body.light .quote-author,
-body.light .random-result,
-body.light .live-date{
-  color:#667085;
-}
-
-body.light .chip{
-  background:#eef4fb;
-  color:#475467;
-}
-
-body.light .stat,
-body.light .contact-item{
-  background:#fff;
-  border-color:#e4e9f1;
-}
-
-body.light .skill-bar{
-  background:#e8edf4;
-}
-
-/* RESPONSIVE */
 @media(max-width:800px){
-  .grid,
-  .contact-grid{
-    grid-template-columns:1fr 1fr;
-  }
 
-  .profile-card{
-    grid-template-columns:1fr;
-    text-align:center;
-  }
+ .grid,
+ .contact-grid{
+  grid-template-columns:1fr 1fr;
+ }
 
-  .profile-card img{
-    margin:auto;
-  }
+ .profile-card,
+ .qr-section,
+ .dashboard-main,
+ .grid-2{
+  grid-template-columns:1fr;
+ }
 
-  .dashboard-main,
-  .grid-2{
-    grid-template-columns:1fr;
-  }
+ .profile-card{
+  text-align:center;
+ }
+
+ .profile-card img{
+  margin:auto;
+ }
+
 }
 
 @media(max-width:600px){
-  section{
-    padding:55px 0;
-  }
 
-  .hero h1{
-    font-size:32px;
-  }
+ section{
+  padding:55px 0;
+ }
 
-  .profile-img{
-    width:145px;
-    height:145px;
-  }
+ .hero h1{
+  font-size:32px;
+ }
 
-  .grid,
-  .contact-grid,
-  .stats,
-  .info-boxes{
-    grid-template-columns:1fr;
-  }
+ .profile-img{
+  width:145px;
+  height:145px;
+ }
 
-  .navbar{
-    top:7px;
-  }
+ .grid,
+ .contact-grid,
+ .stats,
+ .info-boxes{
+  grid-template-columns:1fr;
+ }
 
-  #themeToggle{
-    top:72px;
-  }
+ .navbar{
+  top:7px;
+ }
 
-  .search-box{
-    flex-direction:column;
-  }
+ #themeToggle{
+  top:72px;
+ }
 
-  .search-box button{
-    padding:12px;
-  }
+ .search-box{
+  flex-direction:column;
+ }
 
-  .live-time{
-    font-size:31px;
-  }
+ .search-box button{
+  padding:12px;
+ }
 
-  .quick-menu{
-    right:14px;
-    bottom:15px;
-  }
+ .live-time{
+  font-size:31px;
+ }
 
-  #backTop{
-    left:14px;
-    bottom:15px;
-  }
+ .github-card{
+  grid-template-columns:1fr;
+  text-align:center;
+ }
 
-  #toast{
-    width:90%;
-    text-align:center;
-  }
+ .github-logo{
+  margin:auto;
+ }
+
+ .quick-menu{
+  right:14px;
+  bottom:15px;
+ }
+
+ #backTop{
+  left:14px;
+  bottom:15px;
+ }
+
+ #toast{
+  width:90%;
+  text-align:center;
+ }
+
 }
+
 </style></head><body><div id="progressBar"></div><div id="welcome">
-  <div class="welcome-box">
-    <div style="font-size:55px">👋</div>
-    <h2>خوش اومدی!</h2>
-    <p>به وب‌سایت شخصی امیررضا غلامی خوش آمدید 🚀</p>
-  </div>
+ <div class="welcome-box">
+  <div style="font-size:55px">👋</div>
+  <h2>خوش اومدی!</h2>
+  <p>به وب‌سایت شخصی امیررضا غلامی خوش آمدید 🚀</p>
+ </div>
 </div><nav class="navbar">
-  <a href="#top">🏠 خانه</a>
-  <a href="#about">👋 درباره من</a>
-  <a href="#dashboard">🧭 داشبورد</a>
-  <a href="#interests">❤️ علایق</a>
-  <a href="#skills">🚀 مهارت‌ها</a>
-  <a href="#projects">🛠️ پروژه‌ها</a>
-  <a href="#activities">📌 فعالیت‌ها</a>
-  <a href="#gallery">🖼️ گالری</a>
-  <a href="#timeline">🕒 مسیر من</a>
-  <a href="#goals">🎯 اهداف</a>
-  <a href="#contact">📞 ارتباط</a>
-</nav><button id="themeToggle" aria-label="تغییر حالت">🌙</button>
+ <a href="#top">🏠 خانه</a>
+ <a href="#about">👋 درباره من</a>
+ <a href="#dashboard">🧭 داشبورد</a>
+ <a href="#interests">❤️ علایق</a>
+ <a href="#skills">🚀 مهارت‌ها</a>
+ <a href="#projects">🛠️ پروژه‌ها</a>
+ <a href="#achievements">🏆 دستاوردها</a>
+ <a href="#gallery">🖼️ گالری</a>
+ <a href="#timeline">🕒 مسیر من</a>
+ <a href="#goals">🎯 اهداف</a>
+ <a href="#contact">📞 ارتباط</a>
+</nav><button id="themeToggle">🌙</button>
 
 <canvas id="particles"></canvas>
 
-<main id="top"><section class="hero">
-  <div class="hero-content"><img src="profile.jpg" alt="امیررضا غلامی" class="profile-img">
+<main id="top"><section class="hero"> <div class="hero-content"><img src="profile.jpg"
+alt="امیررضا غلامی"
+class="profile-img">
 
-<h1>امیررضا <span>غلامی</span></h1>
-
-<div class="typing">
-  <span id="typingText"></span>
-</div>
-
-<div class="hero-buttons">
-  <a href="#about" class="btn primary">بیشتر درباره من 👋</a>
-  <a href="#contact" class="btn">ارتباط با من 📞</a>
-</div>
-
-<div class="chips">
-  <div class="chip">💻 تکنولوژی</div>
-  <div class="chip">🤖 هوش مصنوعی</div>
-  <div class="chip">⚽ فوتبال</div>
-  <div class="chip">📚 یادگیری</div>
-</div>
-
-  </div>
-</section><section id="about" class="reveal">
-  <h2 class="section-title">درباره <span>من</span></h2>  <div class="card profile-card"><img src="profile.jpg" alt="امیررضا غلامی">
-
-<div>
-  <h2>امیررضا غلامی 👋</h2>
-
-  <p>
+  <h1>امیررضا <span>غلامی</span></h1>  <div class="typing">
+   <span id="typingText"></span>
+  </div>  <div class="hero-buttons">
+   <a href="#about" class="btn primary">
+    بیشتر درباره من 👋
+   </a>   <a href="#contact" class="btn">
+    ارتباط با من 📞
+   </a>
+  </div>  <div class="chips">
+   <div class="chip">💻 تکنولوژی</div>
+   <div class="chip">🤖 هوش مصنوعی</div>
+   <div class="chip">⚽ فوتبال</div>
+   <div class="chip">📚 یادگیری</div>
+  </div> </div></section><section id="about" class="reveal"> <h2 class="section-title">
+  درباره <span>من</span>
+ </h2> <div class="card profile-card">  <img src="profile.jpg" alt="امیررضا غلامی">  <div>   <h2>امیررضا غلامی 👋</h2>   <div class="profile-status">
+    <span class="status-dot"></span>
+    در حال یادگیری و پیشرفت
+   </div>   <p>
     علاقه‌مند به تکنولوژی، دنیای دیجیتال، هوش مصنوعی و وب.
     همیشه سعی می‌کنم چیزهای جدید یاد بگیرم، تجربه کنم و قدم‌به‌قدم پیشرفت کنم.
-  </p>
-
-  <div class="info-boxes">
-    <div class="info-box">
-      💻 حوزه علاقه<br>
-      <strong>تکنولوژی و دنیای دیجیتال</strong>
-    </div>
-
-    <div class="info-box">
-      🤖 زمینه مورد علاقه<br>
-      <strong>هوش مصنوعی</strong>
-    </div>
-
-    <div class="info-box">
-      📚 رویکرد<br>
-      <strong>یادگیری و تجربه</strong>
-    </div>
-
-    <div class="info-box">
-      🌐 فعالیت<br>
-      <strong>دنیای وب و اینترنت</strong>
-    </div>
-  </div>
+   </p>   <div class="info-boxes"><div class="info-box">
+ 💻 حوزه علاقه<br>
+ <strong>تکنولوژی و دنیای دیجیتال</strong>
 </div>
 
-  </div>  <div class="grid highlights">
-    <div class="card highlight">
-      <div class="highlight-icon">🎯</div>
-      <h3>هدفمند</h3>
-      <p>برای رسیدن به اهدافم قدم‌به‌قدم حرکت می‌کنم.</p>
-    </div><div class="card highlight">
-  <div class="highlight-icon">📚</div>
-  <h3>یادگیری</h3>
-  <p>یادگیری و تجربه کردن بخش مهمی از مسیر منه.</p>
+<div class="info-box">
+ 🤖 زمینه مورد علاقه<br>
+ <strong>هوش مصنوعی</strong>
 </div>
 
-<div class="card highlight">
-  <div class="highlight-icon">🚀</div>
-  <h3>پیشرفت</h3>
-  <p>هر تجربه جدید می‌تونه شروع یک مرحله تازه باشه.</p>
+<div class="info-box">
+ 📚 رویکرد<br>
+ <strong>یادگیری و تجربه</strong>
 </div>
 
-  </div>  <div class="stats">
-    <div class="stat">
-      <div class="stat-number" data-target="3">0</div>
-      <div>پروژه</div>
-    </div><div class="stat">
-  <div class="stat-number" data-target="4">0</div>
-  <div>مهارت</div>
+<div class="info-box">
+ 🌐 فعالیت<br>
+ <strong>دنیای وب و اینترنت</strong>
 </div>
 
-<div class="stat">
-  <div class="stat-number" data-target="8">0</div>
-  <div>علاقه</div>
-</div>
+   </div>   <div class="quick-profile-actions"><a href="https://github.com/amirrezagholami86"
+   target="_blank"
+   class="btn">
+ 🐙 GitHub
+</a>
 
-  </div>
-</section><section id="dashboard" class="dashboard reveal">
-  <h2 class="section-title">🧭 <span>داشبورد</span> شخصی</h2>  <div class="dashboard-main"><div class="card live-box">
-  <div style="font-size:45px">🕐</div>
+<a href="https://www.instagram.com/amirrezagholami.ir"
+   target="_blank"
+   class="btn">
+ 📸 Instagram
+</a>
 
-  <div id="liveTime" class="live-time">--:--:--</div>
+<a href="#contact"
+   class="btn primary">
+ 📞 ارتباط
+</a>
 
-  <div id="liveDate" class="live-date">
+   </div>  </div> </div> <div class="stats">  <div class="stat">
+   <div class="stat-number" data-target="3">0</div>
+   پروژه
+  </div>  <div class="stat">
+   <div class="stat-number" data-target="4">0</div>
+   مهارت
+  </div>  <div class="stat">
+   <div class="stat-number" data-target="8">0</div>
+   علاقه
+  </div> </div></section><section id="dashboard" class="reveal"> <h2 class="section-title">
+  🧭 <span>داشبورد</span> شخصی
+ </h2> <div class="dashboard-main">  <div class="card live-box">   <div style="font-size:45px">🕐</div>   <div id="liveTime" class="live-time">
+    --:--:--
+   </div>   <div id="liveDate" class="live-date">
     در حال دریافت تاریخ...
-  </div>
-
-  <div class="status">
+   </div>   <div class="status">
     🟢 سایت فعال
-  </div>
-</div>
-
-<div class="card quote-box">
-  <div style="font-size:38px">💡</div>
-
-  <div id="quoteText" class="quote"></div>
-
-  <div class="quote-author">
+   </div>  </div>  <div class="card quote-box">   <div style="font-size:38px">💡</div>   <div id="quoteText" class="quote"></div>   <div class="quote-author">
     — یک جمله برای ادامه مسیر 🚀
-  </div>
-
-  <button class="btn" id="newQuote" style="margin-top:18px;width:max-content">
-    🔄 جمله جدید
-  </button>
-</div>
-
-  </div>  <div class="card" style="margin-top:18px;text-align:center">
-    <div style="font-size:38px">🎲</div><h3>یک چیز تصادفی درباره من</h3>
-
-<div id="randomResult" class="random-result">
-  روی دکمه بزن تا یکی از علایقم رو ببینی!
-</div>
-
-<button class="btn primary" id="randomFact">
-  🎲 نمایش تصادفی
+   </div><button class="btn"
+id="newQuote"
+style="margin-top:18px;width:max-content">
+🔄 جمله جدید
 </button>
 
-  </div>
-</section><section id="interests" class="reveal">
-  <h2 class="section-title">❤️ <span>علایق</span> من</h2>  <div class="grid">
-    <div class="card">
-      <div class="project-icon">💻</div>
-      <h3>تکنولوژی</h3>
-      <p>دنبال کردن فناوری‌های جدید و دنیای دیجیتال.</p>
-    </div><div class="card">
-  <div class="project-icon">🤖</div>
-  <h3>هوش مصنوعی</h3>
-  <p>علاقه‌مند به ابزارها و پیشرفت‌های هوش مصنوعی.</p>
-</div>
+  </div> </div> <div class="card"
+      style="margin-top:18px;text-align:center">  <div style="font-size:38px">🎲</div>  <h3>یک چیز تصادفی درباره من</h3>  <div id="randomResult"
+       style="margin:18px 0;color:#b8c7e5">
+   روی دکمه بزن تا یکی از علایقم رو ببینی!
+  </div><button class="btn primary"
+id="randomFact">
+🎲 نمایش تصادفی
+</button>
 
-<div class="card">
-  <div class="project-icon">⚽</div>
-  <h3>فوتبال</h3>
-  <p>یکی از علاقه‌های اصلی من فوتبال و دنیای ورزشه.</p>
-</div>
-
-  </div>
-</section><section id="skills" class="reveal">
-  <h2 class="section-title">🚀 <span>مهارت‌ها</span></h2>  <div class="card"><div class="skill">
-  <div class="skill-top">
+ </div></section><section id="interests" class="reveal"> <h2 class="section-title">
+  ❤️ <span>علایق</span> من
+ </h2> <div class="grid">  <div class="card">
+   <div class="project-icon">💻</div>
+   <h3>تکنولوژی</h3>
+   <p>دنبال کردن فناوری‌های جدید و دنیای دیجیتال.</p>
+  </div>  <div class="card">
+   <div class="project-icon">🤖</div>
+   <h3>هوش مصنوعی</h3>
+   <p>علاقه‌مند به ابزارها و پیشرفت‌های هوش مصنوعی.</p>
+  </div>  <div class="card">
+   <div class="project-icon">⚽</div>
+   <h3>فوتبال</h3>
+   <p>یکی از علاقه‌های اصلی من فوتبال و دنیای ورزشه.</p>
+  </div> </div></section><section id="skills" class="reveal"> <h2 class="section-title">
+  🚀 <span>مهارت‌ها</span>
+ </h2> <div class="card">  <div class="skill">
+   <div class="skill-top">
     <span>HTML / CSS</span>
     <span>80%</span>
-  </div>
-  <div class="skill-bar">
+   </div>
+   <div class="skill-bar">
     <div class="skill-fill" data-width="80%"></div>
-  </div>
-</div>
-
-<div class="skill">
-  <div class="skill-top">
+   </div>
+  </div>  <div class="skill">
+   <div class="skill-top">
     <span>JavaScript</span>
     <span>55%</span>
-  </div>
-  <div class="skill-bar">
+   </div>
+   <div class="skill-bar">
     <div class="skill-fill" data-width="55%"></div>
-  </div>
-</div>
-
-<div class="skill">
-  <div class="skill-top">
+   </div>
+  </div>  <div class="skill">
+   <div class="skill-top">
     <span>GitHub</span>
     <span>70%</span>
-  </div>
-  <div class="skill-bar">
+   </div>
+   <div class="skill-bar">
     <div class="skill-fill" data-width="70%"></div>
-  </div>
-</div>
-
-<div class="skill">
-  <div class="skill-top">
+   </div>
+  </div>  <div class="skill">
+   <div class="skill-top">
     <span>AI Tools</span>
     <span>65%</span>
-  </div>
-  <div class="skill-bar">
+   </div>
+   <div class="skill-bar">
     <div class="skill-fill" data-width="65%"></div>
-  </div>
-</div>
-
-  </div>
-</section><section id="projects" class="reveal">
-  <h2 class="section-title">🛠️ <span>پروژه‌ها</span></h2>  <div class="grid"><div class="card project-card">
-  <div class="project-icon">🌐</div>
-  <h3>Web Site Personal</h3>
-  <p>
+   </div>
+  </div> </div></section><section id="projects" class="reveal"> <h2 class="section-title">
+  🛠️ <span>پروژه‌ها</span>
+ </h2> <div class="grid">  <div class="card project-card">
+   <div class="project-icon">🌐</div>
+   <h3>Web Site Personal</h3>
+   <p>
     طراحی و توسعه وب‌سایت شخصی برای معرفی، ارتباط و نمایش علایق.
-  </p>
-  <div class="tags">
+   </p>   <div class="tags">
     <span class="tag">HTML</span>
     <span class="tag">CSS</span>
     <span class="tag">JavaScript</span>
-  </div>
-</div>
-
-<div class="card project-card">
-  <div class="project-icon">💻</div>
-  <h3>Technology World</h3>
-  <p>
+   </div>
+  </div>  <div class="card project-card">
+   <div class="project-icon">💻</div>
+   <h3>Technology World</h3>
+   <p>
     یادگیری، تجربه و دنبال کردن فناوری‌های جدید و دنیای دیجیتال.
-  </p>
-  <div class="tags">
+   </p>   <div class="tags">
     <span class="tag">Technology</span>
     <span class="tag">Digital</span>
-  </div>
-</div>
-
-<div class="card project-card">
-  <div class="project-icon">🤖</div>
-  <h3>AI</h3>
-  <p>
+   </div>
+  </div>  <div class="card project-card">
+   <div class="project-icon">🤖</div>
+   <h3>AI</h3>
+   <p>
     علاقه‌مندی و آشنایی با ابزارها و پیشرفت‌های هوش مصنوعی.
-  </p>
-  <div class="tags">
+   </p>   <div class="tags">
     <span class="tag">AI</span>
     <span class="tag">Tools</span>
-  </div>
-</div>
-
-  </div>  <div class="card github-feature">
-    <div>
-      <h3>🐙 GitHub من</h3>
-      <p>پروژه‌ها و مسیر یادگیری من در GitHub.</p>
-    </div><a class="btn primary"
-   href="https://github.com/amirrezagholami86"
-   target="_blank">
-  مشاهده GitHub 🚀
+   </div>
+  </div> </div> <div class="card github-feature">  <div class="github-card">   <div class="github-logo">🐙</div>   <div>
+    <h3>پروفایل GitHub من</h3>
+    <p style="color:#9ca9c9">
+     پروژه‌ها، تجربه‌ها و مسیر یادگیری من.
+    </p>
+   </div>  </div><a class="btn primary"
+href="https://github.com/amirrezagholami86"
+target="_blank">
+مشاهده GitHub 🚀
 </a>
 
-  </div>
-</section><section id="activities" class="reveal">
-  <h2 class="section-title">📌 <span>فعالیت‌ها</span></h2>  <div class="grid">
-    <div class="card">
-      <div class="project-icon">🌐</div>
-      <h3>ساخت وب‌سایت</h3>
-      <p>ساخت و توسعه سایت شخصی و تجربه امکانات مختلف وب.</p>
-    </div><div class="card">
-  <div class="project-icon">🤖</div>
-  <h3>دنیای AI</h3>
-  <p>دنبال کردن ابزارها و تجربه قابلیت‌های هوش مصنوعی.</p>
+ </div></section><section id="achievements" class="reveal"> <h2 class="section-title">
+  🏆 <span>دستاوردها</span>
+ </h2> <div class="grid">  <div class="card achievement">
+   <div class="achievement-icon">🌐</div>
+   <h3>ساخت سایت شخصی</h3>
+   <p>
+    ساخت و توسعه یک وب‌سایت شخصی با امکانات تعاملی.
+   </p>
+  </div>  <div class="card achievement">
+   <div class="achievement-icon">🤖</div>
+   <h3>آشنایی با AI</h3>
+   <p>
+    تجربه و شناخت بیشتر ابزارهای هوش مصنوعی.
+   </p>
+  </div>  <div class="card achievement">
+   <div class="achievement-icon">📚</div>
+   <h3>یادگیری مداوم</h3>
+   <p>
+    ادامه دادن مسیر یادگیری و تجربه کردن چیزهای جدید.
+   </p>
+  </div> </div></section><section id="progress" class="reveal"> <h2 class="section-title">
+  📈 <span>مسیر پیشرفت</span>
+ </h2> <div class="grid-2">  <div class="card progress-card">   <div class="progress-circle">
+    <div class="progress-number">72%</div>
+   </div>   <h3>مسیر کلی یادگیری</h3>   <p style="color:#9ca9c9">
+    یک نمایش ساده از مسیر فعلی یادگیری و تجربه.
+   </p>  </div>  <div class="card">   <h3>مراحل فعلی 🚀</h3>   <div class="progress-list"><div class="progress-line">
+ <div class="progress-line-top">
+  <span>وب و طراحی</span>
+  <span>80%</span>
+ </div>
+
+ <div class="progress-track">
+  <div class="progress-value" style="width:80%"></div>
+ </div>
 </div>
 
-<div class="card">
-  <div class="project-icon">📚</div>
-  <h3>یادگیری</h3>
-  <p>یادگیری مداوم و امتحان کردن چیزهای جدید.</p>
+<div class="progress-line">
+ <div class="progress-line-top">
+  <span>JavaScript</span>
+  <span>55%</span>
+ </div>
+
+ <div class="progress-track">
+  <div class="progress-value" style="width:55%"></div>
+ </div>
 </div>
 
-  </div>
-</section><section id="gallery" class="reveal">
-  <h2 class="section-title">🖼️ <span>گالری</span></h2>  <div class="grid"><div class="card gallery-card">
-  <div class="gallery-icon">💻</div>
-  <h3>تکنولوژی</h3>
-  <p>علاقه به دنیای دیجیتال</p>
+<div class="progress-line">
+ <div class="progress-line-top">
+  <span>هوش مصنوعی</span>
+  <span>65%</span>
+ </div>
+
+ <div class="progress-track">
+  <div class="progress-value" style="width:65%"></div>
+ </div>
 </div>
 
-<div class="card gallery-card">
-  <div class="gallery-icon">🤖</div>
-  <h3>هوش مصنوعی</h3>
-  <p>آینده دنیای فناوری</p>
+<div class="progress-line">
+ <div class="progress-line-top">
+  <span>تجربه پروژه</span>
+  <span>70%</span>
+ </div>
+
+ <div class="progress-track">
+  <div class="progress-value" style="width:70%"></div>
+ </div>
 </div>
 
-<div class="card gallery-card">
-  <div class="gallery-icon">⚽</div>
-  <h3>فوتبال</h3>
-  <p>یکی از علاقه‌های من</p>
-</div>
+   </div>  </div> </div></section><section id="gallery" class="reveal"> <h2 class="section-title">
+  🖼️ <span>گالری</span>
+ </h2> <div class="grid">  <div class="card gallery-card">
+   <div class="gallery-icon">💻</div>
+   <h3>تکنولوژی</h3>
+   <p>علاقه به دنیای دیجیتال</p>
+  </div>  <div class="card gallery-card">
+   <div class="gallery-icon">🤖</div>
+   <h3>هوش مصنوعی</h3>
+   <p>آینده دنیای فناوری</p>
+  </div>  <div class="card gallery-card">
+   <div class="gallery-icon">⚽</div>
+   <h3>فوتبال</h3>
+   <p>یکی از علاقه‌های من</p>
+  </div> </div></section><section id="search" class="reveal"> <h2 class="section-title">
+  🔍 <span>جست‌وجو</span> در سایت
+ </h2> <div class="search-box"><input id="siteSearch"
+type="text"
+placeholder="مثلاً: هوش مصنوعی، پروژه، اهداف...">
 
-  </div>
-</section><section class="reveal">
-  <h2 class="section-title">🔍 <span>جست‌وجو</span> در سایت</h2>  <div class="search-box">
-    <input
-      id="siteSearch"
-      type="text"
-      placeholder="مثلاً: هوش مصنوعی، پروژه، اهداف..."
-      autocomplete="off"
-    ><button id="searchBtn">🔍 جست‌وجو</button>
-
-  </div>
-</section><section id="timeline" class="reveal">
-  <h2 class="section-title">🕒 <span>مسیر من</span></h2>  <div class="timeline"><div class="timeline-item">
-  <div class="timeline-dot"></div>
-  <div class="card">
+  <button id="searchBtn">
+   🔍 جست‌وجو
+  </button> </div></section><section id="timeline" class="reveal"> <h2 class="section-title">
+  🕒 <span>مسیر من</span>
+ </h2> <div class="timeline">  <div class="timeline-item">
+   <div class="timeline-dot"></div>   <div class="card">
     <h3>شروع مسیر 📚</h3>
     <p>یادگیری و کشف علایق مختلف.</p>
-  </div>
-</div>
-
-<div class="timeline-item">
-  <div class="timeline-dot"></div>
-  <div class="card">
+   </div>
+  </div>  <div class="timeline-item">
+   <div class="timeline-dot"></div>   <div class="card">
     <h3>مرحله بعد 🤖</h3>
     <p>ورود بیشتر به دنیای هوش مصنوعی.</p>
-  </div>
-</div>
-
-<div class="timeline-item">
-  <div class="timeline-dot"></div>
-  <div class="card">
+   </div>
+  </div>  <div class="timeline-item">
+   <div class="timeline-dot"></div>   <div class="card">
     <h3>امروز 🚀</h3>
     <p>ساخت، تجربه و پیشرفت.</p>
-  </div>
-</div>
-
-  </div>
-</section><section id="goals" class="reveal">
-  <h2 class="section-title">🎯 <span>اهداف</span></h2>  <div class="grid"><div class="card goal">
-  <div class="goal-icon">💻</div>
-  <h3>توسعه مهارت‌های فنی</h3>
-  <p>یادگیری بیشتر و ساخت پروژه‌های بهتر.</p>
-</div>
-
-<div class="card goal">
-  <div class="goal-icon">🤖</div>
-  <h3>یادگیری AI</h3>
-  <p>آشنایی بیشتر با هوش مصنوعی و ابزارهای آن.</p>
-</div>
-
-<div class="card goal">
-  <div class="goal-icon">🚀</div>
-  <h3>ساخت پروژه‌های بیشتر</h3>
-  <p>تبدیل ایده‌ها به پروژه‌های واقعی.</p>
-</div>
-
-  </div>
-</section><section id="contact" class="reveal">
-  <h2 class="section-title">📞 <span>ارتباط</span> با من</h2>  <div class="contact-grid"><a class="contact-item"
-   href="https://t.me/Amirrezagholami_ir"
-   target="_blank">
-  <span class="contact-icon">✈️</span>
-  Telegram
+   </div>
+  </div> </div></section><section id="goals" class="reveal"> <h2 class="section-title">
+  🎯 <span>اهداف</span>
+ </h2> <div class="grid">  <div class="card goal">
+   <div class="goal-icon">💻</div>
+   <h3>توسعه مهارت‌های فنی</h3>
+   <p>یادگیری بیشتر و ساخت پروژه‌های بهتر.</p>
+  </div>  <div class="card goal">
+   <div class="goal-icon">🤖</div>
+   <h3>یادگیری AI</h3>
+   <p>آشنایی بیشتر با هوش مصنوعی و ابزارهای آن.</p>
+  </div>  <div class="card goal">
+   <div class="goal-icon">🚀</div>
+   <h3>ساخت پروژه‌های بیشتر</h3>
+   <p>تبدیل ایده‌ها به پروژه‌های واقعی.</p>
+  </div> </div></section><section id="contact" class="reveal"> <h2 class="section-title">
+  📞 <span>ارتباط</span> با من
+ </h2> <div class="contact-grid"><a class="contact-item"
+href="https://t.me/Amirrezagholami_ir"
+target="_blank">
+<span class="contact-icon">✈️</span>
+Telegram
 </a>
 
 <a class="contact-item"
-   href="mailto:amirrezaamirreza275@gmail.com">
-  <span class="contact-icon">📧</span>
-  Email
+href="mailto:amirrezaamirreza275@gmail.com">
+<span class="contact-icon">📧</span>
+Email
 </a>
 
 <a class="contact-item"
-   href="https://www.instagram.com/amirrezagholami.ir"
-   target="_blank">
-  <span class="contact-icon">📸</span>
-  Instagram
+href="https://www.instagram.com/amirrezagholami.ir"
+target="_blank">
+<span class="contact-icon">📸</span>
+Instagram
 </a>
 
 <a class="contact-item"
-   href="https://github.com/amirrezagholami86"
-   target="_blank">
-  <span class="contact-icon">🐙</span>
-  GitHub
+href="https://github.com/amirrezagholami86"
+target="_blank">
+<span class="contact-icon">🐙</span>
+GitHub
 </a>
 
 <a class="contact-item"
-   href="https://wa.me/989228420736"
-   target="_blank">
-  <span class="contact-icon">💚</span>
-  WhatsApp
+href="https://wa.me/989228420736"
+target="_blank">
+<span class="contact-icon">💚</span>
+WhatsApp
 </a>
 
 <a class="contact-item"
-   href="mailto:amirrezaamirreza275@gmail.com?subject=پیام از وب‌سایت">
-  <span class="contact-icon">💬</span>
-  ارسال پیام
+href="mailto:amirrezaamirreza275@gmail.com?subject=پیام از وب‌سایت">
+<span class="contact-icon">💬</span>
+ارسال پیام
 </a>
 
-  </div>  <div class="social-row"><a class="social"
-   href="https://github.com/amirrezagholami86"
-   target="_blank">🐙</a>
+ </div> <div class="social-row"><a class="social"
+href="https://github.com/amirrezagholami86"
+target="_blank">🐙</a>
 
 <a class="social"
-   href="https://www.instagram.com/amirrezagholami.ir"
-   target="_blank">📸</a>
+href="https://www.instagram.com/amirrezagholami.ir"
+target="_blank">📸</a>
 
 <a class="social"
-   href="https://t.me/Amirrezagholami_ir"
-   target="_blank">✈️</a>
+href="https://t.me/Amirrezagholami_ir"
+target="_blank">✈️</a>
 
 <a class="social"
-   href="https://wa.me/989228420736"
-   target="_blank">💚</a>
+href="https://wa.me/989228420736"
+target="_blank">💚</a>
 
-  </div>
-</section></main><footer>
-  <p>© 2026 امیررضا غلامی — ساخته شده با ❤️ و 🚀</p>
-</footer><button id="backTop" aria-label="بازگشت به بالا">↑</button>
+ </div> <div class="grid-2" style="margin-top:25px">  <div class="card">   <h3>📋 اطلاعات تماس سریع</h3>   <p style="margin-top:15px">
+    📧 ایمیل:
+    <strong>amirrezaamirreza275@gmail.com</strong>
+   </p><button class="btn"
+onclick="copyText('amirrezaamirreza275@gmail.com','📧 ایمیل کپی شد')"
+style="margin-top:12px">
+📋 کپی ایمیل
+</button>
 
-<div class="quick-menu" id="quickMenu">  <div class="quick-links"><a class="quick-link"
-   href="#contact"
-   title="ارتباط">📞</a>
+   <p style="margin-top:20px">
+    ✈️ تلگرام:
+    <strong>@Amirrezagholami_ir</strong>
+   </p><button class="btn"
+onclick="copyText('@Amirrezagholami_ir','✈️ آیدی تلگرام کپی شد')"
+style="margin-top:12px">
+📋 کپی آیدی تلگرام
+</button>
+
+  </div>  <div class="card">   <h3>📤 اشتراک‌گذاری سایت</h3>   <p style="margin:15px 0;color:#9ca9c9">
+    سایت شخصی امیررضا غلامی رو با دیگران به اشتراک بذار.
+   </p><button class="btn primary"
+id="shareBtn">
+📤 اشتراک‌گذاری سایت
+</button>
+
+  </div> </div></section><section id="qrcode-section" class="reveal"> <h2 class="section-title">
+  🔳 <span>QR Code</span> سایت
+ </h2> <div class="card qr-section">  <div>   <h2>سایت من همیشه یک اسکن با تو فاصله داره 🚀</h2>   <p style="margin-top:15px;color:#9ca9c9">
+    این QR Code رو می‌تونی با گوشی اسکن کنی
+    و مستقیماً وارد سایت شخصی من بشی.
+   </p><button class="btn"
+onclick="showToast('🔳 QR Code مربوط به سایت شخصی منه')"
+style="margin-top:20px">
+🔳 QR Code آماده است
+</button>
+
+  </div>  <div class="qr-box">   <div id="qrcode"></div>   <p>
+    amirrezagholami86.github.io
+   </p>  </div> </div></section></main><footer>
+ © 2026 امیررضا غلامی — ساخته شده با ❤️ و 🚀
+</footer><button id="backTop">↑</button>
+
+<div class="quick-menu" id="quickMenu"> <div class="quick-links"><a class="quick-link"
+href="#contact">📞</a>
 
 <a class="quick-link"
-   href="https://github.com/amirrezagholami86"
-   target="_blank"
-   title="GitHub">🐙</a>
+href="https://github.com/amirrezagholami86"
+target="_blank">🐙</a>
 
 <a class="quick-link"
-   href="#top"
-   title="خانه">🏠</a>
+href="#qrcode-section">🔳</a>
 
-  </div>  <button class="quick-toggle" id="quickToggle" aria-label="دسترسی سریع">
-    ⚡
-  </button></div><div id="toast"></div><script>
+<a class="quick-link"
+href="#top">🏠</a>
+
+ </div><button class="quick-toggle"
+id="quickToggle">
+⚡
+</button>
+
+</div><div id="toast"></div><script>
 
 /* THEME */
-const themeToggle = document.getElementById("themeToggle");
 
-const savedTheme = localStorage.getItem("theme");
+const themeToggle =
+document.getElementById("themeToggle");
 
-if(savedTheme === "light"){
-  document.body.classList.add("light");
-  themeToggle.textContent = "☀️";
+const savedTheme =
+localStorage.getItem("theme");
+
+if(savedTheme==="light"){
+ document.body.classList.add("light");
+ themeToggle.textContent="☀️";
 }
 
 themeToggle.addEventListener("click",()=>{
 
-  document.body.classList.toggle("light");
+ document.body.classList.toggle("light");
 
-  const light = document.body.classList.contains("light");
+ const light =
+ document.body.classList.contains("light");
 
-  localStorage.setItem("theme",light ? "light" : "dark");
+ localStorage.setItem(
+  "theme",
+  light ? "light" : "dark"
+ );
 
-  themeToggle.textContent = light ? "☀️" : "🌙";
+ themeToggle.textContent =
+  light ? "☀️" : "🌙";
 
-  showToast(light ? "☀️ حالت روشن فعال شد" : "🌙 حالت تاریک فعال شد");
+ showToast(
+  light
+  ? "☀️ حالت روشن فعال شد"
+  : "🌙 حالت تاریک فعال شد"
+ );
 
 });
 
 
 /* WELCOME */
-const welcome = document.getElementById("welcome");
+
+const welcome =
+document.getElementById("welcome");
 
 if(localStorage.getItem("welcomeSeen")){
-  welcome.classList.add("hide");
+ welcome.classList.add("hide");
 }else{
-  setTimeout(()=>{
-    welcome.classList.add("hide");
-    localStorage.setItem("welcomeSeen","1");
-  },1800);
+
+ setTimeout(()=>{
+  welcome.classList.add("hide");
+  localStorage.setItem("welcomeSeen","1");
+ },1800);
+
 }
 
 
 /* TYPING */
-const typingText = document.getElementById("typingText");
 
-const phrases = [
-  "علاقه‌مند به تکنولوژی 💻",
-  "علاقه‌مند به هوش مصنوعی 🤖",
-  "عاشق فوتبال ⚽",
-  "همیشه در حال یادگیری 📚"
+const typingText =
+document.getElementById("typingText");
+
+const phrases=[
+ "علاقه‌مند به تکنولوژی 💻",
+ "علاقه‌مند به هوش مصنوعی 🤖",
+ "عاشق فوتبال ⚽",
+ "همیشه در حال یادگیری 📚"
 ];
 
-let phraseIndex = 0;
-let charIndex = 0;
-let deleting = false;
+let phraseIndex=0;
+let charIndex=0;
+let deleting=false;
 
 function typeEffect(){
 
-  const current = phrases[phraseIndex];
+ const current=phrases[phraseIndex];
 
-  if(!deleting){
+ if(!deleting){
 
-    typingText.textContent = current.substring(0,charIndex + 1);
-    charIndex++;
+  typingText.textContent=
+   current.substring(0,charIndex+1);
 
-    if(charIndex === current.length){
-      deleting = true;
-      setTimeout(typeEffect,1300);
-      return;
-    }
+  charIndex++;
 
-  }else{
+  if(charIndex===current.length){
 
-    typingText.textContent = current.substring(0,charIndex - 1);
-    charIndex--;
+   deleting=true;
 
-    if(charIndex === 0){
-      deleting = false;
-      phraseIndex = (phraseIndex + 1) % phrases.length;
-    }
+   setTimeout(typeEffect,1300);
+
+   return;
   }
 
-  setTimeout(typeEffect,deleting ? 45 : 75);
+ }else{
+
+  typingText.textContent=
+   current.substring(0,charIndex-1);
+
+  charIndex--;
+
+  if(charIndex===0){
+
+   deleting=false;
+
+   phraseIndex=
+    (phraseIndex+1)%phrases.length;
+  }
+
+ }
+
+ setTimeout(
+  typeEffect,
+  deleting ? 45 : 75
+ );
+
 }
 
 typeEffect();
 
 
 /* REVEAL */
-const revealObserver = new IntersectionObserver((entries)=>{
+
+const observer=
+new IntersectionObserver(
+ entries=>{
 
   entries.forEach(entry=>{
 
-    if(entry.isIntersecting){
-      entry.target.classList.add("active");
-    }
+   if(entry.isIntersecting){
+
+    entry.target.classList.add("active");
+
+   }
 
   });
 
-},{threshold:.12});
+ },
+ {threshold:.12}
+);
 
-document.querySelectorAll(".reveal").forEach(el=>{
-  revealObserver.observe(el);
-});
+document
+.querySelectorAll(".reveal")
+.forEach(el=>observer.observe(el));
 
 
 /* COUNTERS */
-const counterObserver = new IntersectionObserver((entries)=>{
+
+const counterObserver=
+new IntersectionObserver(
+ entries=>{
 
   entries.forEach(entry=>{
 
-    if(!entry.isIntersecting) return;
+   if(!entry.isIntersecting)return;
 
-    const counter = entry.target;
-    const target = Number(counter.dataset.target);
+   const counter=entry.target;
+   const target=
+    Number(counter.dataset.target);
 
-    let current = 0;
+   let current=0;
 
-    const timer = setInterval(()=>{
+   const timer=setInterval(()=>{
 
-      current++;
+    current++;
 
-      counter.textContent = current;
+    counter.textContent=current;
 
-      if(current >= target){
-        clearInterval(timer);
-      }
+    if(current>=target){
 
-    },100);
+     clearInterval(timer);
 
-    counterObserver.unobserve(counter);
-
-  });
-
-},{threshold:.6});
-
-document.querySelectorAll(".stat-number").forEach(el=>{
-  counterObserver.observe(el);
-});
-
-
-/* SKILL BARS */
-const skillObserver = new IntersectionObserver((entries)=>{
-
-  entries.forEach(entry=>{
-
-    if(entry.isIntersecting){
-
-      document.querySelectorAll(".skill-fill").forEach(bar=>{
-        bar.style.width = bar.dataset.width;
-      });
-
-      skillObserver.disconnect();
     }
 
+   },100);
+
+   counterObserver.unobserve(counter);
+
   });
 
-},{threshold:.3});
+ },
+ {threshold:.6}
+);
 
-document.querySelectorAll(".skill-fill").forEach(el=>{
-  skillObserver.observe(el);
+document
+.querySelectorAll(".stat-number")
+.forEach(el=>{
+ counterObserver.observe(el);
 });
 
 
-/* PROGRESS BAR */
+/* SKILLS */
+
+const skillObserver=
+new IntersectionObserver(
+ entries=>{
+
+  entries.forEach(entry=>{
+
+   if(entry.isIntersecting){
+
+    document
+    .querySelectorAll(".skill-fill")
+    .forEach(bar=>{
+     bar.style.width=
+      bar.dataset.width;
+    });
+
+    skillObserver.disconnect();
+
+   }
+
+  });
+
+ },
+ {threshold:.3}
+);
+
+document
+.querySelectorAll(".skill-fill")
+.forEach(el=>{
+ skillObserver.observe(el);
+});
+
+
+/* SCROLL */
+
 window.addEventListener("scroll",()=>{
 
-  const scrollTop = window.scrollY;
+ const scrollTop=window.scrollY;
 
-  const height =
-    document.documentElement.scrollHeight -
-    document.documentElement.clientHeight;
+ const height=
+ document.documentElement.scrollHeight-
+ document.documentElement.clientHeight;
 
-  const progress = height > 0
-    ? (scrollTop / height) * 100
-    : 0;
+ const progress=
+ height>0
+ ? scrollTop/height*100
+ : 0;
 
-  document.getElementById("progressBar").style.width =
-    progress + "%";
+ document
+ .getElementById("progressBar")
+ .style.width=
+ progress+"%";
 
-  const backTop = document.getElementById("backTop");
+ const backTop=
+ document.getElementById("backTop");
 
-  if(scrollTop > 500){
-    backTop.classList.add("show");
-  }else{
-    backTop.classList.remove("show");
-  }
+ if(scrollTop>500){
+
+  backTop.classList.add("show");
+
+ }else{
+
+  backTop.classList.remove("show");
+
+ }
 
 });
 
 
 /* BACK TOP */
-document.getElementById("backTop").addEventListener("click",()=>{
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
+
+document
+.getElementById("backTop")
+.addEventListener("click",()=>{
+
+ window.scrollTo({
+  top:0,
+  behavior:"smooth"
+ });
+
 });
 
 
 /* TOAST */
+
 let toastTimer;
 
 function showToast(message){
 
-  const toast = document.getElementById("toast");
+ const toast=
+ document.getElementById("toast");
 
-  toast.textContent = message;
-  toast.classList.add("show");
+ toast.textContent=message;
 
-  clearTimeout(toastTimer);
+ toast.classList.add("show");
 
-  toastTimer = setTimeout(()=>{
-    toast.classList.remove("show");
-  },2200);
+ clearTimeout(toastTimer);
+
+ toastTimer=setTimeout(()=>{
+
+  toast.classList.remove("show");
+
+ },2200);
+
 }
 
 
-/* LIVE DATE + TIME */
+/* DATE TIME */
+
 function updateDateTime(){
 
-  const now = new Date();
+ const now=new Date();
 
-  const time = new Intl.DateTimeFormat("fa-IR",{
-    hour:"2-digit",
-    minute:"2-digit",
-    second:"2-digit"
-  }).format(now);
+ const time=
+ new Intl.DateTimeFormat("fa-IR",{
+  hour:"2-digit",
+  minute:"2-digit",
+  second:"2-digit"
+ }).format(now);
 
-  let date;
+ let date;
 
-  try{
+ try{
 
-    date = new Intl.DateTimeFormat("fa-IR-u-ca-persian",{
-      dateStyle:"full"
-    }).format(now);
+  date=
+  new Intl.DateTimeFormat(
+   "fa-IR-u-ca-persian",
+   {dateStyle:"full"}
+  ).format(now);
 
-  }catch(e){
+ }catch(e){
 
-    date = new Intl.DateTimeFormat("fa-IR",{
-      dateStyle:"full"
-    }).format(now);
+  date=
+  new Intl.DateTimeFormat(
+   "fa-IR",
+   {dateStyle:"full"}
+  ).format(now);
 
-  }
+ }
 
-  document.getElementById("liveTime").textContent = time;
-  document.getElementById("liveDate").textContent = date;
+ document.getElementById("liveTime")
+ .textContent=time;
+
+ document.getElementById("liveDate")
+ .textContent=date;
+
 }
 
 updateDateTime();
+
 setInterval(updateDateTime,1000);
 
 
 /* QUOTES */
-const quotes = [
-  "هر قدم کوچک، بخشی از مسیر پیشرفت است. 🚀",
-  "یادگیری از کنجکاوی شروع می‌شود. 📚",
-  "ایده وقتی ارزشمندتر می‌شود که به عمل تبدیل شود. 💡",
-  "مسیر پیشرفت با تجربه کردن ساخته می‌شود. 🌱",
-  "هر روز می‌تواند شروع یک چیز جدید باشد. ✨",
-  "آینده از قدم‌هایی ساخته می‌شود که امروز برمی‌داری. 🚀"
+
+const quotes=[
+
+ "هر قدم کوچک، بخشی از مسیر پیشرفت است. 🚀",
+
+ "یادگیری از کنجکاوی شروع می‌شود. 📚",
+
+ "ایده وقتی ارزشمندتر می‌شود که به عمل تبدیل شود. 💡",
+
+ "مسیر پیشرفت با تجربه کردن ساخته می‌شود. 🌱",
+
+ "هر روز می‌تواند شروع یک چیز جدید باشد. ✨",
+
+ "آینده از قدم‌هایی ساخته می‌شود که امروز برمی‌داری. 🚀"
+
 ];
 
-let quoteIndex = Math.floor(Math.random() * quotes.length);
+let quoteIndex=
+Math.floor(Math.random()*quotes.length);
 
 function showQuote(){
 
-  document.getElementById("quoteText").textContent =
-    quotes[quoteIndex];
+ document.getElementById("quoteText")
+ .textContent=quotes[quoteIndex];
 
 }
 
 showQuote();
 
-document.getElementById("newQuote").addEventListener("click",()=>{
+document
+.getElementById("newQuote")
+.addEventListener("click",()=>{
 
-  quoteIndex = (quoteIndex + 1) % quotes.length;
+ quoteIndex=
+ (quoteIndex+1)%quotes.length;
 
-  showQuote();
+ showQuote();
 
-  showToast("💡 جمله جدید نمایش داده شد");
+ showToast("💡 جمله جدید نمایش داده شد");
 
 });
 
 
 /* RANDOM FACT */
-const facts = [
-  "به هوش مصنوعی علاقه دارم 🤖",
-  "فوتبال یکی از علایق من است ⚽",
-  "به ساخت وب‌سایت علاقه دارم 🌐",
-  "یادگیری مداوم برای من مهم است 📚",
-  "به دنیای تکنولوژی علاقه‌مندم 💻",
-  "GitHub بخشی از مسیر یادگیری منه 🐙"
+
+const facts=[
+
+ "به هوش مصنوعی علاقه دارم 🤖",
+
+ "فوتبال یکی از علایق من است ⚽",
+
+ "به ساخت وب‌سایت علاقه دارم 🌐",
+
+ "یادگیری مداوم برای من مهم است 📚",
+
+ "به دنیای تکنولوژی علاقه‌مندم 💻",
+
+ "GitHub بخشی از مسیر یادگیری منه 🐙"
+
 ];
 
-document.getElementById("randomFact").addEventListener("click",()=>{
+document
+.getElementById("randomFact")
+.addEventListener("click",()=>{
 
-  const random =
-    facts[Math.floor(Math.random() * facts.length)];
+ const random=
+ facts[Math.floor(Math.random()*facts.length)];
 
-  document.getElementById("randomResult").textContent =
-    random;
+ document.getElementById("randomResult")
+ .textContent=random;
 
-  showToast("🎲 یک مورد تصادفی انتخاب شد");
+ showToast("🎲 یک مورد تصادفی انتخاب شد");
+
+});
+
+
+/* COPY */
+
+function copyText(text,message){
+
+ if(navigator.clipboard){
+
+  navigator.clipboard
+  .writeText(text)
+  .then(()=>{
+   showToast(message);
+  })
+  .catch(()=>{
+   showToast("❌ کپی انجام نشد");
+  });
+
+ }else{
+
+  const area=document.createElement("textarea");
+
+  area.value=text;
+
+  document.body.appendChild(area);
+
+  area.select();
+
+  document.execCommand("copy");
+
+  area.remove();
+
+  showToast(message);
+
+ }
+
+}
+
+
+/* SHARE */
+
+document
+.getElementById("shareBtn")
+.addEventListener("click",async()=>{
+
+ const shareData={
+
+  title:"امیررضا غلامی | وب‌سایت شخصی",
+
+  text:"وب‌سایت شخصی امیررضا غلامی 🚀",
+
+  url:"https://amirrezagholami86.github.io/"
+
+ };
+
+ if(navigator.share){
+
+  try{
+
+   await navigator.share(shareData);
+
+   showToast("📤 سایت به اشتراک گذاشته شد");
+
+  }catch(e){
+
+   if(e.name!=="AbortError"){
+    showToast("❌ اشتراک‌گذاری انجام نشد");
+   }
+
+  }
+
+ }else{
+
+  copyText(
+   shareData.url,
+   "🔗 لینک سایت کپی شد"
+  );
+
+ }
 
 });
 
 
 /* SEARCH */
-const searchMap = [
 
-  {
-    words:["خانه","home"],
-    target:"top",
-    name:"خانه"
-  },
+const searchMap=[
 
-  {
-    words:["درباره","about","معرفی"],
-    target:"about",
-    name:"درباره من"
-  },
+ {
+  words:["خانه","home"],
+  target:"top",
+  name:"خانه"
+ },
 
-  {
-    words:["داشبورد","ساعت","تاریخ"],
-    target:"dashboard",
-    name:"داشبورد"
-  },
+ {
+  words:["درباره","about","معرفی"],
+  target:"about",
+  name:"درباره من"
+ },
 
-  {
-    words:["علاقه","علایق","فوتبال","هوش مصنوعی","ai","تکنولوژی"],
-    target:"interests",
-    name:"علایق"
-  },
+ {
+  words:["داشبورد","ساعت","تاریخ"],
+  target:"dashboard",
+  name:"داشبورد"
+ },
 
-  {
-    words:["مهارت","skills","html","css","javascript"],
-    target:"skills",
-    name:"مهارت‌ها"
-  },
+ {
+  words:[
+   "علاقه",
+   "علایق",
+   "فوتبال",
+   "هوش مصنوعی",
+   "ai",
+   "تکنولوژی"
+  ],
+  target:"interests",
+  name:"علایق"
+ },
 
-  {
-    words:["پروژه","projects","github"],
-    target:"projects",
-    name:"پروژه‌ها"
-  },
+ {
+  words:["مهارت","skills","html","css","javascript"],
+  target:"skills",
+  name:"مهارت‌ها"
+ },
 
-  {
-    words:["فعالیت","activity"],
-    target:"activities",
-    name:"فعالیت‌ها"
-  },
+ {
+  words:["پروژه","projects","github"],
+  target:"projects",
+  name:"پروژه‌ها"
+ },
 
-  {
-    words:["گالری","عکس","تصویر"],
-    target:"gallery",
-    name:"گالری"
-  },
+ {
+  words:["دستاورد","دستاوردها"],
+  target:"achievements",
+  name:"دستاوردها"
+ },
 
-  {
-    words:["مسیر","timeline"],
-    target:"timeline",
-    name:"مسیر من"
-  },
+ {
+  words:["گالری","عکس","تصویر"],
+  target:"gallery",
+  name:"گالری"
+ },
 
-  {
-    words:["هدف","اهداف","goals"],
-    target:"goals",
-    name:"اهداف"
-  },
+ {
+  words:["مسیر","timeline"],
+  target:"timeline",
+  name:"مسیر من"
+ },
 
-  {
-    words:["ارتباط","تماس","contact","تلگرام","اینستاگرام","واتساپ","ایمیل"],
-    target:"contact",
-    name:"ارتباط"
-  }
+ {
+  words:["هدف","اهداف","goals"],
+  target:"goals",
+  name:"اهداف"
+ },
+
+ {
+  words:[
+   "ارتباط",
+   "تماس",
+   "contact",
+   "تلگرام",
+   "اینستاگرام",
+   "واتساپ",
+   "ایمیل"
+  ],
+  target:"contact",
+  name:"ارتباط"
+ },
+
+ {
+  words:["qr","کد","qr code"],
+  target:"qrcode-section",
+  name:"QR Code"
+ }
 
 ];
 
 function performSearch(){
 
-  const input =
-    document.getElementById("siteSearch");
+ const input=
+ document.getElementById("siteSearch");
 
-  const value =
-    input.value.trim().toLowerCase();
+ const value=
+ input.value.trim().toLowerCase();
 
-  if(!value){
+ if(!value){
 
-    showToast("🔍 اول چیزی برای جست‌وجو بنویس");
+  showToast(
+   "🔍 اول چیزی برای جست‌وجو بنویس"
+  );
 
-    input.focus();
+  input.focus();
 
-    return;
-  }
+  return;
 
-  let result = null;
+ }
 
-  for(const item of searchMap){
+ let result=null;
 
-    if(
-      item.words.some(word =>
-        value.includes(word.toLowerCase())
-      )
-    ){
+ for(const item of searchMap){
 
-      result = item;
-      break;
+  if(
+   item.words.some(word=>
+    value.includes(word.toLowerCase())
+   )
+  ){
 
-    }
+   result=item;
 
-  }
-
-  if(result){
-
-    document.getElementById(result.target)
-      .scrollIntoView({
-        behavior:"smooth"
-      });
-
-    showToast("✅ رفتیم به بخش «" + result.name + "»");
-
-  }else{
-
-    showToast("❌ چیزی با این عنوان پیدا نشد");
+   break;
 
   }
+
+ }
+
+ if(result){
+
+  document
+  .getElementById(result.target)
+  .scrollIntoView({
+   behavior:"smooth"
+  });
+
+  showToast(
+   "✅ رفتیم به بخش «"+
+   result.name+
+   "»"
+  );
+
+ }else{
+
+  showToast(
+   "❌ چیزی با این عنوان پیدا نشد"
+  );
+
+ }
 
 }
 
-document.getElementById("searchBtn")
-  .addEventListener("click",performSearch);
+document
+.getElementById("searchBtn")
+.addEventListener("click",performSearch);
 
-document.getElementById("siteSearch")
-  .addEventListener("keydown",(event)=>{
+document
+.getElementById("siteSearch")
+.addEventListener("keydown",event=>{
 
-    if(event.key === "Enter"){
-      performSearch();
-    }
+ if(event.key==="Enter"){
+  performSearch();
+ }
 
-  });
+});
 
 
 /* QUICK MENU */
-const quickMenu =
-  document.getElementById("quickMenu");
 
-document.getElementById("quickToggle")
-  .addEventListener("click",()=>{
+const quickMenu=
+document.getElementById("quickMenu");
 
-    quickMenu.classList.toggle("open");
+document
+.getElementById("quickToggle")
+.addEventListener("click",()=>{
 
-  });
+ quickMenu.classList.toggle("open");
 
-document.querySelectorAll(".quick-link").forEach(link=>{
+});
 
-  link.addEventListener("click",()=>{
+document
+.querySelectorAll(".quick-link")
+.forEach(link=>{
 
-    quickMenu.classList.remove("open");
+ link.addEventListener("click",()=>{
 
-  });
+  quickMenu.classList.remove("open");
+
+ });
+
+});
+
+
+/* QR CODE */
+
+window.addEventListener("load",()=>{
+
+ const qrElement=
+ document.getElementById("qrcode");
+
+ if(typeof QRCode!=="undefined"){
+
+  new QRCode(
+   qrElement,
+   {
+    text:"https://amirrezagholami86.github.io/",
+    width:170,
+    height:170,
+    colorDark:"#111111",
+    colorLight:"#ffffff",
+    correctLevel:QRCode.CorrectLevel.H
+   }
+  );
+
+ }
 
 });
 
 
 /* PARTICLES */
-const canvas = document.getElementById("particles");
-const ctx = canvas.getContext("2d");
 
-let particles = [];
+const canvas=
+document.getElementById("particles");
+
+const ctx=canvas.getContext("2d");
+
+let particles=[];
 
 function resizeCanvas(){
 
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+ canvas.width=window.innerWidth;
+ canvas.height=window.innerHeight;
 
 }
 
 resizeCanvas();
 
-window.addEventListener("resize",resizeCanvas);
+window.addEventListener(
+ "resize",
+ resizeCanvas
+);
 
 for(let i=0;i<55;i++){
 
-  particles.push({
-    x:Math.random()*window.innerWidth,
-    y:Math.random()*window.innerHeight,
-    r:Math.random()*2+0.5,
-    dx:(Math.random()-.5)*.35,
-    dy:(Math.random()-.5)*.35
-  });
+ particles.push({
+
+  x:Math.random()*window.innerWidth,
+
+  y:Math.random()*window.innerHeight,
+
+  r:Math.random()*2+.5,
+
+  dx:(Math.random()-.5)*.35,
+
+  dy:(Math.random()-.5)*.35
+
+ });
 
 }
 
 function animateParticles(){
 
-  ctx.clearRect(0,0,canvas.width,canvas.height);
+ ctx.clearRect(
+  0,
+  0,
+  canvas.width,
+  canvas.height
+ );
 
-  particles.forEach(p=>{
+ particles.forEach(p=>{
 
-    p.x += p.dx;
-    p.y += p.dy;
+  p.x+=p.dx;
+  p.y+=p.dy;
 
-    if(p.x < 0 || p.x > canvas.width) p.dx *= -1;
-    if(p.y < 0 || p.y > canvas.height) p.dy *= -1;
+  if(
+   p.x<0 ||
+   p.x>canvas.width
+  ){
+   p.dx*=-1;
+  }
 
-    ctx.beginPath();
-    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+  if(
+   p.y<0 ||
+   p.y>canvas.height
+  ){
+   p.dy*=-1;
+  }
 
-    ctx.fillStyle =
-      document.body.classList.contains("light")
-      ? "rgba(0,120,255,.18)"
-      : "rgba(0,217,255,.25)";
+  ctx.beginPath();
 
-    ctx.fill();
+  ctx.arc(
+   p.x,
+   p.y,
+   p.r,
+   0,
+   Math.PI*2
+  );
 
-  });
+  ctx.fillStyle=
+   document.body.classList.contains("light")
+   ? "rgba(0,120,255,.18)"
+   : "rgba(0,217,255,.25)";
 
-  requestAnimationFrame(animateParticles);
+  ctx.fill();
+
+ });
+
+ requestAnimationFrame(
+  animateParticles
+ );
 
 }
 
