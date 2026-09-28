@@ -1,2700 +1,2170 @@
-<!DOCTYPE html><html lang="fa" dir="rtl">
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>امیررضا غلامی | وب‌سایت شخصی</title><meta name="description" content="وب‌سایت شخصی امیررضا غلامی؛ علاقه‌مند به تکنولوژی، هوش مصنوعی، وب و فوتبال.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>امیررضا غلامی | وب‌سایت شخصی</title>
+
+<meta name="description" content="وب‌سایت شخصی امیررضا غلامی؛ علاقه‌مند به تکنولوژی، هوش مصنوعی، وب و فوتبال.">
 <meta name="author" content="امیررضا غلامی">
-<meta name="robots" content="index, follow"><link rel="canonical" href="https://amirrezagholami86.github.io/"><meta property="og:type" content="website">
+<meta name="robots" content="index, follow">
+
+<link rel="canonical" href="https://amirrezagholami86.github.io/">
+
+<meta property="og:type" content="website">
 <meta property="og:title" content="امیررضا غلامی | وب‌سایت شخصی">
-<meta property="og:description" content="تکنولوژی، هوش مصنوعی، وب و علایق شخصی.">
+<meta property="og:description" content="تکنولوژی، هوش مصنوعی، وب و علایق شخصی امیررضا غلامی">
 <meta property="og:url" content="https://amirrezagholami86.github.io/">
-<meta property="og:image" content="https://amirrezagholami86.github.io/profile.jpg">
-<meta property="og:locale" content="fa_IR"><meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="profile.jpg">
+<meta property="og:locale" content="fa_IR">
+
+<meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="امیررضا غلامی | وب‌سایت شخصی">
-<meta name="twitter:description" content="تکنولوژی، هوش مصنوعی، وب و علایق شخصی.">
-<meta name="twitter:image" content="https://amirrezagholami86.github.io/profile.jpg"><script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script><script type="application/ld+json">
+<meta name="twitter:description" content="تکنولوژی، هوش مصنوعی، وب و علایق شخصی">
+<meta name="twitter:image" content="profile.jpg">
+
+<script type="application/ld+json">
 {
- "@context":"https://schema.org",
- "@type":"Person",
- "name":"امیررضا غلامی",
- "url":"https://amirrezagholami86.github.io/",
- "image":"https://amirrezagholami86.github.io/profile.jpg",
- "sameAs":[
-  "https://github.com/amirrezagholami86",
-  "https://www.instagram.com/amirrezagholami.ir",
-  "https://t.me/Amirrezagholami_ir"
- ]
+  "@context":"https://schema.org",
+  "@type":"Person",
+  "name":"امیررضا غلامی",
+  "url":"https://amirrezagholami86.github.io/",
+  "image":"https://amirrezagholami86.github.io/profile.jpg",
+  "sameAs":[
+    "https://github.com/amirrezagholami86",
+    "https://www.instagram.com/amirrezagholami.ir",
+    "https://t.me/Amirrezagholami_ir"
+  ]
 }
-</script><style>
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+
+<style>
+:root{
+  --bg:#07111f;
+  --bg2:#0c1728;
+  --card:rgba(15,29,49,.78);
+  --text:#f4f7fb;
+  --muted:#aebbd0;
+  --primary:#00d9ff;
+  --secondary:#8b5cf6;
+  --accent:#22c55e;
+  --border:rgba(255,255,255,.09);
+  --shadow:0 20px 60px rgba(0,0,0,.35);
+}
 
 *{
- box-sizing:border-box;
- margin:0;
- padding:0;
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
 
 html{
- scroll-behavior:smooth;
- scroll-padding-top:95px;
+  scroll-behavior:smooth;
 }
 
 body{
- font-family:Tahoma,Arial,sans-serif;
- background:#070a12;
- color:#fff;
- line-height:1.8;
- overflow-x:hidden;
- transition:.4s;
+  font-family:Tahoma,Arial,sans-serif;
+  background:
+    radial-gradient(circle at 15% 10%,rgba(0,217,255,.10),transparent 28%),
+    radial-gradient(circle at 85% 20%,rgba(139,92,246,.12),transparent 30%),
+    linear-gradient(135deg,var(--bg),var(--bg2));
+  color:var(--text);
+  line-height:1.9;
+  overflow-x:hidden;
+  transition:.35s;
 }
 
 body.light{
- background:#f4f7fb;
- color:#151923;
+  --bg:#eef5ff;
+  --bg2:#ffffff;
+  --card:rgba(255,255,255,.82);
+  --text:#172033;
+  --muted:#596579;
+  --border:rgba(20,40,70,.10);
+  --shadow:0 18px 50px rgba(30,60,100,.13);
 }
 
-body.light .muted{
- color:#56627a!important;
+body.theme-green{
+  --primary:#22c55e;
+  --secondary:#06b6d4;
+}
+
+body.theme-orange{
+  --primary:#f97316;
+  --secondary:#eab308;
+}
+
+body.theme-pink{
+  --primary:#ec4899;
+  --secondary:#8b5cf6;
 }
 
 a{
- color:inherit;
- text-decoration:none;
+  color:inherit;
+  text-decoration:none;
 }
 
-button,input{
- font-family:inherit;
-}
-
-section{
- width:min(1100px,92%);
- margin:auto;
- padding:72px 0;
- position:relative;
- z-index:2;
-}
-
-.section-title{
- text-align:center;
- font-size:30px;
- margin-bottom:35px;
-}
-
-.section-title span{
- color:#00d9ff;
-}
-
-.muted{
- color:#aab6ce;
-}
-
-/* BACKGROUND */
-
-.bg-orb{
- position:fixed;
- width:430px;
- height:430px;
- border-radius:50%;
- filter:blur(80px);
- opacity:.18;
- pointer-events:none;
- z-index:0;
- animation:orbMove 12s ease-in-out infinite alternate;
-}
-
-.orb-one{
- background:#00d9ff;
- top:-150px;
- right:-100px;
-}
-
-.orb-two{
- background:#7357ff;
- bottom:-160px;
- left:-120px;
- animation-delay:-5s;
-}
-
-@keyframes orbMove{
- from{transform:translate(0,0) scale(1)}
- to{transform:translate(70px,40px) scale(1.15)}
+button{
+  font-family:inherit;
 }
 
 #particles{
- position:fixed;
- inset:0;
- pointer-events:none;
- z-index:1;
- opacity:.38;
+  position:fixed;
+  inset:0;
+  z-index:-3;
+  pointer-events:none;
+  opacity:.5;
 }
 
-/* PROGRESS */
-
-#progressBar{
- position:fixed;
- top:0;
- right:0;
- height:4px;
- width:0;
- background:linear-gradient(90deg,#00d9ff,#7357ff,#ff3cac);
- z-index:100000;
+.bg-orb{
+  position:fixed;
+  width:280px;
+  height:280px;
+  border-radius:50%;
+  filter:blur(70px);
+  opacity:.13;
+  z-index:-2;
+  pointer-events:none;
 }
 
-/* NAV */
+.orb1{
+  background:var(--primary);
+  top:8%;
+  left:-100px;
+}
+
+.orb2{
+  background:var(--secondary);
+  right:-100px;
+  top:45%;
+}
+
+.mouse-glow{
+  position:fixed;
+  width:330px;
+  height:330px;
+  border-radius:50%;
+  pointer-events:none;
+  z-index:-1;
+  background:radial-gradient(circle,var(--primary),transparent 65%);
+  opacity:.07;
+  transform:translate(-50%,-50%);
+  transition:opacity .2s;
+}
 
 .navbar{
- position:fixed;
- top:12px;
- left:50%;
- transform:translateX(-50%);
- width:min(1100px,94%);
- z-index:9999;
- display:flex;
- gap:7px;
- padding:9px;
- background:rgba(10,14,28,.75);
- border:1px solid rgba(255,255,255,.1);
- backdrop-filter:blur(16px);
- border-radius:18px;
- overflow-x:auto;
- scrollbar-width:none;
-}
-
-.navbar::-webkit-scrollbar{
- display:none;
-}
-
-.navbar a{
- white-space:nowrap;
- padding:8px 12px;
- border-radius:12px;
- font-size:13px;
- color:#dbe5ff;
- transition:.25s;
-}
-
-.navbar a:hover,
-.navbar a.active{
- background:rgba(0,217,255,.14);
- color:#00d9ff;
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:1000;
+  backdrop-filter:blur(18px);
+  background:rgba(5,12,24,.72);
+  border-bottom:1px solid var(--border);
 }
 
 body.light .navbar{
- background:rgba(255,255,255,.86);
- border-color:rgba(0,0,0,.08);
+  background:rgba(255,255,255,.78);
 }
 
-body.light .navbar a{
- color:#333;
+.nav-inner{
+  max-width:1200px;
+  margin:auto;
+  padding:10px 16px;
+  display:flex;
+  align-items:center;
+  gap:10px;
 }
 
-body.light .navbar a.active{
- color:#008bb0;
- background:rgba(0,180,220,.1);
+.logo{
+  font-weight:bold;
+  color:var(--primary);
+  white-space:nowrap;
+  font-size:15px;
 }
 
-/* CONTROLS */
+.nav-links{
+  display:flex;
+  gap:5px;
+  overflow-x:auto;
+  scrollbar-width:none;
+  flex:1;
+}
 
-.control-panel{
- position:fixed;
- left:18px;
- top:85px;
- z-index:9998;
- display:flex;
- flex-direction:column;
- gap:8px;
+.nav-links::-webkit-scrollbar{
+  display:none;
+}
+
+.nav-links a{
+  padding:7px 10px;
+  border-radius:12px;
+  white-space:nowrap;
+  font-size:13px;
+  color:var(--muted);
+  transition:.25s;
+}
+
+.nav-links a:hover,
+.nav-links a.active{
+  color:var(--text);
+  background:rgba(255,255,255,.08);
+}
+
+.mobile-menu-btn{
+  display:none;
+  border:1px solid var(--border);
+  background:var(--card);
+  color:var(--text);
+  border-radius:12px;
+  padding:8px 12px;
+  cursor:pointer;
+  font-size:20px;
+}
+
+.controls{
+  position:fixed;
+  left:16px;
+  top:78px;
+  z-index:900;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
 }
 
 .control-btn{
- width:44px;
- height:44px;
- border:none;
- border-radius:14px;
- cursor:pointer;
- background:rgba(255,255,255,.1);
- color:#fff;
- font-size:19px;
- backdrop-filter:blur(10px);
- transition:.3s;
+  width:42px;
+  height:42px;
+  border:1px solid var(--border);
+  border-radius:14px;
+  background:var(--card);
+  color:var(--text);
+  cursor:pointer;
+  backdrop-filter:blur(12px);
+  box-shadow:var(--shadow);
+  transition:.25s;
 }
 
 .control-btn:hover{
- transform:scale(1.08);
+  transform:translateY(-3px) scale(1.04);
 }
 
-body.light .control-btn{
- background:#fff;
- color:#111;
- box-shadow:0 5px 20px rgba(0,0,0,.1);
+.container{
+  width:min(1100px,92%);
+  margin:auto;
 }
 
-/* HERO */
+section{
+  padding:85px 0 25px;
+  scroll-margin-top:65px;
+}
 
 .hero{
- min-height:100vh;
- display:flex;
- align-items:center;
- justify-content:center;
- text-align:center;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding-top:110px;
 }
 
-.hero-content{
- animation:pageEntry .9s ease;
+.profile-wrap{
+  position:relative;
+  width:165px;
+  height:165px;
+  margin:0 auto 22px;
 }
 
-.profile-img{
- width:175px;
- height:175px;
- object-fit:cover;
- border-radius:50%;
- border:4px solid #00d9ff;
- padding:5px;
- box-shadow:0 0 30px rgba(0,217,255,.4);
- animation:profileGlow 3s infinite alternate;
- transition:.35s;
+.profile-wrap::before{
+  content:"";
+  position:absolute;
+  inset:-7px;
+  border-radius:50%;
+  background:conic-gradient(
+    var(--primary),
+    var(--secondary),
+    var(--primary)
+  );
+  animation:spin 5s linear infinite;
 }
 
-.profile-img:hover{
- transform:scale(1.05) rotate(2deg);
+.profile{
+  position:relative;
+  width:100%;
+  height:100%;
+  border-radius:50%;
+  object-fit:cover;
+  border:6px solid var(--bg);
+  display:block;
+  z-index:2;
 }
 
-.hero h1{
- font-size:45px;
- margin:20px 0 8px;
-}
-
-.hero h1 span{
- color:#00d9ff;
-}
-
-.typing{
- min-height:35px;
- color:#9ca9c9;
- font-size:18px;
-}
-
-.hero-buttons,
-.chips{
- display:flex;
- justify-content:center;
- flex-wrap:wrap;
- gap:11px;
-}
-
-.hero-buttons{
- margin-top:25px;
-}
-
-.chips{
- margin-top:22px;
-}
-
-.chip{
- padding:6px 13px;
- border-radius:20px;
- background:rgba(255,255,255,.06);
- color:#c9d4ee;
- border:1px solid rgba(255,255,255,.08);
-}
-
-/* BUTTONS */
-
-.btn{
- display:inline-block;
- padding:11px 20px;
- border-radius:13px;
- border:1px solid rgba(255,255,255,.14);
- background:rgba(255,255,255,.07);
- color:inherit;
- cursor:pointer;
- transition:.3s;
-}
-
-.btn.primary{
- background:linear-gradient(135deg,#00b8ff,#7357ff);
- border:none;
- color:#fff;
-}
-
-.btn:hover{
- transform:translateY(-4px);
- box-shadow:0 10px 25px rgba(0,0,0,.25);
-}
-
-/* CARDS */
-
-.card{
- background:rgba(255,255,255,.045);
- border:1px solid rgba(255,255,255,.09);
- border-radius:22px;
- padding:25px;
- transition:.3s;
-}
-
-.card:hover{
- transform:translateY(-6px);
- border-color:rgba(0,217,255,.35);
- box-shadow:0 15px 40px rgba(0,0,0,.18);
-}
-
-body.light .card{
- background:#fff;
- border-color:#e4e9f1;
- box-shadow:0 10px 30px rgba(20,40,80,.06);
-}
-
-.grid{
- display:grid;
- grid-template-columns:repeat(3,1fr);
- gap:18px;
-}
-
-.grid-2{
- display:grid;
- grid-template-columns:repeat(2,1fr);
- gap:18px;
-}
-
-/* ABOUT */
-
-.profile-card{
- display:grid;
- grid-template-columns:240px 1fr;
- gap:30px;
- align-items:center;
-}
-
-.profile-card img{
- width:220px;
- height:220px;
- object-fit:cover;
- border-radius:25px;
-}
-
-.profile-status{
- display:inline-flex;
- align-items:center;
- gap:8px;
- margin:10px 0 15px;
- padding:6px 12px;
- border-radius:20px;
- background:rgba(50,220,120,.1);
- color:#55e994;
- font-size:13px;
-}
-
-.status-dot{
- width:9px;
- height:9px;
- border-radius:50%;
- background:#42e87d;
- box-shadow:0 0 10px #42e87d;
-}
-
-.info-boxes{
- display:grid;
- grid-template-columns:repeat(2,1fr);
- gap:12px;
- margin-top:20px;
-}
-
-.info-box{
- padding:15px;
- border-radius:15px;
- background:rgba(0,217,255,.06);
- border:1px solid rgba(0,217,255,.12);
-}
-
-.quick-profile-actions{
- display:flex;
- gap:9px;
- flex-wrap:wrap;
- margin-top:18px;
-}
-
-/* STATS */
-
-.stats{
- display:grid;
- grid-template-columns:repeat(4,1fr);
- gap:15px;
- margin-top:25px;
-}
-
-.stat{
- text-align:center;
- padding:20px;
- border-radius:18px;
- background:rgba(255,255,255,.05);
-}
-
-.stat-number{
- font-size:35px;
- font-weight:bold;
- color:#00d9ff;
-}
-
-/* DASHBOARD */
-
-.dashboard-main{
- display:grid;
- grid-template-columns:1.4fr 1fr;
- gap:18px;
-}
-
-.live-box{
- text-align:center;
- padding:30px;
-}
-
-.live-time{
- font-size:42px;
- font-weight:bold;
- color:#00d9ff;
- direction:ltr;
-}
-
-.live-date{
- margin-top:8px;
- color:#aeb9d2;
+@keyframes spin{
+  to{transform:rotate(360deg)}
 }
 
 .status{
- display:inline-flex;
- align-items:center;
- gap:7px;
- margin-top:18px;
- padding:7px 13px;
- border-radius:20px;
- background:rgba(50,220,120,.1);
- color:#55e994;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:6px 13px;
+  border:1px solid var(--border);
+  background:var(--card);
+  border-radius:999px;
+  color:var(--muted);
+  font-size:13px;
+  margin-bottom:18px;
 }
 
-.quote-box{
- min-height:100%;
- display:flex;
- flex-direction:column;
- justify-content:center;
+.status-dot{
+  width:9px;
+  height:9px;
+  background:#22c55e;
+  border-radius:50%;
+  box-shadow:0 0 12px #22c55e;
 }
 
-.quote{
- font-size:20px;
- line-height:2;
+h1{
+  font-size:clamp(32px,7vw,58px);
+  margin-bottom:5px;
 }
 
-/* SKILLS */
-
-.skill{
- margin-bottom:22px;
+.gradient-text{
+  background:linear-gradient(90deg,var(--primary),var(--secondary));
+  -webkit-background-clip:text;
+  color:transparent;
 }
 
-.skill-top{
- display:flex;
- justify-content:space-between;
- margin-bottom:8px;
+.typing{
+  color:var(--muted);
+  min-height:32px;
+  font-size:18px;
 }
 
-.skill-bar{
- height:10px;
- border-radius:20px;
- background:rgba(255,255,255,.08);
- overflow:hidden;
+.hero-buttons,
+.quick-actions{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:10px;
+  margin-top:25px;
 }
 
-.skill-fill{
- height:100%;
- width:0;
- border-radius:20px;
- background:linear-gradient(90deg,#00d9ff,#7357ff);
- transition:width 1.4s ease;
+.btn{
+  border:1px solid var(--border);
+  padding:10px 17px;
+  border-radius:14px;
+  background:var(--card);
+  color:var(--text);
+  cursor:pointer;
+  transition:.25s;
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
 }
 
-/* PROJECTS */
-
-.project-icon{
- font-size:40px;
- margin-bottom:12px;
+.btn:hover{
+  transform:translateY(-3px);
+  border-color:var(--primary);
+  box-shadow:0 10px 30px rgba(0,0,0,.18);
 }
 
-.project-card p{
- color:#aeb9d2;
+.btn.primary{
+  background:linear-gradient(135deg,var(--primary),var(--secondary));
+  color:white;
+  border:0;
 }
 
-.tags{
- display:flex;
- flex-wrap:wrap;
- gap:9px;
- margin-top:15px;
+.section-title{
+  text-align:center;
+  font-size:30px;
+  margin-bottom:10px;
+}
+
+.section-subtitle{
+  text-align:center;
+  color:var(--muted);
+  margin-bottom:30px;
+}
+
+.card-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:17px;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:24px;
+  backdrop-filter:blur(14px);
+  box-shadow:var(--shadow);
+  transition:.3s;
+}
+
+.card:hover{
+  transform:translateY(-7px);
+  border-color:rgba(255,255,255,.18);
+}
+
+.card h3{
+  margin-bottom:8px;
+}
+
+.muted{
+  color:var(--muted);
+}
+
+.profile-info{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+}
+
+.info-box{
+  padding:18px;
+  border:1px solid var(--border);
+  background:var(--card);
+  border-radius:18px;
+  text-align:center;
+}
+
+.info-icon{
+  font-size:26px;
+  display:block;
+  margin-bottom:5px;
+}
+
+.dashboard-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+}
+
+.dashboard-card{
+  text-align:center;
+}
+
+.big-number{
+  font-size:28px;
+  font-weight:bold;
+  color:var(--primary);
+}
+
+.digital-id{
+  display:grid;
+  grid-template-columns:180px 1fr;
+  gap:25px;
+  align-items:center;
+}
+
+.digital-id-image{
+  width:170px;
+  height:170px;
+  object-fit:cover;
+  border-radius:25px;
+  border:3px solid var(--primary);
+  box-shadow:0 0 35px rgba(0,217,255,.16);
+}
+
+.id-details h3{
+  font-size:27px;
+}
+
+.id-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin:12px 0;
 }
 
 .tag{
- padding:6px 11px;
- border-radius:12px;
- background:rgba(0,217,255,.08);
- color:#8feaff;
- transition:.25s;
+  padding:5px 11px;
+  border-radius:999px;
+  background:rgba(255,255,255,.07);
+  border:1px solid var(--border);
+  font-size:13px;
 }
 
-.tag:hover{
- transform:translateY(-3px);
+.badges{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
 }
 
-.github-feature{
- display:flex;
- justify-content:space-between;
- align-items:center;
- gap:20px;
- flex-wrap:wrap;
- margin-top:20px;
+.badge{
+  text-align:center;
+  padding:24px 12px;
 }
 
-.github-card{
- display:grid;
- grid-template-columns:80px 1fr;
- gap:20px;
- align-items:center;
+.badge-icon{
+  font-size:38px;
+  display:block;
+  margin-bottom:8px;
 }
 
-.github-logo{
- width:70px;
- height:70px;
- display:flex;
- align-items:center;
- justify-content:center;
- font-size:42px;
- border-radius:20px;
- background:rgba(255,255,255,.07);
+.badge small{
+  color:var(--muted);
 }
 
-/* ACHIEVEMENTS */
-
-.achievement{
- text-align:center;
+.theme-buttons{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:10px;
+  margin-top:20px;
 }
 
-.achievement-icon{
- font-size:45px;
- margin-bottom:10px;
+.theme-btn{
+  border:1px solid var(--border);
+  background:var(--card);
+  color:var(--text);
+  padding:9px 15px;
+  border-radius:12px;
+  cursor:pointer;
 }
 
-/* TOOLS */
-
-.tool-card{
- text-align:center;
- cursor:default;
+.progress-row{
+  margin:17px 0;
 }
 
-.tool-icon{
- width:75px;
- height:75px;
- margin:0 auto 15px;
- display:flex;
- align-items:center;
- justify-content:center;
- border-radius:22px;
- background:rgba(0,217,255,.08);
- font-size:38px;
- transition:.3s;
+.progress-head{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:7px;
 }
 
-.tool-card:hover .tool-icon{
- transform:rotate(-5deg) scale(1.08);
- box-shadow:0 0 25px rgba(0,217,255,.15);
+.progress{
+  height:9px;
+  background:rgba(255,255,255,.08);
+  border-radius:20px;
+  overflow:hidden;
 }
 
-.tool-label{
- display:inline-block;
- margin-top:12px;
- padding:5px 11px;
- border-radius:12px;
- font-size:12px;
- background:rgba(255,255,255,.06);
- color:#aab6ce;
+.progress span{
+  display:block;
+  height:100%;
+  width:0;
+  background:linear-gradient(90deg,var(--primary),var(--secondary));
+  border-radius:20px;
+  transition:1.2s;
 }
 
-/* PROGRESS */
-
-.progress-card{
- text-align:center;
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+  margin-top:20px;
 }
 
-.progress-circle{
- width:145px;
- height:145px;
- margin:0 auto 20px;
- border-radius:50%;
- display:flex;
- align-items:center;
- justify-content:center;
- background:conic-gradient(#00d9ff 0 72%,rgba(255,255,255,.08) 72% 100%);
- position:relative;
+.stat{
+  text-align:center;
 }
 
-.progress-circle::before{
- content:"";
- position:absolute;
- width:112px;
- height:112px;
- border-radius:50%;
- background:#101522;
+.stat-number{
+  font-size:32px;
+  font-weight:bold;
+  color:var(--primary);
 }
-
-body.light .progress-circle::before{
- background:#fff;
-}
-
-.progress-number{
- position:relative;
- z-index:2;
- font-size:27px;
- font-weight:bold;
- color:#00d9ff;
-}
-
-.progress-line{
- margin:14px 0;
-}
-
-.progress-line-top{
- display:flex;
- justify-content:space-between;
- margin-bottom:6px;
- font-size:13px;
-}
-
-.progress-track{
- height:8px;
- background:rgba(255,255,255,.08);
- border-radius:20px;
- overflow:hidden;
-}
-
-.progress-value{
- height:100%;
- border-radius:20px;
- background:linear-gradient(90deg,#00d9ff,#7357ff);
-}
-
-/* GALLERY */
-
-.gallery-card{
- min-height:220px;
- display:flex;
- flex-direction:column;
- justify-content:center;
- align-items:center;
- text-align:center;
- overflow:hidden;
- cursor:pointer;
-}
-
-.gallery-card img{
- width:100%;
- height:150px;
- object-fit:cover;
- border-radius:15px;
- transition:.4s;
-}
-
-.gallery-card:hover img{
- transform:scale(1.05);
-}
-
-.gallery-icon{
- font-size:55px;
- margin-bottom:10px;
-}
-
-/* TIMELINE */
 
 .timeline{
- position:relative;
- max-width:800px;
- margin:auto;
+  position:relative;
+  max-width:800px;
+  margin:auto;
 }
 
 .timeline::before{
- content:"";
- position:absolute;
- right:18px;
- top:0;
- bottom:0;
- width:2px;
- background:linear-gradient(#00d9ff,#7357ff);
+  content:"";
+  position:absolute;
+  top:0;
+  bottom:0;
+  right:20px;
+  width:2px;
+  background:linear-gradient(var(--primary),var(--secondary));
 }
 
 .timeline-item{
- position:relative;
- padding:0 55px 30px 0;
+  position:relative;
+  padding:0 55px 25px 0;
 }
 
 .timeline-dot{
- position:absolute;
- right:8px;
- top:7px;
- width:22px;
- height:22px;
- border-radius:50%;
- background:#00d9ff;
- box-shadow:0 0 15px #00d9ff;
+  position:absolute;
+  right:12px;
+  top:5px;
+  width:18px;
+  height:18px;
+  border-radius:50%;
+  background:var(--primary);
+  box-shadow:0 0 15px var(--primary);
 }
 
-/* GOALS */
-
-.goal{
- text-align:center;
+.timeline-content{
+  padding:18px;
+  border:1px solid var(--border);
+  background:var(--card);
+  border-radius:18px;
 }
 
-.goal-icon{
- font-size:35px;
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
 }
 
-/* SEARCH */
-
-.search-box{
- display:flex;
- gap:10px;
- max-width:750px;
- margin:auto;
+.gallery-item{
+  min-height:190px;
+  border-radius:20px;
+  overflow:hidden;
+  border:1px solid var(--border);
+  background:var(--card);
+  cursor:pointer;
+  position:relative;
 }
 
-.search-box input{
- flex:1;
- min-width:0;
- padding:14px 17px;
- border-radius:14px;
- border:1px solid rgba(255,255,255,.12);
- background:rgba(255,255,255,.06);
- color:#fff;
- outline:none;
+.gallery-item img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:.4s;
 }
 
-body.light .search-box input{
- background:#fff;
- color:#111;
- border-color:#ddd;
+.gallery-item:hover img{
+  transform:scale(1.06);
 }
 
-.search-box button{
- border:none;
- border-radius:14px;
- padding:0 20px;
- cursor:pointer;
- background:linear-gradient(135deg,#00b8ff,#7357ff);
- color:#fff;
+.visual-card{
+  height:100%;
+  min-height:190px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  font-size:55px;
 }
 
-/* CONTACT */
+.visual-card span{
+  font-size:15px;
+  color:var(--muted);
+  margin-top:8px;
+}
 
 .contact-grid{
- display:grid;
- grid-template-columns:repeat(3,1fr);
- gap:14px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
 }
 
-.contact-item{
- text-align:center;
- padding:18px;
- border-radius:17px;
- background:rgba(255,255,255,.045);
- border:1px solid rgba(255,255,255,.08);
- transition:.3s;
+.contact-card{
+  text-align:center;
 }
 
-.contact-item:hover{
- transform:translateY(-5px);
- border-color:#00d9ff;
+.copy-row{
+  display:flex;
+  gap:7px;
+  margin-top:12px;
 }
 
-.contact-icon{
- font-size:30px;
- display:block;
- margin-bottom:5px;
+.copy-row input{
+  flex:1;
+  min-width:0;
+  background:rgba(255,255,255,.06);
+  border:1px solid var(--border);
+  border-radius:10px;
+  color:var(--text);
+  padding:8px;
+  direction:ltr;
 }
 
-.social-row{
- display:flex;
- justify-content:center;
- gap:12px;
- flex-wrap:wrap;
- margin-top:25px;
+.copy-row button{
+  border:1px solid var(--border);
+  background:var(--card);
+  color:var(--text);
+  border-radius:10px;
+  padding:7px 10px;
+  cursor:pointer;
 }
 
-.social{
- width:48px;
- height:48px;
- display:flex;
- align-items:center;
- justify-content:center;
- border-radius:15px;
- background:rgba(255,255,255,.07);
- font-size:21px;
- transition:.3s;
+.tools{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
 }
 
-.social:hover{
- transform:translateY(-5px) scale(1.05);
+.tool{
+  text-align:center;
 }
 
-/* QR */
-
-.qr-section{
- display:grid;
- grid-template-columns:1fr 250px;
- gap:25px;
- align-items:center;
-}
-
-.qr-box{
- background:#fff;
- padding:18px;
- border-radius:20px;
- width:210px;
- margin:auto;
- text-align:center;
+.qr-wrap{
+  text-align:center;
 }
 
 #qrcode{
- display:flex;
- justify-content:center;
+  width:210px;
+  height:210px;
+  margin:20px auto;
+  padding:10px;
+  background:white;
+  border-radius:15px;
 }
 
-/* QUICK MENU */
-
-.quick-menu{
- position:fixed;
- bottom:22px;
- right:22px;
- z-index:9997;
+.search-box{
+  max-width:650px;
+  margin:auto;
+  display:flex;
+  gap:10px;
 }
 
-.quick-toggle{
- width:55px;
- height:55px;
- border:none;
- border-radius:50%;
- cursor:pointer;
- background:linear-gradient(135deg,#00b8ff,#7357ff);
- color:#fff;
- font-size:23px;
- box-shadow:0 8px 25px rgba(0,0,0,.3);
+.search-box input{
+  flex:1;
+  padding:13px 15px;
+  border-radius:14px;
+  border:1px solid var(--border);
+  background:var(--card);
+  color:var(--text);
+  outline:none;
 }
 
-.quick-links{
- position:absolute;
- right:0;
- bottom:65px;
- display:flex;
- flex-direction:column;
- gap:9px;
- opacity:0;
- visibility:hidden;
- transform:translateY(10px);
- transition:.3s;
+.floating-menu{
+  position:fixed;
+  right:17px;
+  bottom:20px;
+  z-index:950;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
 }
 
-.quick-menu.open .quick-links{
- opacity:1;
- visibility:visible;
- transform:translateY(0);
+.float-btn{
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  border:1px solid var(--border);
+  background:var(--card);
+  color:var(--text);
+  cursor:pointer;
+  box-shadow:var(--shadow);
+  transition:.25s;
 }
 
-.quick-link{
- width:48px;
- height:48px;
- display:flex;
- align-items:center;
- justify-content:center;
- border-radius:15px;
- background:#141a2b;
- border:1px solid rgba(255,255,255,.1);
+.float-btn:hover{
+  transform:scale(1.1);
 }
-
-body.light .quick-link{
- background:#fff;
- color:#111;
-}
-
-/* BACK TOP */
-
-#backTop{
- position:fixed;
- bottom:25px;
- left:22px;
- width:45px;
- height:45px;
- border:none;
- border-radius:14px;
- cursor:pointer;
- background:rgba(255,255,255,.1);
- color:#fff;
- opacity:0;
- pointer-events:none;
- transition:.3s;
- z-index:9996;
-}
-
-#backTop.show{
- opacity:1;
- pointer-events:auto;
-}
-
-body.light #backTop{
- background:#fff;
- color:#111;
-}
-
-/* MODAL */
-
-.modal{
- position:fixed;
- inset:0;
- background:rgba(0,0,0,.82);
- backdrop-filter:blur(8px);
- display:flex;
- align-items:center;
- justify-content:center;
- z-index:100001;
- opacity:0;
- visibility:hidden;
- transition:.3s;
- padding:20px;
-}
-
-.modal.show{
- opacity:1;
- visibility:visible;
-}
-
-.modal-content{
- max-width:850px;
- width:100%;
- position:relative;
- transform:scale(.9);
- transition:.3s;
-}
-
-.modal.show .modal-content{
- transform:scale(1);
-}
-
-.modal-content img{
- width:100%;
- max-height:80vh;
- object-fit:contain;
- border-radius:20px;
-}
-
-.close-modal{
- position:absolute;
- top:-45px;
- left:0;
- width:40px;
- height:40px;
- border:none;
- border-radius:50%;
- background:#fff;
- color:#111;
- cursor:pointer;
- font-size:22px;
-}
-
-/* TOAST */
 
 #toast{
- position:fixed;
- left:50%;
- bottom:25px;
- transform:translate(-50%,20px);
- padding:12px 20px;
- border-radius:13px;
- background:#171d31;
- border:1px solid rgba(255,255,255,.1);
- color:#fff;
- opacity:0;
- pointer-events:none;
- transition:.35s;
- z-index:100002;
+  position:fixed;
+  bottom:25px;
+  left:50%;
+  transform:translate(-50%,120px);
+  background:#111827;
+  color:white;
+  padding:11px 17px;
+  border-radius:12px;
+  z-index:2000;
+  opacity:0;
+  transition:.35s;
+  border:1px solid rgba(255,255,255,.1);
 }
 
 #toast.show{
- opacity:1;
- transform:translate(-50%,0);
-}
-
-/* WELCOME */
-
-#welcome{
- position:fixed;
- inset:0;
- z-index:100003;
- display:flex;
- align-items:center;
- justify-content:center;
- background:#080b14;
- transition:.6s;
-}
-
-#welcome.hide{
- opacity:0;
- visibility:hidden;
- pointer-events:none;
-}
-
-.welcome-box{
- text-align:center;
- animation:welcomeIn .7s ease;
-}
-
-.welcome-icon{
- font-size:55px;
-}
-
-@keyframes welcomeIn{
- from{
-  opacity:0;
-  transform:scale(.8) translateY(20px);
- }
- to{
+  transform:translate(-50%,0);
   opacity:1;
-  transform:scale(1) translateY(0);
- }
 }
 
-/* REVEAL */
-
-.reveal{
- opacity:0;
- transform:translateY(25px);
- transition:.75s ease;
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.86);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:3000;
+  padding:20px;
 }
 
-.reveal.active{
- opacity:1;
- transform:translateY(0);
+.modal.show{
+  display:flex;
+}
+
+.modal img{
+  max-width:90%;
+  max-height:85vh;
+  border-radius:20px;
+}
+
+.modal-close{
+  position:absolute;
+  top:20px;
+  right:25px;
+  background:none;
+  border:0;
+  color:white;
+  font-size:35px;
+  cursor:pointer;
 }
 
 footer{
- text-align:center;
- padding:40px 20px;
- color:#7885a1;
- border-top:1px solid rgba(255,255,255,.06);
- position:relative;
- z-index:2;
-}
-
-@keyframes profileGlow{
- from{box-shadow:0 0 20px rgba(0,217,255,.25)}
- to{box-shadow:0 0 45px rgba(115,87,255,.5)}
-}
-
-@keyframes pageEntry{
- from{opacity:0;transform:translateY(20px)}
- to{opacity:1;transform:translateY(0)}
-}
-
-/* MOBILE */
-
-@media(max-width:800px){
-
- .grid,
- .contact-grid{
-  grid-template-columns:1fr 1fr;
- }
-
- .profile-card,
- .qr-section,
- .dashboard-main,
- .grid-2{
-  grid-template-columns:1fr;
- }
-
- .profile-card{
   text-align:center;
- }
-
- .profile-card img{
-  margin:auto;
- }
-
- .stats{
-  grid-template-columns:1fr 1fr;
- }
-
+  padding:60px 15px 30px;
+  color:var(--muted);
 }
 
-@media(max-width:600px){
-
- section{
-  padding:55px 0;
- }
-
- .hero h1{
-  font-size:32px;
- }
-
- .profile-img{
-  width:145px;
-  height:145px;
- }
-
- .grid,
- .contact-grid,
- .info-boxes,
- .stats{
-  grid-template-columns:1fr;
- }
-
- .navbar{
-  top:7px;
- }
-
- .control-panel{
-  top:68px;
-  left:10px;
- }
-
- .control-btn{
-  width:40px;
-  height:40px;
- }
-
- .search-box{
-  flex-direction:column;
- }
-
- .search-box button{
-  padding:12px;
- }
-
- .live-time{
-  font-size:31px;
- }
-
- .github-card{
-  grid-template-columns:1fr;
-  text-align:center;
- }
-
- .github-logo{
-  margin:auto;
- }
-
- .quick-menu{
-  right:14px;
-  bottom:15px;
- }
-
- #backTop{
-  left:14px;
-  bottom:15px;
- }
-
- #toast{
-  width:90%;
-  text-align:center;
- }
-
- .close-modal{
-  top:10px;
-  left:10px;
- }
-
+.reveal{
+  opacity:0;
+  transform:translateY(25px);
+  transition:.7s;
 }
 
-</style></head><body><div class="bg-orb orb-one"></div>
-<div class="bg-orb orb-two"></div><div id="progressBar"></div><div id="welcome">
- <div class="welcome-box">
-  <div class="welcome-icon">👋</div>
-  <h2>خوش اومدی!</h2>
-  <p class="muted">به وب‌سایت شخصی امیررضا غلامی 🚀</p>
- </div>
-</div><nav class="navbar"><a href="#top" class="nav-link">🏠 خانه</a>
-<a href="#about" class="nav-link">👋 درباره من</a>
-<a href="#dashboard" class="nav-link">🧭 داشبورد</a>
-<a href="#interests" class="nav-link">❤️ علایق</a>
-<a href="#skills" class="nav-link">🚀 مهارت‌ها</a>
-<a href="#projects" class="nav-link">🛠️ پروژه‌ها</a>
-<a href="#achievements" class="nav-link">🏆 دستاوردها</a>
-<a href="#tools" class="nav-link">🧰 ابزارها</a>
-<a href="#gallery" class="nav-link">🖼️ گالری</a>
-<a href="#timeline" class="nav-link">🕒 مسیر من</a>
-<a href="#goals" class="nav-link">🎯 اهداف</a>
-<a href="#contact" class="nav-link">📞 ارتباط</a>
-
-</nav><div class="control-panel"><button class="control-btn"
-id="themeToggle"
-title="تغییر حالت">
-🌙
-</button>
-
-<button class="control-btn"
-id="soundToggle"
-title="صدای رابط کاربری">
-🔇
-</button>
-
-</div><canvas id="particles"></canvas>
-
-<main id="top"><section class="hero"> <div class="hero-content"><img src="profile.jpg"
-alt="امیررضا غلامی"
-class="profile-img">
-
-  <h1>
-   امیررضا <span>غلامی</span>
-  </h1>  <div class="typing">
-   <span id="typingText"></span>
-  </div>  <div class="hero-buttons">   <a href="#about" class="btn primary">
-    بیشتر درباره من 👋
-   </a>   <a href="#contact" class="btn">
-    ارتباط با من 📞
-   </a>  </div>  <div class="chips">
-   <div class="chip">💻 تکنولوژی</div>
-   <div class="chip">🤖 هوش مصنوعی</div>
-   <div class="chip">⚽ فوتبال</div>
-   <div class="chip">📚 یادگیری</div>
-  </div> </div></section><section id="about" class="reveal"> <h2 class="section-title">
-  درباره <span>من</span>
- </h2> <div class="card profile-card">  <img src="profile.jpg" alt="امیررضا غلامی">  <div>   <h2>امیررضا غلامی 👋</h2>   <div class="profile-status">
-    <span class="status-dot"></span>
-    در حال یادگیری و پیشرفت
-   </div>   <p>
-    علاقه‌مند به تکنولوژی، دنیای دیجیتال، هوش مصنوعی و وب.
-    همیشه سعی می‌کنم چیزهای جدید یاد بگیرم، تجربه کنم و قدم‌به‌قدم پیشرفت کنم.
-   </p>   <div class="info-boxes"><div class="info-box">
- 💻 حوزه علاقه<br>
- <strong>تکنولوژی و دنیای دیجیتال</strong>
-</div>
-
-<div class="info-box">
- 🤖 زمینه مورد علاقه<br>
- <strong>هوش مصنوعی</strong>
-</div>
-
-<div class="info-box">
- 📚 رویکرد<br>
- <strong>یادگیری و تجربه</strong>
-</div>
-
-<div class="info-box">
- 🌐 فعالیت<br>
- <strong>دنیای وب و اینترنت</strong>
-</div>
-
-   </div>   <div class="quick-profile-actions"><a href="https://github.com/amirrezagholami86"
-   target="_blank"
-   class="btn">
- 🐙 GitHub
-</a>
-
-<a href="https://www.instagram.com/amirrezagholami.ir"
-   target="_blank"
-   class="btn">
- 📸 Instagram
-</a>
-
-<a href="#contact"
-   class="btn primary">
- 📞 ارتباط
-</a>
-
-   </div>  </div> </div> <div class="stats">  <div class="stat">
-   <div class="stat-number" data-target="3">0</div>
-   پروژه
-  </div>  <div class="stat">
-   <div class="stat-number" data-target="4">0</div>
-   مهارت
-  </div>  <div class="stat">
-   <div class="stat-number" data-target="8">0</div>
-   علاقه
-  </div>  <div class="stat">
-   <div class="stat-number" data-target="2026">0</div>
-   سال
-  </div> </div></section><section id="dashboard" class="reveal"> <h2 class="section-title">
-  🧭 <span>داشبورد</span> شخصی
- </h2> <div class="dashboard-main">  <div class="card live-box">   <div style="font-size:45px">🕐</div>   <div id="liveTime" class="live-time">
-    --:--:--
-   </div>   <div id="liveDate" class="live-date">
-    در حال دریافت تاریخ...
-   </div>   <div class="status">
-    🟢 سایت فعال
-   </div>  </div>  <div class="card quote-box">   <div style="font-size:38px">💡</div>   <div id="quoteText" class="quote"></div>   <div class="muted">
-    — یک جمله برای ادامه مسیر 🚀
-   </div><button class="btn"
-id="newQuote"
-style="margin-top:18px;width:max-content">
-🔄 جمله جدید
-</button>
-
-  </div> </div> <div class="card"
-      style="margin-top:18px;text-align:center">  <div style="font-size:38px">🎲</div>  <h3>یک چیز تصادفی درباره من</h3>  <div id="randomResult"
-       class="muted"
-       style="margin:18px 0">
-   روی دکمه بزن تا یکی از علایقم رو ببینی!
-  </div><button class="btn primary"
-id="randomFact">
-🎲 نمایش تصادفی
-</button>
-
- </div></section><section id="interests" class="reveal"> <h2 class="section-title">
-  ❤️ <span>علایق</span> من
- </h2> <div class="grid">  <div class="card">
-   <div class="project-icon">💻</div>
-   <h3>تکنولوژی</h3>
-   <p class="muted">دنبال کردن فناوری‌های جدید و دنیای دیجیتال.</p>
-  </div>  <div class="card">
-   <div class="project-icon">🤖</div>
-   <h3>هوش مصنوعی</h3>
-   <p class="muted">علاقه‌مند به ابزارها و پیشرفت‌های هوش مصنوعی.</p>
-  </div>  <div class="card">
-   <div class="project-icon">⚽</div>
-   <h3>فوتبال</h3>
-   <p class="muted">یکی از علاقه‌های اصلی من فوتبال و دنیای ورزشه.</p>
-  </div> </div></section><section id="skills" class="reveal"> <h2 class="section-title">
-  🚀 <span>مهارت‌ها</span>
- </h2> <div class="card">  <div class="skill">
-   <div class="skill-top">
-    <span>HTML / CSS</span>
-    <span>80%</span>
-   </div>
-   <div class="skill-bar">
-    <div class="skill-fill" data-width="80%"></div>
-   </div>
-  </div>  <div class="skill">
-   <div class="skill-top">
-    <span>JavaScript</span>
-    <span>55%</span>
-   </div>
-   <div class="skill-bar">
-    <div class="skill-fill" data-width="55%"></div>
-   </div>
-  </div>  <div class="skill">
-   <div class="skill-top">
-    <span>GitHub</span>
-    <span>70%</span>
-   </div>
-   <div class="skill-bar">
-    <div class="skill-fill" data-width="70%"></div>
-   </div>
-  </div>  <div class="skill">
-   <div class="skill-top">
-    <span>AI Tools</span>
-    <span>65%</span>
-   </div>
-   <div class="skill-bar">
-    <div class="skill-fill" data-width="65%"></div>
-   </div>
-  </div> </div></section><section id="projects" class="reveal"> <h2 class="section-title">
-  🛠️ <span>پروژه‌ها</span>
- </h2> <div class="grid">  <div class="card project-card">
-   <div class="project-icon">🌐</div>
-   <h3>Web Site Personal</h3>
-   <p>طراحی و توسعه وب‌سایت شخصی برای معرفی، ارتباط و نمایش علایق.</p>
-   <div class="tags">
-    <span class="tag">HTML</span>
-    <span class="tag">CSS</span>
-    <span class="tag">JavaScript</span>
-   </div>
-  </div>  <div class="card project-card">
-   <div class="project-icon">💻</div>
-   <h3>Technology World</h3>
-   <p>یادگیری، تجربه و دنبال کردن فناوری‌های جدید و دنیای دیجیتال.</p>
-   <div class="tags">
-    <span class="tag">Technology</span>
-    <span class="tag">Digital</span>
-   </div>
-  </div>  <div class="card project-card">
-   <div class="project-icon">🤖</div>
-   <h3>AI</h3>
-   <p>علاقه‌مندی و آشنایی با ابزارها و پیشرفت‌های هوش مصنوعی.</p>
-   <div class="tags">
-    <span class="tag">AI</span>
-    <span class="tag">Tools</span>
-   </div>
-  </div> </div> <div class="card github-feature">  <div class="github-card">   <div class="github-logo">🐙</div>   <div>
-    <h3>پروفایل GitHub من</h3>
-    <p class="muted">پروژه‌ها، تجربه‌ها و مسیر یادگیری من.</p>
-   </div>  </div><a class="btn primary"
-href="https://github.com/amirrezagholami86"
-target="_blank">
-مشاهده GitHub 🚀
-</a>
-
- </div></section><section id="achievements" class="reveal"> <h2 class="section-title">
-  🏆 <span>دستاوردها</span>
- </h2> <div class="grid">  <div class="card achievement">
-   <div class="achievement-icon">🌐</div>
-   <h3>ساخت سایت شخصی</h3>
-   <p class="muted">ساخت و توسعه یک وب‌سایت شخصی با امکانات تعاملی.</p>
-  </div>  <div class="card achievement">
-   <div class="achievement-icon">🤖</div>
-   <h3>آشنایی با AI</h3>
-   <p class="muted">تجربه و شناخت بیشتر ابزارهای هوش مصنوعی.</p>
-  </div>  <div class="card achievement">
-   <div class="achievement-icon">📚</div>
-   <h3>یادگیری مداوم</h3>
-   <p class="muted">ادامه دادن مسیر یادگیری و تجربه کردن چیزهای جدید.</p>
-  </div> </div></section><section id="tools" class="reveal"> <h2 class="section-title">
-  🧰 <span>ابزارهای مورد علاقه</span>
- </h2> <div class="grid">  <div class="card tool-card">
-   <div class="tool-icon">🐙</div>
-   <h3>GitHub</h3>
-   <p class="muted">مدیریت و نمایش پروژه‌ها</p>
-   <span class="tool-label">Code & Projects</span>
-  </div>  <div class="card tool-card">
-   <div class="tool-icon">🤖</div>
-   <h3>AI Tools</h3>
-   <p class="muted">تجربه ابزارهای هوش مصنوعی</p>
-   <span class="tool-label">Artificial Intelligence</span>
-  </div>  <div class="card tool-card">
-   <div class="tool-icon">🌐</div>
-   <h3>Web</h3>
-   <p class="muted">ساخت و طراحی صفحات وب</p>
-   <span class="tool-label">Web Development</span>
-  </div> </div></section><section id="progress" class="reveal"> <h2 class="section-title">
-  📈 <span>مسیر پیشرفت</span>
- </h2> <div class="grid-2">  <div class="card progress-card">   <div class="progress-circle">
-    <div class="progress-number">72%</div>
-   </div>   <h3>مسیر کلی یادگیری</h3>   <p class="muted">
-    یک نمایش ساده از مسیر فعلی یادگیری و تجربه.
-   </p>  </div>  <div class="card">   <h3>مراحل فعلی 🚀</h3>   <div class="progress-line">
-    <div class="progress-line-top">
-     <span>وب و طراحی</span>
-     <span>80%</span>
-    </div>
-    <div class="progress-track">
-     <div class="progress-value" style="width:80%"></div>
-    </div>
-   </div>   <div class="progress-line">
-    <div class="progress-line-top">
-     <span>JavaScript</span>
-     <span>55%</span>
-    </div>
-    <div class="progress-track">
-     <div class="progress-value" style="width:55%"></div>
-    </div>
-   </div>   <div class="progress-line">
-    <div class="progress-line-top">
-     <span>هوش مصنوعی</span>
-     <span>65%</span>
-    </div>
-    <div class="progress-track">
-     <div class="progress-value" style="width:65%"></div>
-    </div>
-   </div>   <div class="progress-line">
-    <div class="progress-line-top">
-     <span>تجربه پروژه</span>
-     <span>70%</span>
-    </div>
-    <div class="progress-track">
-     <div class="progress-value" style="width:70%"></div>
-    </div>
-   </div>  </div> </div></section><section id="gallery" class="reveal"> <h2 class="section-title">
-  🖼️ <span>گالری</span>
- </h2> <div class="grid">  <div class="card gallery-card"
-       data-image="profile.jpg"
-       data-title="امیررضا غلامی"><img src="profile.jpg"
-alt="امیررضا غلامی">
-
-   <h3 style="margin-top:12px">
-    پروفایل
-   </h3>   <p class="muted">
-    برای نمایش بزرگ کلیک کن
-   </p>  </div>  <div class="card gallery-card">
-   <div class="gallery-icon">🤖</div>
-   <h3>هوش مصنوعی</h3>
-   <p class="muted">آینده دنیای فناوری</p>
-  </div>  <div class="card gallery-card">
-   <div class="gallery-icon">⚽</div>
-   <h3>فوتبال</h3>
-   <p class="muted">یکی از علاقه‌های من</p>
-  </div> </div></section><section id="search" class="reveal"> <h2 class="section-title">
-  🔍 <span>جست‌وجو</span> در سایت
- </h2> <div class="search-box"><input id="siteSearch"
-type="text"
-placeholder="مثلاً: هوش مصنوعی، پروژه، اهداف...">
-
-  <button id="searchBtn">
-   🔍 جست‌وجو
-  </button> </div></section><section id="timeline" class="reveal"> <h2 class="section-title">
-  🕒 <span>مسیر من</span>
- </h2> <div class="timeline">  <div class="timeline-item">
-   <div class="timeline-dot"></div>
-   <div class="card">
-    <h3>شروع مسیر 📚</h3>
-    <p class="muted">یادگیری و کشف علایق مختلف.</p>
-   </div>
-  </div>  <div class="timeline-item">
-   <div class="timeline-dot"></div>
-   <div class="card">
-    <h3>مرحله بعد 🤖</h3>
-    <p class="muted">ورود بیشتر به دنیای هوش مصنوعی.</p>
-   </div>
-  </div>  <div class="timeline-item">
-   <div class="timeline-dot"></div>
-   <div class="card">
-    <h3>امروز 🚀</h3>
-    <p class="muted">ساخت، تجربه و پیشرفت.</p>
-   </div>
-  </div> </div></section><section id="goals" class="reveal"> <h2 class="section-title">
-  🎯 <span>اهداف</span>
- </h2> <div class="grid">  <div class="card goal">
-   <div class="goal-icon">💻</div>
-   <h3>توسعه مهارت‌های فنی</h3>
-   <p class="muted">یادگیری بیشتر و ساخت پروژه‌های بهتر.</p>
-  </div>  <div class="card goal">
-   <div class="goal-icon">🤖</div>
-   <h3>یادگیری AI</h3>
-   <p class="muted">آشنایی بیشتر با هوش مصنوعی و ابزارهای آن.</p>
-  </div>  <div class="card goal">
-   <div class="goal-icon">🚀</div>
-   <h3>ساخت پروژه‌های بیشتر</h3>
-   <p class="muted">تبدیل ایده‌ها به پروژه‌های واقعی.</p>
-  </div> </div></section><section id="contact" class="reveal"> <h2 class="section-title">
-  📞 <span>ارتباط</span> با من
- </h2> <div class="contact-grid"><a class="contact-item"
-href="https://t.me/Amirrezagholami_ir"
-target="_blank">
-<span class="contact-icon">✈️</span>
-Telegram
-</a>
-
-<a class="contact-item"
-href="mailto:amirrezaamirreza275@gmail.com">
-<span class="contact-icon">📧</span>
-Email
-</a>
-
-<a class="contact-item"
-href="https://www.instagram.com/amirrezagholami.ir"
-target="_blank">
-<span class="contact-icon">📸</span>
-Instagram
-</a>
-
-<a class="contact-item"
-href="https://github.com/amirrezagholami86"
-target="_blank">
-<span class="contact-icon">🐙</span>
-GitHub
-</a>
-
-<a class="contact-item"
-href="https://wa.me/989228420736"
-target="_blank">
-<span class="contact-icon">💚</span>
-WhatsApp
-</a>
-
-<a class="contact-item"
-href="mailto:amirrezaamirreza275@gmail.com?subject=پیام از وب‌سایت">
-<span class="contact-icon">💬</span>
-ارسال پیام
-</a>
-
- </div> <div class="social-row"><a class="social"
-href="https://github.com/amirrezagholami86"
-target="_blank">🐙</a>
-
-<a class="social"
-href="https://www.instagram.com/amirrezagholami.ir"
-target="_blank">📸</a>
-
-<a class="social"
-href="https://t.me/Amirrezagholami_ir"
-target="_blank">✈️</a>
-
-<a class="social"
-href="https://wa.me/989228420736"
-target="_blank">💚</a>
-
- </div> <div class="grid-2" style="margin-top:25px">  <div class="card">   <h3>📋 اطلاعات تماس سریع</h3>   <p style="margin-top:15px">
-    📧 ایمیل:
-    <strong>amirrezaamirreza275@gmail.com</strong>
-   </p><button class="btn"
-onclick="copyText('amirrezaamirreza275@gmail.com','📧 ایمیل کپی شد')"
-style="margin-top:12px">
-📋 کپی ایمیل
-</button>
-
-   <p style="margin-top:20px">
-    ✈️ تلگرام:
-    <strong>@Amirrezagholami_ir</strong>
-   </p><button class="btn"
-onclick="copyText('@Amirrezagholami_ir','✈️ آیدی تلگرام کپی شد')"
-style="margin-top:12px">
-📋 کپی آیدی تلگرام
-</button>
-
-  </div>  <div class="card">   <h3>📤 اشتراک‌گذاری سایت</h3>   <p class="muted" style="margin:15px 0">
-    سایت شخصی امیررضا غلامی رو با دیگران به اشتراک بذار.
-   </p><button class="btn primary"
-id="shareBtn">
-📤 اشتراک‌گذاری سایت
-</button>
-
-  </div> </div></section><section id="qrcode-section" class="reveal"> <h2 class="section-title">
-  🔳 <span>QR Code</span> سایت
- </h2> <div class="card qr-section">  <div>   <h2>سایت من همیشه یک اسکن با تو فاصله داره 🚀</h2>   <p class="muted" style="margin-top:15px">
-    این QR Code رو می‌تونی با گوشی اسکن کنی
-    و مستقیماً وارد سایت شخصی من بشی.
-   </p>  </div>  <div class="qr-box">   <div id="qrcode"></div>   <p style="color:#111;font-size:12px;margin-top:8px">
-    amirrezagholami86.github.io
-   </p>  </div> </div></section></main><footer>
- © 2026 امیررضا غلامی — ساخته شده با ❤️ و 🚀
-</footer><button id="backTop">↑</button>
-
-<div class="quick-menu" id="quickMenu"> <div class="quick-links"><a class="quick-link" href="#contact">📞</a>
-
-<a class="quick-link"
-href="https://github.com/amirrezagholami86"
-target="_blank">🐙</a>
-
-<a class="quick-link"
-href="#qrcode-section">🔳</a>
-
-<a class="quick-link" href="#top">🏠</a>
-
- </div><button class="quick-toggle"
-id="quickToggle">
-⚡
-</button>
-
-</div><div class="modal" id="imageModal"> <div class="modal-content"><button class="close-modal"
-id="closeModal">
-×
-</button>
-
-<img id="modalImage"
-src=""
-alt="تصویر گالری">
-
- </div></div><div id="toast"></div><script>
-
-/* THEME */
-
-const themeToggle=document.getElementById("themeToggle");
-const savedTheme=localStorage.getItem("theme");
-
-if(savedTheme==="light"){
- document.body.classList.add("light");
- themeToggle.textContent="☀️";
+.reveal.visible{
+  opacity:1;
+  transform:none;
 }
 
-/* SOUND */
-
-let soundEnabled=
- localStorage.getItem("soundEnabled")==="true";
-
-const soundToggle=
- document.getElementById("soundToggle");
-
-function updateSoundIcon(){
- soundToggle.textContent=
-  soundEnabled ? "🔊" : "🔇";
-}
-
-updateSoundIcon();
-
-let audioContext=null;
-
-function uiSound(){
-
- if(!soundEnabled)return;
-
- try{
-
-  if(!audioContext){
-   audioContext=
-    new (window.AudioContext||
-    window.webkitAudioContext)();
+@media(max-width:850px){
+  .card-grid,
+  .gallery,
+  .tools{
+    grid-template-columns:repeat(2,1fr);
   }
 
-  const osc=
-   audioContext.createOscillator();
+  .profile-info,
+  .dashboard-grid,
+  .badges,
+  .stats{
+    grid-template-columns:repeat(2,1fr);
+  }
 
-  const gain=
-   audioContext.createGain();
+  .contact-grid{
+    grid-template-columns:1fr 1fr;
+  }
 
-  osc.frequency.value=600;
-  osc.type="sine";
+  .digital-id{
+    grid-template-columns:1fr;
+    text-align:center;
+  }
 
-  gain.gain.setValueAtTime(
-   .035,
-   audioContext.currentTime
-  );
-
-  gain.gain.exponentialRampToValueAtTime(
-   .001,
-   audioContext.currentTime+.08
-  );
-
-  osc.connect(gain);
-  gain.connect(audioContext.destination);
-
-  osc.start();
-  osc.stop(audioContext.currentTime+.08);
-
- }catch(e){}
-
+  .digital-id-image{
+    margin:auto;
+  }
 }
 
-soundToggle.addEventListener("click",()=>{
+@media(max-width:700px){
+  .navbar{
+    height:auto;
+  }
 
- soundEnabled=!soundEnabled;
+  .nav-inner{
+    justify-content:space-between;
+  }
 
- localStorage.setItem(
-  "soundEnabled",
-  soundEnabled
- );
+  .mobile-menu-btn{
+    display:block;
+  }
 
- updateSoundIcon();
+  .nav-links{
+    position:absolute;
+    top:100%;
+    right:12px;
+    left:12px;
+    display:none;
+    flex-direction:column;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:10px;
+    box-shadow:var(--shadow);
+    max-height:70vh;
+    overflow-y:auto;
+  }
 
- if(soundEnabled)uiSound();
+  .nav-links.open{
+    display:flex;
+  }
 
- showToast(
-  soundEnabled
-  ? "🔊 صدای رابط فعال شد"
-  : "🔇 صدای رابط خاموش شد"
- );
+  .nav-links a{
+    padding:11px 14px;
+  }
 
+  .controls{
+    left:10px;
+    top:70px;
+  }
+
+  .hero{
+    padding-top:120px;
+  }
+
+  .profile-wrap{
+    width:135px;
+    height:135px;
+  }
+
+  .card-grid,
+  .gallery,
+  .tools,
+  .contact-grid{
+    grid-template-columns:1fr;
+  }
+
+  .profile-info,
+  .dashboard-grid,
+  .badges,
+  .stats{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .search-box{
+    flex-direction:column;
+  }
+
+  .floating-menu{
+    right:10px;
+    bottom:10px;
+  }
+
+  section{
+    padding-top:70px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  *,
+  *::before,
+  *::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    scroll-behavior:auto!important;
+    transition-duration:.01ms!important;
+  }
+
+  #particles,
+  .mouse-glow{
+    display:none;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="particles"></canvas>
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+<div class="mouse-glow" id="mouseGlow"></div>
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <div class="logo">Amirreza</div>
+
+    <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+
+    <div class="nav-links" id="navLinks">
+      <a href="#top">🏠 خانه</a>
+      <a href="#about">👋 درباره من</a>
+      <a href="#digital-id">🪪 پروفایل</a>
+      <a href="#dashboard">🧭 داشبورد</a>
+      <a href="#interests">❤️ علایق</a>
+      <a href="#skills">🚀 مهارت‌ها</a>
+      <a href="#projects">🛠️ پروژه‌ها</a>
+      <a href="#achievements">🏆 دستاوردها</a>
+      <a href="#badges">🏅 Badgeها</a>
+      <a href="#gallery">🖼️ گالری</a>
+      <a href="#timeline">🕒 مسیر من</a>
+      <a href="#goals">🎯 اهداف</a>
+      <a href="#contact">📞 ارتباط</a>
+    </div>
+  </div>
+</nav>
+
+<div class="controls">
+  <button class="control-btn" id="themeBtn" title="حالت روشن/تیره">🌙</button>
+  <button class="control-btn" id="soundBtn" title="صدای رابط">🔇</button>
+</div>
+
+<main id="top">
+
+<section class="hero">
+<div class="container">
+
+  <div class="profile-wrap">
+    <img src="profile.jpg" class="profile" alt="امیررضا غلامی">
+  </div>
+
+  <div class="status">
+    <span class="status-dot"></span>
+    وب‌سایت فعال است
+  </div>
+
+  <h1>
+    سلام، من <span class="gradient-text">امیررضا غلامی</span> هستم 👋
+  </h1>
+
+  <div class="typing" id="typing"></div>
+
+  <p class="muted">
+    علاقه‌مند به تکنولوژی، دنیای وب، هوش مصنوعی و فوتبال ⚽
+  </p>
+
+  <div class="hero-buttons">
+    <a class="btn primary" href="#digital-id">🪪 پروفایل من</a>
+    <a class="btn" href="#contact">📞 ارتباط با من</a>
+    <a class="btn" href="https://github.com/amirrezagholami86" target="_blank">🐙 GitHub</a>
+  </div>
+
+</div>
+</section>
+
+<section id="about">
+<div class="container reveal">
+
+  <h2 class="section-title">👋 درباره من</h2>
+  <p class="section-subtitle">چند کلمه درباره مسیر و علایق من</p>
+
+  <div class="card">
+    <p>
+      من به یادگیری و تجربه در دنیای تکنولوژی علاقه دارم و همیشه دوست دارم
+      چیزهای جدید را امتحان کنم. ساختن پروژه‌های شخصی، آشنایی با هوش مصنوعی،
+      دنیای وب و دنبال کردن فناوری‌های جدید از علاقه‌مندی‌های اصلی من هستند.
+    </p>
+
+    <div class="profile-info" style="margin-top:20px">
+      <div class="info-box">
+        <span class="info-icon">🎯</span>
+        <b>هدفمند</b>
+        <p class="muted">حرکت قدم‌به‌قدم</p>
+      </div>
+
+      <div class="info-box">
+        <span class="info-icon">📚</span>
+        <b>یادگیری</b>
+        <p class="muted">همیشه در حال یادگیری</p>
+      </div>
+
+      <div class="info-box">
+        <span class="info-icon">🚀</span>
+        <b>پیشرفت</b>
+        <p class="muted">تجربه و ساختن</p>
+      </div>
+
+      <div class="info-box">
+        <span class="info-icon">💡</span>
+        <b>کنجکاوی</b>
+        <p class="muted">کشف چیزهای جدید</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<section id="digital-id">
+<div class="container reveal">
+
+  <h2 class="section-title">🪪 کارت هویتی دیجیتال</h2>
+  <p class="section-subtitle">پروفایل سریع و اطلاعات اصلی</p>
+
+  <div class="card digital-id">
+
+    <img src="profile.jpg" class="digital-id-image" alt="امیررضا غلامی">
+
+    <div class="id-details">
+      <h3>امیررضا غلامی</h3>
+
+      <p class="muted">
+        علاقه‌مند به تکنولوژی، وب، هوش مصنوعی و فوتبال
+      </p>
+
+      <div class="id-tags">
+        <span class="tag">💻 Technology</span>
+        <span class="tag">🤖 AI</span>
+        <span class="tag">🌐 Web</span>
+        <span class="tag">⚽ Football</span>
+      </div>
+
+      <div class="quick-actions">
+        <a class="btn primary" href="#contact">📞 ارتباط</a>
+        <button class="btn" id="saveContactBtn">📇 ذخیره اطلاعات من</button>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+</section>
+
+<section id="dashboard">
+<div class="container reveal">
+
+  <h2 class="section-title">🧭 داشبورد شخصی</h2>
+  <p class="section-subtitle">اطلاعات این مرورگر و وضعیت فعلی سایت</p>
+
+  <div class="dashboard-grid">
+
+    <div class="card dashboard-card">
+      <div>👀</div>
+      <div class="big-number" id="visitCount">0</div>
+      <p class="muted">بازدید این مرورگر</p>
+    </div>
+
+    <div class="card dashboard-card">
+      <div>🕒</div>
+      <div class="big-number" id="lastVisit">—</div>
+      <p class="muted">آخرین بازدید</p>
+    </div>
+
+    <div class="card dashboard-card">
+      <div>⏱️</div>
+      <div class="big-number" id="sessionTime">0:00</div>
+      <p class="muted">مدت حضور</p>
+    </div>
+
+    <div class="card dashboard-card">
+      <div>📄</div>
+      <div class="big-number" id="sectionVisits">0</div>
+      <p class="muted">بخش‌های دیده‌شده</p>
+    </div>
+
+  </div>
+
+  <div class="card" style="margin-top:17px;text-align:center">
+    <h3>💬 جمله امروز</h3>
+    <p class="muted" id="quote">
+      قدم‌های کوچک هم می‌توانند مسیرهای بزرگ بسازند.
+    </p>
+
+    <button class="btn primary" id="factBtn" style="margin-top:12px">
+      🎲 یک جمله تصادفی
+    </button>
+  </div>
+
+</div>
+</section>
+
+<section id="interests">
+<div class="container reveal">
+
+  <h2 class="section-title">❤️ علایق</h2>
+
+  <div class="card-grid">
+
+    <div class="card">
+      <h3>💻 تکنولوژی</h3>
+      <p class="muted">دنبال کردن فناوری‌های جدید و دنیای دیجیتال.</p>
+    </div>
+
+    <div class="card">
+      <h3>🤖 هوش مصنوعی</h3>
+      <p class="muted">کنجکاوی درباره AI و ابزارهای هوشمند.</p>
+    </div>
+
+    <div class="card">
+      <h3>⚽ فوتبال</h3>
+      <p class="muted">یکی از علاقه‌مندی‌های اصلی من در دنیای ورزش.</p>
+    </div>
+
+  </div>
+
+</div>
+</section>
+
+<section id="skills">
+<div class="container reveal">
+
+  <h2 class="section-title">🚀 مهارت‌ها</h2>
+
+  <div class="card">
+
+    <div class="progress-row">
+      <div class="progress-head">
+        <span>🌐 Web</span>
+        <span>70%</span>
+      </div>
+      <div class="progress"><span data-width="70%"></span></div>
+    </div>
+
+    <div class="progress-row">
+      <div class="progress-head">
+        <span>🤖 AI</span>
+        <span>65%</span>
+      </div>
+      <div class="progress"><span data-width="65%"></span></div>
+    </div>
+
+    <div class="progress-row">
+      <div class="progress-head">
+        <span>💡 Technology</span>
+        <span>75%</span>
+      </div>
+      <div class="progress"><span data-width="75%"></span></div>
+    </div>
+
+    <div class="progress-row">
+      <div class="progress-head">
+        <span>📚 Learning</span>
+        <span>85%</span>
+      </div>
+      <div class="progress"><span data-width="85%"></span></div>
+    </div>
+
+  </div>
+
+</div>
+</section>
+
+<section id="projects">
+<div class="container reveal">
+
+  <h2 class="section-title">🛠️ پروژه‌ها و فعالیت‌ها</h2>
+
+  <div class="card-grid">
+
+    <div class="card">
+      <h3>🌐 وب‌سایت شخصی</h3>
+      <p class="muted">
+        طراحی و توسعه وب‌سایت شخصی برای معرفی، ارتباط و نمایش علایق.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>💻 Technology World</h3>
+      <p class="muted">
+        یادگیری، تجربه و دنبال کردن فناوری‌های جدید و دنیای دیجیتال.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>🤖 AI</h3>
+      <p class="muted">
+        علاقه‌مندی و آشنایی با ابزارها و پیشرفت‌های هوش مصنوعی.
+      </p>
+    </div>
+
+  </div>
+
+  <div class="card" style="margin-top:17px;text-align:center">
+    <h3>🐙 GitHub</h3>
+    <p class="muted">پروژه‌ها و فعالیت‌های کدنویسی من</p>
+    <a class="btn primary" style="margin-top:12px"
+       href="https://github.com/amirrezagholami86"
+       target="_blank">
+      مشاهده GitHub 🚀
+    </a>
+  </div>
+
+</div>
+</section>
+
+<section id="achievements">
+<div class="container reveal">
+
+  <h2 class="section-title">🏆 دستاوردها</h2>
+
+  <div class="card-grid">
+
+    <div class="card">
+      <h3>🌐 ساخت وب‌سایت شخصی</h3>
+      <p class="muted">ساخت و توسعه یک سایت شخصی با HTML، CSS و JavaScript.</p>
+    </div>
+
+    <div class="card">
+      <h3>🤖 ورود به دنیای AI</h3>
+      <p class="muted">آشنایی و تجربه با ابزارهای هوش مصنوعی.</p>
+    </div>
+
+    <div class="card">
+      <h3>🚀 ادامه مسیر</h3>
+      <p class="muted">تلاش برای یادگیری و ساخت پروژه‌های بیشتر.</p>
+    </div>
+
+  </div>
+
+</div>
+</section>
+
+<section id="badges">
+<div class="container reveal">
+
+  <h2 class="section-title">🏅 Badgeهای من</h2>
+  <p class="section-subtitle">نشان‌های افتخاری این پروفایل دیجیتال</p>
+
+  <div class="badges">
+
+    <div class="card badge">
+      <span class="badge-icon">💻</span>
+      <h3>Web Explorer</h3>
+      <small>علاقه‌مند به دنیای وب</small>
+    </div>
+
+    <div class="card badge">
+      <span class="badge-icon">🤖</span>
+      <h3>AI Explorer</h3>
+      <small>کنجکاو در دنیای AI</small>
+    </div>
+
+    <div class="card badge">
+      <span class="badge-icon">⚽</span>
+      <h3>Football Fan</h3>
+      <small>عاشق فوتبال</small>
+    </div>
+
+    <div class="card badge">
+      <span class="badge-icon">📚</span>
+      <h3>Lifelong Learner</h3>
+      <small>همیشه در حال یادگیری</small>
+    </div>
+
+  </div>
+
+</div>
+</section>
+
+<section id="tools">
+<div class="container reveal">
+
+  <h2 class="section-title">🧰 ابزارهای مورد علاقه</h2>
+
+  <div class="tools">
+
+    <div class="card tool">
+      <div style="font-size:40px">🐙</div>
+      <h3>GitHub</h3>
+      <p class="muted">کدنویسی و پروژه‌ها</p>
+    </div>
+
+    <div class="card tool">
+      <div style="font-size:40px">🤖</div>
+      <h3>AI Tools</h3>
+      <p class="muted">ابزارهای هوش مصنوعی</p>
+    </div>
+
+    <div class="card tool">
+      <div style="font-size:40px">🌐</div>
+      <h3>Web</h3>
+      <p class="muted">دنیای وب و اینترنت</p>
+    </div>
+
+  </div>
+
+</div>
+</section>
+
+<section id="themes">
+<div class="container reveal">
+
+  <h2 class="section-title">🎨 شخصی‌سازی ظاهر</h2>
+  <p class="section-subtitle">رنگ مورد علاقه‌ات را برای سایت انتخاب کن</p>
+
+  <div class="theme-buttons">
+    <button class="theme-btn" data-theme="default">🌌 آبی/بنفش</button>
+    <button class="theme-btn" data-theme="green">🌿 سبز</button>
+    <button class="theme-btn" data-theme="orange">🔥 نارنجی</button>
+    <button class="theme-btn" data-theme="pink">🌸 صورتی</button>
+  </div>
+
+</div>
+</section>
+
+<section id="gallery">
+<div class="container reveal">
+
+  <h2 class="section-title">🖼️ گالری</h2>
+
+  <div class="gallery">
+
+    <div class="gallery-item" id="profileGallery">
+      <img src="profile.jpg" alt="امیررضا غلامی">
+    </div>
+
+    <div class="gallery-item">
+      <div class="visual-card">
+        🤖
+        <span>AI World</span>
+      </div>
+    </div>
+
+    <div class="gallery-item">
+      <div class="visual-card">
+        ⚽
+        <span>Football</span>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+</section>
+
+<section id="timeline">
+<div class="container reveal">
+
+  <h2 class="section-title">🕒 مسیر من</h2>
+
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <h3>📚 شروع مسیر</h3>
+        <p class="muted">یادگیری و کشف علایق مختلف.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <h3>🤖 مرحله بعد</h3>
+        <p class="muted">ورود بیشتر به دنیای تکنولوژی و هوش مصنوعی.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <h3>🚀 امروز</h3>
+        <p class="muted">ساخت، تجربه و پیشرفت.</p>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+</section>
+
+<section id="goals">
+<div class="container reveal">
+
+  <h2 class="section-title">🎯 اهداف</h2>
+
+  <div class="card-grid">
+
+    <div class="card">
+      <h3>💻 توسعه مهارت‌های فنی</h3>
+      <p class="muted">یادگیری و تجربه بیشتر در حوزه تکنولوژی.</p>
+    </div>
+
+    <div class="card">
+      <h3>🤖 یادگیری بیشتر AI</h3>
+      <p class="muted">شناخت ابزارها و کاربردهای هوش مصنوعی.</p>
+    </div>
+
+    <div class="card">
+      <h3>🚀 ساخت پروژه‌های بیشتر</h3>
+      <p class="muted">تبدیل ایده‌ها به پروژه‌های واقعی.</p>
+    </div>
+
+  </div>
+
+</div>
+</section>
+
+<section id="contact">
+<div class="container reveal">
+
+  <h2 class="section-title">📞 ارتباط با من</h2>
+
+  <div class="contact-grid">
+
+    <div class="card contact-card">
+      <div style="font-size:35px">📧</div>
+      <h3>Email</h3>
+      <div class="copy-row">
+        <input value="amirrezaamirreza275@gmail.com" readonly>
+        <button onclick="copyText('amirrezaamirreza275@gmail.com')">کپی</button>
+      </div>
+    </div>
+
+    <div class="card contact-card">
+      <div style="font-size:35px">✈️</div>
+      <h3>Telegram</h3>
+      <div class="copy-row">
+        <input value="@Amirrezagholami_ir" readonly>
+        <button onclick="copyText('@Amirrezagholami_ir')">کپی</button>
+      </div>
+    </div>
+
+    <div class="card contact-card">
+      <div style="font-size:35px">📱</div>
+      <h3>WhatsApp</h3>
+      <a class="btn primary" style="margin-top:12px"
+         href="https://wa.me/989228420736"
+         target="_blank">
+        💚 پیام در واتساپ
+      </a>
+    </div>
+
+  </div>
+
+  <div class="hero-buttons">
+
+    <a class="btn" href="https://www.instagram.com/amirrezagholami.ir" target="_blank">
+      📸 Instagram
+    </a>
+
+    <a class="btn" href="https://t.me/Amirrezagholami_ir" target="_blank">
+      ✈️ Telegram
+    </a>
+
+    <a class="btn" href="https://github.com/amirrezagholami86" target="_blank">
+      🐙 GitHub
+    </a>
+
+    <button class="btn primary" id="shareBtn">
+      📤 اشتراک‌گذاری سایت
+    </button>
+
+  </div>
+
+</div>
+</section>
+
+<section id="qrcode-section">
+<div class="container reveal">
+
+  <div class="card qr-wrap">
+
+    <h2>🔳 QR Code سایت</h2>
+
+    <p class="muted">
+      با اسکن این کد می‌توانی مستقیم وارد سایت من شوی.
+    </p>
+
+    <div id="qrcode"></div>
+
+    <button class="btn primary" onclick="copyText('https://amirrezagholami86.github.io/')">
+      🔗 کپی آدرس سایت
+    </button>
+
+  </div>
+
+</div>
+</section>
+
+<section id="search">
+<div class="container reveal">
+
+  <h2 class="section-title">🔎 جستجو در سایت</h2>
+
+  <div class="search-box">
+    <input id="searchInput" placeholder="مثلاً: فوتبال، AI، تماس، پروژه...">
+    <button class="btn primary" id="searchBtn">جستجو</button>
+  </div>
+
+</div>
+</section>
+
+</main>
+
+<footer>
+  <p>ساخته شده با ❤️ و ☕ توسط امیررضا غلامی</p>
+  <p style="margin-top:6px">© 2026 Amirreza Gholami</p>
+</footer>
+
+<div class="floating-menu">
+  <button class="float-btn" onclick="location.href='#contact'">📞</button>
+  <button class="float-btn" onclick="location.href='#qrcode-section'">🔳</button>
+  <button class="float-btn" onclick="location.href='#top'">⬆️</button>
+</div>
+
+<div id="toast"></div>
+
+<div class="modal" id="imageModal">
+  <button class="modal-close" id="modalClose">×</button>
+  <img src="profile.jpg" alt="تصویر پروفایل">
+</div>
+
+<script>
+/* =========================
+   Theme
+========================= */
+
+const body=document.body;
+const themeBtn=document.getElementById("themeBtn");
+
+function applySavedTheme(){
+  const mode=localStorage.getItem("siteMode") || "dark";
+  const accent=localStorage.getItem("accentTheme") || "default";
+
+  body.classList.toggle("light",mode==="light");
+  body.classList.remove("theme-green","theme-orange","theme-pink");
+
+  if(accent!=="default"){
+    body.classList.add("theme-"+accent);
+  }
+
+  themeBtn.textContent=mode==="light"?"☀️":"🌙";
+}
+
+themeBtn.addEventListener("click",()=>{
+  const isLight=!body.classList.contains("light");
+  localStorage.setItem("siteMode",isLight?"light":"dark");
+  applySavedTheme();
+  playClick();
+});
+
+applySavedTheme();
+
+document.querySelectorAll(".theme-btn").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    const theme=btn.dataset.theme;
+    localStorage.setItem("accentTheme",theme);
+    applySavedTheme();
+    showToast("🎨 تم سایت تغییر کرد");
+    playClick();
+  });
 });
 
 
-themeToggle.addEventListener("click",()=>{
+/* =========================
+   Mobile Menu
+========================= */
 
- document.body.classList.toggle("light");
+const mobileMenuBtn=document.getElementById("mobileMenuBtn");
+const navLinks=document.getElementById("navLinks");
 
- const light=
-  document.body.classList.contains("light");
+mobileMenuBtn.addEventListener("click",()=>{
+  navLinks.classList.toggle("open");
+  mobileMenuBtn.textContent=navLinks.classList.contains("open")?"✕":"☰";
+});
 
- localStorage.setItem(
-  "theme",
-  light ? "light" : "dark"
- );
-
- themeToggle.textContent=
-  light ? "☀️" : "🌙";
-
- uiSound();
-
- showToast(
-  light
-  ? "☀️ حالت روشن فعال شد"
-  : "🌙 حالت تاریک فعال شد"
- );
-
+document.querySelectorAll(".nav-links a").forEach(link=>{
+  link.addEventListener("click",()=>{
+    navLinks.classList.remove("open");
+    mobileMenuBtn.textContent="☰";
+  });
 });
 
 
-/* WELCOME */
-
-const welcome=document.getElementById("welcome");
-
-if(localStorage.getItem("welcomeSeen")){
- welcome.classList.add("hide");
-}else{
-
- setTimeout(()=>{
-
-  welcome.classList.add("hide");
-
-  localStorage.setItem(
-   "welcomeSeen",
-   "1"
-  );
-
- },1300);
-
-}
-
-
-/* TYPING */
-
-const typingText=
- document.getElementById("typingText");
+/* =========================
+   Typing
+========================= */
 
 const phrases=[
- "علاقه‌مند به تکنولوژی 💻",
- "علاقه‌مند به هوش مصنوعی 🤖",
- "عاشق فوتبال ⚽",
- "همیشه در حال یادگیری 📚"
+  "علاقه‌مند به تکنولوژی 💻",
+  "علاقه‌مند به هوش مصنوعی 🤖",
+  "عاشق فوتبال ⚽",
+  "همیشه در حال یادگیری 📚"
 ];
 
 let phraseIndex=0;
 let charIndex=0;
 let deleting=false;
 
-function typeEffect(){
+function typingEffect(){
+  const el=document.getElementById("typing");
+  const text=phrases[phraseIndex];
 
- const current=phrases[phraseIndex];
-
- if(!deleting){
-
-  typingText.textContent=
-   current.substring(0,charIndex+1);
-
-  charIndex++;
-
-  if(charIndex===current.length){
-
-   deleting=true;
-
-   setTimeout(typeEffect,1200);
-
-   return;
+  if(!deleting){
+    el.textContent=text.substring(0,charIndex++);
+    if(charIndex>text.length){
+      deleting=true;
+      setTimeout(typingEffect,1300);
+      return;
+    }
+  }else{
+    el.textContent=text.substring(0,charIndex--);
+    if(charIndex<0){
+      deleting=false;
+      charIndex=0;
+      phraseIndex=(phraseIndex+1)%phrases.length;
+    }
   }
 
- }else{
-
-  typingText.textContent=
-   current.substring(0,charIndex-1);
-
-  charIndex--;
-
-  if(charIndex===0){
-
-   deleting=false;
-
-   phraseIndex=
-    (phraseIndex+1)%phrases.length;
-
-  }
-
- }
-
- setTimeout(
-  typeEffect,
-  deleting ? 45 : 75
- );
-
+  setTimeout(typingEffect,deleting?45:75);
 }
 
-typeEffect();
+typingEffect();
 
 
-/* REVEAL */
-
-const observer=
- new IntersectionObserver(
-  entries=>{
-
-   entries.forEach(entry=>{
-
-    if(entry.isIntersecting){
-
-     entry.target.classList.add("active");
-
-    }
-
-   });
-
-  },
-  {threshold:.1}
- );
-
-document
- .querySelectorAll(".reveal")
- .forEach(el=>observer.observe(el));
-
-
-/* COUNTERS */
-
-const counterObserver=
- new IntersectionObserver(
-  entries=>{
-
-   entries.forEach(entry=>{
-
-    if(!entry.isIntersecting)return;
-
-    const counter=entry.target;
-    const target=
-     Number(counter.dataset.target);
-
-    let current=0;
-    const duration=900;
-    const step=
-     Math.max(1,target/30);
-
-    const timer=setInterval(()=>{
-
-     current+=step;
-
-     if(current>=target){
-
-      current=target;
-      clearInterval(timer);
-
-     }
-
-     counter.textContent=
-      Math.floor(current);
-
-    },duration/30);
-
-    counterObserver.unobserve(counter);
-
-   });
-
-  },
-  {threshold:.5}
- );
-
-document
- .querySelectorAll(".stat-number")
- .forEach(el=>counterObserver.observe(el));
-
-
-/* SKILLS */
-
-const skillObserver=
- new IntersectionObserver(
-  entries=>{
-
-   entries.forEach(entry=>{
-
-    if(entry.isIntersecting){
-
-     document
-      .querySelectorAll(".skill-fill")
-      .forEach(bar=>{
-       bar.style.width=
-        bar.dataset.width;
-      });
-
-     skillObserver.disconnect();
-
-    }
-
-   });
-
-  },
-  {threshold:.3}
- );
-
-document
- .querySelectorAll(".skill-fill")
- .forEach(el=>skillObserver.observe(el));
-
-
-/* SCROLL + ACTIVE NAV */
-
-const sections=
- document.querySelectorAll("section[id]");
-
-const navLinks=
- document.querySelectorAll(".nav-link");
-
-function updateScroll(){
-
- const scrollTop=window.scrollY;
-
- const height=
-  document.documentElement.scrollHeight-
-  document.documentElement.clientHeight;
-
- const progress=
-  height>0
-  ? scrollTop/height*100
-  : 0;
-
- document.getElementById("progressBar")
-  .style.width=progress+"%";
-
- const backTop=
-  document.getElementById("backTop");
-
- if(scrollTop>500)
-  backTop.classList.add("show");
- else
-  backTop.classList.remove("show");
-
- let current="top";
-
- sections.forEach(section=>{
-
-  const top=
-   section.offsetTop-150;
-
-  if(scrollTop>=top){
-   current=section.id;
-  }
-
- });
-
- navLinks.forEach(link=>{
-
-  link.classList.remove("active");
-
-  if(link.getAttribute("href")==="#"+current){
-   link.classList.add("active");
-  }
-
- });
-
-}
-
-window.addEventListener(
- "scroll",
- updateScroll,
- {passive:true}
-);
-
-updateScroll();
-
-
-/* BACK TOP */
-
-document
- .getElementById("backTop")
- .addEventListener("click",()=>{
-
-  window.scrollTo({
-   top:0,
-   behavior:"smooth"
-  });
-
-  uiSound();
-
- });
-
-
-/* TOAST */
+/* =========================
+   Toast
+========================= */
 
 let toastTimer;
 
 function showToast(message){
+  const toast=document.getElementById("toast");
+  toast.textContent=message;
+  toast.classList.add("show");
 
- const toast=
-  document.getElementById("toast");
+  clearTimeout(toastTimer);
 
- toast.textContent=message;
- toast.classList.add("show");
-
- clearTimeout(toastTimer);
-
- toastTimer=setTimeout(()=>{
-
-  toast.classList.remove("show");
-
- },2200);
-
+  toastTimer=setTimeout(()=>{
+    toast.classList.remove("show");
+  },2200);
 }
 
 
-/* DATE */
-
-function updateDateTime(){
-
- const now=new Date();
-
- const time=
-  new Intl.DateTimeFormat(
-   "fa-IR",
-   {
-    hour:"2-digit",
-    minute:"2-digit",
-    second:"2-digit"
-   }
-  ).format(now);
-
- let date;
-
- try{
-
-  date=
-   new Intl.DateTimeFormat(
-    "fa-IR-u-ca-persian",
-    {dateStyle:"full"}
-   ).format(now);
-
- }catch(e){
-
-  date=
-   new Intl.DateTimeFormat(
-    "fa-IR",
-    {dateStyle:"full"}
-   ).format(now);
-
- }
-
- document.getElementById("liveTime")
-  .textContent=time;
-
- document.getElementById("liveDate")
-  .textContent=date;
-
-}
-
-updateDateTime();
-setInterval(updateDateTime,1000);
-
-
-/* QUOTES */
-
-const quotes=[
-
- "هر قدم کوچک، بخشی از مسیر پیشرفت است. 🚀",
-
- "یادگیری از کنجکاوی شروع می‌شود. 📚",
-
- "ایده وقتی ارزشمندتر می‌شود که به عمل تبدیل شود. 💡",
-
- "مسیر پیشرفت با تجربه کردن ساخته می‌شود. 🌱",
-
- "هر روز می‌تواند شروع یک چیز جدید باشد. ✨",
-
- "آینده از قدم‌هایی ساخته می‌شود که امروز برمی‌داری. 🚀"
-
-];
-
-let quoteIndex=
- Math.floor(Math.random()*quotes.length);
-
-function showQuote(){
-
- document.getElementById("quoteText")
-  .textContent=quotes[quoteIndex];
-
-}
-
-showQuote();
-
-document
- .getElementById("newQuote")
- .addEventListener("click",()=>{
-
-  quoteIndex=
-   (quoteIndex+1)%quotes.length;
-
-  showQuote();
-
-  uiSound();
-
-  showToast("💡 جمله جدید نمایش داده شد");
-
- });
-
-
-/* RANDOM FACT */
-
-const facts=[
-
- "به هوش مصنوعی علاقه دارم 🤖",
-
- "فوتبال یکی از علایق من است ⚽",
-
- "به ساخت وب‌سایت علاقه دارم 🌐",
-
- "یادگیری مداوم برای من مهم است 📚",
-
- "به دنیای تکنولوژی علاقه‌مندم 💻",
-
- "GitHub بخشی از مسیر یادگیری منه 🐙"
-
-];
-
-document
- .getElementById("randomFact")
- .addEventListener("click",()=>{
-
-  const random=
-   facts[
-    Math.floor(Math.random()*facts.length)
-   ];
-
-  document.getElementById("randomResult")
-   .textContent=random;
-
-  uiSound();
-
-  showToast("🎲 یک مورد تصادفی انتخاب شد");
-
- });
-
-
-/* COPY */
-
-function copyText(text,message){
-
- if(navigator.clipboard){
-
-  navigator.clipboard
-   .writeText(text)
-   .then(()=>{
-
-    uiSound();
-    showToast(message);
-
-   })
-   .catch(()=>{
-    showToast("❌ کپی انجام نشد");
-   });
-
- }else{
-
-  const area=
-   document.createElement("textarea");
-
-  area.value=text;
-
-  document.body.appendChild(area);
-
-  area.select();
-
-  document.execCommand("copy");
-
-  area.remove();
-
-  showToast(message);
-
- }
-
+/* =========================
+   Copy
+========================= */
+
+function copyText(text){
+  navigator.clipboard.writeText(text)
+    .then(()=>showToast("✅ کپی شد"))
+    .catch(()=>{
+      showToast("⚠️ کپی خودکار انجام نشد");
+    });
 }
 
 
-/* SHARE */
+/* =========================
+   Share
+========================= */
 
-document
- .getElementById("shareBtn")
- .addEventListener("click",async()=>{
-
+document.getElementById("shareBtn").addEventListener("click",async()=>{
   const data={
-
-   title:"امیررضا غلامی | وب‌سایت شخصی",
-
-   text:"وب‌سایت شخصی امیررضا غلامی 🚀",
-
-   url:"https://amirrezagholami86.github.io/"
-
+    title:"وب‌سایت امیررضا غلامی",
+    text:"وب‌سایت شخصی امیررضا غلامی",
+    url:"https://amirrezagholami86.github.io/"
   };
 
   if(navigator.share){
-
-   try{
-
-    await navigator.share(data);
-
-    uiSound();
-
-    showToast(
-     "📤 سایت به اشتراک گذاشته شد"
-    );
-
-   }catch(e){
-
-    if(e.name!=="AbortError"){
-     showToast(
-      "❌ اشتراک‌گذاری انجام نشد"
-     );
-    }
-
-   }
-
+    try{
+      await navigator.share(data);
+    }catch(e){}
   }else{
-
-   copyText(
-    data.url,
-    "🔗 لینک سایت کپی شد"
-   );
-
+    copyText(data.url);
+    showToast("🔗 لینک سایت کپی شد");
   }
+});
 
- });
+
+/* =========================
+   Save VCard
+========================= */
+
+document.getElementById("saveContactBtn").addEventListener("click",()=>{
+  const vcard=[
+    "BEGIN:VCARD",
+    "VERSION:3.0",
+    "FN:Amirreza Gholami",
+    "N:Gholami;Amirreza;;;",
+    "TEL;TYPE=CELL:+989228420736",
+    "EMAIL:amirrezaamirreza275@gmail.com",
+    "URL:https://amirrezagholami86.github.io/",
+    "X-SOCIALPROFILE;TYPE=telegram:https://t.me/Amirrezagholami_ir",
+    "X-SOCIALPROFILE;TYPE=instagram:https://www.instagram.com/amirrezagholami.ir",
+    "X-SOCIALPROFILE;TYPE=github:https://github.com/amirrezagholami86",
+    "END:VCARD"
+  ].join("\n");
+
+  const blob=new Blob([vcard],{type:"text/vcard;charset=utf-8"});
+  const url=URL.createObjectURL(blob);
+
+  const a=document.createElement("a");
+  a.href=url;
+  a.download="Amirreza-Gholami.vcf";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+
+  URL.revokeObjectURL(url);
+
+  showToast("📇 فایل مخاطب آماده شد");
+});
 
 
-/* SEARCH */
+/* =========================
+   Dashboard
+========================= */
 
-const searchMap=[
+let visits=parseInt(localStorage.getItem("siteVisits") || "0");
+visits++;
 
- {
-  words:["خانه","home"],
-  target:"top",
-  name:"خانه"
- },
+const previousVisit=localStorage.getItem("lastVisit");
 
- {
-  words:["درباره","about","معرفی"],
-  target:"about",
-  name:"درباره من"
- },
+localStorage.setItem("siteVisits",visits);
+localStorage.setItem("lastVisit",new Date().toISOString());
 
- {
-  words:["داشبورد","ساعت","تاریخ"],
-  target:"dashboard",
-  name:"داشبورد"
- },
+document.getElementById("visitCount").textContent=visits;
 
- {
-  words:[
-   "علاقه",
-   "علایق",
-   "فوتبال",
-   "هوش مصنوعی",
-   "ai",
-   "تکنولوژی"
-  ],
-  target:"interests",
-  name:"علایق"
- },
+if(previousVisit){
+  const date=new Date(previousVisit);
 
- {
-  words:["مهارت","skills","html","css","javascript"],
-  target:"skills",
-  name:"مهارت‌ها"
- },
+  document.getElementById("lastVisit").textContent=
+    date.toLocaleDateString("fa-IR");
+}else{
+  document.getElementById("lastVisit").textContent="اولین بازدید";
+}
 
- {
-  words:["پروژه","projects","github"],
-  target:"projects",
-  name:"پروژه‌ها"
- },
+const sessionStart=Date.now();
 
- {
-  words:["دستاورد","دستاوردها"],
-  target:"achievements",
-  name:"دستاوردها"
- },
+setInterval(()=>{
+  const seconds=Math.floor((Date.now()-sessionStart)/1000);
+  const min=Math.floor(seconds/60);
+  const sec=String(seconds%60).padStart(2,"0");
 
- {
-  words:["ابزار","tools","github","ai tools"],
-  target:"tools",
-  name:"ابزارها"
- },
+  document.getElementById("sessionTime").textContent=
+    min+":"+sec;
+},1000);
 
- {
-  words:["گالری","عکس","تصویر"],
-  target:"gallery",
-  name:"گالری"
- },
 
- {
-  words:["مسیر","timeline"],
-  target:"timeline",
-  name:"مسیر من"
- },
+/* =========================
+   Section Visits
+========================= */
 
- {
-  words:["هدف","اهداف","goals"],
-  target:"goals",
-  name:"اهداف"
- },
+const seenSections=new Set();
 
- {
-  words:[
-   "ارتباط",
-   "تماس",
-   "contact",
-   "تلگرام",
-   "اینستاگرام",
-   "واتساپ",
-   "ایمیل"
-  ],
-  target:"contact",
-  name:"ارتباط"
- },
+const sectionObserver=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting && entry.intersectionRatio>.2){
+      const id=entry.target.id;
 
- {
-  words:["qr","کد"],
-  target:"qrcode-section",
-  name:"QR Code"
- }
+      if(id && !seenSections.has(id)){
+        seenSections.add(id);
 
+        let total=parseInt(
+          localStorage.getItem("sectionVisits") || "0"
+        );
+
+        total++;
+
+        localStorage.setItem("sectionVisits",total);
+        document.getElementById("sectionVisits").textContent=total;
+      }
+    }
+  });
+},{
+  threshold:.2
+});
+
+document.querySelectorAll("main section").forEach(section=>{
+  sectionObserver.observe(section);
+});
+
+
+/* =========================
+   Quotes
+========================= */
+
+const quotes=[
+  "قدم‌های کوچک هم می‌توانند مسیرهای بزرگ بسازند. 🚀",
+  "یادگیری هیچ‌وقت متوقف نمی‌شود. 📚",
+  "هر پروژه، یک تجربه جدید است. 💻",
+  "ایده‌ها وقتی ساخته شوند، ارزش پیدا می‌کنند. 💡",
+  "امروز را برای ساختن فردا استفاده کن. 🔥",
+  "کنجکاوی، شروع خیلی از موفقیت‌هاست. 🤖"
 ];
 
-function performSearch(){
+document.getElementById("factBtn").addEventListener("click",()=>{
+  const random=quotes[Math.floor(Math.random()*quotes.length)];
 
- const input=
-  document.getElementById("siteSearch");
+  document.getElementById("quote").textContent=random;
 
- const value=
-  input.value.trim().toLowerCase();
-
- if(!value){
-
-  showToast(
-   "🔍 اول چیزی برای جست‌وجو بنویس"
-  );
-
-  input.focus();
-
-  return;
-
- }
-
- let result=null;
-
- for(const item of searchMap){
-
-  if(
-   item.words.some(word=>
-    value.includes(word.toLowerCase())
-   )
-  ){
-
-   result=item;
-   break;
-
-  }
-
- }
-
- if(result){
-
-  document
-   .getElementById(result.target)
-   .scrollIntoView({
-    behavior:"smooth"
-   });
-
-  uiSound();
-
-  showToast(
-   "✅ رفتیم به بخش «"+
-   result.name+
-   "»"
-  );
-
- }else{
-
-  showToast(
-   "❌ چیزی با این عنوان پیدا نشد"
-  );
-
- }
-
-}
-
-document
- .getElementById("searchBtn")
- .addEventListener(
-  "click",
-  performSearch
- );
-
-document
- .getElementById("siteSearch")
- .addEventListener(
-  "keydown",
-  event=>{
-
-   if(event.key==="Enter"){
-    performSearch();
-   }
-
-  }
- );
+  showToast("✨ جمله جدید");
+  playClick();
+});
 
 
-/* QUICK MENU */
+/* =========================
+   Progress Animation
+========================= */
 
-const quickMenu=
- document.getElementById("quickMenu");
+const progressObserver=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.querySelectorAll(".progress span").forEach(bar=>{
+        bar.style.width=bar.dataset.width;
+      });
+    }
+  });
+},{threshold:.25});
 
-document
- .getElementById("quickToggle")
- .addEventListener("click",()=>{
+document.querySelectorAll("#skills .card").forEach(card=>{
+  progressObserver.observe(card);
+});
 
-  quickMenu.classList.toggle("open");
 
-  uiSound();
+/* =========================
+   Scroll Reveal
+========================= */
 
- });
+const revealObserver=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("visible");
+    }
+  });
+},{threshold:.08});
 
-document
- .querySelectorAll(".quick-link")
- .forEach(link=>{
+document.querySelectorAll(".reveal").forEach(el=>{
+  revealObserver.observe(el);
+});
 
-  link.addEventListener("click",()=>{
 
-   quickMenu.classList.remove("open");
+/* =========================
+   Active Navigation
+========================= */
 
+const navItems=document.querySelectorAll(".nav-links a");
+const sections=[...document.querySelectorAll("main section")];
+
+window.addEventListener("scroll",()=>{
+  let current="top";
+
+  sections.forEach(section=>{
+    const top=section.offsetTop-120;
+
+    if(window.scrollY>=top){
+      current=section.id;
+    }
   });
 
- });
+  navItems.forEach(item=>{
+    item.classList.remove("active");
 
+    const href=item.getAttribute("href");
 
-/* GALLERY MODAL */
-
-const modal=
- document.getElementById("imageModal");
-
-const modalImage=
- document.getElementById("modalImage");
-
-document
- .querySelectorAll(".gallery-card[data-image]")
- .forEach(card=>{
-
-  card.addEventListener("click",()=>{
-
-   modalImage.src=
-    card.dataset.image;
-
-   modalImage.alt=
-    card.dataset.title || "تصویر";
-
-   modal.classList.add("show");
-
-   uiSound();
-
+    if(href==="#"+current){
+      item.classList.add("active");
+    }
   });
+},{passive:true});
 
- });
 
-function closeModal(){
+/* =========================
+   Search
+========================= */
 
- modal.classList.remove("show");
+const searchMap={
+  "فوتبال":"#interests",
+  "football":"#interests",
+  "ai":"#interests",
+  "هوش":"#interests",
+  "هوش مصنوعی":"#interests",
+  "تکنولوژی":"#interests",
+  "technology":"#interests",
+  "مهارت":"#skills",
+  "skills":"#skills",
+  "پروژه":"#projects",
+  "github":"#projects",
+  "دستاورد":"#achievements",
+  "badge":"#badges",
+  "پروفایل":"#digital-id",
+  "تماس":"#contact",
+  "ارتباط":"#contact",
+  "telegram":"#contact",
+  "instagram":"#contact",
+  "whatsapp":"#contact",
+  "qr":"#qrcode-section",
+  "مسیر":"#timeline",
+  "هدف":"#goals"
+};
 
+function doSearch(){
+  const input=document.getElementById("searchInput");
+  const query=input.value.trim().toLowerCase();
+
+  if(!query){
+    showToast("🔎 چیزی برای جستجو وارد کن");
+    return;
+  }
+
+  for(const key in searchMap){
+    if(query.includes(key)){
+      document.querySelector(searchMap[key])
+        .scrollIntoView({behavior:"smooth"});
+
+      showToast("✅ بخش موردنظر پیدا شد");
+      return;
+    }
+  }
+
+  showToast("❌ موردی پیدا نشد");
 }
 
-document
- .getElementById("closeModal")
- .addEventListener(
-  "click",
-  closeModal
- );
+document.getElementById("searchBtn").addEventListener("click",doSearch);
 
-modal.addEventListener("click",event=>{
-
- if(event.target===modal){
-  closeModal();
- }
-
-});
-
-document.addEventListener("keydown",event=>{
-
- if(event.key==="Escape"){
-  closeModal();
- }
-
+document.getElementById("searchInput").addEventListener("keydown",e=>{
+  if(e.key==="Enter"){
+    doSearch();
+  }
 });
 
 
-/* QR CODE */
+/* =========================
+   Gallery Modal
+========================= */
 
-window.addEventListener("load",()=>{
+const modal=document.getElementById("imageModal");
 
- const qrElement=
-  document.getElementById("qrcode");
+document.getElementById("profileGallery").addEventListener("click",()=>{
+  modal.classList.add("show");
+});
 
- if(typeof QRCode!=="undefined"){
+document.getElementById("modalClose").addEventListener("click",()=>{
+  modal.classList.remove("show");
+});
 
-  new QRCode(
-   qrElement,
-   {
-    text:
-     "https://amirrezagholami86.github.io/",
-    width:170,
-    height:170,
-    colorDark:"#111111",
-    colorLight:"#ffffff",
-    correctLevel:
-     QRCode.CorrectLevel.H
-   }
+modal.addEventListener("click",e=>{
+  if(e.target===modal){
+    modal.classList.remove("show");
+  }
+});
+
+
+/* =========================
+   QR
+========================= */
+
+if(window.QRCode){
+  new QRCode(document.getElementById("qrcode"),{
+    text:"https://amirrezagholami86.github.io/",
+    width:190,
+    height:190
+  });
+}
+
+
+/* =========================
+   Mouse Glow
+========================= */
+
+const mouseGlow=document.getElementById("mouseGlow");
+
+if(window.matchMedia("(pointer:fine)").matches){
+  window.addEventListener("pointermove",e=>{
+    mouseGlow.style.left=e.clientX+"px";
+    mouseGlow.style.top=e.clientY+"px";
+  },{passive:true});
+}else{
+  mouseGlow.style.display="none";
+}
+
+
+/* =========================
+   Sound
+========================= */
+
+let soundEnabled=localStorage.getItem("siteSound")==="on";
+const soundBtn=document.getElementById("soundBtn");
+
+function updateSoundButton(){
+  soundBtn.textContent=soundEnabled?"🔊":"🔇";
+}
+
+updateSoundButton();
+
+function playClick(){
+  if(!soundEnabled) return;
+
+  try{
+    const AudioContext=
+      window.AudioContext || window.webkitAudioContext;
+
+    if(!AudioContext) return;
+
+    const ctx=new AudioContext();
+    const osc=ctx.createOscillator();
+    const gain=ctx.createGain();
+
+    osc.frequency.value=520;
+    gain.gain.value=.035;
+
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+
+    osc.start();
+
+    setTimeout(()=>{
+      osc.stop();
+      ctx.close();
+    },55);
+
+  }catch(e){}
+}
+
+soundBtn.addEventListener("click",()=>{
+  soundEnabled=!soundEnabled;
+
+  localStorage.setItem(
+    "siteSound",
+    soundEnabled?"on":"off"
   );
 
- }
+  updateSoundButton();
 
+  if(soundEnabled) playClick();
 });
 
 
-/* PARTICLES */
+/* =========================
+   Particles
+========================= */
 
-const canvas=
- document.getElementById("particles");
-
-const ctx=
- canvas.getContext("2d");
+const canvas=document.getElementById("particles");
+const ctx=canvas.getContext("2d");
 
 let particles=[];
+let animationFrame;
 
 function resizeCanvas(){
-
- canvas.width=window.innerWidth;
- canvas.height=window.innerHeight;
-
+  canvas.width=window.innerWidth;
+  canvas.height=window.innerHeight;
 }
 
-resizeCanvas();
+function createParticles(){
+  particles=[];
 
-window.addEventListener(
- "resize",
- resizeCanvas
-);
+  const amount=window.innerWidth<700?20:40;
 
-for(let i=0;i<45;i++){
-
- particles.push({
-
-  x:Math.random()*window.innerWidth,
-
-  y:Math.random()*window.innerHeight,
-
-  r:Math.random()*2+.5,
-
-  dx:(Math.random()-.5)*.3,
-
-  dy:(Math.random()-.5)*.3
-
- });
-
+  for(let i=0;i<amount;i++){
+    particles.push({
+      x:Math.random()*canvas.width,
+      y:Math.random()*canvas.height,
+      r:Math.random()*1.6+.4,
+      dx:(Math.random()-.5)*.25,
+      dy:(Math.random()-.5)*.25
+    });
+  }
 }
 
 function animateParticles(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
 
- ctx.clearRect(
-  0,
-  0,
-  canvas.width,
-  canvas.height
- );
+  particles.forEach(p=>{
+    p.x+=p.dx;
+    p.y+=p.dy;
 
- particles.forEach(p=>{
+    if(p.x<0 || p.x>canvas.width) p.dx*=-1;
+    if(p.y<0 || p.y>canvas.height) p.dy*=-1;
 
-  p.x+=p.dx;
-  p.y+=p.dy;
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle="rgba(120,200,255,.55)";
+    ctx.fill();
+  });
 
-  if(
-   p.x<0 ||
-   p.x>canvas.width
-  ){
-   p.dx*=-1;
-  }
-
-  if(
-   p.y<0 ||
-   p.y>canvas.height
-  ){
-   p.dy*=-1;
-  }
-
-  ctx.beginPath();
-
-  ctx.arc(
-   p.x,
-   p.y,
-   p.r,
-   0,
-   Math.PI*2
-  );
-
-  ctx.fillStyle=
-   document.body.classList.contains("light")
-   ? "rgba(0,120,255,.16)"
-   : "rgba(0,217,255,.22)";
-
-  ctx.fill();
-
- });
-
- requestAnimationFrame(
-  animateParticles
- );
-
+  animationFrame=requestAnimationFrame(animateParticles);
 }
 
-animateParticles();
+if(!window.matchMedia("(prefers-reduced-motion:reduce)").matches){
+  resizeCanvas();
+  createParticles();
+  animateParticles();
 
-</script></body>
-  </html>
+  window.addEventListener("resize",()=>{
+    resizeCanvas();
+    createParticles();
+  });
+}
+
+
+/* =========================
+   First Visit
+========================= */
+
+if(!localStorage.getItem("welcomeShown")){
+  setTimeout(()=>{
+    showToast("👋 خوش اومدی به سایت من!");
+  },1000);
+
+  localStorage.setItem("welcomeShown","yes");
+}
+</script>
+
+</body>
+ </html>
