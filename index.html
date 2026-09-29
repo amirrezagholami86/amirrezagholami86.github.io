@@ -6,189 +6,7 @@
 <meta name="theme-color" content="#00e5ff">
 <meta name="description" content="وب‌سایت شخصی امیررضا">
 <title>امیررضا | Personal Space</title>
-<!-- SUPABASE -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-<script>
-  const SUPABASE_URL = "https://lkjkoxrbripairmopgms.supabase.co";
-
-  const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_1E2R6G_2oU0td9Pw2lUZ1w_61aU5tJw";
-
-  const supabaseClient = window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_PUBLISHABLE_KEY
-  
-);
-// =========================================================
-// SUPABASE AUTH
-// =========================================================
-
-async function registerUser(){
-
-  const name = $("authName").value.trim();
-  const username = $("authUsername").value.trim().replace(/^@/, "");
-  const email = $("authEmail").value.trim();
-  const password = $("authPassword").value;
-
-  if(!name || !username || !email || !password){
-    toast("⚠️ همه اطلاعات را وارد کن");
-    return;
-  }
-
-  if(password.length < 6){
-    toast("⚠️ رمز عبور باید حداقل ۶ کاراکتر باشد");
-    return;
-  }
-
-  try{
-
-    const { data, error } = await supabaseClient.auth.signUp({
-      email: email,
-      password: password,
-      options: {
-        data: {
-          username: username,
-          display_name: name
-        }
-      }
-    });
-
-    if(error) throw error;
-
-    toast("🎉 ثبت‌نام انجام شد");
-
-    $("authStatus").innerHTML =
-      "✅ حساب ساخته شد. اگر تأیید ایمیل فعال باشد، ایمیل تأیید را بررسی کن.";
-
-  }catch(error){
-
-    console.error(error);
-
-    $("authStatus").innerHTML =
-      "❌ " + escapeHTML(error.message);
-
-    toast("❌ ثبت‌نام ناموفق بود");
-  }
-}
-
-
-async function loginUser(){
-
-  const email = $("authEmail").value.trim();
-  const password = $("authPassword").value;
-
-  if(!email || !password){
-    toast("⚠️ ایمیل و رمز عبور را وارد کن");
-    return;
-  }
-
-  try{
-
-    const { data, error } =
-      await supabaseClient.auth.signInWithPassword({
-        email: email,
-        password: password
-      });
-
-    if(error) throw error;
-
-    toast("🚀 ورود موفق بود");
-
-    renderAuthUser(data.user);
-
-  }catch(error){
-
-    console.error(error);
-
-    $("authStatus").innerHTML =
-      "❌ " + escapeHTML(error.message);
-
-    toast("❌ ایمیل یا رمز عبور اشتباه است");
-  }
-}
-
-
-async function logoutUser(){
-
-  const { error } =
-    await supabaseClient.auth.signOut();
-
-  if(error){
-    toast("❌ خروج انجام نشد");
-    return;
-  }
-
-  toast("👋 از حساب خارج شدی");
-
-  $("authStatus").innerHTML =
-    "🔒 از حساب خارج شده‌ای";
-}
-
-
-function renderAuthUser(user){
-
-  if(!user) return;
-
-  const name =
-    user.user_metadata?.display_name ||
-    user.email ||
-    "کاربر";
-
-  const username =
-    user.user_metadata?.username ||
-    "user";
-
-  $("authStatus").innerHTML = `
-    <div>
-      🟢 <strong>وارد شده‌ای</strong>
-      <br>
-      👤 ${escapeHTML(name)}
-      <br>
-      @${escapeHTML(username)}
-      <br>
-      📧 ${escapeHTML(user.email || "")}
-    </div>
-  `;
-}
-
-
-async function checkAuth(){
-
-  try{
-
-    const {
-      data: { session }
-    } = await supabaseClient.auth.getSession();
-
-    if(session?.user){
-      renderAuthUser(session.user);
-    }else{
-      $("authStatus").innerHTML =
-        "🔒 هنوز وارد حساب نشده‌ای";
-    }
-
-    supabaseClient.auth.onAuthStateChange(
-      (_event, session) => {
-
-        if(session?.user){
-          renderAuthUser(session.user);
-        }else{
-          $("authStatus").innerHTML =
-            "🔒 هنوز وارد حساب نشده‌ای";
-        }
-
-      }
-    );
-
-  }catch(error){
-
-    console.error(error);
-
-    $("authStatus").innerHTML =
-      "⚠️ اتصال به سیستم حساب کاربری برقرار نشد";
-  }
-}
-</script>
 <style>
 :root{
   --bg:#071018;
@@ -244,8 +62,7 @@ a{
 }
 
 button,
-input,
-textarea{
+input{
   font:inherit;
 }
 
@@ -437,10 +254,6 @@ body.light .navbar{
   color:#001018;
   border:0;
   font-weight:900;
-}
-
-.btn.danger{
-  color:var(--danger);
 }
 
 .profile-wrap{
@@ -746,395 +559,6 @@ footer{
   text-align:center;
 }
 
-/* =====================================================
-   SOCIAL NETWORK
-===================================================== */
-
-.social-section{
-  padding-top:65px;
-}
-
-.social-shell{
-  max-width:820px;
-  margin:auto;
-}
-
-.social-profile-bar{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:15px;
-  margin-bottom:20px;
-  padding:18px 20px;
-}
-
-.social-profile{
-  display:flex;
-  align-items:center;
-  gap:13px;
-}
-
-.social-avatar{
-  width:54px;
-  height:54px;
-  flex-shrink:0;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:linear-gradient(135deg,var(--accent),var(--accent2));
-  color:#001018;
-  font-size:20px;
-  font-weight:900;
-  box-shadow:0 0 25px rgba(0,229,255,.15);
-  overflow:hidden;
-}
-
-.social-avatar img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-.social-profile strong{
-  display:block;
-}
-
-.social-profile small{
-  color:var(--muted);
-}
-
-.social-stats{
-  display:flex;
-  gap:18px;
-  color:var(--muted);
-  font-size:.82rem;
-}
-
-.social-stats strong{
-  color:var(--text);
-}
-
-.follow-btn{
-  margin-top:6px;
-  padding:6px 12px;
-  border-radius:10px;
-  border:1px solid var(--accent);
-  background:transparent;
-  color:var(--accent);
-  font-size:.75rem;
-}
-
-.follow-btn.following{
-  background:var(--accent);
-  color:#001018;
-}
-
-.profile-actions{
-  display:flex;
-  flex-direction:column;
-  align-items:flex-end;
-  gap:5px;
-}
-
-.profile-edit{
-  margin-top:14px;
-  display:flex;
-  justify-content:center;
-}
-
-.composer{
-  padding:20px;
-  margin-bottom:20px;
-}
-
-.composer-head{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  margin-bottom:15px;
-}
-
-.composer-head strong{
-  display:block;
-}
-
-.composer-head small{
-  color:var(--muted);
-}
-
-.composer textarea{
-  width:100%;
-  min-height:125px;
-  resize:vertical;
-  padding:15px;
-  border:1px solid var(--border);
-  border-radius:16px;
-  background:rgba(0,0,0,.15);
-  color:var(--text);
-  outline:none;
-  line-height:1.9;
-}
-
-body.light .composer textarea{
-  background:rgba(0,0,0,.025);
-}
-
-.composer textarea:focus{
-  border-color:var(--accent);
-  box-shadow:0 0 20px rgba(0,229,255,.08);
-}
-
-.composer-bottom{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  margin-top:12px;
-}
-
-.post-counter{
-  color:var(--muted);
-  font-size:.78rem;
-}
-
-.feed{
-  display:grid;
-  gap:18px;
-}
-
-.post-card{
-  padding:20px;
-  overflow:hidden;
-}
-
-.post-head{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-}
-
-.post-user{
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-
-.post-avatar{
-  width:46px;
-  height:46px;
-  flex-shrink:0;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:linear-gradient(135deg,var(--accent),var(--accent2));
-  color:#001018;
-  font-weight:900;
-  overflow:hidden;
-}
-
-.post-avatar img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-.post-user strong{
-  display:block;
-}
-
-.post-user small{
-  color:var(--muted);
-  font-size:.75rem;
-}
-
-.post-menu-btn{
-  width:36px;
-  height:36px;
-  border:1px solid var(--border);
-  border-radius:10px;
-  background:var(--card2);
-  color:var(--text);
-}
-
-.post-content{
-  margin:18px 0;
-  white-space:pre-wrap;
-  word-break:break-word;
-  line-height:2;
-}
-
-.post-actions{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  padding-top:12px;
-  border-top:1px solid var(--border);
-  flex-wrap:wrap;
-}
-
-.post-action{
-  border:0;
-  background:transparent;
-  color:var(--text);
-  border-radius:11px;
-  padding:8px 12px;
-  transition:.2s;
-}
-
-.post-action:hover{
-  background:var(--card2);
-}
-
-.post-action.liked{
-  color:var(--danger);
-}
-
-.post-action.saved{
-  color:var(--accent);
-}
-
-.comments{
-  display:grid;
-  gap:8px;
-  margin-top:13px;
-}
-
-.comment{
-  padding:9px 12px;
-  border-radius:11px;
-  background:var(--card2);
-  font-size:.82rem;
-}
-
-.comment strong{
-  color:var(--accent);
-}
-
-.comment-time{
-  color:var(--muted);
-  font-size:.7rem;
-  margin-right:5px;
-}
-
-.comment-input-area{
-  display:flex;
-  gap:8px;
-  margin-top:13px;
-}
-
-.comment-input-area input{
-  min-width:0;
-  flex:1;
-  padding:10px 12px;
-  border:1px solid var(--border);
-  border-radius:11px;
-  background:var(--card2);
-  color:var(--text);
-  outline:none;
-}
-
-.comment-input-area input:focus{
-  border-color:var(--accent);
-}
-
-.comment-input-area button{
-  border:0;
-  border-radius:11px;
-  padding:0 15px;
-  background:var(--accent);
-  color:#001018;
-  font-weight:bold;
-}
-
-.empty-feed{
-  text-align:center;
-  padding:45px 20px;
-}
-
-.empty-feed-icon{
-  font-size:45px;
-  margin-bottom:8px;
-}
-
-.social-note{
-  margin-top:15px;
-  padding:12px 15px;
-  border-radius:13px;
-  border:1px solid rgba(0,229,255,.12);
-  background:rgba(0,229,255,.035);
-  color:var(--muted);
-  font-size:.78rem;
-  text-align:center;
-}
-
-.notification-box{
-  max-height:400px;
-  overflow:auto;
-}
-
-.notification{
-  padding:13px;
-  border-bottom:1px solid var(--border);
-  display:flex;
-  gap:10px;
-}
-
-.notification:last-child{
-  border-bottom:0;
-}
-
-.notification-icon{
-  font-size:1.3rem;
-}
-
-.notification small{
-  display:block;
-  color:var(--muted);
-  margin-top:3px;
-}
-
-.notification-empty{
-  text-align:center;
-  padding:35px;
-  color:var(--muted);
-}
-
-.profile-form{
-  display:grid;
-  gap:14px;
-}
-
-.profile-form label{
-  color:var(--muted);
-  font-size:.82rem;
-}
-
-.profile-form input,
-.profile-form textarea{
-  width:100%;
-  padding:12px 14px;
-  border:1px solid var(--border);
-  border-radius:13px;
-  background:var(--card2);
-  color:var(--text);
-  outline:none;
-}
-
-.profile-form input:focus,
-.profile-form textarea:focus{
-  border-color:var(--accent);
-}
-
-.profile-form textarea{
-  min-height:100px;
-  resize:vertical;
-}
-
-/* ---------- Modal ---------- */
-
 .modal{
   position:fixed;
   inset:0;
@@ -1251,16 +675,7 @@ body.light .composer textarea{
   transform:none;
 }
 
-.no-motion *,
-.no-motion *::before,
-.no-motion *::after{
-  animation:none!important;
-  transition:none!important;
-  scroll-behavior:auto!important;
-}
-
 @media(max-width:850px){
-
   .nav-links{
     position:absolute;
     top:68px;
@@ -1307,25 +722,9 @@ body.light .composer textarea{
   .command{
     grid-template-columns:1fr 1fr;
   }
-
-  .social-profile-bar{
-    align-items:flex-start;
-    flex-direction:column;
-  }
-
-  .profile-actions{
-    width:100%;
-    align-items:stretch;
-  }
-
-  .profile-actions .btn,
-  .profile-actions .follow-btn{
-    width:100%;
-  }
 }
 
 @media(max-width:600px){
-
   section{
     padding:70px 0;
   }
@@ -1354,28 +753,6 @@ body.light .composer textarea{
     bottom:15px;
     max-width:none;
   }
-
-  .social-stats{
-    width:100%;
-    justify-content:space-between;
-  }
-
-  .composer-bottom{
-    flex-direction:column;
-    align-items:stretch;
-  }
-
-  .composer-bottom .btn{
-    width:100%;
-  }
-
-  .post-actions{
-    flex-wrap:wrap;
-  }
-
-  .comment-input-area button{
-    padding:0 12px;
-  }
 }
 </style>
 </head>
@@ -1387,12 +764,10 @@ body.light .composer textarea{
 
 <nav class="navbar">
   <div class="container nav-inner">
-
     <a href="#home" class="logo">AMIRREZA.DEV</a>
 
     <div class="nav-links" id="navLinks">
       <a href="#home">خانه</a>
-      <a href="#social">📱 شبکه اجتماعی</a>
       <a href="#about">درباره من</a>
       <a href="#dashboard">داشبورد</a>
       <a href="#projects">پروژه‌ها</a>
@@ -1401,25 +776,18 @@ body.light .composer textarea{
     </div>
 
     <div class="nav-actions">
-      <button class="icon-btn" id="notificationBtn" title="اعلان‌ها">🔔</button>
       <button class="icon-btn" id="themeBtn" title="تغییر حالت">☀️</button>
       <button class="icon-btn menu-btn" id="menuBtn" title="منو">☰</button>
     </div>
-
   </div>
 </nav>
 
 <main>
 
 <section class="hero" id="home">
-
   <div class="container hero-grid">
-
     <div class="reveal">
-
-      <div class="badge">
-        🚀 Personal Space • v3.1.0
-      </div>
+      <div class="badge">🚀 Personal Space • v2.0.1</div>
 
       <h1>
         سلام، من
@@ -1428,230 +796,46 @@ body.light .composer textarea{
       </h1>
 
       <div class="hero-sub">
-        <span id="typing"></span>
-        <span class="cursor">|</span>
+        <span id="typing"></span><span class="cursor">|</span>
       </div>
 
       <div class="hero-buttons">
-
-        <a class="btn primary" href="#social">
-          📱 شبکه اجتماعی
-        </a>
-
-        <a class="btn" href="#about">
-          ✨ شروع کنیم
-        </a>
-
-        <button class="btn" onclick="openModal('aiModal')">
-          🤖 AI Center
-        </button>
-
-        <button class="btn" onclick="downloadVCard()">
-          📇 ذخیره مخاطب
-        </button>
-
+        <a class="btn primary" href="#about">✨ شروع کنیم</a>
+        <button class="btn" onclick="openModal('aiModal')">🤖 AI Center</button>
+        <button class="btn" onclick="downloadVCard()">📇 ذخیره مخاطب</button>
       </div>
 
       <div class="xp-wrap">
-
         <div class="xp-top">
           <span id="levelText">Level 8</span>
           <span id="xpText">820 XP</span>
         </div>
-
         <div class="progress">
           <div class="progress-bar" id="xpProgress"></div>
         </div>
-
       </div>
-
     </div>
 
     <div class="profile-wrap reveal">
-
       <div class="profile-card">
-
-        <img
-          src="profile.jpg"
-          alt="امیررضا"
-          onerror="this.src='https://via.placeholder.com/600?text=Amirreza'"
-        >
-
+        <img src="profile.jpg" alt="امیررضا" onerror="this.src='https://via.placeholder.com/600?text=Amirreza'">
         <div class="profile-info">
-          <h3 id="heroProfileName">امیررضا غلامی</h3>
+          <h3>امیررضا غلامی</h3>
           <p class="muted">Personal Profile • 2026</p>
         </div>
-
       </div>
-
     </div>
-
   </div>
-
 </section>
-
-
-<section id="social" class="social-section">
-
-  <div class="container">
-
-    <div class="section-head reveal">
-
-      <span class="section-kicker">
-        SOCIAL SPACE
-      </span>
-
-      <h2>
-        شبکه اجتماعی 📱
-      </h2>
-
-      <p class="muted">
-        فضای اجتماعی شخصی امیررضا
-      </p>
-
-    </div>
-
-    <div class="social-shell">
-
-      <div class="card social-profile-bar reveal">
-
-        <div class="social-profile">
-
-          <div class="social-avatar">
-            <img
-              src="profile.jpg"
-              alt="امیررضا"
-              onerror="this.parentElement.innerHTML='ا'"
-            >
-          </div>
-
-          <div>
-            <strong id="socialName">امیررضا غلامی</strong>
-            <small id="socialUsername">@amirreza</small>
-
-            <br>
-
-            <button
-              class="follow-btn"
-              id="followBtn"
-              onclick="toggleFollow()"
-            >
-              + دنبال کردن
-            </button>
-          </div>
-
-        </div>
-
-        <div class="profile-actions">
-
-          <div class="social-stats">
-
-            <span>
-              <strong id="postCount">0</strong>
-              پست
-            </span>
-
-            <span>
-              <strong id="likeCount">0</strong>
-              لایک
-            </span>
-
-            <span>
-              <strong id="commentCount">0</strong>
-              کامنت
-            </span>
-
-            <span>
-              <strong id="savedCount">0</strong>
-              ذخیره
-            </span>
-
-          </div>
-
-          <button
-            class="btn"
-            onclick="openProfileEditor()"
-          >
-            ✏️ ویرایش پروفایل
-          </button>
-
-        </div>
-
-      </div>
-
-
-      <div class="card composer reveal">
-
-        <div class="composer-head">
-
-          <div class="social-avatar">
-            <img
-              src="profile.jpg"
-              alt="امیررضا"
-              onerror="this.parentElement.innerHTML='ا'"
-            >
-          </div>
-
-          <div>
-            <strong>امیررضا</strong>
-            <small>ایجاد یک پست جدید</small>
-          </div>
-
-        </div>
-
-        <textarea
-          id="postText"
-          maxlength="1000"
-          placeholder="امروز چی توی ذهنت می‌گذره؟ ✨"
-        ></textarea>
-
-        <div class="composer-bottom">
-
-          <span class="post-counter" id="postCounter">
-            0 / 1000
-          </span>
-
-          <button
-            class="btn primary"
-            onclick="publishPost()"
-          >
-            🚀 انتشار پست
-          </button>
-
-        </div>
-
-      </div>
-
-
-      <div
-        id="postFeed"
-        class="feed"
-      ></div>
-
-
-      <div class="social-note">
-        💡 این نسخه یک نمونه اجتماعی محلی است؛ اطلاعات در همین مرورگر ذخیره می‌شود.
-        برای چندکاربره شدن واقعی، در مرحله بعد دیتابیس و سیستم حساب کاربری اضافه می‌کنیم.
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
 
 <section id="about">
-
   <div class="container">
-
     <div class="section-head reveal">
       <span class="section-kicker">ABOUT ME</span>
       <h2>درباره من 👋</h2>
     </div>
 
     <div class="grid grid-2">
-
       <div class="card reveal">
         <h3>🧑‍💻 من کی هستم؟</h3>
         <p class="muted">
@@ -1667,25 +851,18 @@ body.light .composer textarea{
           و ساختن چیزهای جدید.
         </p>
       </div>
-
     </div>
-
   </div>
-
 </section>
 
-
 <section id="profile">
-
   <div class="container">
-
     <div class="section-head reveal">
       <span class="section-kicker">SMART PROFILE</span>
       <h2>پروفایل هوشمند 🧠</h2>
     </div>
 
     <div class="grid grid-3">
-
       <div class="card reveal">
         <div class="stat">18+</div>
         <div class="stat-label">سن</div>
@@ -1700,96 +877,51 @@ body.light .composer textarea{
         <div class="stat">∞</div>
         <div class="stat-label">هدف برای رشد</div>
       </div>
-
     </div>
-
   </div>
-
 </section>
 
-
 <section id="command">
-
   <div class="container">
-
     <div class="section-head reveal">
       <span class="section-kicker">COMMAND CENTER</span>
       <h2>مرکز فرماندهی 🎮</h2>
     </div>
 
     <div class="command reveal">
-
-      <button onclick="scrollToId('dashboard')">
-        📊 داشبورد
-      </button>
-
-      <button onclick="scrollToId('mission')">
-        🎯 مأموریت امروز
-      </button>
-
-      <button onclick="openModal('aiModal')">
-        🤖 هوش مصنوعی
-      </button>
-
-      <button onclick="openModal('settingsModal')">
-        ⚙️ تنظیمات
-      </button>
-
+      <button onclick="scrollToId('dashboard')">📊 داشبورد</button>
+      <button onclick="scrollToId('mission')">🎯 مأموریت امروز</button>
+      <button onclick="openModal('aiModal')">🤖 هوش مصنوعی</button>
+      <button onclick="openModal('settingsModal')">⚙️ تنظیمات</button>
     </div>
-
   </div>
-
 </section>
 
-
 <section id="search">
-
   <div class="container">
-
     <div class="section-head reveal">
       <span class="section-kicker">SMART SEARCH</span>
       <h2>جست‌وجوی داخلی 🔎</h2>
     </div>
 
     <div class="card reveal">
-
       <div class="search-box">
-
-        <input
-          id="searchInput"
-          type="text"
-          placeholder="مثلاً: شبکه اجتماعی، پروفایل، پروژه، اهداف..."
-        >
-
-        <button
-          class="btn primary"
-          onclick="doSearch()"
-        >
-          جست‌وجو
-        </button>
-
+        <input id="searchInput" type="text" placeholder="مثلاً: تکنولوژی، پروژه، اهداف...">
+        <button class="btn primary" onclick="doSearch()">جست‌وجو</button>
       </div>
-
       <div id="searchResults" class="list"></div>
-
     </div>
-
   </div>
-
 </section>
 
-
 <section id="dashboard">
-
   <div class="container">
-
     <div class="section-head reveal">
       <span class="section-kicker">DASHBOARD</span>
       <h2>داشبورد من 📊</h2>
     </div>
 
     <div class="grid grid-3">
-
       <div class="card reveal">
         <div class="stat" id="visitCount">0</div>
         <div class="stat-label">بازدید این دستگاه</div>
@@ -1804,111 +936,65 @@ body.light .composer textarea{
         <div class="stat" id="achievementNumber">3</div>
         <div class="stat-label">دستاورد باز شده</div>
       </div>
-
     </div>
 
     <br>
 
     <div class="card reveal">
-
       <h3>📈 مهارت‌ها</h3>
 
       <div style="margin-top:18px">
-        <div class="xp-top">
-          <span>تکنولوژی</span>
-          <span>75%</span>
-        </div>
-        <div class="progress">
-          <div class="progress-bar" data-width="75"></div>
-        </div>
+        <div class="xp-top"><span>تکنولوژی</span><span>75%</span></div>
+        <div class="progress"><div class="progress-bar" data-width="75"></div></div>
       </div>
 
       <div style="margin-top:18px">
-        <div class="xp-top">
-          <span>یادگیری</span>
-          <span>82%</span>
-        </div>
-        <div class="progress">
-          <div class="progress-bar" data-width="82"></div>
-        </div>
+        <div class="xp-top"><span>یادگیری</span><span>82%</span></div>
+        <div class="progress"><div class="progress-bar" data-width="82"></div></div>
       </div>
 
       <div style="margin-top:18px">
-        <div class="xp-top">
-          <span>خلاقیت</span>
-          <span>68%</span>
-        </div>
-        <div class="progress">
-          <div class="progress-bar" data-width="68"></div>
-        </div>
+        <div class="xp-top"><span>خلاقیت</span><span>68%</span></div>
+        <div class="progress"><div class="progress-bar" data-width="68"></div></div>
       </div>
 
       <div style="margin-top:18px">
-        <div class="xp-top">
-          <span>تلاش</span>
-          <span>90%</span>
-        </div>
-        <div class="progress">
-          <div class="progress-bar" data-width="90"></div>
-        </div>
+        <div class="xp-top"><span>تلاش</span><span>90%</span></div>
+        <div class="progress"><div class="progress-bar" data-width="90"></div></div>
       </div>
-
     </div>
-
   </div>
-
 </section>
 
-
 <section id="mission">
-
   <div class="container">
-
     <div class="section-head reveal">
       <span class="section-kicker">DAILY MISSION</span>
       <h2>مأموریت امروز 🎯</h2>
     </div>
 
     <div class="card mission reveal" id="missionCard">
-
       <span class="mission-badge">+50 XP</span>
-
-      <h3 id="missionTitle">
-        امروز یک چیز جدید یاد بگیر
-      </h3>
-
+      <h3 id="missionTitle">امروز یک چیز جدید یاد بگیر</h3>
       <p class="muted">
         یک کار کوچک ولی مفید انجام بده و قدمی به جلو بردار.
       </p>
-
       <br>
-
-      <button
-        class="btn primary"
-        id="missionBtn"
-        onclick="completeMission()"
-      >
+      <button class="btn primary" id="missionBtn" onclick="completeMission()">
         انجام شد ✅
       </button>
-
     </div>
-
   </div>
-
 </section>
 
-
 <section id="ai">
-
   <div class="container">
-
     <div class="section-head reveal">
       <span class="section-kicker">AI CENTER</span>
       <h2>مرکز هوش مصنوعی 🤖</h2>
     </div>
 
     <div class="grid grid-3">
-
       <div class="card reveal">
         <h3>💡 ایده‌پردازی</h3>
         <p class="muted">ایده برای پروژه، محتوا و یادگیری.</p>
@@ -1929,25 +1015,18 @@ body.light .composer textarea{
         <br>
         <button class="btn" onclick="aiAction('آینده')">باز کردن</button>
       </div>
-
     </div>
-
   </div>
-
 </section>
 
-
 <section id="growth">
-
   <div class="container">
-
     <div class="section-head reveal">
       <span class="section-kicker">GROWTH CENTER</span>
       <h2>مرکز رشد 📈</h2>
     </div>
 
     <div class="grid grid-2">
-
       <div class="card reveal">
         <h3>🎯 تمرکز</h3>
         <p class="muted">
@@ -1961,25 +1040,18 @@ body.light .composer textarea{
           پیشرفت کوچک روزانه در طول زمان نتیجه بزرگی می‌سازد.
         </p>
       </div>
-
     </div>
-
   </div>
-
 </section>
 
-
 <section id="projects">
-
   <div class="container">
-
     <div class="section-head reveal">
       <span class="section-kicker">PROJECTS</span>
       <h2>پروژه‌ها 🚀</h2>
     </div>
 
     <div class="grid grid-3">
-
       <div class="card project reveal">
         <div>
           <div class="project-icon">🌐</div>
@@ -1993,9 +1065,7 @@ body.light .composer textarea{
         <div>
           <div class="project-icon">🤖</div>
           <h3>AI Journey</h3>
-          <p class="muted">
-            آشنایی بیشتر با هوش مصنوعی و ابزارهای جدید.
-          </p>
+          <p class="muted">آشنایی بیشتر با هوش مصنوعی و ابزارهای جدید.</p>
         </div>
         <span class="tag">Learning</span>
       </div>
@@ -2004,31 +1074,22 @@ body.light .composer textarea{
         <div>
           <div class="project-icon">💡</div>
           <h3>Future Ideas</h3>
-          <p class="muted">
-            ایده‌هایی برای ساختن آینده.
-          </p>
+          <p class="muted">ایده‌هایی برای ساختن آینده.</p>
         </div>
         <span class="tag">Planning</span>
       </div>
-
     </div>
-
   </div>
-
 </section>
 
-
 <section id="achievements">
-
   <div class="container">
-
     <div class="section-head reveal">
       <span class="section-kicker">ACHIEVEMENTS</span>
       <h2>دستاوردها 🏆</h2>
     </div>
 
     <div class="grid grid-3">
-
       <div class="card reveal">
         <h3>🌱 شروع</h3>
         <p class="muted">اولین قدم برداشته شد.</p>
@@ -2043,25 +1104,18 @@ body.light .composer textarea{
         <h3>🚀 سازنده</h3>
         <p class="muted">ساخت و توسعه سایت شخصی.</p>
       </div>
-
     </div>
-
   </div>
-
 </section>
 
-
 <section id="goals">
-
   <div class="container">
-
     <div class="section-head reveal">
       <span class="section-kicker">GOALS</span>
       <h2>اهداف 🎯</h2>
     </div>
 
     <div class="grid grid-2">
-
       <div class="card reveal">
         <h3>📚 یادگیری</h3>
         <p class="muted">ساختن مهارت‌های واقعی و کاربردی.</p>
@@ -2079,65 +1133,42 @@ body.light .composer textarea{
 
       <div class="card reveal">
         <h3>🌟 ساختن</h3>
-        <p class="muted">
-          به جای فقط ایده داشتن، ایده‌ها را به پروژه تبدیل کنم.
-        </p>
+        <p class="muted">به جای فقط ایده داشتن، ایده‌ها را به پروژه تبدیل کنم.</p>
       </div>
-
     </div>
-
   </div>
-
 </section>
 
-
 <section id="timeline">
-
   <div class="container">
-
     <div class="section-head reveal">
       <span class="section-kicker">TIMELINE</span>
       <h2>مسیر من 🛣️</h2>
     </div>
 
     <div class="card reveal">
-
       <div class="timeline">
-
         <div class="timeline-item">
           <h4>شروع مسیر</h4>
-          <p class="muted">
-            یادگیری و تجربه کردن چیزهای جدید.
-          </p>
+          <p class="muted">یادگیری و تجربه کردن چیزهای جدید.</p>
         </div>
 
         <div class="timeline-item">
           <h4>ساخت پروژه‌ها</h4>
-          <p class="muted">
-            تبدیل ایده‌ها به پروژه‌های واقعی.
-          </p>
+          <p class="muted">تبدیل ایده‌ها به پروژه‌های واقعی.</p>
         </div>
 
         <div class="timeline-item">
           <h4>مرحله بعد</h4>
-          <p class="muted">
-            ادامه مسیر با تجربه و مهارت بیشتر.
-          </p>
+          <p class="muted">ادامه مسیر با تجربه و مهارت بیشتر.</p>
         </div>
-
       </div>
-
     </div>
-
   </div>
-
 </section>
 
-
 <section id="activity">
-
   <div class="container">
-
     <div class="section-head reveal">
       <span class="section-kicker">ACTIVITY LOG</span>
       <h2>فعالیت‌ها 📋</h2>
@@ -2146,246 +1177,112 @@ body.light .composer textarea{
     <div class="card reveal">
       <div class="list" id="activityList"></div>
     </div>
-
   </div>
-
 </section>
 
-
 <section id="gallery">
-
   <div class="container">
-
     <div class="section-head reveal">
       <span class="section-kicker">GALLERY</span>
       <h2>گالری 🖼️</h2>
     </div>
 
     <div class="gallery reveal">
-
       <div class="gallery-box">📷</div>
       <div class="gallery-box">⚽</div>
       <div class="gallery-box">💻</div>
       <div class="gallery-box">🚀</div>
       <div class="gallery-box">🤖</div>
       <div class="gallery-box">🌟</div>
-
     </div>
-
   </div>
-
 </section>
 
-
 <section id="settings">
-
   <div class="container">
-
     <div class="section-head reveal">
       <span class="section-kicker">SETTINGS</span>
       <h2>تنظیمات ⚙️</h2>
     </div>
 
     <div class="card reveal">
-
       <div class="settings-row">
-
         <div>
           <strong>حالت نمایش</strong>
           <div class="muted small">تاریک یا روشن</div>
         </div>
-
-        <button class="btn" onclick="toggleTheme()">
-          تغییر
-        </button>
-
+        <button class="btn" onclick="toggleTheme()">تغییر</button>
       </div>
 
-
       <div class="settings-row">
-
         <div>
           <strong>رنگ سایت</strong>
-          <div class="muted small">
-            رنگ اصلی رابط کاربری
-          </div>
+          <div class="muted small">رنگ اصلی رابط کاربری</div>
         </div>
 
         <div class="accent-list">
-
-          <button class="accent aqua"
-            onclick="setTheme('#00e5ff')"
-            aria-label="آبی"></button>
-
-          <button class="accent green"
-            onclick="setTheme('#00ffa3')"
-            aria-label="سبز"></button>
-
-          <button class="accent orange"
-            onclick="setTheme('#ff9f1c')"
-            aria-label="نارنجی"></button>
-
-          <button class="accent pink"
-            onclick="setTheme('#ff4f81')"
-            aria-label="صورتی"></button>
-
+          <button class="accent aqua" onclick="setTheme('#00e5ff')" aria-label="آبی"></button>
+          <button class="accent green" onclick="setTheme('#00ffa3')" aria-label="سبز"></button>
+          <button class="accent orange" onclick="setTheme('#ff9f1c')" aria-label="نارنجی"></button>
+          <button class="accent pink" onclick="setTheme('#ff4f81')" aria-label="صورتی"></button>
         </div>
-
       </div>
-
 
       <div class="settings-row">
-
         <div>
           <strong>حرکت‌ها</strong>
-          <div class="muted small">
-            افکت‌های حرکتی سایت
-          </div>
+          <div class="muted small">افکت‌های حرکتی سایت</div>
         </div>
-
-        <button
-          class="btn"
-          onclick="toggleMotion()"
-          id="motionBtn"
-        >
-          فعال
-        </button>
-
+        <button class="btn" onclick="toggleMotion()" id="motionBtn">فعال</button>
       </div>
 
-
-      <div
-        class="settings-row"
-        style="border-bottom:0"
-      >
-
+      <div class="settings-row" style="border-bottom:0">
         <div>
           <strong>پاک‌کردن اطلاعات محلی</strong>
-          <div class="muted small">
-            XP، بازدید، مأموریت، پروفایل و شبکه اجتماعی
-          </div>
+          <div class="muted small">XP، بازدید و مأموریت ذخیره‌شده</div>
         </div>
-
-        <button class="btn" onclick="resetData()">
-          Reset
-        </button>
-
+        <button class="btn" onclick="resetData()">Reset</button>
       </div>
-
     </div>
-
   </div>
-
 </section>
 
-
 <section id="contact">
-
   <div class="container">
-
     <div class="section-head reveal">
       <span class="section-kicker">CONTACT</span>
       <h2>ارتباط با من 📬</h2>
     </div>
 
     <div class="card contact-card reveal">
-
       <h3>خوشحال می‌شم در ارتباط باشیم ❤️</h3>
-
-      <p class="muted">
-        راه‌های ارتباطی من:
-      </p>
+      <p class="muted">راه‌های ارتباطی من:</p>
 
       <div class="socials">
-
-        <a
-          class="social"
-          href="https://www.instagram.com/amirrezagholami.ir"
-          target="_blank"
-          rel="noopener"
-        >
-          📸 Instagram
-        </a>
-
-        <a
-          class="social"
-          href="https://t.me/Amirrezagholami_ir"
-          target="_blank"
-          rel="noopener"
-        >
-          ✈️ Telegram
-        </a>
-
-        <a
-          class="social"
-          href="https://wa.me/989228420736"
-          target="_blank"
-          rel="noopener"
-        >
-          💬 WhatsApp
-        </a>
-
-        <a
-          class="social"
-          href="mailto:amirrezaamirreza275@gmail.com"
-        >
-          📧 Email
-        </a>
-
-        <a
-          class="social"
-          href="https://github.com/amirrezagholami86"
-          target="_blank"
-          rel="noopener"
-        >
-          💻 GitHub
-        </a>
-
+        <a class="social" href="https://www.instagram.com/amirrezagholami.ir" target="_blank" rel="noopener">📸 Instagram</a>
+        <a class="social" href="https://t.me/Amirrezagholami_ir" target="_blank" rel="noopener">✈️ Telegram</a>
+        <a class="social" href="https://wa.me/989228420736" target="_blank" rel="noopener">💬 WhatsApp</a>
+        <a class="social" href="mailto:amirrezaamirreza275@gmail.com">📧 Email</a>
+        <a class="social" href="https://github.com/amirrezagholami86" target="_blank" rel="noopener">💻 GitHub</a>
       </div>
-
     </div>
-
   </div>
-
 </section>
 
 </main>
 
-
 <footer>
-
   <div class="container">
-
-    <p>
-      © 2026 Amirreza • Personal Space
-    </p>
-
-    <p class="small">
-      v3.1.0 • Social Upgrade 02
-    </p>
-
+    <p>© 2026 Amirreza • Personal Space</p>
+    <p class="small">v2.0.1 • Build 21</p>
   </div>
-
 </footer>
 
-
-<!-- AI MODAL -->
-
 <div class="modal" id="aiModal">
-
   <div class="modal-box">
-
     <div class="modal-head">
-
       <h3>🤖 AI Center</h3>
-
-      <button
-        class="close"
-        onclick="closeModal('aiModal')"
-      >
-        ×
-      </button>
-
+      <button class="close" onclick="closeModal('aiModal')">×</button>
     </div>
 
     <p class="muted" id="aiText">
@@ -2393,43 +1290,18 @@ body.light .composer textarea{
     </p>
 
     <div style="display:flex;flex-wrap:wrap;gap:9px;margin-top:20px">
-
-      <button class="btn" onclick="aiAction('ایده‌پردازی')">
-        💡 ایده
-      </button>
-
-      <button class="btn" onclick="aiAction('یادگیری')">
-        📚 یادگیری
-      </button>
-
-      <button class="btn" onclick="aiAction('پروژه')">
-        🚀 پروژه
-      </button>
-
+      <button class="btn" onclick="aiAction('ایده‌پردازی')">💡 ایده</button>
+      <button class="btn" onclick="aiAction('یادگیری')">📚 یادگیری</button>
+      <button class="btn" onclick="aiAction('پروژه')">🚀 پروژه</button>
     </div>
-
   </div>
-
 </div>
 
-
-<!-- SETTINGS MODAL -->
-
 <div class="modal" id="settingsModal">
-
   <div class="modal-box">
-
     <div class="modal-head">
-
       <h3>⚙️ تنظیمات سریع</h3>
-
-      <button
-        class="close"
-        onclick="closeModal('settingsModal')"
-      >
-        ×
-      </button>
-
+      <button class="close" onclick="closeModal('settingsModal')">×</button>
     </div>
 
     <p class="muted">
@@ -2438,3540 +1310,840 @@ body.light .composer textarea{
 
     <br>
 
-    <button
-      class="btn primary"
-      onclick="closeModal('settingsModal');scrollToId('settings')"
-    >
+    <button class="btn primary" onclick="closeModal('settingsModal');scrollToId('settings')">
       رفتن به تنظیمات
     </button>
-
   </div>
-
 </div>
-
-
-<!-- NOTIFICATION MODAL -->
-
-<div class="modal" id="notificationModal">
-
-  <div class="modal-box">
-
-    <div class="modal-head">
-
-      <h3>🔔 اعلان‌ها</h3>
-
-      <button
-        class="close"
-        onclick="closeModal('notificationModal')"
-      >
-        ×
-      </button>
-
-    </div>
-
-    <div
-      id="notificationList"
-      class="notification-box"
-    ></div>
-
-    <br>
-
-    <button
-      class="btn danger"
-      onclick="clearNotifications()"
-    >
-      🗑️ پاک کردن اعلان‌ها
-    </button>
-
-  </div>
-
-</div>
-
-
-<!-- PROFILE EDIT MODAL -->
-
-<div class="modal" id="profileModal">
-
-  <div class="modal-box">
-
-    <div class="modal-head">
-
-      <h3>✏️ ویرایش پروفایل</h3>
-
-      <button
-        class="close"
-        onclick="closeModal('profileModal')"
-      >
-        ×
-      </button>
-
-    </div>
-
-    <div class="profile-form">
-
-      <div>
-        <label>نام</label>
-        <input
-          id="profileNameInput"
-          maxlength="50"
-          placeholder="نام شما"
-        >
-      </div>
-
-      <div>
-        <label>نام کاربری</label>
-        <input
-          id="profileUsernameInput"
-          maxlength="30"
-          placeholder="@username"
-        >
-      </div>
-
-      <div>
-        <label>بیو</label>
-        <textarea
-          id="profileBioInput"
-          maxlength="200"
-          placeholder="درباره خودت..."
-        ></textarea>
-      </div>
-
-      <button
-        class="btn primary"
-        onclick="saveProfile()"
-      >
-        💾 ذخیره تغییرات
-      </button>
-
-    </div>
-
-  </div>
-
-</div>
-
 
 <div class="toast" id="toast"></div>
 
-
 <script>
-
 /* =========================================================
    AMIRREZA PERSONAL SPACE
-   Version 3.1.0 • Social Upgrade 02
-========================================================= */
+   Version 2.0.1 • Build 21
+   ========================================================= */
 
+/* مهم: این متغیر باید قبل از هر اجرای احتمالی toast تعریف شود */
 let toastTimer = null;
 
-const $ = id => document.getElementById(id);
+/* ---------- Safe helpers ---------- */
 
+const $ = (id) => document.getElementById(id);
 
 function toast(message){
-
   const el = $("toast");
-
   if(!el) return;
 
   el.textContent = message;
-
   el.classList.add("show");
 
   clearTimeout(toastTimer);
 
   toastTimer = setTimeout(() => {
     el.classList.remove("show");
-  },2600);
-
+  }, 2600);
 }
-
 
 function scrollToId(id){
-
   const el = $(id);
-
   if(el){
-
-    el.scrollIntoView({
-      behavior:"smooth"
-    });
-
+    el.scrollIntoView({behavior:"smooth"});
   }
-
 }
-
 
 function openModal(id){
-
   const el = $(id);
-
-  if(el){
-    el.classList.add("show");
-  }
-
+  if(el) el.classList.add("show");
 }
-
 
 function closeModal(id){
-
   const el = $(id);
-
-  if(el){
-    el.classList.remove("show");
-  }
-
+  if(el) el.classList.remove("show");
 }
 
+/* ---------- Local storage ---------- */
 
-/* =========================================================
-   LOCAL STORAGE
-========================================================= */
+let xp = Number(localStorage.getItem("xp") || 820);
 
-let xp = Number(
-  localStorage.getItem("xp") || 820
-);
-
-let visits = Number(
-  localStorage.getItem("visits") || 0
-);
-
+let visits = Number(localStorage.getItem("visits") || 0);
 visits++;
+localStorage.setItem("visits", visits);
 
-localStorage.setItem(
-  "visits",
-  visits
-);
-
-let motionEnabled =
-  localStorage.getItem("motion") !== "false";
-
-
-/* =========================================================
-   PROFILE DATA
-========================================================= */
-
-const defaultProfile = {
-
-  name:"امیررضا غلامی",
-
-  username:"@amirreza",
-
-  bio:"علاقه‌مند به تکنولوژی، هوش مصنوعی، یادگیری و ساختن چیزهای جدید."
-
-};
-
-
-let profileData = {
-
-  ...defaultProfile
-
-};
-
-
-function loadProfile(){
-
-  try{
-
-    const saved =
-      JSON.parse(
-        localStorage.getItem("profileData")
-        || "null"
-      );
-
-    if(saved){
-
-      profileData = {
-        ...defaultProfile,
-        ...saved
-      };
-
-    }
-
-  }catch(e){
-
-    profileData = {
-      ...defaultProfile
-    };
-
-  }
-
-  renderProfile();
-
-}
-
-
-function saveProfileData(){
-
-  localStorage.setItem(
-    "profileData",
-    JSON.stringify(profileData)
-  );
-
-}
-
-
-function renderProfile(){
-
-  const name =
-    profileData.name
-    || defaultProfile.name;
-
-  const username =
-    profileData.username
-    || defaultProfile.username;
-
-
-  const elements = [
-
-    $("socialName"),
-
-    $("heroProfileName")
-
-  ];
-
-
-  elements.forEach(el => {
-
-    if(el){
-
-      el.textContent =
-        name;
-
-    }
-
-  });
-
-
-  const usernameEl =
-    $("socialUsername");
-
-
-  if(usernameEl){
-
-    usernameEl.textContent =
-      username.startsWith("@")
-        ? username
-        : "@" + username;
-
-  }
-
-}
-
-
-function openProfileEditor(){
-
-  $("profileNameInput").value =
-    profileData.name;
-
-  $("profileUsernameInput").value =
-    profileData.username;
-
-  $("profileBioInput").value =
-    profileData.bio;
-
-  openModal(
-    "profileModal"
-  );
-
-}
-
-
-function saveProfile(){
-
-  const name =
-    $("profileNameInput")
-      .value.trim();
-
-  let username =
-    $("profileUsernameInput")
-      .value.trim();
-
-  const bio =
-    $("profileBioInput")
-      .value.trim();
-
-
-  if(!name){
-
-    toast(
-      "نام نمی‌تواند خالی باشد"
-    );
-
-    return;
-
-  }
-
-
-  if(!username){
-
-    username =
-      "@amirreza";
-
-  }
-
-
-  if(!username.startsWith("@")){
-
-    username =
-      "@" + username;
-
-  }
-
-
-  profileData = {
-
-    name:name,
-
-    username:username,
-
-    bio:
-      bio
-      || defaultProfile.bio
-
-  };
-
-
-  saveProfileData();
-
-  renderProfile();
-
-  closeModal(
-    "profileModal"
-  );
-
-
-  addNotification(
-    "👤",
-    "پروفایل شما به‌روزرسانی شد"
-  );
-
-
-  addActivity(
-    "👤",
-    "پروفایل ویرایش شد"
-  );
-
-
-  toast(
-    "✅ پروفایل ذخیره شد"
-  );
-
-
-  renderSocialPosts();
-
-}
-
-
-/* =========================================================
-   XP
-========================================================= */
+let motionEnabled = localStorage.getItem("motion") !== "false";
 
 function levelFromXP(value){
-
-  return Math.max(
-    1,
-    Math.floor(value / 100)
-  );
-
+  return Math.max(1, Math.floor(value / 100));
 }
-
 
 function updateXP(){
+  const level = levelFromXP(xp);
+  const current = xp % 100;
 
-  const level =
-    levelFromXP(xp);
+  const levelText = $("levelText");
+  const xpText = $("xpText");
+  const xpProgress = $("xpProgress");
 
-  const current =
-    xp % 100;
+  if(levelText) levelText.textContent = "Level " + level;
+  if(xpText) xpText.textContent = xp + " XP";
 
-
-  if($("levelText"))
-    $("levelText").textContent =
-      "Level " + level;
-
-
-  if($("xpText"))
-    $("xpText").textContent =
-      xp + " XP";
-
-
-  if($("xpProgress"))
-    $("xpProgress").style.width =
-      current + "%";
-
+  if(xpProgress){
+    xpProgress.style.width = current + "%";
+  }
 }
-
 
 function addXP(amount){
-
   xp += amount;
-
-  localStorage.setItem(
-    "xp",
-    xp
-  );
-
+  localStorage.setItem("xp", xp);
   updateXP();
-
-  toast(
-    "⚡ +" + amount + " XP"
-  );
-
-  addActivity(
-    "⚡",
-    "+" + amount + " XP دریافت شد"
-  );
-
+  toast("⚡ +" + amount + " XP");
+  addActivity("⚡", "+" + amount + " XP دریافت شد");
 }
 
+/* ---------- Theme ---------- */
 
-/* =========================================================
-   THEME
-========================================================= */
-
-function setTheme(color,silent=false){
-
+function setTheme(color, silent=false){
   if(!color) return;
 
-  document.documentElement
-    .style
-    .setProperty(
-      "--accent",
-      color
-    );
+  document.documentElement.style.setProperty("--accent", color);
 
-  localStorage.setItem(
-    "accent",
-    color
-  );
+  localStorage.setItem("accent", color);
 
-
-  document
-    .querySelectorAll(".accent")
-    .forEach(btn =>
-      btn.classList.remove("active")
-    );
-
-
-  const map = {
-
-    "#00e5ff":".aqua",
-    "#00ffa3":".green",
-    "#ff9f1c":".orange",
-    "#ff4f81":".pink"
-
-  };
-
-
-  const selected =
-    document.querySelector(
-      map[color]
-    );
-
-
-  selected?.classList.add(
-    "active"
-  );
-
-
-  if(!silent){
-
-    toast(
-      "🎨 رنگ سایت تغییر کرد"
-    );
-
-  }
-
-}
-
-
-function applySavedAccent(){
-
-  setTheme(
-    localStorage.getItem("accent")
-    || "#00e5ff",
-    true
-  );
-
-}
-
-
-function toggleTheme(){
-
-  document.body.classList.toggle(
-    "light"
-  );
-
-  const light =
-    document.body.classList.contains(
-      "light"
-    );
-
-
-  localStorage.setItem(
-    "lightMode",
-    light ? "true" : "false"
-  );
-
-
-  if($("themeBtn"))
-    $("themeBtn").textContent =
-      light ? "🌙" : "☀️";
-
-
-  toast(
-    light
-      ? "☀️ حالت روشن فعال شد"
-      : "🌙 حالت تاریک فعال شد"
-  );
-
-
-  addActivity(
-    "🎨",
-    light
-      ? "حالت روشن فعال شد"
-      : "حالت تاریک فعال شد"
-  );
-
-}
-
-
-function loadTheme(){
-
-  const light =
-    localStorage.getItem(
-      "lightMode"
-    ) === "true";
-
-
-  if(light)
-    document.body.classList.add(
-      "light"
-    );
-
-
-  if($("themeBtn"))
-    $("themeBtn").textContent =
-      light ? "🌙" : "☀️";
-
-
-  applySavedAccent();
-
-}
-
-
-/* =========================================================
-   MOTION
-========================================================= */
-
-function updateMotionButton(){
-
-  if($("motionBtn")){
-
-    $("motionBtn").textContent =
-      motionEnabled
-        ? "فعال"
-        : "خاموش";
-
-  }
-
-}
-
-
-function toggleMotion(){
-
-  motionEnabled =
-    !motionEnabled;
-
-
-  localStorage.setItem(
-    "motion",
-    motionEnabled
-      ? "true"
-      : "false"
-  );
-
-
-  updateMotionButton();
-
-
-  document.body.classList.toggle(
-    "no-motion",
-    !motionEnabled
-  );
-
-
-  toast(
-    motionEnabled
-      ? "✨ حرکت‌ها فعال شد"
-      : "⏸️ حرکت‌ها خاموش شد"
-  );
-
-}
-
-
-/* =========================================================
-   TYPING
-========================================================= */
-
-const typingWords = [
-
-  "در حال ساختن آینده... 🚀",
-
-  "عاشق تکنولوژی و یادگیری هستم 💻",
-
-  "ایده‌ها را به پروژه تبدیل می‌کنم 💡",
-
-  "هر روز یک قدم جلوتر 👣"
-
-];
-
-
-let wordIndex = 0;
-
-let charIndex = 0;
-
-let deleting = false;
-
-
-function typing(){
-
-  const el =
-    $("typing");
-
-
-  if(!el) return;
-
-
-  const word =
-    typingWords[wordIndex];
-
-
-  if(!deleting){
-
-    el.textContent =
-      word.substring(
-        0,
-        charIndex + 1
-      );
-
-    charIndex++;
-
-
-    if(charIndex >= word.length){
-
-      deleting = true;
-
-      setTimeout(
-        typing,
-        1500
-      );
-
-      return;
-
-    }
-
-  }else{
-
-    el.textContent =
-      word.substring(
-        0,
-        charIndex - 1
-      );
-
-    charIndex--;
-
-
-    if(charIndex <= 0){
-
-      deleting = false;
-
-      wordIndex =
-        (wordIndex + 1)
-        % typingWords.length;
-
-    }
-
-  }
-
-
-  setTimeout(
-    typing,
-    deleting ? 35 : 70
-  );
-
-}
-
-
-/* =========================================================
-   MISSION
-========================================================= */
-
-const missions = [
-
-  "امروز یک چیز جدید یاد بگیر",
-
-  "۱۰ دقیقه روی یک مهارت تمرکز کن",
-
-  "یک ایده جدید یادداشت کن",
-
-  "یک کار عقب‌افتاده را تمام کن",
-
-  "امروز یک قدم برای آینده‌ات بردار"
-
-];
-
-
-function getTodayKey(){
-
-  const d =
-    new Date();
-
-  return [
-
-    d.getFullYear(),
-
-    d.getMonth()+1,
-
-    d.getDate()
-
-  ].join("-");
-
-}
-
-
-function loadMission(){
-
-  const key =
-    getTodayKey();
-
-  let saved =
-    localStorage.getItem(
-      "dailyMission"
-    );
-
-
-  if(!saved){
-
-    saved = JSON.stringify({
-
-      date:key,
-
-      index:
-        Math.floor(
-          Math.random()
-          * missions.length
-        ),
-
-      done:false
-
-    });
-
-
-    localStorage.setItem(
-      "dailyMission",
-      saved
-    );
-
-  }
-
-
-  try{
-
-    const data =
-      JSON.parse(
-        localStorage.getItem(
-          "dailyMission"
-        )
-      );
-
-
-    if(data.date !== key){
-
-      const fresh = {
-
-        date:key,
-
-        index:
-          Math.floor(
-            Math.random()
-            * missions.length
-          ),
-
-        done:false
-
-      };
-
-
-      localStorage.setItem(
-        "dailyMission",
-        JSON.stringify(fresh)
-      );
-
-
-      loadMission();
-
-      return;
-
-    }
-
-
-    if($("missionTitle"))
-      $("missionTitle").textContent =
-        missions[data.index]
-        || missions[0];
-
-
-    if(data.done){
-
-      $("missionCard")
-        ?.classList.add("done");
-
-      if($("missionBtn")){
-
-        $("missionBtn").textContent =
-          "انجام شد 🎉";
-
-        $("missionBtn").disabled =
-          true;
-
-      }
-
-    }
-
-  }catch(e){}
-
-}
-
-
-function completeMission(){
-
-  const saved =
-    localStorage.getItem(
-      "dailyMission"
-    );
-
-
-  if(!saved) return;
-
-
-  try{
-
-    const data =
-      JSON.parse(saved);
-
-
-    if(data.done){
-
-      toast(
-        "این مأموریت قبلاً انجام شده 😎"
-      );
-
-      return;
-
-    }
-
-
-    data.done = true;
-
-
-    localStorage.setItem(
-      "dailyMission",
-      JSON.stringify(data)
-    );
-
-
-    $("missionCard")
-      ?.classList.add("done");
-
-
-    if($("missionBtn")){
-
-      $("missionBtn").textContent =
-        "انجام شد 🎉";
-
-      $("missionBtn").disabled =
-        true;
-
-    }
-
-
-    addXP(50);
-
-
-    addActivity(
-      "🎯",
-      "مأموریت روزانه انجام شد"
-    );
-
-
-    addNotification(
-      "🎯",
-      "مأموریت روزانه با موفقیت انجام شد"
-    );
-
-
-  }catch(e){
-
-    toast(
-      "خطایی رخ داد"
-    );
-
-  }
-
-}
-
-
-/* =========================================================
-   ACTIVITY
-========================================================= */
-
-function getActivities(){
-
-  try{
-
-    return JSON.parse(
-      localStorage.getItem(
-        "activities"
-      ) || "[]"
-    );
-
-  }catch(e){
-
-    return [];
-
-  }
-
-}
-
-
-function saveActivities(list){
-
-  localStorage.setItem(
-    "activities",
-    JSON.stringify(
-      list.slice(0,15)
-    )
-  );
-
-}
-
-
-function addActivity(icon,text){
-
-  const list =
-    getActivities();
-
-
-  list.unshift({
-
-    icon:icon,
-
-    text:text,
-
-    time:
-      new Date()
-      .toLocaleTimeString(
-        "fa-IR",
-        {
-          hour:"2-digit",
-          minute:"2-digit"
-        }
-      )
-
+  document.querySelectorAll(".accent").forEach(btn => {
+    btn.classList.remove("active");
   });
 
+  const map = {
+    "#00e5ff": ".aqua",
+    "#00ffa3": ".green",
+    "#ff9f1c": ".orange",
+    "#ff4f81": ".pink"
+  };
 
-  saveActivities(list);
+  const selected = document.querySelector(map[color]);
+  if(selected){
+    selected.classList.add("active");
+  }
 
-  renderActivities();
-
+  if(!silent){
+    toast("🎨 رنگ سایت تغییر کرد");
+  }
 }
 
+function applySavedAccent(){
+  const savedAccent = localStorage.getItem("accent");
 
-function renderActivities(){
+  if(savedAccent){
+    /* silent=true تا در شروع سایت toast اجرا نشود */
+    setTheme(savedAccent, true);
+  }else{
+    setTheme("#00e5ff", true);
+  }
+}
 
-  const el =
-    $("activityList");
+function toggleTheme(){
+  document.body.classList.toggle("light");
 
+  const light = document.body.classList.contains("light");
 
+  localStorage.setItem("lightMode", light ? "true" : "false");
+
+  const themeBtn = $("themeBtn");
+  if(themeBtn){
+    themeBtn.textContent = light ? "🌙" : "☀️";
+  }
+
+  toast(light ? "☀️ حالت روشن فعال شد" : "🌙 حالت تاریک فعال شد");
+  addActivity("🎨", light ? "حالت روشن فعال شد" : "حالت تاریک فعال شد");
+}
+
+function loadTheme(){
+  const light = localStorage.getItem("lightMode") === "true";
+
+  if(light){
+    document.body.classList.add("light");
+  }
+
+  const themeBtn = $("themeBtn");
+  if(themeBtn){
+    themeBtn.textContent = light ? "🌙" : "☀️";
+  }
+
+  applySavedAccent();
+}
+
+/* ---------- Motion ---------- */
+
+function updateMotionButton(){
+  const btn = $("motionBtn");
+  if(btn){
+    btn.textContent = motionEnabled ? "فعال" : "خاموش";
+  }
+}
+
+function toggleMotion(){
+  motionEnabled = !motionEnabled;
+  localStorage.setItem("motion", motionEnabled ? "true" : "false");
+  updateMotionButton();
+
+  document.body.classList.toggle("no-motion", !motionEnabled);
+
+  toast(motionEnabled ? "✨ حرکت‌ها فعال شد" : "⏸️ حرکت‌ها خاموش شد");
+}
+
+/* ---------- Typing ---------- */
+
+const typingWords = [
+  "در حال ساختن آینده... 🚀",
+  "عاشق تکنولوژی و یادگیری هستم 💻",
+  "ایده‌ها را به پروژه تبدیل می‌کنم 💡",
+  "هر روز یک قدم جلوتر 👣"
+];
+
+let wordIndex = 0;
+let charIndex = 0;
+let deleting = false;
+
+function typing(){
+  const el = $("typing");
   if(!el) return;
 
+  const word = typingWords[wordIndex];
 
-  const list =
-    getActivities();
+  if(!deleting){
+    el.textContent = word.substring(0,charIndex + 1);
+    charIndex++;
 
+    if(charIndex >= word.length){
+      deleting = true;
+      setTimeout(typing, 1500);
+      return;
+    }
+  }else{
+    el.textContent = word.substring(0,charIndex - 1);
+    charIndex--;
+
+    if(charIndex <= 0){
+      deleting = false;
+      wordIndex = (wordIndex + 1) % typingWords.length;
+    }
+  }
+
+  setTimeout(typing, deleting ? 35 : 70);
+}
+
+/* ---------- Mission ---------- */
+
+const missions = [
+  "امروز یک چیز جدید یاد بگیر",
+  "۱۰ دقیقه روی یک مهارت تمرکز کن",
+  "یک ایده جدید یادداشت کن",
+  "یک کار عقب‌افتاده را تمام کن",
+  "امروز یک قدم برای آینده‌ات بردار"
+];
+
+function getTodayKey(){
+  const d = new Date();
+
+  return [
+    d.getFullYear(),
+    d.getMonth() + 1,
+    d.getDate()
+  ].join("-");
+}
+
+function loadMission(){
+  const key = getTodayKey();
+
+  let saved = localStorage.getItem("dailyMission");
+
+  if(!saved){
+    saved = JSON.stringify({
+      date:key,
+      index:Math.floor(Math.random() * missions.length),
+      done:false
+    });
+
+    localStorage.setItem("dailyMission", saved);
+  }else{
+    try{
+      const data = JSON.parse(saved);
+
+      if(data.date !== key){
+        saved = JSON.stringify({
+          date:key,
+          index:Math.floor(Math.random() * missions.length),
+          done:false
+        });
+
+        localStorage.setItem("dailyMission", saved);
+      }
+    }catch(e){
+      localStorage.removeItem("dailyMission");
+      loadMission();
+      return;
+    }
+  }
+
+  try{
+    const data = JSON.parse(localStorage.getItem("dailyMission"));
+
+    const title = $("missionTitle");
+    const card = $("missionCard");
+    const btn = $("missionBtn");
+
+    if(title){
+      title.textContent = missions[data.index] || missions[0];
+    }
+
+    if(data.done){
+      card?.classList.add("done");
+
+      if(btn){
+        btn.textContent = "انجام شد 🎉";
+        btn.disabled = true;
+      }
+    }
+  }catch(e){}
+}
+
+function completeMission(){
+  const saved = localStorage.getItem("dailyMission");
+  if(!saved) return;
+
+  try{
+    const data = JSON.parse(saved);
+
+    if(data.done){
+      toast("این مأموریت قبلاً انجام شده 😎");
+      return;
+    }
+
+    data.done = true;
+    localStorage.setItem("dailyMission", JSON.stringify(data));
+
+    $("missionCard")?.classList.add("done");
+
+    const btn = $("missionBtn");
+    if(btn){
+      btn.textContent = "انجام شد 🎉";
+      btn.disabled = true;
+    }
+
+    addXP(50);
+    addActivity("🎯","مأموریت روزانه انجام شد");
+
+  }catch(e){
+    toast("خطایی رخ داد");
+  }
+}
+
+/* ---------- Activity ---------- */
+
+function getActivities(){
+  try{
+    return JSON.parse(localStorage.getItem("activities") || "[]");
+  }catch(e){
+    return [];
+  }
+}
+
+function saveActivities(list){
+  localStorage.setItem("activities",JSON.stringify(list.slice(0,12)));
+}
+
+function addActivity(icon,text){
+  const list = getActivities();
+
+  list.unshift({
+    icon:icon,
+    text:text,
+    time:new Date().toLocaleTimeString("fa-IR",{
+      hour:"2-digit",
+      minute:"2-digit"
+    })
+  });
+
+  saveActivities(list);
+  renderActivities();
+}
+
+function renderActivities(){
+  const el = $("activityList");
+  if(!el) return;
+
+  const list = getActivities();
 
   if(!list.length){
-
     el.innerHTML = `
       <div class="list-item">
         <span>هنوز فعالیتی ثبت نشده</span>
         <span class="tag">شروع</span>
       </div>
     `;
-
     return;
-
   }
 
-
-  el.innerHTML =
-    list.map(item => `
-
-      <div class="list-item">
-
-        <span>
-          ${escapeHTML(item.icon)}
-          ${escapeHTML(item.text)}
-        </span>
-
-        <span class="tag">
-          ${escapeHTML(item.time)}
-        </span>
-
-      </div>
-
-    `).join("");
-
+  el.innerHTML = list.map(item => `
+    <div class="list-item">
+      <span>${item.icon} ${escapeHTML(item.text)}</span>
+      <span class="tag">${escapeHTML(item.time)}</span>
+    </div>
+  `).join("");
 }
 
-
 function escapeHTML(value){
-
   return String(value)
-
     .replaceAll("&","&amp;")
     .replaceAll("<","&lt;")
     .replaceAll(">","&gt;")
     .replaceAll('"',"&quot;")
     .replaceAll("'","&#039;");
-
 }
 
-
-/* =========================================================
-   NOTIFICATIONS
-========================================================= */
-
-function getNotifications(){
-
-  try{
-
-    return JSON.parse(
-      localStorage.getItem(
-        "notifications"
-      ) || "[]"
-    );
-
-  }catch(e){
-
-    return [];
-
-  }
-
-}
-
-
-function saveNotifications(list){
-
-  localStorage.setItem(
-    "notifications",
-    JSON.stringify(
-      list.slice(0,30)
-    )
-  );
-
-}
-
-
-function addNotification(icon,text){
-
-  const list =
-    getNotifications();
-
-
-  list.unshift({
-
-    icon:icon,
-
-    text:text,
-
-    time:
-      new Date()
-      .toLocaleTimeString(
-        "fa-IR",
-        {
-          hour:"2-digit",
-          minute:"2-digit"
-        }
-      )
-
-  });
-
-
-  saveNotifications(list);
-
-  renderNotifications();
-
-}
-
-
-function renderNotifications(){
-
-  const box =
-    $("notificationList");
-
-
-  if(!box) return;
-
-
-  const list =
-    getNotifications();
-
-
-  if(!list.length){
-
-    box.innerHTML = `
-      <div class="notification-empty">
-        🔔 هنوز اعلانی نداری
-      </div>
-    `;
-
-    return;
-
-  }
-
-
-  box.innerHTML =
-    list.map(item => `
-
-      <div class="notification">
-
-        <div class="notification-icon">
-          ${escapeHTML(item.icon)}
-        </div>
-
-        <div>
-
-          <strong>
-            ${escapeHTML(item.text)}
-          </strong>
-
-          <small>
-            ${escapeHTML(item.time)}
-          </small>
-
-        </div>
-
-      </div>
-
-    `).join("");
-
-}
-
-
-function clearNotifications(){
-
-  localStorage.removeItem(
-    "notifications"
-  );
-
-  renderNotifications();
-
-  toast(
-    "🗑️ اعلان‌ها پاک شدند"
-  );
-
-}
-
-
-/* =========================================================
-   FOLLOW
-========================================================= */
-
-let following =
-  localStorage.getItem(
-    "following"
-  ) === "true";
-
-
-function renderFollow(){
-
-  const btn =
-    $("followBtn");
-
-
-  if(!btn) return;
-
-
-  btn.textContent =
-    following
-      ? "✓ دنبال می‌کنم"
-      : "+ دنبال کردن";
-
-
-  btn.classList.toggle(
-    "following",
-    following
-  );
-
-}
-
-
-function toggleFollow(){
-
-  following =
-    !following;
-
-
-  localStorage.setItem(
-    "following",
-    following
-      ? "true"
-      : "false"
-  );
-
-
-  renderFollow();
-
-
-  if(following){
-
-    addNotification(
-      "👥",
-      "پروفایل امیررضا را دنبال کردی"
-    );
-
-    toast(
-      "👥 دنبال کردن فعال شد"
-    );
-
-  }else{
-
-    addNotification(
-      "👥",
-      "دنبال کردن پروفایل لغو شد"
-    );
-
-    toast(
-      "دنبال کردن لغو شد"
-    );
-
-  }
-
-}
-
-
-/* =========================================================
-   SOCIAL POSTS
-========================================================= */
-
-let socialPosts = [];
-
-
-function {
-// =========================================================
-// SUPABASE POSTS
-// =========================================================
-
-async function loadSocialPosts(){
-
-  try{
-
-    const {
-      data: { session }
-    } = await supabaseClient.auth.getSession();
-
-    if(!session?.user){
-      socialPosts = [];
-      renderSocialPosts();
-      return;
-    }
-
-    const { data, error } =
-      await supabaseClient
-        .from("posts")
-        .select("id, user_id, text, created_at")
-        .order("created_at", { ascending:false });
-
-    if(error) throw error;
-
-    socialPosts = (data || []).map(post => ({
-      id: post.id,
-      userId: post.user_id,
-      user: post.user_id === session.user.id
-        ? profileData.name
-        : "کاربر",
-      username: post.user_id === session.user.id
-        ? profileData.username
-        : "@user",
-      text: post.text,
-      likes: 0,
-      liked: false,
-      saved: false,
-      comments: [],
-      time: new Date(post.created_at)
-        .toLocaleString("fa-IR", {
-          dateStyle:"short",
-          timeStyle:"short"
-        })
-    }));
-
-    renderSocialPosts();
-
-  }catch(error){
-
-    console.error(
-      "Supabase posts error:",
-      error
-    );
-
-    toast("❌ دریافت پست‌ها ناموفق بود");
-  }
-}
-
-
-async function publishPost(){
-
-  const input = $("postText");
-
-  if(!input) return;
-
-  const text = input.value.trim();
-
-  if(!text){
-    toast("⚠️ متن پست را بنویس");
-    return;
-  }
-
-  if(text.length > 1000){
-    toast("⚠️ متن پست خیلی طولانی است");
-    return;
-  }
-
-  try{
-
-    const {
-      data: { session }
-    } = await supabaseClient.auth.getSession();
-
-    if(!session?.user){
-      toast("🔐 ابتدا وارد حساب شو");
-      return;
-    }
-
-    const { data, error } =
-      await supabaseClient
-        .from("posts")
-        .insert({
-          user_id: session.user.id,
-          text: text
-        })
-        .select()
-        .single();
-
-    if(error) throw error;
-
-    input.value = "";
-
-    updatePostCounter();
-
-    toast("🚀 پست با موفقیت منتشر شد");
-
-    await loadSocialPosts();
-
-  }catch(error){
-
-    console.error(
-      "Publish post error:",
-      error
-    );
-
-    toast("❌ انتشار پست ناموفق بود");
-  }
-  }
-  try{
-
-    socialPosts =
-      JSON.parse(
-        localStorage.getItem(
-          "socialPosts"
-        ) || "[]"
-      );
-
-
-    if(!Array.isArray(
-      socialPosts
-    )){
-
-      socialPosts = [];
-
-    }
-
-  }catch(e){
-
-    socialPosts = [];
-
-  }
-
-}
-
-
-function saveSocialPosts(){
-
-  localStorage.setItem(
-    "socialPosts",
-    JSON.stringify(
-      socialPosts.slice(0,50)
-    )
-  );
-
-}
-
-
-function updateSocialStats(){
-
-  const posts =
-    socialPosts.length;
-
-
-  const likes =
-    socialPosts.reduce(
-      (sum,post) =>
-        sum + Number(post.likes || 0),
-      0
-    );
-
-
-  const comments =
-    socialPosts.reduce(
-      (sum,post) =>
-        sum +
-        (
-          Array.isArray(post.comments)
-            ? post.comments.length
-            : 0
-        ),
-      0
-    );
-
-
-  const saved =
-    socialPosts.filter(
-      post => post.saved
-    ).length;
-
-
-  if($("postCount"))
-    $("postCount").textContent =
-      posts;
-
-
-  if($("likeCount"))
-    $("likeCount").textContent =
-      likes;
-
-
-  if($("commentCount"))
-    $("commentCount").textContent =
-      comments;
-
-
-  if($("savedCount"))
-    $("savedCount").textContent =
-      saved;
-
-}
-
-
-function {
-
-  const input =
-    $("postText");
-
-
-  if(!input) return;
-
-
-  const text =
-    input.value.trim();
-
-
-  if(!text){
-
-    toast(
-      "اول متن پست رو بنویس ✍️"
-    );
-
-    input.focus();
-
-    return;
-
-  }
-
-
-  const post = {
-
-    id:
-      Date.now()
-      + Math.random(),
-
-    user:
-      profileData.name,
-
-    username:
-      profileData.username,
-
-    text:text,
-
-    likes:0,
-
-    liked:false,
-
-    saved:false,
-
-    comments:[],
-
-    time:
-      new Date()
-      .toLocaleString(
-        "fa-IR",
-        {
-          dateStyle:"short",
-          timeStyle:"short"
-        }
-      )
-
-  };
-
-
-  socialPosts.unshift(post);
-
-  saveSocialPosts();
-
-  renderSocialPosts();
-
-
-  input.value = "";
-
-  updatePostCounter();
-
-
-  addXP(10);
-
-
-  addNotification(
-    "📱",
-    "پست جدید شما منتشر شد"
-  );
-
-
-  addActivity(
-    "📱",
-    "یک پست جدید منتشر شد"
-  );
-
-
-  toast(
-    "🚀 پست با موفقیت منتشر شد"
-  );
-
-}
-
-
-function toggleSocialLike(id){
-
-  const post =
-    socialPosts.find(
-      p => p.id === id
-    );
-
-
-  if(!post) return;
-
-
-  post.liked =
-    !post.liked;
-
-
-  post.likes =
-    Number(post.likes || 0)
-    +
-    (
-      post.liked
-        ? 1
-        : -1
-    );
-
-
-  if(post.likes < 0)
-    post.likes = 0;
-
-
-  saveSocialPosts();
-
-  renderSocialPosts();
-
-
-  if(post.liked){
-
-    addNotification(
-      "❤️",
-      "یک پست را لایک کردی"
-    );
-
-    addActivity(
-      "❤️",
-      "یک پست را لایک کردی"
-    );
-
-  }
-
-}
-
-
-function toggleSavePost(id){
-
-  const post =
-    socialPosts.find(
-      p => p.id === id
-    );
-
-
-  if(!post) return;
-
-
-  post.saved =
-    !post.saved;
-
-
-  saveSocialPosts();
-
-  renderSocialPosts();
-
-
-  if(post.saved){
-
-    toast(
-      "🔖 پست ذخیره شد"
-    );
-
-    addNotification(
-      "🔖",
-      "یک پست ذخیره شد"
-    );
-
-  }else{
-
-    toast(
-      "پست از ذخیره‌ها حذف شد"
-    );
-
-  }
-
-}
-
-
-function addSocialComment(id){
-
-  const input =
-    $("comment-" + id);
-
-
-  if(!input) return;
-
-
-  const text =
-    input.value.trim();
-
-
-  if(!text){
-
-    input.focus();
-
-    return;
-
-  }
-
-
-  const post =
-    socialPosts.find(
-      p => p.id === id
-    );
-
-
-  if(!post) return;
-
-
-  if(!Array.isArray(
-    post.comments
-  )){
-
-    post.comments = [];
-
-  }
-
-
-  post.comments.push({
-
-    user:
-      profileData.name,
-
-    text:text,
-
-    time:
-      new Date()
-      .toLocaleTimeString(
-        "fa-IR",
-        {
-          hour:"2-digit",
-          minute:"2-digit"
-        }
-      )
-
-  });
-
-
-  saveSocialPosts();
-
-  renderSocialPosts();
-
-
-  addNotification(
-    "💬",
-    "یک کامنت جدید ثبت شد"
-  );
-
-
-  addActivity(
-    "💬",
-    "روی یک پست کامنت گذاشتی"
-  );
-
-}
-
-
-function deleteSocialPost(id){
-
-  const confirmed =
-    confirm(
-      "این پست حذف شود؟"
-    );
-
-
-  if(!confirmed) return;
-
-
-  const before =
-    socialPosts.length;
-
-
-  socialPosts =
-    socialPosts.filter(
-      post =>
-        post.id !== id
-    );
-
-
-  if(
-    socialPosts.length
-    === before
-  ){
-
-    return;
-
-  }
-
-
-  saveSocialPosts();
-
-  renderSocialPosts();
-
-
-  toast(
-    "🗑️ پست حذف شد"
-  );
-
-
-  addActivity(
-    "🗑️",
-    "یک پست حذف شد"
-  );
-
-
-  addNotification(
-    "🗑️",
-    "یک پست حذف شد"
-  );
-
-}
-
-
-function renderSocialPosts(){
-
-  const feed =
-    $("postFeed");
-
-
-  if(!feed) return;
-
-
-  updateSocialStats();
-
-
-  if(!socialPosts.length){
-
-    feed.innerHTML = `
-
-      <div class="card empty-feed">
-
-        <div class="empty-feed-icon">
-          📱
-        </div>
-
-        <h3>
-          هنوز پستی منتشر نشده
-        </h3>
-
-        <p class="muted">
-          اولین پست شبکه اجتماعی خودت رو منتشر کن 🚀
-        </p>
-
-      </div>
-
-    `;
-
-    return;
-
-  }
-
-
-  feed.innerHTML =
-    socialPosts.map(post => {
-
-      const comments =
-        Array.isArray(
-          post.comments
-        )
-        ? post.comments
-        : [];
-
-
-      const commentsHTML =
-        comments.map(
-          comment => `
-
-            <div class="comment">
-
-              <strong>
-                ${escapeHTML(
-                  comment.user
-                )}
-              </strong>
-
-              <span>
-                — ${escapeHTML(
-                  comment.text
-                )}
-              </span>
-
-              <span class="comment-time">
-                ${escapeHTML(
-                  comment.time || ""
-                )}
-              </span>
-
-            </div>
-
-          `
-        ).join("");
-
-
-      const safeName =
-        escapeHTML(
-          post.user
-          || profileData.name
-        );
-
-
-      const safeUsername =
-        escapeHTML(
-          post.username
-          || profileData.username
-        );
-
-
-      return `
-
-        <article class="card post-card">
-
-          <div class="post-head">
-
-            <div class="post-user">
-
-              <div class="post-avatar">
-
-                <img
-                  src="profile.jpg"
-                  alt=""
-                  onerror="this.parentElement.innerHTML='ا'"
-                >
-
-              </div>
-
-              <div>
-
-                <strong>
-                  ${safeName}
-                </strong>
-
-                <small>
-                  ${safeUsername}
-                  ·
-                  ${escapeHTML(
-                    post.time || ""
-                  )}
-                </small>
-
-              </div>
-
-            </div>
-
-            <button
-              class="post-menu-btn"
-              title="حذف پست"
-              onclick="deleteSocialPost(${post.id})"
-            >
-              ⋮
-            </button>
-
-          </div>
-
-
-          <div class="post-content">
-
-            ${escapeHTML(
-              post.text
-            )}
-
-          </div>
-
-
-          <div class="post-actions">
-
-            <button
-              class="post-action ${post.liked ? "liked" : ""}"
-              onclick="toggleSocialLike(${post.id})"
-            >
-
-              ${post.liked ? "❤️" : "🤍"}
-
-              ${Number(
-                post.likes || 0
-              )}
-
-            </button>
-
-
-            <button
-              class="post-action"
-              onclick="focusComment(${post.id})"
-            >
-
-              💬
-              ${comments.length}
-
-            </button>
-
-
-            <button
-              class="post-action ${post.saved ? "saved" : ""}"
-              onclick="toggleSavePost(${post.id})"
-            >
-
-              ${post.saved ? "🔖" : "📑"}
-
-              ${post.saved ? "ذخیره‌شده" : "ذخیره"}
-
-            </button>
-
-          </div>
-
-
-          ${
-            comments.length
-              ? `
-
-                <div class="comments">
-
-                  ${commentsHTML}
-
-                </div>
-
-              `
-              : ""
-          }
-
-
-          <div class="comment-input-area">
-
-            <input
-              id="comment-${post.id}"
-              type="text"
-              maxlength="300"
-              placeholder="یک کامنت بنویس..."
-              onkeydown="if(event.key==='Enter')addSocialComment(${post.id})"
-            >
-
-            <button
-              onclick="addSocialComment(${post.id})"
-            >
-              ارسال
-            </button>
-
-          </div>
-
-        </article>
-
-      `;
-
-    }).join("");
-
-}
-
-
-function focusComment(id){
-
-  const input =
-    $("comment-" + id);
-
-
-  if(input)
-    input.focus();
-
-}
-
-
-/* =========================================================
-   POST COUNTER
-========================================================= */
-
-function updatePostCounter(){
-
-  const input =
-    $("postText");
-
-  const counter =
-    $("postCounter");
-
-
-  if(!input || !counter)
-    return;
-
-
-  counter.textContent =
-    input.value.length
-    + " / 1000";
-
-}
-
-
-/* =========================================================
-   SEARCH
-========================================================= */
+/* ---------- Search ---------- */
 
 const searchData = [
-
-  {
-    title:"شبکه اجتماعی",
-    text:"پست، لایک، کامنت، ذخیره و پروفایل",
-    id:"social",
-    keys:[
-      "شبکه",
-      "اجتماعی",
-      "پست",
-      "لایک",
-      "کامنت",
-      "ذخیره",
-      "پروفایل",
-      "social"
-    ]
-  },
-
   {
     title:"درباره من",
     text:"اطلاعات شخصی و علایق",
     id:"about",
-    keys:[
-      "درباره",
-      "من",
-      "تکنولوژی",
-      "علاقه"
-    ]
+    keys:["درباره","من","پروفایل","تکنولوژی","علاقه"]
   },
-
   {
     title:"داشبورد",
     text:"XP، Level، بازدید و مهارت‌ها",
     id:"dashboard",
-    keys:[
-      "داشبورد",
-      "xp",
-      "level",
-      "بازدید",
-      "مهارت"
-    ]
+    keys:["داشبورد","xp","level","بازدید","مهارت"]
   },
-
   {
     title:"مأموریت روزانه",
     text:"مأموریت امروز و دریافت XP",
     id:"mission",
-    keys:[
-      "ماموریت",
-      "مأموریت",
-      "روزانه",
-      "xp"
-    ]
+    keys:["ماموریت","مأموریت","روزانه","xp"]
   },
-
   {
     title:"هوش مصنوعی",
     text:"AI Center",
     id:"ai",
-    keys:[
-      "ai",
-      "هوش",
-      "مصنوعی"
-    ]
+    keys:["ai","هوش","مصنوعی","هوش مصنوعی"]
   },
-
   {
     title:"پروژه‌ها",
     text:"پروژه‌های شخصی",
     id:"projects",
-    keys:[
-      "پروژه",
-      "پروژه‌ها",
-      "ساخت"
-    ]
+    keys:["پروژه","پروژه‌ها","ساخت"]
   },
-
   {
     title:"اهداف",
     text:"اهداف و برنامه آینده",
     id:"goals",
-    keys:[
-      "هدف",
-      "اهداف",
-      "آینده",
-      "برنامه"
-    ]
+    keys:["هدف","اهداف","آینده","برنامه"]
   },
-
   {
     title:"ارتباط",
     text:"راه‌های ارتباطی",
     id:"contact",
-    keys:[
-      "ارتباط",
-      "تماس",
-      "اینستاگرام",
-      "تلگرام",
-      "واتساپ"
-    ]
+    keys:["ارتباط","تماس","اینستاگرام","تلگرام","واتساپ"]
   }
-
 ];
 
-
 function doSearch(){
+  const input = $("searchInput");
+  const result = $("searchResults");
 
-  const input =
-    $("searchInput");
+  if(!input || !result) return;
 
-  const result =
-    $("searchResults");
-
-
-  if(!input || !result)
-    return;
-
-
-  const q =
-    input.value
-      .trim()
-      .toLowerCase();
-
+  const q = input.value.trim().toLowerCase();
 
   if(!q){
-
     result.innerHTML = `
-
       <div class="list-item">
-
-        <span>
-          عبارت موردنظر را جست‌وجو کن 🔎
-        </span>
-
+        <span>عبارت موردنظر را جست‌وجو کن 🔎</span>
       </div>
-
     `;
-
     return;
-
   }
 
+  const matches = searchData.filter(item => {
+    const text = (
+      item.title + " " +
+      item.text + " " +
+      item.keys.join(" ")
+    ).toLowerCase();
 
-  const matches =
-    searchData.filter(item => {
-
-      const text = (
-
-        item.title
-        + " "
-        + item.text
-        + " "
-        + item.keys.join(" ")
-
-      ).toLowerCase();
-
-
-      return text.includes(q);
-
-    });
-
+    return text.includes(q);
+  });
 
   if(!matches.length){
-
     result.innerHTML = `
-
       <div class="list-item">
-
-        <span>
-          نتیجه‌ای پیدا نشد 😕
-        </span>
-
+        <span>نتیجه‌ای پیدا نشد 😕</span>
       </div>
-
     `;
-
     return;
-
   }
 
+  result.innerHTML = matches.map(item => `
+    <button
+      class="list-item"
+      style="width:100%;color:var(--text);cursor:pointer"
+      onclick="scrollToId('${item.id}')"
+    >
+      <span>🔎 ${escapeHTML(item.title)}</span>
+      <span class="tag">مشاهده</span>
+    </button>
+  `).join("");
 
-  result.innerHTML =
-    matches.map(
-      item => `
-
-        <button
-          class="list-item"
-          style="width:100%;color:var(--text);cursor:pointer"
-          onclick="scrollToId('${escapeHTML(item.id)}')"
-        >
-
-          <span>
-            🔎 ${escapeHTML(item.title)}
-          </span>
-
-          <span class="tag">
-            مشاهده
-          </span>
-
-        </button>
-
-      `
-    ).join("");
-
-
-  addActivity(
-    "🔎",
-    "جست‌وجوی «" + q + "»"
-  );
-
+  addActivity("🔎","جست‌وجوی «" + q + "»");
 }
 
-
-/* =========================================================
-   AI
-========================================================= */
+/* ---------- AI ---------- */
 
 function aiAction(type){
-
-  const text =
-    $("aiText");
-
+  const text = $("aiText");
 
   const messages = {
-
-    "ایده‌پردازی":
-      "💡 برای ایده‌پردازی، اول یک مشکل واقعی پیدا کن و بعد ساده‌ترین راه‌حل ممکن را بساز.",
-
-    "یادگیری":
-      "📚 برای یادگیری بهتر، موضوع را به بخش‌های کوچک تقسیم کن و هر روز کمی تمرین کن.",
-
-    "پروژه":
-      "🚀 یک پروژه کوچک انتخاب کن، نسخه اول را بساز و بعد مرحله‌به‌مرحله بهترش کن.",
-
-    "آینده":
-      "🌟 آینده از قدم‌های کوچک امروز ساخته می‌شود."
-
+    "ایده‌پردازی":"💡 برای ایده‌پردازی، اول یک مشکل واقعی پیدا کن و بعد ساده‌ترین راه‌حل ممکن را بساز.",
+    "یادگیری":"📚 برای یادگیری بهتر، موضوع را به بخش‌های کوچک تقسیم کن و هر روز کمی تمرین کن.",
+    "پروژه":"🚀 یک پروژه کوچک انتخاب کن، نسخه اول را بساز و بعد مرحله‌به‌مرحله بهترش کن.",
+    "آینده":"🌟 آینده از قدم‌های کوچک امروز ساخته می‌شود."
   };
 
-
   if(text){
-
-    text.textContent =
-      messages[type]
-      || messages["آینده"];
-
+    text.textContent = messages[type] || messages["آینده"];
   }
 
-
   openModal("aiModal");
-
-
-  addActivity(
-    "🤖",
-    "AI Center: " + type
-  );
-
+  addActivity("🤖","AI Center: " + type);
 }
 
-
-/* =========================================================
-   VCARD
-========================================================= */
+/* ---------- vCard ---------- */
 
 function downloadVCard(){
-
   const vcard = [
-
     "BEGIN:VCARD",
-
     "VERSION:3.0",
-
     "FN:Amirreza Gholami",
-
     "TEL;TYPE=CELL:+989228420736",
-
     "EMAIL:amirrezaamirreza275@gmail.com",
-
     "URL:https://amirrezagholami86.github.io",
-
     "NOTE:Amirreza Personal Space",
-
     "END:VCARD"
-
   ].join("\n");
 
+  const blob = new Blob([vcard],{type:"text/vcard;charset=utf-8"});
+  const url = URL.createObjectURL(blob);
 
-  const blob =
-    new Blob(
-      [vcard],
-      {
-        type:
-          "text/vcard;charset=utf-8"
-      }
-    );
-
-
-  const url =
-    URL.createObjectURL(blob);
-
-
-  const a =
-    document.createElement("a");
-
-
+  const a = document.createElement("a");
   a.href = url;
-
-  a.download =
-    "Amirreza-Gholami.vcf";
-
-
+  a.download = "Amirreza-Gholami.vcf";
   document.body.appendChild(a);
-
   a.click();
-
   a.remove();
 
   URL.revokeObjectURL(url);
 
-
-  toast(
-    "📇 فایل مخاطب آماده شد"
-  );
-
-
-  addActivity(
-    "📇",
-    "فایل مخاطب دانلود شد"
-  );
-
+  toast("📇 فایل مخاطب آماده شد");
+  addActivity("📇","فایل مخاطب دانلود شد");
 }
 
-
-/* =========================================================
-   VISITS
-========================================================= */
+/* ---------- Visit counter ---------- */
 
 function updateVisits(){
-
-  if($("visitCount"))
-    $("visitCount").textContent =
-      visits;
-
+  const el = $("visitCount");
+  if(el){
+    el.textContent = visits;
+  }
 }
 
-
-/* =========================================================
-   SESSION TIMER
-========================================================= */
+/* ---------- Session timer ---------- */
 
 let sessionSeconds = 0;
 
-
 function updateSessionTime(){
-
   sessionSeconds++;
 
-
-  const el =
-    $("sessionTime");
-
-
+  const el = $("sessionTime");
   if(!el) return;
 
+  const minutes = Math.floor(sessionSeconds / 60);
+  const seconds = String(sessionSeconds % 60).padStart(2,"0");
 
-  const minutes =
-    Math.floor(
-      sessionSeconds / 60
-    );
-
-
-  const seconds =
-    String(
-      sessionSeconds % 60
-    ).padStart(2,"0");
-
-
-  el.textContent =
-    minutes
-    + ":"
-    + seconds;
-
+  el.textContent = minutes + ":" + seconds;
 }
 
-
-/* =========================================================
-   PROGRESS
-========================================================= */
+/* ---------- Progress animations ---------- */
 
 function animateProgress(){
+  document.querySelectorAll(".progress-bar[data-width]").forEach(bar => {
+    const width = bar.dataset.width;
 
-  document
-    .querySelectorAll(
-      ".progress-bar[data-width]"
-    )
-    .forEach(bar => {
-
-      bar.style.width =
-        bar.dataset.width
-        + "%";
-
-    });
-
+    if(width){
+      bar.style.width = width + "%";
+    }
+  });
 }
 
-
-/* =========================================================
-   REVEAL
-========================================================= */
+/* ---------- Reveal ---------- */
 
 function setupReveal(){
+  const elements = document.querySelectorAll(".reveal");
 
-  const elements =
-    document.querySelectorAll(
-      ".reveal"
-    );
-
-
-  if(
-    !("IntersectionObserver" in window)
-  ){
-
-    elements.forEach(
-      el =>
-        el.classList.add("visible")
-    );
-
+  if(!("IntersectionObserver" in window)){
+    elements.forEach(el => el.classList.add("visible"));
     animateProgress();
-
     return;
-
   }
 
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add("visible");
 
-  const observer =
-    new IntersectionObserver(
-      entries => {
-
-        entries.forEach(entry => {
-
-          if(entry.isIntersecting){
-
-            entry.target
-              .classList
-              .add("visible");
-
-
-            entry.target
-              .querySelectorAll?.(
-                ".progress-bar[data-width]"
-              )
-              .forEach(bar => {
-
-                bar.style.width =
-                  bar.dataset.width
-                  + "%";
-
-              });
-
-
-            observer.unobserve(
-              entry.target
-            );
-
-          }
-
+        entry.target.querySelectorAll?.(".progress-bar[data-width]").forEach(bar => {
+          bar.style.width = bar.dataset.width + "%";
         });
 
-      },
-      {
-        threshold:.12
+        observer.unobserve(entry.target);
       }
-    );
+    });
+  },{
+    threshold:.12
+  });
 
-
-  elements.forEach(
-    el =>
-      observer.observe(el)
-  );
-
+  elements.forEach(el => observer.observe(el));
 }
 
-
-/* =========================================================
-   NAVIGATION
-========================================================= */
+/* ---------- Navigation ---------- */
 
 function setupNavigation(){
+  const menuBtn = $("menuBtn");
+  const navLinks = $("navLinks");
 
-  const menuBtn =
-    $("menuBtn");
+  menuBtn?.addEventListener("click",()=>{
+    navLinks?.classList.toggle("open");
+  });
 
-  const navLinks =
-    $("navLinks");
+  navLinks?.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click",()=>{
+      navLinks.classList.remove("open");
+    });
+  });
 
+  const sections = document.querySelectorAll("main section[id]");
+  const links = navLinks?.querySelectorAll("a") || [];
 
-  menuBtn?.addEventListener(
-    "click",
-    () => {
-
-      navLinks?.classList.toggle(
-        "open"
-      );
-
-    }
-  );
-
-
-  navLinks
-    ?.querySelectorAll("a")
-    .forEach(link => {
-
-      link.addEventListener(
-        "click",
-        () => {
-
-          navLinks.classList.remove(
-            "open"
-          );
-
+  if("IntersectionObserver" in window){
+    const observer = new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          links.forEach(link=>{
+            link.classList.toggle(
+              "active",
+              link.getAttribute("href") === "#" + entry.target.id
+            );
+          });
         }
-      );
-
+      });
+    },{
+      rootMargin:"-25% 0px -60% 0px"
     });
 
-
-  const sections =
-    document.querySelectorAll(
-      "main section[id]"
-    );
-
-
-  const links =
-    navLinks
-      ?.querySelectorAll("a")
-      || [];
-
-
-  if(
-    "IntersectionObserver"
-    in window
-  ){
-
-    const observer =
-      new IntersectionObserver(
-        entries => {
-
-          entries.forEach(entry => {
-
-            if(entry.isIntersecting){
-
-              links.forEach(link => {
-
-                link.classList.toggle(
-
-                  "active",
-
-                  link.getAttribute("href")
-                  ===
-                  "#"
-                  + entry.target.id
-
-                );
-
-              });
-
-            }
-
-          });
-
-        },
-        {
-          rootMargin:
-            "-25% 0px -60% 0px"
-        }
-      );
-
-
-    sections.forEach(
-      section =>
-        observer.observe(section)
-    );
-
+    sections.forEach(section=>observer.observe(section));
   }
-
 }
 
-
-/* =========================================================
-   PARTICLES
-========================================================= */
+/* ---------- Particles ---------- */
 
 function setupParticles(){
-
-  const canvas =
-    $("particles");
-
-
+  const canvas = $("particles");
   if(!canvas) return;
 
-
-  const ctx =
-    canvas.getContext("2d");
-
-
+  const ctx = canvas.getContext("2d");
   if(!ctx) return;
 
-
   let particles = [];
-
   let width = 0;
-
   let height = 0;
 
-
   function resize(){
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
 
-    width =
-      canvas.width =
-      window.innerWidth;
+    const count = Math.min(
+      70,
+      Math.max(25,Math.floor((width * height) / 18000))
+    );
 
-
-    height =
-      canvas.height =
-      window.innerHeight;
-
-
-    const count =
-      Math.min(
-        70,
-        Math.max(
-          25,
-          Math.floor(
-            width * height / 18000
-          )
-        )
-      );
-
-
-    particles =
-      Array.from(
-        {length:count},
-        () => ({
-
-          x:
-            Math.random()
-            * width,
-
-          y:
-            Math.random()
-            * height,
-
-          r:
-            Math.random()
-            * 1.7
-            + .5,
-
-          dx:
-            (Math.random()-.5)
-            * .35,
-
-          dy:
-            (Math.random()-.5)
-            * .35
-
-        })
-      );
-
+    particles = Array.from({length:count},()=>({
+      x:Math.random()*width,
+      y:Math.random()*height,
+      r:Math.random()*1.7+.5,
+      dx:(Math.random()-.5)*.35,
+      dy:(Math.random()-.5)*.35
+    }));
   }
-
 
   function draw(){
-
-    ctx.clearRect(
-      0,
-      0,
-      width,
-      height
-    );
-
+    ctx.clearRect(0,0,width,height);
 
     if(!motionEnabled){
-
       requestAnimationFrame(draw);
-
       return;
-
     }
 
+    const color = getComputedStyle(document.documentElement)
+      .getPropertyValue("--accent")
+      .trim() || "#00e5ff";
 
-    const color =
-      getComputedStyle(
-        document.documentElement
-      )
-      .getPropertyValue(
-        "--accent"
-      )
-      .trim()
-      ||
-      "#00e5ff";
-
-
-    particles.forEach(p => {
-
+    particles.forEach(p=>{
       p.x += p.dx;
-
       p.y += p.dy;
 
-
-      if(
-        p.x < 0 ||
-        p.x > width
-      ){
-
-        p.dx *= -1;
-
-      }
-
-
-      if(
-        p.y < 0 ||
-        p.y > height
-      ){
-
-        p.dy *= -1;
-
-      }
-
+      if(p.x<0 || p.x>width) p.dx *= -1;
+      if(p.y<0 || p.y>height) p.dy *= -1;
 
       ctx.beginPath();
-
-      ctx.arc(
-        p.x,
-        p.y,
-        p.r,
-        0,
-        Math.PI * 2
-      );
-
-
-      ctx.fillStyle =
-        color;
-
-      ctx.globalAlpha =
-        .32;
-
+      ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle = color;
+      ctx.globalAlpha = .32;
       ctx.fill();
-
     });
 
-
-    ctx.globalAlpha =
-      1;
-
-
+    ctx.globalAlpha = 1;
     requestAnimationFrame(draw);
-
   }
 
-
-  window.addEventListener(
-    "resize",
-    resize
-  );
-
+  window.addEventListener("resize",resize);
 
   resize();
-
   draw();
-
 }
 
-
-/* =========================================================
-   MOUSE GLOW
-========================================================= */
+/* ---------- Mouse glow ---------- */
 
 function setupMouseGlow(){
-
-  const glow =
-    $("mouseGlow");
-
-
+  const glow = $("mouseGlow");
   if(!glow) return;
 
-
-  window.addEventListener(
-    "pointermove",
-    e => {
-
-      if(!motionEnabled){
-
-        glow.style.display =
-          "none";
-
-        return;
-
-      }
-
-
-      glow.style.display =
-        "block";
-
-
-      glow.style.left =
-        e.clientX + "px";
-
-
-      glow.style.top =
-        e.clientY + "px";
-
+  window.addEventListener("pointermove",e=>{
+    if(!motionEnabled){
+      glow.style.display = "none";
+      return;
     }
-  );
 
+    glow.style.display = "block";
+    glow.style.left = e.clientX + "px";
+    glow.style.top = e.clientY + "px";
+  });
 }
 
-
-/* =========================================================
-   KEYBOARD
-========================================================= */
+/* ---------- Keyboard shortcuts ---------- */
 
 function setupKeyboard(){
-
-  document.addEventListener(
-    "keydown",
-    e => {
-
-      if(e.key === "Escape"){
-
-        document
-          .querySelectorAll(
-            ".modal.show"
-          )
-          .forEach(modal =>
-            modal.classList.remove(
-              "show"
-            )
-          );
-
-      }
-
-
-      if(
-        (e.ctrlKey || e.metaKey)
-        &&
-        e.key.toLowerCase() === "k"
-      ){
-
-        e.preventDefault();
-
-
-        const input =
-          $("searchInput");
-
-
-        if(input){
-
-          scrollToId("search");
-
-          input.focus();
-
-        }
-
-      }
-
+  document.addEventListener("keydown",e=>{
+    if(e.key === "Escape"){
+      document.querySelectorAll(".modal.show").forEach(modal=>{
+        modal.classList.remove("show");
+      });
     }
-  );
 
+    if((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k"){
+      e.preventDefault();
+
+      const input = $("searchInput");
+
+      if(input){
+        scrollToId("search");
+        input.focus();
+      }
+    }
+  });
 }
 
-
-/* =========================================================
-   RESET
-========================================================= */
+/* ---------- Reset ---------- */
 
 function resetData(){
+  const confirmed = confirm(
+    "اطلاعات محلی سایت مثل XP، بازدید و مأموریت پاک شود؟"
+  );
 
-  const confirmed =
-    confirm(
-      "تمام اطلاعات محلی سایت مثل XP، بازدید، مأموریت، پروفایل، اعلان‌ها و شبکه اجتماعی پاک شود؟"
-    );
-
-
-  if(!confirmed)
-    return;
-
+  if(!confirmed) return;
 
   [
-
     "xp",
-
     "visits",
-
     "activities",
+    "dailyMission"
+  ].forEach(key=>localStorage.removeItem(key));
 
-    "dailyMission",
+  toast("♻️ اطلاعات محلی پاک شد");
 
-    "socialPosts",
-
-    "profileData",
-
-    "notifications",
-
-    "following"
-
-  ].forEach(
-    key =>
-      localStorage.removeItem(key)
-  );
-
-
-  toast(
-    "♻️ اطلاعات محلی پاک شد"
-  );
-
-
-  setTimeout(
-    () => location.reload(),
-    800
-  );
-
+  setTimeout(()=>{
+    location.reload();
+  },800);
 }
 
-
-/* =========================================================
-   MODALS
-========================================================= */
+/* ---------- Modal click outside ---------- */
 
 function setupModals(){
-
-  document
-    .querySelectorAll(".modal")
-    .forEach(modal => {
-
-      modal.addEventListener(
-        "click",
-        e => {
-
-          if(e.target === modal){
-
-            modal.classList.remove(
-              "show"
-            );
-
-          }
-
-        }
-      );
-
+  document.querySelectorAll(".modal").forEach(modal=>{
+    modal.addEventListener("click",e=>{
+      if(e.target === modal){
+        modal.classList.remove("show");
+      }
     });
-
+  });
 }
 
-
-/* =========================================================
-   STARTUP
-========================================================= */
+/* ---------- Startup ---------- */
 
 function init(){
 
- 
-loadProfile();
-  
-loadSupabaseProfile();
-  
   loadTheme();
-
-  checkAuth();
-
   updateMotionButton();
-
   updateXP();
-
   updateVisits();
-
   loadMission();
-
   renderActivities();
-
-  loadSocialPosts();
-
-  renderSocialPosts();
-
-  renderNotifications();
-
-  renderFollow();
 
   typing();
 
   setupReveal();
-
   setupNavigation();
-
   setupParticles();
-
   setupMouseGlow();
-
   setupKeyboard();
-
   setupModals();
 
+  const themeBtn = $("themeBtn");
 
-  $("themeBtn")
-    ?.addEventListener(
-      "click",
-      toggleTheme
-    );
+  themeBtn?.addEventListener("click",toggleTheme);
 
+  const searchInput = $("searchInput");
 
-  $("notificationBtn")
-    ?.addEventListener(
-      "click",
-      () => {
-
-        renderNotifications();
-
-        openModal(
-          "notificationModal"
-        );
-
-      }
-    );
-
-
-  $("searchInput")
-    ?.addEventListener(
-      "keydown",
-      e => {
-
-        if(e.key === "Enter"){
-
-          doSearch();
-
-        }
-
-      }
-    );
-
-
-  $("postText")
-    ?.addEventListener(
-      "input",
-      updatePostCounter
-    );
-
-
-  updatePostCounter();
-
-
-  setInterval(
-    updateSessionTime,
-    1000
-  );
-
-
-  setTimeout(
-    animateProgress,
-    500
-  );
-
-
-  if(
-    !sessionStorage.getItem(
-      "startupLogged"
-    )
-  ){
-
-    addActivity(
-      "🚀",
-      "ورود به Version 3.1.0 • Social Upgrade 02"
-    );
-
-
-    addNotification(
-      "🚀",
-      "به نسخه جدید سایت خوش آمدی"
-    );
-
-
-    sessionStorage.setItem(
-      "startupLogged",
-      "true"
-    );
-
-  }
-
-}
-
-
-document.addEventListener(
-  "DOMContentLoaded",
-  init
-);
-// =========================================================
-// SUPABASE AUTH
-// =========================================================
-
-async function registerUser(){
-
-  const name = $("authName").value.trim();
-  const username = $("authUsername").value.trim().replace(/^@/, "");
-  const email = $("authEmail").value.trim();
-  const password = $("authPassword").value;
-
-  if(!name || !username || !email || !password){
-    toast("⚠️ همه اطلاعات را وارد کن");
-    return;
-  }
-
-  if(password.length < 6){
-    toast("⚠️ رمز عبور باید حداقل ۶ کاراکتر باشد");
-    return;
-  }
-
-  try{
-
-    const { data, error } = await supabaseClient.auth.signUp({
-      email: email,
-      password: password,
-      options: {
-        data: {
-          username: username,
-          display_name: name
-        }
-      }
-    });
-
-    if(error) throw error;
-
-    toast("🎉 ثبت‌نام انجام شد");
-
-    $("authStatus").innerHTML =
-      "✅ حساب ساخته شد. اگر تأیید ایمیل فعال باشد، ایمیل تأیید را بررسی کن.";
-
-  }catch(error){
-
-    console.error(error);
-
-    $("authStatus").innerHTML =
-      "❌ " + escapeHTML(error.message);
-
-    toast("❌ ثبت‌نام ناموفق بود");
-  }
-}
-
-
-async function loginUser(){
-
-  const email = $("authEmail").value.trim();
-  const password = $("authPassword").value;
-
-  if(!email || !password){
-    toast("⚠️ ایمیل و رمز عبور را وارد کن");
-    return;
-  }
-
-  try{
-
-    const { data, error } =
-      await supabaseClient.auth.signInWithPassword({
-        email: email,
-        password: password
-      });
-
-    if(error) throw error;
-
-    toast("🚀 ورود موفق بود");
-
-    renderAuthUser(data.user);
-
-  }catch(error){
-
-    console.error(error);
-
-    $("authStatus").innerHTML =
-      "❌ " + escapeHTML(error.message);
-
-    toast("❌ ایمیل یا رمز عبور اشتباه است");
-  }
-}
-
-
-async function logoutUser(){
-
-  const { error } =
-    await supabaseClient.auth.signOut();
-
-  if(error){
-    toast("❌ خروج انجام نشد");
-    return;
-  }
-
-  toast("👋 از حساب خارج شدی");
-
-  $("authStatus").innerHTML =
-    "🔒 از حساب خارج شده‌ای";
-}
-
-
-function renderAuthUser(user){
-
-  if(!user) return;
-
-  const name =
-    user.user_metadata?.display_name ||
-    user.email ||
-    "کاربر";
-
-  const username =
-    user.user_metadata?.username ||
-    "user";
-
-  $("authStatus").innerHTML = `
-    <div>
-      🟢 <strong>وارد شده‌ای</strong>
-      <br>
-      👤 ${escapeHTML(name)}
-      <br>
-      @${escapeHTML(username)}
-      <br>
-      📧 ${escapeHTML(user.email || "")}
-    </div>
-  `;
-}
-
-
-async function checkAuth(){
-
-  try{
-
-    const {
-      data: { session }
-    } = await supabaseClient.auth.getSession();
-
-    if(session?.user){
-      renderAuthUser(session.user);
-    }else{
-      $("authStatus").innerHTML =
-        "🔒 هنوز وارد حساب نشده‌ای";
+  searchInput?.addEventListener("keydown",e=>{
+    if(e.key === "Enter"){
+      doSearch();
     }
+  });
 
-    supabaseClient.auth.onAuthStateChange(
-      (_event, session) => {
+  setInterval(updateSessionTime,1000);
 
-        if(session?.user){
-          renderAuthUser(session.user);
-        }else{
-          $("authStatus").innerHTML =
-            "🔒 هنوز وارد حساب نشده‌ای";
-        }
+  setTimeout(()=>{
+    animateProgress();
+  },500);
 
-      }
-    );
-
-  }catch(error){
-
-    console.error(error);
-
-    $("authStatus").innerHTML =
-      "⚠️ اتصال به سیستم حساب کاربری برقرار نشد";
+  /* فقط یک بار در هر باز شدن صفحه */
+  if(!sessionStorage.getItem("startupLogged")){
+    addActivity("🚀","ورود به Version 2.0.1 • Build 21");
+    sessionStorage.setItem("startupLogged","true");
   }
 }
-  // =========================================================
-// LOAD REAL SUPABASE PROFILE
-// =========================================================
 
-async function loadSupabaseProfile(){
-
-  try{
-
-    const {
-      data: { session },
-      error: sessionError
-    } = await supabaseClient.auth.getSession();
-
-    if(sessionError) throw sessionError;
-
-    if(!session?.user){
-      console.log("No logged-in user");
-      return;
-    }
-
-    const userId = session.user.id;
-
-    const { data: profile, error } =
-      await supabaseClient
-        .from("profiles")
-        .select("id, username, display_name, Bio, Avatar_url")
-        .eq("id", userId)
-        .single();
-
-    if(error) throw error;
-
-    if(profile){
-
-      profileData = {
-        ...profileData,
-
-        name: profile.display_name || profileData.name,
-
-        username:
-          profile.username
-            ? "@" + profile.username.replace(/^@/, "")
-            : profileData.username,
-
-        bio: profile.Bio || profileData.bio
-      };
-
-      saveProfileData();
-      renderProfile();
-
-      if(typeof renderSocialPosts === "function"){
-        renderSocialPosts();
-      }
-
-      console.log("Supabase profile loaded:", profile);
-    }
-
-  }catch(error){
-
-    console.error(
-      "Supabase profile error:",
-      error
-    );
-
-  }
-}
+document.addEventListener("DOMContentLoaded",init);
 </script>
 
 </body>
-  <!-- AUTH BOX -->
-<div id="authBox" style="
-  max-width:520px;
-  margin:30px auto;
-  padding:25px;
-  border:1px solid rgba(0,229,255,.2);
-  border-radius:22px;
-  background:rgba(15,29,42,.82);
-  box-shadow:0 15px 50px rgba(0,0,0,.3);
-">
-
-  <h2 style="margin-top:0">🔐 حساب کاربری</h2>
-
-  <input
-    id="authName"
-    type="text"
-    placeholder="نام نمایشی"
-    style="width:100%;box-sizing:border-box;margin:8px 0;padding:13px;border-radius:12px;border:1px solid #ffffff22;background:#ffffff08;color:white;"
-  >
-
-  <input
-    id="authUsername"
-    type="text"
-    placeholder="نام کاربری"
-    style="width:100%;box-sizing:border-box;margin:8px 0;padding:13px;border-radius:12px;border:1px solid #ffffff22;background:#ffffff08;color:white;"
-  >
-
-  <input
-    id="authEmail"
-    type="email"
-    placeholder="ایمیل"
-    style="width:100%;box-sizing:border-box;margin:8px 0;padding:13px;border-radius:12px;border:1px solid #ffffff22;background:#ffffff08;color:white;"
-  >
-
-  <input
-    id="authPassword"
-    type="password"
-    placeholder="رمز عبور"
-    style="width:100%;box-sizing:border-box;margin:8px 0;padding:13px;border-radius:12px;border:1px solid #ffffff22;background:#ffffff08;color:white;"
-  >
-
-  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:15px;">
-    <button onclick="registerUser()" class="btn primary">
-      📝 ثبت‌نام
-    </button>
-
-    <button onclick="loginUser()" class="btn">
-      🔑 ورود
-    </button>
-
-    <button onclick="logoutUser()" class="btn danger">
-      🚪 خروج
-    </button>
-  </div>
-
-  <div id="authStatus" style="
-    margin-top:18px;
-    color:#91a7b8;
-    line-height:1.8;
-  ">
-    در حال بررسی وضعیت حساب...
-  </div>
-
-</div>
-<!-- END AUTH BOX -->
   </html>
