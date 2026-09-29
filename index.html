@@ -3768,8 +3768,127 @@ function toggleFollow(){
 let socialPosts = [];
 
 
-function loadSocialPosts(){
+function {
+// =========================================================
+// SUPABASE POSTS
+// =========================================================
 
+async function loadSocialPosts(){
+
+  try{
+
+    const {
+      data: { session }
+    } = await supabaseClient.auth.getSession();
+
+    if(!session?.user){
+      socialPosts = [];
+      renderSocialPosts();
+      return;
+    }
+
+    const { data, error } =
+      await supabaseClient
+        .from("posts")
+        .select("id, user_id, text, created_at")
+        .order("created_at", { ascending:false });
+
+    if(error) throw error;
+
+    socialPosts = (data || []).map(post => ({
+      id: post.id,
+      userId: post.user_id,
+      user: post.user_id === session.user.id
+        ? profileData.name
+        : "کاربر",
+      username: post.user_id === session.user.id
+        ? profileData.username
+        : "@user",
+      text: post.text,
+      likes: 0,
+      liked: false,
+      saved: false,
+      comments: [],
+      time: new Date(post.created_at)
+        .toLocaleString("fa-IR", {
+          dateStyle:"short",
+          timeStyle:"short"
+        })
+    }));
+
+    renderSocialPosts();
+
+  }catch(error){
+
+    console.error(
+      "Supabase posts error:",
+      error
+    );
+
+    toast("❌ دریافت پست‌ها ناموفق بود");
+  }
+}
+
+
+async function publishPost(){
+
+  const input = $("postText");
+
+  if(!input) return;
+
+  const text = input.value.trim();
+
+  if(!text){
+    toast("⚠️ متن پست را بنویس");
+    return;
+  }
+
+  if(text.length > 1000){
+    toast("⚠️ متن پست خیلی طولانی است");
+    return;
+  }
+
+  try{
+
+    const {
+      data: { session }
+    } = await supabaseClient.auth.getSession();
+
+    if(!session?.user){
+      toast("🔐 ابتدا وارد حساب شو");
+      return;
+    }
+
+    const { data, error } =
+      await supabaseClient
+        .from("posts")
+        .insert({
+          user_id: session.user.id,
+          text: text
+        })
+        .select()
+        .single();
+
+    if(error) throw error;
+
+    input.value = "";
+
+    updatePostCounter();
+
+    toast("🚀 پست با موفقیت منتشر شد");
+
+    await loadSocialPosts();
+
+  }catch(error){
+
+    console.error(
+      "Publish post error:",
+      error
+    );
+
+    toast("❌ انتشار پست ناموفق بود");
+  }
+  }
   try{
 
     socialPosts =
@@ -3864,7 +3983,7 @@ function updateSocialStats(){
 }
 
 
-function publishPost(){
+function {
 
   const input =
     $("postText");
