@@ -5420,8 +5420,11 @@ function setupModals(){
 
 function init(){
 
-  loadProfile();
-
+ 
+loadProfile();
+  
+loadSupabaseProfile();
+  
   loadTheme();
 
   checkAuth();
@@ -5718,7 +5721,72 @@ async function checkAuth(){
     $("authStatus").innerHTML =
       "⚠️ اتصال به سیستم حساب کاربری برقرار نشد";
   }
+}
+  // =========================================================
+// LOAD REAL SUPABASE PROFILE
+// =========================================================
+
+async function loadSupabaseProfile(){
+
+  try{
+
+    const {
+      data: { session },
+      error: sessionError
+    } = await supabaseClient.auth.getSession();
+
+    if(sessionError) throw sessionError;
+
+    if(!session?.user){
+      console.log("No logged-in user");
+      return;
+    }
+
+    const userId = session.user.id;
+
+    const { data: profile, error } =
+      await supabaseClient
+        .from("profiles")
+        .select("id, username, display_name, Bio, Avatar_url")
+        .eq("id", userId)
+        .single();
+
+    if(error) throw error;
+
+    if(profile){
+
+      profileData = {
+        ...profileData,
+
+        name: profile.display_name || profileData.name,
+
+        username:
+          profile.username
+            ? "@" + profile.username.replace(/^@/, "")
+            : profileData.username,
+
+        bio: profile.Bio || profileData.bio
+      };
+
+      saveProfileData();
+      renderProfile();
+
+      if(typeof renderSocialPosts === "function"){
+        renderSocialPosts();
+      }
+
+      console.log("Supabase profile loaded:", profile);
+    }
+
+  }catch(error){
+
+    console.error(
+      "Supabase profile error:",
+      error
+    );
+
   }
+}
 </script>
 
 </body>
