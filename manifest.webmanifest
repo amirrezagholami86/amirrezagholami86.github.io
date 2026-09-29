@@ -11,7 +11,16 @@
   "lang":"fa",
   "dir":"rtl",
   "categories":["social","lifestyle"],
-  "icons":[
+  ,"screenshots":[
+  {
+    "src":"screenshot.png",
+    "sizes":"auto",
+    "type":"image/png",
+    "form_factor":"narrow"
+  }
+]
+
+"icons":[
     {
       "src":"icon-192.png",
       "sizes":"192x192",
