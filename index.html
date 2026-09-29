@@ -3,8 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+
 <meta name="theme-color" content="#00e5ff">
 <meta name="description" content="Amirreza Gholami | Personal Social Space">
+
+<!-- PWA -->
+<link rel="manifest" href="./manifest.webmanifest">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="AMIRREZA">
+
 <title>امیررضا | Social Boom</title>
 
 <style>
@@ -42,7 +51,10 @@ img{max-width:100%}
  max-width:1180px;margin:auto;padding:11px 16px;
  display:flex;align-items:center;gap:9px
 }
-.logo{font-size:19px;font-weight:900;color:var(--accent);margin-left:auto}
+.logo{
+ font-size:19px;font-weight:900;color:var(--accent);
+ margin-left:auto
+}
 .navlinks{display:flex;gap:5px}
 .navlinks a,.icon{
  padding:8px 11px;border-radius:12px;color:var(--muted);
@@ -53,7 +65,9 @@ img{max-width:100%}
 }
 .menu{display:none}
 
-main{max-width:1180px;margin:auto;padding:90px 16px 100px}
+main{
+ max-width:1180px;margin:auto;padding:90px 16px 100px
+}
 section{scroll-margin-top:80px;margin:24px 0}
 
 .hero{
@@ -62,32 +76,51 @@ section{scroll-margin-top:80px;margin:24px 0}
 }
 .card,.heroCard{
  background:linear-gradient(145deg,var(--card),var(--card2));
- border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow)
+ border:1px solid var(--line);border-radius:var(--r);
+ box-shadow:var(--shadow)
 }
 .heroCard{padding:34px}
+
 .badge{
  display:inline-flex;padding:5px 11px;border:1px solid var(--line);
  border-radius:999px;color:var(--accent);background:var(--card2);
  font-size:12px
 }
+
 h1{font-size:clamp(36px,6vw,67px);line-height:1.15;margin:18px 0 8px}
 h2{font-size:27px;margin:0 0 14px}
 h3{margin:7px 0}
 .muted{color:var(--muted)}
 .accent{color:var(--accent)}
-.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+
+.actions{
+ display:flex;gap:8px;flex-wrap:wrap;margin-top:14px
+}
+
 .btn{
  padding:9px 14px;border-radius:13px;border:1px solid var(--line);
  background:var(--card2);color:var(--text)
 }
-.btn.primary{background:var(--accent);color:#001217;border-color:var(--accent);font-weight:900}
+.btn.primary{
+ background:var(--accent);color:#001217;
+ border-color:var(--accent);font-weight:900
+}
 .btn.danger{color:var(--danger)}
 .btn:hover{transform:translateY(-1px)}
+
+.installBtn{
+ display:none;
+ box-shadow:0 0 25px #00e5ff33
+}
+.installBtn.show{
+ display:inline-flex
+}
 
 .avatar{
  width:48px;height:48px;border-radius:50%;object-fit:cover;
  border:2px solid var(--accent)
 }
+
 .cover{
  height:190px;border-radius:var(--r) var(--r) 0 0;
  background:
@@ -101,60 +134,99 @@ h3{margin:7px 0}
  background:linear-gradient(120deg,transparent,#fff1,transparent);
  transform:translateX(-100%);animation:shine 5s infinite
 }
-@keyframes shine{50%,100%{transform:translateX(100%)}}
-.profileHead{margin:-45px 20px 0;position:relative}
-.profileHead .avatar{width:90px;height:90px;border-width:4px}
+@keyframes shine{
+ 50%,100%{transform:translateX(100%)}
+}
+
+.profileHead{
+ margin:-45px 20px 0;position:relative
+}
+.profileHead .avatar{
+ width:90px;height:90px;border-width:4px
+}
 .profileInfo{padding:0 20px 20px}
 
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-.stat{font-size:30px;font-weight:900;color:var(--accent)}
+.grid{
+ display:grid;grid-template-columns:repeat(3,1fr);gap:14px
+}
+.grid2{
+ display:grid;grid-template-columns:repeat(2,1fr);gap:14px
+}
+.stat{
+ font-size:30px;font-weight:900;color:var(--accent)
+}
 .small{font-size:12px}
+
 .progress{
  height:9px;background:#ffffff0c;border:1px solid var(--line);
  border-radius:99px;overflow:hidden;margin:8px 0
 }
-.progressBar{height:100%;width:0;background:var(--accent);border-radius:99px}
+.progressBar{
+ height:100%;width:0;background:var(--accent);border-radius:99px
+}
 
 .composer{padding:18px}
-.composerTop{display:flex;gap:10px;align-items:center}
+.composerTop{
+ display:flex;gap:10px;align-items:center
+}
+
 textarea,input{
  width:100%;background:var(--bg);color:var(--text);
- border:1px solid var(--line);border-radius:14px;padding:11px;outline:0
+ border:1px solid var(--line);border-radius:14px;
+ padding:11px;outline:0
 }
 textarea{min-height:90px;resize:vertical}
 textarea:focus,input:focus{border-color:var(--accent)}
 .file{display:none}
+
 .preview{
  display:none;max-height:300px;width:100%;object-fit:contain;
  margin-top:10px;border-radius:15px
 }
 
-.tabs{display:flex;gap:7px;overflow:auto;margin:14px 0}
-.tabs button.active{background:var(--accent);color:#001217;font-weight:900}
+.tabs{
+ display:flex;gap:7px;overflow:auto;margin:14px 0
+}
+.tabs button.active{
+ background:var(--accent);color:#001217;font-weight:900
+}
 
-.post{padding:17px;margin-top:14px}
-.postHead{display:flex;align-items:center;gap:9px}
+.post{
+ padding:17px;margin-top:14px
+}
+.postHead{
+ display:flex;align-items:center;gap:9px
+}
 .postName{font-weight:900}
 .postText{white-space:pre-wrap;margin:13px 0}
 .postImg{
- width:100%;max-height:550px;object-fit:contain;border-radius:16px;
- background:#0003;margin-top:8px
+ width:100%;max-height:550px;object-fit:contain;
+ border-radius:16px;background:#0003;margin-top:8px
 }
-.postActions{display:flex;gap:6px;flex-wrap:wrap;margin-top:11px}
+.postActions{
+ display:flex;gap:6px;flex-wrap:wrap;margin-top:11px
+}
 .postActions button{
  border:0;background:var(--card2);color:var(--muted);
  padding:7px 11px;border-radius:12px
 }
 .postActions button.liked{color:var(--pink)}
-.comments{border-top:1px solid var(--line);margin-top:12px;padding-top:10px}
-.comment{padding:6px 0;border-bottom:1px solid var(--line)}
-.commentForm{display:flex;gap:7px;margin-top:8px}
+
+.comments{
+ border-top:1px solid var(--line);
+ margin-top:12px;padding-top:10px
+}
+.comment{
+ padding:6px 0;border-bottom:1px solid var(--line)
+}
+.commentForm{
+ display:flex;gap:7px;margin-top:8px
+}
 .commentForm input{flex:1}
 
 .notice{
- padding:10px 12px;background:var(--card2);border:1px solid var(--line);
- border-radius:13px;margin:7px 0
+ padding:10px 12px;background:var(--card2);
+ border:1px solid var(--line);border-radius:13px;margin:7px 0
 }
 .unread{border-color:var(--accent)}
 .empty{text-align:center;padding:25px}
@@ -163,20 +235,27 @@ textarea:focus,input:focus{border-color:var(--accent)}
  display:grid;grid-template-columns:repeat(4,1fr);gap:7px
 }
 .gallery img{
- width:100%;aspect-ratio:1;object-fit:cover;border-radius:12px;
- cursor:pointer;border:1px solid var(--line)
+ width:100%;aspect-ratio:1;object-fit:cover;
+ border-radius:12px;cursor:pointer;border:1px solid var(--line)
 }
-.timeline{padding:20px;position:relative}
+
+.timeline{
+ padding:20px;position:relative
+}
 .event{
- padding:8px 20px 14px;border-right:2px solid var(--line);
+ padding:8px 20px 14px;
+ border-right:2px solid var(--line);
  position:relative
 }
 .event:before{
  content:"";position:absolute;right:-6px;top:14px;
- width:10px;height:10px;border-radius:50%;background:var(--accent)
+ width:10px;height:10px;border-radius:50%;
+ background:var(--accent)
 }
 
-.search{display:flex;gap:8px}
+.search{
+ display:flex;gap:8px
+}
 .search input{flex:1}
 
 .modal{
@@ -184,50 +263,100 @@ textarea:focus,input:focus{border-color:var(--accent)}
  align-items:center;justify-content:center;padding:15px
 }
 .modal.show{display:flex}
+
 .modalBox{
  width:min(580px,100%);max-height:88vh;overflow:auto;
  background:var(--card);border:1px solid var(--line);
  border-radius:22px;padding:20px
 }
+
 .toast{
  position:fixed;z-index:500;bottom:25px;left:50%;
  transform:translate(-50%,20px);opacity:0;
  background:var(--card);border:1px solid var(--accent);
  padding:9px 16px;border-radius:13px;transition:.25s
 }
-.toast.show{opacity:1;transform:translate(-50%,0)}
+.toast.show{
+ opacity:1;transform:translate(-50%,0)
+}
 
 .bottom{
  display:none;position:fixed;bottom:0;left:0;right:0;z-index:100;
- grid-template-columns:repeat(5,1fr);background:#050b11ee;
- border-top:1px solid var(--line);backdrop-filter:blur(18px)
+ grid-template-columns:repeat(5,1fr);
+ background:#050b11ee;border-top:1px solid var(--line);
+ backdrop-filter:blur(18px)
 }
 .light .bottom{background:#fffffff0}
-.bottom a{text-align:center;color:var(--muted);font-size:10px;padding:5px}
-.bottom span{display:block;font-size:18px}
+.bottom a{
+ text-align:center;color:var(--muted);
+ font-size:10px;padding:5px
+}
+.bottom span{
+ display:block;font-size:18px
+}
 .bottom a.active{color:var(--accent)}
 
 #glow{
  position:fixed;width:230px;height:230px;border-radius:50%;
  background:radial-gradient(circle,#00e5ff16,transparent 70%);
- pointer-events:none;transform:translate(-50%,-50%);z-index:-1
+ pointer-events:none;transform:translate(-50%,-50%);
+ z-index:-1
 }
-.reveal{opacity:0;transform:translateY(15px);transition:.7s}
-.reveal.visible{opacity:1;transform:none}
+
+.reveal{
+ opacity:0;transform:translateY(15px);transition:.7s
+}
+.reveal.visible{
+ opacity:1;transform:none
+}
+
+.appBanner{
+ display:none;
+ margin-top:16px;
+ padding:13px;
+ border:1px solid var(--accent);
+ border-radius:15px;
+ background:#00e5ff0b
+}
+.appBanner.show{display:block}
+
+footer{
+ text-align:center;
+ padding:30px 15px 45px;
+ color:var(--muted);
+ font-size:12px
+}
 
 @media(max-width:850px){
- .hero{grid-template-columns:1fr;text-align:center}
- .grid,.grid2{grid-template-columns:1fr}
+ .hero{
+  grid-template-columns:1fr;
+  text-align:center
+ }
+
+ .grid,.grid2{
+  grid-template-columns:1fr
+ }
+
  .navlinks{display:none}
  .menu{display:block}
+
  .navlinks.open{
-  display:flex;position:absolute;top:58px;right:10px;left:10px;
-  padding:9px;background:var(--card);border:1px solid var(--line);
-  border-radius:15px;flex-wrap:wrap
+  display:flex;
+  position:absolute;
+  top:58px;
+  right:10px;
+  left:10px;
+  padding:9px;
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:15px;
+  flex-wrap:wrap
  }
+
  .bottom{display:grid}
  main{padding-bottom:105px}
 }
+
 @media(max-width:500px){
  .heroCard{padding:19px}
  .gallery{grid-template-columns:repeat(3,1fr)}
@@ -237,11 +366,14 @@ textarea:focus,input:focus{border-color:var(--accent)}
 </head>
 
 <body>
+
 <div id="glow"></div>
 
 <header class="top">
 <nav class="nav">
+
 <div class="logo">AMIRREZA.DEV</div>
+
 <button class="icon menu" id="menuBtn">☰</button>
 
 <div class="navlinks" id="navLinks">
@@ -255,30 +387,40 @@ textarea:focus,input:focus{border-color:var(--accent)}
 </div>
 
 <button class="icon" id="themeBtn">🌙</button>
+
 </nav>
 </header>
 
 <main>
 
 <section id="home" class="hero reveal">
-<div class="heroCard">
-<span class="badge">💥 SOCIAL BOOM • v2.5.0 • Build 27</span>
 
-<h1>سلام، من <span class="accent" id="heroName">امیررضا</span> هستم 👋</h1>
+<div class="heroCard">
+
+<span class="badge">
+📱 APP MODE • v2.6.0 • Build 28
+</span>
+
+<h1>
+سلام، من <span class="accent" id="heroName">امیررضا</span> هستم 👋
+</h1>
 
 <p class="muted">
 این فقط یک سایت نیست؛ فضای شخصی منه.
 </p>
 
 <div class="grid2">
+
 <div>
 <div class="small muted">LEVEL</div>
 <div class="stat" id="level">8</div>
 </div>
+
 <div>
 <div class="small muted">XP</div>
 <div class="stat" id="xp">820</div>
 </div>
+
 </div>
 
 <div class="progress">
@@ -286,23 +428,51 @@ textarea:focus,input:focus{border-color:var(--accent)}
 </div>
 
 <div class="actions">
-<a class="btn primary" href="#feed">🚀 رفتن به فید</a>
-<a class="btn" href="#profile">👤 پروفایل</a>
-<button class="btn" id="vcardBtn">📇 vCard</button>
+
+<a class="btn primary" href="#feed">
+🚀 رفتن به فید
+</a>
+
+<a class="btn" href="#profile">
+👤 پروفایل
+</a>
+
+<button class="btn" id="vcardBtn">
+📇 vCard
+</button>
+
+<button class="btn primary installBtn" id="installBtn">
+📱 نصب AMIRREZA
+</button>
+
 </div>
+
+<div class="appBanner" id="appBanner">
+<b>📱 AMIRREZA آماده نصب است!</b>
+<div class="small muted">
+با نصب، سایت مثل یک اپ مستقل روی گوشی اجرا می‌شود.
+</div>
+</div>
+
 </div>
 
 <div>
-<img class="profileHead avatar"
+<img
+class="profileHead avatar"
 style="width:min(330px,75vw);height:min(330px,75vw);border-radius:30%;object-fit:cover"
-src="profile.jpg" alt="امیررضا">
+src="profile.jpg"
+alt="امیررضا">
 </div>
+
 </section>
 
+
 <section id="profile" class="reveal">
+
 <h2>👤 پروفایل</h2>
 
 <div class="card">
+
 <div class="cover"></div>
 
 <div class="profileHead">
@@ -310,254 +480,601 @@ src="profile.jpg" alt="امیررضا">
 </div>
 
 <div class="profileInfo">
+
 <div class="actions" style="float:left">
-<button class="btn primary" id="editProfileBtn">✏️ ویرایش</button>
+<button class="btn primary" id="editProfileBtn">
+✏️ ویرایش
+</button>
 </div>
 
 <h2 id="profileName">امیررضا غلامی</h2>
-<p class="muted" id="profileBio">Personal Creator • Developer • Dreamer</p>
+
+<p class="muted" id="profileBio">
+Personal Creator • Developer • Dreamer
+</p>
 
 <div class="grid">
-<div><div class="stat" id="profilePosts">0</div><span class="muted">Posts</span></div>
-<div><div class="stat" id="profileLikes">0</div><span class="muted">Likes</span></div>
-<div><div class="stat" id="profileComments">0</div><span class="muted">Comments</span></div>
+
+<div>
+<div class="stat" id="profilePosts">0</div>
+<span class="muted">Posts</span>
+</div>
+
+<div>
+<div class="stat" id="profileLikes">0</div>
+<span class="muted">Likes</span>
+</div>
+
+<div>
+<div class="stat" id="profileComments">0</div>
+<span class="muted">Comments</span>
+</div>
+
+</div>
+
 </div>
 </div>
-</div>
+
 </section>
 
+
 <section id="feed" class="reveal">
+
 <h2>📰 Social Feed</h2>
 
 <div class="card composer">
+
 <div class="composerTop">
+
 <img class="avatar" src="profile.jpg" alt="">
+
 <div>
 <b id="composerName">امیررضا غلامی</b>
 <div class="small muted">Public post</div>
 </div>
+
 </div>
 
 <br>
 
-<textarea id="postText" placeholder="چه خبر؟ چیزی برای گفتن داری؟ 🚀"></textarea>
+<textarea
+id="postText"
+placeholder="چه خبر؟ چیزی برای گفتن داری؟ 🚀"></textarea>
 
 <img class="preview" id="preview" alt="preview">
 
 <div class="actions">
-<label class="btn" for="imageInput">🖼️ عکس</label>
-<input class="file" id="imageInput" type="file" accept="image/*">
-<button class="btn primary" id="publishBtn">🚀 انتشار پست</button>
+
+<label class="btn" for="imageInput">
+🖼️ عکس
+</label>
+
+<input
+class="file"
+id="imageInput"
+type="file"
+accept="image/*">
+
+<button class="btn primary" id="publishBtn">
+🚀 انتشار پست
+</button>
+
 </div>
+
 </div>
 
 <div class="tabs">
-<button class="btn active" data-filter="all">📰 همه</button>
-<button class="btn" data-filter="image">🖼️ تصاویر</button>
-<button class="btn" data-filter="popular">🔥 محبوب</button>
+
+<button class="btn active" data-filter="all">
+📰 همه
+</button>
+
+<button class="btn" data-filter="image">
+🖼️ تصاویر
+</button>
+
+<button class="btn" data-filter="popular">
+🔥 محبوب
+</button>
+
 </div>
 
 <div class="card" style="padding:13px">
+
 <div class="search">
-<input id="postSearch" placeholder="🔎 جست‌وجوی پست‌ها">
-<button class="btn" id="clearSearch">پاک</button>
+
+<input
+id="postSearch"
+placeholder="🔎 جست‌وجوی پست‌ها">
+
+<button class="btn" id="clearSearch">
+پاک
+</button>
+
 </div>
+
 </div>
 
 <div id="posts"></div>
+
 </section>
+
 
 <section id="notifications" class="reveal">
+
 <h2>🔔 Notifications</h2>
+
 <div class="actions">
-<button class="btn success" id="readAll">✅ خواندن همه</button>
+
+<button class="btn" id="readAll">
+✅ خواندن همه
+</button>
+
 </div>
-<div class="card" id="notificationBox" style="padding:12px"></div>
+
+<div
+class="card"
+id="notificationBox"
+style="padding:12px">
+</div>
+
 </section>
 
+
 <section id="dashboard" class="reveal">
+
 <h2>📊 Social Dashboard</h2>
 
 <div class="grid">
-<div class="card"><div class="small muted">بازدید</div><div class="stat" id="visits">0</div></div>
-<div class="card"><div class="small muted">Posts</div><div class="stat" id="dashPosts">0</div></div>
-<div class="card"><div class="small muted">Likes</div><div class="stat" id="dashLikes">0</div></div>
-<div class="card"><div class="small muted">Comments</div><div class="stat" id="dashComments">0</div></div>
-<div class="card"><div class="small muted">Streak</div><div class="stat">🔥 <span id="dashStreak">0</span></div></div>
-<div class="card"><div class="small muted">Session</div><div class="stat" id="session">00:00</div></div>
+
+<div class="card" style="padding:20px">
+<div class="small muted">بازدید</div>
+<div class="stat" id="visits">0</div>
 </div>
+
+<div class="card" style="padding:20px">
+<div class="small muted">Posts</div>
+<div class="stat" id="dashPosts">0</div>
+</div>
+
+<div class="card" style="padding:20px">
+<div class="small muted">Likes</div>
+<div class="stat" id="dashLikes">0</div>
+</div>
+
+<div class="card" style="padding:20px">
+<div class="small muted">Comments</div>
+<div class="stat" id="dashComments">0</div>
+</div>
+
+<div class="card" style="padding:20px">
+<div class="small muted">Streak</div>
+<div class="stat">
+🔥 <span id="dashStreak">0</span>
+</div>
+</div>
+
+<div class="card" style="padding:20px">
+<div class="small muted">Session</div>
+<div class="stat" id="session">00:00</div>
+</div>
+
+</div>
+
 </section>
+
 
 <section id="mission" class="reveal">
+
 <h2>🎯 Daily Mission</h2>
+
 <div class="card" style="padding:20px">
+
 <h3>امروز یک فعالیت انجام بده 🚀</h3>
-<p class="muted">با انجام مأموریت XP بگیر.</p>
-<button class="btn primary" id="missionBtn">انجام شد +20 XP</button>
+
+<p class="muted">
+با انجام مأموریت XP بگیر.
+</p>
+
+<button class="btn primary" id="missionBtn">
+انجام شد +20 XP
+</button>
+
 </div>
+
 </section>
+
 
 <section id="streakSection" class="reveal">
+
 <h2>🔥 Daily Streak</h2>
-<div class="card" style="padding:25px;text-align:center">
-<div style="font-size:60px">🔥</div>
-<div class="stat"><span id="streakBig">0</span> روز</div>
-<p class="muted">زنجیره فعالیتت را حفظ کن.</p>
+
+<div
+class="card"
+style="padding:25px;text-align:center">
+
+<div style="font-size:60px">
+🔥
 </div>
+
+<div class="stat">
+<span id="streakBig">0</span> روز
+</div>
+
+<p class="muted">
+زنجیره فعالیتت را حفظ کن.
+</p>
+
+</div>
+
 </section>
 
+
 <section id="growth" class="reveal">
+
 <h2>📈 Growth Center</h2>
+
 <div class="grid2">
+
 <div class="card" style="padding:20px">
+
 <h3>⭐ Level Progress</h3>
+
 <div class="stat" id="growthLevel">8</div>
-<div class="progress"><div class="progressBar" id="growthBar"></div></div>
+
+<div class="progress">
+<div class="progressBar" id="growthBar"></div>
+</div>
+
 <p class="muted" id="growthText"></p>
+
 </div>
 
 <div class="card" style="padding:20px">
+
 <h3>🚀 Activity</h3>
+
 <p>Posts: <b id="growthPosts">0</b></p>
 <p>Likes: <b id="growthLikes">0</b></p>
 <p>Comments: <b id="growthComments">0</b></p>
 <p>Achievements: <b id="achCount">0</b></p>
+
 </div>
+
 </div>
+
 </section>
+
 
 <section id="achievements" class="reveal">
+
 <h2>🏆 Achievements</h2>
+
 <div class="grid" id="achievementBox"></div>
+
 </section>
+
 
 <section id="projects" class="reveal">
+
 <h2>💻 Projects</h2>
+
 <div class="grid">
-<div class="card" style="padding:20px"><h3>AMIRREZA.DEV</h3><p class="muted">Personal Social Network</p><span class="badge">ACTIVE</span></div>
-<div class="card" style="padding:20px"><h3>AI Center</h3><p class="muted">مرکز هوش مصنوعی شخصی</p><span class="badge">BUILDING</span></div>
-<div class="card" style="padding:20px"><h3>Future</h3><p class="muted">پروژه‌های آینده</p><span class="badge">SOON</span></div>
+
+<div class="card" style="padding:20px">
+<h3>AMIRREZA.DEV</h3>
+<p class="muted">Personal Social Network</p>
+<span class="badge">ACTIVE</span>
 </div>
+
+<div class="card" style="padding:20px">
+<h3>AI Center</h3>
+<p class="muted">مرکز هوش مصنوعی شخصی</p>
+<span class="badge">BUILDING</span>
+</div>
+
+<div class="card" style="padding:20px">
+<h3>Future</h3>
+<p class="muted">پروژه‌های آینده</p>
+<span class="badge">SOON</span>
+</div>
+
+</div>
+
 </section>
+
 
 <section id="timeline" class="reveal">
+
 <h2>🕐 Timeline</h2>
+
 <div class="card timeline" id="timelineBox"></div>
+
 </section>
+
 
 <section id="gallery" class="reveal">
+
 <h2>🖼️ Media Center</h2>
+
 <div class="card" style="padding:15px">
+
 <div class="gallery" id="galleryBox"></div>
-<p class="muted" id="galleryEmpty">هنوز تصویری منتشر نشده.</p>
+
+<p class="muted" id="galleryEmpty">
+هنوز تصویری منتشر نشده.
+</p>
+
 </div>
+
 </section>
+
 
 <section id="ai" class="reveal">
+
 <h2>🤖 AI Center</h2>
+
 <div class="card" style="padding:20px">
-<p class="muted">مرکز ابزارهای هوش مصنوعی شخصی.</p>
-<button class="btn primary" id="aiBtn">✨ باز کردن AI Center</button>
+
+<p class="muted">
+مرکز ابزارهای هوش مصنوعی شخصی.
+</p>
+
+<button class="btn primary" id="aiBtn">
+✨ باز کردن AI Center
+</button>
+
 </div>
+
 </section>
+
 
 <section id="search" class="reveal">
+
 <h2>🔎 Site Search</h2>
+
 <div class="card" style="padding:15px">
+
 <div class="search">
-<input id="siteSearch" placeholder="جست‌وجو در سایت...">
-<button class="btn primary" id="siteSearchBtn">جست‌وجو</button>
+
+<input
+id="siteSearch"
+placeholder="جست‌وجو در سایت...">
+
+<button class="btn primary" id="siteSearchBtn">
+جست‌وجو
+</button>
+
 </div>
+
 <div id="siteResults"></div>
+
 </div>
+
 </section>
+
 
 <section id="activity" class="reveal">
+
 <h2>📜 Activity Log</h2>
-<div class="card" style="padding:12px" id="activityBox"></div>
+
+<div
+class="card"
+style="padding:12px"
+id="activityBox">
+</div>
+
 </section>
 
+
 <section id="settings" class="reveal">
+
 <h2>⚙️ Settings</h2>
 
 <div class="grid2">
+
 <div class="card" style="padding:20px">
+
 <h3>🎨 Accent</h3>
+
 <div class="actions">
-<button class="btn" data-accent="#00e5ff">Cyan</button>
-<button class="btn" data-accent="#39e58c">Green</button>
-<button class="btn" data-accent="#ff9f43">Orange</button>
-<button class="btn" data-accent="#ff4fa3">Pink</button>
-</div>
+
+<button class="btn" data-accent="#00e5ff">
+Cyan
+</button>
+
+<button class="btn" data-accent="#39e58c">
+Green
+</button>
+
+<button class="btn" data-accent="#ff9f43">
+Orange
+</button>
+
+<button class="btn" data-accent="#ff4fa3">
+Pink
+</button>
+
 </div>
 
+</div>
+
+
 <div class="card" style="padding:20px">
+
 <h3>✨ Motion</h3>
-<button class="btn" id="motionBtn">تغییر Motion</button>
+
+<button class="btn" id="motionBtn">
+تغییر Motion
+</button>
+
 </div>
 
+
 <div class="card" style="padding:20px">
+
 <h3>🛡️ Smart Repair</h3>
-<p class="muted small">بررسی و اصلاح ساختار اطلاعات.</p>
-<button class="btn" id="repairBtn">🔧 Repair</button>
+
+<p class="muted small">
+بررسی و اصلاح ساختار اطلاعات.
+</p>
+
+<button class="btn" id="repairBtn">
+🔧 Repair
+</button>
+
 </div>
 
+
 <div class="card" style="padding:20px">
+
 <h3>💾 Data Center</h3>
+
 <div class="actions">
-<button class="btn" id="backupBtn">Backup</button>
-<button class="btn" id="exportBtn">Export</button>
-<label class="btn" for="importInput">Import</label>
-<input class="file" id="importInput" type="file" accept=".json,application/json">
-<button class="btn danger" id="resetBtn">Reset</button>
+
+<button class="btn" id="backupBtn">
+Backup
+</button>
+
+<button class="btn" id="exportBtn">
+Export
+</button>
+
+<label class="btn" for="importInput">
+Import
+</label>
+
+<input
+class="file"
+id="importInput"
+type="file"
+accept=".json,application/json">
+
+<button class="btn danger" id="resetBtn">
+Reset
+</button>
+
 </div>
+
 </div>
+
 </div>
+
 </section>
 
+
 <section id="contact" class="reveal">
+
 <h2>📬 Contact</h2>
+
 <div class="grid">
-<a class="card" style="padding:20px" href="https://www.instagram.com/amirrezagholami.ir" target="_blank">📸 Instagram</a>
-<a class="card" style="padding:20px" href="https://t.me/Amirrezagholami_ir" target="_blank">✈️ Telegram</a>
-<a class="card" style="padding:20px" href="mailto:amirrezaamirreza275@gmail.com">📧 Email</a>
+
+<a
+class="card"
+style="padding:20px"
+href="https://www.instagram.com/amirrezagholami.ir"
+target="_blank">
+📸 Instagram
+</a>
+
+<a
+class="card"
+style="padding:20px"
+href="https://t.me/Amirrezagholami_ir"
+target="_blank">
+✈️ Telegram
+</a>
+
+<a
+class="card"
+style="padding:20px"
+href="mailto:amirrezaamirreza275@gmail.com">
+📧 Email
+</a>
+
 </div>
+
 </section>
 
 </main>
 
+
 <nav class="bottom">
-<a href="#home"><span>🏠</span>خانه</a>
-<a href="#feed"><span>📰</span>فید</a>
-<a href="#dashboard"><span>📊</span>آمار</a>
-<a href="#ai"><span>🤖</span>AI</a>
-<a href="#profile"><span>👤</span>پروفایل</a>
+
+<a href="#home">
+<span>🏠</span>خانه
+</a>
+
+<a href="#feed">
+<span>📰</span>فید
+</a>
+
+<a href="#dashboard">
+<span>📊</span>آمار
+</a>
+
+<a href="#ai">
+<span>🤖</span>AI
+</a>
+
+<a href="#profile">
+<span>👤</span>پروفایل
+</a>
+
 </nav>
 
+
 <div class="modal" id="modal">
+
 <div class="modalBox">
+
 <div id="modalContent"></div>
+
 <div class="actions">
-<button class="btn" id="closeModal">بستن</button>
+
+<button class="btn" id="closeModal">
+بستن
+</button>
+
 </div>
+
 </div>
+
 </div>
+
 
 <div class="toast" id="toast"></div>
 
+
 <footer>
+
 AMIRREZA.DEV • Personal Social Space<br>
-<b>v2.5.0 • Build 27 — SOCIAL BOOM 💥</b>
+
+<b>
+v2.6.0 • Build 28 — APP MODE 📱
+</b>
+
 </footer>
+
 
 <script>
 "use strict";
 
 const KEY="amirreza_space_v24";
+
 const DEFAULT={
- xp:820,visits:0,posts:[],notifications:[],activity:[],
- missionDate:"",missionDone:false,streak:0,lastActive:"",
- motion:true,accent:"#00e5ff",theme:"dark",
+ xp:820,
+ visits:0,
+ posts:[],
+ notifications:[],
+ activity:[],
+ missionDate:"",
+ missionDone:false,
+ streak:0,
+ lastActive:"",
+ motion:true,
+ accent:"#00e5ff",
+ theme:"dark",
  profileName:"امیررضا غلامی",
  profileBio:"Personal Creator • Developer • Dreamer"
 };
@@ -570,17 +1087,27 @@ let toastTimer=null;
 let recovering=false;
 let sessionStart=Date.now();
 
+/* PWA */
+let deferredInstallPrompt=null;
+
 const $=id=>document.getElementById(id);
 const copy=x=>JSON.parse(JSON.stringify(x));
 
 function esc(x){
  return String(x??"").replace(/[&<>"']/g,m=>({
-  "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+  "&":"&amp;",
+  "<":"&lt;",
+  ">":"&gt;",
+  '"':"&quot;",
+  "'":"&#039;"
  }[m]));
 }
 
 function timeNow(){
- return new Date().toLocaleString("fa-IR",{dateStyle:"short",timeStyle:"short"});
+ return new Date().toLocaleString(
+  "fa-IR",
+  {dateStyle:"short",timeStyle:"short"}
+ );
 }
 
 function day(){
@@ -588,63 +1115,126 @@ function day(){
 }
 
 function save(){
- try{localStorage.setItem(KEY,JSON.stringify(state))}
- catch(e){try{localStorage.setItem(KEY+"_backup",JSON.stringify(state))}catch(_){}}
+ try{
+  localStorage.setItem(KEY,JSON.stringify(state));
+ }catch(e){
+  try{
+   localStorage.setItem(
+    KEY+"_backup",
+    JSON.stringify(state)
+   );
+  }catch(_){}
+ }
 }
 
 function repairState(){
- if(!state||typeof state!=="object"||Array.isArray(state))
+
+ if(!state||
+    typeof state!=="object"||
+    Array.isArray(state)){
   state=copy(DEFAULT);
+ }
 
  ["posts","notifications","activity"].forEach(k=>{
-  if(!Array.isArray(state[k]))state[k]=[];
+  if(!Array.isArray(state[k]))
+   state[k]=[];
  });
 
  ["xp","visits","streak"].forEach(k=>{
-  if(typeof state[k]!=="number"||!Number.isFinite(state[k]))
+  if(typeof state[k]!=="number"||
+     !Number.isFinite(state[k]))
    state[k]=DEFAULT[k];
  });
 
  ["motion"].forEach(k=>{
-  if(typeof state[k]!=="boolean")state[k]=DEFAULT[k];
+  if(typeof state[k]!=="boolean")
+   state[k]=DEFAULT[k];
  });
 
- ["accent","theme","profileName","profileBio","missionDate","lastActive"]
- .forEach(k=>{
-  if(typeof state[k]!=="string")state[k]=DEFAULT[k];
+ [
+  "accent",
+  "theme",
+  "profileName",
+  "profileBio",
+  "missionDate",
+  "lastActive"
+ ].forEach(k=>{
+  if(typeof state[k]!=="string")
+   state[k]=DEFAULT[k];
  });
 
- if(!/^#[0-9a-f]{6}$/i.test(state.accent))state.accent=DEFAULT.accent;
- if(!["dark","light"].includes(state.theme))state.theme="dark";
+ if(!/^#[0-9a-f]{6}$/i.test(state.accent))
+  state.accent=DEFAULT.accent;
 
- state.posts=state.posts.filter(p=>p&&typeof p==="object"&&typeof p.id==="string");
+ if(!["dark","light"].includes(state.theme))
+  state.theme="dark";
+
+ state.posts=state.posts.filter(
+  p=>p&&typeof p==="object"&&typeof p.id==="string"
+ );
 
  state.posts.forEach(p=>{
-  if(typeof p.text!=="string")p.text="";
-  if(typeof p.image!=="string")p.image="";
-  if(typeof p.created!=="string")p.created=timeNow();
-  if(!Array.isArray(p.likes))p.likes=[];
-  if(!Array.isArray(p.comments))p.comments=[];
-  if(typeof p.rewardLike!=="boolean")p.rewardLike=false;
+
+  if(typeof p.text!=="string")
+   p.text="";
+
+  if(typeof p.image!=="string")
+   p.image="";
+
+  if(typeof p.created!=="string")
+   p.created=timeNow();
+
+  if(!Array.isArray(p.likes))
+   p.likes=[];
+
+  if(!Array.isArray(p.comments))
+   p.comments=[];
+
+  if(typeof p.rewardLike!=="boolean")
+   p.rewardLike=false;
+
  });
 }
 
 function load(){
+
  state=copy(DEFAULT);
 
  try{
-  const raw=localStorage.getItem(KEY)||localStorage.getItem("amirreza_space_v23");
+
+  const raw=
+   localStorage.getItem(KEY)||
+   localStorage.getItem("amirreza_space_v23");
+
   if(raw){
+
    const parsed=JSON.parse(raw);
-   if(parsed&&typeof parsed==="object"&&!Array.isArray(parsed))
+
+   if(
+    parsed&&
+    typeof parsed==="object"&&
+    !Array.isArray(parsed)
+   ){
     state={...state,...parsed};
+   }
+
   }
+
  }catch(e){
+
   try{
-   const backup=localStorage.getItem(KEY+"_backup");
-   const parsed=backup?JSON.parse(backup):null;
-   if(parsed)state={...state,...parsed};
+
+   const backup=
+    localStorage.getItem(KEY+"_backup");
+
+   const parsed=
+    backup?JSON.parse(backup):null;
+
+   if(parsed)
+    state={...state,...parsed};
+
   }catch(_){}
+
  }
 
  repairState();
@@ -652,188 +1242,413 @@ function load(){
 }
 
 function toast(msg){
+
  const t=$("toast");
+
  if(!t)return;
+
  t.textContent=msg;
  t.classList.add("show");
+
  clearTimeout(toastTimer);
- toastTimer=setTimeout(()=>t.classList.remove("show"),2200);
+
+ toastTimer=setTimeout(
+  ()=>t.classList.remove("show"),
+  2200
+ );
 }
 
 function applyStyle(){
- document.body.classList.toggle("light",state.theme==="light");
- document.body.classList.toggle("no-motion",!state.motion);
- document.documentElement.style.setProperty("--accent",state.accent);
- $("themeBtn").textContent=state.theme==="light"?"☀️":"🌙";
+
+ document.body.classList.toggle(
+  "light",
+  state.theme==="light"
+ );
+
+ document.body.classList.toggle(
+  "no-motion",
+  !state.motion
+ );
+
+ document.documentElement.style.setProperty(
+  "--accent",
+  state.accent
+ );
+
+ const theme=$("themeBtn");
+
+ if(theme){
+  theme.textContent=
+   state.theme==="light"?"☀️":"🌙";
+ }
 }
 
 function setTheme(){
- state.theme=state.theme==="light"?"dark":"light";
- applyStyle();save();toast("🎨 حالت نمایش تغییر کرد");
+
+ state.theme=
+  state.theme==="light"?"dark":"light";
+
+ applyStyle();
+ save();
+
+ toast("🎨 حالت نمایش تغییر کرد");
 }
 
 function setAccent(c){
- if(!/^#[0-9a-f]{6}$/i.test(c))return;
+
+ if(!/^#[0-9a-f]{6}$/i.test(c))
+  return;
+
  state.accent=c;
- applyStyle();save();toast("🎨 رنگ تغییر کرد");
+
+ applyStyle();
+ save();
+
+ toast("🎨 رنگ تغییر کرد");
 }
 
 function totalLikes(){
- return state.posts.reduce((n,p)=>n+p.likes.length,0);
+
+ return state.posts.reduce(
+  (n,p)=>n+p.likes.length,
+  0
+ );
 }
 
 function totalComments(){
- return state.posts.reduce((n,p)=>n+p.comments.length,0);
+
+ return state.posts.reduce(
+  (n,p)=>n+p.comments.length,
+  0
+ );
 }
 
 function level(){
- return Math.max(1,Math.floor(state.xp/100));
+
+ return Math.max(
+  1,
+  Math.floor(state.xp/100)
+ );
 }
 
 function addXP(n,text){
+
  state.xp+=n;
- log("⭐ "+text+" +"+n+" XP");
+
+ log(
+  "⭐ "+text+" +"+n+" XP"
+ );
 }
 
 function log(text){
- state.activity.unshift({text,time:timeNow()});
- state.activity=state.activity.slice(0,30);
+
+ state.activity.unshift({
+  text,
+  time:timeNow()
+ });
+
+ state.activity=
+  state.activity.slice(0,30);
+
  save();
+
  renderActivity();
  renderTimeline();
 }
 
 function notify(text){
+
  state.notifications.unshift({
-  text,time:timeNow(),read:false
+  text,
+  time:timeNow(),
+  read:false
  });
- state.notifications=state.notifications.slice(0,30);
+
+ state.notifications=
+  state.notifications.slice(0,30);
+
  save();
  renderNotifications();
 }
 
 function updateStreak(){
+
  const today=day();
- if(state.lastActive===today)return;
+
+ if(state.lastActive===today)
+  return;
 
  const d=new Date();
- d.setDate(d.getDate()-1);
- const yesterday=d.toISOString().slice(0,10);
 
- state.streak=state.lastActive===yesterday?state.streak+1:1;
+ d.setDate(d.getDate()-1);
+
+ const yesterday=
+  d.toISOString().slice(0,10);
+
+ state.streak=
+  state.lastActive===yesterday
+   ?state.streak+1
+   :1;
+
  state.lastActive=today;
+
  save();
 }
 
 function renderProfile(){
- $("profileName").textContent=state.profileName;
- $("profileBio").textContent=state.profileBio;
- $("composerName").textContent=state.profileName;
- $("heroName").textContent=state.profileName.split(/\s+/)[0]||"امیررضا";
- $("profilePosts").textContent=state.posts.length;
- $("profileLikes").textContent=totalLikes();
- $("profileComments").textContent=totalComments();
+
+ $("profileName").textContent=
+  state.profileName;
+
+ $("profileBio").textContent=
+  state.profileBio;
+
+ $("composerName").textContent=
+  state.profileName;
+
+ $("heroName").textContent=
+  state.profileName.split(/\s+/)[0]||
+  "امیررضا";
+
+ $("profilePosts").textContent=
+  state.posts.length;
+
+ $("profileLikes").textContent=
+  totalLikes();
+
+ $("profileComments").textContent=
+  totalComments();
 }
 
 function renderStats(){
+
  const lv=level();
  const prog=state.xp%100;
 
  $("level").textContent=lv;
  $("xp").textContent=state.xp;
- $("xpBar").style.width=prog+"%";
- $("growthLevel").textContent=lv;
- $("growthBar").style.width=prog+"%";
- $("growthText").textContent=(100-prog)+" XP تا Level "+(lv+1);
 
- $("visits").textContent=state.visits;
- $("dashPosts").textContent=state.posts.length;
- $("dashLikes").textContent=totalLikes();
- $("dashComments").textContent=totalComments();
- $("dashStreak").textContent=state.streak;
- $("streakBig").textContent=state.streak;
- $("growthPosts").textContent=state.posts.length;
- $("growthLikes").textContent=totalLikes();
- $("growthComments").textContent=totalComments();
+ $("xpBar").style.width=
+  prog+"%";
+
+ $("growthLevel").textContent=lv;
+
+ $("growthBar").style.width=
+  prog+"%";
+
+ $("growthText").textContent=
+  (100-prog)+" XP تا Level "+(lv+1);
+
+ $("visits").textContent=
+  state.visits;
+
+ $("dashPosts").textContent=
+  state.posts.length;
+
+ $("dashLikes").textContent=
+  totalLikes();
+
+ $("dashComments").textContent=
+  totalComments();
+
+ $("dashStreak").textContent=
+  state.streak;
+
+ $("streakBig").textContent=
+  state.streak;
+
+ $("growthPosts").textContent=
+  state.posts.length;
+
+ $("growthLikes").textContent=
+  totalLikes();
+
+ $("growthComments").textContent=
+  totalComments();
 }
 
 function renderPosts(){
+
  const box=$("posts");
 
  let arr=state.posts.filter(p=>{
-  const match=!query||(p.text||"").toLowerCase().includes(query);
-  if(filter==="image")return match&&!!p.image;
-  if(filter==="popular")return match&&p.likes.length>0;
+
+  const match=
+   !query||
+   (p.text||"").toLowerCase().includes(query);
+
+  if(filter==="image")
+   return match&&!!p.image;
+
+  if(filter==="popular")
+   return match&&p.likes.length>0;
+
   return match;
  });
 
  if(filter==="popular")
-  arr.sort((a,b)=>b.likes.length-a.likes.length);
+  arr.sort(
+   (a,b)=>b.likes.length-a.likes.length
+  );
 
  if(!arr.length){
-  box.innerHTML=`<div class="card empty">📰 هنوز پستی وجود ندارد.</div>`;
+
+  box.innerHTML=
+   `<div class="card empty">
+    📰 هنوز پستی وجود ندارد.
+   </div>`;
+
   return;
  }
 
  box.innerHTML=arr.map(p=>{
-  const liked=p.likes.includes("me");
+
+  const liked=
+   p.likes.includes("me");
 
   return`
   <article class="card post">
+
    <div class="postHead">
-    <img class="avatar" src="profile.jpg" alt="">
+
+    <img
+     class="avatar"
+     src="profile.jpg"
+     alt="">
+
     <div>
-     <div class="postName">${esc(state.profileName)}</div>
-     <div class="small muted">${esc(p.created)}</div>
+
+     <div class="postName">
+      ${esc(state.profileName)}
+     </div>
+
+     <div class="small muted">
+      ${esc(p.created)}
+     </div>
+
     </div>
+
    </div>
 
-   ${p.text?`<div class="postText">${esc(p.text)}</div>`:""}
-   ${p.image?`<img class="postImg" src="${p.image}" alt="post">`:""}
+   ${
+    p.text
+     ?`<div class="postText">
+        ${esc(p.text)}
+       </div>`
+     :""
+   }
+
+   ${
+    p.image
+     ?`<img
+        class="postImg"
+        src="${p.image}"
+        alt="post">`
+     :""
+   }
 
    <div class="postActions">
-    <button class="${liked?"liked":""}" data-like="${p.id}">
-     ${liked?"❤️":"🤍"} ${p.likes.length}
+
+    <button
+     class="${liked?"liked":""}"
+     data-like="${p.id}">
+
+     ${liked?"❤️":"🤍"}
+     ${p.likes.length}
+
     </button>
-    <button data-focus="${p.id}">💬 ${p.comments.length}</button>
-    <button data-share="${p.id}">📤 اشتراک</button>
-    <button class="danger" data-delete="${p.id}">🗑️</button>
+
+    <button data-focus="${p.id}">
+     💬 ${p.comments.length}
+    </button>
+
+    <button data-share="${p.id}">
+     📤 اشتراک
+    </button>
+
+    <button
+     class="danger"
+     data-delete="${p.id}">
+     🗑️
+    </button>
+
    </div>
 
    <div class="comments">
-    ${p.comments.map(c=>`
-     <div class="comment">
-      💬 ${esc(c.text)}
-      <span class="small muted">• ${esc(c.created)}</span>
-     </div>`).join("")}
+
+    ${
+     p.comments.map(c=>`
+      <div class="comment">
+       💬 ${esc(c.text)}
+       <span class="small muted">
+        • ${esc(c.created)}
+       </span>
+      </div>
+     `).join("")
+    }
 
     <div class="commentForm">
-     <input id="comment-${p.id}" placeholder="نظر بنویس...">
-     <button class="btn" data-comment="${p.id}">ارسال</button>
+
+     <input
+      id="comment-${p.id}"
+      placeholder="نظر بنویس...">
+
+     <button
+      class="btn"
+      data-comment="${p.id}">
+      ارسال
+     </button>
+
     </div>
+
    </div>
+
   </article>`;
  }).join("");
 }
 
 function renderNotifications(){
+
  const box=$("notificationBox");
 
  if(!state.notifications.length){
-  box.innerHTML=`<p class="muted">🔕 اعلان جدیدی نیست.</p>`;
+
+  box.innerHTML=
+   `<p class="muted">
+    🔕 اعلان جدیدی نیست.
+   </p>`;
+
   return;
  }
 
- box.innerHTML=state.notifications.map((n,i)=>`
-  <div class="notice ${n.read?"":"unread"}">
-   🔔 ${esc(n.text)}
-   <span class="small muted">• ${esc(n.time)}</span>
-   ${!n.read?`<button class="btn small" data-read="${i}">خواندم</button>`:""}
-  </div>
- `).join("");
+ box.innerHTML=
+  state.notifications.map((n,i)=>`
+
+   <div class="notice ${n.read?"":"unread"}">
+
+    🔔 ${esc(n.text)}
+
+    <span class="small muted">
+     • ${esc(n.time)}
+    </span>
+
+    ${
+     !n.read
+      ?`<button
+         class="btn small"
+         data-read="${i}">
+         خواندم
+        </button>`
+      :""
+    }
+
+   </div>
+
+  `).join("");
 }
 
 function renderAchievements(){
+
  const box=$("achievementBox");
 
  const data=[
@@ -845,62 +1660,130 @@ function renderAchievements(){
   ["⭐","Level 10",level(),10]
  ];
 
- const unlocked=data.filter(x=>x[2]>=x[3]).length;
- $("achCount").textContent=unlocked;
+ const unlocked=
+  data.filter(
+   x=>x[2]>=x[3]
+  ).length;
 
- box.innerHTML=data.map(x=>`
-  <div class="card" style="padding:18px">
-   <div style="font-size:30px">${x[0]}</div>
-   <h3>${x[1]} ${x[2]>=x[3]?"🏆":"🔒"}</h3>
-   <div class="progress">
-    <div class="progressBar" style="width:${Math.min(100,x[2]/x[3]*100)}%"></div>
+ $("achCount").textContent=
+  unlocked;
+
+ box.innerHTML=
+  data.map(x=>`
+
+   <div
+    class="card"
+    style="padding:18px">
+
+    <div style="font-size:30px">
+     ${x[0]}
+    </div>
+
+    <h3>
+     ${x[1]}
+     ${x[2]>=x[3]?"🏆":"🔒"}
+    </h3>
+
+    <div class="progress">
+
+     <div
+      class="progressBar"
+      style="width:${Math.min(
+       100,
+       x[2]/x[3]*100
+      )}%">
+     </div>
+
+    </div>
+
+    <span class="small muted">
+     ${Math.min(x[2],x[3])} / ${x[3]}
+    </span>
+
    </div>
-   <span class="small muted">${Math.min(x[2],x[3])} / ${x[3]}</span>
-  </div>
- `).join("");
+
+  `).join("");
 }
 
 function renderGallery(){
- const imgs=state.posts.filter(p=>p.image);
- $("galleryEmpty").style.display=imgs.length?"none":"block";
- $("galleryBox").innerHTML=imgs.map(p=>
-  `<img src="${p.image}" alt="gallery" data-gallery="${p.id}">`
- ).join("");
+
+ const imgs=
+  state.posts.filter(p=>p.image);
+
+ $("galleryEmpty").style.display=
+  imgs.length?"none":"block";
+
+ $("galleryBox").innerHTML=
+  imgs.map(p=>
+   `<img
+    src="${p.image}"
+    alt="gallery"
+    data-gallery="${p.id}">`
+  ).join("");
 }
 
 function renderActivity(){
- $("activityBox").innerHTML=state.activity.length
- ?state.activity.slice(0,15).map(x=>
-  `<div class="notice">⚡ ${esc(x.text)}<br>
-   <span class="small muted">${esc(x.time)}</span></div>`
- ).join("")
- :`<p class="muted">هنوز فعالیتی ثبت نشده.</p>`;
+
+ $("activityBox").innerHTML=
+  state.activity.length
+   ?state.activity.slice(0,15).map(x=>
+    `<div class="notice">
+     ⚡ ${esc(x.text)}
+     <br>
+     <span class="small muted">
+      ${esc(x.time)}
+     </span>
+    </div>`
+   ).join("")
+   :`<p class="muted">
+      هنوز فعالیتی ثبت نشده.
+     </p>`;
 }
 
 function renderTimeline(){
- $("timelineBox").innerHTML=state.activity.length
- ?state.activity.slice(0,12).map(x=>
-  `<div class="event"><b>${esc(x.text)}</b>
-   <div class="small muted">${esc(x.time)}</div></div>`
- ).join("")
- :`<p class="muted">Timeline خالی است.</p>`;
+
+ $("timelineBox").innerHTML=
+  state.activity.length
+   ?state.activity.slice(0,12).map(x=>
+    `<div class="event">
+
+     <b>${esc(x.text)}</b>
+
+     <div class="small muted">
+      ${esc(x.time)}
+     </div>
+
+    </div>`
+   ).join("")
+   :`<p class="muted">
+      Timeline خالی است.
+     </p>`;
 }
 
 function renderMission(){
- const today=new Date().toDateString();
+
+ const today=
+  new Date().toDateString();
 
  if(state.missionDate!==today){
+
   state.missionDate=today;
   state.missionDone=false;
+
   save();
  }
 
- $("missionBtn").disabled=state.missionDone;
+ $("missionBtn").disabled=
+  state.missionDone;
+
  $("missionBtn").textContent=
- state.missionDone?"✅ انجام شد":"انجام شد +20 XP";
+  state.missionDone
+   ?"✅ انجام شد"
+   :"انجام شد +20 XP";
 }
 
 function renderAll(){
+
  renderProfile();
  renderStats();
  renderPosts();
@@ -913,23 +1796,54 @@ function renderAll(){
 }
 
 function compressImage(file){
+
  return new Promise((resolve,reject)=>{
+
   const r=new FileReader();
 
   r.onload=()=>{
+
    const img=new Image();
 
    img.onload=()=>{
+
     const max=1100;
-    const scale=Math.min(1,max/Math.max(img.width,img.height));
-    const c=document.createElement("canvas");
 
-    c.width=Math.round(img.width*scale);
-    c.height=Math.round(img.height*scale);
+    const scale=
+     Math.min(
+      1,
+      max/Math.max(
+       img.width,
+       img.height
+      )
+     );
 
-    const ctx=c.getContext("2d");
-    ctx.drawImage(img,0,0,c.width,c.height);
-    resolve(c.toDataURL("image/jpeg",.78));
+    const c=
+     document.createElement("canvas");
+
+    c.width=
+     Math.round(img.width*scale);
+
+    c.height=
+     Math.round(img.height*scale);
+
+    const ctx=
+     c.getContext("2d");
+
+    ctx.drawImage(
+     img,
+     0,
+     0,
+     c.width,
+     c.height
+    );
+
+    resolve(
+     c.toDataURL(
+      "image/jpeg",
+      .78
+     )
+    );
    };
 
    img.onerror=reject;
@@ -942,66 +1856,119 @@ function compressImage(file){
 }
 
 async function chooseImage(e){
+
  const file=e.target.files?.[0];
+
  if(!file)return;
 
  try{
-  selectedImage=await compressImage(file);
-  $("preview").src=selectedImage;
-  $("preview").style.display="block";
+
+  selectedImage=
+   await compressImage(file);
+
+  $("preview").src=
+   selectedImage;
+
+  $("preview").style.display=
+   "block";
+
  }catch{
+
   toast("❌ عکس خوانده نشد");
+
  }
 }
 
 function publish(){
- const text=$("postText").value.trim();
+
+ const text=
+  $("postText").value.trim();
 
  if(!text&&!selectedImage){
-  toast("⚠️ متن یا عکس اضافه کن");
+
+  toast(
+   "⚠️ متن یا عکس اضافه کن"
+  );
+
   return;
  }
 
- const id=Date.now().toString(36)+Math.random().toString(36).slice(2,7);
+ const id=
+  Date.now().toString(36)+
+  Math.random().toString(36).slice(2,7);
 
  state.posts.unshift({
-  id,text,image:selectedImage,created:timeNow(),
-  likes:[],comments:[],rewardLike:false
+
+  id,
+  text,
+  image:selectedImage,
+  created:timeNow(),
+  likes:[],
+  comments:[],
+  rewardLike:false
+
  });
 
- state.posts=state.posts.slice(0,50);
+ state.posts=
+  state.posts.slice(0,50);
 
  $("postText").value="";
  $("imageInput").value="";
  $("preview").style.display="none";
+
  selectedImage="";
 
  state.xp+=10;
- notify("📝 یک پست جدید منتشر شد");
- log("📰 انتشار پست +10 XP");
+
+ notify(
+  "📝 یک پست جدید منتشر شد"
+ );
+
+ log(
+  "📰 انتشار پست +10 XP"
+ );
 
  renderAll();
- toast("💥 پست منتشر شد!");
+
+ toast(
+  "💥 پست منتشر شد!"
+ );
 }
 
 function like(id){
- const p=state.posts.find(x=>x.id===id);
+
+ const p=
+  state.posts.find(
+   x=>x.id===id
+  );
+
  if(!p)return;
 
- const i=p.likes.indexOf("me");
+ const i=
+  p.likes.indexOf("me");
 
  if(i>=0){
+
   p.likes.splice(i,1);
-  toast("💔 لایک برداشته شد");
+
+  toast(
+   "💔 لایک برداشته شد"
+  );
+
  }else{
+
   p.likes.push("me");
 
   if(!p.rewardLike){
+
    p.rewardLike=true;
    state.xp+=2;
+
   }
 
-  toast("❤️ لایک شد");
+  toast(
+   "❤️ لایک شد"
+  );
  }
 
  save();
@@ -1009,83 +1976,186 @@ function like(id){
 }
 
 function comment(id){
- const input=$("comment-"+id);
- const text=input?.value.trim();
+
+ const input=
+  $("comment-"+id);
+
+ const text=
+  input?.value.trim();
+
  if(!text)return;
 
- const p=state.posts.find(x=>x.id===id);
+ const p=
+  state.posts.find(
+   x=>x.id===id
+  );
+
  if(!p)return;
 
- p.comments.push({text,created:timeNow()});
+ p.comments.push({
+  text,
+  created:timeNow()
+ });
+
  state.xp+=3;
 
  input.value="";
- notify("💬 کامنت جدید ثبت شد");
- log("💬 ثبت کامنت +3 XP");
+
+ notify(
+  "💬 کامنت جدید ثبت شد"
+ );
+
+ log(
+  "💬 ثبت کامنت +3 XP"
+ );
+
  renderAll();
 }
 
 function share(id){
- const p=state.posts.find(x=>x.id===id);
+
+ const p=
+  state.posts.find(
+   x=>x.id===id
+  );
+
  if(!p)return;
 
- const text=`پست امیررضا: ${p.text||"🖼️ تصویر"}`;
+ const text=
+  `پست امیررضا: ${
+   p.text||"🖼️ تصویر"
+  }`;
 
  if(navigator.share){
-  navigator.share({title:"AMIRREZA.DEV",text}).catch(()=>{});
+
+  navigator.share({
+   title:"AMIRREZA.DEV",
+   text
+  }).catch(()=>{});
+
  }else{
+
   navigator.clipboard?.writeText(text);
-  toast("📋 متن کپی شد");
+
+  toast(
+   "📋 متن کپی شد"
+  );
  }
 }
 
 function deletePost(id){
- if(!confirm("این پست حذف شود؟"))return;
 
- state.posts=state.posts.filter(p=>p.id!==id);
+ if(!confirm(
+  "این پست حذف شود؟"
+ ))return;
+
+ state.posts=
+  state.posts.filter(
+   p=>p.id!==id
+  );
+
  save();
+
  log("🗑️ حذف پست");
+
  renderAll();
 }
 
 function editProfile(){
+
  $("modalContent").innerHTML=`
+
   <h2>✏️ ویرایش پروفایل</h2>
-  <p class="small muted">نام نمایشی</p>
-  <input id="editName" value="${esc(state.profileName)}">
-  <p class="small muted">Bio</p>
-  <textarea id="editBio">${esc(state.profileBio)}</textarea>
+
+  <p class="small muted">
+   نام نمایشی
+  </p>
+
+  <input
+   id="editName"
+   value="${esc(state.profileName)}">
+
+  <p class="small muted">
+   Bio
+  </p>
+
+  <textarea
+   id="editBio">${esc(state.profileBio)}</textarea>
+
   <div class="actions">
-   <button class="btn primary" id="saveProfile">💾 ذخیره</button>
+
+   <button
+    class="btn primary"
+    id="saveProfile">
+    💾 ذخیره
+   </button>
+
   </div>
  `;
 
  $("modal").classList.add("show");
 
  $("saveProfile").onclick=()=>{
-  const n=$("editName").value.trim();
-  if(!n)return toast("⚠️ نام خالی است");
+
+  const n=
+   $("editName").value.trim();
+
+  if(!n)
+   return toast(
+    "⚠️ نام خالی است"
+   );
 
   state.profileName=n;
-  state.profileBio=$("editBio").value.trim()||DEFAULT.profileBio;
+
+  state.profileBio=
+   $("editBio").value.trim()||
+   DEFAULT.profileBio;
 
   save();
+
   renderAll();
-  log("👤 پروفایل ویرایش شد");
+
+  log(
+   "👤 پروفایل ویرایش شد"
+  );
+
   closeModal();
-  toast("✅ پروفایل ذخیره شد");
+
+  toast(
+   "✅ پروفایل ذخیره شد"
+  );
  };
 }
 
 function openAI(){
+
  $("modalContent").innerHTML=`
+
   <h2>🤖 AI CENTER</h2>
-  <div class="notice">🧠 ایده‌پردازی</div>
-  <div class="notice">💻 برنامه‌نویسی</div>
-  <div class="notice">📝 تولید محتوا</div>
-  <div class="notice">🎯 برنامه‌ریزی</div>
-  <p class="muted small">ساختار این بخش برای اتصال آینده به سرویس AI آماده است.</p>
+
+  <div class="notice">
+   🧠 ایده‌پردازی
+  </div>
+
+  <div class="notice">
+   💻 برنامه‌نویسی
+  </div>
+
+  <div class="notice">
+   📝 تولید محتوا
+  </div>
+
+  <div class="notice">
+   🎯 برنامه‌ریزی
+  </div>
+
+  <p class="muted small">
+   ساختار این بخش برای اتصال آینده
+   به سرویس AI آماده است.
+  </p>
+
  `;
+
  $("modal").classList.add("show");
 }
 
@@ -1094,6 +2164,7 @@ function closeModal(){
 }
 
 function vcard(){
+
  const v=`BEGIN:VCARD
 VERSION:3.0
 FN:${state.profileName}
@@ -1103,84 +2174,185 @@ EMAIL:amirrezaamirreza275@gmail.com
 URL:https://amirrezagholami86.github.io
 END:VCARD`;
 
- const blob=new Blob([v],{type:"text/vcard;charset=utf-8"});
- const url=URL.createObjectURL(blob);
- const a=document.createElement("a");
+ const blob=
+  new Blob(
+   [v],
+   {type:"text/vcard;charset=utf-8"}
+  );
+
+ const url=
+  URL.createObjectURL(blob);
+
+ const a=
+  document.createElement("a");
 
  a.href=url;
- a.download="Amirreza-Gholami.vcf";
+
+ a.download=
+  "Amirreza-Gholami.vcf";
+
  a.click();
 
- setTimeout(()=>URL.revokeObjectURL(url),500);
- toast("📇 vCard آماده شد");
+ setTimeout(
+  ()=>URL.revokeObjectURL(url),
+  500
+ );
+
+ toast(
+  "📇 vCard آماده شد"
+ );
 }
 
 function mission(){
- if(state.missionDone)return;
+
+ if(state.missionDone)
+  return;
 
  state.missionDone=true;
+
  state.xp+=20;
- notify("🎯 Daily Mission انجام شد");
- log("🎯 Daily Mission +20 XP");
+
+ notify(
+  "🎯 Daily Mission انجام شد"
+ );
+
+ log(
+  "🎯 Daily Mission +20 XP"
+ );
+
  renderAll();
- toast("🚀 +20 XP");
+
+ toast(
+  "🚀 +20 XP"
+ );
 }
 
 function repair(){
+
  repairState();
+
  save();
+
  renderAll();
- toast("🛡️ سیستم بررسی و تعمیر شد");
+
+ toast(
+  "🛡️ سیستم بررسی و تعمیر شد"
+ );
 }
 
 function backup(){
+
  try{
-  localStorage.setItem(KEY+"_backup",JSON.stringify(state));
-  toast("💾 Backup ساخته شد");
+
+  localStorage.setItem(
+   KEY+"_backup",
+   JSON.stringify(state)
+  );
+
+  toast(
+   "💾 Backup ساخته شد"
+  );
+
  }catch{
-  toast("❌ Backup ناموفق بود");
+
+  toast(
+   "❌ Backup ناموفق بود"
+  );
  }
 }
 
 function exportData(){
- const blob=new Blob([
-  JSON.stringify({version:"2.5.0",state},null,2)
- ],{type:"application/json"});
 
- const url=URL.createObjectURL(blob);
- const a=document.createElement("a");
+ const blob=
+  new Blob(
+   [
+    JSON.stringify(
+     {
+      version:"2.6.0",
+      build:28,
+      state
+     },
+     null,
+     2
+    )
+   ],
+   {type:"application/json"}
+  );
+
+ const url=
+  URL.createObjectURL(blob);
+
+ const a=
+  document.createElement("a");
 
  a.href=url;
- a.download="amirreza-social-boom.json";
+
+ a.download=
+  "amirreza-app-mode.json";
+
  a.click();
 
- setTimeout(()=>URL.revokeObjectURL(url),500);
- toast("📤 Export انجام شد");
+ setTimeout(
+  ()=>URL.revokeObjectURL(url),
+  500
+ );
+
+ toast(
+  "📤 Export انجام شد"
+ );
 }
 
 function importData(e){
- const file=e.target.files?.[0];
+
+ const file=
+  e.target.files?.[0];
+
  if(!file)return;
 
- const r=new FileReader();
+ const r=
+  new FileReader();
 
  r.onload=()=>{
-  try{
-   const data=JSON.parse(r.result);
-   const incoming=data.state||data;
 
-   if(!incoming||typeof incoming!=="object")throw new Error();
+  try{
+
+   const data=
+    JSON.parse(r.result);
+
+   const incoming=
+    data.state||data;
+
+   if(
+    !incoming||
+    typeof incoming!=="object"
+   )
+    throw new Error();
 
    backup();
-   state={...copy(DEFAULT),...incoming};
+
+   state={
+    ...copy(DEFAULT),
+    ...incoming
+   };
+
    repairState();
+
    save();
+
    applyStyle();
+
    renderAll();
 
-   toast("📥 اطلاعات وارد شد");
+   toast(
+    "📥 اطلاعات وارد شد"
+   );
+
   }catch{
-   toast("❌ فایل معتبر نیست");
+
+   toast(
+    "❌ فایل معتبر نیست"
+   );
+
   }
 
   e.target.value="";
@@ -1190,7 +2362,10 @@ function importData(e){
 }
 
 function reset(){
- if(!confirm("همه اطلاعات محلی پاک شود؟"))return;
+
+ if(!confirm(
+  "همه اطلاعات محلی پاک شود؟"
+ ))return;
 
  backup();
 
@@ -1202,14 +2377,23 @@ function reset(){
  };
 
  save();
+
  renderAll();
- toast("♻️ اطلاعات پاک شد");
+
+ toast(
+  "♻️ اطلاعات پاک شد"
+ );
 }
 
 function siteSearch(){
- const q=$("siteSearch").value.trim().toLowerCase();
+
+ const q=
+  $("siteSearch").value
+   .trim()
+   .toLowerCase();
 
  const data=[
+
   ["👤 پروفایل","#profile"],
   ["📰 Social Feed","#feed"],
   ["🔔 Notifications","#notifications"],
@@ -1223,251 +2407,702 @@ function siteSearch(){
   ["🤖 AI Center","#ai"],
   ["⚙️ Settings","#settings"],
   ["📬 Contact","#contact"]
+
  ];
 
- const results=data.filter(x=>x[0].toLowerCase().includes(q));
+ const results=
+  data.filter(
+   x=>x[0].toLowerCase().includes(q)
+  );
 
- $("siteResults").innerHTML=q
- ?(results.length
-  ?results.map(x=>`<a class="notice" href="${x[1]}">${x[0]}</a>`).join("")
-  :`<div class="notice">چیزی پیدا نشد.</div>`)
- :"";
+ $("siteResults").innerHTML=
+  q
+   ?(
+     results.length
+      ?results.map(
+       x=>`<a
+        class="notice"
+        href="${x[1]}">
+        ${x[0]}
+       </a>`
+      ).join("")
+      :`<div class="notice">
+         چیزی پیدا نشد.
+        </div>`
+    )
+   :"";
 }
 
 function particles(){
+
  if(!state.motion)return;
 
- document.querySelectorAll(".particle").forEach(x=>x.remove());
+ document
+  .querySelectorAll(".particle")
+  .forEach(x=>x.remove());
 
  for(let i=0;i<20;i++){
-  const p=document.createElement("i");
+
+  const p=
+   document.createElement("i");
+
   p.className="particle";
+
   p.style.position="fixed";
-  p.style.left=Math.random()*100+"vw";
-  p.style.top=Math.random()*100+"vh";
+  p.style.left=
+   Math.random()*100+"vw";
+  p.style.top=
+   Math.random()*100+"vh";
   p.style.width="3px";
   p.style.height="3px";
   p.style.borderRadius="50%";
-  p.style.background="var(--accent)";
+  p.style.background=
+   "var(--accent)";
   p.style.opacity=.25;
   p.style.pointerEvents="none";
   p.style.zIndex="-1";
+
   document.body.appendChild(p);
  }
 }
 
 function reveal(){
+
  if(!("IntersectionObserver" in window)){
-  document.querySelectorAll(".reveal").forEach(x=>x.classList.add("visible"));
+
+  document
+   .querySelectorAll(".reveal")
+   .forEach(
+    x=>x.classList.add("visible")
+   );
+
   return;
  }
 
- const ob=new IntersectionObserver(es=>{
-  es.forEach(e=>{
-   if(e.isIntersecting)e.target.classList.add("visible");
-  });
- },{threshold:.06});
+ const ob=
+  new IntersectionObserver(
+   es=>{
 
- document.querySelectorAll(".reveal").forEach(x=>ob.observe(x));
+    es.forEach(e=>{
+
+     if(e.isIntersecting)
+      e.target.classList.add(
+       "visible"
+      );
+
+    });
+
+   },
+   {threshold:.06}
+  );
+
+ document
+  .querySelectorAll(".reveal")
+  .forEach(
+   x=>ob.observe(x)
+  );
 }
 
 function activeNav(){
- if(!("IntersectionObserver" in window))return;
 
- const links=document.querySelectorAll(".navlinks a,.bottom a");
+ if(!("IntersectionObserver" in window))
+  return;
 
- const ob=new IntersectionObserver(es=>{
-  es.forEach(e=>{
-   if(e.isIntersecting){
-    links.forEach(a=>a.classList.toggle(
-     "active",a.getAttribute("href")==="#"+e.target.id
-    ));
+ const links=
+  document.querySelectorAll(
+   ".navlinks a,.bottom a"
+  );
+
+ const ob=
+  new IntersectionObserver(
+   es=>{
+
+    es.forEach(e=>{
+
+     if(e.isIntersecting){
+
+      links.forEach(a=>
+       a.classList.toggle(
+        "active",
+        a.getAttribute("href")===
+        "#"+e.target.id
+       )
+      );
+
+     }
+
+    });
+
+   },
+   {
+    rootMargin:"-35% 0px -55%"
    }
-  });
- },{rootMargin:"-35% 0px -55%"});
+  );
 
- document.querySelectorAll("section[id]").forEach(s=>ob.observe(s));
+ document
+  .querySelectorAll("section[id]")
+  .forEach(
+   s=>ob.observe(s)
+  );
+}
+
+/* =========================
+   PWA INSTALL SYSTEM
+========================= */
+
+function setupInstall(){
+
+ const installBtn=
+  $("installBtn");
+
+ const banner=
+  $("appBanner");
+
+ if(!installBtn)
+  return;
+
+ window.addEventListener(
+  "beforeinstallprompt",
+  e=>{
+
+   e.preventDefault();
+
+   deferredInstallPrompt=e;
+
+   installBtn.classList.add("show");
+
+   if(banner)
+    banner.classList.add("show");
+
+  }
+ );
+
+ installBtn.onclick=async()=>{
+
+  if(!deferredInstallPrompt){
+
+   toast(
+    "📱 گزینه نصب را از منوی مرورگر باز کن"
+   );
+
+   return;
+  }
+
+  deferredInstallPrompt.prompt();
+
+  const result=
+   await deferredInstallPrompt.userChoice;
+
+  if(result.outcome==="accepted"){
+
+   toast(
+    "🚀 نصب AMIRREZA شروع شد!"
+   );
+
+  }else{
+
+   toast(
+    "ℹ️ نصب لغو شد"
+   );
+  }
+
+  deferredInstallPrompt=null;
+
+  installBtn.classList.remove(
+   "show"
+  );
+
+  if(banner)
+   banner.classList.remove(
+    "show"
+   );
+ };
+
+ window.addEventListener(
+  "appinstalled",
+  ()=>{
+
+   deferredInstallPrompt=null;
+
+   installBtn.classList.remove(
+    "show"
+   );
+
+   if(banner)
+    banner.classList.remove(
+     "show"
+    );
+
+   toast(
+    "🎉 AMIRREZA با موفقیت نصب شد!"
+   );
+
+   log(
+    "📱 اپ AMIRREZA نصب شد"
+   );
+  }
+ );
+
+ /* اگر اپ قبلاً نصب شده باشد */
+ if(
+  window.matchMedia &&
+  window.matchMedia(
+   "(display-mode: standalone)"
+  ).matches
+ ){
+
+  installBtn.classList.remove(
+   "show"
+  );
+
+  if(banner)
+   banner.classList.remove(
+    "show"
+   );
+ }
 }
 
 function bind(){
- $("themeBtn").onclick=setTheme;
+
+ $("themeBtn").onclick=
+  setTheme;
 
  $("menuBtn").onclick=()=>
-  $("navLinks").classList.toggle("open");
+  $("navLinks").classList.toggle(
+   "open"
+  );
 
- $("publishBtn").onclick=publish;
- $("imageInput").onchange=chooseImage;
- $("editProfileBtn").onclick=editProfile;
- $("vcardBtn").onclick=vcard;
- $("aiBtn").onclick=openAI;
- $("closeModal").onclick=closeModal;
- $("missionBtn").onclick=mission;
- $("repairBtn").onclick=repair;
- $("backupBtn").onclick=backup;
- $("exportBtn").onclick=exportData;
- $("importInput").onchange=importData;
- $("resetBtn").onclick=reset;
+ $("publishBtn").onclick=
+  publish;
+
+ $("imageInput").onchange=
+  chooseImage;
+
+ $("editProfileBtn").onclick=
+  editProfile;
+
+ $("vcardBtn").onclick=
+  vcard;
+
+ $("aiBtn").onclick=
+  openAI;
+
+ $("closeModal").onclick=
+  closeModal;
+
+ $("missionBtn").onclick=
+  mission;
+
+ $("repairBtn").onclick=
+  repair;
+
+ $("backupBtn").onclick=
+  backup;
+
+ $("exportBtn").onclick=
+  exportData;
+
+ $("importInput").onchange=
+  importData;
+
+ $("resetBtn").onclick=
+  reset;
 
  $("postSearch").oninput=e=>{
-  query=e.target.value.trim().toLowerCase();
+
+  query=
+   e.target.value
+    .trim()
+    .toLowerCase();
+
   renderPosts();
  };
 
  $("clearSearch").onclick=()=>{
+
   $("postSearch").value="";
+
   query="";
+
   renderPosts();
  };
 
- document.querySelectorAll(".tabs button").forEach(b=>{
-  b.onclick=()=>{
-   document.querySelectorAll(".tabs button")
-    .forEach(x=>x.classList.remove("active"));
+ document
+  .querySelectorAll(".tabs button")
+  .forEach(b=>{
 
-   b.classList.add("active");
-   filter=b.dataset.filter;
-   renderPosts();
-  };
- });
+   b.onclick=()=>{
 
- document.querySelectorAll("[data-accent]").forEach(b=>{
-  b.onclick=()=>setAccent(b.dataset.accent);
- });
+    document
+     .querySelectorAll(".tabs button")
+     .forEach(
+      x=>x.classList.remove(
+       "active"
+      )
+     );
+
+    b.classList.add("active");
+
+    filter=
+     b.dataset.filter;
+
+    renderPosts();
+   };
+
+  });
+
+ document
+  .querySelectorAll("[data-accent]")
+  .forEach(b=>{
+
+   b.onclick=()=>
+    setAccent(
+     b.dataset.accent
+    );
+
+  });
 
  $("motionBtn").onclick=()=>{
-  state.motion=!state.motion;
+
+  state.motion=
+   !state.motion;
+
   applyStyle();
+
   particles();
+
   save();
-  toast(state.motion?"✨ Motion روشن":"🛑 Motion خاموش");
+
+  toast(
+   state.motion
+    ?"✨ Motion روشن"
+    :"🛑 Motion خاموش"
+  );
  };
 
  $("readAll").onclick=()=>{
-  state.notifications.forEach(n=>n.read=true);
+
+  state.notifications.forEach(
+   n=>n.read=true
+  );
+
   save();
+
   renderNotifications();
-  toast("✅ همه خوانده شدند");
+
+  toast(
+   "✅ همه خوانده شدند"
+  );
  };
 
- $("siteSearchBtn").onclick=siteSearch;
+ $("siteSearchBtn").onclick=
+  siteSearch;
 
  $("siteSearch").onkeydown=e=>{
-  if(e.key==="Enter")siteSearch();
+
+  if(e.key==="Enter")
+   siteSearch();
  };
 
- $("posts").addEventListener("click",e=>{
-  const likeBtn=e.target.closest("[data-like]");
-  if(likeBtn)return like(likeBtn.dataset.like);
+ $("posts").addEventListener(
+  "click",
+  e=>{
 
-  const commentBtn=e.target.closest("[data-comment]");
-  if(commentBtn)return comment(commentBtn.dataset.comment);
+   const likeBtn=
+    e.target.closest(
+     "[data-like]"
+    );
 
-  const shareBtn=e.target.closest("[data-share]");
-  if(shareBtn)return share(shareBtn.dataset.share);
+   if(likeBtn)
+    return like(
+     likeBtn.dataset.like
+    );
 
-  const deleteBtn=e.target.closest("[data-delete]");
-  if(deleteBtn)return deletePost(deleteBtn.dataset.delete);
+   const commentBtn=
+    e.target.closest(
+     "[data-comment]"
+    );
 
-  const focus=e.target.closest("[data-focus]");
-  if(focus){
-   $("comment-"+focus.dataset.focus)?.focus();
+   if(commentBtn)
+    return comment(
+     commentBtn.dataset.comment
+    );
+
+   const shareBtn=
+    e.target.closest(
+     "[data-share]"
+    );
+
+   if(shareBtn)
+    return share(
+     shareBtn.dataset.share
+    );
+
+   const deleteBtn=
+    e.target.closest(
+     "[data-delete]"
+    );
+
+   if(deleteBtn)
+    return deletePost(
+     deleteBtn.dataset.delete
+    );
+
+   const focus=
+    e.target.closest(
+     "[data-focus]"
+    );
+
+   if(focus){
+
+    $("comment-"+focus.dataset.focus)
+     ?.focus();
+   }
+
   }
- });
+ );
 
- $("notificationBox").addEventListener("click",e=>{
-  const b=e.target.closest("[data-read]");
-  if(!b)return;
+ $("notificationBox").addEventListener(
+  "click",
+  e=>{
 
-  const n=state.notifications[Number(b.dataset.read)];
-  if(n)n.read=true;
+   const b=
+    e.target.closest(
+     "[data-read]"
+    );
 
-  save();
-  renderNotifications();
- });
+   if(!b)return;
 
- $("galleryBox").addEventListener("click",e=>{
-  const img=e.target.closest("[data-gallery]");
-  if(!img)return;
+   const n=
+    state.notifications[
+     Number(b.dataset.read)
+    ];
 
-  const p=state.posts.find(x=>x.id===img.dataset.gallery);
-  if(!p)return;
+   if(n)
+    n.read=true;
 
-  $("modalContent").innerHTML=
-   `<h2>🖼️ Media</h2><img src="${p.image}" style="width:100%;border-radius:16px">`;
+   save();
 
-  $("modal").classList.add("show");
- });
+   renderNotifications();
+
+  }
+ );
+
+ $("galleryBox").addEventListener(
+  "click",
+  e=>{
+
+   const img=
+    e.target.closest(
+     "[data-gallery]"
+    );
+
+   if(!img)return;
+
+   const p=
+    state.posts.find(
+     x=>x.id===img.dataset.gallery
+    );
+
+   if(!p)return;
+
+   $("modalContent").innerHTML=
+    `<h2>🖼️ Media</h2>
+     <img
+      src="${p.image}"
+      style="width:100%;border-radius:16px">`;
+
+   $("modal").classList.add(
+    "show"
+   );
+
+  }
+ );
 
  $("modal").onclick=e=>{
-  if(e.target.id==="modal")closeModal();
+
+  if(e.target.id==="modal")
+   closeModal();
+
  };
 
- document.addEventListener("keydown",e=>{
-  if(e.key==="Escape")closeModal();
+ document.addEventListener(
+  "keydown",
+  e=>{
 
-  if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==="k"){
-   e.preventDefault();
-   $("siteSearch").focus();
-  }
- });
+   if(e.key==="Escape")
+    closeModal();
 
- document.addEventListener("mousemove",e=>{
-  if(state.motion){
-   $("glow").style.left=e.clientX+"px";
-   $("glow").style.top=e.clientY+"px";
+   if(
+    (e.ctrlKey||e.metaKey)&&
+    e.key.toLowerCase()==="k"
+   ){
+
+    e.preventDefault();
+
+    $("siteSearch").focus();
+   }
+
   }
- });
+ );
+
+ document.addEventListener(
+  "mousemove",
+  e=>{
+
+   if(state.motion){
+
+    $("glow").style.left=
+     e.clientX+"px";
+
+    $("glow").style.top=
+     e.clientY+"px";
+   }
+
+  }
+ );
 }
 
 function session(){
- const s=Math.floor((Date.now()-sessionStart)/1000);
+
+ const s=
+  Math.floor(
+   (Date.now()-sessionStart)/1000
+  );
+
  $("session").textContent=
-  String(Math.floor(s/60)).padStart(2,"0")+":"+
-  String(s%60).padStart(2,"0");
+  String(
+   Math.floor(s/60)
+  ).padStart(2,"0")
+  +":"
+  +
+  String(
+   s%60
+  ).padStart(2,"0");
+}
+
+/* =========================
+   SERVICE WORKER
+========================= */
+
+function registerPWA(){
+
+ if(!("serviceWorker" in navigator))
+  return;
+
+ window.addEventListener(
+  "load",
+  ()=>{
+
+   navigator.serviceWorker
+    .register("./sw.js")
+    .then(
+     registration=>{
+      console.log(
+       "🚀 AMIRREZA PWA فعال شد",
+       registration.scope
+      );
+     }
+    )
+    .catch(
+     err=>{
+      console.warn(
+       "PWA Service Worker:",
+       err
+      );
+     }
+    );
+
+  }
+ );
 }
 
 function start(){
+
  load();
+
  updateStreak();
 
  state.visits++;
+
  save();
 
  applyStyle();
+
  renderAll();
+
  bind();
+
+ setupInstall();
+
+ registerPWA();
+
  reveal();
+
  activeNav();
+
  particles();
 
- log("💥 ورود به SOCIAL BOOM");
+ log(
+  "💥 ورود به APP MODE"
+ );
 
- setInterval(session,1000);
+ setInterval(
+  session,
+  1000
+ );
+
  session();
 }
 
-window.addEventListener("error",()=>{
- if(recovering)return;
+window.addEventListener(
+ "error",
+ ()=>{
+  if(recovering)return;
 
- recovering=true;
+  recovering=true;
 
- setTimeout(()=>{
-  try{
-   repairState();
-   applyStyle();
-   renderAll();
-  }catch(e){
-   console.warn(e);
-  }
-  recovering=false;
- },100);
-});
+  setTimeout(
+   ()=>{
 
-if(document.readyState==="loading"){
- document.addEventListener("DOMContentLoaded",start,{once:true});
+    try{
+
+     repairState();
+
+     applyStyle();
+
+     renderAll();
+
+    }catch(e){
+
+     console.warn(e);
+
+    }
+
+    recovering=false;
+
+   },
+   100
+  );
+ }
+);
+
+if(
+ document.readyState==="loading"
+){
+
+ document.addEventListener(
+  "DOMContentLoaded",
+  start,
+  {once:true}
+ );
+
 }else{
+
  start();
+
 }
 </script>
+
 </body>
  </html>
