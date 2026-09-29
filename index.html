@@ -6,7 +6,19 @@
 <meta name="theme-color" content="#00e5ff">
 <meta name="description" content="وب‌سایت شخصی امیررضا">
 <title>امیررضا | Personal Space</title>
+<!-- SUPABASE -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+<script>
+  const SUPABASE_URL = "https://lkjkoxrbripairmopgms.supabase.co";
+
+  const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_1E2R6G_2oU0td9Pw2lUZ1w_61aU5tJw";
+
+  const supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+  );
+</script>
 <style>
 :root{
   --bg:#071018;
