@@ -2,366 +2,315 @@
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#00e5ff">
 <meta name="description" content="امیررضا | Personal Social Space">
 <title>امیررضا | Personal Social Space</title>
 
 <style>
 :root{
---bg:#061019;
---bg2:#0b1722;
---card:rgba(14,28,41,.88);
---card2:rgba(255,255,255,.045);
---text:#f5fbff;
---muted:#91a7b8;
---accent:#00e5ff;
---accent2:#00ffa3;
---border:rgba(255,255,255,.09);
---danger:#ff4f81;
---shadow:0 15px 45px rgba(0,0,0,.35);
+--bg:#061019;--bg2:#0b1722;--card:rgba(14,28,41,.9);
+--text:#f5fbff;--muted:#91a7b8;--a:#00e5ff;--a2:#00ffa3;
+--border:rgba(255,255,255,.09);--danger:#ff4f81
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{
-font-family:Tahoma,Arial,sans-serif;
-background:
-radial-gradient(circle at 10% 10%,rgba(0,229,255,.08),transparent 28%),
-radial-gradient(circle at 90% 20%,rgba(0,255,163,.06),transparent 25%),
-var(--bg);
-color:var(--text);
-line-height:1.8;
-overflow-x:hidden;
+font-family:Tahoma,Arial,sans-serif;background:
+radial-gradient(circle at 10% 10%,#00e5ff10,transparent 28%),
+radial-gradient(circle at 90% 20%,#00ffa308,transparent 25%),var(--bg);
+color:var(--text);line-height:1.8;overflow-x:hidden
 }
 body.light{
---bg:#f3f8fb;
---bg2:#e9f1f5;
---card:rgba(255,255,255,.9);
---card2:rgba(0,0,0,.035);
---text:#10202b;
---muted:#607481;
---border:rgba(0,0,0,.08);
---shadow:0 15px 45px rgba(0,0,0,.1);
+--bg:#f3f8fb;--bg2:#e9f1f5;--card:#fffffff0;
+--text:#10202b;--muted:#607481;--border:#00000012
 }
 a{text-decoration:none;color:inherit}
 button,input,textarea{font:inherit}
 button{cursor:pointer}
-.container{width:min(1100px,92%);margin:auto}
-section{padding:80px 0;scroll-margin-top:75px}
+.container{width:min(1080px,94%);margin:auto}
+section{padding:70px 0;scroll-margin-top:70px}
 
 .navbar{
-position:fixed;top:0;left:0;right:0;z-index:1000;
-background:rgba(5,13,20,.8);
-backdrop-filter:blur(18px);
+position:fixed;inset:0 0 auto;z-index:1000;
+background:#050d14cc;backdrop-filter:blur(18px);
 border-bottom:1px solid var(--border)
 }
-body.light .navbar{background:rgba(255,255,255,.85)}
-.nav-inner{
-min-height:68px;display:flex;align-items:center;
-justify-content:space-between;gap:15px
+body.light .navbar{background:#ffffffdd}
+.nav{
+min-height:65px;display:flex;align-items:center;
+justify-content:space-between;gap:10px
 }
-.logo{font-weight:900;color:var(--accent)}
-.nav-links{display:flex;gap:5px}
-.nav-links a{
-padding:7px 11px;border-radius:11px;
-color:var(--muted);font-size:.88rem
+.logo{font-weight:900;color:var(--a)}
+.links{display:flex;gap:3px}
+.links a{
+padding:7px 10px;color:var(--muted);
+border-radius:10px;font-size:.83rem
 }
-.nav-links a:hover,.nav-links a.active{
-color:var(--text);background:var(--card2)
+.links a:hover{background:var(--card);color:var(--text)}
+.navbtn{
+width:39px;height:39px;border:1px solid var(--border);
+background:var(--card);color:var(--text);border-radius:11px
 }
-.nav-actions{display:flex;gap:7px}
-.icon-btn{
-width:40px;height:40px;border:1px solid var(--border);
-border-radius:12px;background:var(--card2);color:var(--text)
-}
-.menu-btn{display:none}
+.menu{display:none}
 
 .hero{
-min-height:100vh;display:flex;align-items:center;
-padding-top:100px
+min-height:100vh;display:grid;place-items:center;padding-top:100px
 }
-.hero-grid{
-display:grid;grid-template-columns:1.15fr .85fr;
-gap:50px;align-items:center
+.heroGrid{
+display:grid;grid-template-columns:1.1fr .9fr;
+gap:45px;align-items:center
 }
-.badge{
-display:inline-block;padding:7px 13px;border-radius:999px;
-color:var(--accent);background:rgba(0,229,255,.06);
-border:1px solid rgba(0,229,255,.2);
-font-size:.8rem;margin-bottom:16px
+.badge,.tag{
+display:inline-block;color:var(--a);background:#00e5ff0d;
+border:1px solid #00e5ff30;border-radius:999px;
+padding:4px 10px;font-size:.72rem
 }
-.hero h1{font-size:clamp(2.6rem,6vw,5rem);line-height:1.1}
-.gradient{
-background:linear-gradient(90deg,var(--accent),var(--accent2));
--webkit-background-clip:text;background-clip:text;color:transparent
+h1{font-size:clamp(2.7rem,7vw,5rem);line-height:1.1}
+.grad{
+background:linear-gradient(90deg,var(--a),var(--a2));
+background-clip:text;color:transparent
 }
-.hero-sub{color:var(--muted);font-size:1.08rem;min-height:60px}
-.cursor{color:var(--accent);animation:blink .8s infinite}
+.muted{color:var(--muted)}
+.heroText{font-size:1.05rem;min-height:65px}
+.cursor{color:var(--a);animation:blink .8s infinite}
 @keyframes blink{50%{opacity:0}}
-.hero-buttons{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
 
-.btn{
-border:1px solid var(--border);background:var(--card2);
-color:var(--text);padding:10px 16px;border-radius:13px;
-transition:.25s
+.actions{
+display:flex;gap:8px;flex-wrap:wrap;margin-top:18px
 }
-.btn:hover{transform:translateY(-2px);border-color:var(--accent)}
-.btn.primary{
-background:linear-gradient(135deg,var(--accent),var(--accent2));
+.btn{
+border:1px solid var(--border);background:var(--card);
+color:var(--text);padding:9px 14px;border-radius:12px;
+transition:.2s
+}
+.btn:hover{transform:translateY(-2px);border-color:var(--a)}
+.primary{
+background:linear-gradient(135deg,var(--a),var(--a2));
 color:#001018;border:0;font-weight:900
 }
-.btn.danger{color:#ff7c9e}
+.danger{color:var(--danger)}
 
-.profile-wrap{display:flex;justify-content:center}
-.profile-card{
-width:min(340px,100%);padding:17px;
-border:1px solid var(--border);background:var(--card);
-border-radius:28px;box-shadow:var(--shadow)
+.avatarBig{
+width:min(330px,100%);aspect-ratio:1;object-fit:cover;
+border-radius:25px;border:1px solid var(--border);
+box-shadow:0 15px 45px #0005
 }
-.profile-card img{
-width:100%;aspect-ratio:1;object-fit:cover;
-border-radius:21px;display:block
-}
-.profile-info{text-align:center;padding:14px 4px 3px}
-
-.section-head{margin-bottom:25px}
-.section-kicker{color:var(--accent);font-size:.75rem;font-weight:900}
-.section-head h2{font-size:clamp(1.8rem,4vw,2.8rem)}
-.muted{color:var(--muted)}
-.small{font-size:.78rem}
+.center{text-align:center}
 
 .card{
 background:var(--card);border:1px solid var(--border);
-border-radius:21px;padding:21px;box-shadow:var(--shadow)
+border-radius:20px;padding:19px;
+box-shadow:0 15px 45px #0004
 }
-.grid{display:grid;gap:16px}
-.grid2{grid-template-columns:repeat(2,1fr)}
-.grid3{grid-template-columns:repeat(3,1fr)}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.head{margin-bottom:22px}
+.kicker{color:var(--a);font-size:.72rem;font-weight:900}
+.head h2{font-size:clamp(1.8rem,4vw,2.7rem)}
 
-.social-profile{
-display:flex;align-items:center;gap:18px;flex-wrap:wrap
+.profile{
+display:flex;align-items:center;gap:16px;flex-wrap:wrap
 }
 .avatar{
-width:85px;height:85px;border-radius:50%;
-object-fit:cover;border:3px solid var(--accent)
+width:82px;height:82px;border-radius:50%;
+object-fit:cover;border:3px solid var(--a)
 }
-.profile-stats{
-display:flex;gap:25px;flex-wrap:wrap;margin-right:auto
-}
-.profile-stat{text-align:center}
-.profile-stat strong{display:block;font-size:1.25rem}
-.profile-stat span{font-size:.75rem;color:var(--muted)}
+.stats{display:flex;gap:25px;margin-right:auto}
+.stat{text-align:center}
+.stat b{display:block;font-size:1.3rem}
+.stat small{color:var(--muted)}
 
-.feed{display:flex;flex-direction:column;gap:17px}
-.post{
-background:var(--card);border:1px solid var(--border);
-border-radius:22px;padding:18px;box-shadow:var(--shadow)
-}
-.post-head{
-display:flex;align-items:center;gap:11px
-}
-.post-avatar{
+.feed{display:grid;gap:15px}
+.post{padding:17px}
+.postHead{display:flex;align-items:center;gap:10px}
+.postAvatar{
 width:43px;height:43px;border-radius:50%;object-fit:cover
 }
-.post-meta{flex:1}
-.post-meta strong{display:block}
-.post-time{font-size:.7rem;color:var(--muted)}
-.post-text{margin:15px 0;white-space:pre-wrap;word-break:break-word}
-.post-image{
-width:100%;max-height:500px;object-fit:cover;
-border-radius:16px;margin-top:5px
+.postMeta{flex:1}
+.postMeta small{
+display:block;color:var(--muted);font-size:.68rem
 }
-.post-actions{
-display:flex;gap:8px;margin-top:14px;
-border-top:1px solid var(--border);padding-top:12px
+.postText{
+white-space:pre-wrap;word-break:break-word;margin:13px 0
 }
-.post-action{
+.postImg{
+width:100%;max-height:520px;object-fit:cover;border-radius:15px
+}
+.postActions{
+display:flex;gap:3px;border-top:1px solid var(--border);
+margin-top:12px;padding-top:9px
+}
+.action{
 border:0;background:transparent;color:var(--muted);
-padding:7px 11px;border-radius:10px
+padding:7px 10px;border-radius:9px
 }
-.post-action:hover{background:var(--card2);color:var(--text)}
-.post-action.liked{color:var(--danger)}
+.action:hover{background:#ffffff08;color:var(--text)}
+.liked{color:var(--danger)}
 .comments{
-margin-top:12px;padding-top:12px;border-top:1px solid var(--border)
+border-top:1px solid var(--border);
+margin-top:8px;padding-top:8px
 }
-.comment{
-display:flex;gap:8px;padding:7px 0;font-size:.85rem
-}
-.comment b{color:var(--accent)}
-.comment-form{display:flex;gap:7px;margin-top:10px}
-.comment-form input{
-flex:1;min-width:0;padding:9px 12px;border-radius:11px;
-border:1px solid var(--border);background:var(--card2);
-color:var(--text);outline:none
-}
+.comment{font-size:.83rem;padding:5px 0}
+.comment b{color:var(--a)}
+.commentForm{display:flex;gap:6px;margin-top:8px}
+.commentForm input{flex:1;min-width:0}
 
-.composer textarea{
-width:100%;min-height:120px;resize:vertical;
-padding:13px;border:1px solid var(--border);
-border-radius:15px;background:var(--card2);
-color:var(--text);outline:none
+input,textarea{
+border:1px solid var(--border);background:#ffffff08;
+color:var(--text);border-radius:12px;padding:10px;outline:0
 }
-.composer textarea:focus,
-.comment-form input:focus,
-.search-input:focus{border-color:var(--accent)}
-.composer-bottom{
-display:flex;align-items:center;justify-content:space-between;
-gap:10px;margin-top:10px;flex-wrap:wrap
+textarea{width:100%;min-height:115px;resize:vertical}
+input:focus,textarea:focus{border-color:var(--a)}
+
+.file{
+display:inline-block;border:1px solid var(--border);
+background:var(--card);padding:8px 12px;border-radius:11px;
+cursor:pointer
 }
-.file-label{
-padding:9px 13px;border:1px solid var(--border);
-border-radius:12px;background:var(--card2);cursor:pointer
-}
-.file-label input{display:none}
+.file input{display:none}
 .preview{
-max-width:180px;max-height:180px;object-fit:cover;
-border-radius:13px;margin-top:10px;display:none
+display:none;max-width:190px;max-height:190px;
+border-radius:13px;margin-top:9px
 }
 
-.notification{
-display:flex;gap:10px;align-items:flex-start;
-padding:12px;border-bottom:1px solid var(--border)
-}
-.notification:last-child{border-bottom:0}
-.not-icon{font-size:1.4rem}
-.not-time{font-size:.7rem;color:var(--muted)}
-
-.stat-box{text-align:center}
-.stat-number{font-size:2rem;font-weight:900;color:var(--accent)}
 .progress{
-height:9px;background:rgba(255,255,255,.07);
-border-radius:999px;overflow:hidden;margin-top:8px
+height:8px;background:#ffffff10;
+border-radius:99px;overflow:hidden
 }
-.progress-bar{
+.bar{
 height:100%;width:0;
-background:linear-gradient(90deg,var(--accent),var(--accent2));
-transition:width 1s
+background:linear-gradient(90deg,var(--a),var(--a2));
+transition:width .8s
 }
 
 .command{
-display:grid;grid-template-columns:repeat(4,1fr);gap:10px
+display:grid;grid-template-columns:repeat(4,1fr);gap:9px
 }
 .command button{
-padding:15px 8px;border:1px solid var(--border);
-border-radius:16px;background:var(--card);color:var(--text)
+padding:14px 6px;border:1px solid var(--border);
+border-radius:14px;background:var(--card);color:var(--text)
 }
 
-.search-box{display:flex;gap:8px}
-.search-input{
-flex:1;padding:12px 14px;border-radius:13px;
-border:1px solid var(--border);background:var(--card);
-color:var(--text);outline:none
+.list{display:grid;gap:8px}
+.listItem{
+display:flex;justify-content:space-between;gap:10px;
+padding:10px;border:1px solid var(--border);
+border-radius:12px;background:#ffffff05
 }
-.search-results{margin-top:14px;display:flex;flex-direction:column;gap:8px}
 
-.mission.done{border-color:var(--accent2)}
+.search{display:flex;gap:7px}
+.search input{flex:1}
 
-.list{display:flex;flex-direction:column;gap:9px}
-.list-item{
-display:flex;justify-content:space-between;align-items:center;
-gap:10px;padding:11px 13px;border:1px solid var(--border);
-border-radius:13px;background:var(--card2)
+.not{
+display:flex;gap:9px;padding:10px;
+border-bottom:1px solid var(--border)
 }
-.tag{
-font-size:.7rem;color:var(--accent);
-padding:3px 8px;border-radius:999px;
-background:rgba(0,229,255,.07)
-}
+.not:last-child{border:0}
+.not small{display:block;color:var(--muted)}
 
 .modal{
-position:fixed;inset:0;z-index:3000;display:none;
-align-items:center;justify-content:center;
-padding:18px;background:rgba(0,0,0,.72);
-backdrop-filter:blur(7px)
+display:none;position:fixed;inset:0;z-index:3000;
+background:#000b;backdrop-filter:blur(7px);
+align-items:center;justify-content:center;padding:15px
 }
 .modal.show{display:flex}
-.modal-box{
-width:min(600px,100%);max-height:90vh;overflow:auto;
+.modalBox{
+width:min(580px,100%);max-height:90vh;overflow:auto;
 background:var(--bg2);border:1px solid var(--border);
-border-radius:23px;padding:22px;box-shadow:var(--shadow)
+border-radius:21px;padding:20px
 }
-.modal-head{
+.modalHead{
 display:flex;justify-content:space-between;
-align-items:center;margin-bottom:17px
+align-items:center;margin-bottom:15px
 }
 .close{
-width:38px;height:38px;border:1px solid var(--border);
-background:var(--card2);color:var(--text);border-radius:10px
+width:37px;height:37px;border:1px solid var(--border);
+background:var(--card);color:var(--text);border-radius:10px
 }
 
 .toast{
-position:fixed;bottom:22px;right:22px;z-index:4000;
-padding:12px 16px;border-radius:14px;background:var(--bg2);
-border:1px solid var(--border);box-shadow:var(--shadow);
-transform:translateY(120px);opacity:0;transition:.3s
+position:fixed;z-index:5000;right:20px;bottom:20px;
+background:var(--bg2);border:1px solid var(--border);
+padding:11px 15px;border-radius:13px;
+transform:translateY(100px);opacity:0;transition:.25s
 }
-.toast.show{transform:translateY(0);opacity:1}
+.toast.show{transform:none;opacity:1}
 
-.bottom-nav{
-display:none;
-position:fixed;bottom:0;left:0;right:0;z-index:1500;
-background:rgba(5,13,20,.9);backdrop-filter:blur(18px);
-border-top:1px solid var(--border);
-padding:7px 5px calc(7px + env(safe-area-inset-bottom))
+.offline{
+position:fixed;top:66px;left:50%;transform:translateX(-50%);
+z-index:1200;background:#ff9f1c;color:#111;
+padding:4px 12px;border-radius:0 0 10px 10px;
+font-size:.7rem;display:none
 }
-body.light .bottom-nav{background:rgba(255,255,255,.92)}
-.bottom-nav-inner{display:flex;justify-content:space-around}
-.bottom-nav button{
-background:none;border:0;color:var(--muted);
-font-size:.68rem;padding:5px 9px
+
+.reveal{
+opacity:0;transform:translateY(15px);transition:.5s
 }
-.bottom-nav button span{display:block;font-size:1.25rem}
-.bottom-nav button.active{color:var(--accent)}
+.reveal.on{opacity:1;transform:none}
+
+.bottom{
+display:none;position:fixed;bottom:0;left:0;right:0;
+z-index:1500;background:#050d14ee;
+backdrop-filter:blur(15px);
+border-top:1px solid var(--border);padding:5px 3px
+}
+.bottom div{
+display:flex;justify-content:space-around
+}
+.bottom button{
+background:0;border:0;color:var(--muted);font-size:.65rem
+}
+.bottom span{
+display:block;font-size:1.25rem
+}
+.bottom button:hover{color:var(--a)}
 
 footer{
-padding:35px 0 55px;text-align:center;
-color:var(--muted);border-top:1px solid var(--border)
+text-align:center;color:var(--muted);padding:30px 0
 }
-
-.reveal{opacity:0;transform:translateY(18px);transition:.65s}
-.reveal.visible{opacity:1;transform:none}
-
-.hidden{display:none!important}
 
 @media(max-width:850px){
-.nav-links{
-position:absolute;top:68px;right:4%;left:4%;
-display:none;flex-direction:column;
-background:var(--bg2);border:1px solid var(--border);
-border-radius:17px;padding:8px
+.links{
+position:absolute;display:none;top:65px;right:3%;left:3%;
+flex-direction:column;background:var(--bg2);
+padding:7px;border:1px solid var(--border);
+border-radius:15px
 }
-.nav-links.open{display:flex}
-.nav-links a{text-align:center}
-.menu-btn{display:block}
-.hero-grid{grid-template-columns:1fr;text-align:center}
-.profile-wrap{order:-1}
-.hero-buttons{justify-content:center}
+.links.open{display:flex}
+.menu{display:block}
+.heroGrid{
+grid-template-columns:1fr;text-align:center
+}
+.avatarBig{max-width:300px}
 .grid3{grid-template-columns:1fr 1fr}
 .command{grid-template-columns:1fr 1fr}
 }
 
 @media(max-width:600px){
-section{padding:65px 0}
-.container{width:94%}
+section{padding:55px 0}
 .grid2,.grid3{grid-template-columns:1fr}
-.hero h1{font-size:2.65rem}
-.nav-actions .icon-btn:first-child{display:none}
-.bottom-nav{display:block}
-body{padding-bottom:65px}
-.toast{left:14px;right:14px;bottom:80px}
-.profile-stats{width:100%;justify-content:space-around;margin:0}
-.command button{font-size:.8rem}
+.hero{padding-top:90px}
+.bottom{display:block}
+body{padding-bottom:58px}
+.toast{left:12px;right:12px;bottom:72px}
+.stats{
+width:100%;justify-content:space-around;margin:0
+}
 }
 </style>
 </head>
 
 <body>
 
+<div class="offline" id="offline">📡 حالت آفلاین</div>
+
 <nav class="navbar">
-<div class="container nav-inner">
+<div class="container nav">
+
 <a class="logo" href="#home">AMIRREZA.DEV</a>
 
-<div class="nav-links" id="navLinks">
+<div class="links" id="links">
 <a href="#home">خانه</a>
 <a href="#feed">فید</a>
 <a href="#profile">پروفایل</a>
@@ -370,57 +319,55 @@ body{padding-bottom:65px}
 <a href="#contact">ارتباط</a>
 </div>
 
-<div class="nav-actions">
-<button class="icon-btn" onclick="toggleTheme()">☀️</button>
-<button class="icon-btn menu-btn" id="menuBtn">☰</button>
+<div>
+<button class="navbtn" onclick="theme()">☀️</button>
+<button class="navbtn menu" onclick="toggleMenu()">☰</button>
 </div>
+
 </div>
 </nav>
 
 <main>
 
 <section class="hero" id="home">
-<div class="container hero-grid">
+<div class="container heroGrid">
 
 <div class="reveal">
-<div class="badge">🚀 Personal Social Space • v2.1.0</div>
+
+<span class="badge">🚀 Personal Social Space • v2.2.0</span>
 
 <h1>
-سلام، من
-<span class="gradient">امیررضا</span>
-هستم
+سلام، من <span class="grad">امیررضا</span> هستم
 </h1>
 
-<div class="hero-sub">
+<div class="heroText">
 <span id="typing"></span><span class="cursor">|</span>
 </div>
 
-<div class="hero-buttons">
-<a class="btn primary" href="#feed">🏠 ورود به فید</a>
-<button class="btn" onclick="openModal('createModal')">➕ پست جدید</button>
-<button class="btn" onclick="openModal('notificationModal')">🔔 اعلان‌ها</button>
+<div class="actions">
+<a class="btn primary" href="#feed">🏠 فید</a>
+<button class="btn" onclick="openM('create')">➕ پست جدید</button>
+<button class="btn" onclick="openM('notifications')">🔔 اعلان‌ها</button>
 </div>
 
-<div style="margin-top:20px">
-<div style="display:flex;justify-content:space-between;color:var(--muted);font-size:.8rem">
-<span id="levelText">Level 8</span>
-<span id="xpText">820 XP</span>
+<div style="margin-top:18px">
+<div style="display:flex;justify-content:space-between;font-size:.75rem;color:var(--muted)">
+<span id="level">Level 8</span>
+<span id="xp">820 XP</span>
 </div>
+
 <div class="progress">
-<div class="progress-bar" id="xpProgress"></div>
-</div>
+<div class="bar" id="xpbar"></div>
 </div>
 </div>
 
-<div class="profile-wrap reveal">
-<div class="profile-card">
-<img src="profile.jpg" alt="امیررضا"
-onerror="this.src='https://via.placeholder.com/600?text=Amirreza'">
-<div class="profile-info">
-<h3>امیررضا غلامی</h3>
-<p class="muted">Creator • Builder • Explorer</p>
 </div>
-</div>
+
+<div class="center reveal">
+<img class="avatarBig"
+src="profile.jpg"
+alt="امیررضا"
+onerror="this.src='https://via.placeholder.com/500?text=Amirreza'">
 </div>
 
 </div>
@@ -429,80 +376,79 @@ onerror="this.src='https://via.placeholder.com/600?text=Amirreza'">
 <section id="profile">
 <div class="container">
 
-<div class="section-head reveal">
-<span class="section-kicker">PROFILE</span>
+<div class="head reveal">
+<span class="kicker">PROFILE</span>
 <h2>پروفایل اجتماعی 👤</h2>
 </div>
 
-<div class="card reveal social-profile">
-<img class="avatar" src="profile.jpg" alt="Amirreza"
-onerror="this.src='https://via.placeholder.com/100?text=A'">
+<div class="card profile reveal">
+
+<img class="avatar" src="profile.jpg" alt="Amirreza">
 
 <div>
 <h2>امیررضا غلامی</h2>
-<p class="muted">ساختن، یادگرفتن و جلو رفتن 🚀</p>
-<span class="tag">Level <span id="profileLevel">8</span></span>
+<p class="muted">Creator • Builder • Explorer</p>
+<span class="tag">Level <b id="plevel">8</b></span>
 </div>
 
-<div class="profile-stats">
-<div class="profile-stat">
-<strong id="postCount">0</strong>
-<span>پست</span>
-</div>
-<div class="profile-stat">
-<strong id="likeCount">0</strong>
-<span>لایک</span>
-</div>
-<div class="profile-stat">
-<strong id="commentCount">0</strong>
-<span>کامنت</span>
-</div>
-</div>
+<div class="stats">
+
+<div class="stat">
+<b id="posts">0</b>
+<small>پست</small>
 </div>
 
+<div class="stat">
+<b id="likes">0</b>
+<small>لایک</small>
+</div>
+
+<div class="stat">
+<b id="comments">0</b>
+<small>کامنت</small>
+</div>
+
+</div>
+
+</div>
 </div>
 </section>
 
 <section id="feed">
 <div class="container">
 
-<div class="section-head reveal">
-<span class="section-kicker">PERSONAL FEED</span>
-<h2>فید من 🏠</h2>
+<div class="head reveal">
+<span class="kicker">PERSONAL FEED</span>
+<h2>فید من 📰</h2>
 </div>
 
-<div class="card composer reveal">
-<h3>✍️ چیزی برای گفتن داری؟</h3>
-<p class="muted small">یک پست جدید در فضای شخصی خودت منتشر کن.</p>
-
-<br>
+<div class="card reveal">
 
 <textarea id="postText"
 placeholder="امروز چه چیزی در ذهنته؟"></textarea>
 
-<img id="imagePreview" class="preview" alt="preview">
+<img class="preview" id="preview" alt="پیش‌نمایش تصویر">
 
-<div class="composer-bottom">
-<label class="file-label">
-🖼️ انتخاب عکس
-<input type="file" id="postImage" accept="image/*">
+<div class="actions" style="justify-content:space-between">
+
+<label class="file">
+🖼️ عکس
+<input type="file" id="image" accept="image/*">
 </label>
 
-<button class="btn primary" onclick="createPost()">
-🚀 انتشار پست
+<button class="btn primary" onclick="publish()">
+🚀 انتشار
 </button>
+
 </div>
 </div>
 
-<br>
-
-<div class="search-box reveal">
-<input class="search-input" id="postSearch"
+<div class="search reveal" style="margin:15px 0">
+<input
+id="postSearch"
 placeholder="🔎 جست‌وجو در پست‌ها..."
 oninput="renderPosts()">
 </div>
-
-<br>
 
 <div class="feed" id="feedList"></div>
 
@@ -511,48 +457,60 @@ oninput="renderPosts()">
 
 <section id="notifications">
 <div class="container">
-<div class="section-head reveal">
-<span class="section-kicker">NOTIFICATIONS</span>
+
+<div class="head reveal">
+<span class="kicker">NOTIFICATIONS</span>
 <h2>اعلان‌ها 🔔</h2>
 </div>
 
 <div class="card reveal">
-<div class="list" id="notificationList"></div>
+<div class="list" id="notList"></div>
 </div>
+
 </div>
 </section>
 
 <section id="command">
 <div class="container">
-<div class="section-head reveal">
-<span class="section-kicker">COMMAND CENTER</span>
+
+<div class="head reveal">
+<span class="kicker">COMMAND CENTER</span>
 <h2>مرکز فرماندهی 🎮</h2>
 </div>
 
 <div class="command reveal">
 <button onclick="scrollToId('feed')">🏠 فید</button>
-<button onclick="openModal('createModal')">➕ پست</button>
+<button onclick="openM('create')">➕ پست</button>
 <button onclick="scrollToId('dashboard')">📊 داشبورد</button>
-<button onclick="openModal('aiModal')">🤖 AI</button>
+<button onclick="openM('ai')">🤖 AI</button>
 </div>
+
 </div>
 </section>
 
 <section id="search">
 <div class="container">
-<div class="section-head reveal">
-<span class="section-kicker">SEARCH</span>
+
+<div class="head reveal">
+<span class="kicker">SEARCH</span>
 <h2>جست‌وجوی سایت 🔎</h2>
 </div>
 
 <div class="card reveal">
-<div class="search-box">
-<input class="search-input" id="siteSearch"
-placeholder="مثلاً پروفایل، پروژه، هدف..."
+
+<div class="search">
+<input
+id="siteSearch"
+placeholder="مثلاً پروژه، پروفایل، هدف..."
 onkeydown="if(event.key==='Enter')siteSearch()">
-<button class="btn primary" onclick="siteSearch()">جست‌وجو</button>
+
+<button class="btn primary" onclick="siteSearch()">
+جست‌وجو
+</button>
 </div>
-<div class="search-results" id="siteResults"></div>
+
+<div class="list" id="results" style="margin-top:12px"></div>
+
 </div>
 </div>
 </section>
@@ -560,26 +518,26 @@ onkeydown="if(event.key==='Enter')siteSearch()">
 <section id="dashboard">
 <div class="container">
 
-<div class="section-head reveal">
-<span class="section-kicker">DASHBOARD</span>
+<div class="head reveal">
+<span class="kicker">DASHBOARD</span>
 <h2>داشبورد 📊</h2>
 </div>
 
-<div class="grid grid3">
+<div class="grid3">
 
-<div class="card stat-box reveal">
-<div class="stat-number" id="visitCount">0</div>
-<div class="muted small">بازدید این دستگاه</div>
+<div class="card center reveal">
+<b class="grad" style="font-size:2rem" id="visits">0</b>
+<p class="muted">بازدید</p>
 </div>
 
-<div class="card stat-box reveal">
-<div class="stat-number" id="sessionTime">0:00</div>
-<div class="muted small">زمان حضور</div>
+<div class="card center reveal">
+<b class="grad" style="font-size:2rem" id="session">0:00</b>
+<p class="muted">زمان حضور</p>
 </div>
 
-<div class="card stat-box reveal">
-<div class="stat-number" id="achievementNumber">3</div>
-<div class="muted small">دستاورد</div>
+<div class="card center reveal">
+<b class="grad" style="font-size:2rem" id="achievements">3</b>
+<p class="muted">دستاورد</p>
 </div>
 
 </div>
@@ -587,26 +545,35 @@ onkeydown="if(event.key==='Enter')siteSearch()">
 <br>
 
 <div class="card reveal">
+
 <h3>📈 مهارت‌ها</h3>
 
-<div style="margin-top:16px">
-<div class="small">تکنولوژی — 75%</div>
-<div class="progress"><div class="progress-bar" data-width="75"></div></div>
+<div style="margin-top:13px">
+تکنولوژی 75%
+<div class="progress">
+<div class="bar" data-w="75"></div>
+</div>
 </div>
 
-<div style="margin-top:16px">
-<div class="small">یادگیری — 82%</div>
-<div class="progress"><div class="progress-bar" data-width="82"></div></div>
+<div style="margin-top:13px">
+یادگیری 82%
+<div class="progress">
+<div class="bar" data-w="82"></div>
+</div>
 </div>
 
-<div style="margin-top:16px">
-<div class="small">خلاقیت — 68%</div>
-<div class="progress"><div class="progress-bar" data-width="68"></div></div>
+<div style="margin-top:13px">
+خلاقیت 68%
+<div class="progress">
+<div class="bar" data-w="68"></div>
+</div>
 </div>
 
-<div style="margin-top:16px">
-<div class="small">تلاش — 90%</div>
-<div class="progress"><div class="progress-bar" data-width="90"></div></div>
+<div style="margin-top:13px">
+تلاش 90%
+<div class="progress">
+<div class="bar" data-w="90"></div>
+</div>
 </div>
 
 </div>
@@ -616,57 +583,56 @@ onkeydown="if(event.key==='Enter')siteSearch()">
 <section id="mission">
 <div class="container">
 
-<div class="section-head reveal">
-<span class="section-kicker">DAILY MISSION</span>
+<div class="head reveal">
+<span class="kicker">DAILY MISSION</span>
 <h2>مأموریت امروز 🎯</h2>
 </div>
 
-<div class="card mission reveal" id="missionCard">
+<div class="card reveal" id="missionCard">
+
 <span class="tag">+50 XP</span>
-<h3 id="missionTitle" style="margin-top:8px">
-امروز یک چیز جدید یاد بگیر
-</h3>
+
+<h3 id="missionTitle" style="margin-top:8px"></h3>
+
 <p class="muted">
 یک کار کوچک ولی مفید انجام بده.
 </p>
+
 <br>
-<button class="btn primary" id="missionBtn" onclick="completeMission()">
+
+<button class="btn primary"
+id="missionBtn"
+onclick="mission()">
 انجام شد ✅
 </button>
-</div>
 
+</div>
 </div>
 </section>
 
 <section id="projects">
 <div class="container">
 
-<div class="section-head reveal">
-<span class="section-kicker">PROJECTS</span>
+<div class="head reveal">
+<span class="kicker">PROJECTS</span>
 <h2>پروژه‌ها 🚀</h2>
 </div>
 
-<div class="grid grid3">
+<div class="grid3">
 
 <div class="card reveal">
 <h3>🌐 Personal Website</h3>
-<p class="muted">وب‌سایت شخصی و فضای اجتماعی امیررضا.</p>
-<br>
-<span class="tag">Active</span>
+<p class="muted">وب‌سایت و فضای اجتماعی شخصی.</p>
 </div>
 
 <div class="card reveal">
 <h3>🤖 AI Journey</h3>
-<p class="muted">یادگیری و تجربه ابزارهای هوش مصنوعی.</p>
-<br>
-<span class="tag">Learning</span>
+<p class="muted">یادگیری و تجربه هوش مصنوعی.</p>
 </div>
 
 <div class="card reveal">
 <h3>💡 Future Ideas</h3>
-<p class="muted">ایده‌هایی برای پروژه‌های آینده.</p>
-<br>
-<span class="tag">Planning</span>
+<p class="muted">ایده‌های پروژه‌های آینده.</p>
 </div>
 
 </div>
@@ -676,32 +642,32 @@ onkeydown="if(event.key==='Enter')siteSearch()">
 <section id="ai">
 <div class="container">
 
-<div class="section-head reveal">
-<span class="section-kicker">AI CENTER</span>
+<div class="head reveal">
+<span class="kicker">AI CENTER</span>
 <h2>مرکز هوش مصنوعی 🤖</h2>
 </div>
 
-<div class="grid grid3">
+<div class="grid3">
 
 <div class="card reveal">
 <h3>💡 ایده</h3>
-<p class="muted">ایده‌پردازی برای پروژه‌ها.</p>
+<p class="muted">ایده‌پردازی.</p>
 <br>
-<button class="btn" onclick="aiAction('ایده‌پردازی')">باز کردن</button>
+<button class="btn" onclick="ai('ایده‌پردازی')">باز کردن</button>
 </div>
 
 <div class="card reveal">
 <h3>📚 یادگیری</h3>
-<p class="muted">ساخت مسیر یادگیری.</p>
+<p class="muted">مسیر یادگیری.</p>
 <br>
-<button class="btn" onclick="aiAction('یادگیری')">باز کردن</button>
+<button class="btn" onclick="ai('یادگیری')">باز کردن</button>
 </div>
 
 <div class="card reveal">
 <h3>🚀 آینده</h3>
-<p class="muted">برنامه‌ریزی برای آینده.</p>
+<p class="muted">برنامه‌ریزی آینده.</p>
 <br>
-<button class="btn" onclick="aiAction('آینده')">باز کردن</button>
+<button class="btn" onclick="ai('آینده')">باز کردن</button>
 </div>
 
 </div>
@@ -711,43 +677,47 @@ onkeydown="if(event.key==='Enter')siteSearch()">
 <section id="goals">
 <div class="container">
 
-<div class="section-head reveal">
-<span class="section-kicker">GOALS</span>
+<div class="head reveal">
+<span class="kicker">GOALS</span>
 <h2>اهداف 🎯</h2>
 </div>
 
-<div class="grid grid2">
+<div class="grid2">
+
 <div class="card reveal">
 <h3>📚 یادگیری</h3>
-<p class="muted">ساخت مهارت‌های واقعی و کاربردی.</p>
+<p class="muted">ساخت مهارت‌های واقعی.</p>
 </div>
+
 <div class="card reveal">
 <h3>💼 آینده شغلی</h3>
-<p class="muted">ساختن یک مسیر کاری مناسب.</p>
+<p class="muted">ساخت مسیر کاری مناسب.</p>
 </div>
+
 <div class="card reveal">
 <h3>🏃 رشد شخصی</h3>
 <p class="muted">هر روز یک قدم جلوتر.</p>
 </div>
+
 <div class="card reveal">
 <h3>🌟 ساختن</h3>
-<p class="muted">تبدیل ایده‌ها به پروژه واقعی.</p>
-</div>
+<p class="muted">تبدیل ایده به پروژه.</p>
 </div>
 
+</div>
 </div>
 </section>
 
 <section id="activity">
 <div class="container">
 
-<div class="section-head reveal">
-<span class="section-kicker">ACTIVITY</span>
+<div class="head reveal">
+<span class="kicker">ACTIVITY</span>
 <h2>فعالیت‌ها 📋</h2>
 </div>
 
 <div class="card reveal">
-<div class="list" id="activityList"></div>
+<div class="list" id="activities"></div>
 </div>
 
 </div>
@@ -756,39 +726,50 @@ onkeydown="if(event.key==='Enter')siteSearch()">
 <section id="settings">
 <div class="container">
 
-<div class="section-head reveal">
-<span class="section-kicker">SETTINGS</span>
+<div class="head reveal">
+<span class="kicker">SETTINGS</span>
 <h2>تنظیمات ⚙️</h2>
 </div>
 
 <div class="card reveal">
 
-<div style="display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--border)">
+<div class="list">
+
+<div class="listItem">
+<span>🌙 حالت نمایش</span>
+<button class="btn" onclick="theme()">تغییر</button>
+</div>
+
+<div class="listItem">
+<span>🎨 رنگ سایت</span>
+
 <div>
-<strong>حالت نمایش</strong>
-<div class="muted small">تاریک / روشن</div>
-</div>
-<button class="btn" onclick="toggleTheme()">تغییر</button>
-</div>
-
-<div style="display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--border)">
-<div>
-<strong>رنگ سایت</strong>
-<div class="muted small">انتخاب رنگ اصلی</div>
+<button class="btn" onclick="accent('#00e5ff')">آبی</button>
+<button class="btn" onclick="accent('#00ffa3')">سبز</button>
+<button class="btn" onclick="accent('#ff9f1c')">نارنجی</button>
+<button class="btn" onclick="accent('#ff4f81')">صورتی</button>
 </div>
 
-<div style="display:flex;gap:7px">
-<button style="background:#00e5ff;border:0;width:27px;height:27px;border-radius:50%" onclick="setAccent('#00e5ff')"></button>
-<button style="background:#00ffa3;border:0;width:27px;height:27px;border-radius:50%" onclick="setAccent('#00ffa3')"></button>
-<button style="background:#ff9f1c;border:0;width:27px;height:27px;border-radius:50%" onclick="setAccent('#ff9f1c')"></button>
-<button style="background:#ff4f81;border:0;width:27px;height:27px;border-radius:50%" onclick="setAccent('#ff4f81')"></button>
-</div>
 </div>
 
-<div style="padding:12px 0">
-<button class="btn danger" onclick="resetData()">♻️ پاک کردن اطلاعات محلی</button>
+<div class="listItem">
+<span>🛡️ وضعیت سیستم</span>
+<span class="tag" id="health">Healthy</span>
 </div>
 
+<div class="listItem">
+<span>💾 بکاپ</span>
+<button class="btn" onclick="backup()">ایجاد بکاپ</button>
+</div>
+
+<div class="listItem">
+<span>♻️ پاک‌سازی</span>
+<button class="btn danger" onclick="resetData()">
+پاک کردن اطلاعات محلی
+</button>
+</div>
+
+</div>
 </div>
 </div>
 </section>
@@ -796,68 +777,82 @@ onkeydown="if(event.key==='Enter')siteSearch()">
 <section id="contact">
 <div class="container">
 
-<div class="section-head reveal">
-<span class="section-kicker">CONTACT</span>
-<h2>ارتباط با من 📬</h2>
+<div class="head reveal">
+<span class="kicker">CONTACT</span>
+<h2>ارتباط 📬</h2>
 </div>
 
-<div class="card reveal" style="text-align:center">
-<p class="muted">راه‌های ارتباطی من:</p>
+<div class="card center reveal">
 
-<div style="display:flex;flex-wrap:wrap;justify-content:center;gap:9px;margin-top:18px">
-<a class="btn" href="https://www.instagram.com/amirrezagholami.ir" target="_blank">📸 Instagram</a>
-<a class="btn" href="https://t.me/Amirrezagholami_ir" target="_blank">✈️ Telegram</a>
-<a class="btn" href="https://wa.me/989228420736" target="_blank">💬 WhatsApp</a>
-<a class="btn" href="mailto:amirrezaamirreza275@gmail.com">📧 Email</a>
-<a class="btn" href="https://github.com/amirrezagholami86" target="_blank">💻 GitHub</a>
+<div class="actions" style="justify-content:center">
+
+<a class="btn"
+href="https://www.instagram.com/amirrezagholami.ir"
+target="_blank">📸 Instagram</a>
+
+<a class="btn"
+href="https://t.me/Amirrezagholami_ir"
+target="_blank">✈️ Telegram</a>
+
+<a class="btn"
+href="https://wa.me/989228420736"
+target="_blank">💬 WhatsApp</a>
+
+<a class="btn"
+href="mailto:amirrezaamirreza275@gmail.com">📧 Email</a>
+
+<a class="btn"
+href="https://github.com/amirrezagholami86"
+target="_blank">💻 GitHub</a>
+
 </div>
 </div>
-
 </div>
 </section>
 
 </main>
 
-<div class="bottom-nav">
-<div class="bottom-nav-inner">
+<div class="bottom">
+<div>
 <button onclick="scrollToId('home')"><span>🏠</span>خانه</button>
 <button onclick="scrollToId('feed')"><span>📰</span>فید</button>
-<button onclick="openModal('createModal')"><span>➕</span>پست</button>
-<button onclick="openModal('notificationModal')"><span>🔔</span>اعلان</button>
+<button onclick="openM('create')"><span>➕</span>پست</button>
+<button onclick="openM('notifications')"><span>🔔</span>اعلان</button>
 <button onclick="scrollToId('profile')"><span>👤</span>پروفایل</button>
 </div>
 </div>
 
 <footer>
-<p>© 2026 Amirreza • Personal Social Space</p>
-<p class="small">v2.1.0 • Build 22</p>
+© 2026 Amirreza • Personal Social Space<br>
+<small>v2.2.0 • Build 23 🛡️</small>
 </footer>
 
 <!-- CREATE POST -->
-<div class="modal" id="createModal">
-<div class="modal-box">
+<div class="modal" id="create">
 
-<div class="modal-head">
-<h3>➕ ساخت پست</h3>
-<button class="close" onclick="closeModal('createModal')">×</button>
+<div class="modalBox">
+
+<div class="modalHead">
+<h3>➕ پست جدید</h3>
+<button class="close" onclick="closeM('create')">×</button>
 </div>
 
-<textarea id="modalPostText"
-style="width:100%;min-height:130px;padding:13px;border:1px solid var(--border);border-radius:14px;background:var(--card2);color:var(--text);outline:none"
+<textarea
+id="modalText"
 placeholder="چی می‌خوای منتشر کنی؟"></textarea>
 
 <br><br>
 
-<label class="file-label">
-🖼️ انتخاب تصویر
-<input type="file" id="modalPostImage" accept="image/*">
+<label class="file">
+🖼️ انتخاب عکس
+<input type="file" id="modalImage" accept="image/*">
 </label>
 
-<img id="modalPreview" class="preview">
+<img class="preview" id="modalPreview" alt="پیش‌نمایش">
 
 <br><br>
 
-<button class="btn primary" onclick="createPostFromModal()">
+<button class="btn primary" onclick="publishModal()">
 🚀 انتشار
 </button>
 
@@ -865,38 +860,50 @@ placeholder="چی می‌خوای منتشر کنی؟"></textarea>
 </div>
 
 <!-- NOTIFICATIONS -->
-<div class="modal" id="notificationModal">
-<div class="modal-box">
+<div class="modal" id="notifications">
 
-<div class="modal-head">
+<div class="modalBox">
+
+<div class="modalHead">
 <h3>🔔 اعلان‌ها</h3>
-<button class="close" onclick="closeModal('notificationModal')">×</button>
+<button class="close" onclick="closeM('notifications')">×</button>
 </div>
 
-<div id="modalNotifications"></div>
+<div id="modalNot"></div>
 
 </div>
 </div>
 
 <!-- AI -->
-<div class="modal" id="aiModal">
-<div class="modal-box">
+<div class="modal" id="ai">
 
-<div class="modal-head">
+<div class="modalBox">
+
+<div class="modalHead">
 <h3>🤖 AI Center</h3>
-<button class="close" onclick="closeModal('aiModal')">×</button>
+<button class="close" onclick="closeM('ai')">×</button>
 </div>
 
-<p id="aiText" class="muted">
-یک موضوع را انتخاب کن.
+<p class="muted" id="aiText">
+یک گزینه را انتخاب کن.
 </p>
 
 <br>
 
-<div style="display:flex;gap:8px;flex-wrap:wrap">
-<button class="btn" onclick="aiAction('ایده‌پردازی')">💡 ایده</button>
-<button class="btn" onclick="aiAction('یادگیری')">📚 یادگیری</button>
-<button class="btn" onclick="aiAction('آینده')">🚀 آینده</button>
+<div class="actions">
+
+<button class="btn" onclick="ai('ایده‌پردازی')">
+💡 ایده
+</button>
+
+<button class="btn" onclick="ai('یادگیری')">
+📚 یادگیری
+</button>
+
+<button class="btn" onclick="ai('آینده')">
+🚀 آینده
+</button>
+
 </div>
 
 </div>
@@ -905,12 +912,21 @@ placeholder="چی می‌خوای منتشر کنی؟"></textarea>
 <div class="toast" id="toast"></div>
 
 <script>
-let toastTimer=null;
-let xp=Number(localStorage.getItem("xp")||820);
-let visits=Number(localStorage.getItem("visits")||0)+1;
-localStorage.setItem("visits",visits);
+/* v2.2.0 • Build 23
+   Lightweight Core + Recovery
+*/
 
-let sessionSeconds=0;
+const $=id=>document.getElementById(id);
+
+let xp=+localStorage.xp||820;
+let session=0,timer;
+
+const words=[
+"در حال ساختن آینده... 🚀",
+"عاشق تکنولوژی و یادگیری هستم 💻",
+"ایده‌ها را به پروژه تبدیل می‌کنم 💡",
+"هر روز یک قدم جلوتر 👣"
+];
 
 const missions=[
 "امروز یک چیز جدید یاد بگیر",
@@ -920,622 +936,578 @@ const missions=[
 "امروز یک قدم برای آینده‌ات بردار"
 ];
 
-const typingWords=[
-"در حال ساختن آینده... 🚀",
-"عاشق تکنولوژی و یادگیری هستم 💻",
-"ایده‌ها را به پروژه تبدیل می‌کنم 💡",
-"هر روز یک قدم جلوتر 👣"
-];
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({
+"&":"&amp;","<":"&lt;",">":"&gt;",
+'"':"&quot;","'":"&#039;"
+}[c]));
 
-let wordIndex=0;
-let charIndex=0;
-let deleting=false;
+const read=(k,d)=>{
+try{return JSON.parse(localStorage.getItem(k))??d}
+catch{return d}
+};
 
-function $(id){return document.getElementById(id)}
+const write=(k,v)=>localStorage.setItem(k,JSON.stringify(v));
 
-function toast(msg){
-const el=$("toast");
-if(!el)return;
-el.textContent=msg;
-el.classList.add("show");
-clearTimeout(toastTimer);
-toastTimer=setTimeout(()=>el.classList.remove("show"),2500);
+function toast(s){
+const e=$("toast");
+if(!e)return;
+e.textContent=s;
+e.classList.add("show");
+clearTimeout(timer);
+timer=setTimeout(()=>e.classList.remove("show"),2200);
 }
 
-function scrollToId(id){
-const el=$(id);
-if(el)el.scrollIntoView({behavior:"smooth"});
+function openM(id){$(id)?.classList.add("show")}
+function closeM(id){$(id)?.classList.remove("show")}
+function scrollToId(id){$(id)?.scrollIntoView({behavior:"smooth"})}
+function toggleMenu(){$("links").classList.toggle("open")}
+
+/* THEME */
+
+function theme(){
+document.body.classList.toggle("light");
+localStorage.light=document.body.classList.contains("light")?1:0;
 }
 
-function openModal(id){
-const el=$(id);
-if(el)el.classList.add("show");
+function accent(c){
+document.documentElement.style.setProperty("--a",c);
+localStorage.accent=c;
 }
 
-function closeModal(id){
-const el=$(id);
-if(el)el.classList.remove("show");
-}
+function loadStyle(){
+if(localStorage.light==="1")
+document.body.classList.add("light");
 
-function escapeHTML(v){
-return String(v)
-.replaceAll("&","&amp;")
-.replaceAll("<","&lt;")
-.replaceAll(">","&gt;")
-.replaceAll('"',"&quot;")
-.replaceAll("'","&#039;");
+if(localStorage.accent)
+accent(localStorage.accent);
 }
 
 /* XP */
 
-function level(){
-return Math.max(1,Math.floor(xp/100));
-}
-
 function updateXP(){
-const l=level();
-const current=xp%100;
 
-if($("levelText"))$("levelText").textContent="Level "+l;
-if($("profileLevel"))$("profileLevel").textContent=l;
-if($("xpText"))$("xpText").textContent=xp+" XP";
-if($("xpProgress"))$("xpProgress").style.width=current+"%";
+const l=Math.max(1,Math.floor(xp/100));
+const p=xp%100;
+
+$("level").textContent="Level "+l;
+$("plevel").textContent=l;
+$("xp").textContent=xp+" XP";
+$("xpbar").style.width=p+"%";
 }
 
-function addXP(amount){
-xp+=amount;
-localStorage.setItem("xp",xp);
+function addXP(n){
+xp+=n;
+localStorage.xp=xp;
 updateXP();
-addActivity("⚡","+"+amount+" XP دریافت شد");
-toast("⚡ +"+amount+" XP");
-}
-
-/* THEME */
-
-function toggleTheme(){
-document.body.classList.toggle("light");
-const light=document.body.classList.contains("light");
-localStorage.setItem("lightMode",light?"true":"false");
-toast(light?"☀️ حالت روشن":"🌙 حالت تاریک");
-}
-
-function setAccent(color){
-document.documentElement.style.setProperty("--accent",color);
-localStorage.setItem("accent",color);
-toast("🎨 رنگ سایت تغییر کرد");
-}
-
-function loadTheme(){
-if(localStorage.getItem("lightMode")==="true"){
-document.body.classList.add("light");
-}
-const accent=localStorage.getItem("accent");
-if(accent){
-document.documentElement.style.setProperty("--accent",accent);
-}
-}
-
-/* TYPING */
-
-function typing(){
-const el=$("typing");
-if(!el)return;
-
-const word=typingWords[wordIndex];
-
-if(!deleting){
-el.textContent=word.substring(0,charIndex+1);
-charIndex++;
-
-if(charIndex>=word.length){
-deleting=true;
-setTimeout(typing,1400);
-return;
-}
-}else{
-el.textContent=word.substring(0,charIndex-1);
-charIndex--;
-
-if(charIndex<=0){
-deleting=false;
-wordIndex=(wordIndex+1)%typingWords.length;
-}
-}
-
-setTimeout(typing,deleting?35:70);
+activity("⚡","+"+n+" XP");
 }
 
 /* POSTS */
 
-function getPosts(){
-try{
-return JSON.parse(localStorage.getItem("posts")||"[]");
-}catch(e){
-return [];
-}
+function posts(){
+return read("posts",[]);
 }
 
-function savePosts(posts){
-localStorage.setItem("posts",JSON.stringify(posts));
+function savePosts(v){
+write("posts",v);
 }
 
-function createPost(text,image){
+function compress(file,done){
+
+if(!file){
+done("");
+return;
+}
+
+const r=new FileReader();
+
+r.onload=e=>{
+
+const im=new Image();
+
+im.onload=()=>{
+
+const max=900;
+const scale=Math.min(
+1,
+max/Math.max(im.width,im.height)
+);
+
+const c=document.createElement("canvas");
+
+c.width=im.width*scale;
+c.height=im.height*scale;
+
+c.getContext("2d").drawImage(
+im,0,0,c.width,c.height
+);
+
+done(c.toDataURL("image/jpeg",.72));
+
+};
+
+im.src=e.target.result;
+
+};
+
+r.readAsDataURL(file);
+}
+
+function publish(text,image){
+
 text=(text||"").trim();
 
-if(!text && !image){
+if(!text&&!image){
 toast("✍️ متن یا عکس اضافه کن");
 return;
 }
 
-const posts=getPosts();
+const p=posts();
 
-posts.unshift({
+p.unshift({
 id:Date.now(),
-text:text,
-image:image||"",
+text,
+image,
 likes:0,
 liked:false,
 comments:[],
-time:new Date().toLocaleString("fa-IR",{
+time:new Date().toLocaleString(
+"fa-IR",
+{
 month:"short",
 day:"numeric",
 hour:"2-digit",
 minute:"2-digit"
-})
+}
+)
 });
 
-savePosts(posts);
+savePosts(p);
 
 addXP(10);
-addNotification("📝","یک پست جدید منتشر شد");
+notify("📝","پست جدید منتشر شد");
+renderPosts();
+stats();
+
+toast("🚀 منتشر شد");
+}
+
+function publishFile(text,file){
+
+if(file)
+compress(file,img=>publish(text,img));
+else
+publish(text,"");
+}
+
+function publish(){
+
+publishFile(
+$("postText").value,
+$("image").files[0]
+);
 
 $("postText").value="";
-$("postImage").value="";
-$("imagePreview").style.display="none";
-$("imagePreview").src="";
-
-renderPosts();
-updateProfileStats();
-
-toast("🚀 پست منتشر شد");
-
-closeModal("createModal");
+$("image").value="";
 }
 
-function createPost(){
-const text=$("postText").value;
-const file=$("postImage").files[0];
+function publishModal(){
 
-if(file){
-const reader=new FileReader();
+publishFile(
+$("modalText").value,
+$("modalImage").files[0]
+);
 
-reader.onload=function(){
-createPost(text,reader.result);
-};
+$("modalText").value="";
+$("modalImage").value="";
 
-reader.readAsDataURL(file);
-}else{
-createPost(text,"");
-}
-}
-
-function createPostFromModal(){
-const text=$("modalPostText").value;
-const file=$("modalPostImage").files[0];
-
-if(file){
-const reader=new FileReader();
-
-reader.onload=function(){
-createPost(text,reader.result);
-$("modalPostText").value="";
-$("modalPostImage").value="";
-$("modalPreview").style.display="none";
-};
-
-reader.readAsDataURL(file);
-}else{
-createPost(text,"");
-$("modalPostText").value="";
-}
+closeM("create");
 }
 
 function renderPosts(){
-const container=$("feedList");
-if(!container)return;
 
-const q=($("postSearch")?.value||"").trim().toLowerCase();
+const q=(
+$("postSearch")?.value||""
+).toLowerCase().trim();
 
-let posts=getPosts();
-
-if(q){
-posts=posts.filter(p=>
-(p.text||"").toLowerCase().includes(q)
+const p=posts().filter(x=>
+(x.text||"").toLowerCase().includes(q)
 );
+
+$("feedList").innerHTML=p.length?
+
+p.map(x=>`
+
+<article class="card post">
+
+<div class="postHead">
+
+<img
+class="postAvatar"
+src="profile.jpg"
+alt="">
+
+<div class="postMeta">
+<b>امیررضا غلامی</b>
+<small>${esc(x.time)}</small>
+</div>
+
+<button class="action"
+onclick="delPost(${x.id})">⋮</button>
+
+</div>
+
+${x.text?
+`<div class="postText">${esc(x.text)}</div>`:""}
+
+${
+x.image?.startsWith("data:image/")
+?
+`<img class="postImg" src="${x.image}" alt="تصویر پست">`
+:""
 }
 
-if(!posts.length){
-container.innerHTML=`
-<div class="card" style="text-align:center">
-<h3>📭 هنوز پستی نیست</h3>
-<p class="muted">اولین پست این فضای شخصی را تو منتشر کن!</p>
-</div>`;
-return;
-}
+<div class="postActions">
 
-container.innerHTML=posts.map(post=>{
+<button
+class="action ${x.liked?"liked":""}"
+onclick="like(${x.id})">
 
-const comments=(post.comments||[]).map((c,i)=>`
-<div class="comment">
-<div>
-<b>امیررضا</b>
-<span>${escapeHTML(c)}</span>
-</div>
-</div>
-`).join("");
+${x.liked?"❤️":"🤍"} ${x.likes||0}
 
-return `
-<article class="post">
-
-<div class="post-head">
-<img class="post-avatar" src="profile.jpg" alt="Amirreza"
-onerror="this.src='https://via.placeholder.com/50?text=A'">
-
-<div class="post-meta">
-<strong>امیررضا غلامی</strong>
-<span class="post-time">${escapeHTML(post.time)}</span>
-</div>
-
-<button class="post-action" onclick="deletePost(${post.id})">⋮</button>
-</div>
-
-${post.text?`<div class="post-text">${escapeHTML(post.text)}</div>`:""}
-
-${post.image?`<img class="post-image" src="${post.image}" alt="تصویر پست">`:""}
-
-<div class="post-actions">
-<button class="post-action ${post.liked?"liked":""}"
-onclick="toggleLike(${post.id})">
-${post.liked?"❤️":"🤍"} ${post.likes||0}
 </button>
 
-<button class="post-action" onclick="focusComment(${post.id})">
-💬 ${(post.comments||[]).length}
+<button
+class="action"
+onclick="focusComment(${x.id})">
+
+💬 ${(x.comments||[]).length}
+
 </button>
 
-<button class="post-action" onclick="sharePost(${post.id})">
-📤 اشتراک
+<button
+class="action"
+onclick="share(${x.id})">
+
+📤
+
 </button>
+
 </div>
 
 <div class="comments">
-${comments}
 
-<div class="comment-form">
-<input id="comment-${post.id}" placeholder="یک کامنت بنویس...">
-<button class="btn" onclick="addComment(${post.id})">ارسال</button>
+${
+(x.comments||[]).map(c=>
+`<div class="comment">
+<b>امیررضا:</b> ${esc(c)}
+</div>`
+).join("")
+}
+
+<div class="commentForm">
+
+<input
+id="c${x.id}"
+placeholder="کامنت...">
+
+<button
+class="btn"
+onclick="comment(${x.id})">
+ارسال
+</button>
+
 </div>
+
 </div>
 
 </article>
+
+`).join("")
+
+:
+
+`
+<div class="card center">
+<h3>📭 هنوز پستی نیست</h3>
+<p class="muted">
+اولین پست را منتشر کن!
+</p>
+</div>
 `;
-}).join("");
 }
 
-function toggleLike(id){
-const posts=getPosts();
-const post=posts.find(p=>p.id===id);
+function like(id){
 
-if(!post)return;
+const p=posts();
+const x=p.find(a=>a.id===id);
 
-if(post.liked){
-post.liked=false;
-post.likes=Math.max(0,(post.likes||0)-1);
-}else{
-post.liked=true;
-post.likes=(post.likes||0)+1;
+if(!x)return;
+
+x.liked=!x.liked;
+x.likes=Math.max(
+0,
+(x.likes||0)+(x.liked?1:-1)
+);
+
+if(x.liked){
 addXP(2);
-addNotification("❤️","پستت لایک شد");
+notify("❤️","پستت لایک شد");
 }
 
-savePosts(posts);
+savePosts(p);
 renderPosts();
-updateProfileStats();
+stats();
 }
 
-function addComment(id){
-const input=$("comment-"+id);
-if(!input)return;
+function comment(id){
 
-const text=input.value.trim();
+const i=$("c"+id);
+const v=i?.value.trim();
 
-if(!text){
+if(!v){
 toast("💬 کامنت خالیه");
 return;
 }
 
-const posts=getPosts();
-const post=posts.find(p=>p.id===id);
+const p=posts();
+const x=p.find(a=>a.id===id);
 
-if(!post)return;
+if(!x)return;
 
-if(!post.comments)post.comments=[];
-post.comments.push(text);
+x.comments??=[];
+x.comments.push(v);
 
-savePosts(posts);
+savePosts(p);
 
 addXP(3);
-addNotification("💬","یک کامنت به پستت اضافه شد");
+notify("💬","کامنت جدید ثبت شد");
 
 renderPosts();
-updateProfileStats();
-
-toast("💬 کامنت ثبت شد");
+stats();
 }
 
 function focusComment(id){
-setTimeout(()=>{
-const input=$("comment-"+id);
-if(input)input.focus();
-},100);
+setTimeout(()=>$("c"+id)?.focus(),50);
 }
 
-function deletePost(id){
-if(!confirm("این پست حذف شود؟"))return;
+function delPost(id){
 
-const posts=getPosts().filter(p=>p.id!==id);
-savePosts(posts);
+if(!confirm("پست حذف شود?"))
+return;
+
+savePosts(
+posts().filter(x=>x.id!==id)
+);
 
 renderPosts();
-updateProfileStats();
-
-toast("🗑️ پست حذف شد");
-addActivity("🗑️","یک پست حذف شد");
+stats();
+activity("🗑️","پست حذف شد");
 }
 
-async function sharePost(id){
-const post=getPosts().find(p=>p.id===id);
+async function share(id){
 
-if(!post)return;
+try{
 
-const text=post.text||"یک پست از فضای شخصی امیررضا";
+const p=posts().find(x=>x.id===id);
 
 if(navigator.share){
-try{
+
 await navigator.share({
-title:"Amirreza Personal Space",
-text:text,
+title:"Amirreza",
+text:p?.text||"پست من",
 url:location.href
 });
-}catch(e){}
+
 }else{
-try{
+
 await navigator.clipboard.writeText(location.href);
-toast("📋 لینک سایت کپی شد");
-}catch(e){
-toast("📤 امکان اشتراک‌گذاری وجود ندارد");
-}
-}
+toast("📋 لینک کپی شد");
+
 }
 
-/* IMAGE PREVIEW */
-
-function setupPreview(inputId,previewId){
-const input=$(inputId);
-const preview=$(previewId);
-
-if(!input||!preview)return;
-
-input.addEventListener("change",()=>{
-const file=input.files[0];
-
-if(!file){
-preview.style.display="none";
-return;
+}catch{}
 }
 
-const reader=new FileReader();
+/* STATS */
 
-reader.onload=e=>{
-preview.src=e.target.result;
-preview.style.display="block";
-};
+function stats(){
 
-reader.readAsDataURL(file);
-});
+const p=posts();
+
+$("posts").textContent=p.length;
+
+$("likes").textContent=
+p.reduce((a,x)=>a+(x.likes||0),0);
+
+$("comments").textContent=
+p.reduce(
+(a,x)=>a+(x.comments?.length||0),
+0
+);
 }
 
 /* NOTIFICATIONS */
 
-function getNotifications(){
-try{
-return JSON.parse(localStorage.getItem("notifications")||"[]");
-}catch(e){
-return [];
-}
-}
+function notify(icon,text){
 
-function addNotification(icon,text){
-const list=getNotifications();
+const n=read("notifications",[]);
 
-list.unshift({
+n.unshift({
 icon,
 text,
-time:new Date().toLocaleTimeString("fa-IR",{
+time:new Date().toLocaleTimeString(
+"fa-IR",
+{
 hour:"2-digit",
 minute:"2-digit"
-})
+}
+)
 });
 
-localStorage.setItem(
+write(
 "notifications",
-JSON.stringify(list.slice(0,20))
+n.slice(0,20)
 );
 
-renderNotifications();
+renderNot();
 }
 
-function renderNotifications(){
-const list=getNotifications();
+function renderNot(){
 
-const html=list.length?
-list.map(n=>`
-<div class="notification">
-<div class="not-icon">${n.icon}</div>
+const n=read("notifications",[]);
+
+const h=n.length?
+
+n.map(x=>`
+<div class="not">
+
+<span>${x.icon}</span>
+
 <div>
-<div>${escapeHTML(n.text)}</div>
-<div class="not-time">${escapeHTML(n.time)}</div>
+${esc(x.text)}
+<small>${esc(x.time)}</small>
 </div>
+
 </div>
 `).join("")
+
 :
-`<p class="muted">هنوز اعلانی نداری 🔕</p>`;
 
-if($("notificationList")){
-$("notificationList").innerHTML=html;
-}
+`<p class="muted">
+هنوز اعلانی نداری 🔕
+</p>`;
 
-if($("modalNotifications")){
-$("modalNotifications").innerHTML=html;
-}
-}
-
-/* PROFILE STATS */
-
-function updateProfileStats(){
-const posts=getPosts();
-
-let likes=0;
-let comments=0;
-
-posts.forEach(p=>{
-likes+=Number(p.likes||0);
-comments+=(p.comments||[]).length;
-});
-
-if($("postCount"))$("postCount").textContent=posts.length;
-if($("likeCount"))$("likeCount").textContent=likes;
-if($("commentCount"))$("commentCount").textContent=comments;
-}
-
-/* MISSION */
-
-function todayKey(){
-const d=new Date();
-return d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();
-}
-
-function loadMission(){
-const key=todayKey();
-let data;
-
-try{
-data=JSON.parse(localStorage.getItem("dailyMission")||"null");
-}catch(e){
-data=null;
-}
-
-if(!data||data.date!==key){
-data={
-date:key,
-index:Math.floor(Math.random()*missions.length),
-done:false
-};
-localStorage.setItem("dailyMission",JSON.stringify(data));
-}
-
-$("missionTitle").textContent=missions[data.index];
-
-if(data.done){
-$("missionCard").classList.add("done");
-$("missionBtn").textContent="انجام شد 🎉";
-$("missionBtn").disabled=true;
-}
-}
-
-function completeMission(){
-let data;
-
-try{
-data=JSON.parse(localStorage.getItem("dailyMission"));
-}catch(e){
-return;
-}
-
-if(!data||data.done)return;
-
-data.done=true;
-localStorage.setItem("dailyMission",JSON.stringify(data));
-
-$("missionCard").classList.add("done");
-$("missionBtn").textContent="انجام شد 🎉";
-$("missionBtn").disabled=true;
-
-addXP(50);
-addNotification("🎯","مأموریت روزانه انجام شد");
-toast("🎯 مأموریت کامل شد");
+$("notList").innerHTML=h;
+$("modalNot").innerHTML=h;
 }
 
 /* ACTIVITY */
 
-function getActivities(){
-try{
-return JSON.parse(localStorage.getItem("activities")||"[]");
-}catch(e){
-return [];
-}
-}
+function activity(icon,text){
 
-function addActivity(icon,text){
-const list=getActivities();
+const a=read("activities",[]);
 
-list.unshift({
+a.unshift({
 icon,
 text,
-time:new Date().toLocaleTimeString("fa-IR",{
+time:new Date().toLocaleTimeString(
+"fa-IR",
+{
 hour:"2-digit",
 minute:"2-digit"
-})
+}
+)
 });
 
-localStorage.setItem(
+write(
 "activities",
-JSON.stringify(list.slice(0,15))
+a.slice(0,15)
 );
 
-renderActivities();
+renderActivity();
 }
 
-function renderActivities(){
-const el=$("activityList");
-if(!el)return;
+function renderActivity(){
 
-const list=getActivities();
+const a=read("activities",[]);
 
-if(!list.length){
-el.innerHTML=`
-<div class="list-item">
-<span>هنوز فعالیتی ثبت نشده</span>
-<span class="tag">شروع</span>
-</div>`;
-return;
-}
+$("activities").innerHTML=a.length?
 
-el.innerHTML=list.map(x=>`
-<div class="list-item">
-<span>${x.icon} ${escapeHTML(x.text)}</span>
-<span class="tag">${escapeHTML(x.time)}</span>
+a.map(x=>`
+<div class="listItem">
+
+<span>
+${x.icon} ${esc(x.text)}
+</span>
+
+<span class="tag">
+${esc(x.time)}
+</span>
+
 </div>
-`).join("");
+`).join("")
+
+:
+
+`<div class="listItem">
+هنوز فعالیتی ثبت نشده
+</div>`;
+}
+
+/* MISSION */
+
+function loadMission(){
+
+let m=read("mission",null);
+const today=new Date().toDateString();
+
+if(!m||m.date!==today){
+
+m={
+date:today,
+i:Math.floor(Math.random()*missions.length),
+done:false
+};
+
+write("mission",m);
+}
+
+$("missionTitle").textContent=missions[m.i];
+
+if(m.done){
+
+$("missionCard").style.borderColor="var(--a2)";
+$("missionBtn").textContent="انجام شد 🎉";
+$("missionBtn").disabled=true;
+}
+}
+
+function mission(){
+
+const m=read("mission",null);
+
+if(!m||m.done)return;
+
+m.done=true;
+
+write("mission",m);
+
+$("missionBtn").textContent="انجام شد 🎉";
+$("missionBtn").disabled=true;
+
+addXP(50);
+notify("🎯","مأموریت روزانه انجام شد");
+
+toast("🎯 مأموریت کامل شد");
 }
 
 /* SEARCH */
 
-const siteData=[
-["درباره من","about"],
-["پروفایل","profile"],
+const site=[
+["خانه","home"],
 ["فید","feed"],
-["پست‌ها","feed"],
+["پروفایل","profile"],
 ["داشبورد","dashboard"],
 ["مأموریت","mission"],
 ["پروژه‌ها","projects"],
@@ -1547,200 +1519,367 @@ const siteData=[
 ];
 
 function siteSearch(){
-const q=($("siteSearch").value||"").trim().toLowerCase();
-const result=$("siteResults");
 
-if(!q){
-result.innerHTML="";
-return;
-}
+const q=$("siteSearch").value
+.trim()
+.toLowerCase();
 
-const matches=siteData.filter(x=>
-x[0].toLowerCase().includes(q)
+const r=site.filter(x=>
+x[0].includes(q)
 );
 
-if(!matches.length){
-result.innerHTML=`
-<div class="list-item">نتیجه‌ای پیدا نشد 😕</div>`;
-return;
-}
+$("results").innerHTML=
+q&&r.length?
 
-result.innerHTML=matches.map(x=>`
-<button class="list-item"
-style="width:100%;color:var(--text);border:1px solid var(--border);cursor:pointer"
+r.map(x=>`
+<button
+class="listItem"
 onclick="scrollToId('${x[1]}')">
-<span>🔎 ${escapeHTML(x[0])}</span>
-<span class="tag">مشاهده</span>
+
+🔎 ${esc(x[0])}
+
+<span class="tag">
+مشاهده
+</span>
+
 </button>
-`).join("");
+`).join("")
+
+:
+
+q?
+"<div class='listItem'>نتیجه‌ای پیدا نشد 😕</div>"
+:"";
 }
 
 /* AI */
 
-function aiAction(type){
-const messages={
-"ایده‌پردازی":"💡 یک مشکل واقعی پیدا کن و ساده‌ترین راه‌حل ممکن را بساز.",
-"یادگیری":"📚 موضوع را به قسمت‌های کوچک تقسیم کن و هر روز تمرین کن.",
-"آینده":"🚀 آینده با قدم‌های کوچک امروز ساخته می‌شود."
+function ai(x){
+
+$("aiText").textContent={
+ایده‌پردازی:
+"💡 یک مشکل واقعی پیدا کن و ساده‌ترین راه‌حل را بساز.",
+یادگیری:
+"📚 موضوع را به بخش‌های کوچک تقسیم و تمرین کن.",
+آینده:
+"🚀 آینده با قدم‌های کوچک امروز ساخته می‌شود."
+}[x];
+
+openM("ai");
+
+activity(
+"🤖",
+"AI Center: "+x
+);
+}
+
+/* SYSTEM */
+
+function backup(){
+
+const data={
+xp,
+posts:posts(),
+notifications:read("notifications",[]),
+activities:read("activities",[]),
+mission:read("mission",null)
 };
 
-$("aiText").textContent=messages[type]||"🤖 آماده‌ام.";
-openModal("aiModal");
-addActivity("🤖","استفاده از AI Center: "+type);
+localStorage.setItem(
+"backup",
+JSON.stringify(data)
+);
+
+toast("💾 بکاپ ذخیره شد");
+
+activity(
+"💾",
+"بکاپ خودکار ایجاد شد"
+);
 }
 
-/* DASHBOARD */
+function repair(){
 
-function updateVisits(){
-$("visitCount").textContent=visits;
+try{
+
+if(
+localStorage.xp&&
+!Number.isFinite(+localStorage.xp)
+){
+localStorage.xp=820;
 }
 
-function updateSession(){
-sessionSeconds++;
-
-const min=Math.floor(sessionSeconds/60);
-const sec=String(sessionSeconds%60).padStart(2,"0");
-
-$("sessionTime").textContent=min+":"+sec;
-}
-
-/* PROGRESS */
-
-function animateProgress(){
-document.querySelectorAll(".progress-bar[data-width]").forEach(bar=>{
-bar.style.width=bar.dataset.width+"%";
+["posts","notifications","activities"]
+.forEach(k=>{
+if(localStorage[k])
+JSON.parse(localStorage[k]);
 });
+
+$("health").textContent="Healthy";
+
+}catch(e){
+
+$("health").textContent="Recovery";
+
+try{
+
+const b=JSON.parse(
+localStorage.backup||"null"
+);
+
+if(b){
+
+xp=b.xp||820;
+
+localStorage.xp=xp;
+
+write("posts",b.posts||[]);
+write("notifications",b.notifications||[]);
+write("activities",b.activities||[]);
+write("mission",b.mission);
+
+}
+
+}catch{}
+
+toast("🛡️ سیستم بازیابی شد");
+}
+}
+
+function resetData(){
+
+if(!confirm(
+"اطلاعات محلی سایت پاک شود؟"
+))
+return;
+
+[
+"xp",
+"posts",
+"notifications",
+"activities",
+"mission",
+"visits"
+].forEach(k=>
+localStorage.removeItem(k)
+);
+
+location.reload();
+}
+
+/* TYPING */
+
+let wi=0,ci=0,del=false;
+
+function typing(){
+
+const e=$("typing");
+const w=words[wi];
+
+if(!del){
+
+e.textContent=w.slice(0,++ci);
+
+if(ci===w.length){
+
+del=true;
+
+return setTimeout(
+typing,
+1200
+);
+}
+
+}else{
+
+e.textContent=w.slice(0,--ci);
+
+if(!ci){
+
+del=false;
+wi=(wi+1)%words.length;
+
+}
+}
+
+setTimeout(
+typing,
+del?30:65
+);
+}
+
+/* SESSION */
+
+function sessionTick(){
+
+session++;
+
+$("session").textContent=
+Math.floor(session/60)+":"+
+String(session%60).padStart(2,"0");
 }
 
 /* REVEAL */
 
-function setupReveal(){
-const elements=document.querySelectorAll(".reveal");
+function reveal(){
 
 if(!("IntersectionObserver" in window)){
-elements.forEach(e=>e.classList.add("visible"));
-animateProgress();
+
+document
+.querySelectorAll(".reveal")
+.forEach(x=>x.classList.add("on"));
+
+document
+.querySelectorAll(".bar[data-w]")
+.forEach(x=>
+x.style.width=x.dataset.w+"%"
+);
+
 return;
 }
 
-const observer=new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-entry.target.classList.add("visible");
+const o=new IntersectionObserver(
+es=>es.forEach(e=>{
 
-entry.target
-.querySelectorAll(".progress-bar[data-width]")
-.forEach(bar=>{
-bar.style.width=bar.dataset.width+"%";
-});
+if(e.isIntersecting){
 
-observer.unobserve(entry.target);
-}
-});
-},{threshold:.12});
+e.target.classList.add("on");
 
-elements.forEach(e=>observer.observe(e));
+e.target
+.querySelectorAll(".bar[data-w]")
+.forEach(x=>
+x.style.width=x.dataset.w+"%"
+);
+
+o.unobserve(e.target);
+
 }
 
-/* NAVIGATION */
+}),
+{threshold:.1}
+);
 
-function setupNavigation(){
-const menu=$("menuBtn");
-const links=$("navLinks");
-
-menu?.addEventListener("click",()=>{
-links.classList.toggle("open");
-});
-
-links?.querySelectorAll("a").forEach(a=>{
-a.addEventListener("click",()=>{
-links.classList.remove("open");
-});
-});
+document
+.querySelectorAll(".reveal")
+.forEach(x=>o.observe(x));
 }
 
-/* MODALS */
+/* IMAGE PREVIEW */
 
-function setupModals(){
-document.querySelectorAll(".modal").forEach(modal=>{
-modal.addEventListener("click",e=>{
-if(e.target===modal){
-modal.classList.remove("show");
-}
+function preview(input,out){
+
+$(input)?.addEventListener(
+"change",
+e=>{
+
+const f=e.target.files[0];
+const p=$(out);
+
+if(!f)return;
+
+const r=new FileReader();
+
+r.onload=x=>{
+
+p.src=x.target.result;
+p.style.display="block";
+
+};
+
+r.readAsDataURL(f);
+
 });
-});
-}
-
-/* KEYBOARD */
-
-function setupKeyboard(){
-document.addEventListener("keydown",e=>{
-if(e.key==="Escape"){
-document.querySelectorAll(".modal.show")
-.forEach(m=>m.classList.remove("show"));
-}
-
-if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==="k"){
-e.preventDefault();
-scrollToId("search");
-$("siteSearch")?.focus();
-}
-});
-}
-
-/* RESET */
-
-function resetData(){
-if(!confirm("اطلاعات محلی سایت پاک شود؟"))return;
-
-[
-"xp",
-"visits",
-"posts",
-"notifications",
-"activities",
-"dailyMission"
-].forEach(k=>localStorage.removeItem(k));
-
-toast("♻️ اطلاعات پاک شد");
-
-setTimeout(()=>location.reload(),700);
 }
 
 /* INIT */
 
 function init(){
 
-loadTheme();
+loadStyle();
+repair();
 updateXP();
-updateVisits();
-updateProfileStats();
+stats();
 renderPosts();
-renderNotifications();
-renderActivities();
+renderNot();
+renderActivity();
 loadMission();
-
 typing();
+reveal();
 
-setupPreview("postImage","imagePreview");
-setupPreview("modalPostImage","modalPreview");
+preview("image","preview");
+preview("modalImage","modalPreview");
 
-setupReveal();
-setupNavigation();
-setupModals();
-setupKeyboard();
+let v=+localStorage.visits||0;
 
-setInterval(updateSession,1000);
+localStorage.visits=++v;
 
-if(!sessionStorage.getItem("startupLogged")){
-addActivity("🚀","ورود به v2.1.0 • Build 22");
-sessionStorage.setItem("startupLogged","true");
+$("visits").textContent=v;
+
+setInterval(
+sessionTick,
+1000
+);
+
+if(!sessionStorage.started){
+
+activity(
+"🚀",
+"v2.2.0 • Build 23"
+);
+
+sessionStorage.started=1;
 }
 
-setTimeout(animateProgress,400);
+window.addEventListener(
+"online",
+()=>$("offline").style.display="none"
+);
+
+window.addEventListener(
+"offline",
+()=>$("offline").style.display="block"
+);
+
+document
+.querySelectorAll(".modal")
+.forEach(m=>
+m.onclick=e=>{
+if(e.target===m)
+m.classList.remove("show");
+}
+);
+
+document.addEventListener(
+"keydown",
+e=>{
+
+if(e.key==="Escape")
+document
+.querySelectorAll(".modal.show")
+.forEach(x=>
+x.classList.remove("show")
+);
+
+if(
+(e.ctrlKey||e.metaKey)&&
+e.key.toLowerCase()==="k"
+){
+
+e.preventDefault();
+
+scrollToId("search");
+
+$("siteSearch")?.focus();
+
 }
 
-document.addEventListener("DOMContentLoaded",init);
+});
+}
+
+document.addEventListener(
+"DOMContentLoaded",
+init
+);
 </script>
 
 </body>
