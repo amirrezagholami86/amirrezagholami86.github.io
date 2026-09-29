@@ -5378,8 +5378,241 @@ document.addEventListener(
   "DOMContentLoaded",
   init
 );
+// =========================================================
+// SUPABASE AUTH
+// =========================================================
 
+async function registerUser(){
+
+  const name = $("authName").value.trim();
+  const username = $("authUsername").value.trim().replace(/^@/, "");
+  const email = $("authEmail").value.trim();
+  const password = $("authPassword").value;
+
+  if(!name || !username || !email || !password){
+    toast("⚠️ همه اطلاعات را وارد کن");
+    return;
+  }
+
+  if(password.length < 6){
+    toast("⚠️ رمز عبور باید حداقل ۶ کاراکتر باشد");
+    return;
+  }
+
+  try{
+
+    const { data, error } = await supabaseClient.auth.signUp({
+      email: email,
+      password: password,
+      options: {
+        data: {
+          username: username,
+          display_name: name
+        }
+      }
+    });
+
+    if(error) throw error;
+
+    toast("🎉 ثبت‌نام انجام شد");
+
+    $("authStatus").innerHTML =
+      "✅ حساب ساخته شد. اگر تأیید ایمیل فعال باشد، ایمیل تأیید را بررسی کن.";
+
+  }catch(error){
+
+    console.error(error);
+
+    $("authStatus").innerHTML =
+      "❌ " + escapeHTML(error.message);
+
+    toast("❌ ثبت‌نام ناموفق بود");
+  }
+}
+
+
+async function loginUser(){
+
+  const email = $("authEmail").value.trim();
+  const password = $("authPassword").value;
+
+  if(!email || !password){
+    toast("⚠️ ایمیل و رمز عبور را وارد کن");
+    return;
+  }
+
+  try{
+
+    const { data, error } =
+      await supabaseClient.auth.signInWithPassword({
+        email: email,
+        password: password
+      });
+
+    if(error) throw error;
+
+    toast("🚀 ورود موفق بود");
+
+    renderAuthUser(data.user);
+
+  }catch(error){
+
+    console.error(error);
+
+    $("authStatus").innerHTML =
+      "❌ " + escapeHTML(error.message);
+
+    toast("❌ ایمیل یا رمز عبور اشتباه است");
+  }
+}
+
+
+async function logoutUser(){
+
+  const { error } =
+    await supabaseClient.auth.signOut();
+
+  if(error){
+    toast("❌ خروج انجام نشد");
+    return;
+  }
+
+  toast("👋 از حساب خارج شدی");
+
+  $("authStatus").innerHTML =
+    "🔒 از حساب خارج شده‌ای";
+}
+
+
+function renderAuthUser(user){
+
+  if(!user) return;
+
+  const name =
+    user.user_metadata?.display_name ||
+    user.email ||
+    "کاربر";
+
+  const username =
+    user.user_metadata?.username ||
+    "user";
+
+  $("authStatus").innerHTML = `
+    <div>
+      🟢 <strong>وارد شده‌ای</strong>
+      <br>
+      👤 ${escapeHTML(name)}
+      <br>
+      @${escapeHTML(username)}
+      <br>
+      📧 ${escapeHTML(user.email || "")}
+    </div>
+  `;
+}
+
+
+async function checkAuth(){
+
+  try{
+
+    const {
+      data: { session }
+    } = await supabaseClient.auth.getSession();
+
+    if(session?.user){
+      renderAuthUser(session.user);
+    }else{
+      $("authStatus").innerHTML =
+        "🔒 هنوز وارد حساب نشده‌ای";
+    }
+
+    supabaseClient.auth.onAuthStateChange(
+      (_event, session) => {
+
+        if(session?.user){
+          renderAuthUser(session.user);
+        }else{
+          $("authStatus").innerHTML =
+            "🔒 هنوز وارد حساب نشده‌ای";
+        }
+
+      }
+    );
+
+  }catch(error){
+
+    console.error(error);
+
+    $("authStatus").innerHTML =
+      "⚠️ اتصال به سیستم حساب کاربری برقرار نشد";
+  }
+  }
 </script>
 
 </body>
+  <!-- AUTH BOX -->
+<div id="authBox" style="
+  max-width:520px;
+  margin:30px auto;
+  padding:25px;
+  border:1px solid rgba(0,229,255,.2);
+  border-radius:22px;
+  background:rgba(15,29,42,.82);
+  box-shadow:0 15px 50px rgba(0,0,0,.3);
+">
+
+  <h2 style="margin-top:0">🔐 حساب کاربری</h2>
+
+  <input
+    id="authName"
+    type="text"
+    placeholder="نام نمایشی"
+    style="width:100%;box-sizing:border-box;margin:8px 0;padding:13px;border-radius:12px;border:1px solid #ffffff22;background:#ffffff08;color:white;"
+  >
+
+  <input
+    id="authUsername"
+    type="text"
+    placeholder="نام کاربری"
+    style="width:100%;box-sizing:border-box;margin:8px 0;padding:13px;border-radius:12px;border:1px solid #ffffff22;background:#ffffff08;color:white;"
+  >
+
+  <input
+    id="authEmail"
+    type="email"
+    placeholder="ایمیل"
+    style="width:100%;box-sizing:border-box;margin:8px 0;padding:13px;border-radius:12px;border:1px solid #ffffff22;background:#ffffff08;color:white;"
+  >
+
+  <input
+    id="authPassword"
+    type="password"
+    placeholder="رمز عبور"
+    style="width:100%;box-sizing:border-box;margin:8px 0;padding:13px;border-radius:12px;border:1px solid #ffffff22;background:#ffffff08;color:white;"
+  >
+
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:15px;">
+    <button onclick="registerUser()" class="btn primary">
+      📝 ثبت‌نام
+    </button>
+
+    <button onclick="loginUser()" class="btn">
+      🔑 ورود
+    </button>
+
+    <button onclick="logoutUser()" class="btn danger">
+      🚪 خروج
+    </button>
+  </div>
+
+  <div id="authStatus" style="
+    margin-top:18px;
+    color:#91a7b8;
+    line-height:1.8;
+  ">
+    در حال بررسی وضعیت حساب...
+  </div>
+
+</div>
+<!-- END AUTH BOX -->
   </html>
