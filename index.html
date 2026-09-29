@@ -17,7 +17,177 @@
   const supabaseClient = window.supabase.createClient(
     SUPABASE_URL,
     SUPABASE_PUBLISHABLE_KEY
-  );
+  
+);
+// =========================================================
+// SUPABASE AUTH
+// =========================================================
+
+async function registerUser(){
+
+  const name = $("authName").value.trim();
+  const username = $("authUsername").value.trim().replace(/^@/, "");
+  const email = $("authEmail").value.trim();
+  const password = $("authPassword").value;
+
+  if(!name || !username || !email || !password){
+    toast("⚠️ همه اطلاعات را وارد کن");
+    return;
+  }
+
+  if(password.length < 6){
+    toast("⚠️ رمز عبور باید حداقل ۶ کاراکتر باشد");
+    return;
+  }
+
+  try{
+
+    const { data, error } = await supabaseClient.auth.signUp({
+      email: email,
+      password: password,
+      options: {
+        data: {
+          username: username,
+          display_name: name
+        }
+      }
+    });
+
+    if(error) throw error;
+
+    toast("🎉 ثبت‌نام انجام شد");
+
+    $("authStatus").innerHTML =
+      "✅ حساب ساخته شد. اگر تأیید ایمیل فعال باشد، ایمیل تأیید را بررسی کن.";
+
+  }catch(error){
+
+    console.error(error);
+
+    $("authStatus").innerHTML =
+      "❌ " + escapeHTML(error.message);
+
+    toast("❌ ثبت‌نام ناموفق بود");
+  }
+}
+
+
+async function loginUser(){
+
+  const email = $("authEmail").value.trim();
+  const password = $("authPassword").value;
+
+  if(!email || !password){
+    toast("⚠️ ایمیل و رمز عبور را وارد کن");
+    return;
+  }
+
+  try{
+
+    const { data, error } =
+      await supabaseClient.auth.signInWithPassword({
+        email: email,
+        password: password
+      });
+
+    if(error) throw error;
+
+    toast("🚀 ورود موفق بود");
+
+    renderAuthUser(data.user);
+
+  }catch(error){
+
+    console.error(error);
+
+    $("authStatus").innerHTML =
+      "❌ " + escapeHTML(error.message);
+
+    toast("❌ ایمیل یا رمز عبور اشتباه است");
+  }
+}
+
+
+async function logoutUser(){
+
+  const { error } =
+    await supabaseClient.auth.signOut();
+
+  if(error){
+    toast("❌ خروج انجام نشد");
+    return;
+  }
+
+  toast("👋 از حساب خارج شدی");
+
+  $("authStatus").innerHTML =
+    "🔒 از حساب خارج شده‌ای";
+}
+
+
+function renderAuthUser(user){
+
+  if(!user) return;
+
+  const name =
+    user.user_metadata?.display_name ||
+    user.email ||
+    "کاربر";
+
+  const username =
+    user.user_metadata?.username ||
+    "user";
+
+  $("authStatus").innerHTML = `
+    <div>
+      🟢 <strong>وارد شده‌ای</strong>
+      <br>
+      👤 ${escapeHTML(name)}
+      <br>
+      @${escapeHTML(username)}
+      <br>
+      📧 ${escapeHTML(user.email || "")}
+    </div>
+  `;
+}
+
+
+async function checkAuth(){
+
+  try{
+
+    const {
+      data: { session }
+    } = await supabaseClient.auth.getSession();
+
+    if(session?.user){
+      renderAuthUser(session.user);
+    }else{
+      $("authStatus").innerHTML =
+        "🔒 هنوز وارد حساب نشده‌ای";
+    }
+
+    supabaseClient.auth.onAuthStateChange(
+      (_event, session) => {
+
+        if(session?.user){
+          renderAuthUser(session.user);
+        }else{
+          $("authStatus").innerHTML =
+            "🔒 هنوز وارد حساب نشده‌ای";
+        }
+
+      }
+    );
+
+  }catch(error){
+
+    console.error(error);
+
+    $("authStatus").innerHTML =
+      "⚠️ اتصال به سیستم حساب کاربری برقرار نشد";
+  }
+}
 </script>
 <style>
 :root{
@@ -5253,6 +5423,8 @@ function init(){
   loadProfile();
 
   loadTheme();
+
+  checkAuth();
 
   updateMotionButton();
 
