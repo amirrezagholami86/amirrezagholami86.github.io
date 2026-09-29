@@ -2,269 +2,758 @@
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+
 <meta name="theme-color" content="#00e5ff">
 <meta name="description" content="Amirreza Gholami | Personal Social Space">
+
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="AMIRREZA.DEV">
+
 <link rel="manifest" href="./manifest.webmanifest">
-<title>امیررضا | Social Boom App</title>
+
+<title>امیررضا | AMIRREZA.DEV</title>
 
 <style>
 :root{
- --bg:#050b11;--card:#0b151e;--card2:#101e29;--text:#f4fbff;
- --muted:#8da2b1;--line:#203442;--accent:#00e5ff;
- --pink:#ff4fa3;--good:#38e58b;--danger:#ff5577;
- --shadow:0 18px 60px #0008;--r:22px
+ --bg:#050b11;
+ --card:#0b151e;
+ --card2:#101e29;
+ --text:#f4fbff;
+ --muted:#8da2b1;
+ --line:#203442;
+ --accent:#00e5ff;
+ --pink:#ff4fa3;
+ --good:#38e58b;
+ --danger:#ff5577;
+ --shadow:0 18px 60px #0008;
+ --r:22px
 }
+
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
- margin:0;color:var(--text);background:
- radial-gradient(circle at 50% -10%,#123847 0,#050b11 45%);
- font-family:Tahoma,Arial,sans-serif;line-height:1.8
+
+html{
+ scroll-behavior:smooth;
+ overscroll-behavior-y:none
 }
+
+body{
+ margin:0;
+ color:var(--text);
+ background:
+ radial-gradient(circle at 50% -10%,#123847 0,#050b11 45%);
+ font-family:Tahoma,Arial,sans-serif;
+ line-height:1.8;
+ padding-bottom:env(safe-area-inset-bottom)
+}
+
 body.light{
- --bg:#f3f8fa;--card:#fff;--card2:#edf5f8;--text:#10212b;
- --muted:#637681;--line:#d9e5ea;--shadow:0 15px 45px #18323a16;
+ --bg:#f3f8fa;
+ --card:#fff;
+ --card2:#edf5f8;
+ --text:#10212b;
+ --muted:#637681;
+ --line:#d9e5ea;
+ --shadow:0 15px 45px #18323a16;
  background:linear-gradient(#edf9fc,#fff)
 }
-body.no-motion *{animation:none!important;transition:none!important}
-button,input,textarea{font:inherit}
-button{cursor:pointer}
-a{text-decoration:none;color:inherit}
-img{max-width:100%}
+
+body.no-motion *{
+ animation:none!important;
+ transition:none!important
+}
+
+button,input,textarea{
+ font:inherit
+}
+
+button{
+ cursor:pointer
+}
+
+a{
+ text-decoration:none;
+ color:inherit
+}
+
+img{
+ max-width:100%
+}
+
+/* =========================
+   APP SPLASH
+========================= */
+
+#appSplash{
+ position:fixed;
+ inset:0;
+ z-index:9999;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ background:
+ radial-gradient(circle at 50% 30%,#123847 0,#050b11 70%);
+ transition:opacity .45s ease,visibility .45s ease
+}
+
+#appSplash.hide{
+ opacity:0;
+ visibility:hidden;
+ pointer-events:none
+}
+
+.splashInner{
+ text-align:center;
+ padding:30px
+}
+
+.splashLogo{
+ width:92px;
+ height:92px;
+ border-radius:28px;
+ object-fit:cover;
+ border:3px solid var(--accent);
+ box-shadow:0 0 45px #00e5ff44;
+ animation:splashPulse 1.5s infinite alternate
+}
+
+.splashTitle{
+ font-size:28px;
+ font-weight:900;
+ margin-top:18px;
+ color:var(--accent)
+}
+
+.splashSub{
+ color:var(--muted);
+ font-size:12px
+}
+
+.splashLoader{
+ width:130px;
+ height:4px;
+ margin:18px auto 0;
+ border-radius:99px;
+ background:#ffffff12;
+ overflow:hidden
+}
+
+.splashLoader:after{
+ content:"";
+ display:block;
+ width:45%;
+ height:100%;
+ background:var(--accent);
+ border-radius:99px;
+ animation:loader 1.1s infinite
+}
+
+@keyframes splashPulse{
+ from{transform:scale(.96);opacity:.8}
+ to{transform:scale(1);opacity:1}
+}
+
+@keyframes loader{
+ from{transform:translateX(-130px)}
+ to{transform:translateX(180px)}
+}
+
+/* =========================
+   TOP NAV
+========================= */
 
 .top{
- position:fixed;z-index:100;top:0;left:0;right:0;
- background:#050b11dd;backdrop-filter:blur(20px);
- border-bottom:1px solid var(--line)
+ position:fixed;
+ z-index:100;
+ top:0;
+ left:0;
+ right:0;
+ background:#050b11dd;
+ backdrop-filter:blur(20px);
+ border-bottom:1px solid var(--line);
+ padding-top:env(safe-area-inset-top)
 }
-.light .top{background:#ffffffdd}
+
+.light .top{
+ background:#ffffffdd
+}
+
 .nav{
- max-width:1180px;margin:auto;padding:11px 16px;
- display:flex;align-items:center;gap:9px
+ max-width:1180px;
+ margin:auto;
+ padding:11px 16px;
+ display:flex;
+ align-items:center;
+ gap:9px
 }
-.logo{font-size:19px;font-weight:900;color:var(--accent);margin-left:auto}
-.navlinks{display:flex;gap:5px}
+
+.logo{
+ font-size:19px;
+ font-weight:900;
+ color:var(--accent);
+ margin-left:auto
+}
+
+.navlinks{
+ display:flex;
+ gap:5px
+}
+
 .navlinks a,.icon{
- padding:8px 11px;border-radius:12px;color:var(--muted);
- border:1px solid transparent;background:transparent
+ padding:8px 11px;
+ border-radius:12px;
+ color:var(--muted);
+ border:1px solid transparent;
+ background:transparent
 }
-.navlinks a:hover,.navlinks a.active,.icon:hover{
- color:var(--text);background:var(--card2);border-color:var(--line)
+
+.navlinks a:hover,
+.navlinks a.active,
+.icon:hover{
+ color:var(--text);
+ background:var(--card2);
+ border-color:var(--line)
 }
-.menu{display:none}
+
+.menu{
+ display:none
+}
 
 .installBtn{
  display:none;
- padding:8px 12px;border-radius:12px;
+ padding:8px 12px;
+ border-radius:12px;
  border:1px solid var(--accent);
- background:#00e5ff16;color:var(--accent);
+ background:#00e5ff16;
+ color:var(--accent);
  font-weight:900
 }
-.installBtn.show{display:block}
 
-main{max-width:1180px;margin:auto;padding:90px 16px 100px}
-section{scroll-margin-top:80px;margin:24px 0}
+.installBtn.show{
+ display:block
+}
+
+/* =========================
+   MAIN
+========================= */
+
+main{
+ max-width:1180px;
+ margin:auto;
+ padding:90px 16px 100px
+}
+
+section{
+ scroll-margin-top:80px;
+ margin:24px 0
+}
 
 .hero{
- min-height:530px;display:grid;grid-template-columns:1.2fr .8fr;
- gap:25px;align-items:center
+ min-height:530px;
+ display:grid;
+ grid-template-columns:1.2fr .8fr;
+ gap:25px;
+ align-items:center
 }
+
 .card,.heroCard{
  background:linear-gradient(145deg,var(--card),var(--card2));
- border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow)
+ border:1px solid var(--line);
+ border-radius:var(--r);
+ box-shadow:var(--shadow)
 }
-.heroCard{padding:34px}
+
+.heroCard{
+ padding:34px
+}
+
 .badge{
- display:inline-flex;padding:5px 11px;border:1px solid var(--line);
- border-radius:999px;color:var(--accent);background:var(--card2);
+ display:inline-flex;
+ padding:5px 11px;
+ border:1px solid var(--line);
+ border-radius:999px;
+ color:var(--accent);
+ background:var(--card2);
  font-size:12px
 }
-h1{font-size:clamp(36px,6vw,67px);line-height:1.15;margin:18px 0 8px}
-h2{font-size:27px;margin:0 0 14px}
-h3{margin:7px 0}
-.muted{color:var(--muted)}
-.accent{color:var(--accent)}
-.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+
+h1{
+ font-size:clamp(36px,6vw,67px);
+ line-height:1.15;
+ margin:18px 0 8px
+}
+
+h2{
+ font-size:27px;
+ margin:0 0 14px
+}
+
+h3{
+ margin:7px 0
+}
+
+.muted{
+ color:var(--muted)
+}
+
+.accent{
+ color:var(--accent)
+}
+
+.actions{
+ display:flex;
+ gap:8px;
+ flex-wrap:wrap;
+ margin-top:14px
+}
+
 .btn{
- padding:9px 14px;border-radius:13px;border:1px solid var(--line);
- background:var(--card2);color:var(--text)
+ padding:9px 14px;
+ border-radius:13px;
+ border:1px solid var(--line);
+ background:var(--card2);
+ color:var(--text)
 }
+
 .btn.primary{
- background:var(--accent);color:#001217;
- border-color:var(--accent);font-weight:900
+ background:var(--accent);
+ color:#001217;
+ border-color:var(--accent);
+ font-weight:900
 }
-.btn.danger{color:var(--danger)}
-.btn:hover{transform:translateY(-1px)}
+
+.btn.danger{
+ color:var(--danger)
+}
+
+.btn:hover{
+ transform:translateY(-1px)
+}
 
 .avatar{
- width:48px;height:48px;border-radius:50%;object-fit:cover;
+ width:48px;
+ height:48px;
+ border-radius:50%;
+ object-fit:cover;
  border:2px solid var(--accent)
 }
+
 .cover{
- height:190px;border-radius:var(--r) var(--r) 0 0;
+ height:190px;
+ border-radius:var(--r) var(--r) 0 0;
  background:
  radial-gradient(circle at 20% 30%,#00e5ff55,transparent 25%),
  radial-gradient(circle at 80% 70%,#ff4fa344,transparent 25%),
  linear-gradient(135deg,#06131c,#102c39);
- position:relative;overflow:hidden
+ position:relative;
+ overflow:hidden
 }
-.cover:after{
- content:"";position:absolute;inset:0;
- background:linear-gradient(120deg,transparent,#fff1,transparent);
- transform:translateX(-100%);animation:shine 5s infinite
-}
-@keyframes shine{50%,100%{transform:translateX(100%)}}
-.profileHead{margin:-45px 20px 0;position:relative}
-.profileHead .avatar{width:90px;height:90px;border-width:4px}
-.profileInfo{padding:0 20px 20px}
 
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-.stat{font-size:30px;font-weight:900;color:var(--accent)}
-.small{font-size:12px}
-.progress{
- height:9px;background:#ffffff0c;border:1px solid var(--line);
- border-radius:99px;overflow:hidden;margin:8px 0
+.cover:after{
+ content:"";
+ position:absolute;
+ inset:0;
+ background:linear-gradient(120deg,transparent,#fff1,transparent);
+ transform:translateX(-100%);
+ animation:shine 5s infinite
 }
+
+@keyframes shine{
+ 50%,100%{transform:translateX(100%)}
+}
+
+.profileHead{
+ margin:-45px 20px 0;
+ position:relative
+}
+
+.profileHead .avatar{
+ width:90px;
+ height:90px;
+ border-width:4px
+}
+
+.profileInfo{
+ padding:0 20px 20px
+}
+
+.grid{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:14px
+}
+
+.grid2{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:14px
+}
+
+.stat{
+ font-size:30px;
+ font-weight:900;
+ color:var(--accent)
+}
+
+.small{
+ font-size:12px
+}
+
+.progress{
+ height:9px;
+ background:#ffffff0c;
+ border:1px solid var(--line);
+ border-radius:99px;
+ overflow:hidden;
+ margin:8px 0
+}
+
 .progressBar{
- height:100%;width:0;background:var(--accent);
+ height:100%;
+ width:0;
+ background:var(--accent);
  border-radius:99px
 }
 
-.composer{padding:18px}
-.composerTop{display:flex;gap:10px;align-items:center}
+/* =========================
+   FEED
+========================= */
+
+.composer{
+ padding:18px
+}
+
+.composerTop{
+ display:flex;
+ gap:10px;
+ align-items:center
+}
+
 textarea,input{
- width:100%;background:var(--bg);color:var(--text);
- border:1px solid var(--line);border-radius:14px;
- padding:11px;outline:0
+ width:100%;
+ background:var(--bg);
+ color:var(--text);
+ border:1px solid var(--line);
+ border-radius:14px;
+ padding:11px;
+ outline:0
 }
-textarea{min-height:90px;resize:vertical}
-textarea:focus,input:focus{border-color:var(--accent)}
-.file{display:none}
+
+textarea{
+ min-height:90px;
+ resize:vertical
+}
+
+textarea:focus,
+input:focus{
+ border-color:var(--accent)
+}
+
+.file{
+ display:none
+}
+
 .preview{
- display:none;max-height:300px;width:100%;
- object-fit:contain;margin-top:10px;border-radius:15px
+ display:none;
+ max-height:300px;
+ width:100%;
+ object-fit:contain;
+ margin-top:10px;
+ border-radius:15px
 }
 
-.tabs{display:flex;gap:7px;overflow:auto;margin:14px 0}
+.tabs{
+ display:flex;
+ gap:7px;
+ overflow:auto;
+ margin:14px 0
+}
+
 .tabs button.active{
- background:var(--accent);color:#001217;font-weight:900
+ background:var(--accent);
+ color:#001217;
+ font-weight:900
 }
 
-.post{padding:17px;margin-top:14px}
-.postHead{display:flex;align-items:center;gap:9px}
-.postName{font-weight:900}
-.postText{white-space:pre-wrap;margin:13px 0}
+.post{
+ padding:17px;
+ margin-top:14px
+}
+
+.postHead{
+ display:flex;
+ align-items:center;
+ gap:9px
+}
+
+.postName{
+ font-weight:900
+}
+
+.postText{
+ white-space:pre-wrap;
+ margin:13px 0
+}
+
 .postImg{
- width:100%;max-height:550px;object-fit:contain;
- border-radius:16px;background:#0003;margin-top:8px
+ width:100%;
+ max-height:550px;
+ object-fit:contain;
+ border-radius:16px;
+ background:#0003;
+ margin-top:8px
 }
-.postActions{display:flex;gap:6px;flex-wrap:wrap;margin-top:11px}
+
+.postActions{
+ display:flex;
+ gap:6px;
+ flex-wrap:wrap;
+ margin-top:11px
+}
+
 .postActions button{
- border:0;background:var(--card2);color:var(--muted);
- padding:7px 11px;border-radius:12px
+ border:0;
+ background:var(--card2);
+ color:var(--muted);
+ padding:7px 11px;
+ border-radius:12px
 }
-.postActions button.liked{color:var(--pink)}
+
+.postActions button.liked{
+ color:var(--pink)
+}
+
 .comments{
  border-top:1px solid var(--line);
- margin-top:12px;padding-top:10px
+ margin-top:12px;
+ padding-top:10px
 }
-.comment{padding:6px 0;border-bottom:1px solid var(--line)}
-.commentForm{display:flex;gap:7px;margin-top:8px}
-.commentForm input{flex:1}
+
+.comment{
+ padding:6px 0;
+ border-bottom:1px solid var(--line)
+}
+
+.commentForm{
+ display:flex;
+ gap:7px;
+ margin-top:8px
+}
+
+.commentForm input{
+ flex:1
+}
 
 .notice{
- padding:10px 12px;background:var(--card2);
- border:1px solid var(--line);border-radius:13px;margin:7px 0
+ padding:10px 12px;
+ background:var(--card2);
+ border:1px solid var(--line);
+ border-radius:13px;
+ margin:7px 0
 }
-.unread{border-color:var(--accent)}
-.empty{text-align:center;padding:25px}
+
+.unread{
+ border-color:var(--accent)
+}
+
+.empty{
+ text-align:center;
+ padding:25px
+}
 
 .gallery{
- display:grid;grid-template-columns:repeat(4,1fr);gap:7px
-}
-.gallery img{
- width:100%;aspect-ratio:1;object-fit:cover;
- border-radius:12px;cursor:pointer;border:1px solid var(--line)
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:7px
 }
 
-.timeline{padding:20px;position:relative}
-.event{
- padding:8px 20px 14px;border-right:2px solid var(--line);
+.gallery img{
+ width:100%;
+ aspect-ratio:1;
+ object-fit:cover;
+ border-radius:12px;
+ cursor:pointer;
+ border:1px solid var(--line)
+}
+
+.timeline{
+ padding:20px;
  position:relative
 }
+
+.event{
+ padding:8px 20px 14px;
+ border-right:2px solid var(--line);
+ position:relative
+}
+
 .event:before{
- content:"";position:absolute;right:-6px;top:14px;
- width:10px;height:10px;border-radius:50%;
+ content:"";
+ position:absolute;
+ right:-6px;
+ top:14px;
+ width:10px;
+ height:10px;
+ border-radius:50%;
  background:var(--accent)
 }
 
-.search{display:flex;gap:8px}
-.search input{flex:1}
+.search{
+ display:flex;
+ gap:8px
+}
+
+.search input{
+ flex:1
+}
+
+/* =========================
+   MODAL / TOAST
+========================= */
 
 .modal{
- display:none;position:fixed;inset:0;background:#000a;
- z-index:300;align-items:center;justify-content:center;padding:15px
+ display:none;
+ position:fixed;
+ inset:0;
+ background:#000a;
+ z-index:300;
+ align-items:center;
+ justify-content:center;
+ padding:15px
 }
-.modal.show{display:flex}
+
+.modal.show{
+ display:flex
+}
+
 .modalBox{
- width:min(580px,100%);max-height:88vh;overflow:auto;
- background:var(--card);border:1px solid var(--line);
- border-radius:22px;padding:20px
+ width:min(580px,100%);
+ max-height:88vh;
+ overflow:auto;
+ background:var(--card);
+ border:1px solid var(--line);
+ border-radius:22px;
+ padding:20px
 }
 
 .toast{
- position:fixed;z-index:500;bottom:25px;left:50%;
- transform:translate(-50%,20px);opacity:0;
- background:var(--card);border:1px solid var(--accent);
- padding:9px 16px;border-radius:13px;transition:.25s
+ position:fixed;
+ z-index:500;
+ bottom:25px;
+ left:50%;
+ transform:translate(-50%,20px);
+ opacity:0;
+ background:var(--card);
+ border:1px solid var(--accent);
+ padding:9px 16px;
+ border-radius:13px;
+ transition:.25s
 }
+
 .toast.show{
- opacity:1;transform:translate(-50%,0)
+ opacity:1;
+ transform:translate(-50%,0)
 }
+
+/* =========================
+   BOTTOM NAV
+========================= */
 
 .bottom{
- display:none;position:fixed;bottom:0;left:0;right:0;
- z-index:100;grid-template-columns:repeat(5,1fr);
- background:#050b11ee;border-top:1px solid var(--line);
- backdrop-filter:blur(18px)
+ display:none;
+ position:fixed;
+ bottom:0;
+ left:0;
+ right:0;
+ z-index:100;
+ grid-template-columns:repeat(5,1fr);
+ background:#050b11ee;
+ border-top:1px solid var(--line);
+ backdrop-filter:blur(18px);
+ padding-bottom:env(safe-area-inset-bottom)
 }
-.light .bottom{background:#fffffff0}
+
+.light .bottom{
+ background:#fffffff0
+}
+
 .bottom a{
- text-align:center;color:var(--muted);
- font-size:10px;padding:5px
+ text-align:center;
+ color:var(--muted);
+ font-size:10px;
+ padding:5px
 }
-.bottom span{display:block;font-size:18px}
-.bottom a.active{color:var(--accent)}
+
+.bottom span{
+ display:block;
+ font-size:18px
+}
+
+.bottom a.active{
+ color:var(--accent)
+}
+
+/* =========================
+   EFFECTS
+========================= */
 
 #glow{
- position:fixed;width:230px;height:230px;border-radius:50%;
+ position:fixed;
+ width:230px;
+ height:230px;
+ border-radius:50%;
  background:radial-gradient(circle,#00e5ff16,transparent 70%);
- pointer-events:none;transform:translate(-50%,-50%);
+ pointer-events:none;
+ transform:translate(-50%,-50%);
  z-index:-1
 }
+
 .reveal{
- opacity:0;transform:translateY(15px);transition:.7s
+ opacity:0;
+ transform:translateY(15px);
+ transition:.7s
 }
+
 .reveal.visible{
- opacity:1;transform:none
+ opacity:1;
+ transform:none
 }
 
 .pwaCard{
- position:relative;overflow:hidden
+ position:relative;
+ overflow:hidden
 }
+
 .pwaCard:before{
  content:"";
  position:absolute;
- width:180px;height:180px;
+ width:180px;
+ height:180px;
  border-radius:50%;
  background:radial-gradient(circle,#00e5ff22,transparent 70%);
- left:-50px;top:-70px
+ left:-50px;
+ top:-70px
+}
+
+.appModeNotice{
+ display:none;
+ position:fixed;
+ left:12px;
+ right:12px;
+ bottom:80px;
+ z-index:150;
+ padding:11px 14px;
+ border-radius:15px;
+ background:var(--card);
+ border:1px solid var(--accent);
+ box-shadow:var(--shadow);
+ text-align:center
+}
+
+.appModeNotice.show{
+ display:block
 }
 
 footer{
@@ -274,19 +763,50 @@ footer{
  font-size:12px
 }
 
+/* =========================
+   MOBILE
+========================= */
+
 @media(max-width:850px){
- .hero{grid-template-columns:1fr;text-align:center}
- .grid,.grid2{grid-template-columns:1fr}
- .navlinks{display:none}
- .menu{display:block}
- .navlinks.open{
-  display:flex;position:absolute;top:58px;
-  right:10px;left:10px;padding:9px;
-  background:var(--card);border:1px solid var(--line);
-  border-radius:15px;flex-wrap:wrap
+
+ .hero{
+  grid-template-columns:1fr;
+  text-align:center
  }
- .bottom{display:grid}
- main{padding-bottom:105px}
+
+ .grid,.grid2{
+  grid-template-columns:1fr
+ }
+
+ .navlinks{
+  display:none
+ }
+
+ .menu{
+  display:block
+ }
+
+ .navlinks.open{
+  display:flex;
+  position:absolute;
+  top:58px;
+  right:10px;
+  left:10px;
+  padding:9px;
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:15px;
+  flex-wrap:wrap
+ }
+
+ .bottom{
+  display:grid
+ }
+
+ main{
+  padding-bottom:105px
+ }
+
  .installBtn{
   margin-right:0;
   font-size:11px
@@ -294,26 +814,76 @@ footer{
 }
 
 @media(max-width:500px){
- .heroCard{padding:19px}
- .gallery{grid-template-columns:repeat(3,1fr)}
- .cover{height:150px}
- .logo{font-size:15px}
- .installBtn{padding:6px 9px}
+
+ .heroCard{
+  padding:19px
+ }
+
+ .gallery{
+  grid-template-columns:repeat(3,1fr)
+ }
+
+ .cover{
+  height:150px
+ }
+
+ .logo{
+  font-size:15px
+ }
+
+ .installBtn{
+  padding:6px 9px
+ }
+
+ h2{
+  font-size:23px
+ }
 }
 </style>
 </head>
 
 <body>
+
+<!-- APP SPLASH -->
+<div id="appSplash">
+
+<div class="splashInner">
+
+<img
+ class="splashLogo"
+ src="profile.jpg"
+ alt="AMIRREZA.DEV">
+
+<div class="splashTitle">
+AMIRREZA.DEV
+</div>
+
+<div class="splashSub">
+Personal Social Space • Build 29
+</div>
+
+<div class="splashLoader"></div>
+
+</div>
+
+</div>
+
 <div id="glow"></div>
 
 <header class="top">
+
 <nav class="nav">
 
-<div class="logo">AMIRREZA.DEV</div>
+<div class="logo">
+AMIRREZA.DEV
+</div>
 
-<button class="icon menu" id="menuBtn">☰</button>
+<button class="icon menu" id="menuBtn">
+☰
+</button>
 
 <div class="navlinks" id="navLinks">
+
 <a href="#home">خانه</a>
 <a href="#profile">پروفایل</a>
 <a href="#feed">فید</a>
@@ -321,12 +891,23 @@ footer{
 <a href="#projects">پروژه‌ها</a>
 <a href="#ai">AI</a>
 <a href="#settings">تنظیمات</a>
+
 </div>
 
-<button class="installBtn" id="installBtn">📱 نصب اپ</button>
-<button class="icon" id="themeBtn">🌙</button>
+<button
+ class="installBtn"
+ id="installBtn">
+📱 نصب اپ
+</button>
+
+<button
+ class="icon"
+ id="themeBtn">
+🌙
+</button>
 
 </nav>
+
 </header>
 
 <main>
@@ -335,10 +916,16 @@ footer{
 
 <div class="heroCard">
 
-<span class="badge">💥 SOCIAL BOOM • v2.6.0 • Build 28</span>
+<span class="badge">
+💥 SOCIAL BOOM • v2.7.0 • Build 29
+</span>
 
 <h1>
-سلام، من <span class="accent" id="heroName">امیررضا</span> هستم 👋
+سلام، من
+<span class="accent" id="heroName">
+امیررضا
+</span>
+هستم 👋
 </h1>
 
 <p class="muted">
@@ -360,18 +947,35 @@ footer{
 </div>
 
 <div class="progress">
-<div class="progressBar" id="xpBar"></div>
+<div
+ class="progressBar"
+ id="xpBar">
+</div>
 </div>
 
 <div class="actions">
 
-<a class="btn primary" href="#feed">🚀 رفتن به فید</a>
+<a
+ class="btn primary"
+ href="#feed">
+🚀 رفتن به فید
+</a>
 
-<a class="btn" href="#profile">👤 پروفایل</a>
+<a
+ class="btn"
+ href="#profile">
+👤 پروفایل
+</a>
 
-<button class="btn" id="vcardBtn">📇 vCard</button>
+<button
+ class="btn"
+ id="vcardBtn">
+📇 vCard
+</button>
 
-<button class="btn primary" id="heroInstallBtn">
+<button
+ class="btn primary"
+ id="heroInstallBtn">
 📱 نصب AMIRREZA.DEV
 </button>
 
@@ -382,10 +986,10 @@ footer{
 <div>
 
 <img
-class="profileHead avatar"
-style="width:min(330px,75vw);height:min(330px,75vw);border-radius:30%;object-fit:cover"
-src="profile.jpg"
-alt="امیررضا">
+ class="profileHead avatar"
+ style="width:min(330px,75vw);height:min(330px,75vw);border-radius:30%;object-fit:cover"
+ src="profile.jpg"
+ alt="امیررضا">
 
 </div>
 
@@ -400,41 +1004,79 @@ alt="امیررضا">
 <div class="cover"></div>
 
 <div class="profileHead">
-<img class="avatar" src="profile.jpg" alt="">
+
+<img
+ class="avatar"
+ src="profile.jpg"
+ alt="">
+
 </div>
 
 <div class="profileInfo">
 
-<div class="actions" style="float:left">
-<button class="btn primary" id="editProfileBtn">✏️ ویرایش</button>
+<div
+ class="actions"
+ style="float:left">
+
+<button
+ class="btn primary"
+ id="editProfileBtn">
+✏️ ویرایش
+</button>
+
 </div>
 
-<h2 id="profileName">امیررضا غلامی</h2>
+<h2 id="profileName">
+امیررضا غلامی
+</h2>
 
-<p class="muted" id="profileBio">
+<p
+ class="muted"
+ id="profileBio">
 Personal Creator • Developer • Dreamer
 </p>
 
 <div class="grid">
 
 <div>
-<div class="stat" id="profilePosts">0</div>
-<span class="muted">Posts</span>
+<div
+ class="stat"
+ id="profilePosts">
+0
+</div>
+<span class="muted">
+Posts
+</span>
 </div>
 
 <div>
-<div class="stat" id="profileLikes">0</div>
-<span class="muted">Likes</span>
+<div
+ class="stat"
+ id="profileLikes">
+0
+</div>
+<span class="muted">
+Likes
+</span>
 </div>
 
 <div>
-<div class="stat" id="profileComments">0</div>
-<span class="muted">Comments</span>
+<div
+ class="stat"
+ id="profileComments">
+0
+</div>
+<span class="muted">
+Comments
+</span>
 </div>
 
 </div>
+
 </div>
+
 </div>
+
 </section>
 
 <section id="feed" class="reveal">
@@ -445,11 +1087,21 @@ Personal Creator • Developer • Dreamer
 
 <div class="composerTop">
 
-<img class="avatar" src="profile.jpg" alt="">
+<img
+ class="avatar"
+ src="profile.jpg"
+ alt="">
 
 <div>
-<b id="composerName">امیررضا غلامی</b>
-<div class="small muted">Public post</div>
+
+<b id="composerName">
+امیررضا غلامی
+</b>
+
+<div class="small muted">
+Public post
+</div>
+
 </div>
 
 </div>
@@ -457,22 +1109,32 @@ Personal Creator • Developer • Dreamer
 <br>
 
 <textarea
-id="postText"
-placeholder="چه خبر؟ چیزی برای گفتن داری؟ 🚀"></textarea>
+ id="postText"
+ placeholder="چه خبر؟ چیزی برای گفتن داری؟ 🚀">
+</textarea>
 
-<img class="preview" id="preview" alt="preview">
+<img
+ class="preview"
+ id="preview"
+ alt="preview">
 
 <div class="actions">
 
-<label class="btn" for="imageInput">🖼️ عکس</label>
+<label
+ class="btn"
+ for="imageInput">
+🖼️ عکس
+</label>
 
 <input
-class="file"
-id="imageInput"
-type="file"
-accept="image/*">
+ class="file"
+ id="imageInput"
+ type="file"
+ accept="image/*">
 
-<button class="btn primary" id="publishBtn">
+<button
+ class="btn primary"
+ id="publishBtn">
 🚀 انتشار پست
 </button>
 
@@ -482,29 +1144,39 @@ accept="image/*">
 
 <div class="tabs">
 
-<button class="btn active" data-filter="all">
+<button
+ class="btn active"
+ data-filter="all">
 📰 همه
 </button>
 
-<button class="btn" data-filter="image">
+<button
+ class="btn"
+ data-filter="image">
 🖼️ تصاویر
 </button>
 
-<button class="btn" data-filter="popular">
+<button
+ class="btn"
+ data-filter="popular">
 🔥 محبوب
 </button>
 
 </div>
 
-<div class="card" style="padding:13px">
+<div
+ class="card"
+ style="padding:13px">
 
 <div class="search">
 
 <input
-id="postSearch"
-placeholder="🔎 جست‌وجوی پست‌ها">
+ id="postSearch"
+ placeholder="🔎 جست‌وجوی پست‌ها">
 
-<button class="btn" id="clearSearch">
+<button
+ class="btn"
+ id="clearSearch">
 پاک
 </button>
 
@@ -522,13 +1194,19 @@ placeholder="🔎 جست‌وجوی پست‌ها">
 
 <div class="actions">
 
-<button class="btn" id="readAll">
+<button
+ class="btn"
+ id="readAll">
 ✅ خواندن همه
 </button>
 
 </div>
 
-<div class="card" id="notificationBox" style="padding:12px"></div>
+<div
+ class="card"
+ id="notificationBox"
+ style="padding:12px">
+</div>
 
 </section>
 
@@ -538,36 +1216,101 @@ placeholder="🔎 جست‌وجوی پست‌ها">
 
 <div class="grid">
 
-<div class="card" style="padding:20px">
-<div class="small muted">بازدید</div>
-<div class="stat" id="visits">0</div>
+<div
+ class="card"
+ style="padding:20px">
+
+<div class="small muted">
+بازدید
 </div>
 
-<div class="card" style="padding:20px">
-<div class="small muted">Posts</div>
-<div class="stat" id="dashPosts">0</div>
+<div
+ class="stat"
+ id="visits">
+0
 </div>
 
-<div class="card" style="padding:20px">
-<div class="small muted">Likes</div>
-<div class="stat" id="dashLikes">0</div>
 </div>
 
-<div class="card" style="padding:20px">
-<div class="small muted">Comments</div>
-<div class="stat" id="dashComments">0</div>
+<div
+ class="card"
+ style="padding:20px">
+
+<div class="small muted">
+Posts
 </div>
 
-<div class="card" style="padding:20px">
-<div class="small muted">Streak</div>
+<div
+ class="stat"
+ id="dashPosts">
+0
+</div>
+
+</div>
+
+<div
+ class="card"
+ style="padding:20px">
+
+<div class="small muted">
+Likes
+</div>
+
+<div
+ class="stat"
+ id="dashLikes">
+0
+</div>
+
+</div>
+
+<div
+ class="card"
+ style="padding:20px">
+
+<div class="small muted">
+Comments
+</div>
+
+<div
+ class="stat"
+ id="dashComments">
+0
+</div>
+
+</div>
+
+<div
+ class="card"
+ style="padding:20px">
+
+<div class="small muted">
+Streak
+</div>
+
 <div class="stat">
-🔥 <span id="dashStreak">0</span>
-</div>
+🔥
+<span id="dashStreak">
+0
+</span>
 </div>
 
-<div class="card" style="padding:20px">
-<div class="small muted">Session</div>
-<div class="stat" id="session">00:00</div>
+</div>
+
+<div
+ class="card"
+ style="padding:20px">
+
+<div class="small muted">
+Session
+</div>
+
+<div
+ class="stat"
+ id="session">
+00:00
+</div>
+
 </div>
 
 </div>
@@ -578,15 +1321,21 @@ placeholder="🔎 جست‌وجوی پست‌ها">
 
 <h2>🎯 Daily Mission</h2>
 
-<div class="card" style="padding:20px">
+<div
+ class="card"
+ style="padding:20px">
 
-<h3>امروز یک فعالیت انجام بده 🚀</h3>
+<h3>
+امروز یک فعالیت انجام بده 🚀
+</h3>
 
 <p class="muted">
 با انجام مأموریت XP بگیر.
 </p>
 
-<button class="btn primary" id="missionBtn">
+<button
+ class="btn primary"
+ id="missionBtn">
 انجام شد +20 XP
 </button>
 
@@ -598,12 +1347,22 @@ placeholder="🔎 جست‌وجوی پست‌ها">
 
 <h2>🔥 Daily Streak</h2>
 
-<div class="card" style="padding:25px;text-align:center">
+<div
+ class="card"
+ style="padding:25px;text-align:center">
 
-<div style="font-size:60px">🔥</div>
+<div style="font-size:60px">
+🔥
+</div>
 
 <div class="stat">
-<span id="streakBig">0</span> روز
+
+<span id="streakBig">
+0
+</span>
+
+روز
+
 </div>
 
 <p class="muted">
@@ -620,28 +1379,63 @@ placeholder="🔎 جست‌وجوی پست‌ها">
 
 <div class="grid2">
 
-<div class="card" style="padding:20px">
+<div
+ class="card"
+ style="padding:20px">
 
-<h3>⭐ Level Progress</h3>
+<h3>
+⭐ Level Progress
+</h3>
 
-<div class="stat" id="growthLevel">8</div>
+<div
+ class="stat"
+ id="growthLevel">
+8
+</div>
 
 <div class="progress">
-<div class="progressBar" id="growthBar"></div>
+
+<div
+ class="progressBar"
+ id="growthBar">
 </div>
 
-<p class="muted" id="growthText"></p>
+</div>
+
+<p
+ class="muted"
+ id="growthText">
+</p>
 
 </div>
 
-<div class="card" style="padding:20px">
+<div
+ class="card"
+ style="padding:20px">
 
-<h3>🚀 Activity</h3>
+<h3>
+🚀 Activity
+</h3>
 
-<p>Posts: <b id="growthPosts">0</b></p>
-<p>Likes: <b id="growthLikes">0</b></p>
-<p>Comments: <b id="growthComments">0</b></p>
-<p>Achievements: <b id="achCount">0</b></p>
+<p>
+Posts:
+<b id="growthPosts">0</b>
+</p>
+
+<p>
+Likes:
+<b id="growthLikes">0</b>
+</p>
+
+<p>
+Comments:
+<b id="growthComments">0</b>
+</p>
+
+<p>
+Achievements:
+<b id="achCount">0</b>
+</p>
 
 </div>
 
@@ -653,7 +1447,10 @@ placeholder="🔎 جست‌وجوی پست‌ها">
 
 <h2>🏆 Achievements</h2>
 
-<div class="grid" id="achievementBox"></div>
+<div
+ class="grid"
+ id="achievementBox">
+</div>
 
 </section>
 
@@ -663,22 +1460,58 @@ placeholder="🔎 جست‌وجوی پست‌ها">
 
 <div class="grid">
 
-<div class="card" style="padding:20px">
-<h3>AMIRREZA.DEV</h3>
-<p class="muted">Personal Social Network</p>
-<span class="badge">ACTIVE</span>
+<div
+ class="card"
+ style="padding:20px">
+
+<h3>
+AMIRREZA.DEV
+</h3>
+
+<p class="muted">
+Personal Social Network
+</p>
+
+<span class="badge">
+ACTIVE
+</span>
+
 </div>
 
-<div class="card" style="padding:20px">
-<h3>AI Center</h3>
-<p class="muted">مرکز هوش مصنوعی شخصی</p>
-<span class="badge">BUILDING</span>
+<div
+ class="card"
+ style="padding:20px">
+
+<h3>
+AI Center
+</h3>
+
+<p class="muted">
+مرکز هوش مصنوعی شخصی
+</p>
+
+<span class="badge">
+BUILDING
+</span>
+
 </div>
 
-<div class="card" style="padding:20px">
-<h3>Future</h3>
-<p class="muted">پروژه‌های آینده</p>
-<span class="badge">SOON</span>
+<div
+ class="card"
+ style="padding:20px">
+
+<h3>
+Future
+</h3>
+
+<p class="muted">
+پروژه‌های آینده
+</p>
+
+<span class="badge">
+SOON
+</span>
+
 </div>
 
 </div>
@@ -689,7 +1522,10 @@ placeholder="🔎 جست‌وجوی پست‌ها">
 
 <h2>🕐 Timeline</h2>
 
-<div class="card timeline" id="timelineBox"></div>
+<div
+ class="card timeline"
+ id="timelineBox">
+</div>
 
 </section>
 
@@ -697,11 +1533,18 @@ placeholder="🔎 جست‌وجوی پست‌ها">
 
 <h2>🖼️ Media Center</h2>
 
-<div class="card" style="padding:15px">
+<div
+ class="card"
+ style="padding:15px">
 
-<div class="gallery" id="galleryBox"></div>
+<div
+ class="gallery"
+ id="galleryBox">
+</div>
 
-<p class="muted" id="galleryEmpty">
+<p
+ class="muted"
+ id="galleryEmpty">
 هنوز تصویری منتشر نشده.
 </p>
 
@@ -713,13 +1556,17 @@ placeholder="🔎 جست‌وجوی پست‌ها">
 
 <h2>🤖 AI Center</h2>
 
-<div class="card" style="padding:20px">
+<div
+ class="card"
+ style="padding:20px">
 
 <p class="muted">
 مرکز ابزارهای هوش مصنوعی شخصی.
 </p>
 
-<button class="btn primary" id="aiBtn">
+<button
+ class="btn primary"
+ id="aiBtn">
 ✨ باز کردن AI Center
 </button>
 
@@ -731,15 +1578,19 @@ placeholder="🔎 جست‌وجوی پست‌ها">
 
 <h2>🔎 Site Search</h2>
 
-<div class="card" style="padding:15px">
+<div
+ class="card"
+ style="padding:15px">
 
 <div class="search">
 
 <input
-id="siteSearch"
-placeholder="جست‌وجو در سایت...">
+ id="siteSearch"
+ placeholder="جست‌وجو در سایت...">
 
-<button class="btn primary" id="siteSearchBtn">
+<button
+ class="btn primary"
+ id="siteSearchBtn">
 جست‌وجو
 </button>
 
@@ -756,9 +1607,9 @@ placeholder="جست‌وجو در سایت...">
 <h2>📜 Activity Log</h2>
 
 <div
-class="card"
-style="padding:12px"
-id="activityBox">
+ class="card"
+ style="padding:12px"
+ id="activityBox">
 </div>
 
 </section>
@@ -769,25 +1620,37 @@ id="activityBox">
 
 <div class="grid2">
 
-<div class="card" style="padding:20px">
+<div
+ class="card"
+ style="padding:20px">
 
-<h3>🎨 Accent</h3>
+<h3>
+🎨 Accent
+</h3>
 
 <div class="actions">
 
-<button class="btn" data-accent="#00e5ff">
+<button
+ class="btn"
+ data-accent="#00e5ff">
 Cyan
 </button>
 
-<button class="btn" data-accent="#39e58c">
+<button
+ class="btn"
+ data-accent="#39e58c">
 Green
 </button>
 
-<button class="btn" data-accent="#ff9f43">
+<button
+ class="btn"
+ data-accent="#ff9f43">
 Orange
 </button>
 
-<button class="btn" data-accent="#ff4fa3">
+<button
+ class="btn"
+ data-accent="#ff4fa3">
 Pink
 </button>
 
@@ -795,55 +1658,79 @@ Pink
 
 </div>
 
-<div class="card" style="padding:20px">
+<div
+ class="card"
+ style="padding:20px">
 
-<h3>✨ Motion</h3>
+<h3>
+✨ Motion
+</h3>
 
-<button class="btn" id="motionBtn">
+<button
+ class="btn"
+ id="motionBtn">
 تغییر Motion
 </button>
 
 </div>
 
-<div class="card" style="padding:20px">
+<div
+ class="card"
+ style="padding:20px">
 
-<h3>🛡️ Smart Repair</h3>
+<h3>
+🛡️ Smart Repair
+</h3>
 
 <p class="muted small">
 بررسی و اصلاح ساختار اطلاعات.
 </p>
 
-<button class="btn" id="repairBtn">
+<button
+ class="btn"
+ id="repairBtn">
 🔧 Repair
 </button>
 
 </div>
 
-<div class="card" style="padding:20px">
+<div
+ class="card"
+ style="padding:20px">
 
-<h3>💾 Data Center</h3>
+<h3>
+💾 Data Center
+</h3>
 
 <div class="actions">
 
-<button class="btn" id="backupBtn">
+<button
+ class="btn"
+ id="backupBtn">
 Backup
 </button>
 
-<button class="btn" id="exportBtn">
+<button
+ class="btn"
+ id="exportBtn">
 Export
 </button>
 
-<label class="btn" for="importInput">
+<label
+ class="btn"
+ for="importInput">
 Import
 </label>
 
 <input
-class="file"
-id="importInput"
-type="file"
-accept=".json,application/json">
+ class="file"
+ id="importInput"
+ type="file"
+ accept=".json,application/json">
 
-<button class="btn danger" id="resetBtn">
+<button
+ class="btn danger"
+ id="resetBtn">
 Reset
 </button>
 
@@ -851,20 +1738,28 @@ Reset
 
 </div>
 
-<div class="card pwaCard" style="padding:20px">
+<div
+ class="card pwaCard"
+ style="padding:20px">
 
-<h3>📱 AMIRREZA.DEV App</h3>
+<h3>
+📱 AMIRREZA.DEV App
+</h3>
 
 <p class="muted">
-نسخه وب‌اپلیکیشن سایت برای نصب روی گوشی.
+وب‌اپلیکیشن شخصی امیررضا برای گوشی.
 </p>
 
-<button class="btn primary" id="settingsInstallBtn">
+<button
+ class="btn primary"
+ id="settingsInstallBtn">
 🚀 نصب اپ روی گوشی
 </button>
 
-<p class="small muted" id="installHint">
-اگر گزینه نصب نمایش داده نشد، مرورگر ممکن است نصب خودکار را پشتیبانی نکند.
+<p
+ class="small muted"
+ id="installHint">
+اپ نصب‌شده آماده استفاده است.
 </p>
 
 </div>
@@ -880,25 +1775,25 @@ Reset
 <div class="grid">
 
 <a
-class="card"
-style="padding:20px"
-href="https://www.instagram.com/amirrezagholami.ir"
-target="_blank">
+ class="card"
+ style="padding:20px"
+ href="https://www.instagram.com/amirrezagholami.ir"
+ target="_blank">
 📸 Instagram
 </a>
 
 <a
-class="card"
-style="padding:20px"
-href="https://t.me/Amirrezagholami_ir"
-target="_blank">
+ class="card"
+ style="padding:20px"
+ href="https://t.me/Amirrezagholami_ir"
+ target="_blank">
 ✈️ Telegram
 </a>
 
 <a
-class="card"
-style="padding:20px"
-href="mailto:amirrezaamirreza275@gmail.com">
+ class="card"
+ style="padding:20px"
+ href="mailto:amirrezaamirreza275@gmail.com">
 📧 Email
 </a>
 
@@ -937,7 +1832,15 @@ AI
 
 </nav>
 
-<div class="modal" id="modal">
+<div
+ class="appModeNotice"
+ id="appModeNotice">
+📱 در حالت اپ AMIRREZA.DEV هستی 🚀
+</div>
+
+<div
+ class="modal"
+ id="modal">
 
 <div class="modalBox">
 
@@ -945,7 +1848,9 @@ AI
 
 <div class="actions">
 
-<button class="btn" id="closeModal">
+<button
+ class="btn"
+ id="closeModal">
 بستن
 </button>
 
@@ -955,14 +1860,17 @@ AI
 
 </div>
 
-<div class="toast" id="toast"></div>
+<div
+ class="toast"
+ id="toast">
+</div>
 
 <footer>
 
 AMIRREZA.DEV • Personal Social Space<br>
 
 <b>
-v2.6.0 • Build 28 — AMIRREZA APP 🚀
+v2.7.0 • Build 29 — AMIRREZA APP 🚀
 </b>
 
 </footer>
@@ -998,6 +1906,7 @@ let recovering=false;
 let sessionStart=Date.now();
 
 let deferredInstallPrompt=null;
+let appInstalled=false;
 
 const $=id=>document.getElementById(id);
 
@@ -1026,7 +1935,10 @@ function day(){
 
 function save(){
  try{
-  localStorage.setItem(KEY,JSON.stringify(state));
+  localStorage.setItem(
+   KEY,
+   JSON.stringify(state)
+  );
  }catch(e){
   try{
    localStorage.setItem(
@@ -1177,7 +2089,6 @@ function toast(msg){
  if(!t)return;
 
  t.textContent=msg;
-
  t.classList.add("show");
 
  clearTimeout(toastTimer);
@@ -1210,7 +2121,9 @@ function applyStyle(){
 
  if(theme){
   theme.textContent=
-   state.theme==="light"?"☀️":"🌙";
+   state.theme==="light"
+    ?"☀️"
+    :"🌙";
  }
 
 }
@@ -1218,7 +2131,9 @@ function applyStyle(){
 function setTheme(){
 
  state.theme=
-  state.theme==="light"?"dark":"light";
+  state.theme==="light"
+   ?"dark"
+   :"light";
 
  applyStyle();
  save();
@@ -1309,7 +2224,9 @@ function updateStreak(){
 
  const d=new Date();
 
- d.setDate(d.getDate()-1);
+ d.setDate(
+  d.getDate()-1
+ );
 
  const yesterday=
   d.toISOString().slice(0,10);
@@ -1332,89 +2249,101 @@ function renderProfile(){
  const composer=$("composerName");
  const hero=$("heroName");
 
- if(name)name.textContent=state.profileName;
- if(bio)bio.textContent=state.profileBio;
- if(composer)composer.textContent=state.profileName;
+ if(name)
+  name.textContent=state.profileName;
+
+ if(bio)
+  bio.textContent=state.profileBio;
+
+ if(composer)
+  composer.textContent=state.profileName;
 
  if(hero){
+
   hero.textContent=
    state.profileName.split(/\s+/)[0]||
    "امیررضا";
+
  }
 
  const posts=$("profilePosts");
  const likes=$("profileLikes");
  const comments=$("profileComments");
 
- if(posts)posts.textContent=state.posts.length;
- if(likes)likes.textContent=totalLikes();
- if(comments)comments.textContent=totalComments();
+ if(posts)
+  posts.textContent=state.posts.length;
+
+ if(likes)
+  likes.textContent=totalLikes();
+
+ if(comments)
+  comments.textContent=totalComments();
 
 }
 
 function renderStats(){
 
  const lv=level();
-
  const prog=state.xp%100;
 
- if($("level"))$("level").textContent=lv;
- if($("xp"))$("xp").textContent=state.xp;
+ if($("level"))
+  $("level").textContent=lv;
 
- if($("xpBar")){
-  $("xpBar").style.width=prog+"%";
- }
+ if($("xp"))
+  $("xp").textContent=state.xp;
 
- if($("growthLevel")){
+ if($("xpBar"))
+  $("xpBar").style.width=
+   prog+"%";
+
+ if($("growthLevel"))
   $("growthLevel").textContent=lv;
- }
 
- if($("growthBar")){
-  $("growthBar").style.width=prog+"%";
- }
+ if($("growthBar"))
+  $("growthBar").style.width=
+   prog+"%";
 
- if($("growthText")){
+ if($("growthText"))
   $("growthText").textContent=
    (100-prog)+
    " XP تا Level "+
    (lv+1);
- }
 
- if($("visits")){
-  $("visits").textContent=state.visits;
- }
+ if($("visits"))
+  $("visits").textContent=
+   state.visits;
 
- if($("dashPosts")){
-  $("dashPosts").textContent=state.posts.length;
- }
+ if($("dashPosts"))
+  $("dashPosts").textContent=
+   state.posts.length;
 
- if($("dashLikes")){
-  $("dashLikes").textContent=totalLikes();
- }
+ if($("dashLikes"))
+  $("dashLikes").textContent=
+   totalLikes();
 
- if($("dashComments")){
-  $("dashComments").textContent=totalComments();
- }
+ if($("dashComments"))
+  $("dashComments").textContent=
+   totalComments();
 
- if($("dashStreak")){
-  $("dashStreak").textContent=state.streak;
- }
+ if($("dashStreak"))
+  $("dashStreak").textContent=
+   state.streak;
 
- if($("streakBig")){
-  $("streakBig").textContent=state.streak;
- }
+ if($("streakBig"))
+  $("streakBig").textContent=
+   state.streak;
 
- if($("growthPosts")){
-  $("growthPosts").textContent=state.posts.length;
- }
+ if($("growthPosts"))
+  $("growthPosts").textContent=
+   state.posts.length;
 
- if($("growthLikes")){
-  $("growthLikes").textContent=totalLikes();
- }
+ if($("growthLikes"))
+  $("growthLikes").textContent=
+   totalLikes();
 
- if($("growthComments")){
-  $("growthComments").textContent=totalComments();
- }
+ if($("growthComments"))
+  $("growthComments").textContent=
+   totalComments();
 
 }
 
@@ -1432,13 +2361,11 @@ function renderPosts(){
     .toLowerCase()
     .includes(query);
 
-  if(filter==="image"){
+  if(filter==="image")
    return match&&!!p.image;
-  }
 
-  if(filter==="popular"){
+  if(filter==="popular")
    return match&&p.likes.length>0;
-  }
 
   return match;
 
@@ -1524,11 +2451,13 @@ function renderPosts(){
 
      </button>
 
-     <button data-focus="${p.id}">
+     <button
+      data-focus="${p.id}">
       💬 ${p.comments.length}
      </button>
 
-     <button data-share="${p.id}">
+     <button
+      data-share="${p.id}">
       📤 اشتراک
      </button>
 
@@ -1654,14 +2583,16 @@ function renderAchievements(){
    x=>x[2]>=x[3]
   ).length;
 
- if($("achCount")){
-  $("achCount").textContent=unlocked;
- }
+ if($("achCount"))
+  $("achCount").textContent=
+   unlocked;
 
  box.innerHTML=
   data.map(x=>`
 
-   <div class="card" style="padding:18px">
+   <div
+    class="card"
+    style="padding:18px">
 
     <div style="font-size:30px">
      ${x[0]}
@@ -1707,7 +2638,9 @@ function renderGallery(){
  if(!empty||!box)return;
 
  empty.style.display=
-  imgs.length?"none":"block";
+  imgs.length
+   ?"none"
+   :"block";
 
  box.innerHTML=
   imgs.map(p=>
@@ -1791,7 +2724,8 @@ function renderMission(){
 
  if(!btn)return;
 
- btn.disabled=state.missionDone;
+ btn.disabled=
+  state.missionDone;
 
  btn.textContent=
   state.missionDone
@@ -1842,10 +2776,14 @@ function compressImage(file){
      document.createElement("canvas");
 
     c.width=
-     Math.round(img.width*scale);
+     Math.round(
+      img.width*scale
+     );
 
     c.height=
-     Math.round(img.height*scale);
+     Math.round(
+      img.height*scale
+     );
 
     const ctx=c.getContext("2d");
 
@@ -2334,7 +3272,7 @@ function exportData(){
    [
     JSON.stringify(
      {
-      version:"2.6.0",
+      version:"2.7.0",
       state
      },
      null,
@@ -2468,31 +3406,18 @@ function siteSearch(){
  const data=[
 
   ["👤 پروفایل","#profile"],
-
   ["📰 Social Feed","#feed"],
-
   ["🔔 Notifications","#notifications"],
-
   ["📊 Dashboard","#dashboard"],
-
   ["🎯 Mission","#mission"],
-
   ["🔥 Streak","#streakSection"],
-
   ["🏆 Achievements","#achievements"],
-
   ["📈 Growth","#growth"],
-
   ["💻 Projects","#projects"],
-
   ["🖼️ Gallery","#gallery"],
-
   ["🤖 AI Center","#ai"],
-
   ["⚙️ Settings","#settings"],
-
   ["📱 نصب اپ","#settings"],
-
   ["📬 Contact","#contact"]
 
  ];
@@ -2661,20 +3586,67 @@ function activeNav(){
 }
 
 /* =========================
+   APP MODE
+========================= */
+
+function detectAppMode(){
+
+ const standalone=
+  window.matchMedia?.(
+   "(display-mode: standalone)"
+  ).matches;
+
+ const iosStandalone=
+  window.navigator.standalone===true;
+
+ appInstalled=
+  !!(standalone||iosStandalone);
+
+ const notice=$("appModeNotice");
+
+ const hint=$("installHint");
+
+ if(appInstalled){
+
+  if(notice)
+   notice.classList.add("show");
+
+  if(hint)
+   hint.textContent=
+    "✅ اپ AMIRREZA.DEV روی این دستگاه نصب شده است.";
+
+  hideInstallButtons();
+
+ }else{
+
+  if(hint)
+   hint.textContent=
+    "برای نصب، دکمه نصب اپ را بزن.";
+
+ }
+
+}
+
+/* =========================
    PWA INSTALL
 ========================= */
 
 function showInstallButtons(){
 
+ if(appInstalled)return;
+
  const a=$("installBtn");
  const b=$("heroInstallBtn");
  const c=$("settingsInstallBtn");
 
- if(a)a.classList.add("show");
+ if(a)
+  a.classList.add("show");
 
- if(b)b.style.display="inline-block";
+ if(b)
+  b.style.display="inline-block";
 
- if(c)c.style.display="inline-block";
+ if(c)
+  c.style.display="inline-block";
 
 }
 
@@ -2683,13 +3655,25 @@ function hideInstallButtons(){
  const a=$("installBtn");
  const b=$("heroInstallBtn");
 
- if(a)a.classList.remove("show");
+ if(a)
+  a.classList.remove("show");
 
- if(b)b.style.display="none";
+ if(b)
+  b.style.display="none";
 
 }
 
 async function installApp(){
+
+ if(appInstalled){
+
+  toast(
+   "📱 اپ AMIRREZA.DEV از قبل نصب شده است"
+  );
+
+  return;
+
+ }
 
  if(!deferredInstallPrompt){
 
@@ -2736,6 +3720,8 @@ async function installApp(){
 
 function setupPWA(){
 
+ detectAppMode();
+
  if("serviceWorker" in navigator){
 
   window.addEventListener(
@@ -2772,10 +3758,6 @@ function setupPWA(){
 
    showInstallButtons();
 
-   toast(
-    "📱 AMIRREZA.DEV آماده نصب روی گوشی است!"
-   );
-
   }
  );
 
@@ -2784,8 +3766,11 @@ function setupPWA(){
   ()=>{
 
    deferredInstallPrompt=null;
+   appInstalled=true;
 
    hideInstallButtons();
+
+   detectAppMode();
 
    toast(
     "🎉 AMIRREZA.DEV نصب شد!"
@@ -2799,6 +3784,10 @@ function setupPWA(){
  );
 
 }
+
+/* =========================
+   BIND
+========================= */
 
 function bind(){
 
@@ -3038,7 +4027,8 @@ function bind(){
       Number(b.dataset.read)
      ];
 
-    if(n)n.read=true;
+    if(n)
+     n.read=true;
 
     save();
 
@@ -3125,7 +4115,28 @@ function bind(){
   }
  );
 
+ /* Close mobile menu after navigation */
+
+ document
+  .querySelectorAll("#navLinks a")
+  .forEach(a=>{
+
+   a.addEventListener(
+    "click",
+    ()=>{
+     $("navLinks")
+      .classList
+      .remove("open");
+    }
+   );
+
+  });
+
 }
+
+/* =========================
+   SESSION
+========================= */
 
 function session(){
 
@@ -3135,7 +4146,11 @@ function session(){
    1000
   );
 
- $("session").textContent=
+ const el=$("session");
+
+ if(!el)return;
+
+ el.textContent=
   String(
    Math.floor(s/60)
   ).padStart(2,"0")+
@@ -3143,6 +4158,25 @@ function session(){
   String(
    s%60
   ).padStart(2,"0");
+
+}
+
+/* =========================
+   START
+========================= */
+
+function hideSplash(){
+
+ const splash=$("appSplash");
+
+ if(!splash)return;
+
+ setTimeout(
+  ()=>{
+   splash.classList.add("hide");
+  },
+  500
+ );
 
 }
 
@@ -3180,6 +4214,8 @@ function start(){
  );
 
  session();
+
+ hideSplash();
 
 }
 
