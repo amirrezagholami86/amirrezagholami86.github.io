@@ -2,234 +2,1497 @@
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#050505">
 <link rel="manifest" href="./manifest.webmanifest">
 <title>AMIRREZA • Social+</title>
 
 <style>
-*{box-sizing:border-box}body{margin:0;background:#050505;color:#fff;font-family:Arial,Tahoma}
-button,input,textarea{font:inherit}button{border:0;cursor:pointer;color:inherit}
-.app{max-width:600px;margin:auto;min-height:100vh;background:#050505}
-header{height:58px;position:sticky;top:0;z-index:8;background:#050505ee;
-display:flex;align-items:center;justify-content:space-between;padding:0 14px;border-bottom:1px solid #222}
-.logo{font-size:22px;font-weight:900}.top{display:flex;gap:16px;font-size:21px}
-.ver{font-size:9px;color:#00e5ff;border:1px solid #00e5ff;border-radius:20px;padding:4px 7px;margin-right:6px}
-.page{display:none;padding-bottom:70px}.page.on{display:block}
-.stories{display:flex;gap:13px;padding:13px;overflow:auto;border-bottom:1px solid #222}
-.story{min-width:67px;text-align:center;font-size:11px}.story img{width:62px;height:62px;
-object-fit:cover;border-radius:50%;padding:2px;border:2px solid #e9369b}.story b{display:block}
-.post{border-bottom:1px solid #222;padding-bottom:12px}.head{display:flex;align-items:center;gap:9px;padding:10px 13px}
-.av{width:38px;height:38px;border-radius:50%;object-fit:cover}.more{margin-right:auto;background:none;font-size:20px}
-.pic{width:100%;max-height:650px;object-fit:cover}.actions{display:flex;gap:18px;padding:9px 14px;font-size:24px}
-.actions button{background:none}.liked{color:#ff315b!important}.text{padding:0 14px}.muted{color:#999;font-size:13px}
-.comment{margin-top:7px;padding:8px;background:#111;border-radius:10px;font-size:13px}
-nav{position:fixed;bottom:0;left:0;right:0;height:62px;background:#050505f7;border-top:1px solid #222;
-display:flex;justify-content:space-around;align-items:center;z-index:8}nav button{background:none;font-size:23px;color:#888}
-nav .on{color:#fff}
-.profile{text-align:center;padding:25px 15px}.big{width:92px;height:92px;border-radius:50%;object-fit:cover;border:3px solid #e9369b}
-.stats{display:flex;justify-content:space-around;margin:20px 0}.stats b{display:block;font-size:20px}
-.btn{background:#0095f6;padding:10px 18px;border-radius:10px;margin:5px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}.grid img{width:100%;aspect-ratio:1;object-fit:cover}
-.search{padding:14px}.search input{width:100%;padding:13px;background:#18181d;border:1px solid #333;border-radius:12px;color:#fff}
-.reels{height:calc(100vh - 58px);overflow-y:auto;scroll-snap-type:y mandatory}.reel{height:calc(100vh - 58px);
-position:relative;scroll-snap-align:start;background:#111}.reel img{width:100%;height:100%;object-fit:cover}
-.ri{position:absolute;bottom:30px;right:15px;text-shadow:0 2px 5px #000}.ra{position:absolute;left:15px;bottom:45px;
-display:grid;gap:18px;font-size:25px;text-align:center}
-.bubble{padding:10px 14px;border-radius:18px;margin:10px;max-width:75%}.me{background:#6338e8;margin-right:auto}.other{background:#222;margin-left:auto}
-.chat{padding:15px}.modal{display:none;position:fixed;inset:0;background:#000b;z-index:20;align-items:end}
-.modal.on{display:flex}.box{background:#111;width:100%;max-width:600px;padding:20px;border-radius:20px 20px 0 0}
-textarea{width:100%;height:110px;background:#18181d;color:#fff;border:1px solid #333;border-radius:12px;padding:12px}
-.online{font-size:10px;color:#6cff9b}.toast{position:fixed;bottom:75px;left:50%;transform:translateX(-50%);
-background:#fff;color:#000;padding:10px 16px;border-radius:20px;display:none;z-index:30}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+ margin:0;background:#050505;color:#fff;
+ font-family:Arial,Tahoma,sans-serif;
+ -webkit-tap-highlight-color:transparent
+}
+button,input,textarea{font:inherit}
+button{border:0;cursor:pointer;color:inherit}
+button:active{transform:scale(.94)}
+
+:root{
+ --accent:#00e5ff;
+ --pink:#e9369b;
+ --card:#111318;
+ --line:#24262c;
+ --muted:#92959e;
+ --danger:#ff315b
+}
+
+body.aqua{--accent:#00e5ff}
+body.green{--accent:#35e27f}
+body.orange{--accent:#ff9d3d}
+body.pink{--accent:#ff4fb3}
+
+.app{
+ max-width:600px;margin:auto;min-height:100vh;
+ background:#050505;position:relative;
+ box-shadow:0 0 80px #000
+}
+
+/* HEADER */
+header{
+ height:60px;position:sticky;top:0;z-index:20;
+ background:#050505ed;backdrop-filter:blur(18px);
+ display:flex;align-items:center;
+ justify-content:space-between;padding:0 14px;
+ border-bottom:1px solid var(--line)
+}
+.logo{
+ font-size:21px;font-weight:900;letter-spacing:.5px
+}
+.ver{
+ font-size:8px;color:var(--accent);
+ border:1px solid var(--accent);
+ border-radius:20px;padding:4px 7px;
+ margin-right:5px
+}
+.top{display:flex;gap:13px;font-size:22px;align-items:center}
+.top button{background:none;font-size:21px}
+
+/* PAGES */
+.page{display:none;padding-bottom:78px;min-height:calc(100vh - 60px)}
+.page.on{display:block}
+
+/* STORIES */
+.stories{
+ display:flex;gap:13px;padding:13px;
+ overflow:auto;border-bottom:1px solid var(--line);
+ scrollbar-width:none
+}
+.stories::-webkit-scrollbar{display:none}
+.story{
+ min-width:67px;text-align:center;font-size:11px;
+ cursor:pointer
+}
+.story img{
+ width:62px;height:62px;object-fit:cover;
+ border-radius:50%;padding:2px;
+ border:2px solid var(--pink);
+ display:block;margin:auto auto 5px
+}
+.story.add img{
+ border-color:var(--accent);
+ padding:3px
+}
+.story b{display:block}
+
+/* FEED */
+.post{
+ border-bottom:1px solid var(--line);
+ padding-bottom:12px;
+ animation:fadeUp .35s ease
+}
+@keyframes fadeUp{
+ from{opacity:0;transform:translateY(10px)}
+ to{opacity:1;transform:none}
+}
+.head{
+ display:flex;align-items:center;gap:9px;padding:10px 13px
+}
+.av{
+ width:40px;height:40px;border-radius:50%;
+ object-fit:cover;border:1px solid #333
+}
+.head-info{display:flex;flex-direction:column}
+.head-info small{color:var(--muted);font-size:10px}
+.more{
+ margin-right:auto;background:none;font-size:21px
+}
+.pic{
+ width:100%;max-height:650px;
+ object-fit:cover;display:block
+}
+.actions{
+ display:flex;gap:17px;padding:10px 14px;
+ font-size:24px;align-items:center
+}
+.actions button{background:none}
+.actions .save{margin-right:auto}
+.liked{color:var(--danger)!important}
+.like-pop{
+ position:absolute;
+ font-size:90px;
+ pointer-events:none;
+ animation:heartPop .65s ease forwards
+}
+@keyframes heartPop{
+ 0%{opacity:0;transform:scale(.3)}
+ 35%{opacity:1;transform:scale(1.15)}
+ 100%{opacity:0;transform:scale(1.5)}
+}
+.text{padding:0 14px}
+.text p{line-height:1.7;margin:7px 0}
+.muted{color:var(--muted);font-size:13px}
+.comment{
+ margin-top:7px;padding:8px 10px;
+ background:#111;border-radius:10px;font-size:13px
+}
+.comment strong{color:var(--accent)}
+.more-comments{
+ color:var(--muted);font-size:12px;
+ background:none;padding:5px 0
+}
+
+/* EMPTY */
+.empty{
+ margin:25px 14px;padding:30px 18px;
+ background:var(--card);border:1px solid var(--line);
+ border-radius:20px;text-align:center
+}
+.empty .emoji{font-size:42px}
+
+/* PROFILE */
+.profile{
+ text-align:center;padding:27px 15px 20px;
+ background:
+ radial-gradient(circle at 50% 0,#06242a 0,transparent 42%)
+}
+.big{
+ width:100px;height:100px;border-radius:50%;
+ object-fit:cover;border:3px solid var(--accent);
+ padding:2px
+}
+.profile h2{margin:10px 0 3px}
+.handle{color:var(--muted);font-size:13px}
+.bio{line-height:1.6;color:#ddd}
+.online{font-size:10px;color:#6cff9b;margin-top:7px}
+.stats{
+ display:flex;justify-content:space-around;
+ margin:22px 0;padding:15px 5px;
+ background:#0c0d10;border:1px solid var(--line);
+ border-radius:17px
+}
+.stats b{display:block;font-size:20px;margin-bottom:3px}
+.stats span{color:var(--muted);font-size:11px}
+.btn{
+ background:var(--accent);color:#001014;
+ padding:10px 17px;border-radius:12px;
+ margin:4px;font-weight:800
+}
+.btn.dark{background:#222;color:#fff}
+.btn.outline{
+ background:transparent;color:#fff;
+ border:1px solid var(--line)
+}
+.level-card{
+ margin:12px 0;text-align:right;
+ background:linear-gradient(135deg,#10141a,#0b1115);
+ border:1px solid var(--line);
+ border-radius:18px;padding:15px
+}
+.level-top{display:flex;justify-content:space-between}
+.level{color:var(--accent);font-weight:900}
+.xpbar{
+ height:8px;background:#222;border-radius:20px;
+ overflow:hidden;margin-top:10px
+}
+.xpfill{
+ height:100%;background:var(--accent);
+ border-radius:20px;transition:width .5s
+}
+.badges{
+ display:flex;gap:8px;justify-content:center;
+ flex-wrap:wrap;margin:15px 0
+}
+.badge{
+ background:#111;border:1px solid #303238;
+ border-radius:12px;padding:8px 10px;font-size:12px
+}
+.badge.locked{opacity:.3}
+
+/* GRID */
+.grid{
+ display:grid;grid-template-columns:repeat(3,1fr);
+ gap:2px;background:#000
+}
+.grid-item{position:relative;aspect-ratio:1;overflow:hidden}
+.grid img{
+ width:100%;height:100%;object-fit:cover;display:block
+}
+.grid .grid-text{
+ width:100%;height:100%;padding:10px;
+ display:flex;align-items:center;justify-content:center;
+ text-align:center;background:#111;color:#fff;font-size:12px
+}
+
+/* SEARCH */
+.search{padding:14px}
+.search input{
+ width:100%;padding:14px 16px;
+ background:#18181d;border:1px solid #333;
+ border-radius:14px;color:#fff;outline:none
+}
+.search input:focus{border-color:var(--accent)}
+.search-card{
+ margin:8px 14px;padding:13px;
+ background:var(--card);border:1px solid var(--line);
+ border-radius:15px;display:flex;align-items:center;gap:10px
+}
+.search-card img{width:45px;height:45px;border-radius:50%}
+.search-card small{display:block;color:var(--muted);margin-top:3px}
+
+/* REELS */
+.reels{
+ height:calc(100vh - 60px);
+ overflow-y:auto;scroll-snap-type:y mandatory
+}
+.reel{
+ height:calc(100vh - 60px);
+ position:relative;scroll-snap-align:start;
+ background:#111;overflow:hidden
+}
+.reel img{
+ width:100%;height:100%;object-fit:cover
+}
+.reel:after{
+ content:"";position:absolute;inset:0;
+ background:linear-gradient(transparent 45%,#000b)
+}
+.ri{
+ position:absolute;z-index:2;bottom:28px;right:15px;
+ text-shadow:0 2px 7px #000;line-height:1.7
+}
+.ra{
+ position:absolute;z-index:3;left:15px;bottom:45px;
+ display:grid;gap:16px;font-size:27px;
+ text-align:center
+}
+.ra button{background:none;text-shadow:0 2px 5px #000}
+.ra small{font-size:11px;display:block}
+
+/* MESSAGES */
+.chat{padding:15px}
+.chat-title{
+ display:flex;justify-content:space-between;
+ align-items:center;margin-bottom:20px
+}
+.chat-user{
+ padding:12px;background:var(--card);
+ border:1px solid var(--line);
+ border-radius:15px;display:flex;
+ gap:10px;align-items:center;margin-bottom:10px
+}
+.chat-user img{width:45px;height:45px;border-radius:50%}
+.bubble{
+ padding:10px 14px;border-radius:18px;
+ margin:10px;max-width:75%;line-height:1.6
+}
+.me{background:#6338e8;margin-right:auto}
+.other{background:#222;margin-left:auto}
+
+/* NOTIFICATIONS */
+.notify-wrap{padding:20px}
+.notice{
+ padding:14px;margin:8px 0;
+ background:var(--card);
+ border:1px solid var(--line);
+ border-radius:15px;
+ display:flex;gap:10px;align-items:center
+}
+.notice-icon{font-size:22px}
+
+/* DASHBOARD */
+.dashboard{padding:15px}
+.dash-card{
+ background:var(--card);border:1px solid var(--line);
+ border-radius:18px;padding:16px;margin-bottom:12px
+}
+.dash-grid{
+ display:grid;grid-template-columns:repeat(2,1fr);gap:10px
+}
+.metric{
+ padding:15px;background:#0d0f13;
+ border-radius:15px;text-align:center
+}
+.metric b{display:block;font-size:25px;color:var(--accent)}
+.metric span{font-size:11px;color:var(--muted)}
+
+/* NAV */
+nav{
+ position:fixed;bottom:0;left:0;right:0;
+ height:65px;background:#050505f7;
+ backdrop-filter:blur(18px);
+ border-top:1px solid var(--line);
+ display:flex;justify-content:space-around;
+ align-items:center;z-index:18
+}
+nav button{
+ background:none;font-size:23px;color:#777;
+ width:20%;height:100%
+}
+nav button.on{color:#fff}
+nav .create-nav{
+ font-size:29px;color:var(--accent)
+}
+
+/* MODAL */
+.modal{
+ display:none;position:fixed;inset:0;
+ background:#000c;z-index:40;
+ align-items:flex-end
+}
+.modal.on{display:flex}
+.box{
+ background:#111;width:100%;max-width:600px;
+ padding:20px;border-radius:22px 22px 0 0;
+ border-top:1px solid #333;
+ max-height:90vh;overflow:auto
+}
+.box h3{margin-top:0}
+textarea{
+ width:100%;height:120px;
+ background:#18181d;color:#fff;
+ border:1px solid #333;border-radius:14px;
+ padding:12px;resize:none;outline:none
+}
+input[type=file]{max-width:100%}
+
+/* COMMENT MODAL */
+.comments-list{max-height:45vh;overflow:auto}
+.comment-row{
+ display:flex;gap:9px;padding:9px 0;
+ border-bottom:1px solid #222
+}
+.comment-row img{width:32px;height:32px;border-radius:50%}
+.comment-form{display:flex;gap:8px;margin-top:12px}
+.comment-form input{
+ flex:1;background:#18181d;color:#fff;
+ border:1px solid #333;border-radius:12px;padding:11px
+}
+
+/* SETTINGS */
+.setting{
+ display:flex;justify-content:space-between;
+ align-items:center;padding:15px 0;
+ border-bottom:1px solid #222
+}
+.colors{display:flex;gap:8px}
+.color-dot{
+ width:27px;height:27px;border-radius:50%;
+ border:2px solid #fff;cursor:pointer
+}
+.c1{background:#00e5ff}.c2{background:#35e27f}
+.c3{background:#ff9d3d}.c4{background:#ff4fb3}
+
+/* STORY MODAL */
+.story-view{
+ position:fixed;inset:0;background:#000;z-index:60;
+ display:none;align-items:center;justify-content:center
+}
+.story-view.on{display:flex}
+.story-content{
+ width:100%;height:100%;max-width:600px;
+ position:relative;overflow:hidden
+}
+.story-content img{
+ width:100%;height:100%;object-fit:cover
+}
+.story-gradient{
+ position:absolute;inset:0;
+ background:linear-gradient(#0008,transparent 30%,#0008)
+}
+.story-title{
+ position:absolute;top:22px;right:18px;
+ z-index:2;font-weight:bold
+}
+.story-close{
+ position:absolute;top:18px;left:18px;
+ z-index:3;background:#0008;
+ border-radius:50%;width:38px;height:38px;
+ font-size:20px
+}
+.story-caption{
+ position:absolute;bottom:35px;right:18px;left:18px;
+ z-index:2;font-size:18px
+}
+
+/* TOAST */
+.toast{
+ position:fixed;bottom:78px;left:50%;
+ transform:translateX(-50%) translateY(10px);
+ background:#fff;color:#000;
+ padding:10px 17px;border-radius:22px;
+ display:none;z-index:80;
+ font-weight:bold;box-shadow:0 5px 25px #0008
+}
+.toast.show{
+ display:block;animation:toastIn .2s ease
+}
+@keyframes toastIn{
+ to{transform:translateX(-50%) translateY(0)}
+}
+
+/* FLOAT */
+.floating{
+ position:fixed;right:18px;bottom:82px;
+ width:48px;height:48px;border-radius:50%;
+ background:var(--accent);color:#001014;
+ font-size:25px;font-weight:bold;
+ z-index:10;box-shadow:0 8px 25px #0008
+}
+
+/* LIGHT */
+body.light{
+ background:#f3f4f6;color:#111
+}
+body.light .app,
+body.light header,
+body.light nav{background:#f8f8fa;color:#111}
+body.light .card,
+body.light .dash-card,
+body.light .search-card,
+body.light .notice,
+body.light .stats,
+body.light .level-card,
+body.light .metric{background:#fff;color:#111}
+body.light .search input,
+body.light textarea,
+body.light .comment-form input{background:#fff;color:#111}
+
+/* RESPONSIVE */
+@media(max-width:400px){
+ .logo{font-size:18px}
+ .ver{display:none}
+ .actions{gap:13px}
+}
 </style>
 </head>
 
-<body>
+<body class="aqua">
 <div class="app">
 
 <header>
  <b class="logo">AMIRREZA</b>
- <span class="ver">v3.1.0 • UPDATED</span>
- <div class="top">＋　♡　☰</div>
+ <span class="ver">v4.0.0 • SOCIAL+</span>
+ <div class="top">
+   <button onclick="openNotifications()">♡</button>
+   <button onclick="openSettings()">☰</button>
+ </div>
 </header>
 
+<!-- HOME -->
 <section id="home" class="page on">
+
 <div class="stories">
-<div class="story" onclick="story('استوری من')"><img src="profile.jpg"><b>＋</b></div>
-<div class="story" onclick="story('Amirreza')"><img src="profile.jpg">Amirreza</div>
-<div class="story" onclick="story('Friends')"><img src="profile.jpg">Friends</div>
-<div class="story" onclick="story('Creator')"><img src="profile.jpg">Creator</div>
-<div class="story"><img src="profile.jpg">Football</div>
+ <div class="story add" onclick="openStory('استوری من','اولین استوری من 🚀')">
+  <img src="profile.jpg"><b>＋</b>
+ </div>
+ <div class="story" onclick="openStory('Amirreza','Welcome to my Social Space 🔥')">
+  <img src="profile.jpg">Amirreza
+ </div>
+ <div class="story" onclick="openStory('Friends','دوستی، انرژی خوب و خاطرات ✨')">
+  <img src="profile.jpg">Friends
+ </div>
+ <div class="story" onclick="openStory('Creator','Creating the future 🚀')">
+  <img src="profile.jpg">Creator
+ </div>
+ <div class="story" onclick="openStory('Football','Football ⚽')">
+  <img src="profile.jpg">Football
+ </div>
 </div>
+
 <div id="feed"></div>
 </section>
 
+<!-- SEARCH -->
 <section id="search" class="page">
-<div class="search"><input placeholder="🔍 جستجو..." oninput="search(this.value)"></div>
-<div id="results"></div>
+ <div class="search">
+  <input id="searchInput" placeholder="🔍 جستجو در AMIRREZA..." oninput="search(this.value)">
+ </div>
+ <div id="results"></div>
 </section>
 
+<!-- REELS -->
 <section id="reels" class="page">
-<div class="reels">
-<div class="reel"><img src="profile.jpg">
-<div class="ri"><b>@amirrezagholami</b><br>AMIRREZA SOCIAL 🔥</div>
-<div class="ra">♡<small>0</small>💬<small>0</small>↗️</div></div>
-<div class="reel"><img src="profile.jpg">
-<div class="ri"><b>AMIRREZA</b><br>Social Space 🚀</div>
-<div class="ra">♡<small>0</small>💬<small>0</small>↗️</div></div>
-</div>
+ <div class="reels">
+
+  <div class="reel">
+   <img src="profile.jpg">
+   <div class="ri">
+    <b>@amirrezagholami</b><br>
+    AMIRREZA SOCIAL 🔥
+   </div>
+   <div class="ra">
+    <button onclick="reelLike(this)">♡<small>0</small></button>
+    <button onclick="toast('کامنت ریلز 💬')">💬<small>0</small></button>
+    <button onclick="share()">↗️</button>
+   </div>
+  </div>
+
+  <div class="reel">
+   <img src="profile.jpg">
+   <div class="ri">
+    <b>AMIRREZA</b><br>
+    Social Space 🚀
+   </div>
+   <div class="ra">
+    <button onclick="reelLike(this)">♡<small>0</small></button>
+    <button onclick="toast('کامنت ریلز 💬')">💬<small>0</small></button>
+    <button onclick="share()">↗️</button>
+   </div>
+  </div>
+
+  <div class="reel">
+   <img src="profile.jpg">
+   <div class="ri">
+    <b>AMIRREZA.DEV</b><br>
+    Build • Dream • Create ⚡
+   </div>
+   <div class="ra">
+    <button onclick="reelLike(this)">♡<small>0</small></button>
+    <button onclick="toast('کامنت ریلز 💬')">💬<small>0</small></button>
+    <button onclick="share()">↗️</button>
+   </div>
+  </div>
+
+ </div>
 </section>
 
+<!-- MESSAGES -->
 <section id="messages" class="page">
-<div class="chat"><h2>💬 Messages</h2>
-<div class="bubble other">سلام 👋</div>
-<div class="bubble me">سلام! خوش اومدی 🚀</div>
-<div class="bubble other">نسخه جدید خیلی خفنه 🔥</div>
-<div class="bubble me">تازه شروعشه 😎</div>
-</div>
+ <div class="chat">
+  <div class="chat-title">
+   <h2>💬 Messages</h2>
+   <span class="online">● آنلاین</span>
+  </div>
+
+  <div class="chat-user" onclick="toast('صفحه چت در نسخه بعدی توسعه پیدا می‌کند 🚀')">
+   <img src="profile.jpg">
+   <div>
+    <b>AMIRREZA</b>
+    <small class="muted">پیام‌های شما</small>
+   </div>
+  </div>
+
+  <div class="bubble other">سلام 👋</div>
+  <div class="bubble me">سلام! خوش اومدی 🚀</div>
+  <div class="bubble other">نسخه جدید خیلی خفنه 🔥</div>
+  <div class="bubble me">تازه شروعشه 😎</div>
+ </div>
 </section>
 
+<!-- PROFILE -->
 <section id="profile" class="page">
-<div class="profile">
-<img class="big" src="profile.jpg">
-<h2>امیررضا غلامی</h2>
-<span class="muted">@amirrezagholami</span>
-<p>Creator • Developer • Dreamer 🚀</p>
-<div class="online">● آنلاین</div>
 
-<div class="stats">
-<div><b id="pc">0</b>Posts</div>
-<div><b id="followers">0</b>Followers</div>
-<div><b>120</b>Following</div>
-</div>
+ <div class="profile">
+  <img class="big" src="profile.jpg">
+  <h2>امیررضا غلامی</h2>
+  <span class="handle">@amirrezagholami</span>
+  <p class="bio">Creator • Developer • Dreamer 🚀</p>
+  <div class="online">● آنلاین</div>
 
-<button class="btn" onclick="follow()">👤 <span id="followText">Follow</span></button>
-<button class="btn" onclick="create()">＋ Post</button>
-</div>
-<div id="grid" class="grid"></div>
+  <div class="stats">
+   <div><b id="pc">0</b><span>Posts</span></div>
+   <div><b id="followers">0</b><span>Followers</span></div>
+   <div><b>120</b><span>Following</span></div>
+  </div>
+
+  <button class="btn" onclick="follow()">
+   👤 <span id="followText">Follow</span>
+  </button>
+  <button class="btn dark" onclick="create()">＋ Post</button>
+  <button class="btn outline" onclick="openSettings()">⚙️</button>
+
+  <div class="level-card">
+   <div class="level-top">
+    <b>🏆 سطح کاربری</b>
+    <span class="level" id="levelText">LEVEL 1</span>
+   </div>
+   <div style="margin-top:8px;font-size:12px;color:#aaa">
+    <span id="xpText">0</span> XP
+   </div>
+   <div class="xpbar">
+    <div id="xpFill" class="xpfill" style="width:0%"></div>
+   </div>
+  </div>
+
+  <div class="badges" id="badges"></div>
+ </div>
+
+ <div id="grid" class="grid"></div>
 </section>
 
+<!-- NOTIFICATIONS -->
 <section id="notify" class="page">
-<div style="padding:20px">
-<h2>🔔 Notifications</h2>
-<div id="notices"></div>
-</div>
+ <div class="notify-wrap">
+  <h2>🔔 Notifications</h2>
+  <div id="notices"></div>
+ </div>
+</section>
+
+<!-- DASHBOARD -->
+<section id="dashboard" class="page">
+ <div class="dashboard">
+  <h2>📊 Dashboard</h2>
+
+  <div class="dash-card">
+   <h3>⚡ آمار حساب</h3>
+   <div class="dash-grid">
+    <div class="metric"><b id="dPosts">0</b><span>پست</span></div>
+    <div class="metric"><b id="dLikes">0</b><span>لایک</span></div>
+    <div class="metric"><b id="dComments">0</b><span>کامنت</span></div>
+    <div class="metric"><b id="dFollowers">0</b><span>دنبال‌کننده</span></div>
+   </div>
+  </div>
+
+  <div class="dash-card">
+   <h3>🚀 پیشرفت</h3>
+   <p class="muted">هر فعالیت در سایت XP اضافه می‌کند.</p>
+   <div class="level-top">
+    <b id="dashLevel">LEVEL 1</b>
+    <b id="dashXP">0 XP</b>
+   </div>
+   <div class="xpbar">
+    <div id="dashFill" class="xpfill"></div>
+   </div>
+  </div>
+
+  <div class="dash-card">
+   <h3>💡 وضعیت</h3>
+   <p>🔥 پروفایل فعال</p>
+   <p>⚡ Social+ Mode</p>
+   <p>💾 Local Storage Enabled</p>
+  </div>
+ </div>
 </section>
 
 <nav>
-<button class="on" onclick="go('home',this)">⌂</button>
-<button onclick="go('search',this)">⌕</button>
-<button onclick="create()">＋</button>
-<button onclick="go('reels',this)">▶</button>
-<button onclick="go('profile',this)">◯</button>
+ <button class="on" onclick="go('home',this)">⌂</button>
+ <button onclick="go('search',this)">⌕</button>
+ <button class="create-nav" onclick="create()">＋</button>
+ <button onclick="go('reels',this)">▶</button>
+ <button onclick="go('profile',this)">◯</button>
 </nav>
+
+<button class="floating" onclick="create()">＋</button>
+
 </div>
 
+<!-- POST MODAL -->
 <div id="modal" class="modal">
-<div class="box">
-<h3>＋ پست جدید</h3>
-<textarea id="txt" placeholder="چی توی ذهنت می‌گذره؟"></textarea>
-<input id="file" type="file" accept="image/*" style="margin-top:10px">
-<br>
-<button class="btn" onclick="publish()">🚀 انتشار</button>
-<button class="btn" onclick="closeM()" style="background:#333">بستن</button>
+ <div class="box">
+  <h3>＋ پست جدید</h3>
+
+  <textarea id="txt" placeholder="چی توی ذهنت می‌گذره؟ ✨"></textarea>
+
+  <input id="file" type="file" accept="image/*" style="margin-top:10px">
+
+  <div style="margin-top:14px">
+   <button class="btn" onclick="publish()">🚀 انتشار</button>
+   <button class="btn dark" onclick="closeM()">بستن</button>
+  </div>
+ </div>
 </div>
+
+<!-- COMMENTS MODAL -->
+<div id="commentModal" class="modal">
+ <div class="box">
+  <h3>💬 کامنت‌ها</h3>
+  <div id="commentsList" class="comments-list"></div>
+
+  <div class="comment-form">
+   <input id="commentInput" placeholder="یک کامنت بنویس...">
+   <button class="btn" onclick="sendComment()">ارسال</button>
+  </div>
+
+  <button class="btn dark" onclick="closeComments()">بستن</button>
+ </div>
+</div>
+
+<!-- SETTINGS -->
+<div id="settingsModal" class="modal">
+ <div class="box">
+  <h3>⚙️ تنظیمات</h3>
+
+  <div class="setting">
+   <span>🎨 رنگ برنامه</span>
+   <div class="colors">
+    <i class="color-dot c1" onclick="setTheme('aqua')"></i>
+    <i class="color-dot c2" onclick="setTheme('green')"></i>
+    <i class="color-dot c3" onclick="setTheme('orange')"></i>
+    <i class="color-dot c4" onclick="setTheme('pink')"></i>
+   </div>
+  </div>
+
+  <div class="setting">
+   <span>🌙 حالت روشن</span>
+   <button class="btn dark" onclick="toggleLight()">تغییر</button>
+  </div>
+
+  <div class="setting">
+   <span>📊 داشبورد</span>
+   <button class="btn dark" onclick="closeSettings();goById('dashboard')">باز کردن</button>
+  </div>
+
+  <div class="setting">
+   <span>🧹 پاک‌سازی داده‌ها</span>
+   <button class="btn" style="background:#ff315b;color:#fff" onclick="resetData()">پاک کردن</button>
+  </div>
+
+  <br>
+  <button class="btn dark" onclick="closeSettings()">بستن</button>
+ </div>
+</div>
+
+<!-- STORY VIEW -->
+<div id="storyView" class="story-view">
+ <div class="story-content">
+  <img src="profile.jpg">
+  <div class="story-gradient"></div>
+  <div class="story-title" id="storyTitle"></div>
+  <button class="story-close" onclick="closeStory()">×</button>
+  <div class="story-caption" id="storyCaption"></div>
+ </div>
 </div>
 
 <div id="toast" class="toast"></div>
 
 <script>
-const K="amirreza_space_v24";
-let S=JSON.parse(localStorage.getItem(K)||'{}');
-S.posts=S.posts||[];S.followers=S.followers||0;S.follow=S.follow||false;S.notes=S.notes||[];
+/* =========================
+   AMIRREZA SOCIAL+ v4.0.0
+   LocalStorage Edition
+========================= */
 
-function save(){localStorage.setItem(K,JSON.stringify(S))}
-function esc(x){return String(x||'').replace(/[&<>"']/g,a=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[a]))}
-function toast(x){toastEl.textContent=x;toastEl.style.display='block';setTimeout(()=>toastEl.style.display='none',1800)}
+const K="amirreza_space_v24";
+let S=JSON.parse(localStorage.getItem(K)||"{}");
+
+S.posts=S.posts||[];
+S.followers=S.followers||0;
+S.follow=S.follow||false;
+S.notes=S.notes||[];
+S.xp=S.xp||0;
+S.theme=S.theme||"aqua";
+S.light=S.light||false;
+S.saved=S.saved||{};
+
+const $=id=>document.getElementById(id);
+
+function save(){
+ localStorage.setItem(K,JSON.stringify(S));
+}
+
+function esc(x){
+ return String(x||"").replace(/[&<>"']/g,a=>({
+  "&":"&amp;",
+  "<":"&lt;",
+  ">":"&gt;",
+  '"':"&quot;",
+  "'":"&#39;"
+ }[a]));
+}
+
+let toastTimer;
+
+function toast(x){
+ const el=$("toast");
+ el.textContent=x;
+ el.classList.add("show");
+ clearTimeout(toastTimer);
+ toastTimer=setTimeout(()=>el.classList.remove("show"),1900);
+}
+
+function addXP(n){
+ S.xp+=n;
+ save();
+}
+
+function getLevel(){
+ return Math.max(1,Math.floor(S.xp/100)+1);
+}
+
+function getLevelProgress(){
+ return S.xp%100;
+}
+
+/* NAVIGATION */
 
 function go(id,b){
- document.querySelectorAll('.page').forEach(x=>x.classList.remove('on'));
- document.getElementById(id).classList.add('on');
- document.querySelectorAll('nav button').forEach(x=>x.classList.remove('on'));
- b?.classList.add('on');render()
+ document.querySelectorAll(".page")
+  .forEach(x=>x.classList.remove("on"));
+
+ const target=$(id);
+ if(target)target.classList.add("on");
+
+ document.querySelectorAll("nav button")
+  .forEach(x=>x.classList.remove("on"));
+
+ if(b)b.classList.add("on");
+
+ render();
+ window.scrollTo(0,0);
 }
+
+function goById(id){
+ const buttons=document.querySelectorAll("nav button");
+ go(id,null);
+}
+
+/* RENDER */
 
 function render(){
- feed.innerHTML=S.posts.length?[...S.posts].reverse().map(p=>`
- <article class="post">
- <div class="head"><img class="av" src="profile.jpg"><b>@amirrezagholami</b>
- <button class="more">⋯</button></div>
- ${p.image?`<img class="pic" src="${p.image}">`:''}
- <div class="actions">
- <button class="${p.liked?'liked':''}" onclick="like(${p.id})">${p.liked?'♥':'♡'}</button>
- <button onclick="comment(${p.id})">♧</button>
- <button onclick="share()">↗</button><button>🔖</button>
- </div>
- <div class="text">
- <b>❤️ ${p.likes||0} likes</b>
- <p>${esc(p.text)}</p>
- ${(p.comments||[]).map(c=>`<div class="comment">💬 ${esc(c)}</div>`).join('')}
- </div>
- </article>`).join(''):'<p class="muted" style="padding:20px">هنوز پستی نیست. اولین پست رو بساز 🚀</p>';
 
- pc.textContent=S.posts.length;
- followers.textContent=S.followers;
- followText.textContent=S.follow?'Following':'Follow';
- grid.innerHTML=S.posts.filter(p=>p.image).map(p=>`<img src="${p.image}">`).join('');
- notices.innerHTML=S.notes.length?[...S.notes].reverse().map(x=>`<p>🔔 ${esc(x)}</p>`).join(''):'<p class="muted">اعلان جدیدی نداری.</p>';
- save()
+ const feed=$("feed");
+
+ if(!S.posts.length){
+  feed.innerHTML=`
+   <div class="empty">
+    <div class="emoji">🚀</div>
+    <h3>هنوز پستی نیست</h3>
+    <p class="muted">اولین پست AMIRREZA SOCIAL+ رو تو بساز!</p>
+    <button class="btn" onclick="create()">＋ ساخت اولین پست</button>
+   </div>`;
+ }else{
+
+  feed.innerHTML=[...S.posts].reverse().map(p=>{
+
+   const comments=(p.comments||[]);
+   const firstComments=comments.slice(-2);
+
+   return `
+   <article class="post" id="post-${p.id}">
+
+    <div class="head">
+     <img class="av" src="profile.jpg">
+     <div class="head-info">
+      <b>@amirrezagholami</b>
+      <small>${p.time||"همین الان"}</small>
+     </div>
+     <button class="more" onclick="postMenu(${p.id})">⋯</button>
+    </div>
+
+    ${p.image?
+     `<img class="pic" src="${p.image}" ondblclick="like(${p.id},this)">`
+     :""
+    }
+
+    <div class="actions">
+
+     <button
+      class="${p.liked?"liked":""}"
+      onclick="like(${p.id},this)">
+      ${p.liked?"♥":"♡"}
+     </button>
+
+     <button onclick="openComments(${p.id})">💬</button>
+
+     <button onclick="share()">↗</button>
+
+     <button
+      class="save"
+      onclick="bookmark(${p.id})">
+      ${S.saved[p.id]?"🔖":"🔖"}
+     </button>
+
+    </div>
+
+    <div class="text">
+
+     <b>❤️ ${p.likes||0} likes</b>
+
+     ${p.text?
+      `<p>${esc(p.text)}</p>`
+      :""
+     }
+
+     ${comments.length?
+      `<button class="more-comments"
+       onclick="openComments(${p.id})">
+       مشاهده ${comments.length} کامنت
+      </button>`
+      :""
+     }
+
+     ${firstComments.map(c=>`
+      <div class="comment">
+       <strong>@amirrezagholami</strong>
+       ${esc(c)}
+      </div>
+     `).join("")}
+
+    </div>
+   </article>`;
+  }).join("");
+ }
+
+ $("pc").textContent=S.posts.length;
+ $("followers").textContent=S.followers;
+ $("followText").textContent=S.follow?"Following":"Follow";
+
+ renderProfile();
+ renderDashboard();
+ renderNotifications();
+
+ save();
 }
 
-function create(){modal.classList.add('on')}
-function closeM(){modal.classList.remove('on')}
+/* PROFILE */
+
+function renderProfile(){
+
+ const level=getLevel();
+ const progress=getLevelProgress();
+
+ $("levelText").textContent="LEVEL "+level;
+ $("xpText").textContent=S.xp;
+ $("xpFill").style.width=progress+"%";
+
+ const badges=[];
+
+ if(S.posts.length>=1)
+  badges.push(`<div class="badge">🚀 اولین پست</div>`);
+ else
+  badges.push(`<div class="badge locked">🚀 اولین پست</div>`);
+
+ if(S.posts.length>=5)
+  badges.push(`<div class="badge">🔥 Creator</div>`);
+ else
+  badges.push(`<div class="badge locked">🔥 Creator</div>`);
+
+ if(S.followers>=10)
+  badges.push(`<div class="badge">👑 محبوب</div>`);
+ else
+  badges.push(`<div class="badge locked">👑 محبوب</div>`);
+
+ if(S.xp>=500)
+  badges.push(`<div class="badge">⚡ PRO</div>`);
+ else
+  badges.push(`<div class="badge locked">⚡ PRO</div>`);
+
+ $("badges").innerHTML=badges;
+
+ $("grid").innerHTML=S.posts.length?
+ S.posts.map(p=>p.image?
+  `<div class="grid-item">
+    <img src="${p.image}" onclick="viewPost(${p.id})">
+   </div>`
+  :
+  `<div class="grid-item">
+    <div class="grid-text">${esc(p.text).slice(0,90)}</div>
+   </div>`
+ ).reverse().join("")
+ :
+ "";
+}
+
+/* DASHBOARD */
+
+function renderDashboard(){
+
+ let likes=0;
+ let comments=0;
+
+ S.posts.forEach(p=>{
+  likes+=p.likes||0;
+  comments+=(p.comments||[]).length;
+ });
+
+ $("dPosts").textContent=S.posts.length;
+ $("dLikes").textContent=likes;
+ $("dComments").textContent=comments;
+ $("dFollowers").textContent=S.followers;
+
+ const level=getLevel();
+ const progress=getLevelProgress();
+
+ $("dashLevel").textContent="LEVEL "+level;
+ $("dashXP").textContent=S.xp+" XP";
+ $("dashFill").style.width=progress+"%";
+}
+
+/* NOTIFICATIONS */
+
+function renderNotifications(){
+
+ const box=$("notices");
+
+ if(!S.notes.length){
+  box.innerHTML=`
+   <div class="empty">
+    <div class="emoji">🔔</div>
+    <p>اعلان جدیدی نداری.</p>
+   </div>`;
+  return;
+ }
+
+ box.innerHTML=[...S.notes].reverse()
+ .map(x=>`
+  <div class="notice">
+   <div class="notice-icon">🔔</div>
+   <div>${esc(x)}</div>
+  </div>
+ `).join("");
+}
+
+/* CREATE POST */
+
+function create(){
+ $("modal").classList.add("on");
+ setTimeout(()=>$("txt").focus(),100);
+}
+
+function closeM(){
+ $("modal").classList.remove("on");
+}
 
 function publish(){
- let t=txt,f=file;
- if(!t.value.trim()&&!f.files[0])return toast('یک متن یا عکس اضافه کن!');
- let add=img=>{
- S.posts.push({id:Date.now(),text:t.value,image:img,likes:0,liked:false,comments:[]});
- S.notes.push('پست جدیدت منتشر شد 🚀');
- t.value='';f.value='';closeM();render();toast('پست منتشر شد 🎉')
+
+ const t=$("txt");
+ const f=$("file");
+
+ if(!t.value.trim()&&!f.files[0]){
+  toast("یک متن یا عکس اضافه کن! 😅");
+  return;
+ }
+
+ const add=img=>{
+
+  const p={
+   id:Date.now(),
+   text:t.value.trim(),
+   image:img,
+   likes:0,
+   liked:false,
+   comments:[],
+   time:"همین الان"
+  };
+
+  S.posts.push(p);
+  S.notes.push("پست جدیدت با موفقیت منتشر شد 🚀");
+
+  addXP(25);
+
+  t.value="";
+  f.value="";
+
+  closeM();
+  render();
+
+  toast("پست منتشر شد 🎉");
+
+  go("home",document.querySelector("nav button"));
  };
+
  if(f.files[0]){
-  let r=new FileReader();r.onload=()=>add(r.result);r.readAsDataURL(f.files[0])
- }else add('')
+
+  const r=new FileReader();
+
+  r.onload=()=>{
+   add(r.result);
+  };
+
+  r.readAsDataURL(f.files[0]);
+
+ }else{
+  add("");
+ }
 }
 
-function like(id){
- let p=S.posts.find(x=>x.id==id);if(!p)return;
- p.liked=!p.liked;p.likes=Math.max(0,(p.likes||0)+(p.liked?1:-1));
- save();render()
+/* LIKE */
+
+function like(id,element){
+
+ const p=S.posts.find(x=>x.id==id);
+
+ if(!p)return;
+
+ p.liked=!p.liked;
+ p.likes=Math.max(0,(p.likes||0)+(p.liked?1:-1));
+
+ if(p.liked){
+  addXP(2);
+  heartEffect(element);
+ }
+
+ save();
+ render();
 }
 
-function comment(id){
- let x=prompt('کامنتت را بنویس:');
- if(!x?.trim())return;
- let p=S.posts.find(x=>x.id==id);
- p.comments=p.comments||[];p.comments.push(x);
- S.notes.push('یک کامنت جدید ثبت شد 💬');save();render();toast('کامنت اضافه شد 💬')
+function heartEffect(element){
+
+ if(!element)return;
+
+ const pop=document.createElement("div");
+
+ pop.className="like-pop";
+ pop.textContent="♥";
+
+ const rect=element.getBoundingClientRect();
+
+ pop.style.position="fixed";
+ pop.style.left=(rect.left-28)+"px";
+ pop.style.top=(rect.top-55)+"px";
+ pop.style.color="var(--danger)";
+ pop.style.zIndex="100";
+
+ document.body.appendChild(pop);
+
+ setTimeout(()=>pop.remove(),700);
 }
+
+/* DOUBLE CLICK IMAGE */
+
+function viewPost(id){
+ const p=S.posts.find(x=>x.id==id);
+ if(!p)return;
+
+ if(p.image){
+  openStory("@amirrezagholami",p.text||"AMIRREZA SOCIAL+");
+ }
+}
+
+/* COMMENTS */
+
+let activeCommentPost=null;
+
+function openComments(id){
+
+ activeCommentPost=id;
+
+ const p=S.posts.find(x=>x.id==id);
+ if(!p)return;
+
+ const list=$("commentsList");
+
+ if(!(p.comments||[]).length){
+  list.innerHTML=`
+   <div class="empty">
+    <div class="emoji">💬</div>
+    <p>هنوز کامنتی نیست.</p>
+   </div>`;
+ }else{
+  list.innerHTML=p.comments.map(c=>`
+   <div class="comment-row">
+    <img src="profile.jpg">
+    <div>
+     <b>@amirrezagholami</b>
+     <div>${esc(c)}</div>
+    </div>
+   </div>
+  `).join("");
+ }
+
+ $("commentInput").value="";
+ $("commentModal").classList.add("on");
+}
+
+function closeComments(){
+ $("commentModal").classList.remove("on");
+ activeCommentPost=null;
+}
+
+function sendComment(){
+
+ const input=$("commentInput");
+ const value=input.value.trim();
+
+ if(!value)return;
+
+ const p=S.posts.find(x=>x.id==activeCommentPost);
+
+ if(!p)return;
+
+ p.comments=p.comments||[];
+ p.comments.push(value);
+
+ S.notes.push("یک کامنت جدید به پستت اضافه شد 💬");
+
+ addXP(5);
+ save();
+
+ input.value="";
+
+ openComments(p.id);
+ render();
+
+ toast("کامنت اضافه شد 💬");
+}
+
+/* FOLLOW */
 
 function follow(){
+
  S.follow=!S.follow;
- S.followers=Math.max(0,S.followers+(S.follow?1:-1));
- if(S.follow)S.notes.push('یک دنبال‌کننده جدید اضافه شد 👤');
- save();render();toast(S.follow?'Following شد 👤':'Unfollow شد')
+
+ S.followers=Math.max(
+  0,
+  S.followers+(S.follow?1:-1)
+ );
+
+ if(S.follow){
+  S.notes.push("یک دنبال‌کننده جدید اضافه شد 👤");
+  addXP(10);
+ }
+
+ save();
+ render();
+
+ toast(S.follow?"Following شد 👤":"Unfollow شد");
 }
 
-function share(){navigator.share?navigator.share({title:'AMIRREZA',url:location.href}):toast('لینک آماده اشتراک‌گذاری است 🔗')}
+/* BOOKMARK */
+
+function bookmark(id){
+
+ S.saved[id]=!S.saved[id];
+
+ save();
+
+ toast(
+  S.saved[id]?
+  "پست ذخیره شد 🔖":
+  "از ذخیره‌ها حذف شد"
+ );
+
+ render();
+}
+
+/* SHARE */
+
+async function share(){
+
+ try{
+
+  if(navigator.share){
+   await navigator.share({
+    title:"AMIRREZA SOCIAL+",
+    text:"AMIRREZA SOCIAL+ 🚀",
+    url:location.href
+   });
+  }else{
+   await navigator.clipboard.writeText(location.href);
+   toast("لینک کپی شد 🔗");
+  }
+
+ }catch(e){}
+}
+
+/* POST MENU */
+
+function postMenu(id){
+
+ const action=confirm(
+  "برای حذف این پست OK را بزن.\nبرای لغو Cancel را بزن."
+ );
+
+ if(!action)return;
+
+ S.posts=S.posts.filter(p=>p.id!=id);
+ S.notes.push("یک پست از پروفایلت حذف شد 🗑️");
+
+ save();
+ render();
+
+ toast("پست حذف شد");
+}
+
+/* SEARCH */
 
 function search(q){
- results.innerHTML=q?`<div style="padding:20px"><h3>🔍 نتایج</h3>
- <p>👤 @amirrezagholami</p>
- ${S.posts.filter(p=>p.text?.includes(q)).map(p=>`<p>📝 ${esc(p.text)}</p>`).join('')}</div>`:''
+
+ q=q.trim().toLowerCase();
+
+ const box=$("results");
+
+ if(!q){
+  box.innerHTML=`
+   <div class="empty">
+    <div class="emoji">🔍</div>
+    <h3>جستجو کن</h3>
+    <p class="muted">کاربر یا متن پست را پیدا کن.</p>
+   </div>`;
+  return;
+ }
+
+ const userMatch=
+  "@amirrezagholami".includes(q)||
+  "امیررضا غلامی".includes(q);
+
+ const posts=S.posts.filter(p=>
+  (p.text||"").toLowerCase().includes(q)
+ );
+
+ let html="";
+
+ if(userMatch){
+  html+=`
+   <div class="search-card">
+    <img src="profile.jpg">
+    <div>
+     <b>امیررضا غلامی</b>
+     <small>@amirrezagholami</small>
+    </div>
+   </div>`;
+ }
+
+ posts.forEach(p=>{
+  html+=`
+   <div class="search-card">
+    <div style="font-size:25px">📝</div>
+    <div>
+     <b>پست</b>
+     <small>${esc(p.text||"پست تصویری")}</small>
+    </div>
+   </div>`;
+ });
+
+ if(!html){
+  html=`
+   <div class="empty">
+    <div class="emoji">😶</div>
+    <h3>چیزی پیدا نشد</h3>
+    <p class="muted">عبارت دیگری امتحان کن.</p>
+   </div>`;
+ }
+
+ box.innerHTML=html;
 }
 
-function story(x){toast(x+' 📸')}
-const toastEl=document.getElementById('toast');
+/* STORIES */
+
+function openStory(title,caption){
+
+ $("storyTitle").textContent=title;
+ $("storyCaption").textContent=caption;
+
+ $("storyView").classList.add("on");
+}
+
+function closeStory(){
+ $("storyView").classList.remove("on");
+}
+
+function story(x){
+ openStory(x,"AMIRREZA SOCIAL+ 🚀");
+}
+
+/* REELS */
+
+function reelLike(btn){
+
+ let n=Number(btn.querySelector("small").textContent)||0;
+
+ if(btn.classList.contains("liked")){
+  n=Math.max(0,n-1);
+  btn.classList.remove("liked");
+  btn.innerHTML="♡<small>"+n+"</small>";
+ }else{
+  n++;
+  btn.classList.add("liked");
+  btn.innerHTML="♥<small>"+n+"</small>";
+  addXP(2);
+  save();
+ }
+}
+
+/* SETTINGS */
+
+function openSettings(){
+ $("settingsModal").classList.add("on");
+}
+
+function closeSettings(){
+ $("settingsModal").classList.remove("on");
+}
+
+function setTheme(theme){
+
+ document.body.classList.remove(
+  "aqua","green","orange","pink"
+ );
+
+ document.body.classList.add(theme);
+
+ S.theme=theme;
+ save();
+
+ toast("تم تغییر کرد 🎨");
+}
+
+function toggleLight(){
+
+ S.light=!S.light;
+
+ document.body.classList.toggle(
+  "light",
+  S.light
+ );
+
+ save();
+
+ toast(S.light?"حالت روشن ☀️":"حالت تاریک 🌙");
+}
+
+function openNotifications(){
+
+ go("notify",null);
+
+ document.querySelectorAll("nav button")
+  .forEach(x=>x.classList.remove("on"));
+}
+
+/* RESET */
+
+function resetData(){
+
+ const ok=confirm(
+  "تمام پست‌ها، لایک‌ها، XP و تنظیمات LocalStorage پاک می‌شوند. ادامه؟"
+ );
+
+ if(!ok)return;
+
+ localStorage.removeItem(K);
+
+ location.reload();
+}
+
+/* APPLY SETTINGS */
+
+function applySettings(){
+
+ setTheme(S.theme||"aqua");
+
+ if(S.light){
+  document.body.classList.add("light");
+ }
+}
+
+/* KEYBOARD */
+
+$("commentInput").addEventListener("keydown",e=>{
+ if(e.key==="Enter")sendComment();
+});
+
+/* MODAL BACKDROP */
+
+document.querySelectorAll(".modal").forEach(modal=>{
+ modal.addEventListener("click",e=>{
+  if(e.target===modal){
+   modal.classList.remove("on");
+  }
+ });
+});
+
+/* INIT */
+
+applySettings();
 render();
-if('serviceWorker'in navigator)navigator.serviceWorker.register('./sw.js').catch(()=>{});
+
+if("serviceWorker"in navigator){
+ navigator.serviceWorker
+  .register("./sw.js")
+  .catch(()=>{});
+}
 </script>
+
 </body>
  </html>
