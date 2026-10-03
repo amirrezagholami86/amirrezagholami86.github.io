@@ -1,48 +1,27 @@
-const CACHE_NAME = "amirreza-app-v28";
+const VERSION="am-v3.2.0";
+const CACHE=VERSION;
 
-const APP_FILES = [
-  "./",
-  "./index.html",
-  "./profile.jpg",
-  "./manifest.webmanifest"
-];
+self.addEventListener("install",e=>{
+  self.skipWaiting();
+});
 
-self.addEventListener("install", event => {
-  event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => cache.addAll(APP_FILES))
-      .then(() => self.skipWaiting())
+self.addEventListener("activate",e=>{
+  e.waitUntil(
+    caches.keys().then(keys=>
+      Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))
+    ).then(()=>self.clients.claim())
   );
 });
 
-self.addEventListener("activate", event => {
-  event.waitUntil(
-    caches.keys().then(keys =>
-      Promise.all(
-        keys
-          .filter(key => key !== CACHE_NAME)
-          .map(key => caches.delete(key))
-      )
-    ).then(() => self.clients.claim())
-  );
-});
-
-self.addEventListener("fetch", event => {
-  if (event.request.method !== "GET") return;
-
-  event.respondWith(
-    caches.match(event.request).then(cached => {
-      return cached || fetch(event.request).then(response => {
-        if (response && response.status === 200) {
-          const copy = response.clone();
-
-          caches.open(CACHE_NAME).then(cache => {
-            cache.put(event.request, copy);
-          });
-        }
-
-        return response;
-      }).catch(() => caches.match("./index.html"));
-    })
+self.addEventListener("fetch",e=>{
+  if(e.request.method!=="GET")return;
+  e.respondWith(
+    fetch(e.request)
+      .then(r=>{
+        const copy=r.clone();
+        caches.open(CACHE).then(c=>c.put(e.request,copy));
+        return r;
+      })
+      .catch(()=>caches.match(e.request))
   );
 });
