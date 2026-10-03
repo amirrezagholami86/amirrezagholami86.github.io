@@ -3,190 +3,187 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#00e5ff">
-<meta name="description" content="Amirreza Gholami | Personal Social Space">
+<meta name="theme-color" content="#050509">
 <link rel="manifest" href="./manifest.webmanifest">
-<title>امیررضا | AMIRREZA.DEV</title>
-
+<title>AMIRREZA</title>
 <style>
-:root{--a:#00e5ff;--bg:#071018;--card:#0d1822;--txt:#eefaff;--muted:#8da4b2;--line:#19303e}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--txt);font-family:Tahoma,Arial,sans-serif}
-a{color:inherit;text-decoration:none}button,input,textarea{font:inherit}
-header{position:sticky;top:0;z-index:5;background:#071018eF;backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-nav{max-width:1000px;margin:auto;padding:12px 16px;display:flex;justify-content:space-between;align-items:center}
-.logo{font-size:20px;font-weight:bold;color:var(--a)}.online{font-size:12px;color:#6eff9a}
-main{max-width:1000px;margin:auto;padding:20px 14px 80px}
-.hero,.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px;margin-bottom:15px}
-.hero{text-align:center;padding:30px 20px}
-.avatar{width:90px;height:90px;border-radius:50%;object-fit:cover;border:3px solid var(--a)}
-h1{margin:12px 0 5px}.muted{color:var(--muted);font-size:13px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.stat{text-align:center;background:#09141d;padding:14px;border-radius:15px}.stat b{display:block;font-size:20px;color:var(--a)}
-.btn{border:0;border-radius:12px;padding:10px 15px;background:var(--a);color:#001018;font-weight:bold;cursor:pointer}
-.btn.dark{background:#152630;color:var(--txt)}.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-textarea,input{width:100%;background:#08131b;color:var(--txt);border:1px solid var(--line);border-radius:12px;padding:12px;outline:none}
-textarea{min-height:90px;resize:vertical}.post img{width:100%;max-height:450px;object-fit:cover;border-radius:15px;margin-top:10px}
-.posthead{display:flex;justify-content:space-between;align-items:center}.actions{display:flex;gap:8px;margin-top:10px}
-.actions button{background:#13232d;color:var(--txt);border:0;border-radius:10px;padding:8px 12px;cursor:pointer}
-.comment{border-top:1px solid var(--line);margin-top:10px;padding-top:8px;font-size:13px}
-.badge{background:#ff315b;color:white;border-radius:20px;padding:3px 7px;font-size:11px}
-section{scroll-margin-top:70px}.hide{display:none}
-footer{text-align:center;color:var(--muted);padding:20px;font-size:12px}
-@media(max-width:600px){.grid{grid-template-columns:repeat(3,1fr)}.hero{padding:22px 12px}h1{font-size:23px}}
+*{box-sizing:border-box}body{margin:0;background:#050509;color:#fff;font-family:Arial,Tahoma,sans-serif}
+button,input,textarea{font:inherit}button{cursor:pointer;border:0}
+.app{max-width:600px;margin:auto;min-height:100vh;background:#050509}
+header{height:58px;position:sticky;top:0;z-index:9;background:#050509ee;border-bottom:1px solid #222;display:flex;align-items:center;justify-content:space-between;padding:0 16px}
+.logo{font-size:23px;font-weight:800}.icons{display:flex;gap:18px;font-size:22px}
+.page{display:none;padding-bottom:70px}.page.on{display:block}
+.stories{display:flex;gap:14px;overflow:auto;padding:14px;border-bottom:1px solid #222}
+.story{min-width:68px;text-align:center;font-size:11px}.story img{width:62px;height:62px;border-radius:50%;object-fit:cover;padding:2px;border:2px solid #e9369b}
+.story:first-child img{border-color:#00e5ff}.story span{display:block;margin-top:5px;white-space:nowrap;overflow:hidden}
+.post{border-bottom:1px solid #222;padding-bottom:14px;margin-bottom:8px}.phead{display:flex;align-items:center;gap:10px;padding:10px 14px}
+.avatar{width:38px;height:38px;border-radius:50%;object-fit:cover}.more{margin-right:auto;background:none;color:white;font-size:20px}
+.postimg{width:100%;max-height:650px;object-fit:cover}.actions{display:flex;gap:20px;padding:10px 14px;font-size:23px}.actions button{background:none;color:#fff}
+.text{padding:0 14px}.muted{color:#999;font-size:13px}
+nav{position:fixed;bottom:0;left:0;right:0;z-index:10;background:#050509f5;border-top:1px solid #222;height:62px;display:flex;justify-content:space-around;align-items:center}
+nav button{background:none;color:#aaa;font-size:22px}nav button.active{color:#fff}
+.reel{height:calc(100vh - 58px);position:relative;background:#111;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.reel img{width:100%;height:100%;object-fit:cover}.reelInfo{position:absolute;bottom:30px;right:15px;text-shadow:0 1px 5px #000}.reelActions{position:absolute;left:15px;bottom:50px;display:grid;gap:18px;font-size:25px;text-align:center}
+.search{padding:15px}.search input,.chatInput{width:100%;padding:13px;border-radius:12px;background:#18181d;color:#fff;border:1px solid #333}
+.profile{text-align:center;padding:25px 15px}.bigavatar{width:90px;height:90px;border-radius:50%;object-fit:cover;border:3px solid #e9369b}
+.stats{display:flex;justify-content:space-around;margin:20px 0}.stats b{display:block;font-size:20px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}.grid img{width:100%;aspect-ratio:1;object-fit:cover}
+.chat{padding:15px}.bubble{max-width:75%;padding:10px 13px;border-radius:17px;margin:8px}.me{background:#6c35ff;margin-right:auto}.you{background:#222;margin-left:auto}
+.chatInput{position:fixed;bottom:70px;left:50%;transform:translateX(-50%);max-width:570px}
+.modal{position:fixed;inset:0;background:#000b;z-index:20;display:none;align-items:flex-end}.modal.on{display:flex}.box{background:#111;width:100%;max-width:600px;margin:auto;padding:20px;border-radius:20px 20px 0 0}
+textarea{width:100%;height:120px;background:#19191f;color:#fff;border:1px solid #333;border-radius:12px;padding:12px}
+.btn{background:#0095f6;color:#fff;border-radius:12px;padding:11px 20px;margin-top:10px}
+@media(min-width:601px){nav{position:fixed;right:calc(50% - 300px);left:auto;width:600px}.app{border-left:1px solid #222;border-right:1px solid #222}}
 </style>
 </head>
 
 <body>
+<div class="app">
 
 <header>
-<nav>
-<div class="logo">AMIRREZA.DEV</div>
-<div class="online" id="status">● آنلاین</div>
-</nav>
+  <b class="logo">AMIRREZA</b>
+  <div class="icons">➕　♡　☰</div>
 </header>
 
-<main>
-
-<section class="hero">
-<img class="avatar" src="profile.jpg" onerror="this.style.display='none'">
-<h1 id="name">امیررضا غلامی</h1>
-<div class="muted" id="bio">Personal Creator • Developer • Dreamer</div>
-<p>💥 SOCIAL BOOM • v2.8.0 • Build 30</p>
-<div class="row" style="justify-content:center">
-<button class="btn" onclick="document.getElementById('newpost').scrollIntoView()">➕ پست جدید</button>
-<button class="btn dark" onclick="toggleTheme()">🌙 تم</button>
-</div>
-</section>
-
-<section class="card">
-<div class="grid">
-<div class="stat"><b id="posts">0</b>پست</div>
-<div class="stat"><b id="likes">0</b>لایک</div>
-<div class="stat"><b id="xp">820</b> XP</div>
-</div>
-</section>
-
-<section id="newpost" class="card">
-<h3>✍️ ساخت پست</h3>
-<textarea id="text" placeholder="چی توی ذهنت می‌گذره؟"></textarea>
-<div style="height:8px"></div>
-<input id="image" type="file" accept="image/*">
-<div style="height:8px"></div>
-<button class="btn" onclick="publish()">🚀 انتشار</button>
-</section>
-
-<section class="card">
-<div class="row">
-<h3 style="margin:0">🌐 فید اجتماعی</h3>
-<span class="badge" id="notice">0</span>
+<!-- HOME -->
+<section id="home" class="page on">
+<div class="stories">
+<div class="story" onclick="openCreate()"><img src="profile.jpg"><span>استوری من</span></div>
+<div class="story"><img src="profile.jpg"><span>Amirreza</span></div>
+<div class="story"><img src="profile.jpg"><span>Friends</span></div>
+<div class="story"><img src="profile.jpg"><span>Creator</span></div>
 </div>
 <div id="feed"></div>
 </section>
 
-<section class="card">
-<h3>🎯 مأموریت امروز</h3>
-<p class="muted">امروز یک پست منتشر کن و XP بگیر.</p>
-<button class="btn" id="mission" onclick="doMission()">انجام مأموریت +50 XP</button>
+<!-- SEARCH -->
+<section id="search" class="page">
+<div class="search"><input placeholder="🔍 جستجو..." oninput="find(this.value)"></div>
+<div id="results"></div>
 </section>
 
-<section class="card">
-<h3>🏆 وضعیت حساب</h3>
-<p>سطح: <b id="level">8</b></p>
-<p>🔥 Streak: <b id="streak">0</b> روز</p>
-<p>📱 وضعیت: <b id="app">نسخه وب</b></p>
-</section>
-
-<section class="card">
-<h3>🔗 ارتباط</h3>
-<div class="row">
-<a class="btn" href="https://instagram.com/amirrezagholami.ir">Instagram</a>
-<a class="btn dark" href="https://t.me/Amirrezagholami_ir">Telegram</a>
-<a class="btn dark" href="mailto:amirrezaamirreza275@gmail.com">Email</a>
+<!-- REELS -->
+<section id="reels" class="page">
+<div class="reel">
+<img src="profile.jpg">
+<div class="reelInfo"><b>@amirrezagholami</b><br>🔥 AMIRREZA SOCIAL</div>
+<div class="reelActions">♡<small>0</small>　💬<small>0</small>　↗️</div>
 </div>
 </section>
 
-</main>
+<!-- MESSAGES -->
+<section id="messages" class="page">
+<div class="chat">
+<h3>💬 پیام‌ها</h3>
+<div class="bubble you">سلام 👋</div>
+<div class="bubble me">سلام! به AMIRREZA خوش اومدی 🚀</div>
+<div class="bubble you">خیلی خفنه 🔥</div>
+<div class="bubble me">تازه اولشه 😎</div>
+</div>
+<input class="chatInput" placeholder="پیام..." onkeydown="if(event.key==='Enter'){alert('پیام محلی ارسال شد 💬');this.value=''}">
+</section>
 
-<footer>AMIRREZA APP 🚀 • v2.8.0 Build 30</footer>
+<!-- PROFILE -->
+<section id="profile" class="page">
+<div class="profile">
+<img class="bigavatar" src="profile.jpg">
+<h2>امیررضا غلامی</h2>
+<div class="muted">@amirrezagholami</div>
+<p>Creator • Developer • Dreamer 🚀</p>
+<div class="stats">
+<div><b id="pc">0</b>Posts</div>
+<div><b>820</b>Followers</div>
+<div><b>120</b>Following</div>
+</div>
+<button class="btn" onclick="openCreate()">✏️ ساخت پست</button>
+</div>
+<div id="profileGrid" class="grid"></div>
+</section>
+
+<!-- NOTIFICATIONS -->
+<section id="notifications" class="page">
+<div style="padding:20px"><h2>🔔 اعلان‌ها</h2><p>❤️ کسی پستت را پسندید.</p><p>💬 یک کامنت جدید داری.</p><p>👤 یک نفر تو را دنبال کرد.</p></div>
+</section>
+
+<nav>
+<button class="active" onclick="go('home',this)">⌂</button>
+<button onclick="go('search',this)">⌕</button>
+<button onclick="openCreate()">＋</button>
+<button onclick="go('reels',this)">▶</button>
+<button onclick="go('profile',this)">◯</button>
+</nav>
+</div>
+
+<!-- CREATE -->
+<div id="modal" class="modal">
+<div class="box">
+<h3>➕ پست جدید</h3>
+<textarea id="postText" placeholder="چی توی ذهنت می‌گذره؟"></textarea>
+<input id="postFile" type="file" accept="image/*" style="margin-top:12px">
+<button class="btn" onclick="publish()">🚀 انتشار</button>
+<button class="btn" style="background:#333" onclick="closeCreate()">بستن</button>
+</div>
+</div>
 
 <script>
-const KEY="amirreza_space_v24";
-let S=JSON.parse(localStorage.getItem(KEY)||"null")||{
- xp:820,streak:0,mission:false,posts:[],theme:"dark"
-};
+const K="amirreza_space_v24";
+let S=JSON.parse(localStorage.getItem(K)||'{"posts":[],"xp":820}');
+S.posts=S.posts||[];
 
-S.posts=S.posts||[];save();
+function save(){localStorage.setItem(K,JSON.stringify(S))}
+function esc(x){return String(x).replace(/[&<>"']/g,a=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[a]))}
 
-function save(){localStorage.setItem(KEY,JSON.stringify(S))}
-function esc(x){return String(x||"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]))}
+function go(id,b){
+ document.querySelectorAll('.page').forEach(x=>x.classList.remove('on'));
+ document.getElementById(id).classList.add('on');
+ document.querySelectorAll('nav button').forEach(x=>x.classList.remove('active'));
+ if(b)b.classList.add('active');
+ render();
+}
 
 function render(){
- let likes=S.posts.reduce((n,p)=>n+(p.likes||0),0);
- posts.textContent=S.posts.length;
- document.getElementById("likes").textContent=likes;
- xp.textContent=S.xp;
- streak.textContent=S.streak;
- notice.textContent=S.posts.length;
- mission.textContent=S.mission?"✅ مأموریت انجام شد":"+50 XP | انجام مأموریت";
- mission.disabled=S.mission;
- feed.innerHTML=S.posts.length?S.posts.slice().reverse().map((p,i)=>`
- <article class="post card">
-  <div class="posthead"><b>👤 امیررضا</b><small class="muted">${p.date}</small></div>
-  <p>${esc(p.text)}</p>
-  ${p.image?`<img src="${p.image}">`:""}
-  <div class="actions">
-   <button onclick="like(${p.id})">❤️ ${p.likes||0}</button>
-   <button onclick="comment(${p.id})">💬 ${p.comments?.length||0}</button>
-   <button onclick="del(${p.id})">🗑️</button>
-  </div>
-  ${(p.comments||[]).map(c=>`<div class="comment">💬 ${esc(c)}</div>`).join("")}
- </article>`).join(""):"<p class='muted'>هنوز پستی منتشر نشده. اولین پست رو تو بزن! 🚀</p>";
+ let html='';
+ [...S.posts].reverse().forEach(p=>{
+ html+=`<article class="post">
+ <div class="phead"><img class="avatar" src="profile.jpg"><b>@amirrezagholami</b><button class="more">⋯</button></div>
+ ${p.image?`<img class="postimg" src="${p.image}">`:''}
+ <div class="actions">
+ <button onclick="like(${p.id})">♡</button><button onclick="comment(${p.id})">♧</button><button>↗</button><button>🔖</button>
+ </div>
+ <div class="text"><b>❤️ ${p.likes||0} likes</b><p>${esc(p.text||'')}</p>
+ <span class="muted">💬 ${p.comments?.length||0} comments</span></div>
+ </article>`;
+ });
+ document.getElementById('feed').innerHTML=html||'<p class="muted" style="padding:20px">هنوز پستی نیست. اولین پست را تو بساز 🚀</p>';
+ document.getElementById('pc').textContent=S.posts.length;
+ document.getElementById('profileGrid').innerHTML=S.posts.map(p=>p.image?`<img src="${p.image}">`:'').join('');
 }
+
+function openCreate(){document.getElementById('modal').classList.add('on')}
+function closeCreate(){document.getElementById('modal').classList.remove('on')}
+
 function publish(){
- let t=document.getElementById("text"),f=document.getElementById("image");
- if(!t.value.trim()&&!f.files[0])return alert("یک متن یا عکس اضافه کن!");
+ let t=document.getElementById('postText'),f=document.getElementById('postFile');
+ if(!t.value.trim()&&!f.files[0])return;
  let add=img=>{
-  S.posts.push({id:Date.now(),text:t.value.trim(),image:img||"",likes:0,comments:[],date:new Date().toLocaleDateString("fa-IR")});
-  S.xp+=20;t.value="";f.value="";save();render();
+ S.posts.push({id:Date.now(),text:t.value,image:img,likes:0,comments:[]});
+ S.xp+=20;save();t.value='';f.value='';closeCreate();render();
  };
- if(f.files[0]){
-  let r=new FileReader();r.onload=()=>add(r.result);r.readAsDataURL(f.files[0]);
- }else add("");
+ if(f.files[0]){let r=new FileReader();r.onload=()=>add(r.result);r.readAsDataURL(f.files[0])}else add('');
 }
+
 function like(id){
  let p=S.posts.find(x=>x.id==id);if(p){p.likes=(p.likes||0)+1;S.xp+=2;save();render()}
 }
 function comment(id){
- let x=prompt("کامنتت رو بنویس:");
- if(!x?.trim())return;
- let p=S.posts.find(x=>x.id==id);
- p.comments=p.comments||[];p.comments.push(x.trim());S.xp+=5;save();render();
+ let x=prompt('کامنتت را بنویس:');if(!x)return;
+ let p=S.posts.find(x=>x.id==id);p.comments=p.comments||[];p.comments.push(x);save();render()
 }
-function del(id){
- if(confirm("این پست حذف شود؟")){S.posts=S.posts.filter(x=>x.id!=id);save();render()}
+function find(q){
+ document.getElementById('results').innerHTML=q?
+ `<div style="padding:20px">🔎 نتیجه برای <b>${esc(q)}</b><br><br>👤 @amirrezagholami</div>`:'';
 }
-function doMission(){
- if(S.mission)return;
- S.mission=true;S.xp+=50;S.streak++;
- save();render();
-}
-function toggleTheme(){
- document.body.classList.toggle("light");
- if(document.body.classList.contains("light")){
-  document.documentElement.style.setProperty("--bg","#eef5f8");
-  document.documentElement.style.setProperty("--card","#fff");
-  document.documentElement.style.setProperty("--txt","#10202a");
- }else{
-  document.documentElement.style.setProperty("--bg","#071018");
-  document.documentElement.style.setProperty("--card","#0d1822");
-  document.documentElement.style.setProperty("--txt","#eefaff");
- }
-}
-function net(){status.textContent=navigator.onLine?"● آنلاین":"● آفلاین";status.style.color=navigator.onLine?"#6eff9a":"#ffb84d"}
-addEventListener("online",net);addEventListener("offline",net);
-if(matchMedia("(display-mode: standalone)").matches)app.textContent="📱 اپ نصب‌شده";
-if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js").catch(()=>{});
-net();render();
+render();
+if('serviceWorker'in navigator)navigator.serviceWorker.register('./sw.js').catch(()=>{});
 </script>
 </body>
-</html>
+ </html>
