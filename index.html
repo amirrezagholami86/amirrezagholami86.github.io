@@ -4,29 +4,26 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#000">
-<title>AMIRREZA • v5.0.0</title>
+<title>AMIRREZA • v6.0</title>
 <style>
 *{box-sizing:border-box}body{margin:0;background:#000;color:#f5f5f5;font-family:system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif}
-button,input,textarea{font:inherit}button{cursor:pointer;color:inherit}
-.app{max-width:600px;margin:auto;min-height:100vh;background:#000}
-header{height:58px;border-bottom:1px solid #262626;display:flex;align-items:center;justify-content:space-between;padding:0 16px;position:sticky;top:0;background:#000;z-index:10}
-.logo{font-size:21px;font-weight:800;letter-spacing:-1px}.ver{font-size:9px;color:#666;margin-right:6px}
-.icon{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.actions{display:flex;gap:18px;align-items:center}.btn{background:none;border:0;padding:4px}
+button,input,textarea{font:inherit}button{color:inherit;cursor:pointer}
+.app{max-width:600px;margin:auto;min-height:100vh;background:#000;padding-bottom:62px}
+header{height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 15px;border-bottom:1px solid #202020;position:sticky;top:0;background:#000;z-index:10}
+.logo{font-weight:850;font-size:21px;letter-spacing:-1px}.v{font-size:9px;color:#555;margin-right:5px}.icons{display:flex;gap:15px}
+.i{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.btn{background:none;border:0;padding:3px}
 .page{display:none}.page.on{display:block}
-.stories{display:flex;gap:14px;padding:15px 12px;overflow:auto;border-bottom:1px solid #181818}
-.story{min-width:62px;text-align:center;font-size:11px;color:#aaa}.avatar{width:58px;height:58px;border-radius:50%;padding:2px;border:2px solid #d62976;object-fit:cover}.story:first-child .avatar{border-color:#444}
-.post{border-bottom:1px solid #222}.posthead{display:flex;align-items:center;gap:10px;padding:10px 13px}.posthead img{width:38px;height:38px;border-radius:50%;object-fit:cover}.name{font-weight:700;font-size:14px}.handle{font-size:11px;color:#777}.more{margin-right:auto}
-.postimg{width:100%;display:block;max-height:650px;object-fit:cover;background:#111}.posttext{padding:10px 13px;font-size:14px;line-height:1.8}
-.posttools{display:flex;padding:9px 12px 2px;gap:16px}.posttools .save{margin-right:auto}.liked{color:#ff3040!important}.saved{color:#fff}
-.meta{padding:0 13px 13px;color:#888;font-size:12px}.count{font-weight:700;color:#eee;margin-bottom:5px}
-.empty{text-align:center;color:#777;padding:80px 20px}
-.searchbox{padding:14px}.searchbox input{width:100%;background:#171717;border:0;border-radius:10px;padding:12px 15px;color:#fff;outline:0}
-.profile{padding:25px 18px}.profiletop{display:flex;align-items:center;gap:20px}.profiletop img{width:86px;height:86px;border-radius:50%;object-fit:cover}.stats{display:flex;gap:22px;text-align:center}.stats b{display:block;font-size:17px}.stats span{font-size:11px;color:#888}.bio{margin-top:20px;font-size:14px;line-height:1.8}.profileBtns{display:flex;gap:8px;margin-top:16px}.profileBtns button{flex:1;border:1px solid #333;background:#171717;border-radius:8px;padding:8px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:25px}.grid img{width:100%;aspect-ratio:1;object-fit:cover;background:#111}
-.bottom{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(600px,100%);height:58px;background:#000;border-top:1px solid #262626;display:flex;justify-content:space-around;align-items:center;z-index:20}.bottom button{background:none;border:0}.bottom .active{color:#00d9ff}.create{width:34px;height:34px;border:1px solid #aaa!important;border-radius:10px!important;display:flex;align-items:center;justify-content:center}
-.modal{position:fixed;inset:0;background:#000b;display:none;align-items:flex-end;z-index:30}.modal.on{display:flex}.sheet{background:#111;width:100%;max-width:600px;margin:auto auto 0;border-radius:18px 18px 0 0;padding:18px}.sheet h3{margin:0 0 15px}.sheet textarea{width:100%;height:110px;background:#181818;border:1px solid #292929;color:#fff;border-radius:10px;padding:12px;outline:0;resize:none}.sheet input{width:100%;background:#181818;border:1px solid #292929;color:#fff;border-radius:10px;padding:11px;margin:8px 0;outline:0}.primary{width:100%;background:#0095f6;border:0;border-radius:9px;padding:11px;margin-top:10px;font-weight:700}
-.comment{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid #222}.comment img{width:32px;height:32px;border-radius:50%}
-@media(min-width:601px){body{background:#101010}.app{border-left:1px solid #222;border-right:1px solid #222}}
+.stories{display:flex;gap:15px;padding:14px 11px;overflow:auto;border-bottom:1px solid #181818}
+.story{min-width:62px;text-align:center;color:#aaa;font-size:11px}.ava{width:58px;height:58px;border-radius:50%;object-fit:cover;border:2px solid #d62976;padding:2px}.your{position:relative}.add{position:absolute;bottom:1px;right:1px;background:#0095f6;border:2px solid #000;border-radius:50%;width:19px;height:19px;display:grid;place-items:center;font-size:15px}
+.post{border-bottom:1px solid #202020}.head{height:57px;display:flex;align-items:center;gap:10px;padding:8px 13px}.head img{width:38px;height:38px;border-radius:50%;object-fit:cover}.name{font-size:14px;font-weight:700}.sub{font-size:11px;color:#777}.more{margin-right:auto}
+.photo{width:100%;display:block;max-height:700px;object-fit:cover;background:#111}.txt{padding:10px 13px;line-height:1.8;font-size:14px}.tools{display:flex;gap:15px;padding:9px 12px 3px}.tools .save{margin-right:auto}.liked{color:#ff3040!important}.saved{color:#fff!important}.meta{padding:0 13px 12px;font-size:12px;color:#777}.meta b{color:#eee}
+.bottom{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(600px,100%);height:59px;background:#000;border-top:1px solid #222;display:flex;justify-content:space-around;align-items:center;z-index:20}.bottom button{background:none;border:0}.bottom .on{color:#00d9ff}.create{border:1px solid #777!important;border-radius:9px;width:34px;height:34px}
+.profile{padding:24px 17px}.ptop{display:flex;align-items:center;gap:18px}.ptop img{width:88px;height:88px;border-radius:50%;object-fit:cover}.stats{display:flex;gap:21px;text-align:center}.stats b{display:block;font-size:17px}.stats span{font-size:11px;color:#888}.bio{margin-top:15px;font-size:13px;line-height:1.8}.pbuttons{display:flex;gap:7px;margin-top:15px}.pbuttons button{flex:1;background:#181818;border:1px solid #292929;border-radius:8px;padding:8px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:22px}.grid img{width:100%;aspect-ratio:1;object-fit:cover;background:#111}
+.search{padding:13px}.search input{width:100%;background:#181818;border:0;border-radius:10px;padding:11px 14px;color:#fff;outline:0}.empty{text-align:center;color:#777;padding:70px 20px}
+.modal{position:fixed;inset:0;background:#000c;display:none;z-index:30;align-items:flex-end}.modal.on{display:flex}.sheet{background:#111;width:min(600px,100%);margin:auto auto 0;border-radius:18px 18px 0 0;padding:18px;max-height:80vh;overflow:auto}.sheettop{display:flex;justify-content:space-between;align-items:center}.sheet textarea,.sheet input{width:100%;background:#181818;border:1px solid #292929;color:#fff;border-radius:9px;padding:11px;outline:0;margin:7px 0}.sheet textarea{height:100px;resize:none}.primary{width:100%;background:#0095f6;border:0;border-radius:8px;padding:11px;font-weight:700;margin-top:7px}
+.storyview{position:fixed;inset:0;background:#000;z-index:50;display:none}.storyview.on{display:flex;align-items:center;justify-content:center}.storyview img{max-width:100%;max-height:100%;object-fit:contain}.close{position:absolute;top:17px;right:17px;background:#111b;border:0;border-radius:50%;padding:8px}
+.reels{height:calc(100vh - 59px);overflow:auto;scroll-snap-type:y mandatory}.reel{height:calc(100vh - 59px);scroll-snap-align:start;position:relative;background:#090909;display:grid;place-items:center}.reel img{width:100%;height:100%;object-fit:cover;opacity:.82}.reelinfo{position:absolute;bottom:25px;right:15px;left:70px}.rail{position:absolute;bottom:25px;left:12px;display:grid;gap:17px}.rail button{background:#1119;border:0;border-radius:50%;padding:9px}
+@media(min-width:601px){body{background:#111}.app{border-left:1px solid #222;border-right:1px solid #222}}
 </style>
 </head>
 <body>
@@ -41,128 +38,110 @@ header{height:58px;border-bottom:1px solid #262626;display:flex;align-items:cent
 <symbol id="save" viewBox="0 0 24 24"><path d="M6 4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18l-6-4-6 4z"/></symbol>
 <symbol id="user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
 <symbol id="bell" viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></symbol>
-<symbol id="x" viewBox="0 0 24 24"><path d="m5 5 14 14M19 5 5 19"/></symbol>
+<symbol id="close" viewBox="0 0 24 24"><path d="m5 5 14 14M19 5 5 19"/></symbol>
+<symbol id="play" viewBox="0 0 24 24"><path d="m8 5 11 7-11 7z"/></symbol>
 </svg>
 
 <div class="app">
 <header>
-  <div class="logo">AMIRREZA <span class="ver">v5.0</span></div>
-  <div class="actions">
-    <button class="btn" onclick="openCreate()"><svg class="icon"><use href="#plus"/></svg></button>
-    <button class="btn" onclick="toast('اعلان جدیدی نیست')"><svg class="icon"><use href="#bell"/></svg></button>
-  </div>
+ <div class="logo">AMIRREZA <span class="v">v6.0</span></div>
+ <div class="icons">
+  <button class="btn" onclick="openCreate()"><svg class="i"><use href="#plus"/></svg></button>
+  <button class="btn" onclick="toast('اعلان جدیدی نیست')"><svg class="i"><use href="#bell"/></svg></button>
+ </div>
 </header>
 
-<main>
 <section id="home" class="page on">
 <div class="stories">
-  <div class="story"><img class="avatar" src="profile.jpg"><div>داستان شما</div></div>
-  <div class="story"><img class="avatar" src="profile.jpg"><div>Amirreza</div></div>
-  <div class="story"><img class="avatar" src="profile.jpg"><div>Friends</div></div>
-  <div class="story"><img class="avatar" src="profile.jpg"><div>Today</div></div>
+ <div class="story your" onclick="story()"><img class="ava" src="profile.jpg"><span class="add">+</span><div>داستان شما</div></div>
+ <div class="story" onclick="story()"><img class="ava" src="profile.jpg"><div>Amirreza</div></div>
+ <div class="story" onclick="story()"><img class="ava" src="profile.jpg"><div>Friends</div></div>
+ <div class="story" onclick="story()"><img class="ava" src="profile.jpg"><div>Today</div></div>
 </div>
 <div id="feed"></div>
 </section>
 
-<section id="searchPage" class="page">
-<div class="searchbox"><input id="search" placeholder="جستجو" oninput="searchPosts(this.value)"></div>
+<section id="explore" class="page">
+<div class="search"><input placeholder="جستجو در AMIRREZA..." oninput="search(this.value)"></div>
 <div id="results"></div>
+</section>
+
+<section id="reels" class="page">
+<div class="reels" id="reelBox"></div>
 </section>
 
 <section id="profile" class="page">
 <div class="profile">
-<div class="profiletop">
-<img src="profile.jpg">
-<div class="stats">
-<div><b id="pPosts">0</b><span>پست</span></div>
-<div><b id="pFollowers">0</b><span>دنبال‌کننده</span></div>
-<div><b id="pFollowing">0</b><span>دنبال‌شونده</span></div>
-</div>
-</div>
-<h3>امیررضا غلامی</h3>
-<div>@amirrezagholami</div>
-<div class="bio">Creator • Developer • Dreamer<br>Personal space of Amirreza.</div>
-<div class="profileBtns"><button onclick="follow()">دنبال کردن</button><button>ویرایش پروفایل</button></div>
+<div class="ptop"><img src="profile.jpg"><div class="stats">
+<div><b id="pc">0</b><span>پست</span></div><div><b id="fc">0</b><span>دنبال‌کننده</span></div><div><b id="fg">0</b><span>دنبال‌شونده</span></div>
+</div></div>
+<h3>امیررضا غلامی</h3><div style="color:#888">@amirrezagholami</div>
+<div class="bio">Creator • Developer • Dreamer<br>Welcome to my personal social space.</div>
+<div class="pbuttons"><button onclick="follow()">دنبال کردن</button><button>ویرایش پروفایل</button></div>
 <div class="grid" id="grid"></div>
 </div>
 </section>
-</main>
 </div>
 
 <nav class="bottom">
-<button onclick="go('home')" class="active"><svg class="icon"><use href="#home"/></svg></button>
-<button onclick="go('searchPage')"><svg class="icon"><use href="#search"/></svg></button>
-<button class="create" onclick="openCreate()"><svg class="icon"><use href="#plus"/></svg></button>
-<button onclick="toast('پیام‌ها به‌زودی')"><svg class="icon"><use href="#send"/></svg></button>
-<button onclick="go('profile')"><svg class="icon"><use href="#user"/></svg></button>
+<button onclick="go('home',this)" class="on"><svg class="i"><use href="#home"/></svg></button>
+<button onclick="go('explore',this)"><svg class="i"><use href="#search"/></svg></button>
+<button class="create" onclick="openCreate()"><svg class="i"><use href="#plus"/></svg></button>
+<button onclick="go('reels',this)"><svg class="i"><use href="#play"/></svg></button>
+<button onclick="go('profile',this)"><svg class="i"><use href="#user"/></svg></button>
 </nav>
 
-<div id="createModal" class="modal">
-<div class="sheet">
-<div style="display:flex;justify-content:space-between;align-items:center">
-<h3>پست جدید</h3><button class="btn" onclick="closeCreate()"><svg class="icon"><use href="#x"/></svg></button>
-</div>
-<textarea id="postText" placeholder="چه چیزی در ذهنته؟"></textarea>
-<input type="file" id="postImage" accept="image/*">
+<div id="create" class="modal"><div class="sheet">
+<div class="sheettop"><h3>پست جدید</h3><button class="btn" onclick="closeModal('create')"><svg class="i"><use href="#close"/></svg></button></div>
+<textarea id="text" placeholder="چه چیزی در ذهنته؟"></textarea><input type="file" id="file" accept="image/*">
 <button class="primary" onclick="publish()">انتشار</button>
-</div>
-</div>
+</div></div>
 
-<div id="commentModal" class="modal">
-<div class="sheet">
-<div style="display:flex;justify-content:space-between"><h3>نظرات</h3><button class="btn" onclick="closeComments()"><svg class="icon"><use href="#x"/></svg></button></div>
-<div id="comments"></div>
-<input id="commentInput" placeholder="نظر خود را بنویسید...">
-<button class="primary" onclick="sendComment()">ارسال</button>
-</div>
-</div>
+<div id="comments" class="modal"><div class="sheet">
+<div class="sheettop"><h3>نظرات</h3><button class="btn" onclick="closeModal('comments')"><svg class="i"><use href="#close"/></svg></button></div>
+<div id="commentList"></div><input id="commentInput" placeholder="نظر خود را بنویسید..."><button class="primary" onclick="comment()">ارسال</button>
+</div></div>
+
+<div id="story" class="storyview"><button class="close" onclick="closeModal('story')"><svg class="i"><use href="#close"/></svg></button><img src="profile.jpg"></div>
 
 <script>
-const K="amirreza_space_v24";
-let S=JSON.parse(localStorage.getItem(K)||"{}");
-S.posts=S.posts||[];S.followers=S.followers||0;S.follow=S.follow||false;S.saved=S.saved||{};
-let currentPost=null;
+const K="amirreza_space_v24";let S=JSON.parse(localStorage.getItem(K)||"{}");
+S.posts=S.posts||[];S.followers=S.followers||0;S.follow=S.follow||false;S.saved=S.saved||{};let current=0;
 const save=()=>localStorage.setItem(K,JSON.stringify(S));
 const esc=x=>String(x||"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
-function go(id){document.querySelectorAll(".page").forEach(x=>x.classList.remove("on"));document.getElementById(id).classList.add("on");document.querySelectorAll(".bottom button").forEach(x=>x.classList.remove("active"));render()}
+function go(id,b){document.querySelectorAll(".page").forEach(x=>x.classList.remove("on"));document.getElementById(id).classList.add("on");document.querySelectorAll(".bottom button").forEach(x=>x.classList.remove("on"));if(b)b.classList.add("on");render()}
 function render(){
- let f=document.getElementById("feed");
- f.innerHTML=S.posts.length?S.posts.slice().reverse().map(p=>`
- <article class="post">
- <div class="posthead"><img src="profile.jpg"><div><div class="name">امیررضا غلامی</div><div class="handle">@amirrezagholami</div></div><button class="btn more">•••</button></div>
- ${p.image?`<img class="postimg" src="${p.image}">`:""}
- ${p.text?`<div class="posttext">${esc(p.text)}</div>`:""}
- <div class="posttools">
- <button class="btn ${p.liked?'liked':''}" onclick="like(${p.id})"><svg class="icon"><use href="#heart"/></svg></button>
- <button class="btn" onclick="openComments(${p.id})"><svg class="icon"><use href="#comment"/></svg></button>
- <button class="btn"><svg class="icon"><use href="#send"/></svg></button>
- <button class="btn save ${S.saved[p.id]?'saved':''}" onclick="bookmark(${p.id})"><svg class="icon"><use href="#save"/></svg></button>
- </div>
- <div class="meta"><div class="count">${p.likes||0} پسند</div>${p.time||"همین الان"}</div>
- </article>`).join(""):`<div class="empty">هنوز پستی منتشر نشده<br>اولین پست را خودت بساز.</div>`;
- document.getElementById("pPosts").textContent=S.posts.length;
- document.getElementById("pFollowers").textContent=S.followers;
- document.getElementById("pFollowing").textContent=S.follow?1:0;
- document.getElementById("grid").innerHTML=S.posts.map(p=>p.image?`<img src="${p.image}">`:"").join("");
- save();
+let f=document.getElementById("feed");
+f.innerHTML=S.posts.length?S.posts.slice().reverse().map(p=>`
+<article class="post" ondblclick="like(${p.id})">
+<div class="head"><img src="profile.jpg"><div><div class="name">امیررضا غلامی</div><div class="sub">@amirrezagholami</div></div><button class="btn more">•••</button></div>
+${p.image?`<img class="photo" src="${p.image}">`:""}
+${p.text?`<div class="txt">${esc(p.text)}</div>`:""}
+<div class="tools">
+<button class="btn ${p.liked?'liked':''}" onclick="like(${p.id})"><svg class="i"><use href="#heart"/></svg></button>
+<button class="btn" onclick="openComments(${p.id})"><svg class="i"><use href="#comment"/></svg></button>
+<button class="btn"><svg class="i"><use href="#send"/></svg></button>
+<button class="btn save ${S.saved[p.id]?'saved':''}" onclick="bookmark(${p.id})"><svg class="i"><use href="#save"/></svg></button>
+</div>
+<div class="meta"><b>${p.likes||0} پسند</b> · ${p.time||"همین الان"}</div>
+</article>`).join(""):`<div class="empty">هنوز پستی وجود ندارد.<br>اولین پست را بساز.</div>`;
+document.getElementById("pc").textContent=S.posts.length;document.getElementById("fc").textContent=S.followers;document.getElementById("fg").textContent=S.follow?1:0;
+document.getElementById("grid").innerHTML=S.posts.map(p=>p.image?`<img src="${p.image}">`:"").join("");
+document.getElementById("reelBox").innerHTML=S.posts.filter(p=>p.image).map(p=>`<div class="reel"><img src="${p.image}"><div class="reelinfo"><b>@amirrezagholami</b><div>${esc(p.text||"")}</div></div><div class="rail"><button onclick="like(${p.id})"><svg class="i"><use href="#heart"/></svg></button><button onclick="openComments(${p.id})"><svg class="i"><use href="#comment"/></svg></button></div></div>`).join("")||'<div class="empty">برای ساخت Reels اول یک پست تصویری منتشر کن.</div>';
+save()
 }
 function like(id){let p=S.posts.find(x=>x.id===id);if(!p)return;p.liked=!p.liked;p.likes=(p.likes||0)+(p.liked?1:-1);render()}
 function bookmark(id){S.saved[id]=!S.saved[id];render()}
-function follow(){S.follow=!S.follow;S.followers+=S.follow?1:-1;render();toast(S.follow?"دنبال شد":"لغو دنبال کردن")}
-function openCreate(){document.getElementById("createModal").classList.add("on")}
-function closeCreate(){document.getElementById("createModal").classList.remove("on")}
-function publish(){
- let text=document.getElementById("postText").value.trim(),file=document.getElementById("postImage").files[0];
- if(!text&&!file)return toast("چیزی برای انتشار وارد کن");
- const add=img=>{S.posts.push({id:Date.now(),text,image:img||"",likes:0,liked:false,comments:[],time:"همین الان"});save();document.getElementById("postText").value="";document.getElementById("postImage").value="";closeCreate();go("home");toast("پست منتشر شد")};
- if(file){let r=new FileReader();r.onload=()=>add(r.result);r.readAsDataURL(file)}else add("");
-}
-function openComments(id){currentPost=id;let p=S.posts.find(x=>x.id===id);document.getElementById("comments").innerHTML=(p.comments||[]).map(c=>`<div class="comment"><img src="profile.jpg"><div><b>امیررضا</b><br>${esc(c)}</div></div>`).join("")||'<div class="empty" style="padding:25px">هنوز نظری ثبت نشده</div>';document.getElementById("commentModal").classList.add("on")}
-function closeComments(){document.getElementById("commentModal").classList.remove("on")}
-function sendComment(){let i=document.getElementById("commentInput"),v=i.value.trim();if(!v)return;let p=S.posts.find(x=>x.id===currentPost);p.comments=p.comments||[];p.comments.push(v);i.value="";openComments(currentPost);save()}
-function searchPosts(q){q=q.toLowerCase();document.getElementById("results").innerHTML=S.posts.filter(p=>(p.text||"").toLowerCase().includes(q)).map(p=>`<div class="posttext">${esc(p.text)}</div>`).join("")||'<div class="empty">نتیجه‌ای پیدا نشد</div>'}
-function toast(t){let x=document.getElementById("toast");if(!x){x=document.createElement("div");x.id="toast";x.style="position:fixed;bottom:75px;left:50%;transform:translateX(-50%);background:#222;color:white;padding:10px 18px;border-radius:10px;z-index:99;font-size:13px";document.body.appendChild(x)}x.textContent=t;x.style.display="block";setTimeout(()=>x.style.display="none",1800)}
+function follow(){S.follow=!S.follow;S.followers+=S.follow?1:-1;render();toast(S.follow?"دنبال شد":"لغو شد")}
+function openCreate(){document.getElementById("create").classList.add("on")}
+function closeModal(id){document.getElementById(id).classList.remove("on")}
+function publish(){let t=document.getElementById("text").value.trim(),file=document.getElementById("file").files[0];if(!t&&!file)return toast("چیزی برای انتشار وارد کن");let add=img=>{S.posts.push({id:Date.now(),text:t,image:img||"",likes:0,liked:false,comments:[],time:"همین الان"});save();document.getElementById("text").value="";document.getElementById("file").value="";closeModal("create");go("home",document.querySelector(".bottom button"));toast("پست منتشر شد")};if(file){let r=new FileReader();r.onload=()=>add(r.result);r.readAsDataURL(file)}else add("")}
+function openComments(id){current=id;let p=S.posts.find(x=>x.id===id);document.getElementById("commentList").innerHTML=(p.comments||[]).map(c=>`<div style="padding:10px 0;border-bottom:1px solid #222"><b>امیررضا</b><br>${esc(c)}</div>`).join("")||'<div class="empty" style="padding:25px">هنوز نظری نیست.</div>';document.getElementById("comments").classList.add("on")}
+function comment(){let i=document.getElementById("commentInput"),v=i.value.trim(),p=S.posts.find(x=>x.id===current);if(!v||!p)return;p.comments=p.comments||[];p.comments.push(v);i.value="";save();openComments(current)}
+function search(q){q=q.toLowerCase();let a=S.posts.filter(p=>(p.text||"").toLowerCase().includes(q));document.getElementById("results").innerHTML=a.map(p=>`<div class="txt">${esc(p.text)}</div>`).join("")||'<div class="empty">نتیجه‌ای پیدا نشد</div>'}
+function story(){document.getElementById("story").classList.add("on")}
+function toast(t){let x=document.getElementById("toast");if(!x){x=document.createElement("div");x.id="toast";x.style="position:fixed;bottom:75px;left:50%;transform:translateX(-50%);background:#222;color:#fff;padding:10px 18px;border-radius:10px;z-index:99;font-size:13px";document.body.appendChild(x)}x.textContent=t;x.style.display="block";setTimeout(()=>x.style.display="none",1700)}
 render();
 </script>
 </body>
-</html>
+  </html>
