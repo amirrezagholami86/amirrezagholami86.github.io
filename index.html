@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#090b14">
-<title>AMIRREZA — Social v506</title>
+<title>AMIRREZA — Social v507</title>
 <style>
 :root{--bg:#090b14;--panel:#121625;--panel2:#191f32;--line:#282f45;--text:#f5f6ff;--muted:#8e9ab5;--purple:#8b5cf6;--cyan:#28e0cb;--pink:#ff549b;--input:#ffffff08;--border:#ffffff13}
 [data-theme="light"]{--bg:#f4f6fb;--panel:#ffffff;--panel2:#eef1f8;--line:#dde2ee;--text:#141826;--muted:#6b7590;--input:#00000008;--border:#00000010}
@@ -29,8 +29,8 @@ svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.8;stroke
 .nav.active .icon,.nav:hover .icon{color:var(--cyan)}
 .sidebar-bottom{margin-top:auto}
 .me{display:flex;align-items:center;gap:10px;padding:12px;background:var(--input);border-radius:16px}
-.avatar{width:43px;height:43px;object-fit:cover;border-radius:50%;border:2px solid var(--border);background:linear-gradient(135deg,var(--purple),var(--cyan));flex-shrink:0}
-.me strong{font-size:12px}
+.avatar{width:43px;height:43px;object-fit:cover;border-radius:50%;border:2px solid var(--border);background:linear-gradient(135deg,var(--purple),var(--cyan));flex-shrink:0;display:grid;place-items:center;color:white;font-weight:bold;font-size:16px}
+.me strong{font-size:12px;display:block;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .me small{display:block;font-size:10px;color:var(--muted);margin-top:5px}
 .main{min-width:0}
 .topbar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:20px;flex-wrap:wrap}
@@ -39,8 +39,9 @@ svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.8;stroke
 .actions{display:flex;gap:8px}
 .btn,.iconbtn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 13px;border-radius:13px;background:var(--input);border:1px solid var(--border);font-size:12px;transition:.15s}
 .btn:hover,.iconbtn:hover{background:var(--panel2)}
+.btn:disabled{opacity:.5;cursor:not-allowed}
 .primary{background:linear-gradient(120deg,#8b5cf6,#6840d8);border:0;box-shadow:0 6px 24px #8b5cf630;color:white}
-.primary:hover{filter:brightness(1.12)}
+.primary:hover:not(:disabled){filter:brightness(1.12)}
 .search{display:flex;align-items:center;gap:10px;padding:11px 14px;margin-bottom:20px}
 .search input{flex:1;min-width:0;background:none;border:0;outline:0;font-size:12px}
 .search input::placeholder{color:var(--muted)}
@@ -49,7 +50,7 @@ svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.8;stroke
 .section-head span{font-size:10px;color:var(--muted)}
 .stories{display:flex;gap:14px;overflow-x:auto;padding:5px 2px 12px}
 .story{min-width:65px;text-align:center;background:none;border:0;padding:0}
-.story-ring{width:61px;height:61px;margin:auto auto 8px;padding:3px;border-radius:50%;background:linear-gradient(135deg,var(--pink),var(--purple),var(--cyan));position:relative}
+.story-ring{width:61px;height:61px;margin:auto auto 8px;padding:3px;border-radius:50%;background:linear-gradient(135deg,var(--pink),var(--purple),var(--cyan))}
 .story-ring img,.story-ph{width:100%;height:100%;object-fit:cover;border-radius:50%;border:3px solid var(--panel);display:block}
 .story-ph{display:grid;place-items:center;background:#1c2340;font-size:22px;color:white}
 .story small{display:block;font-size:10px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:65px}
@@ -84,19 +85,12 @@ svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.8;stroke
 .stats{display:grid;grid-template-columns:repeat(3,1fr);text-align:center;border-top:1px solid var(--line);padding-top:13px}
 .stats strong{display:block;font-size:15px}
 .stats small{display:block;color:var(--muted);font-size:10px;margin-top:5px}
-.suggestion{display:flex;align-items:center;gap:9px;margin:14px 0}
-.suggestion .avatar{width:36px;height:36px;display:grid;place-items:center;font-size:15px;color:white}
-.suggestion-info{flex:1;min-width:0}
-.suggestion-info strong{display:block;font-size:10px}
-.suggestion-info small{display:block;font-size:9px;color:var(--muted);margin-top:4px}
-.follow{padding:8px 9px;border-radius:10px;background:var(--input);border:1px solid var(--border);font-size:10px}
-.follow.following{color:var(--cyan)}
 .tagline{font-size:11px;line-height:2;color:var(--muted)}
 .page{display:none}
 .page.active{display:block}
 .profile-page{padding:18px}
 .profile-banner{height:135px;border-radius:17px;background:linear-gradient(120deg,#6844e9,#ee529e,#12cbb7);position:relative;margin-bottom:56px}
-.profile-banner .avatar{position:absolute;right:20px;bottom:-42px;width:96px;height:96px;border:5px solid var(--panel)}
+.profile-banner .avatar{position:absolute;right:20px;bottom:-42px;width:96px;height:96px;border:5px solid var(--panel);font-size:36px}
 .profile-page h2{font-size:21px;margin:0 0 7px}
 .profile-page>p{font-size:12px;color:var(--muted);line-height:1.9}
 .profile-toolbar{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0}
@@ -117,13 +111,14 @@ svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.8;stroke
 .chat-list{border-left:1px solid var(--line);padding:10px;overflow-y:auto;max-height:500px}
 .chat-contact{display:flex;gap:8px;align-items:center;padding:11px 4px;border:0;border-bottom:1px solid var(--border);background:none;width:100%;text-align:right;border-radius:10px}
 .chat-contact.active{background:var(--input)}
-.chat-contact .avatar{width:32px;height:32px;display:grid;place-items:center;font-size:14px;color:white}
+.chat-contact .avatar{width:32px;height:32px;font-size:13px}
 .chat-contact strong{font-size:10px}
 .chat-contact small{display:block;font-size:9px;color:var(--muted);margin-top:4px}
 .chat-box{display:flex;flex-direction:column;min-width:0}
 .chat-messages{flex:1;padding:15px;display:flex;flex-direction:column;gap:10px;min-height:300px;max-height:420px;overflow-y:auto}
 .bubble{padding:10px 12px;border-radius:14px;max-width:85%;font-size:12px;line-height:1.8;background:var(--input);align-self:flex-start;overflow-wrap:anywhere}
 .bubble.mine{align-self:flex-end;background:linear-gradient(120deg,#7650e8,#4b32a5);color:white}
+.bubble .sender{font-size:9px;opacity:.7;margin-bottom:4px}
 .chat-send{display:flex;gap:7px;padding:11px;border-top:1px solid var(--line)}
 .chat-send input{flex:1;min-width:0;background:var(--input);border:1px solid var(--border);padding:11px;border-radius:12px;font-size:12px}
 .empty{padding:30px 12px;text-align:center;color:var(--muted);font-size:12px;line-height:2}
@@ -135,16 +130,6 @@ svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.8;stroke
 textarea.field{min-height:110px;resize:vertical;line-height:1.8}
 .modal-actions{display:flex;gap:9px;margin-top:14px}
 .modal-actions button{flex:1}
-.upload-zone{border:2px dashed var(--border);border-radius:16px;padding:24px;text-align:center;cursor:pointer;transition:.2s;margin:10px 0}
-.upload-zone:hover,.upload-zone.drag{border-color:var(--cyan);background:var(--input)}
-.upload-zone input{display:none}
-.upload-zone .icon{width:40px;height:40px;color:var(--muted);margin-bottom:8px}
-.upload-zone p{font-size:12px;color:var(--muted);margin:0;line-height:1.8}
-.preview-box{position:relative;margin:10px 0;border-radius:14px;overflow:hidden;background:#000}
-.preview-box img,.preview-box video{width:100%;max-height:300px;display:block;object-fit:contain}
-.preview-remove{position:absolute;top:8px;left:8px;background:#000000cc;color:white;border:0;width:32px;height:32px;border-radius:50%;font-size:16px}
-.progress{height:5px;background:var(--input);border-radius:5px;overflow:hidden;margin:10px 0}
-.progress-bar{height:100%;width:0;background:linear-gradient(90deg,var(--purple),var(--cyan));transition:width .2s}
 .toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,15px);opacity:0;pointer-events:none;background:var(--panel2);border:1px solid var(--border);border-radius:13px;padding:12px 18px;font-size:12px;z-index:100;transition:.25s;max-width:90%;text-align:center;color:var(--text)}
 .toast.show{opacity:1;transform:translate(-50%,0)}
 .bottom-nav{display:none}
@@ -163,6 +148,18 @@ textarea.field{min-height:110px;resize:vertical;line-height:1.8}
 .notif-item:hover{background:var(--input)}
 .notif-item.unread{background:#8b5cf615}
 .theme-toggle{position:fixed;bottom:20px;left:20px;width:48px;height:48px;border-radius:50%;background:var(--panel2);border:1px solid var(--border);font-size:20px;z-index:30;box-shadow:0 6px 24px #0005}
+/* Auth */
+.auth-screen{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;padding:20px;z-index:200}
+.auth-box{width:min(420px,100%);padding:30px}
+.auth-box h1{font-size:24px;margin:0 0 8px;text-align:center}
+.auth-box p{font-size:12px;color:var(--muted);text-align:center;margin:0 0 24px;line-height:1.8}
+.auth-tabs{display:flex;gap:8px;margin-bottom:16px}
+.auth-tabs button{flex:1;padding:11px;border-radius:12px;border:1px solid transparent;background:var(--input);color:var(--muted);font-size:12px}
+.auth-tabs button.sel{background:#8b5cf62b;color:var(--text);border-color:#8b5cf650}
+.auth-box label{font-size:11px;color:var(--muted);display:block;margin:10px 0 4px}
+.auth-error{color:var(--pink);font-size:11px;margin-top:10px;text-align:center;line-height:1.8}
+.spinner{display:inline-block;width:14px;height:14px;border:2px solid #ffffff44;border-top-color:white;border-radius:50%;animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
 @media(max-width:1050px){.app{grid-template-columns:200px minmax(0,1fr)}.right{display:none}}
 @media(max-width:680px){
 .app{display:block;padding:12px;padding-bottom:85px}
@@ -210,71 +207,84 @@ textarea.field{min-height:110px;resize:vertical;line-height:1.8}
 <symbol id="settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="m19.4 15 .1.1 1.4 1.1-1.5 2.6-1.7-.7a8 8 0 0 1-2 .9l-.3 1.8h-3l-.3-1.8a8 8 0 0 1-2-.9l-1.7.7-1.5-2.6 1.4-1.1a7 7 0 0 1 0-2.1l-1.4-1.1 1.5-2.6 1.7.7a8 8 0 0 1 2-.9l.3-1.8h3l.3 1.8a8 8 0 0 1 2 .9l1.7-.7 1.5 2.6-1.4 1.1a7 7 0 0 1 0 2.1Z"/></symbol>
 <symbol id="more" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></symbol>
 <symbol id="image" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></symbol>
-<symbol id="video" viewBox="0 0 24 24"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="m22 8-6 4 6 4z"/></symbol>
 <symbol id="trash" viewBox="0 0 24 24"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/></symbol>
 <symbol id="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
 <symbol id="moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></symbol>
+<symbol id="logout" viewBox="0 0 24 24"><path d="M9 21H5a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h4M16 17l5-5-5-5M21 12H9"/></symbol>
 </svg>
 
-<div class="app">
+<!-- Auth Screen -->
+<div class="auth-screen" id="authScreen">
+<div class="auth-box glass">
+<h1>AMIRREZA <span class="badge">v507</span></h1>
+<p>به شبکه اجتماعی خوش اومدی<br>برای ادامه وارد شو یا ثبت‌نام کن</p>
+<div class="auth-tabs"><button id="tabLogin" class="sel" onclick="authTab('login')">ورود</button><button id="tabRegister" onclick="authTab('register')">ثبت‌نام</button></div>
+<label>ایمیل</label><input id="authEmail" class="field" type="email" placeholder="you@example.com">
+<label>رمز عبور</label><input id="authPass" class="field" type="password" placeholder="حداقل ۶ کاراکتر">
+<div id="registerExtra" style="display:none"><label>نام نمایشی</label><input id="authName" class="field" placeholder="اسم تو"></div>
+<div class="auth-error" id="authError"></div>
+<button class="btn primary" style="width:100%;margin-top:14px;padding:14px" id="authBtn" onclick="doAuth()">ورود</button>
+</div>
+</div>
+
+<div class="app" id="app" style="display:none">
 <aside class="sidebar glass">
-<div class="brand"><div class="logo">A</div><div>AMIRREZA <span class="badge">v506</span><small>SOCIAL EXPERIENCE</small></div></div>
+<div class="brand"><div class="logo">A</div><div>AMIRREZA <span class="badge">v507</span><small>SOCIAL EXPERIENCE</small></div></div>
 <button class="nav active" data-page="home" onclick="go('home')"><span class="icon"><svg><use href="#home"/></svg></span>خانه</button>
 <button class="nav" data-page="explore" onclick="go('explore')"><span class="icon"><svg><use href="#search"/></svg></span>اکتشاف</button>
 <button class="nav" data-page="reels" onclick="go('reels')"><span class="icon"><svg><use href="#reels"/></svg></span>ریلز</button>
 <button class="nav" data-page="chat" onclick="go('chat')"><span class="icon"><svg><use href="#message"/></svg></span>پیام‌ها</button>
-<button class="nav" data-page="notifications" onclick="go('notifications')"><span class="icon"><svg><use href="#bell"/></svg></span>اعلان‌ها <span id="notifDot" style="background:var(--pink);width:7px;height:7px;border-radius:50%;margin-right:auto;display:none"></span></button>
+<button class="nav" data-page="notifications" onclick="go('notifications')"><span class="icon"><svg><use href="#bell"/></svg></span>اعلان‌ها</button>
 <button class="nav" data-page="profile" onclick="go('profile')"><span class="icon"><svg><use href="#user"/></svg></span>پروفایل من</button>
 <button class="nav" onclick="openCreate('post')"><span class="icon"><svg><use href="#plus"/></svg></span>ساخت پست</button>
 <div class="sidebar-bottom">
-<div class="me"><img class="avatar" src="profile.jpg" onerror="this.src=av()"><div><strong id="sideName">امیررضا غلامی</strong><small>@amirrezagholami.ir</small></div></div>
+<div class="me"><div class="avatar" id="myAvatar">U</div><div><strong id="myName">کاربر</strong><small id="myEmail">...</small></div></div>
 <button class="nav" data-page="settings" onclick="go('settings')"><span class="icon"><svg><use href="#settings"/></svg></span>تنظیمات</button>
+<button class="nav" onclick="doLogout()"><span class="icon"><svg><use href="#logout"/></svg></span>خروج</button>
 </div>
 </aside>
 
 <main class="main">
 <header class="topbar">
-<div class="greeting"><h1 id="pageTitle">سلام، امیررضا 👋</h1><p id="pageSubtitle">فضای تو، داستان تو؛ بدرخش!</p></div>
+<div class="greeting"><h1 id="pageTitle">سلام 👋</h1><p id="pageSubtitle">فضای تو، داستان تو؛ بدرخش!</p></div>
 <div class="actions">
-<button class="iconbtn" onclick="toggleTheme()" title="تغییر تم"><svg id="themeIcon"><use href="#moon"/></svg></button>
-<button class="iconbtn" onclick="go('notifications')"><svg><use href="#bell"/></svg></button>
+<button class="iconbtn" onclick="toggleTheme()"><svg id="themeIcon"><use href="#moon"/></svg></button>
 <button class="btn primary" onclick="openCreate('post')"><svg><use href="#plus"/></svg>ساختن</button>
 </div>
 </header>
-<div class="search glass"><span class="icon"><svg><use href="#search"/></svg></span><input id="searchInput" placeholder="بین پست‌ها جست‌وجو کن..." oninput="onSearch(this.value)"></div>
+<div class="search glass"><span class="icon"><svg><use href="#search"/></svg></span><input id="searchInput" placeholder="جست‌وجو..." oninput="onSearch(this.value)"></div>
 
 <section id="home" class="page active">
 <div class="section-head"><h2>استوری‌ها</h2><span>لحظه‌های تازه ✨</span></div>
 <div id="stories" class="stories"></div>
-<div class="composer glass"><img class="avatar" src="profile.jpg" onerror="this.src=av()"><button class="write" onclick="openCreate('post')">امروز چه خبر؟</button><button class="btn primary" onclick="openCreate('post')"><svg><use href="#plus"/></svg>پست</button></div>
-<div class="section-head"><h2>فید اختصاصی</h2><span>آخرین لحظه‌ها</span></div>
-<div id="feed" class="feed"></div>
+<div class="composer glass"><div class="avatar" id="composerAvatar">U</div><button class="write" onclick="openCreate('post')">امروز چه خبر؟</button></div>
+<div class="section-head"><h2>فید</h2><span>آخرین پست‌ها</span></div>
+<div id="feed" class="feed"><div class="empty">در حال بارگذاری...</div></div>
 </section>
 
-<section id="explore" class="page"><div class="section-head"><h2>اکتشاف</h2><span>پست‌های پیدا شده</span></div><div id="exploreFeed" class="feed"></div></section>
+<section id="explore" class="page"><div class="section-head"><h2>اکتشاف</h2><span>همه پست‌ها</span></div><div id="exploreFeed" class="feed"><div class="empty">در حال بارگذاری...</div></div></section>
 
-<section id="reels" class="page"><div class="section-head"><h2>ریلز</h2><span>لحظه‌های کوتاه</span></div><div id="reelsGrid" class="reels-grid"></div><div class="empty">برای افزودن ریلز، گزینه ساختن را انتخاب کن.</div></section>
+<section id="reels" class="page"><div class="section-head"><h2>ریلز</h2><span>لحظه‌های کوتاه</span></div><div id="reelsGrid" class="reels-grid"></div></section>
 
 <section id="profile" class="page"><div class="profile-page glass">
-<div class="profile-banner"><img class="avatar" src="profile.jpg" onerror="this.src=av()"></div>
-<h2 id="profileName">امیررضا غلامی</h2>
-<p id="profileBio">به دنیای من خوش اومدی ✨</p>
+<div class="profile-banner"><div class="avatar" id="profileAvatar" style="position:absolute;right:20px;bottom:-42px;width:96px;height:96px;border:5px solid var(--panel);font-size:36px">U</div></div>
+<h2 id="profileName">کاربر</h2>
+<p id="profileBio">بیوگرافی</p>
 <div class="stats">
-<div><strong id="postCount">0</strong><small>محتوا</small></div>
-<div><strong id="followerCount">1.2K</strong><small>دنبال‌کننده</small></div>
-<div><strong id="followingCount">180</strong><small>دنبال‌شونده</small></div>
+<div><strong id="postCount">0</strong><small>پست</small></div>
+<div><strong id="followerCount">0</strong><small>دنبال‌کننده</small></div>
+<div><strong id="followingCount">0</strong><small>دنبال‌شونده</small></div>
 </div>
 <div class="profile-toolbar">
 <button class="btn primary" onclick="editProfile()">ویرایش پروفایل</button>
-<button class="btn" onclick="shareProfile()"><svg><use href="#share"/></svg>اشتراک</button>
-<button class="btn" onclick="openCreate('post')"><svg><use href="#plus"/></svg>پست جدید</button>
+<button class="btn" onclick="doLogout()">خروج</button>
 </div>
-<div class="tabs"><button id="tabPosts" class="sel" onclick="profileTab('posts')">پست‌ها</button><button id="tabSaved" onclick="profileTab('saved')">ذخیره‌شده‌ها</button></div>
+<div class="tabs"><button id="tabPosts" class="sel" onclick="profileTab('posts')">پست‌ها</button><button id="tabSaved" onclick="profileTab('saved')">ذخیره‌شده</button></div>
 <div id="profileGrid" class="post-grid"></div>
 </div></section>
 
 <section id="chat" class="page">
-<div class="section-head"><h2>پیام‌ها</h2><span>گفت‌وگوهای تو</span></div>
+<div class="section-head"><h2>پیام‌ها</h2><span>گفت‌وگوی عمومی</span></div>
 <div class="chat-layout glass">
 <div id="chatList" class="chat-list"></div>
 <div class="chat-box">
@@ -282,24 +292,20 @@ textarea.field{min-height:110px;resize:vertical;line-height:1.8}
 <div class="chat-send"><input id="chatInput" placeholder="پیامت رو بنویس..." onkeydown="if(event.key==='Enter')sendChat()"><button class="btn primary" onclick="sendChat()">ارسال</button></div>
 </div>
 </div>
-<p class="tagline">پیام‌ها در حافظه محلی ذخیره می‌شوند.</p>
 </section>
 
 <section id="notifications" class="page">
 <div class="section-head"><h2>اعلان‌ها</h2><button class="btn" onclick="clearNotifications()">پاک کردن</button></div>
-<div id="notificationsList" class="glass widget"></div>
+<div id="notificationsList" class="glass widget"><div class="empty">اعلانی نیست</div></div>
 </section>
 
 <section id="settings" class="page">
 <div class="glass widget">
 <h2>تنظیمات</h2>
-<p class="tagline">شخصی‌سازی فضای تو</p>
+<p class="tagline">فضایت را شخصی‌سازی کن</p>
 <button class="btn" onclick="toggleTheme()">تغییر تم</button>
-<button class="btn" onclick="toggleDirection()">تغییر جهت نمایش</button>
 <button class="btn" onclick="editProfile()">ویرایش پروفایل</button>
-<button class="btn" onclick="exportData()">خروجی اطلاعات</button>
-<button class="btn" onclick="resetData()">بازنشانی اطلاعات</button>
-<p class="tagline">اطلاعات در حافظه محلی و IndexedDB ذخیره می‌شوند.</p>
+<button class="btn" onclick="doLogout()">خروج از حساب</button>
 </div>
 </section>
 </main>
@@ -307,25 +313,17 @@ textarea.field{min-height:110px;resize:vertical;line-height:1.8}
 <aside class="right">
 <div class="widget glass">
 <div class="widget-title"><h3>پروفایل تو</h3><button onclick="go('profile')">مشاهده</button></div>
-<div class="cover"><img class="avatar" src="profile.jpg" onerror="this.src=av()"></div>
-<div class="profile-info"><h3 id="rightName">امیررضا غلامی</h3><p id="rightBio">به دنیای من خوش اومدی ✨</p></div>
+<div class="cover"><div class="avatar" id="rightAvatar" style="position:absolute;right:13px;bottom:-29px;width:70px;height:70px;border:4px solid var(--panel);font-size:24px">U</div></div>
+<div class="profile-info"><h3 id="rightName">کاربر</h3><p id="rightBio">...</p></div>
 <div class="stats">
 <div><strong id="rightPosts">0</strong><small>پست</small></div>
-<div><strong id="rightFollowers">1.2K</strong><small>دنبال‌کننده</small></div>
-<div><strong id="rightFollowing">180</strong><small>دنبال‌شونده</small></div>
+<div><strong id="rightFollowers">0</strong><small>دنبال‌کننده</small></div>
+<div><strong id="rightFollowing">0</strong><small>دنبال‌شونده</small></div>
 </div>
 </div>
-<div class="widget glass">
-<div class="widget-title"><h3>پیشنهادهای ویژه</h3><button onclick="toast('این نسخه نمایشی است')">بیشتر</button></div>
-<div class="suggestion"><div class="avatar">✦</div><div class="suggestion-info"><strong>دنیای تکنولوژی</strong><small>محتوای پیشنهادی</small></div><button class="follow" onclick="toggleFollow(this)">دنبال</button></div>
-<div class="suggestion"><div class="avatar">✧</div><div class="suggestion-info"><strong>خلاقیت روز</strong><small>ایده‌های تازه</small></div><button class="follow" onclick="toggleFollow(this)">دنبال</button></div>
-<div class="suggestion"><div class="avatar">✺</div><div class="suggestion-info"><strong>دنیای سازندگان</strong><small>الهام‌بخش</small></div><button class="follow" onclick="toggleFollow(this)">دنبال</button></div>
-</div>
-<div class="widget glass"><div class="widget-title"><h3>AMIRREZA SOCIAL</h3><span class="badge">v506</span></div><p class="tagline">یک فضای شخصی برای پست‌ها، استوری‌ها و ایده‌های تو.</p></div>
+<div class="widget glass"><div class="widget-title"><h3>AMIRREZA SOCIAL</h3><span class="badge">v507</span></div><p class="tagline">شبکه اجتماعی چندکاربره با Firebase</p></div>
 </aside>
 </div>
-
-<button class="theme-toggle" onclick="toggleTheme()" title="تغییر تم"><svg id="themeIcon2"><use href="#moon"/></svg></button>
 
 <nav class="bottom-nav">
 <button class="active" data-page="home" onclick="go('home')"><svg><use href="#home"/></svg><span>خانه</span></button>
@@ -336,7 +334,6 @@ textarea.field{min-height:110px;resize:vertical;line-height:1.8}
 </nav>
 
 <div id="modalBackdrop" class="modal-backdrop" onclick="if(event.target===this)closeModal()"><div class="modal glass"><div id="modalContent"></div></div></div>
-
 <div id="storyViewer" class="story-viewer">
 <button class="story-close" onclick="closeStory()">✕</button>
 <button class="story-nav prev" onclick="event.stopPropagation();navStory(-1)">‹</button>
@@ -344,480 +341,44 @@ textarea.field{min-height:110px;resize:vertical;line-height:1.8}
 <div class="story-progress" id="storyProgress"></div>
 <div class="story-content" id="storyContent"></div>
 </div>
-
 <div id="toast" class="toast"></div>
 
-<script>
-'use strict';
-const SETTINGS_KEY='amirreza_v506_settings';
-const DB_NAME='amirreza_db',DB_VER=1,STORE_MEDIA='media',STORE_DATA='data';
-const DEFAULT_DATA=()=>({posts:[],notifications:[],chats:[],saved:[],followers:1200,following:180,displayName:'امیررضا غلامی',bio:'به دنیای من خوش اومدی ✨',theme:'dark',contacts:[]});
-let S=DEFAULT_DATA(),DB=null,currentPage='home',profileMode='posts',searchTerm='',toastTimer,storyIndex=0,storyTimer,storyList=[],mediaCache={};
-let tempFile=null,tempMediaType=null,tempMediaId=null;
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, updateProfile } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { getFirestore, collection, addDoc, doc, setDoc, getDoc, updateDoc, deleteDoc, onSnapshot, query, orderBy, serverTimestamp, arrayUnion, arrayRemove, increment, where, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-function av(){return 'data:image/svg+xml,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><linearGradient id="g"><stop stop-color="#8b5cf6"/><stop offset="1" stop-color="#28e0cb"/></linearGradient></defs><rect width="100" height="100" rx="50" fill="url(#g)"/><text x="50" y="64" text-anchor="middle" font-size="43" fill="white" font-family="Arial">A</text></svg>');}
+const firebaseConfig = {
+  apiKey: "AIzaSyCidkdlgHvYf7fpjvSRIz7Q3i5QOQKTIfo",
+  authDomain: "amirrezagholami.firebaseapp.com",
+  projectId: "amirrezagholami",
+  storageBucket: "amirrezagholami.firebasestorage.app",
+  messagingSenderId: "102230582842",
+  appId: "1:102230582842:web:9fe08e2df306f008f17703",
+  measurementId: "G-ZZVE9BM3PY"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+let currentUser = null;
+let userProfile = null;
+let posts = [];
+let currentPage = 'home';
+let profileMode = 'posts';
+let searchTerm = '';
+let toastTimer;
+let storyList = [], storyIndex = 0, storyTimer;
+let unsubPosts = null, unsubChat = null, unsubProfile = null, unsubNotifs = null;
+let notifications = [];
+let savedPosts = [];
+
 function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 function ic(n){return `<span class="icon"><svg><use href="#${n}"/></svg></span>`;}
-function pid(){return Date.now()+Math.floor(Math.random()*999);}
 function fmt(n){n=Number(n)||0;return n>=1000?(n/1000).toFixed(1).replace('.0','')+'K':String(n);}
-function getPost(id){return S.posts.find(p=>String(p.id)===String(id));}
-function sorted(){return [...S.posts].sort((a,b)=>(b.id||0)-(a.id||0));}
-
-function openDB(){
-return new Promise((resolve,reject)=>{
-const req=indexedDB.open(DB_NAME,DB_VER);
-req.onupgradeneeded=e=>{
-const db=e.target.result;
-if(!db.objectStoreNames.contains(STORE_MEDIA))db.createObjectStore(STORE_MEDIA,{keyPath:'id'});
-if(!db.objectStoreNames.contains(STORE_DATA))db.createObjectStore(STORE_DATA,{keyPath:'key'});
-};
-req.onsuccess=e=>{DB=e.target.result;resolve(DB);};
-req.onerror=e=>reject(e.target.error);
-});
-}
-
-function dbPut(store,val){
-return new Promise((res,rej)=>{
-const tx=DB.transaction(store,'readwrite');
-tx.objectStore(store).put(val);
-tx.oncomplete=res;tx.onerror=()=>rej(tx.error);
-});
-}
-
-function dbGet(store,key){
-return new Promise((res,rej)=>{
-const tx=DB.transaction(store,'readonly');
-const r=tx.objectStore(store).get(key);
-r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error);
-});
-}
-
-function dbDel(store,key){
-return new Promise((res,rej)=>{
-const tx=DB.transaction(store,'readwrite');
-tx.objectStore(store).delete(key);
-tx.oncomplete=res;tx.onerror=()=>rej(tx.error);
-});
-}
-
-function dbAll(store){
-return new Promise((res,rej)=>{
-const tx=DB.transaction(store,'readonly');
-const r=tx.objectStore(store).getAll();
-r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error);
-});
-}
-
-async function loadState(){
-try{
-const saved=await dbGet(STORE_DATA,'main');
-S=saved?saved.value:{...DEFAULT_DATA()};
-if(!S.contacts)S.contacts=[{id:'main',name:'یادداشت‌های من',avatar:'',unread:0}];
-}catch(e){console.warn('DB load fail',e);S={...DEFAULT_DATA()};S.contacts=[{id:'main',name:'یادداشت‌های من',avatar:'',unread:0}];}
-try{const t=localStorage.getItem(SETTINGS_KEY);if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}
-updateThemeIcon();
-}
-
-async function persist(){try{await dbPut(STORE_DATA,{key:'main',value:S});}catch(e){console.warn('persist fail',e);toast('خطا در ذخیره');}}
-
-async function getMediaURL(id){
-if(!id)return null;
-if(mediaCache[id])return mediaCache[id];
-const rec=await dbGet(STORE_MEDIA,id);
-if(!rec)return null;
-const url=URL.createObjectURL(rec.blob);
-mediaCache[id]=url;
-return url;
-}
-
-async function saveMediaFile(file){
-const id='m_'+pid();
-await dbPut(STORE_MEDIA,{id,blob:file,type:file.type,size:file.size,name:file.name});
-return id;
-}
-
-function go(page){
-currentPage=page;
-document.querySelectorAll('.page').forEach(e=>e.classList.toggle('active',e.id===page));
-document.querySelectorAll('[data-page]').forEach(e=>e.classList.toggle('active',e.dataset.page===page));
-const t={home:['سلام، '+S.displayName+' 👋','فضای تو، داستان تو؛ بدرخش!'],explore:['اکتشاف','چیزهای تازه پیدا کن'],reels:['ریلز','لحظه‌های کوتاه و جذاب'],chat:['پیام‌ها','گفت‌وگوهای تو'],profile:['پروفایل من','این صفحه متعلق به توست'],notifications:['اعلان‌ها','خبرهای فضای تو'],settings:['تنظیمات','فضایت را شخصی‌سازی کن']};
-document.getElementById('pageTitle').textContent=(t[page]||t.home)[0];
-document.getElementById('pageSubtitle').textContent=(t[page]||t.home)[1];
-render();
-window.scrollTo({top:0,behavior:'smooth'});
-}
-
-async function postCard(p){
-let mediaHTML='';
-if(p.mediaId){
-const url=await getMediaURL(p.mediaId);
-if(url){
-if(p.mediaType==='video')mediaHTML=`<video class="post-video" controls playsinline preload="metadata" src="${url}"></video>`;
-else mediaHTML=`<img class="post-image" loading="lazy" src="${url}">`;
-}
-}
-const liked=p.liked,saved=S.saved.some(x=>String(x)===String(p.id));
-return `<article class="post glass" data-id="${p.id}">
-<div class="post-head"><img class="avatar" src="profile.jpg" onerror="this.src=av()"><div class="post-user"><strong>${esc(S.displayName)}</strong><small>@amirrezagholami.ir · ${esc(p.time||'همین الان')}</small></div><button class="post-menu" onclick="postMenu('${p.id}')">${ic('more')}</button></div>
-${p.text?`<div class="post-text">${esc(p.text)}</div>`:''}
-${mediaHTML}
-<div class="post-actions">
-<button class="${liked?'liked':''}" onclick="likePost('${p.id}')">${ic('heart')} ${Number(p.likes)||0}</button>
-<button onclick="commentPost('${p.id}')">${ic('comment')} ${(p.comments||[]).length}</button>
-<button onclick="share('${p.id}')">${ic('share')}</button>
-<span class="spacer"></span>
-<button class="${saved?'saved':''}" onclick="savePost('${p.id}')">${ic('bookmark')}</button>
-</div>
-${(p.comments||[]).length?`<div class="post-stats">آخرین نظر: ${esc(p.comments[p.comments.length-1].text||p.comments[p.comments.length-1])}</div>`:''}
-</article>`;
-}
-
-async function renderStories(){
-const list=sorted().filter(p=>p.type==='story');
-let html=`<button class="story" onclick="openCreate('story')"><div class="story-ring"><div class="story-ph">${ic('plus')}</div></div><small>استوری تو</small></button>`;
-for(const p of list.slice(0,12)){
-let inner='<div class="story-ph">✦</div>';
-if(p.mediaId){
-const url=await getMediaURL(p.mediaId);
-if(url)inner=p.mediaType==='video'?`<video src="${url}" muted style="width:100%;height:100%;object-fit:cover;border-radius:50%;border:3px solid var(--panel)"></video>`:`<img src="${url}">`;
-}
-html+=`<button class="story" onclick="openStory('${p.id}')"><div class="story-ring">${inner}</div><small>${esc(S.displayName)}</small></button>`;
-}
-document.getElementById('stories').innerHTML=html;
-}
-
-async function renderFeed(){
-const posts=sorted().filter(p=>p.type==='post');
-let html='';
-if(posts.length){for(const p of posts)html+=await postCard(p);}
-else html='<div class="empty glass">هنوز پستی منتشر نکردی ✨<br>اولین پستت رو بساز!</div>';
-document.getElementById('feed').innerHTML=html;
-const found=posts.filter(p=>!searchTerm||(p.text||'').toLowerCase().includes(searchTerm.toLowerCase()));
-let ehtml='';
-if(found.length){for(const p of found)ehtml+=await postCard(p);}
-else ehtml='<div class="empty glass">چیزی پیدا نشد.</div>';
-document.getElementById('exploreFeed').innerHTML=ehtml;
-}
-
-async function renderReels(){
-const r=sorted().filter(p=>p.type==='reel');
-let html='';
-for(const p of r){
-let thumb='';
-if(p.mediaId){const url=await getMediaURL(p.mediaId);if(url)thumb=p.mediaType==='video'?`<video src="${url}" muted style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.4;border-radius:18px"></video>`:`<img src="${url}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.4;border-radius:18px">`;}
-html+=`<div class="reel-card" onclick="openStory('${p.id}')" style="position:relative;overflow:hidden">${thumb}<span class="play" style="position:relative;z-index:2">${ic('reels')}</span><p style="position:relative;z-index:2">${esc(p.text||'ریلز جدید')}</p><small style="position:relative;z-index:2">♥ ${Number(p.likes)||0} پسند</small></div>`;
-}
-document.getElementById('reelsGrid').innerHTML=html;
-}
-
-async function renderProfileGrid(){
-let p=sorted().filter(x=>x.type!=='story');
-if(profileMode==='saved')p=p.filter(x=>S.saved.some(id=>String(id)===String(x.id)));
-let html='';
-if(p.length){
-for(const x of p){
-let thumb='';
-if(x.mediaId){const url=await getMediaURL(x.mediaId);if(url)thumb=x.mediaType==='video'?`<video src="${url}" muted></video><span class="media-badge">▶ ویدیو</span>`:`<img loading="lazy" src="${url}">`;}
-if(!thumb)thumb=`<div class="grid-text">${esc(x.text||'پست')}</div>`;
-html+=`<div class="grid-item" onclick="openPost('${x.id}')">${thumb}</div>`;
-}
-}else html='<div class="empty" style="grid-column:1/-1">اینجا فعلاً خالیه ✨</div>';
-document.getElementById('profileGrid').innerHTML=html;
-}
-
-function renderChats(){
-const current=window.currentChat||'main';
-const contacts=S.contacts||[{id:'main',name:'یادداشت‌های من'}];
-document.getElementById('chatList').innerHTML=contacts.map(c=>`<button class="chat-contact ${c.id===current?'active':''}" onclick="setChat('${c.id}')"><div class="avatar" style="display:grid;place-items:center;font-size:14px">✦</div><div><strong>${esc(c.name)}</strong><small>${c.unread?'جدید':'محلی'}</small></div></button>`).join('');
-const m=S.chats.filter(x=>x.contact===current);
-document.getElementById('chatMessages').innerHTML=m.length?m.map(x=>`<div class="bubble ${x.mine?'mine':''}">${esc(x.text)}<div style="font-size:9px;opacity:.6;margin-top:5px">${esc(x.time||'')}</div></div>`).join(''):'<div class="empty">هنوز پیامی نیست.<br>اولین پیام رو بنویس!</div>';
-const box=document.getElementById('chatMessages');box.scrollTop=box.scrollHeight;
-}
-
-function renderNotifications(){
-const list=(S.notifications||[]).slice().reverse();
-document.getElementById('notificationsList').innerHTML=list.length?list.map(n=>`<div class="notif-item ${n.read?'':'unread'}" onclick="openNotif('${n.id}')">✦ ${esc(n.text||n)}</div>`).join(''):'<div class="empty">هنوز اعلانی نداری.</div>';
-const hasUnread=list.some(n=>!n.read);
-document.getElementById('notifDot').style.display=hasUnread?'inline-block':'none';
-}
-
-async function render(){
-await renderStories();await renderFeed();await renderReels();await renderProfileGrid();
-renderChats();renderNotifications();
-const count=S.posts.filter(p=>p.type!=='story').length;
-['postCount','rightPosts'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=count;});
-['profileName','rightName','sideName'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=S.displayName;});
-['profileBio','rightBio'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=S.bio;});
-['followerCount','rightFollowers'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=fmt(S.followers);});
-['followingCount','rightFollowing'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=fmt(S.following);});
-document.getElementById('tabPosts').classList.toggle('sel',profileMode==='posts');
-document.getElementById('tabSaved').classList.toggle('sel',profileMode==='saved');
-}
-
-function openCreate(type){
-tempFile=null;tempMediaType=null;tempMediaId=null;
-const names={post:'ساخت پست جدید',story:'ساخت استوری',reel:'ساخت ریلز'};
-document.getElementById('modalContent').innerHTML=`<h2>${names[type]||names.post}</h2>
-<textarea id="newText" class="field" placeholder="چی تو ذهنته؟"></textarea>
-<label class="upload-zone" id="dropZone">
-<input type="file" id="fileInput" accept="image/*,video/*" onchange="onFilePick(event)">
-${ic('image')}
-<p>برای انتخاب عکس یا فیلم کلیک کن<br>یا فایل رو اینجا بکش و رها کن</p>
-</label>
-<div id="previewArea"></div>
-<div class="progress" id="uploadProgress" style="display:none"><div class="progress-bar" id="uploadBar"></div></div>
-<p class="tagline">فایل‌ها در IndexedDB ذخیره می‌شن (بدون محدودیت حجم سنگین).</p>
-<div class="modal-actions"><button class="btn" onclick="closeModal()">انصراف</button><button class="btn primary" onclick="publish('${type}')">انتشار</button></div>`;
-const dz=document.getElementById('dropZone');
-dz.addEventListener('dragover',e=>{e.preventDefault();dz.classList.add('drag');});
-dz.addEventListener('dragleave',()=>dz.classList.remove('drag'));
-dz.addEventListener('drop',e=>{e.preventDefault();dz.classList.remove('drag');if(e.dataTransfer.files[0])handleFile(e.dataTransfer.files[0]);});
-document.getElementById('modalBackdrop').classList.add('open');
-}
-
-async function onFilePick(e){if(e.target.files[0])await handleFile(e.target.files[0]);}
-
-async function handleFile(file){
-const MAX=200*1024*1024;
-if(file.size>MAX){toast('فایل بزرگ‌تر از ۲۰۰MB مجاز نیست');return;}
-const isImage=file.type.startsWith('image/');
-const isVideo=file.type.startsWith('video/');
-if(!isImage&&!isVideo){toast('فقط عکس یا فیلم مجاز است');return;}
-tempFile=file;tempMediaType=isVideo?'video':'image';
-const preview=document.getElementById('previewArea');
-preview.innerHTML=`<div class="preview-box"><button class="preview-remove" onclick="removeFile()">✕</button><div class="progress"><div class="progress-bar" id="localBar" style="width:0"></div></div></div>`;
-const box=preview.querySelector('.preview-box');
-const url=URL.createObjectURL(file);
-if(isVideo){const v=document.createElement('video');v.src=url;v.controls=true;v.playsInline=true;box.insertBefore(v,box.firstChild);}
-else{const img=document.createElement('img');img.src=url;box.insertBefore(img,box.firstChild);}
-const bar=document.getElementById('localBar');
-let p=0;const iv=setInterval(()=>{p+=15;bar.style.width=Math.min(p,100)+'%';if(p>=100)clearInterval(iv);},60);
-}
-
-function removeFile(){
-tempFile=null;tempMediaType=null;tempMediaId=null;
-document.getElementById('previewArea').innerHTML='';
-}
-
-async function publish(type){
-const text=document.getElementById('newText').value.trim();
-if(!text&&!tempFile){toast('متن یا فایل اضافه کن');return;}
-const btn=event.target;btn.disabled=true;btn.textContent='در حال انتشار...';
-try{
-let mediaId=null;
-if(tempFile){mediaId=await saveMediaFile(tempFile);}
-const post={id:pid(),type,text,mediaId,mediaType:tempMediaType,likes:0,liked:false,comments:[],time:'همین الان'};
-S.posts.push(post);
-S.notifications.push({id:pid(),text:'محتوای جدیدت منتشر شد ✨',read:false});
-await persist();closeModal();render();toast('منتشر شد!');
-go(type==='reel'?'reels':'home');
-}catch(e){console.error(e);toast('خطا در انتشار');btn.disabled=false;btn.textContent='انتشار';}
-}
-
-function closeModal(){document.getElementById('modalBackdrop').classList.remove('open');tempFile=null;}
-
-async function likePost(id){
-const p=getPost(id);if(!p)return;
-p.liked=!p.liked;
-p.likes=Math.max(0,(Number(p.likes)||0)+(p.liked?1:-1));
-await persist();render();
-}
-
-async function savePost(id){
-const i=S.saved.findIndex(x=>String(x)===String(id));
-if(i>=0){S.saved.splice(i,1);toast('از ذخیره‌ها حذف شد');}
-else{S.saved.push(id);toast('ذخیره شد');}
-await persist();render();
-}
-
-async function commentPost(id){
-const text=prompt('نظرت رو بنویس:');if(!text||!text.trim())return;
-const p=getPost(id);if(!p)return;
-if(!Array.isArray(p.comments))p.comments=[];
-p.comments.push({text:text.trim(),time:'همین الان'});
-S.notifications.push({id:pid(),text:'یک نظر به پستت اضافه شد',read:false});
-await persist();render();toast('نظرت ثبت شد');
-}
-
-function postMenu(id){
-if(!getPost(id))return;
-confirmModal('این پست حذف شود؟',async()=>{
-const p=getPost(id);
-if(p&&p.mediaId){try{await dbDel(STORE_MEDIA,p.mediaId);delete mediaCache[p.mediaId];}catch(e){}}
-S.posts=S.posts.filter(x=>String(x.id)!==String(id));
-S.saved=S.saved.filter(x=>String(x)!==String(id));
-await persist();render();toast('پست حذف شد');
-});
-}
-
-function confirmModal(msg,onYes){
-document.getElementById('modalContent').innerHTML=`<h2>تأیید</h2><p style="font-size:13px;line-height:2">${esc(msg)}</p><div class="modal-actions"><button class="btn" onclick="closeModal()">انصراف</button><button class="btn primary" id="confirmYes">بله</button></div>`;
-document.getElementById('modalBackdrop').classList.add('open');
-document.getElementById('confirmYes').onclick=()=>{closeModal();onYes();};
-}
-
-async function share(id){
-const text='پست جدید من در AMIRREZA Social';
-const url=location.href.split('#')[0]+'#post-'+encodeURIComponent(id);
-if(navigator.share){try{await navigator.share({title:'AMIRREZA Social',text,url});return;}catch(e){if(e.name==='AbortError')return;}}
-copy(url,'لینک پست آماده شد');
-}
-function shareProfile(){
-const url=location.href.split('#')[0]+'#profile';
-if(navigator.share){navigator.share({title:'AMIRREZA Social',text:'پروفایل من',url}).catch(()=>copy(url,'لینک پروفایل آماده شد'));return;}
-copy(url,'لینک پروفایل آماده شد');
-}
-
-async function copy(text,msg){
-try{
-if(navigator.clipboard&&window.isSecureContext)await navigator.clipboard.writeText(text);
-else{const t=document.createElement('textarea');t.value=text;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();}
-toast(msg);
-}catch(e){prompt('لینک را کپی کن:',text);}
-}
-
-function openPost(id){
-const p=getPost(id);if(!p)return;
-go(p.type==='reel'?'reels':'home');
-setTimeout(()=>{
-const el=document.querySelector(`.post[data-id="${id}"]`);
-if(el)el.scrollIntoView({behavior:'smooth',block:'center'});
-},120);
-}
-
-async function openStory(id){
-const p=getPost(id);if(!p)return;
-storyList=sorted().filter(x=>x.type==='story'||x.type==='reel');
-storyIndex=storyList.findIndex(x=>String(x.id)===String(id));
-if(storyIndex<0)storyIndex=0;
-await showStoryIndex(storyIndex);
-document.getElementById('storyViewer').classList.add('open');
-}
-
-async function showStoryIndex(idx){
-if(idx<0||idx>=storyList.length){closeStory();return;}
-storyIndex=idx;
-const p=storyList[idx];
-const url=p.mediaId?await getMediaURL(p.mediaId):null;
-let html='';
-if(url){html+=p.mediaType==='video'?`<video src="${url}" autoplay controls playsinline></video>`:`<img src="${url}">`;}
-if(p.text)html+=`<p>${esc(p.text)}</p>`;
-document.getElementById('storyContent').innerHTML=html;
-const prog=document.getElementById('storyProgress');
-prog.innerHTML=storyList.map((_,i)=>`<div class="story-progress-seg"><div class="story-progress-fill" id="seg${i}" style="width:${i<idx?'100%':'0'}"></div></div>`).join('');
-const dur=5000;
-const start=Date.now();
-clearInterval(storyTimer);
-storyTimer=setInterval(()=>{
-const el=document.getElementById('seg'+idx);if(!el)return;
-const t=(Date.now()-start)/dur*100;
-el.style.width=Math.min(t,100)+'%';
-if(t>=100){clearInterval(storyTimer);navStory(1);}
-},50);
-}
-
-function navStory(dir){
-clearInterval(storyTimer);
-const next=storyIndex+dir;
-if(next<0||next>=storyList.length){closeStory();return;}
-showStoryIndex(next);
-}
-
-function closeStory(){
-document.getElementById('storyViewer').classList.remove('open');
-document.getElementById('storyContent').innerHTML='';
-document.getElementById('storyProgress').innerHTML='';
-clearInterval(storyTimer);
-}
-
-function profileTab(mode){
-profileMode=mode;
-renderProfileGrid();
-document.getElementById('tabPosts').classList.toggle('sel',mode==='posts');
-document.getElementById('tabSaved').classList.toggle('sel',mode==='saved');
-}
-
-function editProfile(){
-document.getElementById('modalContent').innerHTML=`<h2>ویرایش پروفایل</h2><label>نام نمایشی</label><input id="editName" class="field" maxlength="60" value="${esc(S.displayName)}"><label>بیوگرافی</label><textarea id="editBio" class="field" maxlength="240">${esc(S.bio)}</textarea><div class="modal-actions"><button class="btn" onclick="closeModal()">انصراف</button><button class="btn primary" onclick="saveProfile()">ذخیره</button></div>`;
-document.getElementById('modalBackdrop').classList.add('open');
-}
-
-async function saveProfile(){
-const n=document.getElementById('editName').value.trim(),b=document.getElementById('editBio').value.trim();
-if(!n){toast('نام نمی‌تواند خالی باشد');return;}
-S.displayName=n;S.bio=b;
-await persist();closeModal();render();toast('پروفایل به‌روز شد');
-}
-
-function onSearch(v){searchTerm=v.trim();renderFeed();if(searchTerm&&currentPage!=='explore')go('explore');}
-
-async function toggleFollow(btn){
-const on=btn.classList.toggle('following');
-btn.textContent=on?'دنبال می‌کنی':'دنبال';
-S.following=Math.max(0,S.following+(on?1:-1));
-await persist();render();
-toast(on?'اضافه شد':'حذف شد');
-}
-
-function setChat(id){window.currentChat=id;renderChats();}
-
-async function sendChat(){
-const i=document.getElementById('chatInput'),text=i.value.trim();
-if(!text)return;
-const contact=window.currentChat||'main';
-S.chats.push({contact,text,mine:true,time:new Date().toLocaleTimeString('fa-IR',{hour:'2-digit',minute:'2-digit'})});
-i.value='';await persist();renderChats();
-}
-
-async function openNotif(id){
-const n=S.notifications.find(x=>String(x.id)===String(id));
-if(n){n.read=true;await persist();renderNotifications();}
-}
-
-function clearNotifications(){
-if(!S.notifications.length){toast('اعلانی نیست');return;}
-confirmModal('همه اعلان‌ها پاک شوند؟',async()=>{S.notifications=[];await persist();renderNotifications();toast('پاک شد');});
-}
-
-function toggleTheme(){
-const cur=document.documentElement.getAttribute('data-theme')||'dark';
-const next=cur==='dark'?'light':'dark';
-document.documentElement.setAttribute('data-theme',next);
-try{localStorage.setItem(SETTINGS_KEY,next);}catch(e){}
-updateThemeIcon();
-toast(next==='dark'?'حالت تاریک':'حالت روشن');
-}
-
-function updateThemeIcon(){
-const cur=document.documentElement.getAttribute('data-theme')||'dark';
-const icon=cur==='dark'?'#sun':'#moon';
-['themeIcon','themeIcon2'].forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML=`<use href="${icon}"/>`;});
-}
-
-function toggleDirection(){
-const rtl=document.documentElement.dir==='rtl';
-document.documentElement.dir=rtl?'ltr':'rtl';
-toast(rtl?'چپ‌چین شد':'راست‌چین شد');
-}
-
-async function exportData(){
-const media=await dbAll(STORE_MEDIA);
-const out={settings:S,mediaCount:media.length,exportedAt:new Date().toISOString()};
-const blob=new Blob([JSON.stringify(out,null,2)],{type:'application/json'});
-const url=URL.createObjectURL(blob),a=document.createElement('a');
-a.href=url;a.download='amirreza-v506-backup.json';a.click();
-URL.revokeObjectURL(url);toast('خروجی آماده شد');
-}
-
-function resetData(){
-confirmModal('همه اطلاعات پاک شوند؟ (شامل فایل‌ها)',async()=>{
-try{const media=await dbAll(STORE_MEDIA);for(const m of media)await dbDel(STORE_MEDIA,m.id);}catch(e){}
-try{await dbDel(STORE_DATA,'main');}catch(e){}
-mediaCache={};
-S={...DEFAULT_DATA(),contacts:[{id:'main',name:'یادداشت‌های من',avatar:'',unread:0}]};
-await persist();render();go('home');toast('بازنشانی شد');
-});
-}
+function pid(){return Date.now()+Math.floor(Math.random()*999);}
+function initial(name){return (name||'U').trim().charAt(0).toUpperCase();}
 
 function toast(msg){
 const el=document.getElementById('toast');
@@ -826,15 +387,380 @@ clearTimeout(toastTimer);
 toastTimer=setTimeout(()=>el.classList.remove('show'),2400);
 }
 
-(async function init(){
-await openDB();
-await loadState();
-if(!S.contacts||!S.contacts.length)S.contacts=[{id:'main',name:'یادداشت‌های من',avatar:'',unread:0}];
-window.currentChat='main';
-await render();
-if(location.hash==='#profile')go('profile');
-else if(location.hash.startsWith('#post-'))openPost(decodeURIComponent(location.hash.slice(6)));
-})();
+// ============ AUTH ============
+let authMode='login';
+function authTab(m){
+authMode=m;
+document.getElementById('tabLogin').classList.toggle('sel',m==='login');
+document.getElementById('tabRegister').classList.toggle('sel',m==='register');
+document.getElementById('registerExtra').style.display=m==='register'?'block':'none';
+document.getElementById('authBtn').textContent=m==='login'?'ورود':'ثبت‌نام';
+document.getElementById('authError').textContent='';
+}
+
+async function doAuth(){
+const email=document.getElementById('authEmail').value.trim();
+const pass=document.getElementById('authPass').value;
+const name=document.getElementById('authName').value.trim();
+const err=document.getElementById('authError');
+const btn=document.getElementById('authBtn');
+err.textContent='';
+if(!email||!pass){err.textContent='ایمیل و رمز رو پر کن';return;}
+if(pass.length<6){err.textContent='رمز حداقل ۶ کاراکتر';return;}
+if(authMode==='register'&&!name){err.textContent='اسم نمایشی رو وارد کن';return;}
+btn.disabled=true;
+const orig=btn.textContent;
+btn.innerHTML='<span class="spinner"></span>';
+try{
+if(authMode==='register'){
+const cred=await createUserWithEmailAndPassword(auth,email,pass);
+await setDoc(doc(db,'users',cred.user.uid),{name,email,bio:'سلام! من تازه اومدم ✨',followers:0,following:0,saved:[],createdAt:serverTimestamp()});
+}else{
+await signInWithEmailAndPassword(auth,email,pass);
+}
+}catch(e){
+btn.disabled=false;btn.textContent=orig;
+const msgs={'auth/email-already-in-use':'این ایمیل قبلاً ثبت شده','auth/invalid-email':'ایمیل نامعتبر','auth/weak-password':'رمز ضعیف','auth/user-not-found':'کاربر پیدا نشد','auth/wrong-password':'رمز اشتباه','auth/invalid-credential':'ایمیل یا رمز اشتباه','auth/too-many-requests':'تلاش زیاد، بعداً امتحان کن'};
+err.textContent=msgs[e.code]||'خطا: '+e.message;
+}
+}
+
+async function doLogout(){
+if(unsubPosts)unsubPosts();
+if(unsubChat)unsubChat();
+if(unsubProfile)unsubProfile();
+if(unsubNotifs)unsubNotifs();
+await signOut(auth);
+}
+
+onAuthStateChanged(auth,async(user)=>{
+if(user){
+currentUser=user;
+document.getElementById('authScreen').style.display='none';
+document.getElementById('app').style.display='grid';
+await loadProfile();
+startListeners();
+}else{
+currentUser=null;userProfile=null;posts=[];notifications=[];savedPosts=[];
+document.getElementById('authScreen').style.display='flex';
+document.getElementById('app').style.display='none';
+}
+});
+
+async function loadProfile(){
+const snap=await getDoc(doc(db,'users',currentUser.uid));
+if(snap.exists()){
+userProfile=snap.data();
+savedPosts=userProfile.saved||[];
+updateUI();
+}else{
+userProfile={name:currentUser.email.split('@')[0],email:currentUser.email,bio:'',followers:0,following:0,saved:[]};
+await setDoc(doc(db,'users',currentUser.uid),userProfile);
+updateUI();
+}
+unsubProfile=onSnapshot(doc(db,'users',currentUser.uid),s=>{
+if(s.exists()){userProfile=s.data();savedPosts=userProfile.saved||[];updateUI();renderAll();}
+});
+}
+
+function updateUI(){
+if(!userProfile)return;
+const name=userProfile.name||'کاربر';
+const initial1=initial(name);
+document.getElementById('myName').textContent=name;
+document.getElementById('myEmail').textContent=currentUser.email;
+document.getElementById('myAvatar').textContent=initial1;
+document.getElementById('composerAvatar').textContent=initial1;
+document.getElementById('profileAvatar').textContent=initial1;
+document.getElementById('rightAvatar').textContent=initial1;
+document.getElementById('profileName').textContent=name;
+document.getElementById('profileBio').textContent=userProfile.bio||'—';
+document.getElementById('rightName').textContent=name;
+document.getElementById('rightBio').textContent=userProfile.bio||'—';
+document.getElementById('followerCount').textContent=fmt(userProfile.followers||0);
+document.getElementById('rightFollowers').textContent=fmt(userProfile.followers||0);
+document.getElementById('followingCount').textContent=fmt(userProfile.following||0);
+document.getElementById('rightFollowing').textContent=fmt(userProfile.following||0);
+document.getElementById('pageTitle').textContent='سلام، '+name+' 👋';
+}
+
+// ============ LISTENERS ============
+function startListeners(){
+if(unsubPosts)unsubPosts();
+const q=query(collection(db,'posts'),orderBy('createdAt','desc'));
+unsubPosts=onSnapshot(q,s=>{
+posts=s.docs.map(d=>({id:d.id,...d.data()}));
+renderAll();
+});
+
+if(unsubChat)unsubChat();
+const qc=query(collection(db,'chat'),orderBy('createdAt','asc'));
+unsubChat=onSnapshot(qc,s=>{
+renderChat(s.docs.map(d=>({id:d.id,...d.data()})));
+});
+
+if(unsubNotifs)unsubNotifs();
+const qn=query(collection(db,'notifications'),where('to','==',currentUser.uid),orderBy('createdAt','desc'));
+unsubNotifs=onSnapshot(qn,s=>{
+notifications=s.docs.map(d=>({id:d.id,...d.data()}));
+renderNotifications();
+});
+}
+
+// ============ NAV ============
+function go(page){
+currentPage=page;
+document.querySelectorAll('.page').forEach(e=>e.classList.toggle('active',e.id===page));
+document.querySelectorAll('[data-page]').forEach(e=>e.classList.toggle('active',e.dataset.page===page));
+const t={home:['سلام، '+(userProfile?.name||'')+' 👋','فضای تو، داستان تو'],explore:['اکتشاف','همه پست‌های کاربران'],reels:['ریلز','لحظه‌های کوتاه'],chat:['پیام‌ها','گفت‌وگوی عمومی'],profile:['پروفایل من','این صفحه متعلق به توست'],notifications:['اعلان‌ها','خبرهای فضای تو'],settings:['تنظیمات','شخصی‌سازی']};
+document.getElementById('pageTitle').textContent=(t[page]||t.home)[0];
+document.getElementById('pageSubtitle').textContent=(t[page]||t.home)[1];
+window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ============ RENDER ============
+function renderAll(){
+renderFeed();
+renderReels();
+renderStories();
+renderProfileGrid();
+const myCount=posts.filter(p=>p.uid===currentUser.uid&&p.type==='post').length;
+document.getElementById('postCount').textContent=myCount;
+document.getElementById('rightPosts').textContent=myCount;
+}
+
+function postCard(p){
+const isMine=p.uid===currentUser.uid;
+const liked=(p.likedBy||[]).includes(currentUser.uid);
+const saved=savedPosts.includes(p.id);
+const media=p.mediaUrl?`<img class="post-image" loading="lazy" src="${esc(p.mediaUrl)}" onerror="this.style.display='none'">`:'';
+return `<article class="post glass" data-id="${p.id}">
+<div class="post-head"><div class="avatar" style="width:38px;height:38px;font-size:14px">${initial(p.authorName)}</div><div class="post-user"><strong>${esc(p.authorName||'کاربر')}</strong><small>${new Date(p.createdAt?.seconds*1000||Date.now()).toLocaleString('fa-IR')}</small></div>${isMine?`<button class="post-menu" onclick="postMenu('${p.id}')">${ic('more')}</button>`:''}</div>
+${p.text?`<div class="post-text">${esc(p.text)}</div>`:''}
+${media}
+<div class="post-actions">
+<button class="${liked?'liked':''}" onclick="likePost('${p.id}')">${ic('heart')} ${(p.likedBy||[]).length}</button>
+<button onclick="commentPost('${p.id}')">${ic('comment')} ${(p.comments||[]).length}</button>
+<button onclick="share('${p.id}')">${ic('share')}</button>
+<span class="spacer"></span>
+<button class="${saved?'saved':''}" onclick="savePost('${p.id}')">${ic('bookmark')}</button>
+</div>
+${(p.comments||[]).length?`<div class="post-stats">آخرین نظر: ${esc(p.comments[p.comments.length-1].text)}</div>`:''}
+</article>`;
+}
+
+function renderFeed(){
+const feed=posts.filter(p=>p.type==='post');
+document.getElementById('feed').innerHTML=feed.length?feed.map(postCard).join(''):'<div class="empty glass">هنوز پستی نیست. اولین پست رو بساز! ✨</div>';
+const found=feed.filter(p=>!searchTerm||(p.text||'').toLowerCase().includes(searchTerm.toLowerCase()));
+document.getElementById('exploreFeed').innerHTML=found.length?found.map(postCard).join(''):'<div class="empty">چیزی پیدا نشد</div>';
+}
+
+function renderReels(){
+const r=posts.filter(p=>p.type==='reel');
+document.getElementById('reelsGrid').innerHTML=r.length?r.map(p=>`<div class="reel-card" onclick="openStory('${p.id}')"><span class="play">${ic('reels')}</span><p>${esc(p.text||'ریلز')}</p><small>♥ ${(p.likedBy||[]).length} پسند</small></div>`).join(''):'<div class="empty">ریلزی نیست</div>';
+}
+
+function renderStories(){
+const list=posts.filter(p=>p.type==='story');
+let html=`<button class="story" onclick="openCreate('story')"><div class="story-ring"><div class="story-ph">${ic('plus')}</div></div><small>استوری تو</small></button>`;
+html+=list.slice(0,12).map(p=>{
+const inner=p.mediaUrl?`<img src="${esc(p.mediaUrl)}" onerror="this.src=av()">`:`<div class="story-ph">✦</div>`;
+return `<button class="story" onclick="openStory('${p.id}')"><div class="story-ring">${inner}</div><small>${esc(p.authorName)}</small></button>`;
+}).join('');
+document.getElementById('stories').innerHTML=html;
+}
+
+function renderProfileGrid(){
+let p=posts.filter(x=>x.type!=='story'&&x.uid===currentUser.uid);
+if(profileMode==='saved')p=posts.filter(x=>savedPosts.includes(x.id));
+document.getElementById('profileGrid').innerHTML=p.length?p.map(x=>`<div class="grid-item" onclick="openPost('${x.id}')">${x.mediaUrl?`<img loading="lazy" src="${esc(x.mediaUrl)}">`:`<div class="grid-text">${esc(x.text||'پست')}</div>`}</div>`).join(''):'<div class="empty" style="grid-column:1/-1">خالیه ✨</div>';
+}
+
+function renderChat(msgs){
+document.getElementById('chatList').innerHTML=`<button class="chat-contact active"><div class="avatar" style="font-size:13px">#</div><div><strong>چت عمومی</strong><small>همه کاربران</small></div></button>`;
+if(!msgs)return;
+document.getElementById('chatMessages').innerHTML=msgs.length?msgs.map(x=>{
+const mine=x.uid===currentUser.uid;
+return `<div class="bubble ${mine?'mine':''}">${!mine?`<div class="sender">${esc(x.authorName)}</div>`:''}${esc(x.text)}<div style="font-size:9px;opacity:.6;margin-top:5px">${x.createdAt?new Date(x.createdAt.seconds*1000).toLocaleTimeString('fa-IR',{hour:'2-digit',minute:'2-digit'}):''}</div></div>`;
+}).join(''):'<div class="empty">اولین پیام رو بنویس!</div>';
+const box=document.getElementById('chatMessages');box.scrollTop=box.scrollHeight;
+}
+
+function renderNotifications(){
+const list=notifications;
+document.getElementById('notificationsList').innerHTML=list.length?list.map(n=>`<div class="notif-item ${n.read?'':'unread'}" onclick="readNotif('${n.id}')">✦ ${esc(n.text)}</div>`).join(''):'<div class="empty">اعلانی نیست</div>';
+}
+
+function av(){return 'data:image/svg+xml,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><linearGradient id="g"><stop stop-color="#8b5cf6"/><stop offset="1" stop-color="#28e0cb"/></linearGradient></defs><rect width="100" height="100" rx="50" fill="url(#g)"/><text x="50" y="64" text-anchor="middle" font-size="43" fill="white" font-family="Arial">A</text></svg>');}
+
+// ============ CREATE ============
+function openCreate(type){
+const names={post:'ساخت پست',story:'ساخت استوری',reel:'ساخت ریلز'};
+document.getElementById('modalContent').innerHTML=`<h2>${names[type]||names.post}</h2>
+<textarea id="newText" class="field" placeholder="چی تو ذهنته؟"></textarea>
+<input id="newImage" class="field" placeholder="لینک عکس (اختیاری)">
+<p class="tagline">فعلاً برای عکس از لینک مستقیم استفاده کن. آپلود فایل به‌زودی.</p>
+<div class="modal-actions"><button class="btn" onclick="closeModal()">انصراف</button><button class="btn primary" onclick="publish('${type}')">انتشار</button></div>`;
+document.getElementById('modalBackdrop').classList.add('open');
+}
+
+async function publish(type){
+const text=document.getElementById('newText').value.trim();
+const image=document.getElementById('newImage').value.trim();
+if(!text&&!image){toast('متن یا لینک وارد کن');return;}
+if(image&&!/^https?:\/\//i.test(image)){toast('لینک باید http باشه');return;}
+const btn=event.target;btn.disabled=true;btn.textContent='در حال انتشار...';
+try{
+await addDoc(collection(db,'posts'),{
+type,text,mediaUrl:image||'',uid:currentUser.uid,
+authorName:userProfile.name,likedBy:[],comments:[],
+createdAt:serverTimestamp()
+});
+closeModal();toast('منتشر شد!');
+go(type==='reel'?'reels':'home');
+}catch(e){
+console.error(e);toast('خطا: '+e.message);btn.disabled=false;btn.textContent='انتشار';
+}
+}
+
+function closeModal(){document.getElementById('modalBackdrop').classList.remove('open');}
+
+// ============ ACTIONS ============
+async function likePost(id){
+const p=posts.find(x=>x.id===id);if(!p)return;
+const ref=doc(db,'posts',id);
+const liked=(p.likedBy||[]).includes(currentUser.uid);
+await updateDoc(ref,{likedBy:liked?arrayRemove(currentUser.uid):arrayUnion(currentUser.uid)});
+}
+
+async function savePost(id){
+const saved=[...(userProfile.saved||[])];
+const i=saved.indexOf(id);
+if(i>=0){saved.splice(i,1);toast('حذف شد');}
+else{saved.push(id);toast('ذخیره شد');}
+await updateDoc(doc(db,'users',currentUser.uid),{saved});
+}
+
+async function commentPost(id){
+const text=prompt('نظرت:');
+if(!text||!text.trim())return;
+const p=posts.find(x=>x.id===id);if(!p)return;
+const comments=[...(p.comments||[]),{text:text.trim(),uid:currentUser.uid,name:userProfile.name,at:Date.now()}];
+await updateDoc(doc(db,'posts',id),{comments});
+if(p.uid!==currentUser.uid){
+await addDoc(collection(db,'notifications'),{to:p.uid,text:userProfile.name+' روی پستت نظر داد',read:false,createdAt:serverTimestamp()});
+}
+toast('نظر ثبت شد');
+}
+
+function postMenu(id){
+const p=posts.find(x=>x.id===id);
+if(!p||p.uid!==currentUser.uid)return;
+if(confirm('پست حذف شود؟')){
+deleteDoc(doc(db,'posts',id)).then(()=>toast('حذف شد'));
+}
+}
+
+async function share(id){
+const url=location.href.split('#')[0]+'#post-'+id;
+if(navigator.share){try{await navigator.share({title:'AMIRREZA Social',url});return;}catch(e){}}
+copy(url,'لینک کپی شد');
+}
+
+async function copy(text,msg){
+try{if(navigator.clipboard)await navigator.clipboard.writeText(text);else{const t=document.createElement('textarea');t.value=text;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();}toast(msg);}catch(e){}
+}
+
+function openPost(id){go('home');setTimeout(()=>{const el=document.querySelector(`.post[data-id="${id}"]`);if(el)el.scrollIntoView({behavior:'smooth',block:'center'});},200);}
+
+// ============ STORY VIEWER ============
+function openStory(id){
+storyList=posts.filter(x=>x.type==='story'||x.type==='reel');
+storyIndex=storyList.findIndex(x=>x.id===id);
+if(storyIndex<0)storyIndex=0;
+showStory(storyIndex);
+document.getElementById('storyViewer').classList.add('open');
+}
+
+function showStory(i){
+if(i<0||i>=storyList.length){closeStory();return;}
+storyIndex=i;
+const p=storyList[i];
+let html='';
+if(p.mediaUrl)html+=`<img src="${esc(p.mediaUrl)}" onerror="this.style.display='none'">`;
+if(p.text)html+=`<p>${esc(p.text)}</p>`;
+document.getElementById('storyContent').innerHTML=html;
+document.getElementById('storyProgress').innerHTML=storyList.map((_,j)=>`<div class="story-progress-seg"><div class="story-progress-fill" id="seg${j}" style="width:${j<i?'100%':'0'}"></div></div>`).join('');
+const start=Date.now();
+clearInterval(storyTimer);
+storyTimer=setInterval(()=>{
+const el=document.getElementById('seg'+i);if(!el)return;
+const t=(Date.now()-start)/5000*100;
+el.style.width=Math.min(t,100)+'%';
+if(t>=100){clearInterval(storyTimer);navStory(1);}
+},50);
+}
+
+function navStory(dir){const n=storyIndex+dir;if(n<0||n>=storyList.length){closeStory();return;}showStory(n);}
+function closeStory(){document.getElementById('storyViewer').classList.remove('open');document.getElementById('storyContent').innerHTML='';document.getElementById('storyProgress').innerHTML='';clearInterval(storyTimer);}
+
+// ============ PROFILE ============
+function profileTab(m){profileMode=m;renderProfileGrid();document.getElementById('tabPosts').classList.toggle('sel',m==='posts');document.getElementById('tabSaved').classList.toggle('sel',m==='saved');}
+
+function editProfile(){
+document.getElementById('modalContent').innerHTML=`<h2>ویرایش پروفایل</h2>
+<label>نام</label><input id="editName" class="field" value="${esc(userProfile.name||'')}">
+<label>بیو</label><textarea id="editBio" class="field">${esc(userProfile.bio||'')}</textarea>
+<div class="modal-actions"><button class="btn" onclick="closeModal()">انصراف</button><button class="btn primary" onclick="saveProfile()">ذخیره</button></div>`;
+document.getElementById('modalBackdrop').classList.add('open');
+}
+
+async function saveProfile(){
+const name=document.getElementById('editName').value.trim();
+const bio=document.getElementById('editBio').value.trim();
+if(!name){toast('نام خالی نباشه');return;}
+await updateDoc(doc(db,'users',currentUser.uid),{name,bio});
+await updateProfile(currentUser,{displayName:name});
+toast('ذخیره شد');closeModal();
+}
+
+// ============ CHAT ============
+async function sendChat(){
+const i=document.getElementById('chatInput');
+const text=i.value.trim();if(!text)return;
+i.value='';
+await addDoc(collection(db,'chat'),{text,uid:currentUser.uid,authorName:userProfile.name,createdAt:serverTimestamp()});
+}
+
+// ============ NOTIFS ============
+async function readNotif(id){await updateDoc(doc(db,'notifications',id),{read:true});}
+async function clearNotifications(){
+for(const n of notifications)await deleteDoc(doc(db,'notifications',n.id));
+toast('پاک شد');
+}
+
+// ============ SEARCH ============
+function onSearch(v){searchTerm=v.trim();renderFeed();if(searchTerm&&currentPage!=='explore')go('explore');}
+
+// ============ THEME ============
+function toggleTheme(){
+const cur=document.documentElement.getAttribute('data-theme')||'dark';
+const next=cur==='dark'?'light':'dark';
+document.documentElement.setAttribute('data-theme',next);
+try{localStorage.setItem('theme',next);}catch(e){}
+document.getElementById('themeIcon').innerHTML=`<use href="#${next==='dark'?'moon':'sun'}"/>`;
+}
+try{const t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}
+
+// ============ EXPOSE GLOBALS ============
+window.authTab=authTab;window.doAuth=doAuth;window.doLogout=doLogout;
+window.go=go;window.openCreate=openCreate;window.publish=publish;window.closeModal=closeModal;
+window.likePost=likePost;window.savePost=savePost;window.commentPost=commentPost;window.postMenu=postMenu;
+window.share=share;window.openPost=openPost;window.openStory=openStory;window.closeStory=closeStory;window.navStory=navStory;
+window.profileTab=profileTab;window.editProfile=editProfile;window.saveProfile=saveProfile;
+window.sendChat=sendChat;window.readNotif=readNotif;window.clearNotifications=clearNotifications;
+window.onSearch=onSearch;window.toggleTheme=toggleTheme;window.toast=toast;
 </script>
 </body>
- </html>
+                                        </html>
